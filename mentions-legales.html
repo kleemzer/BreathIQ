@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Mentions légales BreathIQ — Éditeur, hébergeur, propriété intellectuelle, protection des données, non-dispositif médical.">
+  <title>Mentions légales — BreathIQ</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --c-navy: #1A3C5E; --c-blue: #2A7FD4; --c-teal: #0E8C7A;
+      --c-amber: #D97706; --c-red: #C0392B;
+      --bg: #F5F7FA; --card: #fff; --text: #1A2B3C; --muted: #4A5568;
+      --border: rgba(26,60,94,.12); --font: 'Inter', system-ui, sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--c-blue); }
+    .page-header {
+      background: linear-gradient(145deg, #0F2A45 0%, #1A3C5E 100%);
+      padding: 3rem 1.5rem 2.5rem; color: #fff; text-align: center;
+    }
+    .page-header .brand { font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,.55); margin-bottom: .75rem; letter-spacing: .04em; }
+    .page-header .brand strong { color: #2A7FD4; font-weight: 800; }
+    .page-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -.03em; }
+    .page-header .updated { margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.4); }
+    .page-nav {
+      background: #fff; border-bottom: 1px solid var(--border);
+      padding: .75rem 1.5rem; position: sticky; top: 0; z-index: 50;
+    }
+    .page-nav a { font-size: .78rem; font-weight: 600; color: var(--c-navy); margin-right: 1.4rem; text-decoration: none; }
+    .page-nav a:hover { color: var(--c-blue); }
+    .main { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    /* Alertboxes */
+    .alert {
+      display: flex; gap: .9rem; align-items: flex-start;
+      padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 1.5rem;
+    }
+    .alert-icon { font-size: 1.3rem; flex-shrink: 0; }
+    .alert-red   { background: #FEF2F2; border: 1px solid #FECACA; border-left: 4px solid #C0392B; }
+    .alert-amber { background: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid #D97706; }
+    .alert-teal  { background: #F0FDF9; border: 1px solid #99F6E4; border-left: 4px solid #0E8C7A; }
+    .alert-blue  { background: #EFF6FF; border: 1px solid #BFDBFE; border-left: 4px solid #2A7FD4; }
+    .alert strong { display: block; font-size: .88rem; font-weight: 700; margin-bottom: .2rem; }
+    .alert p { font-size: .84rem; color: #374151; margin: 0; line-height: 1.6; }
+    /* Sections */
+    section[id] { scroll-margin-top: 60px; margin-bottom: 2.5rem; }
+    h2 {
+      font-size: 1.25rem; font-weight: 800; letter-spacing: -.02em;
+      color: var(--c-navy); margin-bottom: 1rem;
+      padding-bottom: .5rem; border-bottom: 2px solid var(--border);
+      display: flex; align-items: center; gap: .5rem;
+    }
+    h2 .num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 26px; height: 26px; border-radius: 50%;
+      background: var(--c-navy); color: #fff;
+      font-size: .75rem; font-weight: 800; flex-shrink: 0;
+    }
+    h3 { font-size: 1rem; font-weight: 700; color: var(--c-navy); margin: 1.2rem 0 .5rem; }
+    p { margin-bottom: .9rem; font-size: .93rem; color: #374151; }
+    ul { padding-left: 1.3rem; margin-bottom: .9rem; }
+    li { font-size: .92rem; color: #374151; margin-bottom: .35rem; }
+    /* Info table */
+    .info-table { width: 100%; border-collapse: collapse; font-size: .88rem; margin-bottom: 1.2rem; }
+    .info-table tr { border-bottom: 1px solid var(--border); }
+    .info-table td { padding: .55rem .7rem; vertical-align: top; }
+    .info-table td:first-child { font-weight: 600; color: var(--c-navy); width: 38%; white-space: nowrap; }
+    .info-table td:last-child { color: #374151; }
+    /* IP shield box */
+    .ip-shield {
+      background: linear-gradient(135deg, #EFF6FF, #F0FDF9);
+      border: 1px solid #BFDBFE; border-radius: 12px;
+      padding: 1.2rem 1.4rem; margin-bottom: 1.2rem;
+    }
+    .ip-shield h4 { font-size: .88rem; font-weight: 700; color: var(--c-navy); margin-bottom: .5rem; }
+    .ip-shield ul { margin: 0; padding-left: 1.2rem; }
+    .ip-shield li { font-size: .83rem; color: #1e3a5f; margin-bottom: .25rem; }
+    /* Rights grid */
+    .rights-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.2rem; }
+    .right-card {
+      background: var(--card); border: 1px solid var(--border); border-radius: 10px;
+      padding: 1rem; border-top: 3px solid var(--c-blue);
+    }
+    .right-card.teal { border-top-color: var(--c-teal); }
+    .right-card.navy { border-top-color: var(--c-navy); }
+    .right-card.amber { border-top-color: var(--c-amber); }
+    .right-card h4 { font-size: .85rem; font-weight: 700; color: var(--c-navy); margin-bottom: .3rem; }
+    .right-card p { font-size: .78rem; margin: 0; color: #4B5563; }
+    .right-card .ref { font-size: .72rem; color: var(--c-blue); font-weight: 600; margin-top: .4rem; }
+    /* Prohibition list */
+    .prohib-list { list-style: none; padding: 0; }
+    .prohib-list li {
+      display: flex; align-items: flex-start; gap: .5rem;
+      font-size: .88rem; color: #374151; padding: .4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .prohib-list li::before { content: '✗'; color: var(--c-red); font-weight: 800; flex-shrink: 0; margin-top: .05rem; }
+    /* Allowed list */
+    .allow-list { list-style: none; padding: 0; }
+    .allow-list li {
+      display: flex; align-items: flex-start; gap: .5rem;
+      font-size: .88rem; color: #374151; padding: .4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .allow-list li::before { content: '✓'; color: var(--c-teal); font-weight: 800; flex-shrink: 0; margin-top: .05rem; }
+    /* Badge */
+    .badge {
+      display: inline-block; padding: .15rem .55rem; border-radius: 999px;
+      font-size: .68rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      vertical-align: middle; margin-left: .3rem;
+    }
+    .badge-blue  { background: #DBEAFE; color: #1D4ED8; }
+    .badge-teal  { background: #CCFBF1; color: #065F46; }
+    .badge-red   { background: #FEE2E2; color: #991B1B; }
+    .badge-amber { background: #FEF3C7; color: #92400E; }
+    /* Footer */
+    .page-footer { background: #0D1E2D; color: rgba(255,255,255,.4); text-align: center; padding: 1.5rem; font-size: .78rem; }
+    .page-footer a { color: rgba(255,255,255,.5); }
+    @media (max-width: 640px) {
+      .page-nav { display: none; }
+      .rights-grid { grid-template-columns: 1fr; }
+      .info-table td:first-child { width: auto; white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="brand">Breath<strong>IQ</strong></div>
+  <h1>Mentions légales</h1>
+  <p class="updated">Version 1.0 — En vigueur au 19 mai 2026</p>
+</header>
+
+<nav class="page-nav">
+  <a href="#editeur">1. Éditeur</a>
+  <a href="#hebergeur">2. Hébergeur</a>
+  <a href="#nature">3. Nature du service</a>
+  <a href="#propriete">4. Propriété intellectuelle</a>
+  <a href="#marque">5. Marque &amp; signe distinctif</a>
+  <a href="#base-donnees">6. Base de données</a>
+  <a href="#ia">7. IA &amp; scraping</a>
+  <a href="#responsabilite">8. Responsabilité</a>
+  <a href="#donnees">9. Données personnelles</a>
+  <a href="#loi">10. Droit applicable</a>
+  <a href="#contact">11. Contact</a>
+</nav>
+
+<main class="main">
+
+  <!-- ═══ ALERTE NON-DISPOSITIF MÉDICAL ═══ -->
+  <div class="alert alert-red">
+    <span class="alert-icon">⚕️</span>
+    <div>
+      <strong>Non-dispositif médical — Avertissement essentiel</strong>
+      <p>BreathIQ est exclusivement un outil d'information publique et de gestion logistique.
+      Il ne constitue pas un dispositif médical au sens du Règlement (UE) 2017/745 (MDR),
+      n'émet aucune recommandation médicale individuelle, ne participe pas au diagnostic,
+      au traitement ou à la prévention d'une maladie chez un individu, et ne traite aucune donnée
+      de santé à caractère personnel. Pour tout conseil médical, consultez un professionnel de santé qualifié.</p>
+    </div>
+  </div>
+
+  <!-- ═══ 1. ÉDITEUR ═══ -->
+  <section id="editeur">
+    <h2><span class="num">1</span> Éditeur du site</h2>
+
+    <div class="alert alert-amber">
+      <span class="alert-icon">⚖️</span>
+      <div>
+        <strong>Éditeur non-professionnel — Titre médical utilisé à titre purement indicatif</strong>
+        <p>Ce site est publié à titre strictement personnel par son auteur, sans lien avec une activité médicale
+        professionnelle. La mention du titre de Docteur en médecine ne signifie pas que ce site constitue
+        un service médical ou un acte professionnel médical. Elle figure uniquement à titre d'information
+        sur la formation académique de l'auteur.</p>
+      </div>
+    </div>
+
+    <table class="info-table">
+      <tr><td>Nom</td><td>Clément MÉDEAU</td></tr>
+      <tr><td>Titre</td><td>Docteur en médecine (titre académique — usage personnel)</td></tr>
+      <tr><td>Qualité</td><td>Éditeur non-professionnel — particulier</td></tr>
+      <tr><td>Adresse</td><td>La Rochelle (17000), Charente-Maritime, France<br>
+        <small style="color:#6B7280"><em>Adresse complète communiquée sur demande à l'hébergeur conformément à l'article 6.II de la loi n° 2004-575 du 21 juin 2004 (LCEN). L'hébergeur tient ces informations à disposition des autorités compétentes.</em></small></td></tr>
+      <tr><td>Email</td><td><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></td></tr>
+      <tr><td>Directeur de publication</td><td>Clément MÉDEAU</td></tr>
+      <tr><td>Base légale LCEN</td><td>Art. 6.I.2 loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique</td></tr>
+    </table>
+
+    <p>Conformément à l'article 6.II de la LCEN, l'adresse complète de résidence de l'éditeur est
+    communiquée à l'hébergeur, qui s'engage à la transmettre à toute autorité judiciaire ou administrative
+    qui en ferait la demande. Cette disposition garantit la protection de la vie privée de l'éditeur
+    tout en assurant la pleine transparence légale.</p>
+  </section>
+
+  <!-- ═══ 2. HÉBERGEUR ═══ -->
+  <section id="hebergeur">
+    <h2><span class="num">2</span> Hébergeur</h2>
+    <table class="info-table">
+      <tr><td>Société</td><td>Netlify, Inc.</td></tr>
+      <tr><td>Forme juridique</td><td>Société de droit américain (Delaware)</td></tr>
+      <tr><td>Siège social</td><td>44 Montgomery Street, Suite 300, San Francisco, CA 94104, États-Unis</td></tr>
+      <tr><td>Site</td><td><a href="https://www.netlify.com" target="_blank" rel="noopener noreferrer">www.netlify.com</a></td></tr>
+      <tr><td>Support</td><td><a href="https://www.netlify.com/support/" target="_blank" rel="noopener noreferrer">netlify.com/support</a></td></tr>
+    </table>
+    <p>Le transfert de données vers les serveurs Netlify (États-Unis) est couvert par les clauses contractuelles types
+    de l'Union européenne (CCT/SCC) et les garanties RGPD appropriées au sens de l'article 46 du Règlement (UE) 2016/679.</p>
+  </section>
+
+  <!-- ═══ 3. NATURE DU SERVICE ═══ -->
+  <section id="nature">
+    <h2><span class="num">3</span> Nature du service — Déclarations essentielles</h2>
+
+    <h3>3.1 Ce que BreathIQ est</h3>
+    <ul>
+      <li>Un <strong>outil d'information publique</strong> sur la prévention respiratoire et les stocks mondiaux de masques FFP2/N95/KN95</li>
+      <li>Un <strong>outil de visualisation de données épidémiologiques publiques</strong> (OMS, ECDC, CDC, Eurostat)</li>
+      <li>Une <strong>base de données documentaire</strong> sur les pathogènes respiratoires nécessitant une protection FFP2</li>
+      <li>Un service <strong>accessible librement, gratuitement, sans inscription</strong>, à toute personne</li>
+    </ul>
+
+    <h3>3.2 Ce que BreathIQ n'est pas</h3>
+    <ul class="prohib-list">
+      <li>Un dispositif médical au sens du Règlement (UE) 2017/745 (MDR) ou du Règlement (UE) 2017/746 (IVDR)</li>
+      <li>Un service de télémédecine ou de téléconsultation médicale</li>
+      <li>Un service de santé numérique au sens de l'article L. 4001-1 et suivants du Code de la santé publique</li>
+      <li>Un système d'aide à la décision clinique médicale destiné à des professionnels de santé</li>
+      <li>Un service émettant des recommandations médicales individuelles, des diagnostics ou des prescriptions</li>
+      <li>Un service traitant des données de santé à caractère personnel au sens de l'article 9 du RGPD</li>
+    </ul>
+
+    <div class="alert alert-teal">
+      <span class="alert-icon">ℹ️</span>
+      <div>
+        <strong>Données démonstratives</strong>
+        <p>Les données de stocks affichées sur BreathIQ sont des données représentatives et démonstratives,
+        non des données officielles en temps réel. Elles sont fournies à titre indicatif pour illustrer les
+        disparités mondiales de disponibilité des équipements de protection respiratoire.
+        Les données épidémiologiques (foyers pathogènes) sont issues de sources officielles publiques
+        citées et vérifiables (OMS, ECDC, CDC).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ 4. PROPRIÉTÉ INTELLECTUELLE ═══ -->
+  <section id="propriete">
+    <h2><span class="num">4</span> Propriété intellectuelle — Protection des œuvres</h2>
+
+    <p>L'ensemble du contenu de BreathIQ (ci-après « l'Œuvre ») est protégé par le droit français et
+    le droit international de la propriété intellectuelle. L'Œuvre comprend notamment, sans que cette
+    liste soit exhaustive : le code source, la structure et l'architecture du site, les textes, les
+    analyses infectiologiques, les fiches pathogènes, les formules de calcul, les visuels, le design
+    system, les animations, la sélection et l'organisation des données.</p>
+
+    <div class="rights-grid">
+      <div class="right-card">
+        <h4>Droit d'auteur</h4>
+        <p>Protection automatique de l'Œuvre originale dès sa création, sans formalité préalable.</p>
+        <div class="ref">Art. L111-1 et L112-1 Code de la Propriété Intellectuelle</div>
+      </div>
+      <div class="right-card teal">
+        <h4>Droit moral</h4>
+        <p>Droit perpétuel, inaliénable et imprescriptible de l'auteur sur son œuvre. Droit à la paternité et au respect de l'intégrité.</p>
+        <div class="ref">Art. L121-1 CPI</div>
+      </div>
+      <div class="right-card navy">
+        <h4>Droit sui generis — Base de données</h4>
+        <p>Protection de l'investissement substantiel consenti pour la constitution, la vérification et la présentation des données.</p>
+        <div class="ref">Art. L341-1 et L342-1 CPI · Dir. 96/9/CE</div>
+      </div>
+      <div class="right-card amber">
+        <h4>Preuve d'antériorité</h4>
+        <p>Dépôt probatoire en cours auprès de l'INPI (e-Soleau) pour établir la date certaine de création et la paternité de l'Œuvre.</p>
+        <div class="ref">Art. L111-1 CPI · e-Soleau INPI</div>
+      </div>
+    </div>
+
+    <h3>4.1 Titulaire des droits</h3>
+    <p>Clément MÉDEAU est le seul et unique auteur de BreathIQ, créateur original de l'ensemble de
+    l'Œuvre, titulaire de la totalité des droits patrimoniaux et moraux d'auteur sur le site, son code,
+    ses contenus, sa structure et sa base de données.</p>
+
+    <h3>4.2 Usages autorisés</h3>
+    <ul class="allow-list">
+      <li>Consultation libre et gratuite du site par toute personne physique</li>
+      <li>Partage d'un lien URL vers le site, avec mention de la source « BreathIQ — breathiq.fr »</li>
+      <li>Citation courte d'extraits à des fins d'information, d'enseignement ou de recherche académique, avec mention obligatoire de la source et de l'auteur</li>
+      <li>Reproduction de données épidémiologiques issues de sources officielles tierces (OMS, CDC, ECDC), ces données appartenant à leurs auteurs respectifs</li>
+    </ul>
+
+    <h3>4.3 Usages interdits</h3>
+    <ul class="prohib-list">
+      <li>Reproduction, copie, représentation ou diffusion du site, de son code, de ses textes ou de ses données, sous quelque forme que ce soit, sans autorisation écrite préalable</li>
+      <li>Création d'un site dérivé, concurrent ou similaire utilisant tout ou partie des éléments de BreathIQ</li>
+      <li>Extraction systématique ou aspiration (<em>scraping</em>) du contenu du site, par quelque moyen automatisé que ce soit</li>
+      <li>Utilisation du contenu, des données ou de leur structure pour l'entraînement, l'affinage (<em>fine-tuning</em>), l'évaluation ou l'amélioration de tout modèle d'intelligence artificielle, d'apprentissage automatique ou de traitement du langage naturel</li>
+      <li>Intégration du site dans un cadre (<em>iframe</em>), une application ou un service tiers sans autorisation écrite</li>
+      <li>Exploitation commerciale directe ou indirecte du contenu sans licence expresse</li>
+      <li>Suppression ou dissimulation des mentions de droits d'auteur, de la marque BreathIQ ou du nom de l'auteur</li>
+    </ul>
+
+    <p>Toute violation expose son auteur à des poursuites civiles et pénales sur le fondement de la contrefaçon
+    (art. L335-2 et suivants du CPI), de la concurrence déloyale et du parasitisme économique,
+    et de l'extraction illicite d'une base de données (art. L343-1 CPI).</p>
+  </section>
+
+  <!-- ═══ 5. MARQUE & SIGNE DISTINCTIF ═══ -->
+  <section id="marque">
+    <h2><span class="num">5</span> Marque commerciale &amp; signe distinctif</h2>
+
+    <div class="alert alert-blue">
+      <span class="alert-icon">™</span>
+      <div>
+        <strong>BreathIQ — Signe distinctif protégé</strong>
+        <p>Le nom <strong>« BreathIQ »</strong>, le logo BreathIQ, la dénomination « Intelligence respiratoire mondiale »
+        et tout signe distinctif associé constituent la propriété intellectuelle exclusive de Clément MÉDEAU.
+        Une demande d'enregistrement de la marque <strong>« BreathIQ »</strong> est en cours auprès de l'Institut National
+        de la Propriété Industrielle (INPI), de l'Office de l'Union Européenne pour la Propriété Intellectuelle (EUIPO)
+        et du United States Patent and Trademark Office (USPTO), dans les classes 35, 42 et 44 de la Classification de Nice.</p>
+      </div>
+    </div>
+
+    <div class="ip-shield">
+      <h4>🛡️ Périmètre de protection du signe distinctif</h4>
+      <ul>
+        <li><strong>Nom :</strong> « BreathIQ » — toutes variations orthographiques (BreathIQ, Breath IQ, Breathiq, BREATHIQ)</li>
+        <li><strong>Slogan :</strong> « Intelligence respiratoire mondiale » / « Global Respiratory Intelligence »</li>
+        <li><strong>Concept :</strong> indice respiratoire synthétique combinant AQI, circulation virale, pollens et météo (formule SR)</li>
+        <li><strong>Design system :</strong> palette couleurs, animations, typographie, glassmorphism BreathIQ</li>
+        <li><strong>Domaines :</strong> breathiq.fr, breathiq.com, breathiq.eu (en cours d'enregistrement)</li>
+        <li><strong>Classes Nice :</strong> 35 (services d'information commerciale), 42 (services informatiques, SaaS), 44 (services de santé à caractère informatif)</li>
+      </ul>
+    </div>
+
+    <p>En vertu de l'article L713-2 du Code de la Propriété Intellectuelle, toute utilisation du signe
+    BreathIQ ou d'un signe similaire susceptible de créer une confusion, à des fins commerciales ou non,
+    sans autorisation écrite préalable, constitue une contrefaçon de marque.
+    Conformément à l'article 9 du Règlement (UE) 2017/1001 sur la marque de l'Union européenne,
+    le titulaire est fondé à s'opposer à tout usage non autorisé sur le territoire de l'Union.</p>
+
+    <h3>5.1 Demande d'utilisation</h3>
+    <p>Toute demande d'utilisation licenciée du nom BreathIQ, de son logo ou de ses signes distinctifs
+    doit être adressée par écrit à : <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a>.
+    Un accord de licence peut être négocié pour les usages compatibles avec la mission de service public
+    d'information du site.</p>
+  </section>
+
+  <!-- ═══ 6. BASE DE DONNÉES ═══ -->
+  <section id="base-donnees">
+    <h2><span class="num">6</span> Protection de la base de données</h2>
+
+    <p>La base de données constituant BreathIQ — comprenant notamment les données de stocks par région,
+    les fiches pathogènes, les données épidémiologiques compilées, les sources et références scientifiques,
+    ainsi que leur sélection, organisation et présentation — bénéficie d'une <strong>double protection juridique</strong>.</p>
+
+    <div class="rights-grid">
+      <div class="right-card">
+        <h4>Protection par le droit d'auteur</h4>
+        <p>La sélection originale et l'organisation des données constituent une œuvre de l'esprit protégée
+        par le droit d'auteur en raison de leur originalité et du choix créatif de leur auteur.</p>
+        <div class="ref">Art. L112-3 CPI · CJUE arrêt Infopaq C-5/08</div>
+      </div>
+      <div class="right-card teal">
+        <h4>Droit sui generis du producteur</h4>
+        <p>Clément MÉDEAU, en sa qualité de producteur de la base de données, a consenti un investissement
+        substantiel (financier, matériel et humain) pour la constitution, la vérification et la présentation
+        de cette base. Il bénéficie à ce titre du droit d'interdire l'extraction ou la réutilisation
+        d'une partie substantielle ou répétée de cette base.</p>
+        <div class="ref">Art. L341-1 et L342-1 CPI · Directive 96/9/CE du 11 mars 1996</div>
+      </div>
+    </div>
+
+    <h3>6.1 Extraction illicite</h3>
+    <p>Constitue une extraction illicite au sens de l'article L342-1 du CPI toute opération tendant
+    à transférer sur un autre support la totalité ou une partie qualitativement ou quantitativement
+    substantielle du contenu de la base de données. La répétition et la systématisation d'extractions
+    de parties non substantielles équivaut à une extraction d'une partie substantielle (art. L342-2 CPI).</p>
+
+    <p>Est notamment constitutif d'une extraction illicite :</p>
+    <ul class="prohib-list">
+      <li>Le <em>scraping</em> automatisé total ou partiel du site par tout agent logiciel ou robot</li>
+      <li>L'utilisation de la base pour alimenter une autre base de données, un moteur de recherche privé ou un service concurrent</li>
+      <li>L'utilisation pour l'entraînement d'un modèle d'intelligence artificielle (LLM, réseau de neurones, etc.)</li>
+      <li>La reproduction des fiches pathogènes ou des données épidémiologiques compilées dans tout autre support sans licence</li>
+    </ul>
+
+    <h3>6.2 Licences tierces</h3>
+    <p>Certains éléments de BreathIQ sont issus de sources soumises à leurs propres conditions :</p>
+    <ul>
+      <li><strong>Données cartographiques :</strong> OpenStreetMap — licence <a href="https://opendatacommons.org/licenses/odbl/" target="_blank" rel="noopener">ODbL</a> (Open Database License). Tuiles CartoDB Dark Matter.</li>
+      <li><strong>Données épidémiologiques :</strong> OMS/WHO, ECDC, CDC — données publiques sous réserve des conditions d'usage de chaque organisation.</li>
+      <li><strong>Police Inter :</strong> Rasmus Andersson — <a href="https://scripts.sil.org/OFL" target="_blank" rel="noopener">SIL Open Font License</a></li>
+      <li><strong>Leaflet.js :</strong> © 2010–2024 Vladimir Agafonkin — <a href="https://opensource.org/licenses/BSD-2-Clause" target="_blank" rel="noopener">Licence BSD 2-Clause</a></li>
+    </ul>
+  </section>
+
+  <!-- ═══ 7. INTELLIGENCE ARTIFICIELLE & SCRAPING ═══ -->
+  <section id="ia">
+    <h2><span class="num">7</span> Intelligence artificielle &amp; scraping — Interdictions expresses</h2>
+
+    <div class="alert alert-red">
+      <span class="alert-icon">🚫</span>
+      <div>
+        <strong>Interdiction absolue d'utilisation pour l'entraînement de modèles d'IA</strong>
+        <p>Toute utilisation du contenu de BreathIQ — textes, données, code, structure, fiches pathogènes,
+        analyses infectiologiques — à des fins d'entraînement, d'affinage (<em>fine-tuning</em>), d'évaluation,
+        de <em>benchmarking</em> ou d'alimentation de tout système d'intelligence artificielle, modèle de langage
+        (LLM), réseau de neurones artificiel ou système d'apprentissage automatique est <strong>expressément et
+        formellement interdite</strong>, quelle qu'en soit la finalité commerciale ou non commerciale.</p>
+      </div>
+    </div>
+
+    <h3>7.1 Fondement juridique</h3>
+    <p>Cette interdiction repose sur plusieurs fondements cumulatifs :</p>
+    <ul>
+      <li><strong>Droit d'auteur (art. L122-4 CPI) :</strong> toute reproduction ou transformation de l'Œuvre requiert l'autorisation de l'auteur</li>
+      <li><strong>Droit sui generis (art. L342-1 CPI) :</strong> l'extraction à des fins d'entraînement IA constitue une extraction illicite de la base de données</li>
+      <li><strong>Exception TDM (art. L122-5-3 CPI, transposant la Dir. 2019/790/UE, art. 4) :</strong> le titulaire exerce expressément son droit de réservation opt-out contre l'extraction à des fins de <em>text and data mining</em> pour toute finalité commerciale ou liée à l'IA. Cette réservation est matérialisée par le fichier <code>robots.txt</code> du site et par les présentes mentions légales.</li>
+      <li><strong>Règlement (UE) 2024/1689 (AI Act), art. 53(1)(c) :</strong> les fournisseurs de modèles d'IA à usage général doivent respecter les réservations de droits des titulaires.</li>
+      <li><strong>Concurrence déloyale et parasitisme économique :</strong> toute utilisation non autorisée des investissements intellectuels de l'auteur constitue un acte de parasitisme</li>
+    </ul>
+
+    <h3>7.2 Robots.txt et mesures techniques</h3>
+    <p>Le fichier <code>/robots.txt</code> du site liste expressément les agents d'exploration associés aux
+    principaux fournisseurs de modèles d'IA (GPTBot, Claude-Web, CCBot, Google-Extended, Bytespider,
+    et 15+ autres) et leur interdit l'accès à l'ensemble du site. Ce fichier constitue, conjointement
+    aux présentes mentions légales, la <strong>réservation expresse opt-out</strong> prévue à l'article L122-5-3 II
+    du Code de la Propriété Intellectuelle.</p>
+
+    <h3>7.3 Sanctions</h3>
+    <p>Toute violation expose son auteur à :</p>
+    <ul>
+      <li>Des poursuites pour contrefaçon (art. L335-2 CPI — jusqu'à 3 ans d'emprisonnement et 300 000 € d'amende)</li>
+      <li>Des poursuites pour extraction illicite de base de données (art. L343-1 CPI)</li>
+      <li>Une action en concurrence déloyale et parasitisme économique</li>
+      <li>Une action en dommages-intérêts en réparation du préjudice subi</li>
+      <li>Des mesures d'urgence (référé-interdiction, saisie-contrefaçon)</li>
+    </ul>
+  </section>
+
+  <!-- ═══ 8. RESPONSABILITÉ ═══ -->
+  <section id="responsabilite">
+    <h2><span class="num">8</span> Responsabilité &amp; limitation</h2>
+
+    <h3>8.1 Exactitude des données</h3>
+    <p>L'éditeur s'efforce de fournir des informations exactes et à jour. Toutefois, BreathIQ est un
+    outil d'information publique fonctionnant avec des données démonstratives. Les données épidémiologiques
+    sont issues de sources officielles publiques mais peuvent ne pas refléter la situation en temps réel.
+    L'éditeur ne peut être tenu responsable d'une erreur ou d'une omission dans les informations fournies.</p>
+
+    <h3>8.2 Absence de conseil médical</h3>
+    <p>Les informations publiées sur BreathIQ ne constituent en aucun cas un avis médical, un diagnostic
+    ou une prescription. Elles ne sauraient se substituer à une consultation médicale professionnelle.
+    Toute décision relative à la santé doit être prise en concertation avec un professionnel de santé qualifié.</p>
+
+    <h3>8.3 Disponibilité du service</h3>
+    <p>L'accès au site peut être interrompu sans préavis pour raisons techniques ou de maintenance.
+    L'éditeur ne garantit pas une disponibilité continue du service. Aucune indemnisation ne sera due
+    en cas d'interruption du service.</p>
+
+    <h3>8.4 Liens hypertextes</h3>
+    <p>BreathIQ contient des liens vers des sites tiers (OMS, ECDC, CDC, etc.). Ces liens sont fournis
+    à titre informatif. L'éditeur n'exerce aucun contrôle sur ces sites et décline toute responsabilité
+    quant à leur contenu, leur disponibilité ou leur politique de confidentialité.</p>
+  </section>
+
+  <!-- ═══ 9. DONNÉES PERSONNELLES ═══ -->
+  <section id="donnees">
+    <h2><span class="num">9</span> Protection des données personnelles</h2>
+
+    <div class="alert alert-teal">
+      <span class="alert-icon">🔐</span>
+      <div>
+        <strong>Aucune donnée personnelle collectée activement</strong>
+        <p>BreathIQ est conçu selon le principe de <em>privacy by design</em>. Le site ne collecte aucune donnée
+        personnelle de ses visiteurs : pas de formulaire d'inscription, pas de compte utilisateur, pas de cookie
+        de traçage ou publicitaire, pas d'outil d'analyse comportementale nominatif.
+        Aucune donnée de santé n'est traitée.</p>
+      </div>
+    </div>
+
+    <h3>9.1 Données de connexion (logs serveur)</h3>
+    <p>L'hébergeur Netlify collecte automatiquement des données de logs techniques (adresse IP, horodatage,
+    URL consultée, navigateur) dans le cadre normal de l'exploitation d'un service d'hébergement.
+    Ces données sont collectées par Netlify en tant que responsable de traitement, conformément à sa
+    <a href="https://www.netlify.com/privacy/" target="_blank" rel="noopener">politique de confidentialité</a>.
+    Elles ne sont pas exploitées par l'éditeur de BreathIQ à des fins d'identification ou de profilage.</p>
+
+    <h3>9.2 Préférences utilisateur</h3>
+    <p>Le site enregistre localement dans le navigateur de l'utilisateur (localStorage) uniquement
+    la préférence de thème (sombre/clair) choisie lors de la visite. Cette donnée ne quitte jamais
+    l'appareil de l'utilisateur et n'est pas transmise à des tiers.</p>
+
+    <h3>9.3 Droits RGPD</h3>
+    <p>Conformément au Règlement (UE) 2016/679 (RGPD) et à la loi Informatique et Libertés modifiée,
+    toute personne dispose des droits d'accès, de rectification, d'effacement et d'opposition.
+    Demandes à adresser à : <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a>.
+    En cas de réclamation non résolue, vous pouvez saisir la CNIL : <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a>.</p>
+
+    <p>Pour en savoir plus, consultez la <a href="privacy.html">Politique de confidentialité complète</a>.</p>
+  </section>
+
+  <!-- ═══ 10. DROIT APPLICABLE & JURIDICTION ═══ -->
+  <section id="loi">
+    <h2><span class="num">10</span> Droit applicable &amp; juridiction compétente</h2>
+
+    <table class="info-table">
+      <tr><td>Droit applicable</td><td>Droit français</td></tr>
+      <tr><td>Juridiction</td><td>Tribunal judiciaire de La Rochelle (Charente-Maritime, France)</td></tr>
+      <tr><td>Langue du contrat</td><td>Français (version faisant foi en cas de litige)</td></tr>
+      <tr><td>Résolution amiable</td><td>Toute réclamation doit être adressée préalablement à <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a>. L'éditeur s'engage à répondre dans un délai de 30 jours.</td></tr>
+    </table>
+
+    <h3>10.1 Litiges transfrontaliers et Union européenne</h3>
+    <p>Pour les litiges relatifs à la propriété intellectuelle sur le territoire de l'Union européenne,
+    les juridictions françaises sont compétentes en application du Règlement (UE) n° 1215/2012 de Bruxelles I.
+    Les droits de marque enregistrés à l'EUIPO relèvent de la compétence des tribunaux des marques de l'UE
+    désignés par chaque État membre.</p>
+
+    <h3>10.2 Pour les utilisateurs résidant en dehors de l'UE</h3>
+    <p>Les présentes mentions légales sont régies par le droit français. Les litiges relatifs à l'accès
+    ou à l'utilisation du site seront soumis à la juridiction exclusive des tribunaux français,
+    sans préjudice des règles d'ordre public du pays de résidence de l'utilisateur.</p>
+  </section>
+
+  <!-- ═══ 11. CONTACT ═══ -->
+  <section id="contact">
+    <h2><span class="num">11</span> Contact</h2>
+    <table class="info-table">
+      <tr><td>Email général</td><td><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></td></tr>
+      <tr><td>Signalement abus / contrefaçon</td><td><a href="mailto:contact@breathiq.fr?subject=Signalement+contrefaçon">contact@breathiq.fr</a> (objet : « Signalement contrefaçon »)</td></tr>
+      <tr><td>Demande de licence</td><td><a href="mailto:contact@breathiq.fr?subject=Demande+de+licence">contact@breathiq.fr</a> (objet : « Demande de licence »)</td></tr>
+      <tr><td>RGPD / Données personnelles</td><td><a href="mailto:contact@breathiq.fr?subject=RGPD">contact@breathiq.fr</a> (objet : « RGPD »)</td></tr>
+      <tr><td>Délai de réponse</td><td>30 jours ouvrés maximum</td></tr>
+    </table>
+  </section>
+
+  <!-- ═══ SIGNATURES LÉGALES ═══ -->
+  <div class="alert alert-blue" style="margin-top:2.5rem">
+    <span class="alert-icon">📋</span>
+    <div>
+      <strong>Récapitulatif des protections juridiques actives</strong>
+      <p>
+        <span class="badge badge-blue">Droit d'auteur · Art. L111-1 CPI</span>
+        <span class="badge badge-teal">Sui generis BDD · Art. L341-1 CPI</span>
+        <span class="badge badge-amber">Marque · Art. L711-1 CPI · INPI/EUIPO/USPTO en cours</span>
+        <span class="badge badge-red">Opt-out IA · Art. L122-5-3 CPI · Dir. 2019/790/UE</span>
+        <span class="badge badge-blue">LCEN · Art. 6.I et 6.II · Loi 2004-575</span>
+        <span class="badge badge-teal">MDR Non-Dispositif · Règl. UE 2017/745</span>
+        <span class="badge badge-blue">RGPD · Règl. UE 2016/679</span>
+        <span class="badge badge-amber">AI Act · Règl. UE 2024/1689 · Art. 53</span>
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <p>© 2026 Clément MÉDEAU — BreathIQ · Tous droits réservés</p>
+  <p style="margin-top:.3rem">
+    <a href="index.html">Accueil</a> ·
+    <a href="conditions-utilisation.html">CGU</a> ·
+    <a href="privacy.html">Confidentialité</a> ·
+    <a href="legal-notice.html">Legal Notice (EN)</a>
+  </p>
+</footer>
+
+</body>
+</html>

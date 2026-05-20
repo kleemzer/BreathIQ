@@ -1,0 +1,25 @@
+/* TEAM */
+Creator: Dr. Clément MÉDEAU
+Role: Auteur, Directeur de publication, Développeur
+Location: La Rochelle (17000), Charente-Maritime, France
+Contact: contact@breathiq.fr
+
+/* SITE */
+Name: BreathIQ — Intelligence respiratoire mondiale
+URL: https://breathiq.fr
+Description: Outil d'information publique sur la prévention respiratoire. Non dispositif médical.
+Last update: 2026/05/19
+Language: Français, English
+Standards: HTML5, CSS3, Vanilla JS, Leaflet.js
+
+/* THANKS */
+Maps: Leaflet.js (BSD) + CartoDB Dark Matter + OpenStreetMap (ODbL)
+Fonts: Inter — Rasmus Andersson (SIL Open Font License)
+Data: OMS/WHO, ECDC, CDC, data.gouv.fr, Eurostat, GISAID (citations dans script.js)
+
+/* LEGAL */
+© 2026 Dr. Clément MÉDEAU — Tous droits réservés
+Droit d'auteur : Art. L111-1 Code de la Propriété Intellectuelle
+Droit sui generis base de données : Art. L341-1 CPI
+Première publication : 2026-05-01
+Enregistrement INPI e-Soleau en cours

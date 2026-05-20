@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Stocks mondiaux d'équipements de protection respiratoire (FFP2, FFP3, N95, KN95). Données indicatives par territoire — BreathIQ.">
+  <meta name="robots" content="index, follow">
+  <title>Stocks EPI mondiaux — BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#1A3C5E">
+  <link rel="canonical" href="https://breathiq.fr/stocks">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Stocks page layout ────────────────────────────────── */
+    .stocks-hero {
+      background: var(--bg-hero);
+      padding: var(--s8) 0 var(--s6);
+    }
+    .stocks-hero h1 {
+      color: #fff;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: var(--s2);
+    }
+    .stocks-hero p { color: var(--text-on-dark-2); max-width: 680px; line-height: 1.65; }
+
+    .stocks-body { padding: var(--s6) 0 var(--s12); }
+
+    /* ── Onglets niveau géographique ───────────────────────── */
+    .geo-tabs {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-bottom: var(--s4);
+    }
+    .geo-tab {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem 1rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      font-size: .82rem; font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--t-fast);
+    }
+    .geo-tab.active, .geo-tab:hover {
+      background: var(--c-blue);
+      color: #fff;
+      border-color: var(--c-blue);
+    }
+
+    /* ── Carte choroplèthe ─────────────────────────────────── */
+    .stocks-map-section { margin-bottom: var(--s6); }
+    .stocks-map-section h2 {
+      font-size: 1.2rem; font-weight: 700;
+      margin-bottom: var(--s2);
+      color: var(--text-primary);
+    }
+    #stocksMap {
+      width: 100%; height: 480px;
+      border-radius: var(--r-lg);
+      border: 1px solid var(--border);
+      overflow: hidden;
+    }
+    @media (max-width: 768px) { #stocksMap { height: 300px; } }
+
+    .stocks-legend {
+      display: flex; flex-wrap: wrap; gap: .75rem;
+      margin-top: var(--s2); align-items: center;
+      font-size: .8rem;
+    }
+    .legend-chip {
+      display: inline-flex; align-items: center; gap: .35rem;
+    }
+    .legend-swatch {
+      width: 14px; height: 14px;
+      border-radius: 3px;
+      border: 1.5px solid rgba(0,0,0,.15);
+      flex-shrink: 0;
+    }
+
+    /* ── Popup carte ───────────────────────────────────────── */
+    .map-popup-stocks { min-width: 180px; font-size: .82rem; }
+    .map-popup-stocks strong { display: block; margin-bottom: .35rem; font-size: .92rem; }
+    .alert-chip {
+      display: inline-flex; align-items: center;
+      padding: .15rem .5rem;
+      border-radius: var(--r-full);
+      font-size: .72rem; font-weight: 600;
+      margin-bottom: .35rem;
+    }
+    .confidence-bar-wrap {
+      height: 6px; background: var(--border);
+      border-radius: 3px; overflow: hidden;
+      margin: .25rem 0;
+    }
+    .confidence-bar-fill {
+      height: 100%; border-radius: 3px;
+      background: var(--c-blue);
+    }
+
+    /* ── Tableau ────────────────────────────────────────────── */
+    .stocks-table-section { margin-top: var(--s6); }
+    .table-controls {
+      display: flex; flex-wrap: wrap; align-items: center;
+      gap: var(--s2); margin-bottom: var(--s3);
+      justify-content: space-between;
+    }
+    .table-filters { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .filter-chip {
+      padding: .35rem .8rem;
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      font-size: .78rem; font-weight: 500;
+      color: var(--text-secondary);
+      background: var(--bg-card);
+      cursor: pointer;
+      transition: var(--t-fast);
+    }
+    .filter-chip.active { background: var(--c-navy); color: #fff; border-color: var(--c-navy); }
+    .export-btns { display: flex; gap: .5rem; }
+    .btn-export {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .4rem .9rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      font-size: .78rem; font-weight: 600;
+      color: var(--text-secondary);
+      cursor: pointer;
+      transition: var(--t-fast);
+    }
+    .btn-export:hover { background: var(--c-teal); color: #fff; border-color: var(--c-teal); }
+
+    .stocks-table-wrap { overflow-x: auto; }
+    .stocks-table {
+      width: 100%; border-collapse: collapse;
+      font-size: .83rem;
+    }
+    .stocks-table th {
+      background: var(--bg-card-2);
+      padding: .65rem .85rem;
+      text-align: left;
+      font-weight: 600;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--text-muted);
+      border-bottom: 2px solid var(--border);
+      white-space: nowrap;
+      cursor: pointer;
+      user-select: none;
+    }
+    .stocks-table th:hover { color: var(--c-blue); }
+    .stocks-table th .sort-indicator { margin-left: .25rem; opacity: .4; }
+    .stocks-table th.sorted .sort-indicator { opacity: 1; color: var(--c-blue); }
+    .stocks-table td {
+      padding: .65rem .85rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: middle;
+    }
+    .stocks-table tr:hover td { background: var(--bg-card-2); }
+    .data-type-badge {
+      display: inline-flex;
+      padding: .15rem .45rem;
+      border-radius: 4px;
+      font-size: .68rem; font-weight: 600;
+      text-transform: uppercase;
+    }
+    .data-type-official   { background: #DCFCE7; color: #15803D; }
+    .data-type-estimate   { background: #DBEAFE; color: #1D4ED8; }
+    .data-type-declarative{ background: #FEF3C7; color: #92400E; }
+
+    /* ── Section méthodologie ─────────────────────────────── */
+    .stocks-methodology {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: var(--s4) var(--s5);
+      margin-top: var(--s8);
+    }
+    .stocks-methodology h2 {
+      font-size: 1.1rem; font-weight: 700;
+      margin-bottom: var(--s3);
+      color: var(--text-primary);
+    }
+    .sources-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: var(--s2);
+    }
+    .source-item {
+      padding: var(--s2);
+      background: var(--bg-card-2);
+      border-radius: var(--r-md);
+      font-size: .82rem;
+    }
+    .source-item strong { display: block; color: var(--text-primary); margin-bottom: .25rem; }
+    .source-item .source-meta { color: var(--text-muted); font-size: .74rem; }
+    .source-reliability {
+      display: inline-flex; align-items: center; gap: .3rem;
+      margin-top: .3rem; font-size: .72rem; color: var(--text-muted);
+    }
+
+    /* Leaflet popup override */
+    .leaflet-popup-content-wrapper {
+      border-radius: var(--r-md) !important;
+      box-shadow: var(--shadow-lg) !important;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="biq-nav" id="mainNav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="BreathIQ — Accueil">
+      <span class="brand-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="14" cy="14" r="9" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="14" cy="14" r="5" fill="var(--c-teal)" opacity="0.9"/>
+        </svg>
+      </span>
+      <span class="brand-text">Breath<strong>IQ</strong></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#score">Mon Score</a></li>
+      <li><a href="index.html#map">Carte mondiale</a></li>
+      <li><a href="stocks.html" aria-current="page">Stocks EPI</a></li>
+      <li><a href="index.html#pathogens">Pathogènes</a></li>
+      <li><a href="index.html#protection">Protection</a></li>
+      <li><a href="index.html#about">À propos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Mode sombre/clair">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="stocks-hero">
+  <div class="container">
+    <h1>Stocks mondiaux d'équipements de protection respiratoire</h1>
+    <p>Données déclaratives et officielles — indicateurs de disponibilité par territoire.</p>
+
+    <div class="data-notice" role="status" style="margin-top:var(--s4)" aria-live="polite">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      <span>
+        <strong>Données indicatives.</strong> Ces données combinent sources officielles et estimations.
+        Elles ne reflètent pas nécessairement les stocks stratégiques confidentiels des États.
+        Dernière mise à jour : <time datetime="2026-05-19">19 mai 2026</time>.
+        <a href="bibliography.html#data-sources">Voir les sources →</a>
+      </span>
+    </div>
+  </div>
+</header>
+
+<!-- ===== BODY ===== -->
+<main class="stocks-body">
+  <div class="container">
+
+    <!-- Onglets géographiques -->
+    <div class="geo-tabs" role="tablist" aria-label="Niveau géographique">
+      <button class="geo-tab active" role="tab" aria-selected="true" data-level="all">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Mondial
+      </button>
+      <button class="geo-tab" role="tab" aria-selected="false" data-level="Europe">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+        Europe
+      </button>
+      <button class="geo-tab" role="tab" aria-selected="false" data-level="Amériques">Amériques</button>
+      <button class="geo-tab" role="tab" aria-selected="false" data-level="Asie">Asie</button>
+      <button class="geo-tab" role="tab" aria-selected="false" data-level="Afrique">Afrique</button>
+      <button class="geo-tab" role="tab" aria-selected="false" data-level="Océanie">Océanie</button>
+    </div>
+
+    <!-- Carte -->
+    <section class="stocks-map-section" aria-labelledby="map-stocks-title">
+      <h2 id="map-stocks-title">Carte des niveaux d'alerte par territoire</h2>
+      <div id="stocksMap" role="application" aria-label="Carte mondiale des niveaux de stocks EPI"></div>
+      <div class="stocks-legend" aria-label="Légende niveaux d'alerte">
+        <strong style="font-size:.78rem;color:var(--text-muted)">Niveaux :</strong>
+        <span class="legend-chip"><span class="legend-swatch" style="background:#DCFCE7;border-color:#15803D"></span>Suffisant (&gt;90j)</span>
+        <span class="legend-chip"><span class="legend-swatch" style="background:#DBEAFE;border-color:#1A6FD4"></span>Modéré (30–90j)</span>
+        <span class="legend-chip"><span class="legend-swatch" style="background:#FEF3C7;border-color:#B45309"></span>Faible (7–30j)</span>
+        <span class="legend-chip"><span class="legend-swatch" style="background:#FEE2E2;border-color:#B91C1C"></span>Critique (&lt;7j)</span>
+        <span class="legend-chip" style="margin-left:.5rem">
+          <span style="font-size:.72rem;color:var(--text-muted)">Taille cercle = volume de stock estimé</span>
+        </span>
+      </div>
+    </section>
+
+    <!-- Tableau -->
+    <section class="stocks-table-section" aria-labelledby="table-stocks-title">
+      <h2 id="table-stocks-title" style="font-size:1.2rem;font-weight:700;margin-bottom:var(--s3)">
+        Données par territoire
+      </h2>
+
+      <div class="table-controls">
+        <div class="table-filters" role="group" aria-label="Filtrer par niveau d'alerte">
+          <button class="filter-chip active" data-alert-filter="all">Tous</button>
+          <button class="filter-chip" data-alert-filter="SUFFICIENT">Suffisant</button>
+          <button class="filter-chip" data-alert-filter="MODERATE">Modéré</button>
+          <button class="filter-chip" data-alert-filter="LOW">Faible</button>
+          <button class="filter-chip" data-alert-filter="CRITICAL">Critique</button>
+        </div>
+        <div class="export-btns">
+          <button class="btn-export" id="exportCsv" aria-label="Exporter en CSV">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            CSV
+          </button>
+          <button class="btn-export" id="exportPrint" aria-label="Imprimer / PDF">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="6 9 6 2 18 2 18 9"/><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></svg>
+            PDF
+          </button>
+        </div>
+      </div>
+
+      <div class="stocks-table-wrap">
+        <table class="stocks-table" id="stocksTable" aria-label="Données stocks EPI par territoire">
+          <thead>
+            <tr>
+              <th data-sort="name">Territoire <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th data-sort="continent">Continent <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th data-sort="alertLevel">Niveau <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th data-sort="daysSupply">Autonomie (j) <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th data-sort="ffp2">Stock FFP2/N95 est. <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th data-sort="confidence">Confiance <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th data-sort="lastUpdated">Mise à jour <span class="sort-indicator" aria-hidden="true">↕</span></th>
+              <th>Type de donnée</th>
+              <th>Source</th>
+            </tr>
+          </thead>
+          <tbody id="stocksTableBody">
+            <!-- Rempli par JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Méthodologie & sources -->
+    <div class="stocks-methodology">
+      <h2>Sources &amp; Méthodologie</h2>
+      <p style="font-size:.88rem;color:var(--text-secondary);margin-bottom:var(--s3);line-height:1.65">
+        Le niveau d'alerte est calculé selon l'autonomie estimée en jours de stock :
+        <strong>Suffisant</strong> (&gt;90j), <strong>Modéré</strong> (30–90j),
+        <strong>Faible</strong> (7–30j), <strong>Critique</strong> (&lt;7j).
+        L'indice de confiance reflète la fiabilité de la source et la fraîcheur de la donnée.
+        <a href="bibliography.html#data-sources">Voir la bibliographie complète →</a>
+      </p>
+      <div class="sources-list" id="sourcesList">
+        <!-- Rempli par JS -->
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="biq-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-text footer-brand-text">Breath<strong>IQ</strong></span>
+      <p class="footer-tagline">Intelligence respiratoire mondiale</p>
+    </div>
+    <nav class="footer-links" aria-label="Liens légaux et ressources">
+      <a href="bibliography.html">Bibliographie</a>
+      <a href="stocks.html" aria-current="page">Stocks EPI</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="conditions-utilisation.html">CGU</a>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="legal-notice.html">Legal Notice (EN)</a>
+    </nav>
+    <div class="footer-copy">
+      <p>© 2026 Dr. Clément MÉDEAU — BreathIQ</p>
+      <p class="footer-disclaimer">Outil d'information publique · Non dispositif médical</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Leaflet + stocks-api -->
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="stocks-api.js"></script>
+<script>
+'use strict';
+
+// ── Thème ──────────────────────────────────────────────────────────────────
+(function() {
+  const saved = localStorage.getItem('biq-theme');
+  const dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+})();
+document.getElementById('themeToggle')?.addEventListener('click', () => {
+  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+  document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  localStorage.setItem('biq-theme', isDark ? 'light' : 'dark');
+});
+
+// ── État ───────────────────────────────────────────────────────────────────
+let activeContinent = 'all';
+let activeAlertFilter = 'all';
+let sortField = 'alertLevel';
+let sortAsc = true;
+let stocksMap = null;
+let markersLayer = null;
+
+// ── Carte ──────────────────────────────────────────────────────────────────
+function initStocksMap() {
+  if (stocksMap || typeof L === 'undefined') return;
+
+  stocksMap = L.map('stocksMap', {
+    center: [20, 10], zoom: 2, minZoom: 1, maxZoom: 8,
+    zoomControl: true, attributionControl: true
+  });
+
+  // CartoDB Positron — sobre et lisible
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> &copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 19
+  }).addTo(stocksMap);
+
+  renderStocksMarkers();
+  setTimeout(() => stocksMap && stocksMap.invalidateSize(), 300);
+}
+
+function getAlertColor(level) {
+  return ALERT_COLORS[level] || ALERT_COLORS.UNKNOWN;
+}
+
+function renderStocksMarkers() {
+  if (!stocksMap) return;
+  if (markersLayer) { stocksMap.removeLayer(markersLayer); markersLayer = null; }
+
+  const filtered = activeContinent === 'all'
+    ? STOCKS_DEMO_DATA
+    : STOCKS_DEMO_DATA.filter(d => d.continent === activeContinent);
+
+  // Coordonnées approximatives par code ISO
+  const COORDS = {
+    FR:[-0.58,46.23], DE:[10.45,51.16], US:[-95.71,37.09], CN:[104.2,35.86],
+    JP:[138.25,36.2], IN:[78.96,20.59], ID:[113.92,-0.79], PK:[69.35,30.38],
+    BR:[-51.93,-14.24], NG:[8.68,9.08], ET:[40.49,9.15], GB:[-3.44,55.38],
+    AU:[133.78,-25.27], KR:[127.77,35.91], RU:[105.32,61.52], CA:[-106.35,56.13],
+    CD:[21.76,-4.04], MX:[-102.55,23.63],
+  };
+
+  const markers = [];
+  filtered.forEach(d => {
+    const coord = COORDS[d.id];
+    if (!coord) return;
+    const alert = computeAlertLevel(d.daysSupply);
+    const colors = getAlertColor(alert);
+    const radius = Math.min(30, Math.max(8, Math.log10(d.ffp2 + 1) * 4));
+
+    const circle = L.circleMarker([coord[1], coord[0]], {
+      radius,
+      fillColor: colors.fill,
+      color: colors.border,
+      weight: 2,
+      opacity: 1,
+      fillOpacity: 0.8
+    });
+
+    const confidenceWidth = d.confidence;
+    circle.bindPopup(`
+      <div class="map-popup-stocks">
+        <strong>${d.name}</strong>
+        <span class="alert-chip" style="background:${colors.fill};color:${colors.text};border:1px solid ${colors.border}">
+          ${colors.label}
+        </span>
+        <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:.2rem .5rem;font-size:.78rem">
+          <dt style="color:#718096">Autonomie</dt>
+          <dd style="margin:0;font-weight:600">${d.daysSupply} jours</dd>
+          <dt style="color:#718096">Stock FFP2 est.</dt>
+          <dd style="margin:0">${formatStockUnits(d.ffp2)} unités</dd>
+          <dt style="color:#718096">Confiance</dt>
+          <dd style="margin:0">
+            <div class="confidence-bar-wrap" role="progressbar" aria-valuenow="${confidenceWidth}" aria-valuemin="0" aria-valuemax="100">
+              <div class="confidence-bar-fill" style="width:${confidenceWidth}%"></div>
+            </div>
+            ${confidenceWidth}%
+          </dd>
+          <dt style="color:#718096">MAJ</dt>
+          <dd style="margin:0"><time datetime="${d.lastUpdated}">${d.lastUpdated}</time></dd>
+        </dl>
+      </div>
+    `);
+
+    markers.push(circle);
+  });
+
+  markersLayer = L.layerGroup(markers).addTo(stocksMap);
+}
+
+// ── Tableau ────────────────────────────────────────────────────────────────
+const ALERT_ORDER = { CRITICAL: 0, LOW: 1, MODERATE: 2, SUFFICIENT: 3, UNKNOWN: 4 };
+
+function getSortedData() {
+  let data = STOCKS_DEMO_DATA.filter(d => {
+    const continentOk = activeContinent === 'all' || d.continent === activeContinent;
+    const alertLevel = computeAlertLevel(d.daysSupply);
+    const alertOk = activeAlertFilter === 'all' || alertLevel === activeAlertFilter;
+    return continentOk && alertOk;
+  });
+
+  data = [...data].sort((a, b) => {
+    let va, vb;
+    if (sortField === 'alertLevel') {
+      va = ALERT_ORDER[computeAlertLevel(a.daysSupply)];
+      vb = ALERT_ORDER[computeAlertLevel(b.daysSupply)];
+    } else {
+      va = a[sortField]; vb = b[sortField];
+    }
+    if (va === vb) return 0;
+    const cmp = va < vb ? -1 : 1;
+    return sortAsc ? cmp : -cmp;
+  });
+
+  return data;
+}
+
+function renderTable() {
+  const tbody = document.getElementById('stocksTableBody');
+  if (!tbody) return;
+  const data = getSortedData();
+
+  if (data.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="9" style="text-align:center;padding:2rem;color:var(--text-muted)">Aucune donnée pour ce filtre.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = data.map(d => {
+    const alert = computeAlertLevel(d.daysSupply);
+    const colors = getAlertColor(alert);
+    const sourceObj = STOCK_SOURCES[d.sourceKey] || { name: d.sourceKey, url: '#' };
+    const dataTypeClass = `data-type-${d.dataType}`;
+    const dataTypeLabel = { official: 'Officielle', estimate: 'Estimation', declarative: 'Déclaratif' }[d.dataType] || d.dataType;
+
+    return `<tr>
+      <td><strong>${d.name}</strong></td>
+      <td>${d.continent}</td>
+      <td>
+        <span style="display:inline-flex;align-items:center;gap:.35rem;padding:.2rem .55rem;border-radius:var(--r-full);font-size:.72rem;font-weight:600;background:${colors.fill};color:${colors.text};border:1px solid ${colors.border}">
+          ${colors.label}
+        </span>
+      </td>
+      <td><strong>${d.daysSupply}</strong> j</td>
+      <td>${formatStockUnits(d.ffp2)}</td>
+      <td>
+        <div style="display:flex;align-items:center;gap:.4rem">
+          <div class="confidence-bar-wrap" style="width:60px;flex-shrink:0" role="progressbar" aria-valuenow="${d.confidence}" aria-valuemin="0" aria-valuemax="100">
+            <div class="confidence-bar-fill" style="width:${d.confidence}%"></div>
+          </div>
+          <span style="font-size:.78rem">${d.confidence}%</span>
+        </div>
+      </td>
+      <td><time datetime="${d.lastUpdated}">${d.lastUpdated}</time></td>
+      <td><span class="data-type-badge ${dataTypeClass}">${dataTypeLabel}</span></td>
+      <td>
+        ${sourceObj.url && sourceObj.url !== '#'
+          ? `<a href="${sourceObj.url}" rel="noopener noreferrer" style="font-size:.78rem">${sourceObj.name}</a>`
+          : `<span style="font-size:.78rem">${sourceObj.name}</span>`
+        }
+      </td>
+    </tr>`;
+  }).join('');
+}
+
+// ── Export CSV ─────────────────────────────────────────────────────────────
+function exportCsv() {
+  const data = getSortedData();
+  const headers = ['Territoire','Continent','Niveau','Autonomie_jours','Stock_FFP2_est','Confiance_%','MAJ','Type_donnée','Source'];
+  const rows = data.map(d => [
+    d.name, d.continent, computeAlertLevel(d.daysSupply), d.daysSupply,
+    d.ffp2, d.confidence, d.lastUpdated, d.dataType,
+    (STOCK_SOURCES[d.sourceKey] || {}).name || d.sourceKey
+  ].join(';'));
+  const csv = [headers.join(';'), ...rows].join('\n');
+  const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = `breathiq_stocks_${new Date().toISOString().slice(0,10)}.csv`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── Sources list ───────────────────────────────────────────────────────────
+function renderSources() {
+  const container = document.getElementById('sourcesList');
+  if (!container) return;
+  container.innerHTML = Object.entries(STOCK_SOURCES).map(([key, src]) => `
+    <div class="source-item">
+      <strong>${src.name}</strong>
+      <div class="source-meta">
+        ${src.coverage ? `Couverture : ${src.coverage} · ` : ''}
+        ${src.frequency ? `Fréquence : ${src.frequency}` : ''}
+        ${src.license ? `<br>Licence : ${src.license}` : ''}
+        ${src.note ? `<br><em>${src.note}</em>` : ''}
+      </div>
+      <div class="source-reliability">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Fiabilité : ${src.reliability || '—'}%
+        ${src.url && src.url !== '#' ? `· <a href="${src.url}" rel="noopener noreferrer">Site →</a>` : ''}
+      </div>
+    </div>
+  `).join('');
+}
+
+// ── Événements ─────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+  // Tabs géographiques
+  document.querySelectorAll('.geo-tab').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.geo-tab').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected','true');
+      activeContinent = btn.dataset.level;
+      renderStocksMarkers();
+      renderTable();
+    });
+  });
+
+  // Filtres alertes
+  document.querySelectorAll('[data-alert-filter]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('[data-alert-filter]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      activeAlertFilter = btn.dataset.alertFilter;
+      renderTable();
+    });
+  });
+
+  // Tri tableau
+  document.querySelectorAll('.stocks-table th[data-sort]').forEach(th => {
+    th.addEventListener('click', () => {
+      const field = th.dataset.sort;
+      if (sortField === field) sortAsc = !sortAsc;
+      else { sortField = field; sortAsc = true; }
+      document.querySelectorAll('.stocks-table th').forEach(h => h.classList.remove('sorted'));
+      th.classList.add('sorted');
+      th.querySelector('.sort-indicator').textContent = sortAsc ? '↑' : '↓';
+      renderTable();
+    });
+  });
+
+  // Export
+  document.getElementById('exportCsv')?.addEventListener('click', exportCsv);
+  document.getElementById('exportPrint')?.addEventListener('click', () => window.print());
+
+  // Init
+  renderTable();
+  renderSources();
+
+  // Carte — init quand Leaflet chargé
+  if (typeof L !== 'undefined') {
+    initStocksMap();
+  } else {
+    const checkL = setInterval(() => {
+      if (typeof L !== 'undefined') { clearInterval(checkL); initStocksMap(); }
+    }, 200);
+  }
+});
+</script>
+</body>
+</html>

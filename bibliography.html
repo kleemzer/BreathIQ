@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bibliographie scientifique de BreathIQ — Références en format Vancouver, niveaux de preuve, sources officielles OMS, ECDC, CDC, AFNOR.">
+  <meta name="robots" content="index, follow">
+  <title>Bibliographie scientifique — BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta name="theme-color" content="#1A3C5E">
+  <link rel="canonical" href="https://breathiq.fr/bibliography">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* ── Layout bibliographie ─────────────────────────────── */
+    .biblio-hero {
+      background: var(--bg-hero);
+      padding: var(--s8) 0 var(--s6);
+      text-align: center;
+    }
+    .biblio-hero h1 {
+      color: #fff;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -.03em;
+      margin-bottom: var(--s2);
+    }
+    .biblio-hero p {
+      color: var(--text-on-dark-2);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+    .biblio-body { padding: var(--s8) 0; }
+
+    /* ── Navigation interne ────────────────────────────────── */
+    .biblio-nav {
+      display: flex; flex-wrap: wrap; gap: .5rem;
+      margin-bottom: var(--s6);
+    }
+    .biblio-nav a {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .4rem .9rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      font-size: .82rem; font-weight: 500;
+      color: var(--text-secondary);
+      text-decoration: none;
+      transition: var(--t-fast);
+    }
+    .biblio-nav a:hover {
+      background: var(--c-blue);
+      color: #fff;
+      border-color: var(--c-blue);
+      text-decoration: none;
+    }
+
+    /* ── Catégorie ─────────────────────────────────────────── */
+    .biblio-category {
+      margin-bottom: var(--s6);
+      scroll-margin-top: 80px;
+    }
+    .biblio-category h2 {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--text-primary);
+      border-bottom: 2px solid var(--c-blue);
+      padding-bottom: .5rem;
+      margin-bottom: var(--s3);
+    }
+
+    /* ── Carte citation ────────────────────────────────────── */
+    .citation {
+      display: grid;
+      grid-template-columns: 2.5rem 1fr;
+      gap: var(--s2);
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-md);
+      padding: var(--s3);
+      margin-bottom: var(--s2);
+      transition: box-shadow var(--t-med);
+      scroll-margin-top: 90px;
+    }
+    .citation:hover { box-shadow: var(--shadow-md); }
+    .citation-number {
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--c-blue);
+      text-align: center;
+      padding-top: .1rem;
+    }
+    .citation-text {
+      font-size: .88rem;
+      line-height: 1.65;
+      color: var(--text-primary);
+      margin-bottom: .75rem;
+    }
+    .citation-meta {
+      display: flex; flex-wrap: wrap; align-items: center; gap: .5rem;
+    }
+    .citation-link {
+      display: inline-flex; align-items: center; gap: .3rem;
+      padding: .3rem .75rem;
+      background: var(--c-blue);
+      color: #fff;
+      border-radius: var(--r-full);
+      font-size: .78rem; font-weight: 600;
+      text-decoration: none;
+      transition: var(--t-fast);
+    }
+    .citation-link:hover {
+      background: var(--c-blue-light);
+      text-decoration: none;
+      color: #fff;
+    }
+    .citation-link-doi {
+      background: transparent;
+      color: var(--c-blue);
+      border: 1px solid rgba(42,127,212,.4);
+    }
+    .citation-link-doi:hover { background: rgba(42,127,212,.1); color: var(--c-blue); }
+
+    /* ── Méthodologie ──────────────────────────────────────── */
+    .methodology-box {
+      background: var(--bg-card-2);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--c-teal);
+      border-radius: 0 var(--r-md) var(--r-md) 0;
+      padding: var(--s3) var(--s4);
+      margin-top: var(--s8);
+      font-size: .88rem;
+      line-height: 1.65;
+      color: var(--text-secondary);
+    }
+    .methodology-box h3 {
+      font-size: 1rem; font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: var(--s2);
+    }
+    .methodology-box ul { padding-left: 1.4rem; }
+    .methodology-box li { margin-bottom: .4rem; }
+  </style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav class="biq-nav" id="mainNav" role="navigation" aria-label="Navigation principale">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="BreathIQ — Accueil">
+      <span class="brand-icon" aria-hidden="true">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="14" cy="14" r="13" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.4"/>
+          <circle cx="14" cy="14" r="9" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.6"/>
+          <circle cx="14" cy="14" r="5" fill="var(--c-teal)" opacity="0.9"/>
+        </svg>
+      </span>
+      <span class="brand-text">Breath<strong>IQ</strong></span>
+    </a>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html#score">Mon Score</a></li>
+      <li><a href="index.html#map">Carte mondiale</a></li>
+      <li><a href="stocks.html">Stocks EPI</a></li>
+      <li><a href="index.html#pathogens">Pathogènes</a></li>
+      <li><a href="index.html#protection">Protection</a></li>
+      <li><a href="index.html#about">À propos</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button class="theme-toggle" id="themeToggle" aria-label="Mode sombre/clair">
+        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/>
+          <line x1="12" y1="21" x2="12" y2="23"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="biblio-hero">
+  <div class="container">
+    <h1>Bibliographie &amp; Sources scientifiques</h1>
+    <p>
+      Toutes les données affichées sur BreathIQ sont fondées sur des publications scientifiques
+      peer-reviewed, des recommandations d'institutions de santé publique mondiales (OMS, ECDC, CDC)
+      et des normes techniques internationales. Chaque affirmation est sourcée et vérifiable.
+    </p>
+    <p style="margin-top:1rem;font-size:.82rem;color:rgba(160,180,200,.7)">
+      Format Vancouver · Niveaux de preuve EBM (I–V) · Dernière mise à jour : mai 2026
+    </p>
+  </div>
+</header>
+
+<!-- ===== NAVIGATION INTERNE ===== -->
+<main class="biblio-body">
+  <div class="container">
+
+    <nav class="biblio-nav" aria-label="Navigation par catégorie">
+      <a href="#air-quality">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9.59 4.59A2 2 0 1 1 11 8H2m10.59 11.41A2 2 0 1 0 14 16H2m15.73-8.27A2.5 2.5 0 1 1 19.5 12H2"/></svg>
+        Qualité de l'air
+      </a>
+      <a href="#masks">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Masques &amp; normes
+      </a>
+      <a href="#pathogens">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        Pathogènes
+      </a>
+      <a href="#methodology">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        Méthodologie score
+      </a>
+      <a href="#data-sources">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+        Sources de données
+      </a>
+    </nav>
+
+    <!-- ═══════════════════════════════════════════════════════
+         QUALITÉ DE L'AIR & POLLUTION
+         ═══════════════════════════════════════════════════════ -->
+    <section class="biblio-category" id="air-quality" aria-labelledby="cat-air">
+      <h2 id="cat-air">Qualité de l'air &amp; pollution atmosphérique</h2>
+
+      <article class="citation" id="ref-01" data-category="air-quality" data-level="I">
+        <div class="citation-number">[1]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            World Health Organization. <em>WHO global air quality guidelines: particulate matter (PM2.5 and PM10), ozone, nitrogen dioxide, sulfur dioxide and carbon monoxide.</em>
+            Geneva: WHO; 2021. ISBN 978-92-4-003422-8.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-I" aria-label="Niveau de preuve I — Recommandation institutionnelle internationale">Niveau I</span>
+            <span class="badge badge-oa" aria-label="Accès libre">Open Access</span>
+            <a href="https://www.who.int/publications/i/item/9789240034228"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder aux WHO Air Quality Guidelines 2021">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-02" data-category="air-quality" data-level="IV">
+        <div class="citation-number">[2]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            US Environmental Protection Agency. <em>Technical Assistance Document for the Reporting of Daily Air Quality — the Air Quality Index (AQI).</em>
+            Research Triangle Park: EPA; 2024. EPA-456/B-24-001.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-IV" aria-label="Niveau de preuve IV — Document technique officiel">Niveau IV</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://www.airnow.gov/sites/default/files/2020-05/aqi-technical-assistance-document-sept2018.pdf"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder au document EPA AQI">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-03" data-category="air-quality" data-level="I">
+        <div class="citation-number">[3]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            International Agency for Research on Cancer. <em>Outdoor Air Pollution.</em>
+            IARC Monographs on the Evaluation of Carcinogenic Risks to Humans. Vol. 109.
+            Lyon: IARC; 2016. ISBN 978-92-832-0152-6.
+            Classification : Agent cancérigène du Groupe 1 (cancérigène avéré pour l'humain).
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-I" aria-label="Niveau de preuve I — Méta-analyse IARC">Niveau I</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://monographs.iarc.who.int/list-of-classifications"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder aux IARC Monographs">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MASQUES & NORMES
+         ═══════════════════════════════════════════════════════ -->
+    <section class="biblio-category" id="masks" aria-labelledby="cat-masks">
+      <h2 id="cat-masks">Masques respiratoires &amp; normes de filtration</h2>
+
+      <article class="citation" id="ref-04" data-category="masks" data-level="II">
+        <div class="citation-number">[4]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Ueki H, Furusawa Y, Iwatsuki-Horimoto K, Imai M, Kabata H, Nishimura H, et al.
+            Effectiveness of Face Masks in Preventing Airborne Transmission of SARS-CoV-2.
+            <em>mSphere.</em> 2020;5(5):e00637-20.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-II" aria-label="Niveau de preuve II — Étude expérimentale contrôlée">Niveau II</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://doi.org/10.1128/mSphere.00637-20"
+               rel="noopener noreferrer" class="citation-link citation-link-doi"
+               aria-label="DOI 10.1128/mSphere.00637-20">
+              DOI →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-05" data-category="masks" data-level="V">
+        <div class="citation-number">[5]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            AFNOR. <em>NF EN 149:2001+A1:2009 — Appareils de protection respiratoire — Demi-masques filtrants contre les particules — Exigences, essais, marquage.</em>
+            Paris: AFNOR; 2009.
+            Niveaux de protection : FFP1 (≥70%), FFP2 (≥94%), FFP3 (≥99%) — filtration NaCl 0,3 µm.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-V" aria-label="Niveau de preuve V — Norme technique">Niveau V</span>
+            <a href="https://www.afnor.org/actualites/masques-et-protection-respiratoire/"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder à l'AFNOR">
+              AFNOR →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-06" data-category="masks" data-level="V">
+        <div class="citation-number">[6]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            National Institute for Occupational Safety and Health.
+            <em>NIOSH-Approved Particulate Filtering Facepiece Respirators.</em>
+            42 CFR Part 84. Atlanta: CDC/NIOSH; 2020.
+            Niveaux : N95 (≥95%), N99 (≥99%), N100 (≥99,97%) — filtration NaCl 0,3 µm.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-V" aria-label="Niveau de preuve V — Réglementation fédérale">Niveau V</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://www.cdc.gov/niosh/npptl/topics/respirators/disp_part/default.html"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder au NIOSH N95 approvals">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-07" data-category="masks" data-level="IV">
+        <div class="citation-number">[7]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            European Centre for Disease Prevention and Control.
+            <em>Cloth masks and mask sterilisation as options in case of shortage of surgical masks and respirators.</em>
+            Stockholm: ECDC; 2020.
+            Note : le KN95 (GB 2626-2019) n'est pas équivalent au FFP2 (EN 149) en termes de test de fuite de joint.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-IV" aria-label="Niveau de preuve IV — Rapport institutionnel">Niveau IV</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://www.ecdc.europa.eu/en/publications-data/cloth-masks-sterilisation-options-shortage"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder au rapport ECDC masques">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-08" data-category="masks" data-level="II">
+        <div class="citation-number">[8]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Langrish JP, Li J, Wang S, Lee MMY, Barnes GD, Miller MR, et al.
+            Reducing Personal Exposure to Particulate Air Pollution Improves Cardiovascular Health in Patients with Coronary Heart Disease.
+            <em>Environmental Health Perspectives.</em> 2012;120(3):367–72.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-II" aria-label="Niveau de preuve II — Essai contrôlé randomisé">Niveau II</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://doi.org/10.1161/CIRCULATIONAHA.111.056994"
+               rel="noopener noreferrer" class="citation-link citation-link-doi"
+               aria-label="DOI 10.1161/CIRCULATIONAHA.111.056994">
+              DOI →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         PATHOGÈNES RESPIRATOIRES
+         ═══════════════════════════════════════════════════════ -->
+    <section class="biblio-category" id="pathogens" aria-labelledby="cat-path">
+      <h2 id="cat-path">Pathogènes respiratoires</h2>
+
+      <article class="citation" id="ref-09" data-category="pathogens" data-level="I">
+        <div class="citation-number">[9]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Jonsson CB, Figueiredo LTM, Vapalahti O.
+            A Global Perspective on Hantavirus Ecology, Epidemiology, and Disease.
+            <em>Clinical Microbiology Reviews.</em> 2010;23(2):412–41.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-I" aria-label="Niveau de preuve I — Revue systématique">Niveau I</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://doi.org/10.1128/CMR.00062-09"
+               rel="noopener noreferrer" class="citation-link citation-link-doi"
+               aria-label="DOI 10.1128/CMR.00062-09">
+              DOI →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-10" data-category="pathogens" data-level="IV">
+        <div class="citation-number">[10]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Centers for Disease Control and Prevention.
+            <em>Hantavirus: Technical Information.</em>
+            Atlanta: CDC; 2012. Mis à jour 2024.
+            Recommandations : FFP3/P100 pour nettoyage zones infestées rongeurs.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-IV" aria-label="Niveau de preuve IV — Recommandations institutionnelles">Niveau IV</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://www.cdc.gov/hantavirus/technical/"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder aux recommandations CDC Hantavirus">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-11" data-category="pathogens" data-level="V">
+        <div class="citation-number">[11]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Bourouiba L.
+            Turbulent Gas Clouds and Respiratory Pathogen Emissions: Potential Implications for Reducing Transmission of COVID-19.
+            <em>JAMA.</em> 2020;323(18):1837–8.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-V" aria-label="Niveau de preuve V — Opinion d'expert">Niveau V</span>
+            <a href="https://doi.org/10.1001/jama.2020.4756"
+               rel="noopener noreferrer" class="citation-link citation-link-doi"
+               aria-label="DOI 10.1001/jama.2020.4756">
+              DOI →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         MÉTHODOLOGIE SCORE BREATHIQ
+         ═══════════════════════════════════════════════════════ -->
+    <section class="biblio-category" id="methodology" aria-labelledby="cat-method">
+      <h2 id="cat-method">Méthodologie du score BreathIQ</h2>
+
+      <article class="citation" id="ref-12" data-category="methodology" data-level="IV">
+        <div class="citation-number">[12]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            World Health Organization.
+            <em>Health aspects of air pollution with particulate matter, ozone and nitrogen dioxide: report on a WHO working group.</em>
+            Bonn: WHO; 2003. EUR/03/5042688.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-IV" aria-label="Niveau de preuve IV — Rapport OMS">Niveau IV</span>
+            <span class="badge badge-oa">Open Access</span>
+            <a href="https://www.who.int/publications/i/item/924107440X"
+               rel="noopener noreferrer" class="citation-link"
+               aria-label="Accéder au rapport OMS 2003">
+              Accéder →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-13" data-category="methodology" data-level="I">
+        <div class="citation-number">[13]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Lim SS, Vos T, Flaxman AD, Danaei G, Shibuya K, Adair-Rohani H, et al.
+            A comparative risk assessment of burden of disease and injury attributable to 67 risk factors and risk factor clusters in 21 regions, 1990–2010: a systematic analysis for the Global Burden of Disease Study 2010.
+            <em>Lancet.</em> 2012;380(9859):2224–60.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-level-I" aria-label="Niveau de preuve I — Global Burden of Disease Study">Niveau I</span>
+            <a href="https://doi.org/10.1016/S0140-6736(12)61766-8"
+               rel="noopener noreferrer" class="citation-link citation-link-doi"
+               aria-label="DOI 10.1016/S0140-6736(12)61766-8">
+              DOI →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         SOURCES DE DONNÉES UTILISÉES
+         ═══════════════════════════════════════════════════════ -->
+    <section class="biblio-category" id="data-sources" aria-labelledby="cat-sources">
+      <h2 id="cat-sources">Sources de données en temps réel</h2>
+
+      <article class="citation" id="ref-14" data-category="data-sources">
+        <div class="citation-number">[14]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            OpenAQ. <em>Open Air Quality Data Platform.</em> Version 3. 2024.
+            Plateforme mondiale de données qualité de l'air en temps réel.
+            Licence : CC BY 4.0.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-oa">Open Data</span>
+            <a href="https://openaq.org/" rel="noopener noreferrer" class="citation-link" aria-label="Accéder à OpenAQ">
+              openaq.org →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-15" data-category="data-sources">
+        <div class="citation-number">[15]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            European Centre for Disease Prevention and Control.
+            <em>ECDC Open Data.</em> Stockholm: ECDC.
+            Surveillance épidémiologique Europe — données hebdomadaires.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-oa">Open Data</span>
+            <a href="https://opendata.ecdc.europa.eu/" rel="noopener noreferrer" class="citation-link" aria-label="Accéder aux données ECDC">
+              opendata.ecdc.europa.eu →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-16" data-category="data-sources">
+        <div class="citation-number">[16]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Santé publique France.
+            <em>Données ouvertes épidémiologiques.</em> Paris: SPF.
+            Licence Ouverte Etalab 2.0.
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-oa">Open Data</span>
+            <a href="https://data.santepubliquefrance.fr/" rel="noopener noreferrer" class="citation-link" aria-label="Accéder aux données Santé publique France">
+              data.santepubliquefrance.fr →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="citation" id="ref-17" data-category="data-sources">
+        <div class="citation-number">[17]</div>
+        <div class="citation-body">
+          <p class="citation-text">
+            Copernicus Atmosphere Monitoring Service.
+            <em>CAMS Global Atmospheric Composition Forecasts.</em> ECMWF.
+            Prévisions quotidiennes qualité de l'air sur 4 jours, couverture mondiale.
+            Licence : Copernicus Licence (libre commercial et non commercial).
+          </p>
+          <div class="citation-meta">
+            <span class="badge badge-oa">Open Data</span>
+            <a href="https://atmosphere.copernicus.eu/" rel="noopener noreferrer" class="citation-link" aria-label="Accéder à Copernicus CAMS">
+              atmosphere.copernicus.eu →
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ═══════════════════════════════════════════════════════
+         NIVEAUX DE PREUVE — EXPLICATION
+         ═══════════════════════════════════════════════════════ -->
+    <div class="methodology-box" id="evidence-levels">
+      <h3>Niveaux de preuve (EBM — Evidence-Based Medicine)</h3>
+      <p>Le niveau de preuve évalue la solidité méthodologique de chaque référence selon l'échelle internationale :</p>
+      <ul>
+        <li><strong>Niveau I</strong> — Revues systématiques, méta-analyses, recommandations institutionnelles majeures (OMS, IARC)</li>
+        <li><strong>Niveau II</strong> — Essais contrôlés randomisés, études expérimentales contrôlées</li>
+        <li><strong>Niveau III</strong> — Études de cohorte, études cas-témoins</li>
+        <li><strong>Niveau IV</strong> — Documents techniques officiels, rapports institutionnels, consensus d'experts</li>
+        <li><strong>Niveau V</strong> — Normes techniques, réglementations, opinions d'experts, avis d'autorités</li>
+      </ul>
+      <p style="margin-top:1rem">
+        Le score BreathIQ est un <strong>indice composite propriétaire à valeur indicative</strong>.
+        Il ne constitue pas un outil diagnostique certifié ni un dispositif médical.
+        Les pondérations sont justifiées par la littérature épidémiologique mais ne correspondent
+        à aucune formule publiée dans un journal médical à comité de lecture.
+      </p>
+    </div>
+
+  </div>
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="biq-footer" role="contentinfo">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <span class="brand-text footer-brand-text">Breath<strong>IQ</strong></span>
+      <p class="footer-tagline">Intelligence respiratoire mondiale</p>
+    </div>
+    <nav class="footer-links" aria-label="Liens légaux et ressources">
+      <a href="bibliography.html" aria-current="page">Bibliographie</a>
+      <a href="stocks.html">Stocks EPI</a>
+      <a href="mentions-legales.html">Mentions légales</a>
+      <a href="conditions-utilisation.html">CGU</a>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="legal-notice.html">Legal Notice (EN)</a>
+    </nav>
+    <div class="footer-copy">
+      <p>© 2026 Dr. Clément MÉDEAU — BreathIQ</p>
+      <p class="footer-disclaimer">Outil d'information publique · Non dispositif médical</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  'use strict';
+  const savedTheme = localStorage.getItem('biq-theme');
+  const darkMode = savedTheme ? savedTheme === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+  document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
+  document.getElementById('themeToggle')?.addEventListener('click', () => {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    document.documentElement.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    localStorage.setItem('biq-theme', isDark ? 'light' : 'dark');
+  });
+</script>
+</body>
+</html>

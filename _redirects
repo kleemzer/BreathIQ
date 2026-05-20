@@ -1,0 +1,13 @@
+# Netlify redirects — BreathIQ
+# Redirections canoniques
+
+# www → non-www
+https://www.breathiq.fr/*   https://breathiq.fr/:splat   301!
+
+# HTTP → HTTPS (Netlify gère automatiquement, mais sécurité additionnelle)
+http://breathiq.fr/*        https://breathiq.fr/:splat   301!
+http://www.breathiq.fr/*    https://breathiq.fr/:splat   301!
+
+# Compatibilité FFP2Hub (si les utilisateurs viennent de l'ancien site)
+/ffp2hub                    /                            301
+/ffp2hub.html               /                            301
