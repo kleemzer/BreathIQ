@@ -19,36 +19,34 @@ const BIQ_LIVE = (() => {
 
   // ── Endpoints ─────────────────────────────────────────────────
   const EP = {
+    // SPF — API Open Data avec CORS headers (URL v2.1 vérifiée 2026)
     spf_grippe: {
       label: 'Santé Publique France — Grippe',
-      url: 'https://data.santepubliquefrance.fr/api/explore/v2.1/catalog/datasets/donnees-de-surveillance-des-cas-de-grippe-vus-en-consultations-de-medecins-sentinelles-en-france/records?limit=5&order_by=date_de_debut+desc&select=taux_pour_100000_habitants,date_de_debut,region',
+      url: 'https://data.santepubliquefrance.fr/api/explore/v2.1/catalog/datasets/donnees-de-surveillance-des-cas-de-grippe-vus-en-consultations-de-medecins-sentinelles-en-france/records?limit=5&order_by=semaine_annee_calc+desc&select=tx_av_inc100_h,semaine_annee_calc',
       ttl: 'flu',
       region: 'FR',
     },
-    spf_urgences: {
-      label: 'SPF — Urgences hospitalières',
-      url: 'https://data.santepubliquefrance.fr/api/explore/v2.1/catalog/datasets/donnees-des-urgences-hospitalieres/records?limit=5&order_by=date_de_passage+desc&select=date_de_passage,nbre_pass_corona,dep',
-      ttl: 'flu',
-      region: 'FR',
-    },
+    // OpenAQ v3 nécessite une clé API pour CORS — utiliser v2 (public, sans clé)
     openaq_fr: {
       label: 'OpenAQ — PM2.5 France',
-      url: 'https://api.openaq.org/v3/measurements?country_id=FR&parameter=pm25&limit=10&sort=desc&order_by=datetime',
+      url: 'https://api.openaq.org/v2/latest?country=FR&parameter=pm25&limit=10',
       ttl: 'airQuality',
       region: 'FR',
     },
     openaq_world: {
       label: 'OpenAQ — PM2.5 Mondial',
-      url: 'https://api.openaq.org/v3/measurements?parameter=pm25&limit=20&sort=desc&order_by=datetime',
+      url: 'https://api.openaq.org/v2/latest?parameter=pm25&limit=20&order_by=lastUpdated&sort=desc',
       ttl: 'airQuality',
       region: 'WORLD',
     },
+    // CDC — endpoint Socrata actif en 2026
     cdc_flu: {
       label: 'CDC — Grippe USA',
-      url: 'https://data.cdc.gov/resource/cvqj-4bfd.json?$limit=5&$order=week_end+DESC',
+      url: 'https://data.cdc.gov/resource/ph55-sci7.json?$limit=5&$order=weekend_date+DESC',
       ttl: 'flu',
       region: 'US',
     },
+    // ECDC Mpox — endpoint actif
     ecdc_mpox: {
       label: 'ECDC — Mpox Europe',
       url: 'https://opendata.ecdc.europa.eu/monkeypox/casedistribution/json',
