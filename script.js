@@ -1481,37 +1481,44 @@ function bindEvents() {
 }
 
 // ── Smooth scroll for anchor links ───────────────────────────
-// Sections uniquement visibles en mode expert
-const EXPERT_ONLY_ANCHORS = new Set(['#score', '#map', '#protection', '#about']);
+// ── Navigation — fonction globale appelable via onclick ───────
+// Définie ici (hors DOMContentLoaded) pour être disponible immédiatement
+const EXPERT_SECTIONS = new Set(['#score', '#map', '#protection', '#about']);
+
+function navTo(e, href) {
+  if (e) e.preventDefault();
+  if (EXPERT_SECTIONS.has(href) && currentMode === 'patient') {
+    currentMode = 'expert';
+    localStorage.setItem('biq-mode', currentMode);
+    document.body.dataset.mode = currentMode;
+    updateModeToggleBtn();
+    setTimeout(() => {
+      if (!worldMap) { if (typeof initMapWhenReady === 'function') initMapWhenReady(); }
+      else worldMap.invalidateSize(true);
+      smoothScrollTo(href);
+    }, 80);
+    return false;
+  }
+  smoothScrollTo(href);
+  return false;
+}
+
+function smoothScrollTo(href) {
+  const target = document.querySelector(href);
+  if (!target) return;
+  const navH = document.getElementById('mainNav')?.offsetHeight || 68;
+  window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH - 16, behavior: 'smooth' });
+}
 
 function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
+  // Gère uniquement les ancres hors-nav (pas les liens onclick déjà traités)
+  document.querySelectorAll('a[href^="#"]:not([onclick])').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
-      // En mode patient, basculer vers expert si la section cible est expert-only
-      if (currentMode === 'patient' && EXPERT_ONLY_ANCHORS.has(href)) {
-        e.preventDefault();
-        currentMode = 'expert';
-        localStorage.setItem('biq-mode', currentMode);
-        document.body.dataset.mode = currentMode;
-        updateModeToggleBtn();
-        setTimeout(() => {
-          if (!worldMap) initMapWhenReady();
-          else worldMap.invalidateSize(true);
-          const target = document.querySelector(href);
-          if (target) {
-            const navH = document.getElementById('mainNav')?.offsetHeight || 68;
-            window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - navH - 16, behavior: 'smooth' });
-          }
-        }, 50);
-        return;
-      }
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
-        const navH = document.getElementById('mainNav')?.offsetHeight || 68;
-        const top  = target.getBoundingClientRect().top + window.scrollY - navH - 16;
-        window.scrollTo({ top, behavior: 'smooth' });
+        smoothScrollTo(href);
       }
     });
   });
@@ -1658,15 +1665,24 @@ function resetChecker() {
   if (res) res.classList.add('hidden');
 }
 
+// Appliquer le mode immédiatement (pas besoin d'attendre DOMContentLoaded)
+// car script.js est en bas du body — le DOM est déjà parsé
+initMode();
+
 // ── Init ─────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', () => {
+// Wrapper robuste : fonctionne même si DOMContentLoaded est déjà passé
+function domReady(cb) {
+  if (document.readyState !== 'loading') cb();
+  else document.addEventListener('DOMContentLoaded', cb);
+}
+domReady(() => {
   // Theme from storage
   const savedTheme = localStorage.getItem('biq-theme');
   if (savedTheme) darkMode = savedTheme === 'dark';
   applyTheme();
 
-  // Mode Patient / Expert
-  initMode();
+  // Mode Patient / Expert (déjà appelé immédiatement hors DOMContentLoaded)
+  updatePatientRiskBanner();
 
   // i18n
   applyI18n();
