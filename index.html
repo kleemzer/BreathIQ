@@ -108,9 +108,17 @@
         <span class="live-dot"></span><span class="live-label">LIVE <span id="liveLastUpdate">--:--</span></span>
       </span>
       <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Basculer mode patient/expert">⚙️ Mode Expert</button>
-      <button class="lang-toggle" id="langToggle" aria-label="Changer de langue">
-        <span id="langLabel">EN</span>
-      </button>
+      <select class="lang-select" id="langSelect" aria-label="Changer de langue" onchange="setLang(this.value)">
+        <option value="fr">🇫🇷 Français</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="es">🇪🇸 Español</option>
+        <option value="pt">🇧🇷 Português</option>
+        <option value="ar">🇸🇦 العربية</option>
+        <option value="zh">🇨🇳 中文</option>
+        <option value="hi">🇮🇳 हिन्दी</option>
+        <option value="sw">🌍 Swahili</option>
+        <option value="ru">🇷🇺 Русский</option>
+      </select>
       <button class="theme-toggle" id="themeToggle" aria-label="Mode sombre/clair">
         <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="5"/>
@@ -536,12 +544,15 @@
       <p class="section-subtitle" data-i18n="care-subtitle">Hôpitaux et médecins les plus proches de votre localisation</p>
     </div>
     <div class="care-finder-inner">
+      <p class="care-permission-msg" data-i18n="care-permission">
+        Pour trouver les soins les plus proches, nous avons besoin d'accéder temporairement à votre position. Elle reste sur votre appareil et n'est jamais transmise à nos serveurs.
+      </p>
       <button class="care-finder-btn" id="findCareBtn" onclick="findNearbyCare()" data-i18n="care-btn">
         📍 Trouver un médecin proche de moi
       </button>
       <p class="care-privacy-note">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Votre localisation reste sur votre appareil — elle n'est jamais envoyée à nos serveurs.
+        <span data-i18n="care-privacy">Votre position reste sur votre appareil — jamais transmise à nos serveurs.</span>
       </p>
       <div id="careResults" class="care-results" role="region" aria-live="polite"></div>
     </div>

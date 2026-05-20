@@ -147,6 +147,17 @@ const I18N = {
     'sym-lymph': 'Ganglions gonflés',
     'sym-sweats': 'Sueurs nocturnes importantes',
     'sym-vomit': 'Vomissements ou diarrhée',
+    'care-btn': '📍 Trouver un médecin proche de moi',
+    'care-btn-refresh': '🔄 Actualiser',
+    'care-searching': 'Recherche en cours…',
+    'care-title': 'Trouver des soins médicaux proches',
+    'care-subtitle': 'Hôpitaux et médecins les plus proches de votre localisation',
+    'care-permission': 'Pour trouver les soins les plus proches, nous avons besoin d\'accéder temporairement à votre position. Elle reste sur votre appareil et n\'est jamais transmise à nos serveurs.',
+    'care-no-geo': 'La géolocalisation n\'est pas disponible sur votre appareil.',
+    'care-geo-denied': 'Accès à votre localisation refusé. Autorisez la géolocalisation dans les paramètres de votre navigateur, puis réessayez.',
+    'care-error': 'Erreur lors de la recherche. Vérifiez votre connexion internet.',
+    'care-no-results': 'Aucun établissement de santé trouvé dans un rayon de 10 km.',
+    'care-privacy': 'Votre position reste sur votre appareil — jamais transmise à nos serveurs.',
   },
   en: {
     'nav-score': 'My Score',
@@ -274,6 +285,17 @@ const I18N = {
     'sym-lymph': 'Swollen lymph nodes',
     'sym-sweats': 'Heavy night sweats',
     'sym-vomit': 'Vomiting or diarrhea',
+    'care-btn': '📍 Find a doctor near me',
+    'care-btn-refresh': '🔄 Refresh',
+    'care-searching': 'Searching…',
+    'care-title': 'Find nearby medical care',
+    'care-subtitle': 'Hospitals and doctors closest to your location',
+    'care-permission': 'To find the nearest care, we need temporary access to your location. It stays on your device and is never sent to our servers.',
+    'care-no-geo': 'Geolocation is not available on your device.',
+    'care-geo-denied': 'Location access denied. Please enable geolocation in your browser settings and try again.',
+    'care-error': 'Search error. Please check your internet connection.',
+    'care-no-results': 'No healthcare facilities found within 10 km.',
+    'care-privacy': 'Your location stays on your device — never sent to our servers.',
   },
   es: {
     'nav-score': 'Mi Puntuación', 'nav-map': 'Mapa Mundial', 'nav-stocks': 'Stocks EPI',
@@ -1271,8 +1293,8 @@ function applyI18n() {
   });
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
-  const labelEl = document.getElementById('langLabel');
-  if (labelEl) labelEl.textContent = LANG_LABELS[currentLang] || currentLang.toUpperCase();
+  const sel = document.getElementById('langSelect');
+  if (sel) sel.value = currentLang;
   localStorage.setItem('biq-lang', currentLang);
 }
 
@@ -1527,6 +1549,12 @@ function updateMapStats() {
 }
 
 // ── Pathogens grid ───────────────────────────────────────────
+const PATHOGEN_ICONS = {
+  H5N1:'🐦', SARS2:'🦠', TB:'🫁', NIPAH:'🦇', HANTA:'🐭',
+  MPOX:'🔴', MERS:'🐫', MARBURG:'⚠️', MEASLES:'🤧',
+  LEGIONELLA:'💧', INFLUENZA:'🤒', EBOLA:'🩸', RSV:'👶', DEFAULT:'🦠',
+};
+
 function renderPathogens() {
   const grid = document.getElementById('pathogensGrid');
   if (!grid) return;
@@ -1538,7 +1566,14 @@ function renderPathogens() {
   const riskColors = { critical:'#EF4444', high:'#F97316', moderate:'#F59E0B', low:'#10B981' };
   const riskLabels = {
     fr: { critical:'Risque critique', high:'Risque élevé', moderate:'Risque modéré', low:'Risque faible' },
-    en: { critical:'Critical risk', high:'High risk', moderate:'Moderate risk', low:'Low risk' }
+    en: { critical:'Critical risk', high:'High risk', moderate:'Moderate risk', low:'Low risk' },
+    es: { critical:'Riesgo crítico', high:'Riesgo alto', moderate:'Riesgo moderado', low:'Riesgo bajo' },
+    pt: { critical:'Risco crítico', high:'Risco alto', moderate:'Risco moderado', low:'Risco baixo' },
+    ar: { critical:'خطر حرج', high:'خطر مرتفع', moderate:'خطر متوسط', low:'خطر منخفض' },
+    zh: { critical:'极高风险', high:'高风险', moderate:'中等风险', low:'低风险' },
+    hi: { critical:'अत्यधिक जोखिम', high:'उच्च जोखिम', moderate:'मध्यम जोखिम', low:'कम जोखिम' },
+    sw: { critical:'Hatari kubwa sana', high:'Hatari kubwa', moderate:'Hatari ya wastani', low:'Hatari ndogo' },
+    ru: { critical:'Критический риск', high:'Высокий риск', moderate:'Умеренный риск', low:'Низкий риск' },
   };
   const categoryLabels = {
     fr: { pandemic:'Pandémique', epidemic:'Épidémique', endemic:'Endémique', emerging:'Émergent' },
@@ -1550,19 +1585,58 @@ function renderPathogens() {
   };
 
   grid.innerHTML = filtered.map(ob => {
-    const name = currentLang === 'fr' ? ob.nameFR : ob.nameEN;
-    const desc = currentLang === 'fr' ? ob.descFR : ob.descEN;
+    const name = currentLang === 'fr' ? ob.nameFR : (ob.nameEN || ob.nameFR);
+    const desc = currentLang === 'fr' ? ob.descFR : (ob.descEN || ob.descFR);
     const riskColor = riskColors[ob.riskLevel] || '#6B7280';
-    const riskLabel = (riskLabels[currentLang] || riskLabels.fr)[ob.riskLevel] || ob.riskLevel;
-    const catLabel  = (categoryLabels[currentLang] || categoryLabels.fr)[ob.category] || ob.category;
-    const statLabel = (statusLabels[currentLang] || statusLabels.fr)[ob.currentStatus] || ob.currentStatus;
-
+    const riskLabel = (riskLabels[currentLang] || riskLabels.en || riskLabels.fr)[ob.riskLevel] || ob.riskLevel;
+    const catLabel  = (categoryLabels[currentLang] || categoryLabels.en || categoryLabels.fr)[ob.category] || ob.category;
+    const statLabel = (statusLabels[currentLang] || statusLabels.en || statusLabels.fr)[ob.currentStatus] || ob.currentStatus;
     const protBadgeClass = ob.protectionLevel >= 3 ? 'prot-ffp3' : ob.protectionLevel === 2 ? 'prot-ffp2' : 'prot-surg';
+    const refList = ob.references ? ob.references.map(r => `<li>${r}</li>`).join('') : '';
+    const pathIcon = PATHOGEN_ICONS[ob.id] || PATHOGEN_ICONS.DEFAULT;
+    const symp = SYMPTOMS_DATA[ob.id];
+    const sympList = symp ? ((currentLang === 'fr' ? symp.fr : symp.en) || []) : [];
+    const alarmList = symp ? ((currentLang === 'fr' ? symp.alarmFR : symp.alarmEN) || []) : [];
+    const isoNote = symp ? (currentLang === 'fr' ? symp.isolationFR : symp.isolationEN) : '';
 
-    const refList = ob.references
-      ? ob.references.map(r => `<li>${r}</li>`).join('')
-      : '';
+    // ── Mode PATIENT : carte simple, visuelle, universelle ──
+    if (currentMode === 'patient') {
+      const sympEmojis = ['🌡️','😮‍💨','💪','🤕','🤢','👃','💦','🔴','🔵','🌀'];
+      const maskSimple = ob.protectionLevel >= 3
+        ? (currentLang === 'fr' ? '😷 Masque FFP3 requis' : '😷 FFP3 mask required')
+        : ob.protectionLevel === 2
+        ? (currentLang === 'fr' ? '😷 Masque FFP2 recommandé' : '😷 FFP2 mask recommended')
+        : (currentLang === 'fr' ? '😷 Masque chirurgical suffisant' : '😷 Surgical mask sufficient');
+      const ctaLabel = currentLang === 'fr' ? 'J\'ai ces symptômes →' : 'I have these symptoms →';
+      const sympTitle = currentLang === 'fr' ? 'Symptômes' : 'Symptoms';
+      const alarmTitle = currentLang === 'fr' ? '🚨 Signe grave — appelez le médecin immédiatement' : '🚨 Serious sign — call a doctor immediately';
 
+      return `<article class="pc-patient" data-id="${ob.id}" data-category="${ob.category}">
+        <div class="pcp-icon-wrap" style="border-color:${riskColor}40">
+          <span class="pcp-icon">${pathIcon}</span>
+        </div>
+        <div class="pcp-risk-pill" style="background:${riskColor}15;color:${riskColor};border:1.5px solid ${riskColor}40">
+          ${riskLabel}
+        </div>
+        <h3 class="pcp-name">${name}</h3>
+        ${sympList.length ? `<div class="pcp-symptoms">
+          <div class="pcp-sym-title">${sympTitle}</div>
+          <div class="pcp-sym-tags">
+            ${sympList.slice(0,5).map((s,i) => `<span class="pcp-sym-tag">${sympEmojis[i]||'•'} ${s}</span>`).join('')}
+          </div>
+        </div>` : ''}
+        ${alarmList.length ? `<div class="pcp-alarm">
+          <strong>${alarmTitle}</strong>
+          <span>${alarmList[0]}</span>
+        </div>` : ''}
+        <div class="pcp-footer">
+          <span class="pcp-mask">${maskSimple}</span>
+          <button class="pcp-cta" onclick="document.getElementById('symptomChecker')?.scrollIntoView({behavior:'smooth',block:'start'})">${ctaLabel}</button>
+        </div>
+      </article>`;
+    }
+
+    // ── Mode EXPERT : carte technique complète ──
     return `<article class="pathogen-card" data-id="${ob.id}" data-category="${ob.category}">
       <div class="pc-header">
         <div class="pc-dot" style="background:${ob.iconColor}"></div>
@@ -1572,22 +1646,13 @@ function renderPathogens() {
         </div>
         <span class="pc-risk" style="color:${riskColor};border-color:${riskColor}40;background:${riskColor}10">${riskLabel}</span>
       </div>
-
       <div class="pc-badges">
         <span class="pc-badge pc-cat">${catLabel}</span>
         <span class="pc-badge pc-status ${ob.currentStatus==='active'?'status-active':''}">${statLabel}</span>
         <span class="pc-badge ${protBadgeClass}">${ob.protectionRequired}</span>
       </div>
-
       <p class="pc-desc">${desc || ''}</p>
-
-      ${(() => {
-        const symp = SYMPTOMS_DATA[ob.id];
-        if (!symp) return '';
-        const sympList = (currentLang === 'fr' ? symp.fr : symp.en) || [];
-        const alarmList = (currentLang === 'fr' ? symp.alarmFR : symp.alarmEN) || [];
-        const isoNote = currentLang === 'fr' ? symp.isolationFR : symp.isolationEN;
-        return `
+      ${sympList.length ? `
         <div class="pc-symptoms-section">
           <div class="pc-symptoms-title">🤒 ${currentLang === 'fr' ? 'Symptômes à surveiller' : 'Symptoms to watch for'}</div>
           <div class="pc-symptom-tags">${sympList.map(s => `<span class="pc-symptom-tag">${s}</span>`).join('')}</div>
@@ -1596,37 +1661,15 @@ function renderPathogens() {
           <div class="pc-alarm-title">⚠️ ${currentLang === 'fr' ? 'Signes d\'alarme — Urgence médicale' : 'Alarm signs — Medical emergency'}</div>
           <ul class="pc-alarm-list">${alarmList.map(a => `<li>${a}</li>`).join('')}</ul>
         </div>` : ''}
-        <div class="pc-isolation-note">🏠 ${isoNote || ''}</div>`;
-      })()}
-
+        <div class="pc-isolation-note">🏠 ${isoNote || ''}</div>` : ''}
       <div class="pc-meta">
-        <div class="pc-meta-item">
-          <span class="pc-meta-label">${currentLang==='fr'?'R₀ / Reff':'R₀ / Reff'}</span>
-          <span class="pc-meta-val">${ob.reproductionNumber}</span>
-        </div>
-        <div class="pc-meta-item">
-          <span class="pc-meta-label">${currentLang==='fr'?'Létalité (CFR)':'Case Fatality Rate'}</span>
-          <span class="pc-meta-val">${ob.cfr}</span>
-        </div>
-        <div class="pc-meta-item">
-          <span class="pc-meta-label">${currentLang==='fr'?'Incubation':'Incubation'}</span>
-          <span class="pc-meta-val">${ob.incubation}</span>
-        </div>
-        <div class="pc-meta-item">
-          <span class="pc-meta-label">${currentLang==='fr'?'Transmission':'Transmission'}</span>
-          <span class="pc-meta-val">${ob.transmission_route.substring(0,80)}…</span>
-        </div>
+        <div class="pc-meta-item"><span class="pc-meta-label">R₀ / Reff</span><span class="pc-meta-val">${ob.reproductionNumber}</span></div>
+        <div class="pc-meta-item"><span class="pc-meta-label">${currentLang==='fr'?'Létalité':'CFR'}</span><span class="pc-meta-val">${ob.cfr}</span></div>
+        <div class="pc-meta-item"><span class="pc-meta-label">${currentLang==='fr'?'Incubation':'Incubation'}</span><span class="pc-meta-val">${ob.incubation}</span></div>
+        <div class="pc-meta-item"><span class="pc-meta-label">${currentLang==='fr'?'Transmission':'Transmission'}</span><span class="pc-meta-val">${ob.transmission_route.substring(0,80)}…</span></div>
       </div>
-
-      ${ob.maskNote ? `<div class="pc-mask-note">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        ${ob.maskNote}
-      </div>` : ''}
-
-      ${refList ? `<details class="pc-refs">
-        <summary>${currentLang==='fr'?'Références scientifiques':'Scientific references'} (${ob.references.length})</summary>
-        <ul>${refList}</ul>
-      </details>` : ''}
+      ${ob.maskNote ? `<div class="pc-mask-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>${ob.maskNote}</div>` : ''}
+      ${refList ? `<details class="pc-refs"><summary>${currentLang==='fr'?'Références scientifiques':'Scientific references'} (${ob.references.length})</summary><ul>${refList}</ul></details>` : ''}
     </article>`;
   }).join('');
 }
@@ -1691,12 +1734,9 @@ function initMapObserver() {
 
 // ── Event listeners ──────────────────────────────────────────
 function bindEvents() {
-  // Lang toggle
-  document.getElementById('langToggle')?.addEventListener('click', () => {
-    const idx = (LANG_CYCLE.indexOf(currentLang) + 1) % LANG_CYCLE.length;
-    setLang(LANG_CYCLE[idx]);
-    buildRegionSelector();
-  });
+  // Lang select (onchange déjà dans le HTML, on sync juste au rebuild)
+  const sel = document.getElementById('langSelect');
+  if (sel) sel.value = currentLang;
 
   // Theme toggle
   document.getElementById('themeToggle')?.addEventListener('click', toggleTheme);
