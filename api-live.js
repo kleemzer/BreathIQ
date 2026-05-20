@@ -194,6 +194,52 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
+  // ── Open-Meteo air quality géolocalisée ───────────────────────
+  function fetchOpenMeteoForLocation(lat, lon) {
+    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat.toFixed(4)}&longitude=${lon.toFixed(4)}&hourly=pm2_5,european_aqi&timezone=auto&forecast_days=1`;
+    return fetchWithCache(`openmeteo_${Math.round(lat)}_${Math.round(lon)}`, url, 'airQuality');
+  }
+
+  function parseOpenMeteo(raw) {
+    try {
+      const hourly = raw.hourly || {};
+      const pm25 = (hourly.pm2_5 || []).filter(v => v != null);
+      const aqi  = (hourly.european_aqi || []).filter(v => v != null);
+      if (!pm25.length) return null;
+      const avgPm25 = pm25.reduce((a,b) => a+b, 0) / pm25.length;
+      const latestAqi = aqi[aqi.length - 1] || Math.round((avgPm25 / 75) * 100);
+      return {
+        pm25: Math.round(avgPm25 * 10) / 10,
+        aqiScore: Math.min(100, Math.round(latestAqi)),
+        label: `PM2.5 ${avgPm25.toFixed(1)} µg/m³ (Open-Meteo)`,
+        aboveWHO: avgPm25 > 15,
+      };
+    } catch { return null; }
+  }
+
+  // ── Fetch automatique avec géolocalisation ─────────────────────
+  function fetchWithGeolocation() {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        const { latitude, longitude } = pos.coords;
+        const result = await fetchOpenMeteoForLocation(latitude, longitude);
+        if (result.data) {
+          const parsed = parseOpenMeteo(result.data);
+          if (parsed) {
+            state.data.openmeteo_local = { data: result.data, source: result.source, ep: { ttl: 'airQuality', region: 'LOCAL' } };
+            if (state.liveCount === 0 && result.source === 'api') state.liveCount++;
+            const fullParsed = buildParsedData();
+            fullParsed.localAqi = parsed;
+            dispatch('update', { state, parsed: fullParsed });
+          }
+        }
+      },
+      () => { /* géolocalisation refusée — silencieux */ },
+      { timeout: 8000, maximumAge: 300000 }
+    );
+  }
+
   // ── Dispatch d'événement personnalisé ──────────────────────────
   function dispatch(type, detail) {
     window.dispatchEvent(new CustomEvent(`biq-${type}`, { detail }));
@@ -249,7 +295,12 @@ const BIQ_LIVE = (() => {
       out.ecMpox = parseECDCMpox(state.data.ecdc_mpox.data);
       out.sources.ecdcMpox = state.data.ecdc_mpox.source;
     }
+    if (state.data.openmeteo_local?.data) {
+      out.localAqi = parseOpenMeteo(state.data.openmeteo_local.data);
+      out.sources.openMeteoLocal = state.data.openmeteo_local.source;
+    }
 
+    out.lastUpdate = new Date().toISOString();
     return out;
   }
 
@@ -258,9 +309,9 @@ const BIQ_LIVE = (() => {
   let nextRefreshAt = null;
 
   function startAutoRefresh(intervalMs = 5 * 60 * 1000) {
-    fetchAll();
+    fetchAll().then(() => fetchWithGeolocation());
     refreshTimer = setInterval(() => {
-      fetchAll();
+      fetchAll().then(() => fetchWithGeolocation());
     }, intervalMs);
     nextRefreshAt = Date.now() + intervalMs;
     dispatch('refresh-scheduled', { nextRefreshAt, intervalMs });

@@ -528,6 +528,26 @@
   </div>
 </section>
 
+<!-- ===== CARE FINDER (Mode Patient) ===== -->
+<section class="care-finder-section patient-only" id="careFinder" aria-labelledby="care-finder-title">
+  <div class="container">
+    <div class="section-header" style="text-align:center">
+      <h2 id="care-finder-title" data-i18n="care-title">Trouver des soins médicaux proches</h2>
+      <p class="section-subtitle" data-i18n="care-subtitle">Hôpitaux et médecins les plus proches de votre localisation</p>
+    </div>
+    <div class="care-finder-inner">
+      <button class="care-finder-btn" id="findCareBtn" onclick="findNearbyCare()" data-i18n="care-btn">
+        📍 Trouver un médecin proche de moi
+      </button>
+      <p class="care-privacy-note">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Votre localisation reste sur votre appareil — elle n'est jamais envoyée à nos serveurs.
+      </p>
+      <div id="careResults" class="care-results" role="region" aria-live="polite"></div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== TOGGLE MODE EXPERT ===== -->
 <div class="expert-toggle-section patient-only" id="expertToggle">
   <button class="expert-toggle-btn" onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">
@@ -703,8 +723,7 @@
           <h3>Dr. Clément MÉDEAU</h3>
           <span class="author-role" data-i18n="author-role">Docteur en médecine · La Rochelle, France</span>
           <p class="author-bio" data-i18n="author-bio">
-            Projet personnel indépendant à titre d'information publique. Non dispositif médical.
-            Publié sous responsabilité personnelle, distinct de toute activité médicale professionnelle.
+            Service d'information médicale à vocation éducative et préventive. Non dispositif médical au sens du Règlement (UE) 2017/745. Ne constitue ni acte médical, ni consultation médicale, ni diagnostic individuel.
           </p>
           <a href="mailto:contact@breathiq.fr" class="author-contact">contact@breathiq.fr</a>
         </div>

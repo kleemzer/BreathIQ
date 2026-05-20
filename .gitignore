@@ -3,3 +3,7 @@ Thumbs.db
 *.log
 node_modules/
 .env
+
+# Local Netlify folder
+.netlify
+.vercel

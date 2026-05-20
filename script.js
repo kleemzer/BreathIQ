@@ -102,7 +102,7 @@ const I18N = {
     'about-title': 'Confiance & Transparence',
     'about-subtitle': 'BreathIQ est un projet personnel indépendant, construit sur des données publiques vérifiables.',
     'author-role': 'Docteur en médecine · La Rochelle, France',
-    'author-bio': 'Projet personnel indépendant à titre d\'information publique. Non dispositif médical. Publié sous responsabilité personnelle.',
+    'author-bio': 'Service d\'information médicale à vocation éducative et préventive. Non dispositif médical au sens du Règlement (UE) 2017/745. Ne constitue ni acte médical, ni consultation médicale, ni diagnostic individuel.',
     'trust-open-title': '100% Open & Libre',
     'trust-open-desc': 'Accès sans compte, sans inscription, sans tracking publicitaire. Aucune donnée de santé collectée. Conformité RGPD totale.',
     'trust-sources-title': 'Sources vérifiables',
@@ -229,7 +229,7 @@ const I18N = {
     'about-title': 'Trust & Transparency',
     'about-subtitle': 'BreathIQ is an independent personal project built on verifiable public data.',
     'author-role': 'Medical Doctor · La Rochelle, France',
-    'author-bio': 'Independent personal project for public information purposes. Not a medical device. Published under personal responsibility.',
+    'author-bio': 'Educational and preventive health information service. Not a medical device under Regulation (EU) 2017/745. Does not constitute a medical act, consultation, or individual diagnosis.',
     'trust-open-title': '100% Open & Free',
     'trust-open-desc': 'No account, no registration, no advertising tracking. No health data collected. Full GDPR compliance.',
     'trust-sources-title': 'Verifiable sources',
@@ -274,7 +274,247 @@ const I18N = {
     'sym-lymph': 'Swollen lymph nodes',
     'sym-sweats': 'Heavy night sweats',
     'sym-vomit': 'Vomiting or diarrhea',
-  }
+  },
+  es: {
+    'nav-score': 'Mi Puntuación', 'nav-map': 'Mapa Mundial', 'nav-stocks': 'Stocks EPI',
+    'nav-pathogens': 'Patógenos', 'nav-protection': 'Protección', 'nav-about': 'Acerca de',
+    'hero-badge': 'Inteligencia Respiratoria · Datos Globales',
+    'hero-title-1': 'El aire que respiras,', 'hero-title-2': 'monitoreado inteligentemente.',
+    'hero-subtitle': 'Índice respiratorio en tiempo real. Calidad del aire, circulación viral, patógenos activos.',
+    'hero-disclaimer': 'Herramienta de información pública — no dispositivo médico · Acceso libre',
+    'patient-hero-badge': 'Vigilancia respiratoria · Acceso libre',
+    'symptom-checker-title': '¿Tengo síntomas que deben alertarme?',
+    'symptom-checker-intro': 'Marque lo que siente para identificar el riesgo y saber qué hacer',
+    'checker-btn-text': 'Analizar mis síntomas →',
+    'action-guide-title': '¿Qué hacer con síntomas respiratorios?',
+    'action-guide-subtitle': '3 acciones simples e inmediatas para protegerse y proteger a los demás',
+    'expert-toggle-label': '⚙️ Ver datos técnicos (Modo Experto)',
+    'expert-toggle-note': 'Índices respiratorios, mapa mundial, guía de protección',
+    'mode-toggle-patient': '👤 Modo Paciente', 'mode-toggle-expert': '⚙️ Modo Experto',
+    'pathogens-patient-title': 'Enfermedades respiratorias — ¿qué síntomas vigilar?',
+    'pathogens-patient-sub': 'Haga clic en una enfermedad para ver sus síntomas',
+    'sym-fever': 'Fiebre o escalofríos', 'sym-dry-cough': 'Tos seca',
+    'sym-wet-cough': 'Tos con flemas', 'sym-long-cough': 'Tos por más de 3 semanas',
+    'sym-breath': 'Dificultad para respirar', 'sym-smell': 'Pérdida de olfato o gusto',
+    'sym-rash': 'Erupción cutánea', 'sym-muscle': 'Dolores musculares intensos',
+    'sym-head': 'Dolor de cabeza intenso', 'sym-confusion': 'Confusión o somnolencia',
+    'sym-bleeding': 'Sangrado inexplicado', 'sym-lymph': 'Ganglios inflamados',
+    'sym-sweats': 'Sudores nocturnos', 'sym-vomit': 'Vómitos o diarrea',
+    'about-title': 'Confianza y Transparencia', 'footer-tagline': 'Inteligencia respiratoria mundial',
+    'author-bio': 'Servicio de información médica educativa y preventiva. No dispositivo médico según Reglamento (UE) 2017/745. No constituye acto médico, consulta ni diagnóstico individual.',
+    'disclaimer-title': 'No dispositivo médico — Importante',
+    'disclaimer-text': 'BreathIQ es exclusivamente una herramienta de información pública. No emite recomendaciones médicas individuales. Consulte a un profesional de salud.',
+    'footer-disclaimer-short': 'Herramienta de información pública · No dispositivo médico',
+    'care-btn': '📍 Encontrar médico cercano', 'care-searching': 'Buscando…',
+    'care-title': 'Atención médica cercana', 'care-subtitle': 'Centros de salud más próximos a su ubicación',
+    'care-no-geo': 'Geolocalización no disponible.', 'care-geo-denied': 'Permiso de ubicación denegado. Actívelo en su navegador.',
+    'care-error': 'Error de búsqueda. Verifique su conexión.', 'care-no-results': 'Sin establecimientos en 10 km.',
+    'care-btn-refresh': '🔄 Actualizar',
+  },
+  pt: {
+    'nav-score': 'Minha Pontuação', 'nav-map': 'Mapa Mundial', 'nav-stocks': 'Stocks EPI',
+    'nav-pathogens': 'Patógenos', 'nav-protection': 'Proteção', 'nav-about': 'Sobre',
+    'hero-badge': 'Inteligência Respiratória · Dados Globais',
+    'hero-title-1': 'O ar que você respira,', 'hero-title-2': 'monitorado inteligentemente.',
+    'hero-subtitle': 'Índice respiratório em tempo real. Qualidade do ar, circulação viral, patógenos ativos.',
+    'hero-disclaimer': 'Ferramenta de informação — não dispositivo médico · Acesso livre',
+    'patient-hero-badge': 'Vigilância respiratória · Acesso livre',
+    'symptom-checker-title': 'Tenho sintomas de alerta?',
+    'symptom-checker-intro': 'Marque o que sente para identificar o risco',
+    'checker-btn-text': 'Analisar meus sintomas →',
+    'action-guide-title': 'O que fazer com sintomas respiratórios?',
+    'action-guide-subtitle': '3 ações simples para se proteger e proteger os outros',
+    'expert-toggle-label': '⚙️ Ver dados técnicos (Modo Especialista)',
+    'expert-toggle-note': 'Índices respiratórios, mapa mundial, guia de proteção',
+    'mode-toggle-patient': '👤 Modo Paciente', 'mode-toggle-expert': '⚙️ Modo Especialista',
+    'pathogens-patient-title': 'Doenças respiratórias — quais sintomas vigiar?',
+    'pathogens-patient-sub': 'Clique em uma doença para ver seus sintomas',
+    'sym-fever': 'Febre ou calafrios', 'sym-dry-cough': 'Tosse seca',
+    'sym-wet-cough': 'Tosse com catarro', 'sym-long-cough': 'Tosse > 3 semanas',
+    'sym-breath': 'Dificuldade para respirar', 'sym-smell': 'Perda de olfato ou paladar',
+    'sym-rash': 'Erupção cutânea', 'sym-muscle': 'Dores musculares intensas',
+    'sym-head': 'Dor de cabeça intensa', 'sym-confusion': 'Confusão ou sonolência',
+    'sym-bleeding': 'Sangramento inexplicado', 'sym-lymph': 'Gânglios inchados',
+    'sym-sweats': 'Suores noturnos', 'sym-vomit': 'Vômitos ou diarreia',
+    'about-title': 'Confiança e Transparência', 'footer-tagline': 'Inteligência respiratória mundial',
+    'author-bio': 'Serviço de informação médica educativa e preventiva. Não dispositivo médico segundo Regulamento (UE) 2017/745.',
+    'disclaimer-title': 'Não é dispositivo médico — Importante',
+    'disclaimer-text': 'BreathIQ é exclusivamente uma ferramenta de informação pública. Não emite recomendações médicas individuais. Consulte um profissional de saúde.',
+    'footer-disclaimer-short': 'Ferramenta de informação pública · Não dispositivo médico',
+    'care-btn': '📍 Encontrar médico próximo', 'care-searching': 'Procurando…',
+    'care-title': 'Assistência médica próxima', 'care-subtitle': 'Unidades de saúde mais próximas da sua localização',
+    'care-no-geo': 'Geolocalização não disponível.', 'care-geo-denied': 'Permissão de localização negada.',
+    'care-error': 'Erro na pesquisa. Verifique sua conexão.', 'care-no-results': 'Sem resultados em 10 km.',
+    'care-btn-refresh': '🔄 Atualizar',
+  },
+  ar: {
+    'nav-score': 'نتيجتي', 'nav-map': 'الخريطة العالمية', 'nav-stocks': 'مخزون EPI',
+    'nav-pathogens': 'مسببات الأمراض', 'nav-protection': 'الحماية', 'nav-about': 'حول',
+    'hero-badge': 'ذكاء تنفسي · بيانات عالمية',
+    'hero-title-1': 'الهواء الذي تتنفسه،', 'hero-title-2': 'يُراقَب بذكاء.',
+    'hero-subtitle': 'مؤشر تنفسي في الوقت الفعلي. جودة الهواء، التداول الفيروسي، مسببات الأمراض النشطة.',
+    'hero-disclaimer': 'أداة معلومات عامة — ليست جهازاً طبياً · وصول مجاني',
+    'patient-hero-badge': 'مراقبة تنفسية · وصول مجاني',
+    'symptom-checker-title': 'هل لدي أعراض تستدعي الانتباه؟',
+    'symptom-checker-intro': 'حدد ما تشعر به لتحديد المخاطر ومعرفة ما يجب فعله',
+    'checker-btn-text': 'تحليل أعراضي →',
+    'action-guide-title': 'ماذا تفعل عند ظهور أعراض تنفسية؟',
+    'action-guide-subtitle': '٣ إجراءات فورية بسيطة لحماية نفسك والآخرين',
+    'expert-toggle-label': '⚙️ عرض البيانات التقنية (وضع الخبير)',
+    'mode-toggle-patient': '👤 وضع المريض', 'mode-toggle-expert': '⚙️ وضع الخبير',
+    'pathogens-patient-title': 'الأمراض التنفسية', 'pathogens-patient-sub': 'اضغط لرؤية الأعراض',
+    'sym-fever': 'حمى أو قشعريرة', 'sym-dry-cough': 'سعال جاف',
+    'sym-wet-cough': 'سعال مع بلغم', 'sym-long-cough': 'سعال أكثر من ٣ أسابيع',
+    'sym-breath': 'صعوبة في التنفس', 'sym-smell': 'فقدان حاسة الشم أو التذوق',
+    'sym-rash': 'طفح جلدي أو آفات', 'sym-muscle': 'آلام عضلية شديدة',
+    'sym-head': 'صداع شديد', 'sym-confusion': 'ارتباك أو نعاس',
+    'sym-bleeding': 'نزيف غير مبرر', 'sym-lymph': 'تضخم الغدد الليمفاوية',
+    'sym-sweats': 'تعرق ليلي شديد', 'sym-vomit': 'قيء أو إسهال',
+    'about-title': 'الثقة والشفافية', 'footer-tagline': 'ذكاء تنفسي عالمي',
+    'author-bio': 'خدمة معلومات طبية تعليمية ووقائية. ليست جهازاً طبياً وفق اللائحة الأوروبية 2017/745. لا تمثل عملاً طبياً أو تشخيصاً فردياً.',
+    'disclaimer-title': 'ليس جهازاً طبياً — هام',
+    'disclaimer-text': 'BreathIQ هو أداة معلومات عامة حصراً. لا يُصدر توصيات طبية فردية. استشر مختصاً صحياً.',
+    'footer-disclaimer-short': 'أداة معلومات عامة · ليست جهازاً طبياً',
+    'care-btn': '📍 العثور على طبيب قريب', 'care-searching': 'جاري البحث…',
+    'care-title': 'الرعاية الطبية القريبة', 'care-subtitle': 'أقرب مراكز الرعاية الصحية',
+    'care-no-geo': 'تحديد الموقع غير متاح.', 'care-geo-denied': 'تم رفض إذن الموقع.',
+    'care-error': 'خطأ في البحث. تحقق من اتصالك.', 'care-no-results': 'لا توجد مرافق في نطاق ١٠ كم.',
+    'care-btn-refresh': '🔄 تحديث',
+  },
+  zh: {
+    'nav-score': '我的评分', 'nav-map': '世界地图', 'nav-stocks': 'EPI库存',
+    'nav-pathogens': '病原体', 'nav-protection': '防护', 'nav-about': '关于',
+    'hero-badge': '呼吸智能 · 全球数据',
+    'hero-title-1': '您呼吸的空气，', 'hero-title-2': '被智能监测。',
+    'hero-subtitle': '实时呼吸指数。空气质量、病毒传播、活跃病原体。',
+    'hero-disclaimer': '公共信息工具 — 非医疗设备 · 免费访问',
+    'patient-hero-badge': '呼吸监测 · 免费访问',
+    'symptom-checker-title': '我有需要注意的症状吗？',
+    'symptom-checker-intro': '选择您感受到的症状以识别风险，了解该怎么做',
+    'checker-btn-text': '分析我的症状 →',
+    'action-guide-title': '出现呼吸道症状该怎么办？',
+    'action-guide-subtitle': '3个简单的立即行动，保护自己和他人',
+    'expert-toggle-label': '⚙️ 显示技术数据（专家模式）',
+    'mode-toggle-patient': '👤 患者模式', 'mode-toggle-expert': '⚙️ 专家模式',
+    'pathogens-patient-title': '呼吸道疾病', 'pathogens-patient-sub': '点击查看症状',
+    'sym-fever': '发烧或发冷', 'sym-dry-cough': '干咳',
+    'sym-wet-cough': '有痰咳嗽', 'sym-long-cough': '咳嗽超过3周',
+    'sym-breath': '呼吸困难', 'sym-smell': '失去嗅觉或味觉',
+    'sym-rash': '皮疹或皮损', 'sym-muscle': '肌肉剧痛',
+    'sym-head': '剧烈头痛', 'sym-confusion': '意识混乱或嗜睡',
+    'sym-bleeding': '不明原因出血', 'sym-lymph': '淋巴结肿大',
+    'sym-sweats': '夜间大量出汗', 'sym-vomit': '呕吐或腹泻',
+    'about-title': '信任与透明', 'footer-tagline': '全球呼吸智能',
+    'author-bio': '医学教育和预防信息服务。根据欧盟法规2017/745，非医疗设备。不构成医疗行为、就诊或个人诊断。',
+    'disclaimer-title': '非医疗设备 — 重要',
+    'disclaimer-text': 'BreathIQ是公共信息工具。不构成医疗设备，不发布个人医疗建议。如需医疗建议，请咨询医疗专业人员。',
+    'footer-disclaimer-short': '公共信息工具 · 非医疗设备',
+    'care-btn': '📍 找附近的医生', 'care-searching': '搜索中…',
+    'care-title': '附近医疗机构', 'care-subtitle': '距您最近的医疗中心',
+    'care-no-geo': '无法使用地理定位。', 'care-geo-denied': '位置权限被拒绝。',
+    'care-error': '搜索错误。请检查您的连接。', 'care-no-results': '10公里范围内无结果。',
+    'care-btn-refresh': '🔄 刷新',
+  },
+  hi: {
+    'nav-score': 'मेरा स्कोर', 'nav-map': 'विश्व मानचित्र', 'nav-stocks': 'EPI स्टॉक',
+    'nav-pathogens': 'रोगजनक', 'nav-protection': 'सुरक्षा', 'nav-about': 'के बारे में',
+    'hero-badge': 'श्वसन बुद्धिमत्ता · वैश्विक डेटा',
+    'hero-title-1': 'आप जो हवा सांस लेते हैं,', 'hero-title-2': 'बुद्धिमानी से निगरानी।',
+    'hero-subtitle': 'वास्तविक समय श्वसन सूचकांक। वायु गुणवत्ता, वायरल प्रसार, सक्रिय रोगजनक।',
+    'hero-disclaimer': 'सार्वजनिक जानकारी उपकरण — चिकित्सा उपकरण नहीं · मुफ्त पहुंच',
+    'patient-hero-badge': 'श्वसन निगरानी · मुफ्त पहुंच',
+    'symptom-checker-title': 'क्या मुझे चेतावनी के लक्षण हैं?',
+    'symptom-checker-intro': 'जोखिम पहचानने के लिए जो महसूस हो उसे चुनें',
+    'checker-btn-text': 'मेरे लक्षणों का विश्लेषण करें →',
+    'action-guide-title': 'श्वसन लक्षण होने पर क्या करें?',
+    'action-guide-subtitle': 'खुद को और दूसरों को बचाने के लिए 3 सरल तत्काल कदम',
+    'expert-toggle-label': '⚙️ तकनीकी डेटा दिखाएं (विशेषज्ञ मोड)',
+    'mode-toggle-patient': '👤 रोगी मोड', 'mode-toggle-expert': '⚙️ विशेषज्ञ मोड',
+    'pathogens-patient-title': 'श्वसन रोग', 'pathogens-patient-sub': 'लक्षण देखने के लिए क्लिक करें',
+    'sym-fever': 'बुखार या ठंड लगना', 'sym-dry-cough': 'सूखी खांसी',
+    'sym-wet-cough': 'बलगम वाली खांसी', 'sym-long-cough': '3 सप्ताह से अधिक खांसी',
+    'sym-breath': 'सांस लेने में कठिनाई', 'sym-smell': 'सूंघने या स्वाद की क्षमता में कमी',
+    'sym-rash': 'त्वचा पर दाने', 'sym-muscle': 'मांसपेशियों में तेज दर्द',
+    'sym-head': 'तेज सिरदर्द', 'sym-confusion': 'भ्रम या अत्यधिक नींद',
+    'sym-bleeding': 'अस्पष्ट रक्तस्राव', 'sym-lymph': 'सूजी लिम्फ नोड्स',
+    'sym-sweats': 'रात को पसीना', 'sym-vomit': 'उल्टी या दस्त',
+    'about-title': 'विश्वास और पारदर्शिता', 'footer-tagline': 'वैश्विक श्वसन बुद्धिमत्ता',
+    'author-bio': 'शैक्षिक और निवारक चिकित्सा सूचना सेवा। EU नियमन 2017/745 के अनुसार चिकित्सा उपकरण नहीं।',
+    'disclaimer-title': 'चिकित्सा उपकरण नहीं — महत्वपूर्ण',
+    'footer-disclaimer-short': 'सार्वजनिक जानकारी उपकरण · चिकित्सा उपकरण नहीं',
+    'care-btn': '📍 नजदीकी डॉक्टर खोजें', 'care-searching': 'खोज रहे हैं…',
+    'care-title': 'नजदीकी चिकित्सा देखभाल', 'care-subtitle': 'आपके सबसे नजदीकी स्वास्थ्य केंद्र',
+    'care-no-geo': 'जियोलोकेशन उपलब्ध नहीं।', 'care-geo-denied': 'स्थान अनुमति अस्वीकार।',
+    'care-error': 'खोज त्रुटि। कनेक्शन जांचें।', 'care-no-results': '10 किमी में कोई परिणाम नहीं।',
+    'care-btn-refresh': '🔄 रिफ्रेश',
+  },
+  sw: {
+    'nav-score': 'Alama Yangu', 'nav-map': 'Ramani ya Dunia', 'nav-stocks': 'Hifadhi EPI',
+    'nav-pathogens': 'Vimelea', 'nav-protection': 'Ulinzi', 'nav-about': 'Kuhusu',
+    'hero-badge': 'Akili ya Upumzaji · Data ya Dunia',
+    'hero-title-1': 'Hewa unayopumua,', 'hero-title-2': 'inafuatiliwa kwa akili.',
+    'hero-subtitle': 'Kiashiria cha kupumua kwa wakati halisi. Ubora wa hewa, mzunguko wa virusi, vimelea hai.',
+    'hero-disclaimer': 'Zana ya habari za umma — si kifaa cha matibabu · Upatikanaji bure',
+    'patient-hero-badge': 'Ufuatiliaji wa kupumua · Upatikanaji bure',
+    'symptom-checker-title': 'Je, nina dalili za kuniamsha wasiwasi?',
+    'symptom-checker-intro': 'Angalia unachohisi ili kutambua hatari na kujua la kufanya',
+    'checker-btn-text': 'Changanua dalili zangu →',
+    'action-guide-title': 'Nifanye nini na dalili za kupumua?',
+    'action-guide-subtitle': 'Hatua 3 rahisi za haraka kukujikinga na kulinda wengine',
+    'expert-toggle-label': '⚙️ Onyesha data ya kiufundi (Hali ya Mtaalamu)',
+    'mode-toggle-patient': '👤 Hali ya Mgonjwa', 'mode-toggle-expert': '⚙️ Hali ya Mtaalamu',
+    'pathogens-patient-title': 'Magonjwa ya kupumua', 'pathogens-patient-sub': 'Bonyeza kuona dalili',
+    'sym-fever': 'Homa au baridi', 'sym-dry-cough': 'Kikohozi kavu',
+    'sym-wet-cough': 'Kikohozi na makohozi', 'sym-long-cough': 'Kikohozi zaidi ya wiki 3',
+    'sym-breath': 'Ugumu wa kupumua', 'sym-smell': 'Kupoteza harufu au ladha',
+    'sym-rash': 'Upele au vidonda', 'sym-muscle': 'Maumivu makali ya misuli',
+    'sym-head': 'Maumivu makali ya kichwa', 'sym-confusion': 'Kuchanganyikiwa au kusinzia',
+    'sym-bleeding': 'Kutokwa na damu bila sababu', 'sym-lymph': 'Uvimbe wa tezi',
+    'sym-sweats': 'Kutoka jasho usiku', 'sym-vomit': 'Kutapika au kuharisha',
+    'about-title': 'Uaminifu na Uwazi', 'footer-tagline': 'Akili ya kupumua duniani',
+    'author-bio': 'Huduma ya habari za matibabu ya elimu na kuzuia. Si kifaa cha matibabu kulingana na Kanuni ya EU 2017/745.',
+    'disclaimer-title': 'Si kifaa cha matibabu — Muhimu',
+    'footer-disclaimer-short': 'Zana ya habari za umma · Si kifaa cha matibabu',
+    'care-btn': '📍 Tafuta daktari karibu', 'care-searching': 'Inatafuta…',
+    'care-title': 'Huduma ya Afya Karibu', 'care-subtitle': 'Vituo vya afya vilivyo karibu nawe',
+    'care-no-geo': 'Eneo haliwezi kutambuliwa.', 'care-geo-denied': 'Ruhusa ya eneo imekataliwa.',
+    'care-error': 'Hitilafu ya utafutaji. Angalia muunganisho wako.', 'care-no-results': 'Hakuna matokeo km 10.',
+    'care-btn-refresh': '🔄 Sasisha',
+  },
+  ru: {
+    'nav-score': 'Мой счёт', 'nav-map': 'Карта мира', 'nav-stocks': 'Запасы EPI',
+    'nav-pathogens': 'Патогены', 'nav-protection': 'Защита', 'nav-about': 'О проекте',
+    'hero-badge': 'Респираторный интеллект · Мировые данные',
+    'hero-title-1': 'Воздух, которым вы дышите,', 'hero-title-2': 'под умным контролем.',
+    'hero-subtitle': 'Индекс дыхания в реальном времени. Качество воздуха, вирусное распространение, активные патогены.',
+    'hero-disclaimer': 'Общедоступный инструмент — не медицинское устройство · Бесплатный доступ',
+    'patient-hero-badge': 'Дыхательный мониторинг · Свободный доступ',
+    'symptom-checker-title': 'Есть ли у меня симптомы, которые должны насторожить?',
+    'symptom-checker-intro': 'Отметьте, что чувствуете, чтобы определить риск',
+    'checker-btn-text': 'Проанализировать мои симптомы →',
+    'action-guide-title': 'Что делать при респираторных симптомах?',
+    'action-guide-subtitle': '3 простых немедленных действия для защиты себя и других',
+    'expert-toggle-label': '⚙️ Показать технические данные (Режим эксперта)',
+    'mode-toggle-patient': '👤 Режим пациента', 'mode-toggle-expert': '⚙️ Режим эксперта',
+    'pathogens-patient-title': 'Респираторные заболевания', 'pathogens-patient-sub': 'Нажмите для просмотра симптомов',
+    'sym-fever': 'Жар или озноб', 'sym-dry-cough': 'Сухой кашель',
+    'sym-wet-cough': 'Кашель с мокротой', 'sym-long-cough': 'Кашель более 3 недель',
+    'sym-breath': 'Затруднённое дыхание', 'sym-smell': 'Потеря обоняния или вкуса',
+    'sym-rash': 'Сыпь или поражения кожи', 'sym-muscle': 'Сильные мышечные боли',
+    'sym-head': 'Сильная головная боль', 'sym-confusion': 'Спутанность сознания или сонливость',
+    'sym-bleeding': 'Необъяснимое кровотечение', 'sym-lymph': 'Увеличение лимфоузлов',
+    'sym-sweats': 'Ночная потливость', 'sym-vomit': 'Рвота или диарея',
+    'about-title': 'Доверие и прозрачность', 'footer-tagline': 'Глобальный респираторный интеллект',
+    'author-bio': 'Образовательно-профилактический медицинский информационный сервис. Не медицинское устройство согласно Регламенту ЕС 2017/745. Не является медицинским актом или индивидуальной диагностикой.',
+    'disclaimer-title': 'Не медицинское устройство — Важно',
+    'disclaimer-text': 'BreathIQ — исключительно инструмент публичной информации. Не является медицинским устройством. Для медицинской консультации обращайтесь к специалисту.',
+    'footer-disclaimer-short': 'Общедоступный инструмент · Не медицинское устройство',
+    'care-btn': '📍 Найти ближайшего врача', 'care-searching': 'Поиск…',
+    'care-title': 'Ближайшая медицинская помощь', 'care-subtitle': 'Ближайшие медицинские учреждения',
+    'care-no-geo': 'Геолокация недоступна.', 'care-geo-denied': 'Разрешение геолокации отклонено.',
+    'care-error': 'Ошибка поиска. Проверьте подключение.', 'care-no-results': 'Нет результатов в 10 км.',
+    'care-btn-refresh': '🔄 Обновить',
+  },
 };
 
 // ── DEMO DATA — 67 regions ───────────────────────────────────
@@ -1005,7 +1245,7 @@ function outbreakMarkerHTML(ob) {
 }
 
 // ── State ────────────────────────────────────────────────────
-let currentLang = 'fr';
+let currentLang = localStorage.getItem('biq-lang') || 'fr';
 let currentMode = localStorage.getItem('biq-mode') || 'patient';
 let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 let worldMap = null;
@@ -1016,8 +1256,11 @@ let currentFilter = 'all';
 let selectedRegionId = null;
 
 // ── Language ─────────────────────────────────────────────────
+const LANG_CYCLE = ['fr', 'en', 'es', 'pt', 'ar', 'zh', 'hi', 'sw', 'ru'];
+const LANG_LABELS = { fr:'FR', en:'EN', es:'ES', pt:'PT', ar:'عر', zh:'中文', hi:'हि', sw:'SW', ru:'РУ' };
+
 function t(key) {
-  return (I18N[currentLang] || I18N.fr)[key] || key;
+  return I18N[currentLang]?.[key] ?? I18N.en?.[key] ?? I18N.fr[key] ?? key;
 }
 
 function applyI18n() {
@@ -1027,7 +1270,10 @@ function applyI18n() {
     if (val) el.textContent = val;
   });
   document.documentElement.lang = currentLang;
-  document.getElementById('langLabel').textContent = currentLang === 'fr' ? 'EN' : 'FR';
+  document.documentElement.dir = currentLang === 'ar' ? 'rtl' : 'ltr';
+  const labelEl = document.getElementById('langLabel');
+  if (labelEl) labelEl.textContent = LANG_LABELS[currentLang] || currentLang.toUpperCase();
+  localStorage.setItem('biq-lang', currentLang);
 }
 
 function setLang(lang) {
@@ -1447,7 +1693,8 @@ function initMapObserver() {
 function bindEvents() {
   // Lang toggle
   document.getElementById('langToggle')?.addEventListener('click', () => {
-    setLang(currentLang === 'fr' ? 'en' : 'fr');
+    const idx = (LANG_CYCLE.indexOf(currentLang) + 1) % LANG_CYCLE.length;
+    setLang(LANG_CYCLE[idx]);
     buildRegionSelector();
   });
 
@@ -1663,6 +1910,109 @@ function resetChecker() {
   if (btn) btn.disabled = true;
   const res = document.getElementById('symptomResult');
   if (res) res.classList.add('hidden');
+}
+
+// ── Numéros d'urgence par pays ────────────────────────────────
+function getEmergencyNumber(countryCode) {
+  const nums = {
+    FR:'15 · 116 117', BE:'112 · 100', CH:'144', LU:'112', MC:'15',
+    DE:'112', AT:'144', NL:'112', SE:'112', NO:'113', DK:'112', FI:'112',
+    ES:'112', PT:'112', IT:'118', GB:'999', IE:'999', PL:'112', CZ:'155',
+    US:'911', CA:'911', AU:'000', NZ:'111', MX:'911', BR:'192', AR:'911', CL:'131',
+    CN:'120', JP:'119', KR:'119', IN:'112', PH:'911', TH:'1669', ID:'119', VN:'115',
+    ZA:'10111', NG:'199', KE:'999', GH:'193', SN:'15', CI:'185', CM:'15', MA:'15', DZ:'115',
+    SA:'911', AE:'998', EG:'123', TR:'112', IL:'101', RU:'103', UA:'103',
+  };
+  return nums[countryCode] || '112';
+}
+
+// ── Localisateur de soins ─────────────────────────────────────
+async function findNearbyCare() {
+  const btn = document.getElementById('findCareBtn');
+  const results = document.getElementById('careResults');
+  if (!btn || !results) return;
+
+  btn.disabled = true;
+  btn.textContent = t('care-searching') || 'Recherche en cours…';
+
+  if (!navigator.geolocation) {
+    results.innerHTML = `<p class="care-error">${t('care-no-geo')}</p>`;
+    btn.disabled = false;
+    btn.textContent = t('care-btn');
+    return;
+  }
+
+  navigator.geolocation.getCurrentPosition(
+    async ({ coords: { latitude: lat, longitude: lon } }) => {
+      try {
+        const [geoResp, ovResp] = await Promise.all([
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`, {
+            headers: { 'Accept-Language': currentLang.substring(0,2), 'User-Agent': 'BreathIQ/1.0' }
+          }),
+          fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
+            `[out:json][timeout:15];(node[amenity~"hospital|clinic|doctors|health_post"](around:10000,${lat},${lon}););out 10;`
+          )}`),
+        ]);
+
+        const geoData = await geoResp.json();
+        const ovData  = await ovResp.json();
+        const addr    = geoData.address || {};
+        const city    = addr.city || addr.town || addr.village || addr.county || '';
+        const country = addr.country || '';
+        const cc      = (addr.country_code || '').toUpperCase();
+        const emerNum = getEmergencyNumber(cc);
+
+        const facilities = (ovData.elements || [])
+          .filter(el => el.tags?.name)
+          .map(el => ({
+            name:    el.tags.name,
+            amenity: el.tags.amenity,
+            phone:   el.tags.phone || el.tags['contact:phone'] || null,
+            dist:    Math.round(Math.sqrt(
+              Math.pow((el.lat - lat) * 111320, 2) +
+              Math.pow((el.lon - lon) * 111320 * Math.cos(lat * Math.PI / 180), 2)
+            )),
+          }))
+          .sort((a, b) => a.dist - b.dist)
+          .slice(0, 6);
+
+        let html = `<div class="care-location">
+          <span class="care-city">📍 ${city}${country ? ', ' + country : ''}</span>
+          <span class="care-emergency">🚨 ${currentLang === 'fr' ? 'Urgences' : 'Emergency'} : <strong>${emerNum}</strong></span>
+        </div>`;
+
+        if (facilities.length) {
+          html += `<ul class="care-list">` + facilities.map(f => {
+            const icon = f.amenity === 'hospital' ? '🏥' : f.amenity === 'clinic' ? '🏨' : '👨‍⚕️';
+            const dist = f.dist < 1000 ? `${f.dist} m` : `${(f.dist/1000).toFixed(1)} km`;
+            return `<li class="care-item">
+              <span class="care-icon">${icon}</span>
+              <div class="care-info">
+                <strong>${f.name}</strong>
+                <span class="care-dist">${dist}</span>
+                ${f.phone ? `<a href="tel:${f.phone}" class="care-phone">📞 ${f.phone}</a>` : ''}
+              </div>
+            </li>`;
+          }).join('') + `</ul>`;
+        } else {
+          html += `<p class="care-no-results">${t('care-no-results')}</p>`;
+        }
+
+        results.innerHTML = html;
+        btn.textContent = t('care-btn-refresh') || '🔄 Actualiser';
+      } catch {
+        results.innerHTML = `<p class="care-error">${t('care-error')}</p>`;
+        btn.textContent = t('care-btn');
+      }
+      btn.disabled = false;
+    },
+    () => {
+      results.innerHTML = `<p class="care-error">${t('care-geo-denied')}</p>`;
+      btn.disabled = false;
+      btn.textContent = t('care-btn');
+    },
+    { timeout: 10000, maximumAge: 300000 }
+  );
 }
 
 // Appliquer le mode immédiatement (pas besoin d'attendre DOMContentLoaded)
