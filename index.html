@@ -152,6 +152,27 @@
   </div>
 </nav>
 
+<!-- ===== BANNIÈRE ALERTE ÉPIDÉMIQUE =====
+     Pour ACTIVER  → retirer la classe "alert-inactive"
+     Pour DÉSACTIVER → rajouter la classe "alert-inactive"
+     Niveaux disponibles sur .epidemic-level : "jaune" | "orange" | "rouge"
+     ======================================================= -->
+<div class="epidemic-alert-banner" id="epidemicAlertBanner" role="alert" aria-live="assertive">
+  <div class="epidemic-alert-inner">
+    <div class="epidemic-level rouge">🔴 ALERTE ACTIVE</div>
+    <div class="epidemic-alert-body">
+      <strong class="epidemic-disease">Ebola · Mayotte (France)</strong>
+      <span class="epidemic-date">Foyer actif — Mise à jour : mai 2026</span>
+      <p class="epidemic-msg">Cas confirmés à Mayotte. Si vous avez de la fièvre après un séjour à Mayotte, <strong>appelez le 15 sans vous déplacer seul</strong>.</p>
+      <p class="epidemic-mask">🩺 <strong>Soignants :</strong> port du masque FFP3 obligatoire lors de tout contact suspect</p>
+    </div>
+    <div class="epidemic-alert-actions">
+      <a href="#pathogens" class="epidemic-link" onclick="return navTo(event,'#pathogens')">Fiche Ebola →</a>
+      <button class="epidemic-close" onclick="this.closest('.epidemic-alert-banner').classList.add('alert-inactive')" aria-label="Fermer l'alerte">✕</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== CREATOR TRUST BANNER (tous modes) ===== -->
 <div class="creator-strip" id="creatorStrip">
   <div class="creator-strip-inner">
