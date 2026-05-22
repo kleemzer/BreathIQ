@@ -1283,7 +1283,7 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .creator-avatar {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 50% 18%;
+  object-position: 50% 8%;
   display: block;
 }
 .creator-body {
