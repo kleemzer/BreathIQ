@@ -1,7 +1,7 @@
 'use strict';
 
 // ============================================================
-// BREATHIQ v1.1 — Intelligence respiratoire mondiale
+// BREATHIQ v1.1 — Surveillance épidémique mondiale
 // © 2026 Dr. Clément MÉDEAU — Outil d'information publique
 // Non dispositif médical
 // ============================================================
@@ -28,7 +28,7 @@ const I18N = {
     'nav-pathogens': 'Maladies',
     'nav-protection': 'Protection',
     'nav-about': 'À propos',
-    'hero-badge': 'Intelligence respiratoire · Données mondiales',
+    'hero-badge': 'Surveillance épidémique · Données mondiales',
     'hero-title-1': 'L\'air que vous respirez,',
     'hero-title-2': 'intelligemment surveillé.',
     'hero-subtitle': 'Indice respiratoire en temps réel. Qualité de l\'air, circulation virale, pathogènes actifs. Prenez des décisions éclairées — pas des décisions anxieuses.',
@@ -67,7 +67,7 @@ const I18N = {
     'mstat-outbreaks': 'foyers actifs',
     'mstat-monitored': 'régions surveillées',
     'mstat-update': 'dernière mise à jour',
-    'pathogens-title': 'Pathogènes respiratoires sous surveillance',
+    'pathogens-title': 'Pathogènes sous surveillance mondiale',
     'pathogens-subtitle': 'Revue infectiologique des agents pathogènes nécessitant une protection FFP2/N95 ou équivalent.',
     'filter-all': 'Toutes',
     'filter-pandemic': '🌍 Mondial',
@@ -111,7 +111,7 @@ const I18N = {
     'trust-legal-desc': 'Aucune exploitation commerciale des données. Reproduction à des fins publicitaires ou d\'entraînement IA interdite.',
     'disclaimer-title': 'Non-dispositif médical — Important',
     'disclaimer-text': 'BreathIQ est exclusivement un outil d\'information publique. Il ne constitue pas un dispositif médical et n\'émet pas de recommandations médicales individuelles. Pour tout conseil médical, consultez un professionnel de santé.',
-    'footer-tagline': 'Intelligence respiratoire mondiale',
+    'footer-tagline': 'Surveillance épidémique mondiale',
     'footer-mentions': 'Mentions légales',
     'footer-cgu': 'CGU',
     'footer-privacy': 'Confidentialité',
@@ -131,7 +131,7 @@ const I18N = {
     'action-guide-subtitle': '3 actions simples et immédiates pour vous protéger et protéger les autres',
     'expert-toggle-label': '⚙️ Afficher les données techniques (Mode Expert)',
     'expert-toggle-note': 'Indices respiratoires, carte mondiale, guide de protection — pour professionnels et curieux',
-    'pathogens-patient-title': 'Maladies respiratoires — quels symptômes surveiller ?',
+    'pathogens-patient-title': 'Maladies infectieuses — quels symptômes surveiller ?',
     'pathogens-patient-sub': 'Cliquez sur une maladie pour voir ses symptômes et savoir quand s\'isoler',
     'sym-fever': 'Fièvre ou frissons',
     'sym-dry-cough': 'Toux sèche',
@@ -288,7 +288,7 @@ const I18N = {
     'mstat-outbreaks': 'active outbreaks',
     'mstat-monitored': 'monitored regions',
     'mstat-update': 'last update',
-    'pathogens-title': 'Respiratory pathogens under surveillance',
+    'pathogens-title': 'Pathogens under global surveillance',
     'pathogens-subtitle': 'Infectiological review of pathogens requiring FFP2/N95 or equivalent protection. Sources: WHO, CDC, ECDC, peer-reviewed literature.',
     'filter-all': 'All',
     'filter-pandemic': '🌍 Worldwide',
@@ -332,7 +332,7 @@ const I18N = {
     'trust-legal-desc': 'No commercial use of data. Reproduction for advertising or AI training is prohibited.',
     'disclaimer-title': 'Not a medical device — Important',
     'disclaimer-text': 'BreathIQ is exclusively a public information tool. It does not constitute a medical device and does not issue individual medical recommendations. For medical advice, consult a healthcare professional.',
-    'footer-tagline': 'Global respiratory intelligence',
+    'footer-tagline': 'Global epidemic surveillance',
     'footer-mentions': 'Legal Notice (FR)',
     'footer-cgu': 'Terms of Use',
     'footer-privacy': 'Privacy',
@@ -344,7 +344,7 @@ const I18N = {
     'mbn-protection': 'FFP2',
     'mode-toggle-patient': '👤 Patient Mode',
     'mode-toggle-expert': '⚙️ Expert Mode',
-    'patient-hero-badge': 'Respiratory surveillance · Free access',
+    'patient-hero-badge': 'Epidemic surveillance · Free access',
     'symptom-checker-title': 'Do I have symptoms I should be worried about?',
     'symptom-checker-intro': 'Check what you feel to identify the risk and know what to do',
     'checker-btn-text': 'Analyse my symptoms →',
@@ -352,7 +352,7 @@ const I18N = {
     'action-guide-subtitle': '3 simple immediate actions to protect yourself and others',
     'expert-toggle-label': '⚙️ Show technical data (Expert Mode)',
     'expert-toggle-note': 'Respiratory indices, world map, protection guide — for professionals and the curious',
-    'pathogens-patient-title': 'Respiratory diseases — which symptoms to watch for?',
+    'pathogens-patient-title': 'Infectious diseases — which symptoms to watch for?',
     'pathogens-patient-sub': 'Click on a disease to see its symptoms and when to isolate',
     'sym-fever': 'Fever or chills',
     'sym-dry-cough': 'Dry cough',
