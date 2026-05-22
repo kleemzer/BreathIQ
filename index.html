@@ -178,66 +178,64 @@
 <!-- ===== PATIENT HERO (Mode Simple — défaut) ===== -->
 <section class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
   <div class="patient-hero-inner">
-    <div class="hero-badge" data-i18n="patient-hero-badge">Surveillance respiratoire · Accès libre</div>
 
-    <!-- Bandeau de risque coloré -->
+    <!-- Indicateur de risque — universel, visuel, immédiat -->
     <div class="risk-banner risk-low" id="patientRiskBanner" role="status" aria-live="polite">
       <div class="risk-level-icon" id="patientRiskIcon">🟢</div>
       <span class="risk-level-label" id="patientRiskLabel">RISQUE FAIBLE</span>
-      <h1 id="patientRiskTitle">Risque respiratoire actuellement faible dans votre région</h1>
-      <p id="patientRiskDesc">La situation épidémiologique est sous contrôle — restez vigilant</p>
+      <h1 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h1>
+      <p id="patientRiskDesc">Aucune alerte épidémique active — continuez vos activités normalement</p>
     </div>
 
-    <!-- Statistiques simples -->
-    <div class="simple-stats" aria-label="Statistiques de surveillance">
-      <div class="simple-stat">
-        <span class="simple-stat-num" id="simpleOutbreakCount">6</span>
-        <span class="simple-stat-label">foyers actifs dans le monde</span>
-      </div>
-      <div class="simple-stat">
-        <span class="simple-stat-num">17</span>
-        <span class="simple-stat-label">maladies surveillées</span>
-      </div>
-      <div class="simple-stat">
-        <span class="simple-stat-num">67</span>
-        <span class="simple-stat-label">régions suivies</span>
-      </div>
+    <!-- Trois chemins d'action clairs -->
+    <div class="hero-paths" role="navigation" aria-label="Que souhaitez-vous faire ?">
+      <a href="#symptomChecker" class="path-card path-symptoms">
+        <span class="path-icon">🤒</span>
+        <span class="path-title">J'ai des symptômes</span>
+        <span class="path-sub">Que faire ?</span>
+      </a>
+      <a href="#careFinder" class="path-card path-doctor" onclick="return navTo(event,'#careFinder')">
+        <span class="path-icon">📍</span>
+        <span class="path-title">Trouver un médecin</span>
+        <span class="path-sub">Près de chez moi</span>
+      </a>
+      <button class="path-card path-pro" onclick="openSoignantModal()">
+        <span class="path-icon">🩺</span>
+        <span class="path-title">Je suis soignant</span>
+        <span class="path-sub">Espace professionnel</span>
+      </button>
     </div>
 
-    <a href="#symptomChecker" class="hero-cta-patient">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-      J'ai des symptômes — Que faire ?
-    </a>
-    <p class="hero-disclaimer" data-i18n="hero-disclaimer">Outil d'information publique — non dispositif médical · Accès libre et gratuit</p>
+    <p class="hero-disclaimer">Gratuit · Sans inscription · Aucune donnée personnelle collectée</p>
   </div>
 </section>
 
 <!-- ===== HERO EXPERT ===== -->
 <section class="hero-section expert-only" id="hero" aria-labelledby="hero-title">
   <div class="hero-content">
-    <div class="hero-badge" data-i18n="hero-badge">Intelligence respiratoire · Données mondiales</div>
+    <div class="hero-badge">Tableau de bord épidémique · Professionnels de santé</div>
     <h1 class="hero-title" id="hero-title">
-      <span data-i18n="hero-title-1">L'air que vous respirez,</span><br>
-      <span class="gradient-text" data-i18n="hero-title-2">intelligemment surveillé.</span>
+      Détectez les épidémies<br>
+      <span class="gradient-text">avant le laboratoire.</span>
     </h1>
-    <p class="hero-subtitle" data-i18n="hero-subtitle">
-      Indice respiratoire en temps réel. Qualité de l'air, circulation virale, pathogènes actifs.
-      Prenez des décisions éclairées — pas des décisions anxieuses.
+    <p class="hero-subtitle">
+      Déclarez des cas, surveillez les foyers locaux et alertez les autorités sanitaires —
+      7 à 14 jours avant la confirmation biologique.
     </p>
 
     <div class="hero-actions">
-      <a href="#score" class="btn btn-primary" data-i18n="hero-cta-score">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Mon Indice Respiratoire
+      <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="btn btn-primary">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Déclarer des cas
       </a>
-      <a href="#map" class="btn btn-ghost" data-i18n="hero-cta-map">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
-        Carte des foyers
+      <a href="#score" onclick="return navTo(event,'#score')" class="btn btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Indice de risque
       </a>
     </div>
 
-    <p class="hero-disclaimer" data-i18n="hero-disclaimer">
-      Outil d'information publique — non dispositif médical · Accès libre et gratuit
+    <p class="hero-disclaimer">
+      Données OMS · ECDC · SPF · Algorithme 7-1-7 · Accès libre
     </p>
 
     <!-- Soignant quick-nav (visible uniquement en mode expert) -->

@@ -1303,6 +1303,67 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 }
 .hero-cta-patient:hover { background: var(--c-blue-light); transform: translateY(-2px); text-decoration: none; }
 
+/* ── Hero action path cards ──────────────────────────────────── */
+.hero-paths {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--s3);
+  width: 100%;
+  margin-top: var(--s2);
+}
+.path-card {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .45rem;
+  padding: var(--s4) var(--s3);
+  border-radius: 18px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: rgba(255,255,255,.08);
+  color: #fff;
+  transition: transform .18s, background .18s, border-color .18s, box-shadow .18s;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1rem;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.path-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,.15);
+  border-color: rgba(255,255,255,.3);
+  box-shadow: 0 8px 24px rgba(0,0,0,.25);
+  text-decoration: none;
+  color: #fff;
+}
+.path-icon {
+  font-size: 2.2rem;
+  line-height: 1;
+}
+.path-title {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+.path-sub {
+  font-size: .8rem;
+  color: rgba(255,255,255,.65);
+}
+.path-symptoms { border-color: rgba(239,68,68,.35); }
+.path-symptoms:hover { border-color: rgba(239,68,68,.7); background: rgba(239,68,68,.12); }
+.path-doctor  { border-color: rgba(59,130,246,.35); }
+.path-doctor:hover  { border-color: rgba(59,130,246,.7);  background: rgba(59,130,246,.12); }
+.path-pro     { border-color: rgba(16,185,129,.35); }
+.path-pro:hover     { border-color: rgba(16,185,129,.7);  background: rgba(16,185,129,.12); }
+
+@media (max-width: 600px) {
+  .hero-paths { grid-template-columns: 1fr; gap: var(--s2); }
+  .path-card { flex-direction: row; justify-content: flex-start; padding: var(--s3) var(--s3); gap: var(--s3); }
+  .path-icon { font-size: 1.8rem; flex-shrink: 0; }
+  .path-title { font-size: .95rem; text-align: left; }
+  .path-sub { text-align: left; }
+}
+
 /* ── Symptom checker section ─────────────────────────────────── */
 .symptom-checker-section {
   background: var(--bg-card); padding: var(--s8) 0;
