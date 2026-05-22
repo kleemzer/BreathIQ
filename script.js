@@ -1243,28 +1243,29 @@ const OUTBREAK_DATA = [
     pathogen: 'Ebola virus (Zaire, Sudan, Bundibugyo strains)',
     category: 'epidemic',
     riskLevel: 'critical',
-    lat: 0.3, lon: 25.0, // DRC
-    activeRegions: ['RD Congo', 'Ouganda (historique)', 'Guinée (historique)'],
-    transmission: ['Contact direct fluides biologiques', 'Contact corps décédés'],
+    lat: -12.83, lon: 45.17, // Mayotte — foyer actif 2026
+    activeRegions: ['🚨 Mayotte (France) — foyer actif mai 2026', 'RD Congo (historique)', 'Ouganda (historique)', 'Guinée (historique)'],
+    transmission: ['Contact direct fluides biologiques', 'Contact avec corps de personnes décédées', 'Transmission nosocomiale (soignants sans EPI)'],
     protectionRequired: 'FFP3/P100 + équipement BSL-4 complet',
     protectionLevel: 3,
-    maskNote: 'Transmission principalement par contact direct (non aéroporté). FFP3 recommandé milieu médical en raison de potentiel aérosolisation lors procédures (intubation, aspiration).',
-    reproductionNumber: 'R0 ≈ 1.5–2.5 (epidémie non contrôlée)',
+    maskNote: 'Transmission principalement par contact direct (non aéroporté). FFP3 obligatoire en milieu médical pour tout geste à risque d\'aérosolisation (intubation, aspiration, réanimation).',
+    reproductionNumber: 'R0 ≈ 1.5–2.5 (épidémie non contrôlée)',
     cfr: '25–90% selon souche (Zaire : ~70%)',
-    incubation: '2–21 jours',
-    transmission_route: 'Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via AGP. Pas de transmission aérienne avérée en conditions naturelles.',
-    currentStatus: 'sporadic',
-    outbreakStart: '2024 (foyers sporadiques RDC)',
-    lastUpdate: '2025-09',
+    incubation: '2–21 jours (médiane 8–10 jours)',
+    transmission_route: 'Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée en conditions naturelles.',
+    currentStatus: 'outbreak',
+    outbreakStart: '2026-05 (Mayotte, France)',
+    lastUpdate: '2026-05',
     iconColor: '#7F1D1D',
     references: [
       'WHO Ebola — Key Facts 2023',
       'WHO DON Ebola DRC 2024',
       'Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever',
-      'CDC Ebola (Ebola Virus Disease) 2023'
+      'CDC Ebola (Ebola Virus Disease) 2023',
+      'Santé Publique France — Point épidémio Mayotte 2026'
     ],
-    descFR: 'CFR 25–90% selon souche. Transmission directe par fluides biologiques (non aéroporté en conditions naturelles). FFP3 + tenue BSL-4 pour procédures aérosolisantes en milieu médical. Réservoir présumé : chauves-souris frugivores.',
-    descEN: 'CFR 25-90% by strain. Direct transmission via biological fluids (not airborne in natural conditions). FFP3 + BSL-4 suit for aerosol-generating procedures in healthcare. Presumed reservoir: fruit bats.'
+    descFR: '⚠️ FOYER ACTIF à Mayotte (mai 2026). CFR 25–90% selon souche. Transmission directe par fluides biologiques — non aéroporté en conditions naturelles. Si fièvre + retour de Mayotte : appeler le 15 sans se déplacer seul. Soignants : FFP3 + tenue BSL-4 obligatoire. Réservoir présumé : chauves-souris frugivores.',
+    descEN: '⚠️ ACTIVE OUTBREAK in Mayotte, France (May 2026). CFR 25–90% by strain. Direct transmission via biological fluids — not airborne in natural conditions. If fever + recent travel to Mayotte: call emergency services immediately. Healthcare workers: FFP3 + BSL-4 suit mandatory. Presumed reservoir: fruit bats.'
   },
   {
     id: 'RSVA_HMPV',
