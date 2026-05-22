@@ -632,6 +632,9 @@
       <p class="section-subtitle" data-i18n="syn-subtitle">Détectez les épidémies 7–14 jours avant confirmation laboratoire · Algorithme OMS 7-1-7</p>
     </div>
 
+    <!-- Bannière clusters épidémiques locaux (injectée dynamiquement) -->
+    <div id="clusterAlertBanner"></div>
+
     <!-- Niveaux d'alerte dynamiques -->
     <div class="alert-levels-bar" id="alertLevelsBar">
       <div class="al-item al-normal active" id="al-normal">
@@ -782,6 +785,41 @@
               <option value="no" data-i18n="decl-lab-no">Non</option>
             </select>
           </div>
+          <div class="decl-field">
+            <label class="decl-label">Région / Territoire</label>
+            <select class="decl-select" name="region_code" id="declRegion">
+              <option value="">— Sélectionner —</option>
+              <optgroup label="France métropolitaine">
+                <option value="IDF">Île-de-France</option>
+                <option value="ARA">Auvergne-Rhône-Alpes</option>
+                <option value="BFC">Bourgogne-Franche-Comté</option>
+                <option value="BRE">Bretagne</option>
+                <option value="CVL">Centre-Val de Loire</option>
+                <option value="COR">Corse</option>
+                <option value="GES">Grand Est</option>
+                <option value="HDF">Hauts-de-France</option>
+                <option value="NOR">Normandie</option>
+                <option value="NAQ">Nouvelle-Aquitaine</option>
+                <option value="OCC">Occitanie</option>
+                <option value="PDL">Pays de la Loire</option>
+                <option value="PAC">Provence-Alpes-Côte d'Azur</option>
+              </optgroup>
+              <optgroup label="DROM-COM">
+                <option value="GUA">Guadeloupe</option>
+                <option value="MAR">Martinique</option>
+                <option value="GUY">Guyane</option>
+                <option value="REU">La Réunion</option>
+                <option value="MAY">Mayotte</option>
+              </optgroup>
+              <option value="INT">Hors France</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Avertissement secret professionnel -->
+        <div class="decl-secpro-warning">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <span>Secret professionnel : ne saisir aucune information permettant d'identifier un patient (nom, DDN, n° sécu). Seules des données agrégées sont traitées, conformément au CSP Art. L1110-4.</span>
         </div>
 
         <!-- Consentement RGPD Art. 6 -->

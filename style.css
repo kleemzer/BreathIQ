@@ -1370,7 +1370,87 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .diag-result-actions { padding: var(--s2) var(--s3); display: flex; gap: .75rem; flex-wrap: wrap; }
 .diag-disclaimer {
   font-size: .72rem; color: var(--text-muted);
-  padding: 0 var(--s3) var(--s2); line-height: 1.45;
+  padding: 0 0 .3rem; line-height: 1.45;
+}
+.diag-legal-footer {
+  padding: var(--s2) var(--s3) var(--s3);
+  border-top: 1px solid var(--border);
+  margin-top: var(--s2);
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.diag-ai-notice {
+  font-size: .7rem; color: var(--text-muted); line-height: 1.45;
+  padding: .4rem .6rem; background: rgba(99,102,241,.06);
+  border-left: 3px solid rgba(99,102,241,.3); border-radius: 0 6px 6px 0;
+}
+
+/* ── Déclaration : secret professionnel ─────────────────── */
+.decl-secpro-warning {
+  display: flex; align-items: flex-start; gap: .5rem;
+  padding: .6rem .8rem; margin-bottom: .75rem;
+  background: rgba(234,179,8,.08); border: 1px solid rgba(234,179,8,.3);
+  border-radius: 8px; font-size: .75rem; color: #92400e; line-height: 1.5;
+}
+[data-theme="dark"] .decl-secpro-warning { color: #fde68a; }
+.decl-secpro-warning svg { flex-shrink: 0; margin-top: .15rem; }
+
+/* ── Bannière clusters épidémiques ─────────────────────── */
+.cluster-alert-banner {
+  border: 2px solid #dc2626; border-radius: 12px;
+  overflow: hidden; margin-bottom: 1.5rem;
+  box-shadow: 0 4px 20px rgba(220,38,38,.15);
+}
+.cluster-banner-header {
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  color: #fff; padding: .75rem 1rem;
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.cluster-banner-title { font-size: .95rem; font-weight: 700; }
+.cluster-banner-sub   { font-size: .72rem; opacity: .85; }
+.cluster-row {
+  padding: .75rem 1rem;
+  display: flex; flex-direction: column; gap: .5rem;
+  border-bottom: 1px solid rgba(0,0,0,.06);
+}
+.cluster-row:last-of-type { border-bottom: none; }
+.cluster-row-main { display: flex; align-items: flex-start; gap: .6rem; flex-wrap: wrap; }
+.cluster-level { font-size: .8rem; font-weight: 700; white-space: nowrap; }
+.cluster-info  { font-size: .82rem; line-height: 1.5; color: var(--text); }
+.cluster-do-tag {
+  display: inline-block; background: #dc2626; color: #fff;
+  font-size: .68rem; font-weight: 700; padding: .1rem .4rem;
+  border-radius: 4px; margin-left: .3rem;
+}
+.cluster-row-actions { display: flex; gap: .5rem; flex-wrap: wrap; }
+.btn-cluster-alert {
+  font-size: .78rem; font-weight: 600; padding: .35rem .75rem;
+  border: 1.5px solid; border-radius: 6px; cursor: pointer;
+  background: #fff; transition: opacity .15s;
+}
+.btn-cluster-alert:hover { opacity: .8; }
+.btn-cluster-do {
+  font-size: .78rem; font-weight: 600; padding: .35rem .75rem;
+  border: 1.5px solid #7c3aed; color: #7c3aed; border-radius: 6px;
+  background: #fff; text-decoration: none;
+}
+.cluster-legal-note {
+  font-size: .68rem; color: var(--text-muted); padding: .6rem 1rem;
+  background: rgba(0,0,0,.03); line-height: 1.5; margin: 0;
+}
+
+/* ── Modal ARS ──────────────────────────────────────────── */
+.ars-alert-box { max-width: 600px; }
+.ars-do-banner {
+  background: #fef2f2; border: 1px solid #fca5a5; border-radius: 8px;
+  padding: .6rem .8rem; margin-bottom: .75rem;
+  font-size: .8rem; color: #991b1b; font-weight: 600;
+}
+.ars-do-banner a { color: #7c3aed; }
+.ars-legal-reminder {
+  background: rgba(99,102,241,.06); border-left: 3px solid rgba(99,102,241,.3);
+  border-radius: 0 8px 8px 0; padding: .5rem .75rem;
+  font-size: .75rem; color: var(--text-muted); margin-bottom: .75rem;
+  line-height: 1.5;
 }
 .diag-result-rouge .diag-orient-header { background: #fef2f2; }
 .diag-result-orange .diag-orient-header { background: #fff7ed; }
