@@ -85,7 +85,7 @@
   <div class="consent-banner-inner">
     <div class="consent-banner-text">
       <strong id="consentBannerTitle" data-i18n="consent-title">Vos données et votre vie privée</strong>
-      <p data-i18n="consent-body">BreathIQ utilise le stockage local (localStorage) pour mémoriser vos préférences et vos déclarations syndromiques. Des données de qualité d'air et d'épidémiologie sont récupérées depuis des API tierces (WAQI, OpenAQ, SPF, CDC, ECDC — certaines basées aux États-Unis). Aucune donnée personnelle n'est transmise à nos serveurs.</p>
+      <p data-i18n="consent-body">Vos préférences sont sauvegardées sur votre appareil. Des données publiques sur la qualité de l'air et les épidémies sont consultées en temps réel depuis des sources officielles (OMS, CDC, ECDC). Aucune donnée personnelle n'est transmise.</p>
     </div>
     <div class="consent-banner-actions">
       <button class="consent-btn-decline" onclick="declineConsent()" data-i18n="consent-decline">Continuer sans accepter</button>
@@ -112,7 +112,7 @@
     <ul class="nav-links" role="list">
       <li><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
-      <li><a href="stocks.html" data-i18n="nav-stocks">Stocks EPI</a></li>
+      <li><a href="stocks.html" data-i18n="nav-stocks">Masques & Stocks</a></li>
       <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
       <li><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
@@ -478,7 +478,7 @@
         <span class="step-num-compact" aria-hidden="true">1</span>
         <div class="step-compact-body">
           <h3>🩺 Portez un masque FFP2</h3>
-          <p>Dès les premiers symptômes. Filtre ≥ 94% des agents pathogènes en suspension.</p>
+          <p>Protégez votre entourage dès les premiers symptômes.</p>
         </div>
       </div>
       <div class="action-step-compact">
@@ -491,8 +491,10 @@
       <div class="action-step-compact action-step-urgent">
         <span class="step-num-compact step-num-urgent" aria-hidden="true">3</span>
         <div class="step-compact-body">
-          <h3>📞 Appelez un médecin</h3>
-          <p><strong class="emergency-num">15</strong> SAMU · <strong class="emergency-num">116 117</strong> Médecin de garde<br><small>Difficultés à respirer → <strong>15</strong> immédiatement</small></p>
+          <h3>🚨 Consultez un médecin ou les secours</h3>
+          <p>Appelez le numéro d'urgence de votre pays<br>
+          <small>🇫🇷 15 · 🇪🇺 112 · 🇬🇧 999 · 🇺🇸 911</small><br>
+          <small>Difficultés à respirer → appelez immédiatement</small></p>
         </div>
       </div>
     </div>
@@ -973,11 +975,11 @@
     </div>
 
     <div class="pathogens-filters" role="group" aria-label="Filtres pathogènes">
-      <button class="filter-btn active" data-filter="all" data-i18n="filter-all">Tous</button>
-      <button class="filter-btn" data-filter="pandemic" data-i18n="filter-pandemic">Pandémique</button>
-      <button class="filter-btn" data-filter="epidemic" data-i18n="filter-epidemic">Épidémique</button>
-      <button class="filter-btn" data-filter="endemic" data-i18n="filter-endemic">Endémique</button>
-      <button class="filter-btn" data-filter="emerging" data-i18n="filter-emerging">Émergent</button>
+      <button class="filter-btn active" data-filter="all" data-i18n="filter-all">Toutes</button>
+      <button class="filter-btn" data-filter="pandemic" data-i18n="filter-pandemic">🌍 Mondial</button>
+      <button class="filter-btn" data-filter="epidemic" data-i18n="filter-epidemic">📈 En cours</button>
+      <button class="filter-btn" data-filter="endemic" data-i18n="filter-endemic">🔄 Habituel</button>
+      <button class="filter-btn" data-filter="emerging" data-i18n="filter-emerging">⚠️ Nouveau</button>
     </div>
 
     <div class="pathogens-grid" id="pathogensGrid" aria-live="polite"></div>
@@ -1167,7 +1169,7 @@
 </section>
 
 <!-- ===== ABOUT / TRUST SECTION ===== -->
-<section class="about-section expert-only" id="about" aria-labelledby="about-title">
+<section class="about-section" id="about" aria-labelledby="about-title">
   <div class="container">
     <details class="collapsible-section">
       <summary class="collapsible-summary">
