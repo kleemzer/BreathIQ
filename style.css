@@ -1185,6 +1185,50 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .mode-toggle-btn:hover { background: var(--c-teal-light); }
 
 /* ── Patient hero ────────────────────────────────────────────── */
+/* ── Creator trust strip ─────────────────────────────────── */
+.creator-strip {
+  background: linear-gradient(135deg, #f0f7ff 0%, #e8f4fd 100%);
+  border-bottom: 1px solid rgba(14,140,122,.15);
+  padding: .85rem 0;
+}
+[data-theme="dark"] .creator-strip {
+  background: linear-gradient(135deg, rgba(14,140,122,.08) 0%, rgba(30,64,175,.08) 100%);
+  border-bottom: 1px solid rgba(14,140,122,.2);
+}
+.creator-strip-inner {
+  max-width: 1100px; margin: 0 auto; padding: 0 var(--s4);
+  display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+}
+.creator-avatar {
+  width: 56px; height: 56px; border-radius: 50%;
+  object-fit: cover; object-position: top center;
+  border: 2px solid var(--c-teal);
+  flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(14,140,122,.25);
+}
+.creator-text {
+  display: flex; flex-direction: column; gap: .15rem;
+}
+.creator-name {
+  font-size: .95rem; font-weight: 700; color: var(--text);
+}
+.creator-title {
+  font-size: .78rem; color: var(--text-muted);
+}
+.creator-badges {
+  display: flex; gap: .4rem; flex-wrap: wrap; margin-left: auto;
+}
+.creator-badge {
+  font-size: .72rem; font-weight: 600;
+  padding: .25rem .6rem;
+  background: rgba(14,140,122,.1); color: var(--c-teal);
+  border: 1px solid rgba(14,140,122,.2); border-radius: 20px;
+}
+@media (max-width: 600px) {
+  .creator-badges { margin-left: 0; }
+  .creator-badge:last-child { display: none; }
+}
+
 .patient-hero-section {
   background: var(--bg-hero);
   padding: var(--s8) 0 var(--s6);
