@@ -80,6 +80,21 @@
 </head>
 <body id="mainBody">
 
+<!-- ===== BANDEAU CONSENTEMENT RGPD ===== -->
+<div id="consentBanner" class="consent-banner" role="dialog" aria-labelledby="consentBannerTitle" aria-live="polite" hidden>
+  <div class="consent-banner-inner">
+    <div class="consent-banner-text">
+      <strong id="consentBannerTitle" data-i18n="consent-title">Vos données et votre vie privée</strong>
+      <p data-i18n="consent-body">BreathIQ utilise le stockage local (localStorage) pour mémoriser vos préférences et vos déclarations syndromiques. Des données de qualité d'air et d'épidémiologie sont récupérées depuis des API tierces (WAQI, OpenAQ, SPF, CDC, ECDC — certaines basées aux États-Unis). Aucune donnée personnelle n'est transmise à nos serveurs.</p>
+    </div>
+    <div class="consent-banner-actions">
+      <button class="consent-btn-decline" onclick="declineConsent()" data-i18n="consent-decline">Continuer sans accepter</button>
+      <a href="privacy.html" class="consent-link" data-i18n="consent-more">Politique de confidentialité</a>
+      <button class="consent-btn-accept" onclick="acceptConsent()" data-i18n="consent-accept">✓ Accepter</button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== NAVIGATION ===== -->
 <nav class="biq-nav" id="mainNav" role="navigation" aria-label="Navigation principale">
   <div class="nav-inner">
@@ -98,6 +113,7 @@
       <li><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Stocks EPI</a></li>
+      <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Pathogènes</a></li>
       <li><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li><a href="#about" onclick="return navTo(event,'#about')" data-i18n="nav-about">À propos</a></li>
@@ -107,7 +123,7 @@
       <span class="live-badge" id="liveBadge" title="Données hors ligne — affichage demo" aria-label="Statut données live">
         <span class="live-dot"></span><span class="live-label">LIVE <span id="liveLastUpdate">--:--</span></span>
       </span>
-      <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Basculer mode patient/expert">⚙️ Mode Expert</button>
+      <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé">👨‍⚕️ Espace Soignant</button>
       <select class="lang-select" id="langSelect" aria-label="Changer de langue" onchange="setLang(this.value)">
         <option value="fr">🇫🇷 Français</option>
         <option value="en">🇬🇧 English</option>
@@ -200,6 +216,26 @@
     <p class="hero-disclaimer" data-i18n="hero-disclaimer">
       Outil d'information publique — non dispositif médical · Accès libre et gratuit
     </p>
+
+    <!-- Soignant quick-nav (visible uniquement en mode expert) -->
+    <nav class="soignant-quicknav" aria-label="Navigation rapide soignant">
+      <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="sqn-btn sqn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        Déclarer des cas
+      </a>
+      <a href="#map" onclick="return navTo(event,'#map')" class="sqn-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+        Carte
+      </a>
+      <a href="#score" onclick="return navTo(event,'#score')" class="sqn-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        Indice
+      </a>
+      <a href="stocks.html" class="sqn-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+        Stocks EPI
+      </a>
+    </nav>
   </div>
 
   <!-- Breathing animation rings -->
@@ -247,23 +283,160 @@
       <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Cochez ce que vous ressentez pour identifier le risque et savoir quoi faire</p>
     </div>
 
-    <div class="symptom-checker">
-      <div class="symptom-grid" role="group" aria-label="Symptômes">
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="fever"><span class="sym-icon">🌡️</span><span data-i18n="sym-fever">Fièvre ou frissons</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="dry_cough"><span class="sym-icon">🫁</span><span data-i18n="sym-dry-cough">Toux sèche</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="wet_cough"><span class="sym-icon">💧</span><span data-i18n="sym-wet-cough">Toux avec crachats</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="persistent_cough"><span class="sym-icon">⏱️</span><span data-i18n="sym-long-cough">Toux depuis + de 3 semaines</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="breathlessness"><span class="sym-icon">😮‍💨</span><span data-i18n="sym-breath">Difficultés à respirer</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="smell_loss"><span class="sym-icon">👃</span><span data-i18n="sym-smell">Perte d'odorat ou de goût</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash"><span class="sym-icon">🩹</span><span data-i18n="sym-rash">Éruption cutanée ou lésions</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="muscle_pain"><span class="sym-icon">💪</span><span data-i18n="sym-muscle">Douleurs musculaires intenses</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="headache"><span class="sym-icon">🤕</span><span data-i18n="sym-head">Maux de tête intenses</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="confusion"><span class="sym-icon">🌀</span><span data-i18n="sym-confusion">Confusion ou somnolence</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="bleeding"><span class="sym-icon">🔴</span><span data-i18n="sym-bleeding">Saignements inexpliqués</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="lymph_nodes"><span class="sym-icon">🔵</span><span data-i18n="sym-lymph">Ganglions gonflés</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="night_sweats"><span class="sym-icon">💦</span><span data-i18n="sym-sweats">Sueurs nocturnes importantes</span></label>
-        <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="vomiting"><span class="sym-icon">🤢</span><span data-i18n="sym-vomit">Vomissements ou diarrhée</span></label>
+    <div class="symptom-checker symptom-checker-v2">
+
+      <!-- ── Contexte rapide ────────────────────────────────── -->
+      <div class="checker-ctx-bar">
+        <div class="ctx-group">
+          <span class="ctx-label">📅 Début</span>
+          <div class="ctx-pills-row" role="group" aria-label="Début des symptômes">
+            <button class="ctx-pill selected" data-group="onset" data-value="sudden" onclick="toggleContextPill(this,'onset')">Brutal (&lt;12h)</button>
+            <button class="ctx-pill" data-group="onset" data-value="days_1_3" onclick="toggleContextPill(this,'onset')">1–3 jours</button>
+            <button class="ctx-pill" data-group="onset" data-value="days_4_7" onclick="toggleContextPill(this,'onset')">4–7 jours</button>
+            <button class="ctx-pill" data-group="onset" data-value="weeks" onclick="toggleContextPill(this,'onset')">&gt; 3 semaines</button>
+          </div>
+        </div>
+        <div class="ctx-group">
+          <span class="ctx-label">🌡️ Fièvre</span>
+          <div class="ctx-pills-row" role="group" aria-label="Niveau de fièvre">
+            <button class="ctx-pill selected" data-group="fever" data-value="no_fever" onclick="toggleContextPill(this,'fever')">Aucune</button>
+            <button class="ctx-pill" data-group="fever" data-value="fever_low" onclick="toggleContextPill(this,'fever')">&lt; 38,5°C</button>
+            <button class="ctx-pill" data-group="fever" data-value="fever_high" onclick="toggleContextPill(this,'fever')">38,5–39,5°C</button>
+            <button class="ctx-pill ctx-pill-alert" data-group="fever" data-value="fever_very_high" onclick="toggleContextPill(this,'fever')">&gt; 39,5°C</button>
+          </div>
+        </div>
+        <div class="ctx-group">
+          <span class="ctx-label">👤 Profil</span>
+          <div class="ctx-pills-row" role="group" aria-label="Tranche d'âge">
+            <button class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')">Nourrisson &lt;2 ans</button>
+            <button class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')">Enfant 2–15 ans</button>
+            <button class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')">Adulte</button>
+            <button class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')">Senior ≥ 65 ans</button>
+          </div>
+        </div>
       </div>
+
+      <!-- ── Symptômes groupés ──────────────────────────────── -->
+      <div class="symptom-groups-layout">
+        <div class="sym-group-col">
+          <div class="sym-group-header">🫁 Respiratoires &amp; Gorge</div>
+          <div class="symptom-grid symptom-grid-compact" role="group">
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="dry_cough"><span class="sym-icon">🫁</span><span>Toux sèche</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="wet_cough"><span class="sym-icon">💧</span><span>Toux avec crachats</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="persistent_cough"><span class="sym-icon">⏱️</span><span>Toux &gt; 3 semaines</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="breathlessness"><span class="sym-icon">😮‍💨</span><span>Essoufflement</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="wheezing"><span class="sym-icon">🌬️</span><span>Sifflements respiratoires</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="hemoptysis"><span class="sym-icon">🩸</span><span>Crachats avec sang</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="sore_throat"><span class="sym-icon">🤧</span><span>Maux de gorge</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rhinorrhea"><span class="sym-icon">💧</span><span>Nez qui coule</span></label>
+          </div>
+
+          <div class="sym-group-header" style="margin-top:.9rem">🌡️ Généraux</div>
+          <div class="symptom-grid symptom-grid-compact" role="group">
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="fever"><span class="sym-icon">🌡️</span><span>Fièvre / frissons</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="shivering"><span class="sym-icon">🥶</span><span>Frissons intenses</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="muscle_pain"><span class="sym-icon">💪</span><span>Douleurs musculaires</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="arthralgia"><span class="sym-icon">🦴</span><span>Douleurs articulaires</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="fatigue_severe"><span class="sym-icon">😴</span><span>Fatigue intense</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="night_sweats"><span class="sym-icon">💦</span><span>Sueurs nocturnes</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="weight_loss"><span class="sym-icon">⚖️</span><span>Amaigrissement</span></label>
+          </div>
+        </div>
+
+        <div class="sym-group-col">
+          <div class="sym-group-header">🧠 Neuro &amp; Cutané</div>
+          <div class="symptom-grid symptom-grid-compact" role="group">
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="headache"><span class="sym-icon">🤕</span><span>Maux de tête intenses</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="photophobia"><span class="sym-icon">🌟</span><span>Photophobie</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="neck_stiffness"><span class="sym-icon">🔒</span><span>Raideur de la nuque</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash"><span class="sym-icon">🩹</span><span>Éruption cutanée</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_pustular"><span class="sym-icon">⭕</span><span>Lésions pustuleuses</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_maculopapular"><span class="sym-icon">🔴</span><span>Rash maculopapuleux</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="lymph_nodes"><span class="sym-icon">🔵</span><span>Ganglions gonflés</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="conjunctivitis"><span class="sym-icon">👁️</span><span>Yeux rouges (conjonctivite)</span></label>
+          </div>
+
+          <div class="sym-group-header" style="margin-top:.9rem">🤢 Digestifs &amp; Autres</div>
+          <div class="symptom-grid symptom-grid-compact" role="group">
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="vomiting"><span class="sym-icon">🤢</span><span>Vomissements</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="diarrhea"><span class="sym-icon">💧</span><span>Diarrhée</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="abdominal_pain"><span class="sym-icon">🫃</span><span>Douleur abdominale</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="smell_loss"><span class="sym-icon">👃</span><span>Perte odorat / goût</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="taste_loss"><span class="sym-icon">👅</span><span>Perte de goût</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="retrobulbar_pain"><span class="sym-icon">👁️</span><span>Douleur derrière les yeux</span></label>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Signes d'alarme ────────────────────────────────── -->
+      <div class="alarm-signs-panel">
+        <div class="alarm-panel-title">🚨 Signes d'alarme — répondez à chacun</div>
+        <div class="alarm-grid" role="group" aria-label="Signes d'alarme">
+          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+            <input type="checkbox" value="dyspnea_rest">
+            <span class="alarm-icon">😮‍💨</span>
+            <span class="alarm-text"><strong>Difficultés à respirer au repos</strong></span>
+          </label>
+          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+            <input type="checkbox" value="confusion">
+            <span class="alarm-icon">🌀</span>
+            <span class="alarm-text"><strong>Confusion ou désorientation</strong></span>
+          </label>
+          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+            <input type="checkbox" value="purpura">
+            <span class="alarm-icon">🟣</span>
+            <span class="alarm-text"><strong>Taches violettes / rouges sur la peau non blanchissantes</strong></span>
+          </label>
+          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+            <input type="checkbox" value="bleeding">
+            <span class="alarm-icon">🩸</span>
+            <span class="alarm-text"><strong>Saignements (nez, gencives, selles noires)</strong></span>
+          </label>
+          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+            <input type="checkbox" value="neck_stiffness_alarm">
+            <span class="alarm-icon">🔒</span>
+            <span class="alarm-text"><strong>Raideur nuque + fièvre + maux de tête violents</strong></span>
+          </label>
+          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+            <input type="checkbox" value="cyanosis">
+            <span class="alarm-icon">🫦</span>
+            <span class="alarm-text"><strong>Lèvres ou ongles bleutés (cyanose)</strong></span>
+          </label>
+        </div>
+      </div>
+
+      <!-- ── Contexte épidémio (optionnel) ─────────────────── -->
+      <details class="ctx-epid-details">
+        <summary class="ctx-epid-summary">
+          + Contexte épidémiologique <small>(améliore la précision du diagnostic)</small>
+        </summary>
+        <div class="symptom-grid symptom-grid-compact ctx-epid-grid" role="group" aria-label="Contexte épidémiologique">
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span>Voyage tropical récent (&lt; 21 jours)</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span>Voyage Afrique sub-saharienne &lt; 21j</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span>Voyage Asie du Sud-Est / Moyen-Orient</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span>Contact volailles malades / marché animaux</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Exposition eau stagnante / climatisation</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Immunodéprimé (cancer, VIH, corticoïdes)</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contexte de risque Mpox</span>
+          </label>
+          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
+            <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span>Aggravation rapide en 24–48h</span>
+          </label>
+        </div>
+      </details>
 
       <button class="checker-btn" id="checkerBtn" onclick="checkSymptoms()" disabled data-i18n="checker-btn-text">
         Analyser mes symptômes →
@@ -277,44 +450,29 @@
 <!-- ===== GUIDE D'ACTION (Mode Patient) ===== -->
 <section class="action-guide-section patient-only" id="actionGuide" aria-labelledby="action-guide-title">
   <div class="container">
-    <div class="section-header" style="text-align:center">
-      <h2 id="action-guide-title" data-i18n="action-guide-title">Que faire si vous avez des symptômes respiratoires ?</h2>
-      <p class="section-subtitle" data-i18n="action-guide-subtitle">3 actions simples et immédiates pour vous protéger et protéger les autres</p>
-    </div>
+    <h2 class="action-guide-title" id="action-guide-title" data-i18n="action-guide-title">Que faire si vous avez des symptômes ?</h2>
 
-    <div class="action-steps">
-      <div class="action-step">
-        <span class="step-number" aria-hidden="true">1</span>
-        <div class="step-content">
-          <h3>Portez un masque FFP2 immédiatement</h3>
-          <p>Couvrez votre bouche et votre nez dès les premiers symptômes. Le masque FFP2 (ou N95) filtre ≥ 94% des microbes dans l'air.</p>
-          <p class="step-detail">À défaut : masque chirurgical ou tissu épais bien ajusté sur le nez et la bouche</p>
+    <div class="action-steps-compact">
+      <div class="action-step-compact">
+        <span class="step-num-compact" aria-hidden="true">1</span>
+        <div class="step-compact-body">
+          <h3>🩺 Portez un masque FFP2</h3>
+          <p>Dès les premiers symptômes. Filtre ≥ 94% des agents pathogènes en suspension.</p>
         </div>
       </div>
-      <div class="action-step">
-        <span class="step-number" aria-hidden="true">2</span>
-        <div class="step-content">
-          <h3>Isolez-vous des personnes vulnérables</h3>
-          <p>Restez dans une pièce séparée si possible. Évitez les personnes âgées, les bébés, les femmes enceintes et les personnes malades.</p>
-          <p class="step-detail">Aérez votre pièce régulièrement (ouvrez les fenêtres) · Lavez-vous les mains fréquemment</p>
+      <div class="action-step-compact">
+        <span class="step-num-compact" aria-hidden="true">2</span>
+        <div class="step-compact-body">
+          <h3>🏠 Isolez-vous</h3>
+          <p>Pièce séparée, fenêtres ouvertes. Évitez les personnes âgées et vulnérables.</p>
         </div>
       </div>
-      <div class="action-step">
-        <span class="step-number step-emergency" aria-hidden="true">3</span>
-        <div class="step-content">
-          <h3>Contactez un médecin ou les urgences</h3>
-          <p>France : <span class="emergency-num">15</span> SAMU &nbsp;·&nbsp; <span class="emergency-num">116&nbsp;117</span> Médecin de garde</p>
-          <p class="step-detail">Décrivez vos symptômes — le médecin vous indiquera si vous devez vous déplacer ou rester chez vous</p>
-          <p class="step-detail">⚠️ Difficultés à respirer ou confusion ? Appelez le <strong>15</strong> immédiatement sans attendre</p>
+      <div class="action-step-compact action-step-urgent">
+        <span class="step-num-compact step-num-urgent" aria-hidden="true">3</span>
+        <div class="step-compact-body">
+          <h3>📞 Appelez un médecin</h3>
+          <p><strong class="emergency-num">15</strong> SAMU · <strong class="emergency-num">116 117</strong> Médecin de garde<br><small>Difficultés à respirer → <strong>15</strong> immédiatement</small></p>
         </div>
-      </div>
-    </div>
-
-    <div class="disclaimer-box" style="margin-top:var(--s5)" role="note">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <div>
-        <strong>BreathIQ n'est pas un médecin</strong>
-        <p>Ce site vous aide à reconnaître les signes d'alerte. Il ne remplace pas une consultation médicale. En cas de doute, consultez toujours un professionnel de santé.</p>
       </div>
     </div>
   </div>
@@ -423,6 +581,244 @@
           Sélectionnez une région pour obtenir une analyse personnalisée.
         </p>
         <div class="ai-recommendation" id="aiReco"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIVE DATA SOURCES (Expert) ===== -->
+<section class="live-sources-section expert-only" id="liveSources" aria-labelledby="live-sources-title">
+  <div class="container">
+    <details class="collapsible-section" id="liveSourcesDetails">
+      <summary class="collapsible-summary">
+        <span class="collapsible-title" id="live-sources-title" data-i18n="live-sources-title">Sources de surveillance en direct</span>
+        <span class="collapsible-sub" data-i18n="live-sources-subtitle">8 sources épidémiologiques et environnementales</span>
+        <span class="collapsible-chevron" aria-hidden="true">▾</span>
+      </summary>
+    <div class="live-sources-grid">
+      <!-- Panneau sources statut -->
+      <div class="lsd-card lsd-sources">
+        <h3 class="lsd-title" data-i18n="live-src-status">Statut des sources</h3>
+        <div id="liveSourcesPanel"><p class="lsd-loading">Connexion en cours…</p></div>
+      </div>
+      <!-- Widget WAQI -->
+      <div class="lsd-card lsd-waqi">
+        <h3 class="lsd-title" data-i18n="live-src-air">Qualité de l'air locale</h3>
+        <p class="lsd-subtitle" data-i18n="live-src-air-sub">WAQI · 11 polluants · Prévisions 7j</p>
+        <div id="waqiWidget"><p class="lsd-loading" data-i18n="live-src-waiting">En attente de la géolocalisation…</p></div>
+      </div>
+      <!-- Widget Pollen -->
+      <div class="lsd-card lsd-pollen">
+        <h3 class="lsd-title" data-i18n="live-src-pollen">Pollen local</h3>
+        <p class="lsd-subtitle" data-i18n="live-src-pollen-sub">Open-Meteo · Index européen pollen</p>
+        <div id="pollenWidget"><p class="lsd-loading" data-i18n="live-src-waiting">En attente de la géolocalisation…</p></div>
+      </div>
+      <!-- Widget SUM'EAU -->
+      <div class="lsd-card lsd-sumeau">
+        <h3 class="lsd-title" data-i18n="live-src-sumeau">COVID-19 — Eaux usées</h3>
+        <p class="lsd-subtitle" data-i18n="live-src-sumeau-sub">SUM'EAU · 54 collectivités · Signal précoce France</p>
+        <div id="sumeauWidget"><p class="lsd-loading">Chargement…</p></div>
+      </div>
+    </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== SURVEILLANCE SYNDROMIQUE ===== -->
+<section class="syndromic-section expert-only" id="syndromic" aria-labelledby="syndromic-title">
+  <div class="container">
+    <div class="section-header">
+      <h2 id="syndromic-title" data-i18n="syn-title">Surveillance syndromique — Détection précoce</h2>
+      <p class="section-subtitle" data-i18n="syn-subtitle">Détectez les épidémies 7–14 jours avant confirmation laboratoire · Algorithme OMS 7-1-7</p>
+    </div>
+
+    <!-- Niveaux d'alerte dynamiques -->
+    <div class="alert-levels-bar" id="alertLevelsBar">
+      <div class="al-item al-normal active" id="al-normal">
+        <span class="al-dot"></span><span class="al-label">NORMAL</span>
+        <span class="al-desc" data-i18n="al-normal-desc">Signal dans la norme historique (z &lt; 1.5σ)</span>
+      </div>
+      <div class="al-item al-jaune" id="al-jaune">
+        <span class="al-dot"></span><span class="al-label">⚠️ JAUNE</span>
+        <span class="al-desc" data-i18n="al-jaune-desc">Augmentation inhabituelle (z ≥ 1.5σ)</span>
+      </div>
+      <div class="al-item al-orange" id="al-orange">
+        <span class="al-dot"></span><span class="al-label">🟠 ORANGE</span>
+        <span class="al-desc" data-i18n="al-orange-desc">Signal épidémique probable (z ≥ 2σ · p&lt;5%)</span>
+      </div>
+      <div class="al-item al-rouge" id="al-rouge">
+        <span class="al-dot"></span><span class="al-label">🔴 ROUGE</span>
+        <span class="al-desc" data-i18n="al-rouge-desc">Épidémie confirmée (z ≥ 3σ · p&lt;0.3%)</span>
+      </div>
+    </div>
+
+    <!-- Courbe épidémique + stat -->
+    <div class="epi-dashboard">
+      <div class="epi-card epi-curve-card">
+        <div class="epi-card-header">
+          <span class="epi-card-title" data-i18n="epi-curve-title">Courbe épidémique — Grippe France (SPF)</span>
+          <span class="epi-card-sub" id="epiCurveStat"></span>
+        </div>
+        <div id="epiCurveChart" class="epi-curve-wrap">
+          <p class="epi-loading" data-i18n="epi-loading">Chargement des données SPF…</p>
+        </div>
+      </div>
+
+      <div class="epi-card epi-stats-card">
+        <div class="epi-card-title" data-i18n="epi-stats-title">Analyse statistique</div>
+        <div class="epi-stats-grid" id="epiStatsGrid">
+          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-current">Semaine actuelle</span><span class="epi-stat-val" id="epiStatCurrent">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-mean">Moyenne 52s</span><span class="epi-stat-val" id="epiStatMean">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-zscore">Score Z</span><span class="epi-stat-val" id="epiStatZ">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-thresh-jaune">Seuil JAUNE</span><span class="epi-stat-val" id="epiStatT1">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-thresh-orange">Seuil ORANGE</span><span class="epi-stat-val" id="epiStatT2">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-thresh-rouge">Seuil ROUGE</span><span class="epi-stat-val" id="epiStatT3">—</span></div>
+        </div>
+
+        <!-- Déclarations locales -->
+        <div class="epi-declarations-box">
+          <div class="epi-decl-title" data-i18n="epi-decl-local">Déclarations locales (cette semaine)</div>
+          <div class="epi-decl-counts" id="epiDeclCounts">
+            <span class="epi-decl-none" data-i18n="epi-decl-none">Aucune déclaration cette semaine</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Formulaire de déclaration syndromique -->
+    <div class="decl-form-container" id="declFormContainer">
+      <div class="decl-form-header">
+        <h3 class="decl-form-title" data-i18n="decl-title">📋 Déclarer des cas suspects</h3>
+        <p class="decl-form-sub" data-i18n="decl-subtitle">Formulaire ultra-rapide · &lt; 30 secondes · 100% anonyme · RGPD</p>
+        <div class="decl-pilot-badge" data-i18n="decl-pilot">⚗️ MODE PILOTE — données stockées localement · Pas de transmission serveur</div>
+      </div>
+
+      <form class="decl-form" id="declForm" onsubmit="submitDeclaration(event)" autocomplete="off" novalidate>
+
+        <!-- Pathologie suspecte — champ principal -->
+        <div class="decl-field decl-field-pathologie">
+          <label class="decl-label">🔬 Pathologie suspecte *</label>
+          <select class="decl-select decl-select-pathologie" name="pathologie" required id="declPathologie">
+            <option value="">— Sélectionner la pathologie —</option>
+            <option value="grippe">🤒 Grippe / Syndrome grippal (ILI)</option>
+            <option value="covid19">🦠 COVID-19 / SARS-CoV-2</option>
+            <option value="rsv">🌬️ VRS / Bronchiolite</option>
+            <option value="mpox">🔴 Mpox (variole du singe)</option>
+            <option value="dengue">🦟 Dengue</option>
+            <option value="cholera">💧 Choléra</option>
+            <option value="ebola">🩸 Ebola / Marburg / Hémorragique viral</option>
+            <option value="h5n1">🐦 H5N1 / Grippe aviaire</option>
+            <option value="mers">🐪 MERS-CoV</option>
+            <option value="rougeole">🔴 Rougeole</option>
+            <option value="meningo">🧠 Méningite bactérienne</option>
+            <option value="enceph">🧠 Encéphalite virale</option>
+            <option value="chikungunya">🦟 Chikungunya / Zika</option>
+            <option value="typhus">🦠 Typhus / Fièvre typhoïde</option>
+            <option value="anthrax">☣️ Charbon (anthrax)</option>
+            <option value="botulisme">⚠️ Botulisme</option>
+            <option value="autre">🏥 Autre syndrome à déclarer</option>
+          </select>
+        </div>
+
+        <!-- Syndrome -->
+        <div class="decl-field">
+          <label class="decl-label" data-i18n="decl-syndrome">Syndrome clinique *</label>
+          <div class="decl-radio-group" role="group">
+            <label class="decl-radio"><input type="radio" name="syndrome" value="grippal" required><span class="decl-radio-pill">🤒 Grippal</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="respiratoire"><span class="decl-radio-pill">😮‍💨 Respiratoire</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="diarrhéique"><span class="decl-radio-pill">🤢 Diarrhéique</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="fébrile"><span class="decl-radio-pill">🌡️ Fébrile aigu</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="neurologique"><span class="decl-radio-pill">🧠 Neurologique</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="hémorragique"><span class="decl-radio-pill">🩸 Hémorragique</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="cutané"><span class="decl-radio-pill">🔴 Cutané</span></label>
+          </div>
+        </div>
+
+        <!-- Nombre de cas + Âge + Gravité sur une ligne -->
+        <div class="decl-row">
+          <div class="decl-field">
+            <label class="decl-label" data-i18n="decl-count">Nb de cas *</label>
+            <select class="decl-select" name="count" required>
+              <option value="">—</option>
+              <option value="1-5">1 – 5</option>
+              <option value="6-20">6 – 20</option>
+              <option value="21-50">21 – 50</option>
+              <option value="50+">50+</option>
+            </select>
+          </div>
+          <div class="decl-field">
+            <label class="decl-label" data-i18n="decl-age">Âge *</label>
+            <select class="decl-select" name="age" required>
+              <option value="">—</option>
+              <option value="child" data-i18n="decl-age-child">Enfant (&lt;15 ans)</option>
+              <option value="adult" data-i18n="decl-age-adult">Adulte (15–64)</option>
+              <option value="senior" data-i18n="decl-age-senior">Senior (65+)</option>
+              <option value="mixed" data-i18n="decl-age-mixed">Tous âges</option>
+            </select>
+          </div>
+          <div class="decl-field">
+            <label class="decl-label" data-i18n="decl-severity">Gravité *</label>
+            <select class="decl-select" name="severity" required>
+              <option value="">—</option>
+              <option value="légère" data-i18n="decl-sev-mild">Légère</option>
+              <option value="modérée" data-i18n="decl-sev-moderate">Modérée</option>
+              <option value="sévère" data-i18n="decl-sev-severe">Sévère</option>
+              <option value="hospitalisation" data-i18n="decl-sev-hosp">Hospitalisation</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Date + Labo sur une ligne -->
+        <div class="decl-row">
+          <div class="decl-field">
+            <label class="decl-label" data-i18n="decl-date">Début des symptômes *</label>
+            <input type="date" class="decl-input" name="onset_date" required id="declOnsetDate">
+          </div>
+          <div class="decl-field">
+            <label class="decl-label" data-i18n="decl-lab">Labo positif ?</label>
+            <select class="decl-select" name="lab">
+              <option value="unknown" data-i18n="decl-lab-unknown">Sans objet</option>
+              <option value="yes" data-i18n="decl-lab-yes">Oui</option>
+              <option value="no" data-i18n="decl-lab-no">Non</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Consentement RGPD Art. 6 -->
+        <div class="decl-consent">
+          <label class="decl-consent-label">
+            <input type="checkbox" name="consent" required id="declConsent">
+            <span data-i18n="decl-consent-text">J'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n'est collectée (données agrégées uniquement). Conformément au RGPD, ces données peuvent être effacées à tout moment.</span>
+          </label>
+        </div>
+        <!-- Consentement explicite Art. 9 RGPD — données de santé -->
+        <div class="decl-consent decl-consent-art9">
+          <label class="decl-consent-label">
+            <input type="checkbox" name="consent_art9" required id="declConsentArt9">
+            <span data-i18n="decl-consent-art9">Je déclare agir en qualité de professionnel de santé ou de citoyen informé, et consens expressément au traitement de cette donnée de santé (Art. 9 RGPD) à des fins exclusives de surveillance épidémiologique locale, sans transmission serveur.</span>
+          </label>
+          <div class="decl-art9-badge">Art. 9 RGPD — Donnée de santé</div>
+        </div>
+
+        <div class="decl-actions">
+          <button type="submit" class="decl-submit-btn" id="declSubmitBtn" data-i18n="decl-submit">📤 Déclarer — Anonymement</button>
+          <span class="decl-privacy-note">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <span data-i18n="decl-privacy-note">Aucune donnée personnelle collectée — uniquement syndrome, effectif, semaine, région approximative</span>
+          </span>
+        </div>
+      </form>
+
+      <!-- Confirmation + widget signal -->
+      <div class="decl-confirm hidden" id="declConfirm">
+        <div class="decl-confirm-icon">✅</div>
+        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Déclaration enregistrée localement</p>
+        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Signal intégré à l'analyse locale en temps réel.</p>
+
+        <!-- Widget signal épidémique injecté ici après déclaration -->
+        <div id="epiSignalResult" class="epi-signal-result-wrap"></div>
+
+        <button class="decl-confirm-btn" onclick="resetDeclForm()" data-i18n="decl-confirm-new">+ Nouvelle déclaration</button>
       </div>
     </div>
   </div>
@@ -570,13 +966,12 @@
 <!-- ===== PROTECTION SECTION ===== -->
 <section class="protection-section expert-only" id="protection" aria-labelledby="protection-title">
   <div class="container">
-    <div class="section-header">
-      <h2 id="protection-title" data-i18n="protection-title">Guide de protection respiratoire</h2>
-      <p class="section-subtitle" data-i18n="protection-subtitle">
-        Critères de sélection et d'usage des équipements de protection respiratoire.
-        Standards internationaux EN 149, NIOSH N95, GB 2626-2019.
-      </p>
-    </div>
+    <details class="collapsible-section" open>
+      <summary class="collapsible-summary">
+        <span class="collapsible-title" id="protection-title" data-i18n="protection-title">Guide de protection respiratoire</span>
+        <span class="collapsible-sub">FFP2 / N95 · FFP3 · Chirurgical · Comparatif standards</span>
+        <span class="collapsible-chevron" aria-hidden="true">▾</span>
+      </summary>
 
     <div class="protection-grid">
       <!-- FFP2 card -->
@@ -708,18 +1103,19 @@
         <span class="cite-marker"><a href="bibliography.html#ref-04" class="cite-link" aria-label="Voir référence Ueki 2020">[4]</a></span>
       </p>
     </div>
+    </details>
   </div>
 </section>
 
 <!-- ===== ABOUT / TRUST SECTION ===== -->
 <section class="about-section expert-only" id="about" aria-labelledby="about-title">
   <div class="container">
-    <div class="section-header">
-      <h2 id="about-title" data-i18n="about-title">Confiance &amp; Transparence</h2>
-      <p class="section-subtitle" data-i18n="about-subtitle">
-        BreathIQ est un projet personnel indépendant, construit sur des données publiques vérifiables.
-      </p>
-    </div>
+    <details class="collapsible-section">
+      <summary class="collapsible-summary">
+        <span class="collapsible-title" id="about-title" data-i18n="about-title">Confiance &amp; Transparence</span>
+        <span class="collapsible-sub">Dr. Clément MÉDEAU · Sources vérifiables · RGPD · Non-DMN</span>
+        <span class="collapsible-chevron" aria-hidden="true">▾</span>
+      </summary>
 
     <div class="trust-grid">
       <div class="trust-card author-card">
@@ -782,6 +1178,20 @@
         </p>
       </div>
     </div>
+    </details>
+  </div>
+</section>
+
+<!-- ===== MES DONNÉES ===== -->
+<section class="mydata-section" id="mydata" aria-labelledby="mydata-title">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2 id="mydata-title" data-i18n="mydata-title">Mes données &amp; confidentialité</h2>
+      <p class="section-subtitle" data-i18n="mydata-subtitle">Consultez, gérez et effacez les données stockées sur votre appareil.</p>
+    </div>
+    <div id="myDataSummary" aria-live="polite">
+      <!-- Rendu dynamique par renderMyDataSection() -->
+    </div>
   </div>
 </section>
 
@@ -799,6 +1209,7 @@
       <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>
       <a href="conditions-utilisation.html" data-i18n="footer-cgu">CGU</a>
       <a href="privacy.html" data-i18n="footer-privacy">Confidentialité</a>
+      <a href="#mydata" data-i18n="nav-mydata">Mes données</a>
       <a href="legal-notice.html" data-i18n="footer-legal-en">Legal Notice (EN)</a>
     </nav>
 
@@ -829,11 +1240,62 @@
   </a>
 </nav>
 
+<!-- ===== GEOLOCATION PERMISSION MODAL ===== -->
+<div id="geoModal" class="geo-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="geoModalTitle" hidden>
+  <div class="geo-modal">
+    <div class="geo-modal-icon">📍</div>
+    <h3 class="geo-modal-title" id="geoModalTitle" data-i18n="geo-modal-title">Accéder à votre position</h3>
+    <p class="geo-modal-body" data-i18n="geo-modal-body">
+      Pour afficher les médecins et hôpitaux les plus proches, BreathIQ a besoin d'accéder temporairement à votre localisation.
+    </p>
+    <ul class="geo-modal-guarantees">
+      <li>🔒 <span data-i18n="geo-modal-g1">Votre position n'est jamais enregistrée sur nos serveurs</span></li>
+      <li>👁️ <span data-i18n="geo-modal-g2">Utilisée uniquement pour rechercher les soins proches</span></li>
+      <li>🗑️ <span data-i18n="geo-modal-g3">Effacée dès la fermeture de la page</span></li>
+    </ul>
+    <div class="geo-modal-actions">
+      <button class="geo-btn-refuse" id="geoRefuseBtn" onclick="closeGeoModal(false)" data-i18n="geo-modal-refuse">✕ Refuser</button>
+      <button class="geo-btn-accept" id="geoAcceptBtn" onclick="closeGeoModal(true)" data-i18n="geo-modal-accept">✓ Accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL ESPACE SOIGNANT ===== -->
+<div id="soignantModal" class="soignant-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="soignantModalTitle" hidden>
+  <div class="soignant-modal-box">
+    <div class="soignant-modal-icon">👨‍⚕️</div>
+    <h2 class="soignant-modal-title" id="soignantModalTitle">Espace Professionnel de Santé</h2>
+    <p class="soignant-modal-desc">Cet espace est réservé aux <strong>médecins, infirmiers, pharmaciens et épidémiologistes</strong>. Il donne accès au module de déclaration de cas et à la surveillance épidémique avancée.</p>
+
+    <div class="soignant-modal-features">
+      <span>🩺 Déclaration de cas anonyme</span>
+      <span>📊 Détection Z-score en temps réel</span>
+      <span>📧 Alerte aux autorités sanitaires</span>
+    </div>
+
+    <div class="soignant-pass-group">
+      <label class="soignant-pass-label" for="soignantPassInput">Code d'accès professionnel</label>
+      <input class="soignant-pass-input" type="password" id="soignantPassInput"
+             placeholder="Code professionnel"
+             onkeydown="if(event.key==='Enter')validateSoignantPass()"
+             autocomplete="current-password">
+      <p class="soignant-pass-hint">Vous êtes soignant et n'avez pas encore de code ? <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></p>
+    </div>
+
+    <div class="soignant-modal-actions">
+      <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
+      <button class="soignant-btn-validate" onclick="validateSoignantPass()">✓ Accéder</button>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MODAL ALERTE AUTORITÉS (injecté par JS) ===== -->
+
 <!-- BreathIQ script -->
 <!-- Leaflet — en bas pour ne pas bloquer le premier rendu -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
 <!-- API live santé publique -->
-<script src="api-live.js" defer></script>
-<script src="script.js" defer></script>
+<script src="api-live.js?v=20260522" defer></script>
+<script src="script.js?v=20260522" defer></script>
 </body>
 </html>

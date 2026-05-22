@@ -1,0 +1,372 @@
+'use strict';
+
+/**
+ * stocks-live.js — BreathIQ
+ * Couche fetch + cache + scoring pour la carte FFP2 mondiale.
+ * Pas de backend requis : tout en localStorage + API publiques.
+ */
+
+// ── Clés API (null = fallback gratuit activé) ─────────────────────────────────
+const API_KEYS = {
+  waqi:         null,   // https://aqicn.org/api/
+  googlePlaces: null,   // fallback premium pharmacies
+  synapse:      null,   // https://www.synapse-medicine.com/fr/api-rupture-stock-medicaments
+};
+
+// ── TTL Cache ────────────────────────────────────────────────────────────────
+const CACHE_TTL = {
+  pharmacies: 24 * 60 * 60 * 1000,
+  shortages:   4 * 60 * 60 * 1000,
+  aqi:        30 * 60 * 1000,
+  epi:        12 * 60 * 60 * 1000,
+  korean:      1 * 60 * 60 * 1000,
+};
+
+// ── Helpers cache localStorage ────────────────────────────────────────────────
+function cacheGet(key) {
+  try {
+    const raw = localStorage.getItem('biq-live-' + key);
+    if (!raw) return null;
+    const { data, ts, ttl } = JSON.parse(raw);
+    if (Date.now() - ts > ttl) return null;
+    return data;
+  } catch { return null; }
+}
+
+function cacheSet(key, data, ttl) {
+  try {
+    localStorage.setItem('biq-live-' + key, JSON.stringify({ data, ts: Date.now(), ttl }));
+  } catch { /* localStorage plein */ }
+}
+
+function cachePeek(key) {
+  try {
+    const raw = localStorage.getItem('biq-live-' + key);
+    if (!raw) return null;
+    const { data, ts, ttl } = JSON.parse(raw);
+    return { data, age: Date.now() - ts, ttl, fresh: Date.now() - ts <= ttl };
+  } catch { return null; }
+}
+
+// ── Fetch générique avec cache + fallback sur données périmées ─────────────────
+async function fetchWithCache(url, cacheKey, ttl, options = {}) {
+  const cached = cacheGet(cacheKey);
+  if (cached) return { data: cached, fromCache: true, stale: false };
+
+  try {
+    const resp = await fetch(url, {
+      ...options,
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+    const data = await resp.json();
+    cacheSet(cacheKey, data, ttl);
+    return { data, fromCache: false, stale: false };
+  } catch (err) {
+    const stale = cachePeek(cacheKey);
+    if (stale) return { data: stale.data, fromCache: true, stale: true };
+    throw err;
+  }
+}
+
+// ── Pharmacies OSM (Overpass API) — global, gratuit ───────────────────────────
+let _lastOverpassCall = 0;
+const OVERPASS_MIN_INTERVAL = 2500;
+
+async function fetchPharmaciesOSM(bounds) {
+  const { south, west, north, east } = bounds;
+  // Limiter la bbox pour éviter des requêtes trop larges
+  const latSpan = north - south;
+  const lngSpan = east - west;
+  if (latSpan > 5 || lngSpan > 8) {
+    return { pharmacies: [], limited: true };
+  }
+
+  const bbox = `${south.toFixed(4)},${west.toFixed(4)},${north.toFixed(4)},${east.toFixed(4)}`;
+  const cacheKey = `osm-ph-${bbox.replace(/[.,\-]/g, '_')}`;
+
+  const cached = cacheGet(cacheKey);
+  if (cached) return { pharmacies: cached, fromCache: true };
+
+  const wait = OVERPASS_MIN_INTERVAL - (Date.now() - _lastOverpassCall);
+  if (wait > 0) await new Promise(r => setTimeout(r, wait));
+  _lastOverpassCall = Date.now();
+
+  const query = `[out:json][timeout:20];node["amenity"="pharmacy"](${bbox});out body;`;
+  const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+
+  try {
+    const resp = await fetch(url, { signal: AbortSignal.timeout(25000) });
+    if (!resp.ok) throw new Error(`Overpass ${resp.status}`);
+    const json = await resp.json();
+
+    const pharmacies = (json.elements || []).map(el => ({
+      id: el.id,
+      lat: el.lat,
+      lng: el.lon,
+      name: el.tags?.name || el.tags?.['name:fr'] || 'Pharmacie',
+      opening_hours: el.tags?.opening_hours || null,
+      phone: el.tags?.phone || null,
+      addr: [
+        el.tags?.['addr:housenumber'],
+        el.tags?.['addr:street'],
+        el.tags?.['addr:city'],
+      ].filter(Boolean).join(' '),
+      dispensing: el.tags?.dispensing !== 'no',
+    }));
+
+    cacheSet(cacheKey, pharmacies, CACHE_TTL.pharmacies);
+    return { pharmacies, fromCache: false };
+  } catch (err) {
+    console.warn('[stocks-live] Overpass error:', err.message);
+    return { pharmacies: [], error: err.message };
+  }
+}
+
+// ── Masques Corée (HIRA/NIA — modèle de référence mondial) ───────────────────
+function koreanStatToScore(stat) {
+  return { plenty: 90, some: 60, few: 25, empty: 5 }[stat] ?? 50;
+}
+
+async function fetchKoreanMaskStock(lat, lng) {
+  const cacheKey = `kr-${Math.round(lat * 10)}-${Math.round(lng * 10)}`;
+  const cached = cacheGet(cacheKey);
+  if (cached) return cached;
+
+  const url = `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json?lat=${lat}&lng=${lng}&m=5000`;
+  try {
+    const resp = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    if (!resp.ok) throw new Error(`Korean API ${resp.status}`);
+    const data = await resp.json();
+    const stores = (data.stores || []).map(s => ({
+      id: s.code,
+      name: s.name,
+      lat: s.lat,
+      lng: s.lng,
+      addr: s.addr,
+      remain_stat: s.remain_stat,
+      stock_at: s.stock_at,
+    }));
+    cacheSet(cacheKey, stores, CACHE_TTL.korean);
+    return stores;
+  } catch (err) {
+    console.warn('[stocks-live] Korean mask API error:', err.message);
+    return null;
+  }
+}
+
+// ── AQI — Open-Meteo (gratuit) + WAQI fallback ────────────────────────────────
+async function fetchAQI(lat, lng) {
+  const cacheKey = `aqi-${Math.round(lat * 10)}-${Math.round(lng * 10)}`;
+  const cached = cacheGet(cacheKey);
+  if (cached) return cached;
+
+  // Priorité : Open-Meteo (gratuit, pas de clé)
+  const omUrl = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${lat.toFixed(4)}&longitude=${lng.toFixed(4)}&current=pm10,pm2_5,european_aqi&timezone=auto`;
+  try {
+    const resp = await fetch(omUrl, { signal: AbortSignal.timeout(8000) });
+    if (!resp.ok) throw new Error(`Open-Meteo ${resp.status}`);
+    const json = await resp.json();
+    const result = {
+      aqi: json.current?.european_aqi ?? null,
+      pm25: json.current?.pm2_5 ?? null,
+      pm10: json.current?.pm10 ?? null,
+      source: 'open-meteo',
+    };
+    cacheSet(cacheKey, result, CACHE_TTL.aqi);
+    return result;
+  } catch {}
+
+  // Fallback : WAQI (si clé présente)
+  if (API_KEYS.waqi) {
+    try {
+      const wUrl = `https://api.waqi.info/feed/geo:${lat};${lng}/?token=${API_KEYS.waqi}`;
+      const wr = await fetch(wUrl, { signal: AbortSignal.timeout(8000) });
+      const wj = await wr.json();
+      if (wj.status === 'ok') {
+        const result = { aqi: wj.data?.aqi ?? null, source: 'waqi' };
+        cacheSet(cacheKey, result, CACHE_TTL.aqi);
+        return result;
+      }
+    } catch {}
+  }
+
+  return null;
+}
+
+// ── Ruptures France (ANSM via data.gouv) ─────────────────────────────────────
+async function fetchShortagesFR() {
+  const cacheKey = 'shortages-fr';
+  const cached = cacheGet(cacheKey);
+  if (cached) return cached;
+
+  // ANSM — liste des ruptures de stock déclarées (open data)
+  const url = 'https://www.data.gouv.fr/api/1/datasets/5e7e104ace2080d9162b61d8/resources/?page=1&type=main';
+  try {
+    const resp = await fetch(url, { signal: AbortSignal.timeout(8000) });
+    if (!resp.ok) throw new Error(`ANSM ${resp.status}`);
+    const json = await resp.json();
+    const resources = json.data || [];
+    const csvRes = resources.find(r => r.format === 'csv' || r.url?.endsWith('.csv'));
+    const result = {
+      count: resources.length,
+      latestFile: csvRes?.url || null,
+      updatedAt: csvRes?.last_modified || null,
+      source: 'ansm-data-gouv',
+    };
+    cacheSet(cacheKey, result, CACHE_TTL.shortages);
+    return result;
+  } catch (err) {
+    console.warn('[stocks-live] Shortages FR error:', err.message);
+    return { count: 0, source: 'fallback' };
+  }
+}
+
+// ── Score de disponibilité composite ─────────────────────────────────────────
+function computeAvailabilityScore(countryId, signals = {}) {
+  const {
+    shortageReports = 0,
+    pharmacyDensity = 50,
+    aqiLevel = null,
+    epiZscore = 0,
+    directStock = null,
+  } = signals;
+
+  if (directStock != null) {
+    if (typeof directStock === 'string') return koreanStatToScore(directStock);
+    return Math.max(0, Math.min(100, directStock));
+  }
+
+  const shortageBase  = shortageReports > 0 ? Math.max(0, 50 - shortageReports * 8) : 50;
+  const densityBonus  = Math.min(25, (pharmacyDensity / 100) * 25);
+  const epiPenalty    = epiZscore > 2.0 ? -15 : epiZscore > 1.5 ? -8 : 0;
+  const aqiPenalty    = aqiLevel != null && aqiLevel > 150 ? -5 : 0;
+
+  return Math.max(0, Math.min(100, shortageBase + densityBonus + epiPenalty + aqiPenalty));
+}
+
+function scoreToAlertLevel(score) {
+  if (score >= 76) return 'SUFFICIENT';
+  if (score >= 51) return 'MODERATE';
+  if (score >= 26) return 'LOW';
+  return 'CRITICAL';
+}
+
+// ── Enrichissement asynchrone de STOCKS_DEMO_DATA ────────────────────────────
+async function enrichStocksData() {
+  if (typeof STOCKS_DEMO_DATA === 'undefined') return [];
+  const enriched = STOCKS_DEMO_DATA.map(d => ({
+    ...d,
+    liveScore: null,
+    liveSource: 'static',
+  }));
+
+  // Corée : API directe masques
+  const krIdx = enriched.findIndex(d => d.id === 'KR');
+  if (krIdx >= 0) {
+    try {
+      const stores = await fetchKoreanMaskStock(37.5665, 126.978);
+      if (stores && stores.length > 0) {
+        const avgScore = stores.reduce((s, st) => s + koreanStatToScore(st.remain_stat), 0) / stores.length;
+        enriched[krIdx].liveScore = Math.round(avgScore);
+        enriched[krIdx].liveSource = 'korean-api';
+        enriched[krIdx].liveDetail = `${stores.length} points de vente`;
+      }
+    } catch {}
+  }
+
+  // France : signal ruptures ANSM
+  const frIdx = enriched.findIndex(d => d.id === 'FR');
+  if (frIdx >= 0) {
+    try {
+      const shortages = await fetchShortagesFR();
+      const score = computeAvailabilityScore('FR', {
+        shortageReports: shortages.count > 100 ? 3 : shortages.count > 20 ? 1 : 0,
+      });
+      enriched[frIdx].liveScore = score;
+      enriched[frIdx].liveSource = shortages.source;
+    } catch {}
+  }
+
+  return enriched;
+}
+
+// ── Countdown et auto-refresh ─────────────────────────────────────────────────
+const REFRESH_INTERVAL = 4 * 60 * 60 * 1000;
+const REFRESH_KEY = 'biq-stocks-last-refresh';
+
+function getNextRefreshMs() {
+  const last = parseInt(localStorage.getItem(REFRESH_KEY) || '0', 10);
+  return Math.max(0, last + REFRESH_INTERVAL - Date.now());
+}
+
+function markRefreshed() {
+  localStorage.setItem(REFRESH_KEY, String(Date.now()));
+}
+
+function formatCountdown(ms) {
+  if (ms <= 0) return 'Mise à jour disponible';
+  const h = Math.floor(ms / 3_600_000);
+  const m = Math.floor((ms % 3_600_000) / 60_000);
+  return h > 0
+    ? `MAJ dans ${h}h ${String(m).padStart(2, '0')}min`
+    : `MAJ dans ${m}min`;
+}
+
+function scheduleAutoRefresh(onRefresh) {
+  markRefreshed();
+  const badge = document.getElementById('refreshCountdown');
+  let iv;
+
+  function tick() {
+    const ms = getNextRefreshMs();
+    if (badge) badge.textContent = formatCountdown(ms);
+    if (ms <= 0) {
+      clearInterval(iv);
+      onRefresh().then(() => scheduleAutoRefresh(onRefresh));
+    }
+  }
+
+  iv = setInterval(tick, 30_000);
+  tick();
+  return () => clearInterval(iv);
+}
+
+// ── AQI → couleur CSS ─────────────────────────────────────────────────────────
+function aqiToColor(aqi) {
+  if (aqi == null) return '#9CA3AF';
+  if (aqi > 200) return '#DC2626';
+  if (aqi > 150) return '#EA580C';
+  if (aqi > 100) return '#CA8A04';
+  if (aqi > 50)  return '#65A30D';
+  return '#16A34A';
+}
+
+function aqiToLabel(aqi) {
+  if (aqi == null) return 'Inconnu';
+  if (aqi > 200) return 'Très mauvais';
+  if (aqi > 150) return 'Mauvais';
+  if (aqi > 100) return 'Médiocre';
+  if (aqi > 50)  return 'Moyen';
+  return 'Bon';
+}
+
+// ── Exposition publique ───────────────────────────────────────────────────────
+window.StocksLive = {
+  fetchPharmaciesOSM,
+  fetchKoreanMaskStock,
+  fetchAQI,
+  fetchShortagesFR,
+  computeAvailabilityScore,
+  scoreToAlertLevel,
+  enrichStocksData,
+  scheduleAutoRefresh,
+  formatCountdown,
+  getNextRefreshMs,
+  aqiToColor,
+  aqiToLabel,
+  koreanStatToScore,
+  cacheGet,
+  cacheSet,
+  cachePeek,
+};

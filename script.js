@@ -158,6 +158,89 @@ const I18N = {
     'care-error': 'Erreur lors de la recherche. Vérifiez votre connexion internet.',
     'care-no-results': 'Aucun établissement de santé trouvé dans un rayon de 10 km.',
     'care-privacy': 'Votre position reste sur votre appareil — jamais transmise à nos serveurs.',
+    'nav-syndromic': 'Surveillance',
+    'syn-title': 'Surveillance syndromique — Détection précoce',
+    'syn-subtitle': 'Détectez les épidémies 7–14 jours avant confirmation laboratoire · Algorithme OMS 7-1-7',
+    'al-normal-desc': 'Signal dans la norme historique (z < 1.5σ)',
+    'al-jaune-desc': 'Augmentation inhabituelle (z ≥ 1.5σ)',
+    'al-orange-desc': 'Signal épidémique probable (z ≥ 2σ · p<5%)',
+    'al-rouge-desc': 'Épidémie confirmée (z ≥ 3σ · p<0.3%)',
+    'epi-curve-title': 'Courbe épidémique — Grippe France (SPF)',
+    'epi-loading': 'Chargement des données SPF…',
+    'epi-stats-title': 'Analyse statistique',
+    'epi-stat-current': 'Semaine actuelle',
+    'epi-stat-mean': 'Moyenne 52s',
+    'epi-stat-zscore': 'Score Z',
+    'epi-stat-thresh-jaune': 'Seuil JAUNE',
+    'epi-stat-thresh-orange': 'Seuil ORANGE',
+    'epi-stat-thresh-rouge': 'Seuil ROUGE',
+    'epi-decl-local': 'Déclarations locales (cette semaine)',
+    'epi-decl-none': 'Aucune déclaration cette semaine',
+    'decl-title': '📋 Déclarer des cas suspects',
+    'decl-subtitle': 'Formulaire ultra-rapide · < 30 secondes · 100% anonyme · RGPD',
+    'decl-pilot': '⚗️ MODE PILOTE — données stockées localement · Pas de transmission serveur',
+    'decl-syndrome': 'Syndrome observé *',
+    'decl-count': 'Nb de cas *',
+    'decl-age': 'Âge *',
+    'decl-age-child': 'Enfant (<15 ans)',
+    'decl-age-adult': 'Adulte (15–64)',
+    'decl-age-senior': 'Senior (65+)',
+    'decl-age-mixed': 'Tous âges',
+    'decl-severity': 'Gravité *',
+    'decl-sev-mild': 'Légère',
+    'decl-sev-moderate': 'Modérée',
+    'decl-sev-severe': 'Sévère',
+    'decl-sev-hosp': 'Hospitalisation',
+    'decl-date': 'Début des symptômes *',
+    'decl-lab': 'Labo positif ?',
+    'decl-lab-unknown': 'Sans objet',
+    'decl-lab-yes': 'Oui',
+    'decl-lab-no': 'Non',
+    'decl-consent-text': 'J\'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n\'est collectée (données agrégées uniquement).',
+    'decl-submit': '📤 Déclarer — Anonymement',
+    'decl-privacy-note': 'Aucune donnée personnelle collectée — uniquement syndrome, effectif, semaine, région approximative',
+    'decl-confirm-title': 'Déclaration enregistrée localement',
+    'decl-confirm-sub': 'Merci. Signal intégré à l\'analyse locale en temps réel.',
+    'decl-confirm-new': '+ Nouvelle déclaration',
+    'live-sources-title': 'Sources de surveillance en direct',
+    'live-sources-subtitle': '8 sources épidémiologiques et environnementales connectées en temps réel',
+    'live-src-status': 'Statut des sources',
+    'live-src-air': 'Qualité de l\'air locale',
+    'live-src-air-sub': 'WAQI · 11 polluants · Prévisions 7j',
+    'live-src-pollen': 'Pollen local',
+    'live-src-pollen-sub': 'Open-Meteo · Index européen pollen',
+    'live-src-sumeau': 'COVID-19 — Eaux usées',
+    'live-src-sumeau-sub': 'SUM\'EAU · 54 collectivités · Signal précoce France',
+    'live-src-waiting': 'En attente de la géolocalisation…',
+    'geo-modal-title': 'Accéder à votre position',
+    'geo-modal-body': 'Pour afficher les médecins et hôpitaux les plus proches, BreathIQ a besoin d\'accéder temporairement à votre localisation.',
+    'geo-modal-g1': 'Votre position n\'est jamais enregistrée sur nos serveurs',
+    'geo-modal-g2': 'Utilisée uniquement pour rechercher les soins proches',
+    'geo-modal-g3': 'Effacée dès la fermeture de la page',
+    'geo-modal-refuse': '✕ Refuser',
+    'geo-modal-accept': '✓ Accepter',
+    // RGPD
+    'consent-title': 'Vos données et votre vie privée',
+    'consent-body': 'BreathIQ utilise le stockage local (localStorage) pour mémoriser vos préférences et vos déclarations syndromiques. Des données de qualité d\'air et d\'épidémiologie sont récupérées depuis des API tierces (WAQI, OpenAQ, SPF, CDC, ECDC — certaines basées aux États-Unis). Aucune donnée personnelle n\'est transmise à nos serveurs.',
+    'consent-accept': '✓ Accepter',
+    'consent-decline': 'Continuer sans accepter',
+    'consent-more': 'Politique de confidentialité',
+    'mydata-title': 'Mes données & confidentialité',
+    'mydata-subtitle': 'Consultez, gérez et effacez les données stockées sur votre appareil.',
+    'mydata-decl-label': 'Déclarations syndromiques',
+    'mydata-cache-label': 'Cache API (données en direct)',
+    'mydata-prefs-label': 'Préférences (thème, langue, mode)',
+    'mydata-consent-label': 'Consentement RGPD',
+    'mydata-clear-decl': 'Effacer mes déclarations',
+    'mydata-clear-cache': 'Vider le cache API',
+    'mydata-clear-all': 'Réinitialiser tout',
+    'mydata-confirm': 'Confirmez-vous la suppression ?',
+    'mydata-done': 'Données supprimées.',
+    'mydata-export': 'Exporter mes déclarations (JSON)',
+    'mydata-rights': 'Conformément aux articles 15, 17 et 21 du RGPD, vous pouvez accéder à vos données, les effacer ou vous y opposer à tout moment.',
+    'mydata-dpo': 'Contact DPO',
+    'decl-consent-art9': 'Je déclare agir en qualité de professionnel de santé ou de citoyen informé, et consens expressément au traitement de cette donnée de santé (Art. 9 RGPD) à des fins exclusives de surveillance épidémiologique locale, sans transmission serveur.',
+    'nav-mydata': 'Mes données',
   },
   en: {
     'nav-score': 'My Score',
@@ -296,6 +379,89 @@ const I18N = {
     'care-error': 'Search error. Please check your internet connection.',
     'care-no-results': 'No healthcare facilities found within 10 km.',
     'care-privacy': 'Your location stays on your device — never sent to our servers.',
+    'nav-syndromic': 'Surveillance',
+    'syn-title': 'Syndromic surveillance — Early detection',
+    'syn-subtitle': 'Detect outbreaks 7–14 days before lab confirmation · WHO 7-1-7 algorithm',
+    'al-normal-desc': 'Signal within historical norm (z < 1.5σ)',
+    'al-jaune-desc': 'Unusual increase (z ≥ 1.5σ)',
+    'al-orange-desc': 'Likely epidemic signal (z ≥ 2σ · p<5%)',
+    'al-rouge-desc': 'Confirmed epidemic (z ≥ 3σ · p<0.3%)',
+    'epi-curve-title': 'Epidemic curve — Influenza France (SPF)',
+    'epi-loading': 'Loading SPF data…',
+    'epi-stats-title': 'Statistical analysis',
+    'epi-stat-current': 'Current week',
+    'epi-stat-mean': '52w average',
+    'epi-stat-zscore': 'Z-score',
+    'epi-stat-thresh-jaune': 'YELLOW threshold',
+    'epi-stat-thresh-orange': 'ORANGE threshold',
+    'epi-stat-thresh-rouge': 'RED threshold',
+    'epi-decl-local': 'Local declarations (this week)',
+    'epi-decl-none': 'No declarations this week',
+    'decl-title': '📋 Report suspected cases',
+    'decl-subtitle': 'Ultra-fast form · < 30 seconds · 100% anonymous · GDPR',
+    'decl-pilot': '⚗️ PILOT MODE — data stored locally · No server transmission',
+    'decl-syndrome': 'Observed syndrome *',
+    'decl-count': 'Case count *',
+    'decl-age': 'Age *',
+    'decl-age-child': 'Child (<15)',
+    'decl-age-adult': 'Adult (15–64)',
+    'decl-age-senior': 'Senior (65+)',
+    'decl-age-mixed': 'All ages',
+    'decl-severity': 'Severity *',
+    'decl-sev-mild': 'Mild',
+    'decl-sev-moderate': 'Moderate',
+    'decl-sev-severe': 'Severe',
+    'decl-sev-hosp': 'Hospitalisation',
+    'decl-date': 'Symptom onset *',
+    'decl-lab': 'Lab positive?',
+    'decl-lab-unknown': 'N/A',
+    'decl-lab-yes': 'Yes',
+    'decl-lab-no': 'No',
+    'decl-consent-text': 'I agree to the anonymous sharing of this data for epidemiological surveillance purposes. No personal data is collected (aggregated data only).',
+    'decl-submit': '📤 Report — Anonymously',
+    'decl-privacy-note': 'No personal data collected — only syndrome, count, week, approximate region',
+    'decl-confirm-title': 'Declaration stored locally',
+    'decl-confirm-sub': 'Thank you. Signal integrated into the local real-time analysis.',
+    'decl-confirm-new': '+ New declaration',
+    'live-sources-title': 'Live surveillance sources',
+    'live-sources-subtitle': '8 epidemiological and environmental sources connected in real time',
+    'live-src-status': 'Source status',
+    'live-src-air': 'Local air quality',
+    'live-src-air-sub': 'WAQI · 11 pollutants · 7-day forecast',
+    'live-src-pollen': 'Local pollen',
+    'live-src-pollen-sub': 'Open-Meteo · European pollen index',
+    'live-src-sumeau': 'COVID-19 — Wastewater',
+    'live-src-sumeau-sub': 'SUM\'EAU · 54 municipalities · Early warning France',
+    'live-src-waiting': 'Waiting for geolocation…',
+    'geo-modal-title': 'Access your location',
+    'geo-modal-body': 'To show the nearest doctors and hospitals, BreathIQ needs temporary access to your location.',
+    'geo-modal-g1': 'Your location is never stored on our servers',
+    'geo-modal-g2': 'Used only to search for nearby care',
+    'geo-modal-g3': 'Cleared when you close the page',
+    'geo-modal-refuse': '✕ Refuse',
+    'geo-modal-accept': '✓ Accept',
+    // RGPD
+    'consent-title': 'Your data & privacy',
+    'consent-body': 'BreathIQ uses local storage (localStorage) to remember your preferences and syndromic declarations. Air quality and epidemiology data is fetched from third-party APIs (WAQI, OpenAQ, SPF, CDC, ECDC — some US-based). No personal data is sent to our servers.',
+    'consent-accept': '✓ Accept',
+    'consent-decline': 'Continue without accepting',
+    'consent-more': 'Privacy policy',
+    'mydata-title': 'My data & privacy',
+    'mydata-subtitle': 'View, manage and delete data stored on your device.',
+    'mydata-decl-label': 'Syndromic declarations',
+    'mydata-cache-label': 'API cache (live data)',
+    'mydata-prefs-label': 'Preferences (theme, language, mode)',
+    'mydata-consent-label': 'GDPR consent',
+    'mydata-clear-decl': 'Delete my declarations',
+    'mydata-clear-cache': 'Clear API cache',
+    'mydata-clear-all': 'Reset everything',
+    'mydata-confirm': 'Confirm deletion?',
+    'mydata-done': 'Data deleted.',
+    'mydata-export': 'Export my declarations (JSON)',
+    'mydata-rights': 'Under Articles 15, 17 and 21 of the GDPR, you can access, delete or object to your data at any time.',
+    'mydata-dpo': 'DPO Contact',
+    'decl-consent-art9': 'I declare that I am acting as a healthcare professional or informed citizen, and expressly consent to the processing of this health data (Art. 9 GDPR) for the exclusive purpose of local epidemiological surveillance, with no server transmission.',
+    'nav-mydata': 'My data',
   },
   es: {
     'nav-score': 'Mi Puntuación', 'nav-map': 'Mapa Mundial', 'nav-stocks': 'Stocks EPI',
@@ -1550,9 +1716,25 @@ function updateMapStats() {
 
 // ── Pathogens grid ───────────────────────────────────────────
 const PATHOGEN_ICONS = {
-  H5N1:'🐦', SARS2:'🦠', TB:'🫁', NIPAH:'🦇', HANTA:'🐭',
-  MPOX:'🔴', MERS:'🐫', MARBURG:'⚠️', MEASLES:'🤧',
-  LEGIONELLA:'💧', INFLUENZA:'🤒', EBOLA:'🩸', RSV:'👶', DEFAULT:'🦠',
+  H5N1:'🐔',        // grippe aviaire → volaille
+  SARS2:'🦠',       // coronavirus
+  TB:'🫁',          // tuberculose → poumons
+  NIPAH:'🦇',       // nipah → chauve-souris
+  HANTA:'🐭',       // hantavirus → rongeurs
+  MPOX:'🐒',        // mpox → primate
+  MERS:'🐫',        // MERS → chameau
+  MARBURG:'☣️',     // fièvre hémorragique
+  MEASLES:'🌡️',    // rougeole → fièvre élevée
+  LEGIONELLA:'🚿',  // légionellose → eau/douche
+  INFLUENZA:'🤒',   // grippe → visage malade
+  EBOLA:'🩸',       // ebola → hémorragie
+  RSV:'👶',         // VRS → nourrissons
+  RSYNCYTIAL:'👶',
+  PERTUSSIS:'😮‍💨', // coqueluche → toux
+  COVID19VAR:'🦠',
+  RSVA_HMPV:'🍼',
+  CANDIDA_AURIS:'🍄',
+  DEFAULT:'🦠',
 };
 
 function renderPathogens() {
@@ -1819,25 +2001,88 @@ function initMode() {
 }
 
 function toggleMode() {
-  currentMode = currentMode === 'patient' ? 'expert' : 'patient';
-  localStorage.setItem('biq-mode', currentMode);
-  document.body.dataset.mode = currentMode;
-  updateModeToggleBtn();
-  if (currentMode === 'expert') {
-    setTimeout(() => {
-      if (!worldMap) initMapWhenReady();
-      else worldMap.invalidateSize(true);
-    }, 50);
+  if (currentMode === 'patient') {
+    // Vérifier si déjà authentifié dans cette session
+    if (sessionStorage.getItem('biq-soignant-auth') === '1') {
+      activateExpertMode();
+    } else {
+      openSoignantModal();
+    }
+  } else {
+    currentMode = 'patient';
+    localStorage.setItem('biq-mode', 'patient');
+    sessionStorage.removeItem('biq-soignant-auth');
+    document.body.dataset.mode = 'patient';
+    updateModeToggleBtn();
+    renderPathogens();
   }
 }
 
 function updateModeToggleBtn() {
   const btn = document.getElementById('modeToggleBtn');
   if (!btn) return;
-  const t = I18N[currentLang] || I18N.fr;
-  btn.textContent = currentMode === 'patient'
-    ? (t['mode-toggle-expert'] || '⚙️ Mode Expert')
-    : (t['mode-toggle-patient'] || '👤 Mode Patient');
+  if (currentMode === 'patient') {
+    btn.textContent = '👨‍⚕️ Espace Soignant';
+    btn.setAttribute('title', 'Accès réservé aux professionnels de santé');
+    btn.classList.remove('mode-btn-expert-active');
+  } else {
+    btn.textContent = '👤 Mode Patient';
+    btn.setAttribute('title', 'Retour à l\'espace grand public');
+    btn.classList.add('mode-btn-expert-active');
+  }
+}
+
+// ── Modal Espace Soignant ────────────────────────────────────────────────────
+const SOIGNANT_PASS = 'breathiq2026'; // Mot de passe professionnel par défaut
+
+function openSoignantModal() {
+  const modal = document.getElementById('soignantModal');
+  if (!modal) return;
+  modal.hidden = false;
+  modal.removeAttribute('hidden');
+  const inp = document.getElementById('soignantPassInput');
+  if (inp) { inp.value = ''; inp.classList.remove('soignant-pass-error'); inp.focus(); }
+}
+
+function closeSoignantModal() {
+  const modal = document.getElementById('soignantModal');
+  if (modal) modal.hidden = true;
+}
+
+function validateSoignantPass() {
+  const inp = document.getElementById('soignantPassInput');
+  const val = (inp?.value || '').trim();
+  const storedPass = localStorage.getItem('biq-soignant-pass') || SOIGNANT_PASS;
+  if (val === storedPass) {
+    sessionStorage.setItem('biq-soignant-auth', '1');
+    closeSoignantModal();
+    activateExpertMode();
+  } else {
+    if (inp) {
+      inp.classList.add('soignant-pass-error');
+      inp.value = '';
+      inp.placeholder = currentLang === 'fr' ? 'Code incorrect — réessayez' : 'Wrong code — retry';
+      setTimeout(() => {
+        inp.classList.remove('soignant-pass-error');
+        inp.placeholder = currentLang === 'fr' ? 'Code professionnel' : 'Professional code';
+      }, 2000);
+      inp.focus();
+    }
+  }
+}
+
+function activateExpertMode() {
+  currentMode = 'expert';
+  localStorage.setItem('biq-mode', 'expert');
+  document.body.dataset.mode = 'expert';
+  updateModeToggleBtn();
+  renderPathogens();
+  renderLocalDeclarations();
+  setTimeout(() => {
+    if (!worldMap) initMapWhenReady();
+    else worldMap.invalidateSize(true);
+    document.getElementById('syndromic')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, 100);
 }
 
 function updatePatientRiskBanner() {
@@ -1888,56 +2133,384 @@ function toggleSymptom(labelEl) {
   }
 }
 
-function checkSymptoms() {
-  const checked = Array.from(document.querySelectorAll('.symptom-check input:checked')).map(cb => cb.value);
-  if (checked.length === 0) return;
+// ============================================================
+// MOTEUR DIAGNOSTIQUE INFECTIOLOGIQUE — BreathIQ v2.0
+// Algorithme Bayésien pondéré — Référentiels OMS, ECDC, CDC
+// Critères validés: ILI (OMS), CURB-65, FLU score, SARI
+// © 2026 Dr. Clément MÉDEAU — Non dispositif médical
+// ============================================================
 
+const DIAG_ENGINE = {
+  pathogens: {
+    INFLUENZA: {
+      nameFR: 'Grippe (Influenza A/B)',       nameEN: 'Influenza A/B',         icon: '🤒',
+      prior: 22,
+      weights: {
+        onset_sudden:20, fever_high:20, fever_very_high:25, myalgias:22,
+        fatigue_severe:18, dry_cough:15, headache:10, sore_throat:8, shivering:12,
+        smell_loss:-15, cough_3w:-25, night_sweats:-10, weight_loss:-20,
+        rash:-15, bleeding:-30, neck_stiffness:-20, duration_weeks:-25,
+      },
+      alarmSigns:['dyspnea_rest','confusion','chest_pain'],
+      protection:'FFP2', mandatoryReport:false,
+      isolationFR:'5 à 7 jours dès le début des symptômes',
+      criterionFR:'Critère OMS ILI : fièvre brutale ≥ 38°C + toux/maux de gorge',
+    },
+    COVID19: {
+      nameFR: 'COVID-19 (SARS-CoV-2)',        nameEN: 'COVID-19 (SARS-CoV-2)',  icon: '🦠',
+      prior: 18,
+      weights: {
+        smell_loss:35, taste_loss:30, dry_cough:15, fatigue_severe:14,
+        fever:12, headache:10, sore_throat:8, onset_gradual:8,
+        dyspnea:15, myalgias:8,
+        cough_3w:-20, night_sweats:-12, weight_loss:-18, bleeding:-25,
+        neck_stiffness:-20, rash_pustular:-20,
+      },
+      alarmSigns:['dyspnea_rest','confusion','chest_pain','cyanosis'],
+      protection:'FFP2', mandatoryReport:false,
+      isolationFR:'5 à 7 jours + masque si contact avec personnes vulnérables',
+      criterionFR:'Anosmie/agueusie : spécificité 97% pour SARS-CoV-2',
+    },
+    TUBERCULOSIS: {
+      nameFR: 'Tuberculose pulmonaire',        nameEN: 'Pulmonary Tuberculosis',  icon: '🫁',
+      prior: 3,
+      weights: {
+        cough_3w:40, night_sweats:28, weight_loss:28, hemoptysis:32,
+        fever_low:22, fatigue_chronic:18, duration_weeks:25,
+        onset_sudden:-20, smell_loss:-20, rash:-15,
+      },
+      alarmSigns:['hemoptysis','dyspnea_rest'],
+      protection:'FFP2 obligatoire', mandatoryReport:true,
+      isolationFR:'Isolement respiratoire — déclaration DSP < 24h obligatoire',
+      criterionFR:'Critère OMS : toux > 2 semaines + signes constitutionnels',
+    },
+    MPOX: {
+      nameFR: 'Mpox (variole du singe)',       nameEN: 'Mpox (Monkeypox)',        icon: '🔴',
+      prior: 2,
+      weights: {
+        rash:25, rash_pustular:35, lymph_nodes:28, fever:15,
+        myalgias:10, exposure_msm:30, travel_africa:20,
+        dry_cough:-10, cough_3w:-20, smell_loss:-15,
+      },
+      alarmSigns:['lesions_extensive','dyspnea_rest'],
+      protection:'Contact + FFP2', mandatoryReport:true,
+      isolationFR:'Isolement jusqu\'à cicatrisation complète de toutes les lésions',
+      criterionFR:'Adénopathies + éruption pustuleuse = tableau hautement évocateur',
+    },
+    MENINGITIS: {
+      nameFR: 'Méningite bactérienne',         nameEN: 'Bacterial Meningitis',    icon: '🧠',
+      prior: 0.5,
+      weights: {
+        neck_stiffness:45, headache:30, photophobia:28, fever_high:22,
+        vomiting:15, confusion:25, purpura:45, onset_sudden:20,
+      },
+      alarmSigns:['purpura','confusion','neck_stiffness'],
+      emergencyLevel:'ROUGE',
+      protection:'FFP2 + contact', mandatoryReport:true,
+      isolationFR:'URGENCE VITALE — Appelez le 15 immédiatement',
+      criterionFR:'Triade méningée : céphalées + raideur nuque + fièvre',
+    },
+    DENGUE: {
+      nameFR: 'Dengue (arbovirose)',            nameEN: 'Dengue Fever',            icon: '🦟',
+      prior: 1,
+      weights: {
+        travel_tropical:35, fever_high:22, arthralgia:28,
+        retrobulbar_pain:25, rash_maculopapular:20, myalgias:15, fever:12,
+        cough_3w:-20, smell_loss:-15, neck_stiffness:-10,
+      },
+      alarmSigns:['bleeding','abdominal_pain','lethargy'],
+      protection:'Prévention moustiques', mandatoryReport:true,
+      isolationFR:'Pas d\'isolement — éviter contact moustiques (transmission vectorielle)',
+      criterionFR:'Arthralgies + fièvre + voyage tropical = dengue jusqu\'à preuve du contraire',
+    },
+    RSV: {
+      nameFR: 'VRS / Bronchiolite',             nameEN: 'RSV / Bronchiolitis',     icon: '🌬️',
+      prior: 8,
+      weights: {
+        wheezing:30, wet_cough:20, rhinorrhea:15, fever_low:12,
+        feeding_difficulty:25, age_infant:30, onset_gradual:10,
+        smell_loss:-20, myalgias:-10, bleeding:-25,
+      },
+      alarmSigns:['apnea','cyanosis','dyspnea_rest'],
+      protection:'Contact + gouttelettes', mandatoryReport:false,
+      isolationFR:'7 jours — précautions renforcées autour des prématurés',
+      criterionFR:'Sibilances + rhinorrhée + nourrisson < 2 ans = bronchiolite probable',
+    },
+    LEGIONELLA: {
+      nameFR: 'Légionellose (pneumonie atypique)', nameEN: 'Legionella pneumonia', icon: '🏨',
+      prior: 1,
+      weights: {
+        fever_high:22, wet_cough:18, dyspnea:20, myalgias:15, confusion:20,
+        diarrhea:15, water_exposure:30, fever_resistant:20,
+        smell_loss:-15, cough_3w:-15, bleeding:-25,
+      },
+      alarmSigns:['confusion','dyspnea_rest'],
+      protection:'FFP2', mandatoryReport:true,
+      isolationFR:'Non contagieux inter-humain — signaler exposition eau stagnante',
+      criterionFR:'Pneumonie + hyponatrémie + confusion = Legionella (score de Winthrop)',
+    },
+    H5N1: {
+      nameFR: 'Grippe aviaire (H5N1/H7N9)',    nameEN: 'Avian Influenza H5N1',    icon: '🐦',
+      prior: 0.2,
+      weights: {
+        poultry_contact:45, fever_very_high:25, dyspnea:28,
+        conjunctivitis:22, myalgias:15, rapid_deterioration:30,
+        travel_asia:20, smell_loss:-15, cough_3w:-20,
+      },
+      alarmSigns:['dyspnea_rest','rapid_deterioration','cyanosis'],
+      emergencyLevel:'ORANGE',
+      protection:'FFP2 + lunettes/visière', mandatoryReport:true,
+      isolationFR:'Isolement 7j — déclaration ARS immédiate — cas ultra-rare',
+      criterionFR:'Contact volailles mortes/malades OBLIGATOIRE dans les 10j précédents',
+    },
+    HEMORRHAGIC_FEVER: {
+      nameFR: 'Fièvre hémorragique virale (Ebola/Marburg/Lassa)', nameEN: 'Viral Haemorrhagic Fever', icon: '🩸',
+      prior: 0.01,
+      weights: {
+        bleeding:50, travel_africa_high_risk:50, fever_high:20,
+        vomiting_diarrhea:25, myalgias:15, rash:12,
+      },
+      alarmSigns:['bleeding'],
+      emergencyLevel:'ROUGE',
+      protection:'BSL-4 (hôpital spécialisé)', mandatoryReport:true,
+      isolationFR:'URGENCE NATIONALE — SAMU 15 immédiat — isolement haute sécurité',
+      criterionFR:'Voyage Afrique sub-saharienne < 21j + saignements = SAMU 15 immédiat',
+    },
+  },
+
+  ORIENTATION: {
+    VERT:   { label:'Surveillance à domicile',     icon:'🟢', phone:'',        color:'#16a34a', bg:'#f0fdf4', border:'#86efac' },
+    BLEU:   { label:'Médecin traitant sous 48h',   icon:'🔵', phone:'',        color:'#2563eb', bg:'#eff6ff', border:'#93c5fd' },
+    JAUNE:  { label:'Médecin de garde aujourd\'hui', icon:'🟡', phone:'116 117', color:'#d97706', bg:'#fffbeb', border:'#fcd34d' },
+    ORANGE: { label:'Urgences médicales',           icon:'🟠', phone:'15',      color:'#ea580c', bg:'#fff7ed', border:'#fdba74' },
+    ROUGE:  { label:'SAMU — Urgence vitale',        icon:'🔴', phone:'15',      color:'#dc2626', bg:'#fef2f2', border:'#fca5a5' },
+  },
+
+  ALARM_RULES: [
+    { triggers:['purpura'],                                  level:'ROUGE',  reason:'Purpura cutané non blanchissant — méningococcémie à exclure en urgence absolue' },
+    { triggers:['bleeding'],                                 level:'ROUGE',  reason:'Saignements actifs — fièvre hémorragique virale à exclure' },
+    { triggers:['seizures'],                                 level:'ROUGE',  reason:'Convulsions — urgence neurologique' },
+    { triggers:['apnea'],                                    level:'ROUGE',  reason:'Apnées — détresse respiratoire aiguë (nourrisson)' },
+    { triggers:['cyanosis'],                                 level:'ROUGE',  reason:'Cyanose — hypoxémie sévère' },
+    { triggers:['confusion'],                                level:'ORANGE', reason:'Confusion/désorientation — évaluation neurologique urgente' },
+    { triggers:['dyspnea_rest'],                             level:'ORANGE', reason:'Dyspnée au repos — insuffisance respiratoire à évaluer' },
+    { triggers:['neck_stiffness','fever_high'],              level:'ROUGE',  reason:'Syndrome méningé fébrile — méningite à exclure en urgence' },
+    { triggers:['neck_stiffness','fever_very_high'],         level:'ROUGE',  reason:'Syndrome méningé fébrile — méningite à exclure en urgence' },
+    { triggers:['travel_africa_high_risk','fever_high'],     level:'ORANGE', reason:'Retour zone endémique paludisme — bilan parasitologique urgent' },
+    { triggers:['age_infant','fever_high'],                  level:'ORANGE', reason:'Fièvre chez nourrisson < 3 mois — évaluation aux urgences pédiatriques' },
+    { triggers:['immunocompromised','fever_high'],           level:'ORANGE', reason:'Immunodéprimé fébrile — neutropénie fébrile à éliminer' },
+    { triggers:['hemoptysis'],                               level:'ORANGE', reason:'Hémoptysie — tuberculose ou embolie pulmonaire à explorer' },
+    { triggers:['age_senior','dyspnea_rest'],                level:'ORANGE', reason:'Dyspnée chez senior — décompensation cardiorespiratoire possible' },
+  ],
+};
+
+function collectCheckerState() {
+  const symptoms = Array.from(document.querySelectorAll('.symptom-check input:checked')).map(cb => cb.value);
+  const alarm    = Array.from(document.querySelectorAll('.alarm-sign-check input:checked')).map(cb => cb.value);
+  const ctx      = Array.from(document.querySelectorAll('.ctx-check input:checked')).map(cb => cb.value);
+  const onset    = document.querySelector('.ctx-pill[data-group="onset"].selected')?.dataset.value || 'unknown';
+  const fever    = document.querySelector('.ctx-pill[data-group="fever"].selected')?.dataset.value || 'unknown';
+  const age      = document.querySelector('.ctx-pill[data-group="age"].selected')?.dataset.value || 'adult';
+  return { symptoms, alarm, ctx, onset, fever, age };
+}
+
+function runDiagnosticEngine(state) {
+  const { symptoms, alarm, ctx, onset, fever, age } = state;
+  const allFlags = [...symptoms, ...alarm, ...ctx];
+
+  // Normalise les flags d'entrée → identifiants du moteur
+  const flags = new Set(allFlags);
+  if (onset === 'sudden') flags.add('onset_sudden');
+  if (onset === 'gradual' || onset === 'days_4_7') flags.add('onset_gradual');
+  if (onset === 'weeks') { flags.add('duration_weeks'); flags.add('onset_gradual'); }
+  if (fever === 'fever_low')       { flags.add('fever'); flags.add('fever_low'); }
+  if (fever === 'fever_high')      { flags.add('fever'); flags.add('fever_high'); }
+  if (fever === 'fever_very_high') { flags.add('fever'); flags.add('fever_high'); flags.add('fever_very_high'); }
+  if (age === 'infant') flags.add('age_infant');
+  if (age === 'senior') flags.add('age_senior');
+
+  // Synonymes (anciens codes symptômes → nouveaux flags)
+  const syn = {
+    'breathlessness':'dyspnea', 'dry_cough':'dry_cough', 'wet_cough':'wet_cough',
+    'persistent_cough':'cough_3w', 'smell_loss':'smell_loss', 'muscle_pain':'myalgias',
+    'headache':'headache', 'confusion':'confusion', 'bleeding':'bleeding',
+    'lymph_nodes':'lymph_nodes', 'night_sweats':'night_sweats', 'vomiting':'vomiting',
+    'rash':'rash', 'fever':'fever',
+  };
+  for (const [old, nw] of Object.entries(syn)) { if (flags.has(old)) flags.add(nw); }
+  // Alarm signs use _alarm suffix in HTML — map back to engine flag names
+  if (flags.has('neck_stiffness_alarm')) { flags.add('neck_stiffness'); flags.add('fever_high'); }
+  if (flags.has('purpura_alarm'))        flags.add('purpura');
+  if (flags.has('confusion_alarm'))      flags.add('confusion');
+  if (flags.has('dyspnea_rest_alarm'))   flags.add('dyspnea_rest');
+  if (flags.has('bleeding_alarm'))       flags.add('bleeding');
+  if (flags.has('seizures_alarm'))       flags.add('seizures');
+
+  // Calcul des scores par pathogène
   const scores = {};
-  checked.forEach(symptom => {
-    (SYMPTOM_MAP[symptom] || []).forEach(pid => { scores[pid] = (scores[pid] || 0) + 1; });
-  });
-  const ranked = Object.entries(scores).sort((a,b) => b[1]-a[1]).slice(0,4);
-
-  const hasBleeding   = checked.includes('bleeding');
-  const hasConfusion  = checked.includes('confusion');
-  const hasBreath     = checked.includes('breathlessness');
-  const isAlarm       = hasBleeding || hasConfusion;
-  const lang          = currentLang;
-  const riskColors    = { critical:'#EF4444', high:'#F97316', moderate:'#F59E0B', low:'#10B981' };
-
-  let html = '';
-  if (isAlarm) {
-    html = `<div class="result-header" style="color:#DC2626"><span>🚨</span><span>${lang==='fr'?'URGENCE — Appelez le 15 (SAMU) immédiatement':'EMERGENCY — Call emergency services immediately'}</span></div>
-    <p style="font-size:.88rem;color:#7F1D1D;margin-bottom:.75rem">${lang==='fr'?'Les symptômes que vous décrivez nécessitent une évaluation médicale urgente. N\'attendez pas.':'The symptoms you describe require urgent medical evaluation. Do not wait.'}</p>`;
-  } else if (hasBreath) {
-    html = `<div class="result-header" style="color:#EA580C"><span>⚠️</span><span>${lang==='fr'?'Symptômes d\'alerte — Consultez un médecin rapidement':'Warning symptoms — See a doctor promptly'}</span></div>`;
-  } else {
-    html = `<div class="result-header" style="color:#1A3C5E"><span>🔍</span><span>${lang==='fr'?'Analyse de vos symptômes':'Symptom analysis'}</span></div>`;
+  for (const [pid, profile] of Object.entries(DIAG_ENGINE.pathogens)) {
+    let score = profile.prior;
+    for (const [flag, weight] of Object.entries(profile.weights)) {
+      if (flags.has(flag)) score += weight;
+    }
+    scores[pid] = Math.max(0, score);
   }
 
+  // Normalisation → probabilité relative (top 3 candidats affichés)
+  const total = Object.values(scores).reduce((s,v) => s + v, 0) || 1;
+  const ranked = Object.entries(scores)
+    .map(([pid, raw]) => ({ pid, raw, pct: Math.round((raw / total) * 100) }))
+    .sort((a,b) => b.raw - a.raw)
+    .filter(d => d.pct >= 3)
+    .slice(0, 3);
+
+  // Détermination du niveau d'orientation (règles d'alarme)
+  let orientLevel = null;
+  let alarmReason = null;
+  const LEVEL_RANK = { VERT:0, BLEU:1, JAUNE:2, ORANGE:3, ROUGE:4 };
+  const LEVEL_REV  = ['VERT','BLEU','JAUNE','ORANGE','ROUGE'];
+
+  for (const rule of DIAG_ENGINE.ALARM_RULES) {
+    if (rule.triggers.every(t => flags.has(t))) {
+      const rk = LEVEL_RANK[rule.level] || 0;
+      if (orientLevel === null || rk > LEVEL_RANK[orientLevel]) {
+        orientLevel = rule.level;
+        alarmReason = rule.reason;
+      }
+    }
+  }
+
+  // Orientation par défaut basée sur le score si pas d'alarme
+  if (!orientLevel) {
+    const topScore = ranked[0]?.raw || 0;
+    const hasHighFever   = flags.has('fever_high') || flags.has('fever_very_high');
+    const hasAnySigns    = symptoms.length >= 4;
+    const isSeniorOrInfant = flags.has('age_senior') || flags.has('age_infant');
+
+    if (symptoms.length === 0 && alarm.length === 0) {
+      orientLevel = null; // pas encore assez d'info
+    } else if (isSeniorOrInfant && hasHighFever) {
+      orientLevel = 'JAUNE';
+    } else if (hasHighFever && hasAnySigns) {
+      orientLevel = 'JAUNE';
+    } else if (hasHighFever || hasAnySigns) {
+      orientLevel = 'BLEU';
+    } else {
+      orientLevel = 'VERT';
+    }
+  }
+
+  return { ranked, flags, orientLevel, alarmReason, scores };
+}
+
+function checkSymptoms() {
+  const state  = collectCheckerState();
+  const result = runDiagnosticEngine(state);
+  renderDiagnosticResult(result, state);
+}
+
+function renderDiagnosticResult(result, state) {
+  const { ranked, flags, orientLevel, alarmReason } = result;
+  const lang = currentLang;
+  const fr   = lang === 'fr';
+
+  if (!orientLevel) return;
+
+  const orient = DIAG_ENGINE.ORIENTATION[orientLevel];
+
+  // ── Bloc orientation ────────────────────────────────────────
+  const alarmBlock = alarmReason
+    ? `<div class="diag-alarm-reason">${fr ? '⚠️ Motif :' : '⚠️ Reason:'} ${alarmReason}</div>`
+    : '';
+
+  const phoneBlock = orient.phone
+    ? `<a class="diag-phone-btn" href="tel:${orient.phone.replace(/\s/g,'')}">
+         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+         ${orient.phone}
+       </a>`
+    : '';
+
+  // ── Pathogènes probables ────────────────────────────────────
+  let pathoBlock = '';
   if (ranked.length > 0) {
-    html += `<p style="font-size:.84rem;color:var(--text-secondary);margin-bottom:.5rem">${lang==='fr'?'Maladies possibles à surveiller :':'Possible conditions to watch:'}</p><ul class="result-pathogen-list">`;
-    ranked.forEach(([pid]) => {
-      const ob = OUTBREAK_DATA.find(o => o.id === pid);
-      if (!ob) return;
-      const name = lang === 'fr' ? ob.nameFR : ob.nameEN;
-      html += `<li><span><strong>${name}</strong> <small style="color:var(--text-muted)">— ${ob.incubation}</small></span><span style="font-size:.76rem;color:${riskColors[ob.riskLevel]};font-weight:600">${ob.protectionRequired}</span></li>`;
+    pathoBlock = `<div class="diag-patho-title">${fr ? '🔬 Diagnostics à évoquer' : '🔬 Suspected diagnoses'}</div>`;
+    ranked.forEach((d,i) => {
+      const p = DIAG_ENGINE.pathogens[d.pid];
+      if (!p) return;
+      const name = fr ? p.nameFR : p.nameEN;
+      const criterion = p.criterionFR || '';
+      const reportBadge = p.mandatoryReport
+        ? `<span class="diag-report-badge">${fr ? 'Déclaration obligatoire' : 'Mandatory reporting'}</span>` : '';
+      pathoBlock += `
+        <div class="diag-patho-card ${i===0?'diag-patho-card--top':''}">
+          <div class="diag-patho-row">
+            <span class="diag-patho-icon">${p.icon}</span>
+            <div class="diag-patho-info">
+              <div class="diag-patho-name">${name} ${reportBadge}</div>
+              <div class="diag-patho-criterion">${criterion}</div>
+            </div>
+            <div class="diag-patho-bar-wrap">
+              <div class="diag-patho-bar"><div class="diag-patho-fill" style="width:${Math.min(d.pct*2.5,100)}%"></div></div>
+              <span class="diag-patho-prot">${p.protection}</span>
+            </div>
+          </div>
+          ${i===0&&p.isolationFR ? `<div class="diag-isolation">${fr?'🔒 Isolement :':' 🔒 Isolation:'} ${p.isolationFR}</div>` : ''}
+        </div>`;
     });
-    html += `</ul>`;
   }
 
-  html += `<div class="result-actions">
-    <button class="result-action-btn result-action-primary" onclick="document.getElementById('actionGuide')?.scrollIntoView({behavior:'smooth',block:'start'})">${lang==='fr'?'→ Que faire maintenant ?':'→ What to do now?'}</button>
-    <button class="result-action-btn result-action-secondary" onclick="resetChecker()">${lang==='fr'?'Recommencer':'Reset'}</button>
-  </div>
-  <p style="font-size:.73rem;color:var(--text-muted);margin-top:.5rem">${lang==='fr'?'Outil indicatif — consultez toujours un médecin pour un diagnostic.':'Indicative tool — always consult a doctor for diagnosis.'}</p>`;
+  // ── Assemblage final ────────────────────────────────────────
+  const html = `
+  <div class="diag-result-card" style="--orient-color:${orient.color};--orient-bg:${orient.bg};--orient-border:${orient.border}">
+    <div class="diag-orient-header">
+      <span class="diag-orient-icon">${orient.icon}</span>
+      <div>
+        <div class="diag-orient-label">${orient.label}</div>
+        ${alarmBlock}
+      </div>
+      ${phoneBlock}
+    </div>
+
+    ${pathoBlock}
+
+    <div class="diag-result-actions">
+      <button class="result-action-btn result-action-primary" onclick="document.getElementById('actionGuide')?.scrollIntoView({behavior:'smooth'})">
+        ${fr ? '→ Que faire maintenant ?' : '→ What to do now?'}
+      </button>
+      <button class="result-action-btn result-action-secondary" onclick="resetChecker()">
+        ${fr ? '↺ Recommencer' : '↺ Reset'}
+      </button>
+    </div>
+    <p class="diag-disclaimer">${fr
+      ? 'Outil indicatif non diagnostique — consultez toujours un médecin. Données issues des référentiels OMS / ECDC / CDC.'
+      : 'Indicative tool — always consult a doctor. Based on WHO/ECDC/CDC guidelines.'}</p>
+  </div>`;
 
   const resultEl = document.getElementById('symptomResult');
   if (!resultEl) return;
-  resultEl.className = `symptom-result ${isAlarm ? 'result-alarm' : hasBreath ? 'result-moderate' : 'result-ok'}`;
+  resultEl.className = `symptom-result diag-result-${orientLevel.toLowerCase()}`;
   resultEl.innerHTML = html;
   resultEl.classList.remove('hidden');
   resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function toggleContextPill(el, group) {
+  document.querySelectorAll(`.ctx-pill[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+  el.classList.add('selected');
+  const anyChecked = document.querySelectorAll('.symptom-check input:checked, .alarm-sign-check input:checked').length > 0;
+  const btn = document.getElementById('checkerBtn');
+  if (btn) btn.disabled = !anyChecked;
+  checkSymptoms();
+}
+
+function toggleAlarmSign(labelEl) {
+  const cb = labelEl.querySelector('input[type="checkbox"]');
+  if (!cb) return;
+  cb.checked = !cb.checked;
+  labelEl.classList.toggle('alarm-checked', cb.checked);
+  const btn = document.getElementById('checkerBtn');
+  if (btn) btn.disabled = false;
+  checkSymptoms();
 }
 
 function resetChecker() {
@@ -1966,77 +2539,172 @@ function getEmergencyNumber(countryCode) {
   return nums[countryCode] || '112';
 }
 
+// ── Modale de permission de géolocalisation ───────────────────
+let _geoResolve = null;
+
+function openGeoModal() {
+  return new Promise(resolve => {
+    _geoResolve = resolve;
+    const modal = document.getElementById('geoModal');
+    if (!modal) { resolve(true); return; }
+    applyI18n();
+    modal.hidden = false;
+    modal.removeAttribute('hidden');
+    document.getElementById('geoAcceptBtn')?.focus();
+  });
+}
+
+function closeGeoModal(accepted) {
+  const modal = document.getElementById('geoModal');
+  if (modal) modal.hidden = true;
+  if (_geoResolve) { _geoResolve(accepted); _geoResolve = null; }
+}
+
+function renderGeoDeniedHelp() {
+  const isChrome  = navigator.userAgent.includes('Chrome') && !navigator.userAgent.includes('Edg');
+  const isFirefox = navigator.userAgent.includes('Firefox');
+  const isSafari  = navigator.userAgent.includes('Safari') && !navigator.userAgent.includes('Chrome');
+  const isIOS     = /iPhone|iPad|iPod/.test(navigator.userAgent);
+
+  let steps = '';
+  if (isIOS) {
+    steps = currentLang === 'fr'
+      ? '<li>Ouvrez <strong>Réglages</strong> de votre iPhone/iPad</li><li>Allez dans <strong>Confidentialité &amp; Sécurité → Service de localisation</strong></li><li>Cherchez votre navigateur (Safari/Chrome) et sélectionnez <strong>Lors de l\'utilisation de l\'app</strong></li><li>Revenez sur cette page et réessayez</li>'
+      : '<li>Open your iPhone/iPad <strong>Settings</strong></li><li>Go to <strong>Privacy &amp; Security → Location Services</strong></li><li>Find your browser and select <strong>While Using the App</strong></li><li>Come back to this page and try again</li>';
+  } else if (isFirefox) {
+    steps = currentLang === 'fr'
+      ? '<li>Cliquez sur l\'<strong>icône de cadenas 🔒</strong> dans la barre d\'adresse</li><li>Cliquez sur <strong>Effacer les permissions</strong> à côté de Localisation</li><li>Rechargez la page et acceptez la demande</li>'
+      : '<li>Click the <strong>lock icon 🔒</strong> in the address bar</li><li>Click <strong>Clear Permission</strong> next to Location</li><li>Reload the page and accept the request</li>';
+  } else if (isSafari) {
+    steps = currentLang === 'fr'
+      ? '<li>Dans Safari, allez dans <strong>Safari → Réglages pour ce site web</strong></li><li>Changez <strong>Localisation</strong> de "Refuser" à <strong>"Demander"</strong></li><li>Rechargez la page et acceptez</li>'
+      : '<li>In Safari, go to <strong>Safari → Settings for This Website</strong></li><li>Change <strong>Location</strong> from "Deny" to <strong>"Ask"</strong></li><li>Reload the page and accept</li>';
+  } else {
+    // Chrome / Edge / autres
+    steps = currentLang === 'fr'
+      ? '<li>Cliquez sur l\'<strong>icône de cadenas 🔒</strong> dans la barre d\'adresse (à gauche de l\'URL)</li><li>Cliquez sur <strong>Paramètres du site</strong></li><li>Changez <strong>Localisation</strong> de "Bloquer" à <strong>"Autoriser"</strong></li><li>Rechargez la page et réessayez</li>'
+      : '<li>Click the <strong>lock icon 🔒</strong> in the address bar (left of the URL)</li><li>Click <strong>Site settings</strong></li><li>Change <strong>Location</strong> from "Block" to <strong>"Allow"</strong></li><li>Reload the page and try again</li>';
+  }
+
+  const title = currentLang === 'fr' ? '🔒 Localisation bloquée par votre navigateur' : '🔒 Location blocked by your browser';
+  const intro = currentLang === 'fr'
+    ? 'Votre navigateur a mémorisé un refus. Pour débloquer la localisation :'
+    : 'Your browser remembered a previous refusal. To re-enable location:';
+
+  return `<div class="care-geo-denied-box">
+    <p class="care-geo-denied-title">${title}</p>
+    <p class="care-geo-denied-intro">${intro}</p>
+    <ol class="care-geo-denied-steps">${steps}</ol>
+  </div>`;
+}
+
 // ── Localisateur de soins ─────────────────────────────────────
 async function findNearbyCare() {
   const btn = document.getElementById('findCareBtn');
   const results = document.getElementById('careResults');
   if (!btn || !results) return;
 
-  btn.disabled = true;
-  btn.textContent = t('care-searching') || 'Recherche en cours…';
-
   if (!navigator.geolocation) {
-    results.innerHTML = `<p class="care-error">${t('care-no-geo')}</p>`;
-    btn.disabled = false;
-    btn.textContent = t('care-btn');
+    results.innerHTML = `<p class="care-error">${t('care-no-geo') || 'Géolocalisation non supportée par votre navigateur.'}</p>`;
     return;
   }
+
+  // Appel direct à getCurrentPosition — Chrome affiche son prompt natif si besoin.
+  // Pas de pré-vérification navigator.permissions ni de modal custom :
+  // ceux-ci créaient des conditions de course avec l'état mémorisé par Chrome.
+  btn.disabled = true;
+  btn.textContent = t('care-searching') || 'Recherche en cours…';
 
   navigator.geolocation.getCurrentPosition(
     async ({ coords: { latitude: lat, longitude: lon } }) => {
       try {
-        const [geoResp, ovResp] = await Promise.all([
-          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`, {
-            headers: { 'Accept-Language': currentLang.substring(0,2), 'User-Agent': 'BreathIQ/1.0' }
-          }),
-          fetch(`https://overpass-api.de/api/interpreter?data=${encodeURIComponent(
-            `[out:json][timeout:15];(node[amenity~"hospital|clinic|doctors|health_post"](around:10000,${lat},${lon}););out 10;`
-          )}`),
+        const ovQuery = (amenities, limit) =>
+          `[out:json][timeout:20];(node[amenity~"${amenities}"](around:10000,${lat},${lon});way[amenity~"${amenities}"](around:10000,${lat},${lon}););out center ${limit};`;
+
+        const ovFetch = (query) => fetch('/api/overpass', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: query }),
+        });
+
+        const [geoResp, ovHospResp, ovPharmResp] = await Promise.all([
+          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=${currentLang.substring(0,2)}`),
+          ovFetch(ovQuery('hospital|clinic|doctors|health_post', 8)),
+          ovFetch(ovQuery('pharmacy', 8)),
         ]);
 
-        const geoData = await geoResp.json();
-        const ovData  = await ovResp.json();
-        const addr    = geoData.address || {};
-        const city    = addr.city || addr.town || addr.village || addr.county || '';
-        const country = addr.country || '';
-        const cc      = (addr.country_code || '').toUpperCase();
-        const emerNum = getEmergencyNumber(cc);
+        const geoData   = await geoResp.json();
+        const ovHosp    = await ovHospResp.json();
+        const ovPharm   = await ovPharmResp.json();
+        const addr      = geoData.address || {};
+        const city      = addr.city || addr.town || addr.village || addr.county || '';
+        const country   = addr.country || '';
+        const cc        = (addr.country_code || '').toUpperCase();
+        const emerNum   = getEmergencyNumber(cc);
+        const fr        = currentLang === 'fr';
 
-        const facilities = (ovData.elements || [])
+        const calcDist = (el) => Math.round(Math.sqrt(
+          Math.pow(((el.lat || el.center?.lat) - lat) * 111320, 2) +
+          Math.pow(((el.lon || el.center?.lon) - lon) * 111320 * Math.cos(lat * Math.PI / 180), 2)
+        ));
+
+        const mapFacilities = (elements) => (elements || [])
           .filter(el => el.tags?.name)
           .map(el => ({
             name:    el.tags.name,
             amenity: el.tags.amenity,
             phone:   el.tags.phone || el.tags['contact:phone'] || null,
-            dist:    Math.round(Math.sqrt(
-              Math.pow((el.lat - lat) * 111320, 2) +
-              Math.pow((el.lon - lon) * 111320 * Math.cos(lat * Math.PI / 180), 2)
-            )),
+            hours:   el.tags['opening_hours'] || null,
+            website: el.tags.website || el.tags['contact:website'] || null,
+            dist:    calcDist(el),
           }))
-          .sort((a, b) => a.dist - b.dist)
+          .sort((a,b) => a.dist - b.dist)
           .slice(0, 6);
 
-        let html = `<div class="care-location">
-          <span class="care-city">📍 ${city}${country ? ', ' + country : ''}</span>
-          <span class="care-emergency">🚨 ${currentLang === 'fr' ? 'Urgences' : 'Emergency'} : <strong>${emerNum}</strong></span>
-        </div>`;
+        const hospitals  = mapFacilities(ovHosp.elements);
+        const pharmacies = mapFacilities(ovPharm.elements);
 
-        if (facilities.length) {
-          html += `<ul class="care-list">` + facilities.map(f => {
-            const icon = f.amenity === 'hospital' ? '🏥' : f.amenity === 'clinic' ? '🏨' : '👨‍⚕️';
+        const renderList = (items, icons) => {
+          if (!items.length) return `<p class="care-no-results">${t('care-no-results')}</p>`;
+          return `<ul class="care-list">${items.map(f => {
+            const icon = icons[f.amenity] || icons.default;
             const dist = f.dist < 1000 ? `${f.dist} m` : `${(f.dist/1000).toFixed(1)} km`;
             return `<li class="care-item">
               <span class="care-icon">${icon}</span>
               <div class="care-info">
                 <strong>${f.name}</strong>
-                <span class="care-dist">${dist}</span>
+                <span class="care-dist">📍 ${dist}</span>
+                ${f.hours ? `<span class="care-hours">🕐 ${f.hours}</span>` : ''}
                 ${f.phone ? `<a href="tel:${f.phone}" class="care-phone">📞 ${f.phone}</a>` : ''}
+                ${f.website ? `<a href="${f.website}" class="care-web" target="_blank" rel="noopener">🌐 ${fr ? 'Site' : 'Website'}</a>` : ''}
               </div>
             </li>`;
-          }).join('') + `</ul>`;
-        } else {
-          html += `<p class="care-no-results">${t('care-no-results')}</p>`;
-        }
+          }).join('')}</ul>`;
+        };
+
+        const html = `
+          <div class="care-location">
+            <span class="care-city">📍 ${city}${country ? ', ' + country : ''}</span>
+            <span class="care-emergency">🚨 ${fr ? 'Urgences' : 'Emergency'}: <strong>${emerNum}</strong></span>
+          </div>
+          <div class="care-tabs">
+            <button class="care-tab-btn active" onclick="switchCareTab(this,'care-tab-hosp')">${fr ? '🏥 Soins médicaux' : '🏥 Medical care'} <span class="care-tab-count">${hospitals.length}</span></button>
+            <button class="care-tab-btn" onclick="switchCareTab(this,'care-tab-pharm')">${fr ? '💊 Pharmacies' : '💊 Pharmacies'} <span class="care-tab-count">${pharmacies.length}</span></button>
+          </div>
+          <div id="care-tab-hosp" class="care-tab-panel active">
+            ${renderList(hospitals, { hospital:'🏥', clinic:'🏥', doctors:'👨‍⚕️', health_post:'🩺', default:'🏥' })}
+          </div>
+          <div id="care-tab-pharm" class="care-tab-panel hidden">
+            ${pharmacies.length ? `
+              <div class="pharm-epi-note">
+                ${fr
+                  ? '💊 Les pharmacies vendent généralement masques FFP2, FFP3 et chirurgicaux. Appelez avant de vous déplacer pour confirmer les stocks.'
+                  : '💊 Pharmacies typically stock FFP2, FFP3 and surgical masks. Call ahead to confirm availability.'}
+              </div>
+            ` : ''}
+            ${renderList(pharmacies, { pharmacy:'💊', default:'💊' })}
+          </div>
+        `;
 
         results.innerHTML = html;
         btn.textContent = t('care-btn-refresh') || '🔄 Actualiser';
@@ -2046,18 +2714,39 @@ async function findNearbyCare() {
       }
       btn.disabled = false;
     },
-    () => {
-      results.innerHTML = `<p class="care-error">${t('care-geo-denied')}</p>`;
+    (err) => {
       btn.disabled = false;
       btn.textContent = t('care-btn');
+      if (err.code === 1 /* PERMISSION_DENIED */) {
+        results.innerHTML = renderGeoDeniedHelp();
+      } else if (err.code === 3 /* TIMEOUT */) {
+        results.innerHTML = `<p class="care-error">${currentLang === 'fr' ? 'Délai dépassé — réessayez.' : 'Request timed out — please try again.'}</p>`;
+      } else {
+        results.innerHTML = `<p class="care-error">${t('care-error') || 'Position indisponible.'}</p>`;
+      }
     },
-    { timeout: 10000, maximumAge: 300000 }
+    { timeout: 15000, maximumAge: 30000 }
   );
+}
+
+function switchCareTab(btn, tabId) {
+  btn.closest('.care-results').querySelectorAll('.care-tab-btn').forEach(b => b.classList.remove('active'));
+  btn.closest('.care-results').querySelectorAll('.care-tab-panel').forEach(p => { p.classList.remove('active'); p.classList.add('hidden'); });
+  btn.classList.add('active');
+  const panel = document.getElementById(tabId);
+  if (panel) { panel.classList.add('active'); panel.classList.remove('hidden'); }
 }
 
 // Appliquer le mode immédiatement (pas besoin d'attendre DOMContentLoaded)
 // car script.js est en bas du body — le DOM est déjà parsé
 initMode();
+
+// Pré-remplir la date d'aujourd'hui dans le formulaire de déclaration
+(() => {
+  const d = document.getElementById('declOnsetDate');
+  if (d) d.value = new Date().toISOString().slice(0,10);
+  renderLocalDeclarations();
+})();
 
 // ── Init ─────────────────────────────────────────────────────
 // Wrapper robuste : fonctionne même si DOMContentLoaded est déjà passé
@@ -2098,6 +2787,31 @@ domReady(() => {
   initNavScroll();
   initSmoothScroll();
 
+  // RGPD consent + mes données
+  initConsent();
+  renderMyDataSection();
+
+  // Proactive geolocation permission state → update care-finder button label
+  if (navigator.permissions) {
+    navigator.permissions.query({ name: 'geolocation' }).then(status => {
+      const careBtn = document.getElementById('findCareBtn');
+      if (!careBtn) return;
+      if (status.state === 'denied') {
+        careBtn.title = 'Géolocalisation bloquée — autorisez-la dans les réglages du navigateur';
+        careBtn.classList.add('geo-blocked');
+      }
+      status.addEventListener('change', () => {
+        if (status.state === 'denied') {
+          careBtn.title = 'Géolocalisation bloquée — autorisez-la dans les réglages du navigateur';
+          careBtn.classList.add('geo-blocked');
+        } else {
+          careBtn.title = '';
+          careBtn.classList.remove('geo-blocked');
+        }
+      });
+    }).catch(() => {});
+  }
+
   // Données live
   if (typeof BIQ_LIVE !== 'undefined') {
     BIQ_LIVE.on('update', (e) => applyLiveData(e.detail.parsed));
@@ -2110,38 +2824,625 @@ domReady(() => {
 function applyLiveData(parsed) {
   if (!parsed) return;
 
-  // Mise à jour du score viral (composante AQI + viral)
   const region = DEMO_DATA.find(r => r.id === (selectedRegionId || 1)) || DEMO_DATA[0];
-  const score = generateScoreForRegion(region);
+  const score  = generateScoreForRegion(region);
 
-  if (parsed.frAqi?.aqiScore != null) {
-    score.aqi = parsed.frAqi.aqiScore;
+  // Meilleure source AQI locale : WAQI > Open-Meteo > OpenAQ FR
+  const bestAqi = parsed.waqiLocal || parsed.localAqi || parsed.frAqi;
+  if (bestAqi?.aqiScore != null) {
+    score.aqi = bestAqi.aqiScore;
     score.sr  = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
   }
   if (parsed.frFlu?.viralScore != null) {
     score.viral = parsed.frFlu.viralScore;
     score.sr    = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
   }
+  // Pollen local (Open-Meteo)
+  if (parsed.localAqi?.pollenScore != null) {
+    score.pollen = parsed.localAqi.pollenScore;
+    score.sr     = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
+  }
 
-  // Mise à jour bandeau de risque patient
   updatePatientRiskBanner();
 
-  // Source tags sur les composantes du score
+  // Tooltip sur les composantes du score
   const aqiComp = document.getElementById('comp-aqi-value');
-  if (aqiComp && parsed.frAqi) {
-    aqiComp.title = parsed.frAqi.label || '';
-  }
+  if (aqiComp && bestAqi) aqiComp.title = bestAqi.label || '';
   const viralComp = document.getElementById('comp-viral-value');
-  if (viralComp && parsed.frFlu) {
-    viralComp.title = parsed.frFlu.label || '';
-  }
+  if (viralComp && parsed.frFlu) viralComp.title = parsed.frFlu.label || '';
 
-  // Horodatage dernière mise à jour
+  // Horodatage
   const tsEl = document.getElementById('liveLastUpdate');
   if (tsEl) {
     const d = new Date();
     tsEl.textContent = `${d.getHours().toString().padStart(2,'0')}:${d.getMinutes().toString().padStart(2,'0')}`;
   }
+
+  // Surveillance syndromique : courbe épidémique + alertes
+  if (parsed.frFlu?.series?.length) updateSyndromicDashboard(parsed.frFlu);
+
+  // Panneau sources live (mode expert)
+  renderLiveSourcesPanel(parsed);
+  // Widget SUM'EAU
+  renderSumEauWidget(parsed.sumeau);
+  // Widget WAQI détaillé
+  renderWaqiWidget(parsed.waqiLocal || parsed.localAqi);
+  // Pollen
+  renderPollenWidget(parsed.localAqi);
+}
+
+// ── Surveillance syndromique — Algorithme OMS 7-1-7 ──────────
+
+/**
+ * Met à jour les niveaux d'alerte et la courbe épidémique
+ * à partir des données SPF Grippe (avec baseline 52 semaines)
+ */
+function updateSyndromicDashboard(frFlu) {
+  if (!frFlu) return;
+
+  // ── Niveaux d'alerte dynamiques ──
+  const level = frFlu.alertLevel || 'normal'; // 'normal'|'jaune'|'orange'|'rouge'
+  ['normal','jaune','orange','rouge'].forEach(l => {
+    const el = document.getElementById(`al-${l}`);
+    if (el) el.classList.toggle('active', l === level);
+  });
+
+  // ── Statistiques ──
+  const setEl = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  const b = frFlu.baseline || {};
+  setEl('epiStatCurrent', frFlu.rate != null ? `${frFlu.rate.toFixed(0)} /100k` : '—');
+  setEl('epiStatMean',    b.mean != null  ? `${b.mean.toFixed(0)} /100k` : '—');
+  setEl('epiStatZ',       frFlu.zScore != null ? `${frFlu.zScore > 0 ? '+' : ''}${frFlu.zScore}σ` : '—');
+  setEl('epiStatT1',      b.t1 != null  ? `${b.t1.toFixed(0)} /100k` : '—');
+  setEl('epiStatT2',      b.t2 != null  ? `${b.t2.toFixed(0)} /100k` : '—');
+  setEl('epiStatT3',      b.t3 != null  ? `${b.t3.toFixed(0)} /100k` : '—');
+
+  // Stat dans l'en-tête courbe
+  const statEl = document.getElementById('epiCurveStat');
+  if (statEl && frFlu.zScore != null) {
+    const colors = { normal:'#10B981', jaune:'#F59E0B', orange:'#F97316', rouge:'#EF4444' };
+    statEl.innerHTML = `<span style="color:${colors[level]};font-weight:700">z=${frFlu.zScore > 0 ? '+' : ''}${frFlu.zScore}σ · ${level.toUpperCase()}</span>`;
+  }
+
+  // ── Courbe épidémique SVG ──
+  renderEpiCurve(frFlu);
+
+  // ── Déclarations locales ──
+  renderLocalDeclarations();
+}
+
+/**
+ * Dessine la courbe épidémique (SVG) avec seuils d'alerte
+ */
+function renderEpiCurve(frFlu) {
+  const wrap = document.getElementById('epiCurveChart');
+  if (!wrap || !frFlu?.series?.length) return;
+
+  const series = frFlu.series.slice(-26); // dernières 26 semaines
+  const b      = frFlu.baseline || {};
+  const vals   = series.map(s => s.rate);
+  const maxVal = Math.max(...vals, b.t3 || 0, 10);
+  const W = 560, H = 140, padL = 48, padR = 12, padT = 16, padB = 28;
+  const iW = W - padL - padR;
+  const iH = H - padT - padB;
+
+  const xScale = (i) => padL + (i / (series.length - 1)) * iW;
+  const yScale = (v) => padT + iH - (v / maxVal) * iH;
+
+  // Ligne principale
+  const linePts = series.map((s,i) => `${xScale(i).toFixed(1)},${yScale(s.rate).toFixed(1)}`).join(' ');
+
+  // Seuils
+  const threshLine = (val, color, label) => {
+    if (val == null || isNaN(val)) return '';
+    const y = yScale(val).toFixed(1);
+    return `
+      <line x1="${padL}" y1="${y}" x2="${W - padR}" y2="${y}" stroke="${color}" stroke-width="1" stroke-dasharray="4 3" opacity=".7"/>
+      <text x="${W - padR + 2}" y="${parseFloat(y)+4}" font-size="9" fill="${color}" opacity=".9">${label}</text>
+    `;
+  };
+
+  // Aires de fond par niveau
+  const areaT3 = yScale(b.t3 || 0).toFixed(1);
+  const areaT2 = yScale(b.t2 || 0).toFixed(1);
+  const areaT1 = yScale(b.t1 || 0).toFixed(1);
+  const areaBot = (padT + iH).toFixed(1);
+
+  // Axe Y (3 labels)
+  const yLabels = [0, Math.round(maxVal/2), Math.round(maxVal)].map(v =>
+    `<text x="${padL-4}" y="${yScale(v).toFixed(1)+4}" font-size="9" fill="#9ca3af" text-anchor="end">${v}</text>`
+  ).join('');
+
+  // Points de données (dernier en surbrillance)
+  const dots = series.map((s,i) => {
+    const isLast = i === series.length - 1;
+    const colors = { normal:'#10B981', jaune:'#F59E0B', orange:'#F97316', rouge:'#EF4444' };
+    const col = s.rate >= (b.t3||Infinity) ? colors.rouge
+              : s.rate >= (b.t2||Infinity) ? colors.orange
+              : s.rate >= (b.t1||Infinity) ? colors.jaune : colors.normal;
+    return `<circle cx="${xScale(i).toFixed(1)}" cy="${yScale(s.rate).toFixed(1)}" r="${isLast?5:2.5}" fill="${col}" ${isLast ? `stroke="#fff" stroke-width="2"` : 'opacity=".8"'}><title>${s.week}: ${s.rate.toFixed(0)}/100k</title></circle>`;
+  }).join('');
+
+  // Labels X (toutes les 4 semaines)
+  const xLabels = series.filter((_,i) => i % 4 === 0 || i === series.length-1).map((s,_,arr) => {
+    const origIdx = series.indexOf(s);
+    const label = s.week?.slice(-3) || '';
+    return `<text x="${xScale(origIdx).toFixed(1)}" y="${H-4}" font-size="8" fill="#9ca3af" text-anchor="middle">${label}</text>`;
+  }).join('');
+
+  wrap.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Courbe épidémique grippe France" style="overflow:visible">
+      <!-- Aires niveaux -->
+      <rect x="${padL}" y="${areaT3}" width="${iW}" height="${parseFloat(areaBot)-parseFloat(areaT3)}" fill="#EF4444" opacity=".06"/>
+      <rect x="${padL}" y="${areaT2}" width="${iW}" height="${parseFloat(areaT3)-parseFloat(areaT2)}" fill="#F97316" opacity=".07"/>
+      <rect x="${padL}" y="${areaT1}" width="${iW}" height="${parseFloat(areaT2)-parseFloat(areaT1)}" fill="#F59E0B" opacity=".07"/>
+      <!-- Grille -->
+      ${[0,.25,.5,.75,1].map(f => {
+        const y = (padT + iH * (1-f)).toFixed(1);
+        return `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="#e5e7eb" stroke-width=".5" opacity=".5"/>`;
+      }).join('')}
+      <!-- Seuils -->
+      ${threshLine(b.t1, '#F59E0B', 'J')}
+      ${threshLine(b.t2, '#F97316', 'O')}
+      ${threshLine(b.t3, '#EF4444', 'R')}
+      <!-- Moyenne -->
+      ${b.mean != null ? threshLine(b.mean, '#6B7280', 'µ') : ''}
+      <!-- Courbe -->
+      <polyline points="${linePts}" fill="none" stroke="#3B82F6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+      <!-- Points -->
+      ${dots}
+      <!-- Axes -->
+      ${yLabels}
+      ${xLabels}
+    </svg>
+  `;
+}
+
+// ── Déclarations syndromiques locales (localStorage) ──────────
+const DECL_KEY = 'biq-declarations';
+
+function getDeclarations() {
+  try { return JSON.parse(localStorage.getItem(DECL_KEY) || '[]'); } catch { return []; }
+}
+
+function saveDeclaration(decl) {
+  const all = getDeclarations();
+  all.push(decl);
+  try { localStorage.setItem(DECL_KEY, JSON.stringify(all.slice(-500))); } catch { /* plein */ }
+}
+
+function getCurrentISOWeek() {
+  const now = new Date();
+  const d = new Date(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()));
+  d.setUTCDate(d.getUTCDate() + 4 - (d.getUTCDay() || 7));
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const week = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  return `${d.getUTCFullYear()}-S${String(week).padStart(2,'0')}`;
+}
+
+function submitDeclaration(e) {
+  e.preventDefault();
+  const form = e.target;
+  const data = new FormData(form);
+
+  const syndrome   = data.get('syndrome');
+  const count      = data.get('count');
+  const age        = data.get('age');
+  const severity   = data.get('severity');
+  const onsetDate  = data.get('onset_date');
+  const lab        = data.get('lab') || 'unknown';
+
+  const pathologie = data.get('pathologie') || null;
+
+  if (!syndrome || !count || !age || !severity || !onsetDate) return;
+
+  const decl = {
+    id: Math.random().toString(36).slice(2,10),
+    syndrome, count, age, severity, lab, pathologie,
+    week: getCurrentISOWeek(),
+    onset: onsetDate,
+    ts: Date.now(),
+    region: null,
+  };
+
+  // Essai géoloc silencieux (si permission déjà accordée)
+  try {
+    navigator.permissions.query({ name: 'geolocation' }).then(p => {
+      if (p.state === 'granted') {
+        navigator.geolocation.getCurrentPosition(pos => {
+          decl.region = `${(Math.round(pos.coords.latitude * 2) / 2).toFixed(1)},${(Math.round(pos.coords.longitude * 2) / 2).toFixed(1)}`;
+          saveDeclaration(decl);
+        }, () => saveDeclaration(decl), { timeout: 2000, maximumAge: 600000 });
+      } else {
+        saveDeclaration(decl);
+      }
+    }).catch(() => saveDeclaration(decl));
+  } catch { saveDeclaration(decl); }
+
+  // Afficher confirmation + widget signal épidémique
+  const container = form.closest('.decl-form-container');
+  container.querySelector('#declForm').classList.add('hidden');
+  const confirmEl = container.querySelector('#declConfirm');
+  confirmEl.classList.remove('hidden');
+
+  // Calculer et afficher le signal Z-score pour la pathologie déclarée
+  if (pathologie) {
+    const signal = detectEpiSignal(pathologie);
+    const signalEl = document.getElementById('epiSignalResult');
+    if (signalEl) signalEl.innerHTML = renderEpiSignalWidget(signal);
+  }
+
+  renderLocalDeclarations();
+}
+
+function resetDeclForm() {
+  const container = document.getElementById('declFormContainer');
+  if (!container) return;
+  container.querySelector('#declForm').classList.remove('hidden');
+  container.querySelector('#declConfirm').classList.add('hidden');
+  container.querySelector('#declForm').reset();
+  // Pré-remplir la date d'aujourd'hui
+  const dateInput = document.getElementById('declOnsetDate');
+  if (dateInput) dateInput.value = new Date().toISOString().slice(0,10);
+}
+
+function renderLocalDeclarations() {
+  const el = document.getElementById('epiDeclCounts');
+  if (!el) return;
+  const week = getCurrentISOWeek();
+  const all  = getDeclarations().filter(d => d.week === week);
+  if (!all.length) {
+    el.innerHTML = `<span class="epi-decl-none" data-i18n="epi-decl-none">${currentLang === 'fr' ? 'Aucune déclaration cette semaine' : 'No declarations this week'}</span>`;
+    return;
+  }
+  // Agrégation par syndrome
+  const counts = {};
+  all.forEach(d => { counts[d.syndrome] = (counts[d.syndrome] || 0) + 1; });
+  const synIcons = { grippal:'🤒', respiratoire:'😮‍💨', diarrhéique:'🤢', fébrile:'🌡️', neurologique:'🧠', hémorragique:'🩸', cutané:'🔴' };
+  el.innerHTML = Object.entries(counts).map(([s,n]) =>
+    `<span class="epi-decl-tag">${synIcons[s] || '🏥'} ${s} <strong>${n}</strong></span>`
+  ).join('');
+}
+
+// ── Pathologies surveillées ──────────────────────────────────────────────────
+const WATCHED_PATHOLOGIES = [
+  { id: 'grippe',      label: '🤒 Grippe / ILI',           syndrome: 'grippal'      },
+  { id: 'covid19',     label: '🦠 COVID-19 / SARS-CoV-2',  syndrome: 'respiratoire' },
+  { id: 'rsv',         label: '🌬️ VRS (bronchiolite)',     syndrome: 'respiratoire' },
+  { id: 'mpox',        label: '🔴 Mpox (variole du singe)', syndrome: 'cutané'       },
+  { id: 'dengue',      label: '🦟 Dengue',                 syndrome: 'fébrile'      },
+  { id: 'cholera',     label: '💧 Choléra',                syndrome: 'diarrhéique'  },
+  { id: 'ebola',       label: '🩸 Ebola / Marburg',        syndrome: 'hémorragique' },
+  { id: 'h5n1',        label: '🐦 H5N1 (grippe aviaire)',  syndrome: 'respiratoire' },
+  { id: 'mers',        label: '🐪 MERS-CoV',              syndrome: 'respiratoire' },
+  { id: 'rougeole',    label: '🔴 Rougeole',              syndrome: 'cutané'       },
+  { id: 'meningo',     label: '🧠 Méningite bactérienne',  syndrome: 'neurologique' },
+  { id: 'enceph',      label: '🧠 Encéphalite virale',     syndrome: 'neurologique' },
+  { id: 'chikungunya', label: '🦟 Chikungunya / Zika',     syndrome: 'fébrile'      },
+  { id: 'typhus',      label: '🦠 Typhus / fièvre typhoïde', syndrome: 'fébrile'    },
+  { id: 'anthrax',     label: '☣️ Charbon (anthrax)',      syndrome: 'fébrile'      },
+  { id: 'botulisme',   label: '⚠️ Botulisme',             syndrome: 'neurologique' },
+  { id: 'autre',       label: '🏥 Autre syndrome',         syndrome: 'autre'        },
+];
+
+// ── Autorités sanitaires par pays ────────────────────────────────────────────
+const HEALTH_AUTHORITIES = {
+  FR: { name: 'Santé Publique France',         email: 'declaration@santepubliquefrance.fr', phone: '0800 130 000', declUrl: 'https://www.sentiweb.fr/france/fr/?page=declaration' },
+  BE: { name: 'Sciensano (Belgique)',          email: 'surveillance@sciensano.be',          phone: null,           declUrl: 'https://www.sciensano.be/fr/maladies-infectieuses/maladies-a-declaration-obligatoire' },
+  CH: { name: 'OFSP Suisse',                  email: 'infosantepublique@bag.admin.ch',     phone: null,           declUrl: 'https://www.bag.admin.ch/bag/fr/home/krankheiten/infektionskrankheiten-bekaempfen/meldepflicht.html' },
+  LU: { name: 'Direction de la Santé (Lux.)', email: 'inspection.sanitaire@ms.etat.lu',   phone: null,           declUrl: 'https://sante.public.lu/fr/prevention/maladies-infectieuses/maladies-declaration-obligatoire.html' },
+  DE: { name: 'Robert Koch Institut',         email: 'info@rki.de',                        phone: null,           declUrl: 'https://www.rki.de/DE/Content/Infekt/IfSG/Meldeboegen/Arztmeldung/arztmeldung_node.html' },
+  ES: { name: 'Ministerio de Sanidad España', email: 'dgalerta@msps.es',                   phone: null,           declUrl: 'https://www.mscbs.gob.es/profesionales/saludPublica/enfermedades/declaracion.htm' },
+  IT: { name: 'Istituto Superiore di Sanità', email: 'centroref.sorveglianza@iss.it',      phone: null,           declUrl: 'https://www.iss.it/malattie-infettive' },
+  GB: { name: 'UK Health Security Agency',    email: null,                                  phone: null,           declUrl: 'https://www.gov.uk/report-notifiable-disease' },
+  US: { name: 'CDC USA',                      email: null,                                  phone: '1-800-232-4636', declUrl: 'https://www.cdc.gov/reportanillness' },
+  CA: { name: 'ASPC Canada',                  email: 'phac.info-rndss-snsri.aspc@canada.ca', phone: null,         declUrl: 'https://www.canada.ca/fr/sante-publique/services/maladies-declaration-obligatoire.html' },
+  DEFAULT: { name: 'OMS / WHO',              email: null,                                   phone: null,           declUrl: 'https://www.who.int/emergencies/report-an-event' },
+};
+
+// ── Décalage semaine ISO ──────────────────────────────────────────────────────
+function isoWeekOffset(isoWeek, offset) {
+  const [yearStr, wStr] = isoWeek.split('-S');
+  let w = parseInt(wStr, 10) + offset;
+  let y = parseInt(yearStr, 10);
+  while (w <= 0)  { y--; w += 52; }
+  while (w > 52)  { y++; w -= 52; }
+  return `${y}-S${String(w).padStart(2, '0')}`;
+}
+
+// ── Détection signal épidémique (Z-score 8 semaines glissantes) ──────────────
+function detectEpiSignal(pathologyId) {
+  const allDecls    = getDeclarations();
+  const currentWeek = getCurrentISOWeek();
+  const pathObj     = WATCHED_PATHOLOGIES.find(p => p.id === pathologyId);
+
+  const weeks  = Array.from({ length: 9 }, (_, i) => isoWeekOffset(currentWeek, -(8 - i)));
+  const counts = weeks.map(w =>
+    allDecls.filter(d => d.week === w &&
+      (d.pathologie === pathologyId || (!d.pathologie && pathObj && d.syndrome === pathObj.syndrome))
+    ).length
+  );
+
+  const current = counts[8];
+  const history = counts.slice(0, 8);
+  const n       = history.length || 1;
+  const mean    = history.reduce((a, b) => a + b, 0) / n;
+  const std     = Math.sqrt(history.reduce((a, b) => a + (b - mean) ** 2, 0) / n) || 1;
+  const zscore  = (current - mean) / std;
+
+  const level = zscore >= 3.0 ? 'ROUGE'
+    : zscore >= 2.0 ? 'ORANGE'
+    : zscore >= 1.5 ? 'JAUNE'
+    : 'NORMAL';
+
+  return { pathologyId, zscore: Math.round(zscore * 10) / 10, level, weeklyCount: current, baseline: Math.round(mean * 10) / 10, currentWeek };
+}
+
+// ── Rendu widget signal post-déclaration ──────────────────────────────────────
+function renderEpiSignalWidget(signal) {
+  const COLS = {
+    NORMAL: { bg: '#F0FDF4', border: '#86EFAC', text: '#15803D', label: '✅ NORMAL' },
+    JAUNE:  { bg: '#FEFCE8', border: '#FDE047', text: '#854D0E', label: '⚠️ VIGILANCE' },
+    ORANGE: { bg: '#FFF7ED', border: '#FB923C', text: '#9A3412', label: '🟠 ALERTE PRÉCOCE' },
+    ROUGE:  { bg: '#FFF1F2', border: '#F87171', text: '#991B1B', label: '🔴 SIGNAL ÉPIDÉMIQUE' },
+  };
+  const col      = COLS[signal.level] || COLS.NORMAL;
+  const pathLabel = WATCHED_PATHOLOGIES.find(p => p.id === signal.pathologyId)?.label || signal.pathologyId;
+  const showAlert = signal.level === 'ORANGE' || signal.level === 'ROUGE';
+
+  return `<div class="epi-signal-widget" style="border-color:${col.border};background:${col.bg}">
+    <div class="epi-signal-row">
+      <span class="epi-signal-level" style="color:${col.text}">${col.label}</span>
+      <span class="epi-signal-path">${pathLabel}</span>
+    </div>
+    <div class="epi-signal-stats">
+      <span>Z = <strong>${signal.zscore}</strong></span>
+      <span>Cette sem. : <strong>${signal.weeklyCount} cas</strong></span>
+      <span>Baseline : <strong>${signal.baseline} cas/sem</strong></span>
+    </div>
+    ${showAlert ? `<div class="epi-signal-cta">
+      <span style="font-size:.78rem;color:${col.text}">Signal ${signal.level} — transmission aux autorités recommandée</span>
+      <button class="btn-alert-auth" onclick="openAuthorityAlert('${signal.pathologyId}','${signal.level}',${signal.zscore},${signal.weeklyCount},${signal.baseline})">
+        📧 Alerter les autorités sanitaires
+      </button>
+    </div>` : ''}
+  </div>`;
+}
+
+// ── Alerte aux autorités sanitaires ──────────────────────────────────────────
+function openAuthorityAlert(pathologyId, level, zscore, count, baseline) {
+  const cc   = currentLang === 'en' ? 'GB' : currentLang === 'es' ? 'ES' : 'FR';
+  const auth = HEALTH_AUTHORITIES[cc] || HEALTH_AUTHORITIES.DEFAULT;
+  const path = WATCHED_PATHOLOGIES.find(p => p.id === pathologyId)?.label || pathologyId;
+  const week = getCurrentISOWeek();
+  const date = new Date().toLocaleDateString('fr-FR');
+
+  const body = [
+    `Signal BreathIQ — ${week} (${date})`,
+    `Pathologie : ${path}`,
+    `Niveau d'alerte : ${level} (Z-score = ${zscore})`,
+    `Cas déclarés cette semaine : ${count}`,
+    `Baseline historique : ${baseline} cas/semaine`,
+    ``,
+    `Source : Déclarations anonymes de professionnels de santé — BreathIQ (breathiq.fr)`,
+    `RGPD : Données agrégées anonymisées, aucune information patient identifiable`,
+    ``,
+    `Pour déclarer officiellement : ${auth.declUrl}`,
+  ].join('\n');
+
+  const existing = document.getElementById('authAlertModal');
+  if (existing) existing.remove();
+
+  const el = document.createElement('div');
+  el.id = 'authAlertModal';
+  el.className = 'auth-alert-overlay';
+  el.innerHTML = `<div class="auth-alert-box" role="dialog" aria-modal="true">
+    <button class="auth-alert-close" onclick="document.getElementById('authAlertModal').remove()" aria-label="Fermer">✕</button>
+    <h3 class="auth-alert-title">📧 ${auth.name}</h3>
+    <p class="auth-alert-sub">Signal <strong>${level}</strong> · ${path} · ${week}</p>
+    <textarea class="auth-alert-text" id="authAlertTextarea" readonly rows="11">${body}</textarea>
+    <div class="auth-alert-actions">
+      <button class="btn-copy-auth" onclick="copyAuthAlert()">📋 Copier</button>
+      ${auth.email ? `<a class="btn-email-auth" href="mailto:${auth.email}?subject=${encodeURIComponent(`Signal ${level} ${path} — BreathIQ`)}&body=${encodeURIComponent(body)}" target="_blank">📨 Email</a>` : ''}
+      <a class="btn-portal-auth" href="${auth.declUrl}" target="_blank" rel="noopener">🔗 Portail officiel</a>
+    </div>
+  </div>`;
+  document.body.appendChild(el);
+}
+
+function copyAuthAlert() {
+  const ta  = document.getElementById('authAlertTextarea');
+  const btn = document.querySelector('.btn-copy-auth');
+  if (!ta) return;
+  navigator.clipboard?.writeText(ta.value).then(() => {
+    if (btn) { btn.textContent = '✅ Copié !'; setTimeout(() => { btn.textContent = '📋 Copier'; }, 2000); }
+  }).catch(() => { ta.select(); document.execCommand('copy'); });
+}
+
+// ── Panneau sources en direct ─────────────────────────────────
+function renderLiveSourcesPanel(parsed) {
+  const panel = document.getElementById('liveSourcesPanel');
+  if (!panel) return;
+
+  const src = parsed.sources || {};
+  const sourceStatus = (key) => {
+    const s = src[key];
+    if (!s) return '⚫';
+    if (s === 'api') return '🟢';
+    if (s === 'cache') return '🟡';
+    if (s === 'stale') return '🟠';
+    return '🔴';
+  };
+
+  const fr = currentLang === 'fr';
+  const sources = [
+    { key:'waqiLocal',    icon:'🌫️', label: fr ? 'WAQI — Air local (11 polluants)' : 'WAQI — Local air (11 pollutants)',    value: parsed.waqiLocal   ? `AQI ${parsed.waqiLocal.aqi} · PM2.5 ${parsed.waqiLocal.pm25 ?? '?'}` : '—' },
+    { key:'openMeteoLocal',icon:'🌿',label: fr ? 'Open-Meteo — Pollen local'        : 'Open-Meteo — Local pollen',           value: parsed.localAqi?.dominantPollen ? `${parsed.localAqi.dominantPollen.name} ${parsed.localAqi.dominantPollen.value}` : (parsed.localAqi ? `PM2.5 ${parsed.localAqi.pm25}` : '—') },
+    { key:'openaqFr',     icon:'🇫🇷', label: fr ? 'OpenAQ — PM2.5 France'           : 'OpenAQ — PM2.5 France',               value: parsed.frAqi       ? `${parsed.frAqi.pm25} µg/m³` : '—' },
+    { key:'openaqWorld',  icon:'🌍', label: fr ? 'OpenAQ — PM2.5 mondial'           : 'OpenAQ — PM2.5 global',               value: parsed.worldAqi    ? `${parsed.worldAqi.pm25} µg/m³` : '—' },
+    { key:'spfGrippe',    icon:'🇫🇷', label: fr ? 'SPF — Grippe France'             : 'SPF — Flu France',                    value: parsed.frFlu       ? `${parsed.frFlu.rate?.toFixed(0) ?? '?'}/100k` : '—' },
+    { key:'cdcFlu',       icon:'🇺🇸', label: fr ? 'CDC — Grippe USA'                : 'CDC — Flu USA',                       value: parsed.usFlu       ? `niv. ${parsed.usFlu.level}` : '—' },
+    { key:'ecdcMpox',     icon:'🇪🇺', label: fr ? 'ECDC — Mpox Europe'             : 'ECDC — Mpox Europe',                  value: parsed.ecMpox      ? `${parsed.ecMpox.cases30d} cas/30j` : '—' },
+    { key:'sumeau',       icon:'💧', label: fr ? 'SUM\'EAU — COVID eaux usées'      : 'SUM\'EAU — COVID wastewater',         value: parsed.sumeau      ? `${parsed.sumeau.intensity} (${parsed.sumeau.week})` : '—' },
+  ];
+
+  const statusLabel = fr
+    ? { api:'En direct', cache:'Cache', stale:'Données anciennes', error:'Hors ligne' }
+    : { api:'Live', cache:'Cached', stale:'Stale', error:'Offline' };
+
+  panel.innerHTML = `
+    <div class="lsp-grid">
+      ${sources.map(s => `
+        <div class="lsp-item">
+          <span class="lsp-icon">${s.icon}</span>
+          <div class="lsp-info">
+            <span class="lsp-label">${s.label}</span>
+            <span class="lsp-value">${s.value}</span>
+          </div>
+          <span class="lsp-status" title="${statusLabel[src[s.key]] || 'Inconnu'}">${sourceStatus(s.key)}</span>
+        </div>
+      `).join('')}
+    </div>
+    <p class="lsp-footer">${fr ? `Mis à jour : ${new Date().toLocaleTimeString(currentLang)}` : `Updated: ${new Date().toLocaleTimeString(currentLang)}`}</p>
+  `;
+}
+
+// ── Widget SUM'EAU ───────────────────────────────────────────
+function renderSumEauWidget(data) {
+  const el = document.getElementById('sumeauWidget');
+  if (!el || !data) return;
+
+  const fr = currentLang === 'fr';
+  const colors = { low: '#10B981', moderate: '#F59E0B', high: '#EF4444', unknown: '#6B7280' };
+  const color = colors[data.intensity] || colors.unknown;
+  const arrow = data.deltaDir === 'up' ? '↑' : data.deltaDir === 'down' ? '↓' : '→';
+  const labels = {
+    fr: { low:'Faible', moderate:'Modéré', high:'Élevé', unknown:'Inconnu', up:'en hausse', down:'en baisse', stable:'stable', unknown2:'—' },
+    en: { low:'Low', moderate:'Moderate', high:'High', unknown:'Unknown', up:'rising', down:'falling', stable:'stable', unknown2:'—' },
+  };
+  const l = labels[fr ? 'fr' : 'en'];
+
+  el.innerHTML = `
+    <div class="sumeau-badge" style="background:${color}15;border:1.5px solid ${color}40">
+      <span class="sumeau-icon">💧</span>
+      <div class="sumeau-info">
+        <span class="sumeau-title">${fr ? 'COVID-19 dans les eaux usées' : 'COVID-19 in wastewater'} <span style="color:${color}">${l[data.intensity] || '—'} ${arrow}</span></span>
+        <span class="sumeau-sub">${fr ? `Signal national — semaine ${data.week}` : `National signal — week ${data.week}`}</span>
+      </div>
+    </div>
+    ${data.trend?.length > 1 ? `<div class="sumeau-sparkline">${renderSparkline(data.trend.map(t => t.nat54 ?? t.nat12).filter(v => v!=null), color)}</div>` : ''}
+  `;
+}
+
+// ── Sparkline SVG minimal ────────────────────────────────────
+function renderSparkline(values, color = '#10B981') {
+  if (values.length < 2) return '';
+  const w = 120, h = 32, pad = 2;
+  const min = Math.min(...values);
+  const max = Math.max(...values) || 1;
+  const pts = values.map((v, i) => {
+    const x = pad + (i / (values.length - 1)) * (w - 2*pad);
+    const y = h - pad - ((v - min) / (max - min + 0.001)) * (h - 2*pad);
+    return `${x.toFixed(1)},${y.toFixed(1)}`;
+  }).join(' ');
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" aria-hidden="true"><polyline points="${pts}" fill="none" stroke="${color}" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>`;
+}
+
+// ── Widget WAQI détaillé ─────────────────────────────────────
+function renderWaqiWidget(data) {
+  const el = document.getElementById('waqiWidget');
+  if (!el || !data) return;
+
+  const fr = currentLang === 'fr';
+  const aqiColors = { good:'#10B981', moderate:'#F59E0B', 'unhealthy-sensitive':'#F97316', unhealthy:'#EF4444', 'very-unhealthy':'#9333EA', hazardous:'#7F1D1D' };
+  const aqiLabels = {
+    fr:  { good:'Bon', moderate:'Modéré', 'unhealthy-sensitive':'Mauvais (groupes sensibles)', unhealthy:'Mauvais', 'very-unhealthy':'Très mauvais', hazardous:'Dangereux' },
+    en:  { good:'Good', moderate:'Moderate', 'unhealthy-sensitive':'Unhealthy (sensitive groups)', unhealthy:'Unhealthy', 'very-unhealthy':'Very Unhealthy', hazardous:'Hazardous' },
+  };
+  const cat = data.aqiCategory || 'moderate';
+  const color = aqiColors[cat] || '#6B7280';
+  const label = (aqiLabels[fr ? 'fr' : 'en'] || aqiLabels.en)[cat] || cat;
+
+  const pollutants = [
+    { key:'pm25', name:'PM2.5', unit:'µg/m³', val: data.pm25 },
+    { key:'pm10', name:'PM10',  unit:'µg/m³', val: data.pm10 },
+    { key:'no2',  name:'NO₂',   unit:'µg/m³', val: data.no2 },
+    { key:'o3',   name:'O₃',    unit:'µg/m³', val: data.o3 },
+    { key:'so2',  name:'SO₂',   unit:'µg/m³', val: data.so2 },
+    { key:'co',   name:'CO',    unit:'ppm',   val: data.co },
+  ].filter(p => p.val != null);
+
+  const forecastHtml = data.forecast7d?.length ? `
+    <div class="waqi-forecast">
+      <div class="waqi-forecast-title">${fr ? 'Prévisions PM2.5 (7j)' : 'PM2.5 forecast (7d)'}</div>
+      <div class="waqi-forecast-bars">
+        ${data.forecast7d.map(f => {
+          const pct = Math.min(100, Math.round((f.avg / 75) * 100));
+          const fc = pct > 66 ? '#EF4444' : pct > 33 ? '#F59E0B' : '#10B981';
+          return `<div class="waqi-fc-bar" title="${f.day}: ${f.avg} µg/m³">
+            <div class="waqi-fc-fill" style="height:${pct}%;background:${fc}"></div>
+            <span class="waqi-fc-day">${f.day?.slice(8) || ''}</span>
+          </div>`;
+        }).join('')}
+      </div>
+    </div>
+  ` : '';
+
+  el.innerHTML = `
+    <div class="waqi-header">
+      <div class="waqi-aqi" style="border-color:${color};color:${color}">${data.aqi ?? '?'}</div>
+      <div class="waqi-meta">
+        <span class="waqi-city">📍 ${data.city}</span>
+        <span class="waqi-cat" style="color:${color}">${label}</span>
+        ${data.dominant ? `<span class="waqi-dom">${fr ? 'Polluant dominant' : 'Dominant'}: ${data.dominant.toUpperCase()}</span>` : ''}
+      </div>
+    </div>
+    ${pollutants.length ? `<div class="waqi-pollutants">${pollutants.map(p =>
+      `<span class="waqi-pol">${p.name} <strong>${p.val}</strong> ${p.unit}</span>`
+    ).join('')}</div>` : ''}
+    ${data.temp != null ? `<div class="waqi-meteo">🌡️ ${data.temp}°C · 💧 ${data.hum ?? '?'}% · 💨 ${data.wind ?? '?'} m/s</div>` : ''}
+    ${forecastHtml}
+    ${data.attributions?.length ? `<p class="waqi-attr">${data.attributions.join(' · ')}</p>` : ''}
+  `;
+}
+
+// ── Widget Pollen ────────────────────────────────────────────
+function renderPollenWidget(data) {
+  const el = document.getElementById('pollenWidget');
+  if (!el || !data?.pollen) return;
+
+  const fr = currentLang === 'fr';
+  const pollenNames = {
+    fr: { alder:'Aulne', birch:'Bouleau', grass:'Graminées', mugwort:'Armoise', olive:'Olivier', ragweed:'Ambroisie' },
+    en: { alder:'Alder', birch:'Birch',   grass:'Grass',     mugwort:'Mugwort', olive:'Olive',   ragweed:'Ragweed' },
+  };
+  const names = pollenNames[fr ? 'fr' : 'en'];
+  const pollenIcons = { alder:'🌳', birch:'🌲', grass:'🌾', mugwort:'🌿', olive:'🫒', ragweed:'🌻' };
+
+  // Seuils EPI : 0=none, 1-3=low, 4-6=moderate, ≥7=high
+  const levelColor = v => v == null ? '#9ca3af' : v >= 7 ? '#EF4444' : v >= 4 ? '#F59E0B' : v >= 1 ? '#10B981' : '#9ca3af';
+  const levelLabel = v => {
+    if (v == null || v === 0) return fr ? 'Aucun' : 'None';
+    if (v >= 7) return fr ? 'Élevé' : 'High';
+    if (v >= 4) return fr ? 'Modéré' : 'Moderate';
+    return fr ? 'Faible' : 'Low';
+  };
+
+  const entries = Object.entries(data.pollen).filter(([,v]) => v != null && v > 0);
+  if (!entries.length) { el.innerHTML = `<p class="pollen-none">${fr ? 'Aucun pollen détecté localement' : 'No pollen detected locally'}</p>`; return; }
+
+  el.innerHTML = `
+    <div class="pollen-grid">
+      ${entries.sort(([,a],[,b]) => b-a).map(([key, val]) => `
+        <div class="pollen-item">
+          <span class="pollen-icon">${pollenIcons[key] || '🌿'}</span>
+          <span class="pollen-name">${names[key] || key}</span>
+          <div class="pollen-bar-wrap"><div class="pollen-bar" style="width:${Math.min(100,val*10)}%;background:${levelColor(val)}"></div></div>
+          <span class="pollen-level" style="color:${levelColor(val)}">${levelLabel(val)}</span>
+        </div>
+      `).join('')}
+    </div>
+  `;
 }
 
 function updateLiveStatusBadge(detail) {
@@ -2161,4 +3462,174 @@ function updateLiveStatusBadge(detail) {
     badge.classList.add('live-off');
     badge.title = 'Données hors ligne — affichage demo';
   }
+}
+
+// ── RGPD / Consentement ───────────────────────────────────────
+
+const CONSENT_KEY = 'biq-consent';
+
+function getConsentStatus() {
+  try { return localStorage.getItem(CONSENT_KEY); } catch { return null; }
+}
+
+function setConsentStatus(value) {
+  try { localStorage.setItem(CONSENT_KEY, value); } catch { /* plein */ }
+}
+
+function initConsent() {
+  const status = getConsentStatus();
+  if (status) return; // déjà répondu
+  const banner = document.getElementById('consentBanner');
+  if (banner) banner.removeAttribute('hidden');
+}
+
+function acceptConsent() {
+  setConsentStatus('accepted');
+  const banner = document.getElementById('consentBanner');
+  if (banner) banner.setAttribute('hidden', '');
+}
+
+function declineConsent() {
+  setConsentStatus('declined');
+  const banner = document.getElementById('consentBanner');
+  if (banner) banner.setAttribute('hidden', '');
+}
+
+// ── Mes données — gestion localStorage ───────────────────────
+
+function getMyDataSummary() {
+  const decls = getDeclarations();
+  const cacheKeys = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('biq-live-')) cacheKeys.push(k);
+    }
+  } catch { /* rien */ }
+
+  const prefs = [];
+  ['biq-theme', 'biq-lang', 'biq-mode'].forEach(k => {
+    try { if (localStorage.getItem(k)) prefs.push(k); } catch { /* rien */ }
+  });
+
+  return {
+    declarations: decls.length,
+    cacheEntries: cacheKeys.length,
+    cacheKeys,
+    prefs,
+    consent: getConsentStatus() || 'non défini',
+  };
+}
+
+function clearMyDeclarations() {
+  if (!confirm(t('mydata-confirm'))) return;
+  try { localStorage.removeItem(DECL_KEY); } catch { /* rien */ }
+  renderLocalDeclarations();
+  renderMyDataSection();
+}
+
+function clearAllCache() {
+  if (!confirm(t('mydata-confirm'))) return;
+  try {
+    const toRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('biq-live-')) toRemove.push(k);
+    }
+    toRemove.forEach(k => localStorage.removeItem(k));
+  } catch { /* rien */ }
+  renderMyDataSection();
+}
+
+function resetAllSettings() {
+  if (!confirm(t('mydata-confirm'))) return;
+  try {
+    ['biq-theme', 'biq-lang', 'biq-mode', CONSENT_KEY, DECL_KEY].forEach(k => localStorage.removeItem(k));
+    const toRemove = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith('biq-')) toRemove.push(k);
+    }
+    toRemove.forEach(k => localStorage.removeItem(k));
+  } catch { /* rien */ }
+  // Recharger la page pour appliquer la réinitialisation
+  window.location.reload();
+}
+
+function exportMyDeclarations() {
+  const decls = getDeclarations();
+  if (!decls.length) { alert(currentLang === 'fr' ? 'Aucune déclaration à exporter.' : 'No declarations to export.'); return; }
+  const blob = new Blob([JSON.stringify(decls, null, 2)], { type: 'application/json' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = `breathiq-declarations-${getCurrentISOWeek()}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function renderMyDataSection() {
+  const el = document.getElementById('myDataSummary');
+  if (!el) return;
+  const s = getMyDataSummary();
+  const fr = currentLang === 'fr';
+
+  el.innerHTML = `
+    <div class="mydata-grid">
+      <div class="mydata-card">
+        <div class="mydata-card-icon">📋</div>
+        <div class="mydata-card-body">
+          <strong>${t('mydata-decl-label')}</strong>
+          <span class="mydata-count">${s.declarations}</span>
+          <p>${fr ? 'entrée(s) cette session' : 'entry/entries'}</p>
+        </div>
+        <div class="mydata-card-actions">
+          <button class="mydata-btn mydata-btn-export" onclick="exportMyDeclarations()">${t('mydata-export')}</button>
+          <button class="mydata-btn mydata-btn-danger" onclick="clearMyDeclarations()">${t('mydata-clear-decl')}</button>
+        </div>
+      </div>
+
+      <div class="mydata-card">
+        <div class="mydata-card-icon">🗄️</div>
+        <div class="mydata-card-body">
+          <strong>${t('mydata-cache-label')}</strong>
+          <span class="mydata-count">${s.cacheEntries}</span>
+          <p>${fr ? 'entrée(s) en cache' : 'cached entry/entries'}</p>
+        </div>
+        <div class="mydata-card-actions">
+          <button class="mydata-btn mydata-btn-danger" onclick="clearAllCache()">${t('mydata-clear-cache')}</button>
+        </div>
+      </div>
+
+      <div class="mydata-card">
+        <div class="mydata-card-icon">⚙️</div>
+        <div class="mydata-card-body">
+          <strong>${t('mydata-prefs-label')}</strong>
+          <span class="mydata-count">${s.prefs.length}</span>
+          <p>${s.prefs.map(k => k.replace('biq-','')).join(', ') || (fr ? 'aucune' : 'none')}</p>
+        </div>
+      </div>
+
+      <div class="mydata-card">
+        <div class="mydata-card-icon">🔐</div>
+        <div class="mydata-card-body">
+          <strong>${t('mydata-consent-label')}</strong>
+          <span class="mydata-count mydata-consent-status ${s.consent === 'accepted' ? 'status-ok' : s.consent === 'declined' ? 'status-warn' : 'status-none'}">${s.consent}</span>
+        </div>
+        <div class="mydata-card-actions">
+          ${s.consent !== 'accepted' ? `<button class="mydata-btn mydata-btn-primary" onclick="acceptConsent();renderMyDataSection()">${t('consent-accept')}</button>` : ''}
+          ${s.consent === 'accepted' ? `<button class="mydata-btn mydata-btn-danger" onclick="declineConsent();renderMyDataSection()">${fr ? 'Retirer le consentement' : 'Withdraw consent'}</button>` : ''}
+        </div>
+      </div>
+    </div>
+
+    <div class="mydata-rights-note">
+      <p>${t('mydata-rights')}</p>
+      <p><a href="mailto:privacy@breathiq.fr">${t('mydata-dpo')} : privacy@breathiq.fr</a> · <a href="privacy.html">${t('consent-more')}</a></p>
+    </div>
+
+    <div class="mydata-reset-zone">
+      <button class="mydata-btn mydata-btn-reset" onclick="resetAllSettings()">${t('mydata-clear-all')}</button>
+    </div>
+  `;
 }

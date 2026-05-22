@@ -14,6 +14,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
         integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" crossorigin="">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" crossorigin="">
   <link rel="stylesheet" href="style.css">
   <style>
     /* ── Stocks page layout ────────────────────────────────── */
@@ -212,6 +214,101 @@
       border-radius: var(--r-md) !important;
       box-shadow: var(--shadow-lg) !important;
     }
+
+    /* ── Layer controls ─────────────────────────────────────────── */
+    .map-header {
+      display: flex; flex-wrap: wrap; align-items: center;
+      justify-content: space-between; gap: var(--s2);
+      margin-bottom: var(--s2);
+    }
+    .map-header h2 { margin: 0; font-size: 1.2rem; font-weight: 700; color: var(--text-primary); }
+    .map-refresh-group {
+      display: flex; align-items: center; gap: .5rem; flex-shrink: 0;
+    }
+    .refresh-badge {
+      font-size: .72rem; font-weight: 500;
+      color: var(--text-muted);
+      background: var(--bg-card-2);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      padding: .2rem .65rem;
+      white-space: nowrap;
+    }
+    .btn-refresh {
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r-full); padding: .3rem .55rem;
+      font-size: .82rem; cursor: pointer; line-height: 1;
+      transition: var(--t-fast);
+    }
+    .btn-refresh:hover { background: var(--c-blue); color: #fff; border-color: var(--c-blue); }
+
+    .map-layer-controls {
+      display: flex; flex-wrap: wrap; gap: .4rem;
+      margin-bottom: var(--s2);
+    }
+    .layer-btn {
+      display: inline-flex; align-items: center; gap: .35rem;
+      padding: .38rem .85rem;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-full);
+      font-size: .8rem; font-weight: 500;
+      color: var(--text-secondary);
+      cursor: pointer; transition: var(--t-fast);
+    }
+    .layer-btn:hover { border-color: var(--c-blue); color: var(--c-blue); }
+    .layer-btn.active {
+      background: var(--c-navy); color: #fff; border-color: var(--c-navy);
+    }
+    .layer-btn.layer-aqi.active { background: #065F46; border-color: #065F46; }
+    .layer-btn.layer-locate { background: var(--bg-card-2); }
+    .layer-btn.layer-locate:hover { background: var(--c-teal); color: #fff; border-color: var(--c-teal); }
+
+    /* ── Infobulles carte ───────────────────────────────────────── */
+    .zoom-hint {
+      display: none; align-items: center; gap: .5rem;
+      padding: .5rem .9rem;
+      background: #FEF3C7; color: #92400E;
+      border: 1px solid #FCD34D; border-radius: var(--r-md);
+      font-size: .8rem; margin-bottom: var(--s2);
+    }
+    .map-loading-badge {
+      display: none; align-items: center; gap: .5rem;
+      position: absolute; top: .6rem; right: .6rem; z-index: 800;
+      background: var(--bg-card); border: 1px solid var(--border);
+      border-radius: var(--r-full); padding: .35rem .75rem;
+      font-size: .76rem; font-weight: 500; color: var(--text-secondary);
+      box-shadow: var(--shadow-md);
+    }
+    .map-spinner {
+      width: 12px; height: 12px; border: 2px solid var(--border);
+      border-top-color: var(--c-blue); border-radius: 50%;
+      animation: spin .7s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── AQI badge ──────────────────────────────────────────────── */
+    .aqi-legend-item {
+      display: none; align-items: center; gap: .4rem;
+      padding: .25rem .6rem;
+      border-radius: var(--r-full);
+      font-size: .74rem; font-weight: 600; color: #fff;
+      margin-left: .5rem;
+    }
+
+    /* ── Pharmacie count badge ──────────────────────────────────── */
+    .pharmacy-count-badge {
+      display: none; align-items: center; gap: .3rem;
+      font-size: .74rem; color: var(--text-muted);
+      padding-left: .5rem;
+    }
+    .pharmacy-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+      background: #2563EB; flex-shrink: 0;
+    }
+
+    /* Wrapper relatif pour overlay badges */
+    .stocks-map-wrapper { position: relative; }
   </style>
 </head>
 <body>
@@ -288,14 +385,51 @@
 
     <!-- Carte -->
     <section class="stocks-map-section" aria-labelledby="map-stocks-title">
-      <h2 id="map-stocks-title">Carte des niveaux d'alerte par territoire</h2>
-      <div id="stocksMap" role="application" aria-label="Carte mondiale des niveaux de stocks EPI"></div>
+      <div class="map-header">
+        <h2 id="map-stocks-title">Carte des niveaux d'alerte par territoire</h2>
+        <div class="map-refresh-group">
+          <span class="refresh-badge" id="refreshCountdown">Chargement…</span>
+          <button class="btn-refresh" id="forceRefreshBtn" title="Actualiser maintenant" aria-label="Actualiser les données">🔄</button>
+        </div>
+      </div>
+
+      <!-- Contrôles couches -->
+      <div class="map-layer-controls" role="group" aria-label="Couches de la carte">
+        <button class="layer-btn active" data-layer="national" aria-pressed="true">🌍 National</button>
+        <button class="layer-btn layer-pharma" data-layer="pharmacies" aria-pressed="false">🏪 Pharmacies <small style="opacity:.65;font-size:.68rem">(zoom ≥ 9)</small></button>
+        <button class="layer-btn layer-aqi" data-layer="aqi" aria-pressed="false">🌫 Qualité air</button>
+        <button class="layer-btn layer-locate" id="locateBtn" aria-label="Centrer sur ma position">📍 Autour de moi</button>
+      </div>
+
+      <!-- Hint zoom pharmacies -->
+      <div class="zoom-hint" id="zoomHint" role="alert" aria-live="polite">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        Zoomez sur une région (niveau 9+) pour charger les pharmacies locales.
+      </div>
+
+      <div class="stocks-map-wrapper">
+        <div id="stocksMap" role="application" aria-label="Carte mondiale des niveaux de stocks EPI"></div>
+        <!-- Badge chargement pharmacies -->
+        <div class="map-loading-badge" id="mapLoadingBadge" aria-live="polite">
+          <div class="map-spinner"></div>
+          Chargement pharmacies…
+        </div>
+      </div>
+
       <div class="stocks-legend" aria-label="Légende niveaux d'alerte">
         <strong style="font-size:.78rem;color:var(--text-muted)">Niveaux :</strong>
         <span class="legend-chip"><span class="legend-swatch" style="background:#DCFCE7;border-color:#15803D"></span>Suffisant (&gt;90j)</span>
         <span class="legend-chip"><span class="legend-swatch" style="background:#DBEAFE;border-color:#1A6FD4"></span>Modéré (30–90j)</span>
         <span class="legend-chip"><span class="legend-swatch" style="background:#FEF3C7;border-color:#B45309"></span>Faible (7–30j)</span>
         <span class="legend-chip"><span class="legend-swatch" style="background:#FEE2E2;border-color:#B91C1C"></span>Critique (&lt;7j)</span>
+        <span class="legend-chip aqi-legend-item" id="aqiLegendItem">
+          <svg width="10" height="10" viewBox="0 0 10 10"><circle cx="5" cy="5" r="5" fill="currentColor"/></svg>
+          <span id="aqiLegendText">IQA —</span>
+        </span>
+        <span class="legend-chip pharmacy-count-badge" id="pharmacyCountBadge">
+          <span class="pharmacy-dot"></span>
+          <span id="pharmacyCountText">0 pharmacies</span>
+        </span>
         <span class="legend-chip" style="margin-left:.5rem">
           <span style="font-size:.72rem;color:var(--text-muted)">Taille cercle = volume de stock estimé</span>
         </span>
@@ -390,10 +524,12 @@
   </div>
 </footer>
 
-<!-- Leaflet + stocks-api -->
+<!-- Leaflet + plugins + stocks-api + stocks-live -->
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
 <script src="stocks-api.js"></script>
+<script src="stocks-live.js"></script>
 <script>
 'use strict';
 
@@ -416,13 +552,20 @@ let sortField = 'alertLevel';
 let sortAsc = true;
 let stocksMap = null;
 let markersLayer = null;
+let pharmacyLayer = null;
+let aqiLayer = null;
+let _enrichedData = null;
+let _layerPharmaciesActive = false;
+let _layerAqiActive = false;
+
+function getStocksData() { return _enrichedData || STOCKS_DEMO_DATA; }
 
 // ── Carte ──────────────────────────────────────────────────────────────────
 function initStocksMap() {
   if (stocksMap || typeof L === 'undefined') return;
 
   stocksMap = L.map('stocksMap', {
-    center: [20, 10], zoom: 2, minZoom: 1, maxZoom: 8,
+    center: [20, 10], zoom: 2, minZoom: 1, maxZoom: 18,
     zoomControl: true, attributionControl: true
   });
 
@@ -434,6 +577,110 @@ function initStocksMap() {
 
   renderStocksMarkers();
   setTimeout(() => stocksMap && stocksMap.invalidateSize(), 300);
+
+  // Recharge les pharmacies quand la vue change (moveend + zoomend)
+  stocksMap.on('moveend zoomend', () => {
+    if (_layerPharmaciesActive) {
+      const zoom = stocksMap.getZoom();
+      if (zoom >= 9) {
+        document.getElementById('zoomHint').style.display = 'none';
+        loadPharmacyMarkers();
+      } else {
+        document.getElementById('zoomHint').style.display = 'flex';
+      }
+    }
+  });
+}
+
+// ── Couche pharmacies ──────────────────────────────────────────────────────
+async function loadPharmacyMarkers() {
+  if (!stocksMap || !window.StocksLive) return;
+  const bounds = stocksMap.getBounds();
+  const boundsObj = {
+    south: bounds.getSouth(), west: bounds.getWest(),
+    north: bounds.getNorth(), east: bounds.getEast(),
+  };
+
+  const badge = document.getElementById('mapLoadingBadge');
+  if (badge) badge.style.display = 'flex';
+
+  try {
+    const { pharmacies, limited } = await StocksLive.fetchPharmaciesOSM(boundsObj);
+
+    if (limited) {
+      document.getElementById('zoomHint').style.display = 'flex';
+      document.getElementById('zoomHint').textContent = 'Zoomez davantage pour charger les pharmacies de cette zone.';
+      if (badge) badge.style.display = 'none';
+      return;
+    }
+
+    if (pharmacyLayer) { stocksMap.removeLayer(pharmacyLayer); }
+
+    pharmacyLayer = typeof L.markerClusterGroup === 'function'
+      ? L.markerClusterGroup({ maxClusterRadius: 40, disableClusteringAtZoom: 15 })
+      : L.layerGroup();
+
+    pharmacies.forEach(p => {
+      const m = L.circleMarker([p.lat, p.lng], {
+        radius: 6,
+        fillColor: '#2563EB', color: '#1D4ED8',
+        weight: 1.5, opacity: 1, fillOpacity: 0.8,
+      });
+      m.bindPopup(`
+        <div class="map-popup-stocks">
+          <strong>🏪 ${p.name}</strong>
+          ${p.addr ? `<div style="font-size:.76rem;color:#718096;margin:.2rem 0">${p.addr}</div>` : ''}
+          ${p.opening_hours ? `<div style="font-size:.74rem"><strong>Horaires :</strong> ${p.opening_hours}</div>` : ''}
+          ${p.phone ? `<div style="font-size:.74rem"><strong>Tél :</strong> <a href="tel:${p.phone}">${p.phone}</a></div>` : ''}
+          <div style="margin-top:.5rem;font-size:.7rem;color:#9CA3AF">📡 Source : OpenStreetMap</div>
+        </div>
+      `);
+      pharmacyLayer.addLayer(m);
+    });
+
+    pharmacyLayer.addTo(stocksMap);
+
+    // Badge count
+    const countBadge = document.getElementById('pharmacyCountBadge');
+    const countText  = document.getElementById('pharmacyCountText');
+    if (countBadge && countText) {
+      countText.textContent = `${pharmacies.length} pharmacie${pharmacies.length > 1 ? 's' : ''}`;
+      countBadge.style.display = 'inline-flex';
+    }
+  } catch (err) {
+    console.warn('[stocks] Pharmacy layer error:', err);
+  } finally {
+    if (badge) badge.style.display = 'none';
+  }
+}
+
+// ── Couche AQI ─────────────────────────────────────────────────────────────
+async function loadAQILayer() {
+  if (!stocksMap || !window.StocksLive) return;
+  const center = stocksMap.getCenter();
+  const aqi = await StocksLive.fetchAQI(center.lat, center.lng);
+  if (!aqi || aqi.aqi == null) return;
+
+  if (aqiLayer) { stocksMap.removeLayer(aqiLayer); }
+
+  const color = StocksLive.aqiToColor(aqi.aqi);
+  const label = StocksLive.aqiToLabel(aqi.aqi);
+
+  // Cercle de gradient sur la zone visible
+  aqiLayer = L.circle([center.lat, center.lng], {
+    radius: 80000,
+    fillColor: color, color: color,
+    weight: 0, fillOpacity: 0.18,
+  }).addTo(stocksMap);
+
+  // Badge légende AQI
+  const legendItem = document.getElementById('aqiLegendItem');
+  const legendText = document.getElementById('aqiLegendText');
+  if (legendItem && legendText) {
+    legendItem.style.display = 'inline-flex';
+    legendItem.style.background = color;
+    legendText.textContent = `IQA ${aqi.aqi} — ${label}`;
+  }
 }
 
 function getAlertColor(level) {
@@ -445,8 +692,8 @@ function renderStocksMarkers() {
   if (markersLayer) { stocksMap.removeLayer(markersLayer); markersLayer = null; }
 
   const filtered = activeContinent === 'all'
-    ? STOCKS_DEMO_DATA
-    : STOCKS_DEMO_DATA.filter(d => d.continent === activeContinent);
+    ? getStocksData()
+    : getStocksData().filter(d => d.continent === activeContinent);
 
   // Coordonnées approximatives par code ISO
   const COORDS = {
@@ -509,7 +756,7 @@ function renderStocksMarkers() {
 const ALERT_ORDER = { CRITICAL: 0, LOW: 1, MODERATE: 2, SUFFICIENT: 3, UNKNOWN: 4 };
 
 function getSortedData() {
-  let data = STOCKS_DEMO_DATA.filter(d => {
+  let data = getStocksData().filter(d => {
     const continentOk = activeContinent === 'all' || d.continent === activeContinent;
     const alertLevel = computeAlertLevel(d.daysSupply);
     const alertOk = activeAlertFilter === 'all' || alertLevel === activeAlertFilter;
@@ -660,6 +907,75 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('exportCsv')?.addEventListener('click', exportCsv);
   document.getElementById('exportPrint')?.addEventListener('click', () => window.print());
 
+  // ── Contrôles couches carte ─────────────────────────────────────────────
+  document.querySelectorAll('[data-layer]').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      const layer = btn.dataset.layer;
+
+      if (layer === 'national') return; // toujours actif
+
+      if (layer === 'pharmacies') {
+        _layerPharmaciesActive = !_layerPharmaciesActive;
+        btn.classList.toggle('active', _layerPharmaciesActive);
+        btn.setAttribute('aria-pressed', _layerPharmaciesActive ? 'true' : 'false');
+
+        if (!_layerPharmaciesActive) {
+          if (pharmacyLayer) { stocksMap?.removeLayer(pharmacyLayer); pharmacyLayer = null; }
+          const cb = document.getElementById('pharmacyCountBadge');
+          if (cb) cb.style.display = 'none';
+          document.getElementById('zoomHint').style.display = 'none';
+        } else {
+          const zoom = stocksMap?.getZoom() ?? 0;
+          if (zoom < 9) {
+            document.getElementById('zoomHint').style.display = 'flex';
+          } else {
+            document.getElementById('zoomHint').style.display = 'none';
+            await loadPharmacyMarkers();
+          }
+        }
+      }
+
+      if (layer === 'aqi') {
+        _layerAqiActive = !_layerAqiActive;
+        btn.classList.toggle('active', _layerAqiActive);
+        btn.setAttribute('aria-pressed', _layerAqiActive ? 'true' : 'false');
+
+        if (!_layerAqiActive) {
+          if (aqiLayer) { stocksMap?.removeLayer(aqiLayer); aqiLayer = null; }
+          const li = document.getElementById('aqiLegendItem');
+          if (li) li.style.display = 'none';
+        } else {
+          await loadAQILayer();
+        }
+      }
+    });
+  });
+
+  // ── Bouton "Autour de moi" ───────────────────────────────────────────────
+  document.getElementById('locateBtn')?.addEventListener('click', () => {
+    if (!navigator.geolocation) return;
+    navigator.geolocation.getCurrentPosition(
+      pos => {
+        stocksMap?.setView([pos.coords.latitude, pos.coords.longitude], 12);
+        if (_layerPharmaciesActive) loadPharmacyMarkers();
+      },
+      err => console.warn('[stocks] Geoloc error:', err.code),
+      { timeout: 10000, maximumAge: 60000 }
+    );
+  });
+
+  // ── Bouton force refresh ─────────────────────────────────────────────────
+  document.getElementById('forceRefreshBtn')?.addEventListener('click', async () => {
+    if (!window.StocksLive) return;
+    // Vider les clés de cache live
+    Object.keys(localStorage)
+      .filter(k => k.startsWith('biq-live-'))
+      .forEach(k => localStorage.removeItem(k));
+    localStorage.removeItem('biq-stocks-last-refresh');
+    await runEnrichment();
+    StocksLive.scheduleAutoRefresh(runEnrichment);
+  });
+
   // Init
   renderTable();
   renderSources();
@@ -671,6 +987,34 @@ document.addEventListener('DOMContentLoaded', () => {
     const checkL = setInterval(() => {
       if (typeof L !== 'undefined') { clearInterval(checkL); initStocksMap(); }
     }, 200);
+  }
+
+  // ── Enrichissement asynchrone en arrière-plan ────────────────────────────
+  async function runEnrichment() {
+    if (!window.StocksLive) return;
+    try {
+      const enriched = await StocksLive.enrichStocksData();
+      if (enriched && enriched.length > 0) {
+        _enrichedData = enriched;
+        renderTable();
+        renderStocksMarkers();
+      }
+    } catch (err) {
+      console.warn('[stocks] Enrichment error:', err);
+    }
+  }
+
+  if (window.StocksLive) {
+    runEnrichment();
+    StocksLive.scheduleAutoRefresh(runEnrichment);
+  } else {
+    // stocks-live.js pas encore chargé, retry
+    window.addEventListener('load', () => {
+      if (window.StocksLive) {
+        runEnrichment();
+        StocksLive.scheduleAutoRefresh(runEnrichment);
+      }
+    });
   }
 });
 </script>
