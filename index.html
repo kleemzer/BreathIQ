@@ -114,7 +114,7 @@
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Stocks EPI</a></li>
       <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
-      <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Pathogènes</a></li>
+      <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
       <li><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li><a href="#about" onclick="return navTo(event,'#about')" data-i18n="nav-about">À propos</a></li>
     </ul>
@@ -365,23 +365,23 @@
         </div>
 
         <div class="sym-group-col">
-          <div class="sym-group-header">🧠 Neuro &amp; Cutané</div>
+          <div class="sym-group-header">🧠 Tête &amp; Peau</div>
           <div class="symptom-grid symptom-grid-compact" role="group">
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="headache"><span class="sym-icon">🤕</span><span>Maux de tête intenses</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="photophobia"><span class="sym-icon">🌟</span><span>Photophobie</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="photophobia"><span class="sym-icon">🌟</span><span>Sensibilité à la lumière</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="neck_stiffness"><span class="sym-icon">🔒</span><span>Raideur de la nuque</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash"><span class="sym-icon">🩹</span><span>Éruption cutanée</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_pustular"><span class="sym-icon">⭕</span><span>Lésions pustuleuses</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_maculopapular"><span class="sym-icon">🔴</span><span>Rash maculopapuleux</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_pustular"><span class="sym-icon">⭕</span><span>Boutons avec pus</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_maculopapular"><span class="sym-icon">🔴</span><span>Taches / boutons rouges</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="lymph_nodes"><span class="sym-icon">🔵</span><span>Ganglions gonflés</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="conjunctivitis"><span class="sym-icon">👁️</span><span>Yeux rouges (conjonctivite)</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="conjunctivitis"><span class="sym-icon">👁️</span><span>Yeux rouges</span></label>
           </div>
 
           <div class="sym-group-header" style="margin-top:.9rem">🤢 Digestifs &amp; Autres</div>
           <div class="symptom-grid symptom-grid-compact" role="group">
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="vomiting"><span class="sym-icon">🤢</span><span>Vomissements</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="diarrhea"><span class="sym-icon">💧</span><span>Diarrhée</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="abdominal_pain"><span class="sym-icon">🫃</span><span>Douleur abdominale</span></label>
+            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="abdominal_pain"><span class="sym-icon">🫃</span><span>Douleur au ventre</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="smell_loss"><span class="sym-icon">👃</span><span>Perte odorat / goût</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="taste_loss"><span class="sym-icon">👅</span><span>Perte de goût</span></label>
             <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="retrobulbar_pain"><span class="sym-icon">👁️</span><span>Douleur derrière les yeux</span></label>
@@ -391,7 +391,7 @@
 
       <!-- ── Signes d'alarme ────────────────────────────────── -->
       <div class="alarm-signs-panel">
-        <div class="alarm-panel-title">🚨 Signes d'alarme — répondez à chacun</div>
+        <div class="alarm-panel-title">🚨 Signes d'urgence — cochez si c'est votre cas</div>
         <div class="alarm-grid" role="group" aria-label="Signes d'alarme">
           <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
             <input type="checkbox" value="dyspnea_rest">
@@ -429,7 +429,7 @@
       <!-- ── Contexte épidémio (optionnel) ─────────────────── -->
       <details class="ctx-epid-details">
         <summary class="ctx-epid-summary">
-          + Contexte épidémiologique <small>(améliore la précision du diagnostic)</small>
+          + Informations complémentaires <small>(améliore la précision)</small>
         </summary>
         <div class="symptom-grid symptom-grid-compact ctx-epid-grid" role="group" aria-label="Contexte épidémiologique">
           <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
@@ -448,7 +448,7 @@
             <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Exposition eau stagnante / climatisation</span>
           </label>
           <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Immunodéprimé (cancer, VIH, corticoïdes)</span>
+            <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Système immunitaire affaibli (cancer, VIH, traitement)</span>
           </label>
           <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
             <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contexte de risque Mpox</span>
@@ -995,8 +995,8 @@
 <section class="care-finder-section patient-only" id="careFinder" aria-labelledby="care-finder-title">
   <div class="container">
     <div class="section-header" style="text-align:center">
-      <h2 id="care-finder-title" data-i18n="care-title">Trouver des soins médicaux proches</h2>
-      <p class="section-subtitle" data-i18n="care-subtitle">Hôpitaux et médecins les plus proches de votre localisation</p>
+      <h2 id="care-finder-title" data-i18n="care-title">Trouver un médecin près de chez moi</h2>
+      <p class="section-subtitle" data-i18n="care-subtitle">Pharmacies, médecins et hôpitaux autour de vous</p>
     </div>
     <div class="care-finder-inner">
       <p class="care-permission-msg" data-i18n="care-permission">
