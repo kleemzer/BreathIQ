@@ -180,7 +180,7 @@ async function main() {
     const completion = await groq.chat.completions.create({
       model: 'llama-3.3-70b-versatile',
       messages: [{ role: 'user', content: prompt }],
-      max_tokens: 4096,
+      max_tokens: 8000,
       temperature: 0.1,
     });
     rawResponse = completion.choices[0].message.content;
@@ -189,15 +189,17 @@ async function main() {
     process.exit(1);
   }
 
-  // 3. Parse JSON output
+  // 3. Parse JSON output — extract first { ... } block robustly
   let output;
   try {
-    // Claude sometimes wraps in ```json ... ```
-    const cleaned = rawResponse.replace(/^```json\s*/i, '').replace(/\s*```$/, '').trim();
+    const start = rawResponse.indexOf('{');
+    const end = rawResponse.lastIndexOf('}');
+    if (start === -1 || end === -1) throw new Error('Aucun objet JSON trouvé');
+    const cleaned = rawResponse.slice(start, end + 1);
     output = JSON.parse(cleaned);
   } catch (e) {
-    console.error('❌  JSON invalide retourné par Claude:');
-    console.error(rawResponse.slice(0, 500));
+    console.error('❌  JSON invalide retourné par le modèle:');
+    console.error(rawResponse.slice(0, 800));
     process.exit(1);
   }
 
