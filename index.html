@@ -110,12 +110,13 @@
     </a>
 
     <ul class="nav-links" role="list">
-      <li><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
+      <li class="patient-only"><a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" data-i18n="nav-symptoms">Symptômes</a></li>
+      <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Masques & Stocks</a></li>
       <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
-      <li><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
+      <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li><a href="#about" onclick="return navTo(event,'#about')" data-i18n="nav-about">À propos</a></li>
     </ul>
 
@@ -210,7 +211,7 @@
 
     <!-- Trois chemins d'action clairs -->
     <div class="hero-paths" role="navigation" aria-label="Que souhaitez-vous faire ?">
-      <a href="#symptomChecker" class="path-card path-symptoms">
+      <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
         <span class="path-icon">🤒</span>
         <span class="path-title">J'ai des symptômes</span>
         <span class="path-sub">Que faire ?</span>
@@ -313,6 +314,98 @@
         <span class="hsc-unit" data-i18n="hsc-pathogens-unit">pathogènes</span>
         <span class="hsc-status hsc-alert" id="heroOutbreakCount"><span class="skeleton" aria-hidden="true">0 foyers</span></span>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GUIDE D'ACTION / TRIAGE (Mode Patient) — AVANT le checker ===== -->
+<section class="action-guide-section patient-only" id="actionGuide" aria-labelledby="action-guide-title">
+  <div class="container">
+    <h2 class="action-guide-title" id="action-guide-title" data-i18n="action-guide-title">J'ai des symptômes — que faire ?</h2>
+    <p class="action-guide-subtitle" data-i18n="action-guide-subtitle">Évaluez votre situation et agissez au bon niveau d'urgence</p>
+
+    <!-- Bande d'alarme — appelez les secours MAINTENANT si vous avez ces signes -->
+    <div class="triage-alarm-strip" role="alert" aria-live="assertive">
+      <span class="triage-alarm-icon" aria-hidden="true">🚨</span>
+      <div class="triage-alarm-body">
+        <strong>Appelez les secours MAINTENANT si vous avez l'un de ces signes :</strong>
+        <span>Vous n'arrivez plus à respirer · Lèvres ou ongles qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
+      </div>
+      <div class="triage-alarm-nums" aria-label="Numéros d'urgence">
+        <span>🇫🇷&nbsp;15</span><span>🌍&nbsp;112</span><span>🇬🇧&nbsp;999</span><span>🇺🇸&nbsp;911</span>
+      </div>
+    </div>
+
+    <!-- Grille triage 3 niveaux de gravité -->
+    <div class="triage-grid">
+
+      <!-- NIVEAU 1 — BÉNIN -->
+      <div class="triage-card triage-mild">
+        <div class="triage-card-head">
+          <span class="triage-badge triage-badge-mild">Légèrement malade</span>
+          <h3 class="triage-card-title">🏠 Restez chez vous</h3>
+          <p class="triage-when">Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours</p>
+        </div>
+        <ul class="triage-checklist">
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez (masque FFP2, chirurgical, ou tissu propre)</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Restez dans une pièce à part, loin des autres</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Ouvrez les fenêtres pour aérer la pièce</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Buvez beaucoup d'eau — reposez-vous</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Tenez-vous loin des personnes âgées, des bébés et des personnes malades</li>
+        </ul>
+        <div class="triage-escalate">⬆ Si vous ne vous améliorez pas après 5 jours ou si ça empire, allez consulter</div>
+      </div>
+
+      <!-- NIVEAU 2 — MODÉRÉ -->
+      <div class="triage-card triage-moderate">
+        <div class="triage-card-head">
+          <span class="triage-badge triage-badge-moderate">Assez malade</span>
+          <h3 class="triage-card-title">🩺 Allez au centre de santé</h3>
+          <p class="triage-when">Forte fièvre depuis plus de 2 jours · Toux avec crachats · Vous avez du mal à travailler · Personne âgée, enceinte ou enfant malade</p>
+        </div>
+        <ul class="triage-checklist">
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Allez voir un médecin, un infirmier ou un centre de santé</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez en chemin</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Si possible, appelez avant de vous déplacer</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Ne tardez pas si votre état empire rapidement</li>
+        </ul>
+        <div class="triage-escalate">⬆ Si ça empire d'un coup — appelez les secours, n'attendez pas</div>
+      </div>
+
+      <!-- NIVEAU 3 — GRAVE -->
+      <div class="triage-card triage-severe">
+        <div class="triage-card-head">
+          <span class="triage-badge triage-badge-severe">Urgence</span>
+          <h3 class="triage-card-title">🚨 Appelez les secours</h3>
+          <p class="triage-when">Ces signes sont dangereux — n'attendez pas, ne restez pas seul</p>
+        </div>
+        <ul class="triage-checklist triage-alarms">
+          <li><span class="triage-dot" aria-hidden="true">●</span>Vous n'arrivez presque plus à respirer</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Vos lèvres ou vos ongles deviennent bleus</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Vous êtes confus, vous ne reconnaissez plus les gens</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Douleur très forte dans la poitrine</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Vous perdez connaissance ou faillez tomber</li>
+        </ul>
+        <div class="triage-severe-nums" aria-label="Numéros d'urgence">
+          <a href="tel:15"  class="triage-num-btn">🇫🇷 15</a>
+          <a href="tel:112" class="triage-num-btn">🌍 112</a>
+          <a href="tel:999" class="triage-num-btn">🇬🇧 999</a>
+          <a href="tel:911" class="triage-num-btn">🇺🇸 911</a>
+        </div>
+        <div class="triage-escalate triage-escalate-severe">Appelez quelqu'un pour rester avec vous — ne vous déplacez pas seul</div>
+      </div>
+
+    </div>
+
+    <!-- Note accès aux soins mondial -->
+    <p class="triage-global-note">
+      📞 <strong>Numéro d'urgence introuvable ?</strong> Demandez à quelqu'un près de vous ou rendez-vous directement à l'hôpital ou au centre de santé le plus proche.
+    </p>
+
+    <!-- Pont vers le vérificateur de symptômes -->
+    <div class="triage-to-checker">
+      <span>Vous n'êtes pas sûr de votre situation ?</span>
+      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="triage-checker-link">Analysez vos symptômes en détail →</a>
     </div>
   </div>
 </section>
@@ -485,93 +578,14 @@
       </button>
 
       <div class="symptom-result hidden" id="symptomResult" role="alert" aria-live="assertive"></div>
-    </div>
-  </div>
-</section>
 
-<!-- ===== GUIDE D'ACTION (Mode Patient) ===== -->
-<section class="action-guide-section patient-only" id="actionGuide" aria-labelledby="action-guide-title">
-  <div class="container">
-    <h2 class="action-guide-title" id="action-guide-title" data-i18n="action-guide-title">J'ai des symptômes — que faire ?</h2>
-    <p class="action-guide-subtitle" data-i18n="action-guide-subtitle">Évaluez votre situation et agissez au bon niveau d'urgence</p>
-
-    <!-- Bande d'alarme — appelez les secours MAINTENANT si vous avez ces signes -->
-    <div class="triage-alarm-strip" role="alert" aria-live="assertive">
-      <span class="triage-alarm-icon" aria-hidden="true">🚨</span>
-      <div class="triage-alarm-body">
-        <strong>Appelez les secours MAINTENANT si vous avez l'un de ces signes :</strong>
-        <span>Vous n'arrivez plus à respirer · Lèvres ou ongles qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
-      </div>
-      <div class="triage-alarm-nums" aria-label="Numéros d'urgence">
-        <span>🇫🇷&nbsp;15</span><span>🌍&nbsp;112</span><span>🇬🇧&nbsp;999</span><span>🇺🇸&nbsp;911</span>
+      <!-- CTA vers care finder — visible après analyse -->
+      <div class="checker-after-cta">
+        <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="checker-find-care-btn">
+          📍 Trouver un médecin ou un centre de santé près de moi →
+        </a>
       </div>
     </div>
-
-    <!-- Grille triage 3 niveaux de gravité -->
-    <div class="triage-grid">
-
-      <!-- NIVEAU 1 — BÉNIN -->
-      <div class="triage-card triage-mild">
-        <div class="triage-card-head">
-          <span class="triage-badge triage-badge-mild">Légèrement malade</span>
-          <h3 class="triage-card-title">🏠 Restez chez vous</h3>
-          <p class="triage-when">Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours</p>
-        </div>
-        <ul class="triage-checklist">
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez (masque FFP2, chirurgical, ou tissu propre)</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Restez dans une pièce à part, loin des autres</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Ouvrez les fenêtres pour aérer la pièce</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Buvez beaucoup d'eau — reposez-vous</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Tenez-vous loin des personnes âgées, des bébés et des personnes malades</li>
-        </ul>
-        <div class="triage-escalate">⬆ Si vous ne vous améliorez pas après 5 jours ou si ça empire, allez consulter</div>
-      </div>
-
-      <!-- NIVEAU 2 — MODÉRÉ -->
-      <div class="triage-card triage-moderate">
-        <div class="triage-card-head">
-          <span class="triage-badge triage-badge-moderate">Assez malade</span>
-          <h3 class="triage-card-title">🩺 Allez au centre de santé</h3>
-          <p class="triage-when">Forte fièvre depuis plus de 2 jours · Toux avec crachats · Vous avez du mal à travailler · Personne âgée, enceinte ou enfant malade</p>
-        </div>
-        <ul class="triage-checklist">
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Allez voir un médecin, un infirmier ou un centre de santé</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez en chemin</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Si possible, appelez avant de vous déplacer</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Ne tardez pas si votre état empire rapidement</li>
-        </ul>
-        <div class="triage-escalate">⬆ Si ça empire d'un coup — appelez les secours, n'attendez pas</div>
-      </div>
-
-      <!-- NIVEAU 3 — GRAVE -->
-      <div class="triage-card triage-severe">
-        <div class="triage-card-head">
-          <span class="triage-badge triage-badge-severe">Urgence</span>
-          <h3 class="triage-card-title">🚨 Appelez les secours</h3>
-          <p class="triage-when">Ces signes sont dangereux — n'attendez pas, ne restez pas seul</p>
-        </div>
-        <ul class="triage-checklist triage-alarms">
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vous n'arrivez presque plus à respirer</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vos lèvres ou vos ongles deviennent bleus</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vous êtes confus, vous ne reconnaissez plus les gens</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Douleur très forte dans la poitrine</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vous perdez connaissance ou faillez tomber</li>
-        </ul>
-        <div class="triage-severe-nums" aria-label="Numéros d'urgence">
-          <a href="tel:15"  class="triage-num-btn">🇫🇷 15</a>
-          <a href="tel:112" class="triage-num-btn">🌍 112</a>
-          <a href="tel:999" class="triage-num-btn">🇬🇧 999</a>
-          <a href="tel:911" class="triage-num-btn">🇺🇸 911</a>
-        </div>
-        <div class="triage-escalate triage-escalate-severe">Appelez quelqu'un pour rester avec vous — ne vous déplacez pas seul</div>
-      </div>
-
-    </div>
-
-    <!-- Note accès aux soins mondial -->
-    <p class="triage-global-note">
-      📞 <strong>Numéro d'urgence introuvable ?</strong> Demandez à quelqu'un près de vous ou rendez-vous directement à l'hôpital ou au centre de santé le plus proche.
-    </p>
   </div>
 </section>
 

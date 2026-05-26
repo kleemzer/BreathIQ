@@ -22,6 +22,7 @@ const WHO_THRESHOLDS_2021 = {
 // ── i18n ────────────────────────────────────────────────────
 const I18N = {
   fr: {
+    'nav-symptoms': 'Symptômes',
     'nav-score': 'Mon Score',
     'nav-map': 'Carte mondiale',
     'nav-stocks': 'Masques & Stocks',
@@ -348,6 +349,7 @@ const I18N = {
     'symptom-checker-title': 'Do I have symptoms I should be worried about?',
     'symptom-checker-intro': 'Check what you feel to identify the risk and know what to do',
     'checker-btn-text': 'Analyse my symptoms →',
+    'nav-symptoms': 'Symptoms',
     'action-guide-title': 'I have symptoms — what should I do?',
     'action-guide-subtitle': 'Assess your situation and act at the right level of urgency',
     'expert-toggle-label': '⚙️ Show technical data (Expert Mode)',

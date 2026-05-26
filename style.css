@@ -1970,6 +1970,33 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 }
 .triage-num-btn:hover { background: #B91C1C; }
 
+/* Pont triage → checker */
+.triage-to-checker {
+  display: flex; align-items: center; justify-content: center; gap: .75rem;
+  margin-top: var(--s3); padding: .65rem var(--s3);
+  background: var(--bg-card); border-radius: 12px;
+  border: 1px dashed var(--border); flex-wrap: wrap; text-align: center;
+}
+.triage-to-checker span { font-size: .82rem; color: var(--text-muted); }
+.triage-checker-link {
+  font-size: .82rem; font-weight: 600; color: var(--c-teal);
+  text-decoration: none; white-space: nowrap;
+  transition: opacity .15s;
+}
+.triage-checker-link:hover { opacity: .75; }
+
+/* CTA après checker → care finder */
+.checker-after-cta {
+  margin-top: var(--s3); display: flex; justify-content: center;
+}
+.checker-find-care-btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: var(--c-teal); color: #fff; font-weight: 600; font-size: .88rem;
+  padding: .65rem var(--s4); border-radius: var(--r-full);
+  text-decoration: none; transition: opacity .18s;
+}
+.checker-find-care-btn:hover { opacity: .88; }
+
 .triage-global-note {
   text-align: center; font-size: .78rem; color: var(--text-muted);
   margin-top: var(--s3); padding: .6rem var(--s3);
