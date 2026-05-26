@@ -1,0 +1,57 @@
+name: SPF Bulletin AI Update
+
+on:
+  schedule:
+    # Every Monday at 09:00 UTC (SPF publishes BEH on Tuesdays, so we read the previous week's)
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print output without committing)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  update-spf-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: scripts/package.json
+
+      - name: Install dependencies
+        working-directory: scripts
+        run: npm install
+
+      - name: Run SPF bulletin AI analysis
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/spf-bulletin-ai.mjs
+
+      - name: Show generated data
+        run: cat data/spf-live.json
+
+      - name: Commit and push if changed
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "SPF-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/spf-live.json
+          if git diff --staged --quiet; then
+            echo "✅ Aucune modification détectée"
+          else
+            BULLETIN_DATE=$(node -e "const d=require('./data/spf-live.json'); console.log(d.bulletinDate || 'inconnu')")
+            git commit -m "data: SPF BEH auto-update ${BULLETIN_DATE} ($(date +%Y-%m-%d))"
+            git push
+            echo "✅ data/spf-live.json mis à jour et poussé"
+          fi

@@ -1,0 +1,9 @@
+{
+  "name": "spf-scripts",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "SPF bulletin AI automation for BreathIQ",
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.36.0"
+  }
+}

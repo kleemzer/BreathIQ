@@ -1744,6 +1744,64 @@ const PATHOGEN_ICONS = {
   DEFAULT:'🦠',
 };
 
+// ── SPF Live Data (AI-generated weekly) ─────────────────────────────────────
+// Fetches data/spf-live.json and merges AI-extracted patches into OUTBREAK_DATA
+async function loadSPFLiveData() {
+  try {
+    const resp = await fetch('data/spf-live.json?_=' + Date.now(), {
+      cache: 'no-store',
+      signal: AbortSignal.timeout(8000),
+    });
+    if (!resp.ok) return;
+    const live = await resp.json();
+    if (!live || !live.patches || typeof live.patches !== 'object') return;
+    if (!live.generatedAt) return; // empty initial file → skip
+
+    const UPDATABLE_KEYS = ['currentStatus', 'riskLevel', 'activeRegions', 'descFR', 'descEN', 'lastUpdate'];
+
+    for (const entry of OUTBREAK_DATA) {
+      const patch = live.patches[entry.id];
+      if (!patch) continue;
+      for (const key of UPDATABLE_KEYS) {
+        if (patch[key] !== undefined) entry[key] = patch[key];
+      }
+    }
+
+    // Append genuinely new outbreaks not already tracked
+    if (Array.isArray(live.newOutbreaks)) {
+      for (const nov of live.newOutbreaks) {
+        if (!nov.id) nov.id = 'SPF_' + nov.nameFR?.replace(/\s+/g, '_').toUpperCase().slice(0, 12);
+        if (!OUTBREAK_DATA.find(e => e.id === nov.id)) {
+          OUTBREAK_DATA.push({
+            category: 'epidemic',
+            lat: 0, lon: 20,
+            transmission: [],
+            protectionLevel: 1,
+            protectionRequired: 'Masque chirurgical',
+            iconColor: '#F59E0B',
+            references: ['Santé Publique France — bulletin automatisé'],
+            ...nov,
+          });
+        }
+      }
+    }
+
+    // Show last-update badge on pathogens section
+    const badge = document.getElementById('spfLiveBadge');
+    if (badge && live.generatedAt) {
+      const d = new Date(live.generatedAt);
+      const label = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
+      badge.textContent = `📡 Données SPF mises à jour le ${label}`;
+      badge.style.display = 'inline-flex';
+    }
+
+    console.log(`[BreathIQ] SPF live data chargée (${Object.keys(live.patches).length} pathogènes, ${live.bulletinDate || '?'})`);
+  } catch (e) {
+    // Silent fail — site works perfectly with static OUTBREAK_DATA
+    console.debug('[BreathIQ] SPF live data non disponible:', e.message);
+  }
+}
+
 function renderPathogens() {
   const grid = document.getElementById('pathogensGrid');
   if (!grid) return;
@@ -2850,8 +2908,8 @@ domReady(() => {
   // Score for first region
   updateScoreDisplay(DEMO_DATA[0].id);
 
-  // Pathogens
-  renderPathogens();
+  // Pathogens — load AI-updated SPF data first, then render
+  loadSPFLiveData().finally(() => renderPathogens());
 
   // Map — init direct + lazy fallback
   setTimeout(() => initMapWhenReady(), 400);
