@@ -1970,6 +1970,14 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 }
 .triage-num-btn:hover { background: #B91C1C; }
 
+.triage-global-note {
+  text-align: center; font-size: .78rem; color: var(--text-muted);
+  margin-top: var(--s3); padding: .6rem var(--s3);
+  background: var(--bg-card); border-radius: 10px;
+  border: 1px solid var(--border);
+}
+.triage-global-note strong { color: var(--text-secondary); }
+
 /* Legacy — gardés pour compatibilité éventuelle */
 .action-steps-compact { display: none; }
 .action-step-compact, .step-num-compact, .step-num-urgent,
