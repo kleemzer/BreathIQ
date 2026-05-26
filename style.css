@@ -2801,6 +2801,38 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
   transition: var(--t-fast);
 }
 .soignant-btn-validate:hover { background: #1558b0; }
+.soignant-btn-validate:disabled { background: var(--border); color: var(--text-muted); cursor: not-allowed; }
+
+/* ── Pro modal — step indicator ─────────────────────────── */
+.pro-step-indicator { display:flex; justify-content:center; gap:.5rem; margin-bottom:1.25rem; }
+.pro-step-dot { width:8px; height:8px; border-radius:50%; background:var(--border); transition:background .2s; }
+.pro-step-dot.active { background:var(--c-blue); }
+
+/* ── Pro modal — optional badge ─────────────────────────── */
+.pro-optional-badge { font-size:.65rem; font-weight:600; background:rgba(16,185,129,.12); color:#059669; border-radius:20px; padding:.15rem .55rem; vertical-align:middle; margin-left:.4rem; }
+
+/* ── Pro modal — country row ────────────────────────────── */
+.pro-country-row { display:flex; align-items:center; gap:.6rem; background:var(--bg-card); border:1.5px solid var(--border); border-radius:10px; padding:.5rem .75rem; margin-bottom:var(--s3); }
+.pro-country-flag { font-size:1.3rem; }
+.pro-country-select { flex:1; background:transparent; border:none; font-size:.9rem; color:var(--text-primary); cursor:pointer; outline:none; }
+
+/* ── Pro modal — specialty grid ─────────────────────────── */
+.pro-specialty-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-bottom:var(--s3); }
+.pro-spec-card { display:flex; flex-direction:column; align-items:center; gap:.3rem; background:var(--bg-card); border:1.5px solid var(--border); border-radius:12px; padding:.65rem .4rem; font-size:.72rem; font-weight:600; color:var(--text-secondary); cursor:pointer; transition:all .15s; }
+.pro-spec-card span { font-size:.7rem; }
+.pro-spec-card:first-child { font-size:1.4rem; }
+.pro-spec-card > :first-child { font-size:1.4rem; }
+.pro-spec-card:hover { border-color:var(--c-blue); color:var(--c-blue); }
+.pro-spec-card.selected { border-color:var(--c-blue); background:rgba(26,111,212,.08); color:var(--c-blue); }
+
+/* ── Pro modal — RPPS field ─────────────────────────────── */
+.pro-rpps-group { margin-bottom:var(--s3); }
+.pro-rpps-input { width:100%; padding:.6rem .75rem; border:1.5px solid var(--border); border-radius:10px; font-size:.85rem; background:var(--bg-card); color:var(--text-primary); box-sizing:border-box; }
+.pro-rpps-input:focus { outline:none; border-color:var(--c-blue); }
+.pro-rpps-hint { font-size:.7rem; color:var(--text-muted); margin-top:.3rem; }
+
+/* ── Pro badge in nav ────────────────────────────────────── */
+.pro-profile-badge { display:inline-flex; align-items:center; gap:.3rem; font-size:.7rem; font-weight:600; background:rgba(26,111,212,.1); color:var(--c-blue); border-radius:20px; padding:.2rem .6rem; margin-left:.5rem; }
 
 /* ── Champ pathologie dans le formulaire ────────────────── */
 .decl-field-pathologie { margin-bottom: var(--s3); }

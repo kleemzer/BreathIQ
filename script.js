@@ -2163,11 +2163,24 @@ function updateModeToggleBtn() {
 }
 
 // ── Modal Espace Soignant ────────────────────────────────────────────────────
-const SOIGNANT_PASS = 'breathiq2026'; // Mot de passe professionnel par défaut
+const SOIGNANT_PASS = 'breathiq2026';
+
+// Country auto-detect from browser locale
+function _detectCountry() {
+  const lang = navigator.language || '';
+  const map = { 'fr-FR':'FR','fr-BE':'BE','fr-CH':'CH','fr-CA':'CA',
+                'fr-SN':'SN','fr-MA':'MA','fr-DZ':'DZ','fr-TN':'TN',
+                'fr-CI':'CI','fr-CM':'CM','fr-CD':'CD',
+                'en-US':'US','en-GB':'GB' };
+  return map[lang] || (lang.startsWith('fr') ? 'FR' : 'OTHER');
+}
 
 function openSoignantModal() {
   const modal = document.getElementById('soignantModal');
   if (!modal) return;
+  // Show step 1, hide step 2
+  document.getElementById('proStep1').hidden = false;
+  document.getElementById('proStep2').hidden = true;
   modal.hidden = false;
   modal.removeAttribute('hidden');
   const inp = document.getElementById('soignantPassInput');
@@ -2185,8 +2198,13 @@ function validateSoignantPass() {
   const storedPass = localStorage.getItem('biq-soignant-pass') || SOIGNANT_PASS;
   if (val === storedPass) {
     sessionStorage.setItem('biq-soignant-auth', '1');
-    closeSoignantModal();
-    activateExpertMode();
+    // Check if profile already saved → skip step 2
+    if (localStorage.getItem('biq-pro-profile')) {
+      closeSoignantModal();
+      activateExpertMode();
+    } else {
+      _showProStep2();
+    }
   } else {
     if (inp) {
       inp.classList.add('soignant-pass-error');
@@ -2194,11 +2212,66 @@ function validateSoignantPass() {
       inp.placeholder = currentLang === 'fr' ? 'Code incorrect — réessayez' : 'Wrong code — retry';
       setTimeout(() => {
         inp.classList.remove('soignant-pass-error');
-        inp.placeholder = currentLang === 'fr' ? 'Code professionnel' : 'Professional code';
+        inp.placeholder = currentLang === 'fr' ? 'Entrez votre code' : 'Enter your code';
       }, 2000);
       inp.focus();
     }
   }
+}
+
+function _showProStep2() {
+  document.getElementById('proStep1').hidden = true;
+  const step2 = document.getElementById('proStep2');
+  step2.hidden = false;
+  // Pre-select detected country
+  const sel = document.getElementById('proCountrySelect');
+  if (sel) {
+    const detected = _detectCountry();
+    const opt = [...sel.options].find(o => o.value === detected);
+    if (opt) sel.value = detected;
+    _onCountryChange();
+    sel.addEventListener('change', _onCountryChange);
+  }
+}
+
+function _onCountryChange() {
+  const sel = document.getElementById('proCountrySelect');
+  const rppsGroup = document.getElementById('proRppsGroup');
+  if (!sel || !rppsGroup) return;
+  rppsGroup.hidden = sel.value !== 'FR';
+}
+
+function selectSpecialty(btn) {
+  document.querySelectorAll('.pro-spec-card').forEach(c => c.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('proStep2Btn').disabled = false;
+}
+
+function saveProProfile() {
+  const country = document.getElementById('proCountrySelect')?.value || 'OTHER';
+  const specBtn = document.querySelector('.pro-spec-card.selected');
+  const specialty = specBtn?.dataset.spec || 'autre-soignant';
+  const rpps = (document.getElementById('proRppsInput')?.value || '').trim();
+  const profile = { country, specialty, rpps: rpps || null, savedAt: Date.now() };
+  localStorage.setItem('biq-pro-profile', JSON.stringify(profile));
+  closeSoignantModal();
+  activateExpertMode();
+  _renderProBadge(profile);
+}
+
+function skipProProfile() {
+  localStorage.setItem('biq-pro-profile', JSON.stringify({ country:'OTHER', specialty:'autre-soignant', rpps:null, savedAt:Date.now() }));
+  closeSoignantModal();
+  activateExpertMode();
+}
+
+function _renderProBadge(profile) {
+  const btn = document.getElementById('modeToggleBtn');
+  if (!btn || !profile) return;
+  const specLabels = { medecin:'Dr', infirmier:'IDE', pharmacien:'Pharm.', epidemiologiste:'Épidémio.', 'autre-soignant':'Soignant', etudiant:'Étudiant' };
+  const label = specLabels[profile.specialty] || 'Soignant';
+  const rppsTag = profile.rpps ? ' · RPPS ✓' : '';
+  btn.innerHTML = `👤 Mode Patient <span class="pro-profile-badge">${label}${rppsTag}</span>`;
 }
 
 function activateExpertMode() {
@@ -2206,6 +2279,11 @@ function activateExpertMode() {
   localStorage.setItem('biq-mode', 'expert');
   document.body.dataset.mode = 'expert';
   updateModeToggleBtn();
+  // Restore pro badge if profile exists
+  try {
+    const p = JSON.parse(localStorage.getItem('biq-pro-profile') || 'null');
+    if (p) _renderProBadge(p);
+  } catch(_) {}
   renderPathogens();
   renderLocalDeclarations();
   renderClusterAlertBanner();

@@ -1416,29 +1416,77 @@
 <!-- ===== MODAL ESPACE SOIGNANT ===== -->
 <div id="soignantModal" class="soignant-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="soignantModalTitle" hidden>
   <div class="soignant-modal-box">
-    <div class="soignant-modal-icon">👨‍⚕️</div>
-    <h2 class="soignant-modal-title" id="soignantModalTitle">Espace Professionnel de Santé</h2>
-    <p class="soignant-modal-desc">Cet espace est réservé aux <strong>médecins, infirmiers, pharmaciens et épidémiologistes</strong>. Il donne accès au module de déclaration de cas et à la surveillance épidémique avancée.</p>
 
-    <div class="soignant-modal-features">
-      <span>🩺 Déclaration de cas anonyme</span>
-      <span>📊 Détection Z-score en temps réel</span>
-      <span>📧 Alerte aux autorités sanitaires</span>
+    <!-- ── ÉTAPE 1 : Code d'accès ── -->
+    <div id="proStep1">
+      <div class="pro-step-indicator"><span class="pro-step-dot active"></span><span class="pro-step-dot"></span></div>
+      <div class="soignant-modal-icon">🏥</div>
+      <h2 class="soignant-modal-title" id="soignantModalTitle">Espace Soignant</h2>
+      <p class="soignant-modal-desc">Code d'accès professionnel</p>
+      <div class="soignant-pass-group">
+        <input class="soignant-pass-input" type="password" id="soignantPassInput"
+               placeholder="Entrez votre code"
+               onkeydown="if(event.key==='Enter')validateSoignantPass()"
+               autocomplete="current-password">
+        <p class="soignant-pass-hint">Pas encore de code ? <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></p>
+      </div>
+      <div class="soignant-modal-actions">
+        <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
+        <button class="soignant-btn-validate" onclick="validateSoignantPass()">Continuer →</button>
+      </div>
     </div>
 
-    <div class="soignant-pass-group">
-      <label class="soignant-pass-label" for="soignantPassInput">Code d'accès professionnel</label>
-      <input class="soignant-pass-input" type="password" id="soignantPassInput"
-             placeholder="Code professionnel"
-             onkeydown="if(event.key==='Enter')validateSoignantPass()"
-             autocomplete="current-password">
-      <p class="soignant-pass-hint">Vous êtes soignant et n'avez pas encore de code ? <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></p>
+    <!-- ── ÉTAPE 2 : Profil rapide ── -->
+    <div id="proStep2" hidden>
+      <div class="pro-step-indicator"><span class="pro-step-dot"></span><span class="pro-step-dot active"></span></div>
+      <h2 class="soignant-modal-title">Votre profil <span class="pro-optional-badge">optionnel</span></h2>
+      <p class="soignant-modal-desc" style="margin-bottom:.75rem">Améliore la surveillance épidémique mondiale · 20 secondes</p>
+
+      <!-- Pays auto-détecté -->
+      <div class="pro-country-row">
+        <span id="proCountryFlag" class="pro-country-flag"></span>
+        <select id="proCountrySelect" class="pro-country-select">
+          <option value="FR">🇫🇷 France</option>
+          <option value="BE">🇧🇪 Belgique</option>
+          <option value="CH">🇨🇭 Suisse</option>
+          <option value="CA">🇨🇦 Canada</option>
+          <option value="SN">🇸🇳 Sénégal</option>
+          <option value="MA">🇲🇦 Maroc</option>
+          <option value="DZ">🇩🇿 Algérie</option>
+          <option value="TN">🇹🇳 Tunisie</option>
+          <option value="CI">🇨🇮 Côte d'Ivoire</option>
+          <option value="CM">🇨🇲 Cameroun</option>
+          <option value="CD">🇨🇩 RD Congo</option>
+          <option value="US">🇺🇸 USA</option>
+          <option value="GB">🇬🇧 UK</option>
+          <option value="OTHER">🌍 Autre pays</option>
+        </select>
+      </div>
+
+      <!-- Spécialité — cartes 1 clic -->
+      <div class="pro-specialty-grid">
+        <button class="pro-spec-card" data-spec="medecin" onclick="selectSpecialty(this)">🩺<span>Médecin</span></button>
+        <button class="pro-spec-card" data-spec="infirmier" onclick="selectSpecialty(this)">💉<span>Infirmier·e</span></button>
+        <button class="pro-spec-card" data-spec="pharmacien" onclick="selectSpecialty(this)">💊<span>Pharmacien·ne</span></button>
+        <button class="pro-spec-card" data-spec="epidemiologiste" onclick="selectSpecialty(this)">🔬<span>Épidémiologiste</span></button>
+        <button class="pro-spec-card" data-spec="autre-soignant" onclick="selectSpecialty(this)">🏥<span>Autre soignant</span></button>
+        <button class="pro-spec-card" data-spec="etudiant" onclick="selectSpecialty(this)">🎓<span>Étudiant santé</span></button>
+      </div>
+
+      <!-- RPPS — France uniquement, optionnel -->
+      <div id="proRppsGroup" class="pro-rpps-group" hidden>
+        <input id="proRppsInput" class="pro-rpps-input" type="text" inputmode="numeric"
+               maxlength="11" placeholder="N° RPPS (11 chiffres) — optionnel"
+               oninput="this.value=this.value.replace(/\D/g,'')">
+        <p class="pro-rpps-hint">Identifiant national · non obligatoire · jamais transmis</p>
+      </div>
+
+      <div class="soignant-modal-actions" style="margin-top:1rem">
+        <button class="soignant-btn-cancel" onclick="skipProProfile()">Passer</button>
+        <button class="soignant-btn-validate" id="proStep2Btn" onclick="saveProProfile()" disabled>Accéder →</button>
+      </div>
     </div>
 
-    <div class="soignant-modal-actions">
-      <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
-      <button class="soignant-btn-validate" onclick="validateSoignantPass()">✓ Accéder</button>
-    </div>
   </div>
 </div>
 
