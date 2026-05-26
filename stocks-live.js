@@ -69,56 +69,93 @@ async function fetchWithCache(url, cacheKey, ttl, options = {}) {
   }
 }
 
-// ── Pharmacies OSM (Overpass API) — global, gratuit ───────────────────────────
+// ── Overpass API — proxy local d'abord, fallback direct multi-endpoint ────────
+const OVERPASS_DIRECT = [
+  'https://overpass-api.de/api/interpreter',
+  'https://overpass.kumi.systems/api/interpreter',
+  'https://lz4.overpass-api.de/api/interpreter',
+];
 let _lastOverpassCall = 0;
-const OVERPASS_MIN_INTERVAL = 2500;
+const OVERPASS_MIN_INTERVAL = 2000;
 
-async function fetchPharmaciesOSM(bounds) {
-  const { south, west, north, east } = bounds;
-  // Limiter la bbox pour éviter des requêtes trop larges
-  const latSpan = north - south;
-  const lngSpan = east - west;
-  if (latSpan > 5 || lngSpan > 8) {
-    return { pharmacies: [], limited: true };
-  }
+async function _overpassQuery(query) {
+  // 1. Proxy local Vercel (/api/overpass) — fonctionne si disponible
+  try {
+    const resp = await fetch('/api/overpass', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ data: query }),
+      signal: AbortSignal.timeout(22000),
+    });
+    if (resp.ok) return await resp.json();
+  } catch { /* proxy absent (Netlify) — fallback direct */ }
 
-  const bbox = `${south.toFixed(4)},${west.toFixed(4)},${north.toFixed(4)},${east.toFixed(4)}`;
-  const cacheKey = `osm-ph-${bbox.replace(/[.,\-]/g, '_')}`;
-
-  const cached = cacheGet(cacheKey);
-  if (cached) return { pharmacies: cached, fromCache: true };
-
+  // 2. Endpoints Overpass directs — throttle pour éviter ban IP
   const wait = OVERPASS_MIN_INTERVAL - (Date.now() - _lastOverpassCall);
   if (wait > 0) await new Promise(r => setTimeout(r, wait));
   _lastOverpassCall = Date.now();
 
-  const query = `[out:json][timeout:20];node["amenity"="pharmacy"](${bbox});out body;`;
-  const url = `https://overpass-api.de/api/interpreter?data=${encodeURIComponent(query)}`;
+  for (const endpoint of OVERPASS_DIRECT) {
+    try {
+      const resp = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'data=' + encodeURIComponent(query),
+        signal: AbortSignal.timeout(22000),
+      });
+      if (resp.ok) return await resp.json();
+    } catch { /* essayer endpoint suivant */ }
+  }
+  throw new Error('Tous les endpoints Overpass sont indisponibles');
+}
+
+// ── Pharmacies OSM — node + way + relation (nwr) ──────────────────────────────
+async function fetchPharmaciesOSM(bounds) {
+  const { south, west, north, east } = bounds;
+  const latSpan = north - south;
+  const lngSpan = east - west;
+  if (latSpan > 5 || lngSpan > 8) return { pharmacies: [], limited: true };
+
+  const bbox = `${south.toFixed(4)},${west.toFixed(4)},${north.toFixed(4)},${east.toFixed(4)}`;
+  const cacheKey = `osm-ph2-${bbox.replace(/[.,\-]/g, '_')}`;
+
+  const cached = cacheGet(cacheKey);
+  if (cached) return { pharmacies: cached, fromCache: true };
+
+  // nwr = node + way + relation — capture toutes les pharmacies OSM
+  // out center = renvoie les coordonnées du centroïde pour ways/relations
+  const query = `[out:json][timeout:25];nwr["amenity"="pharmacy"](${bbox});out center body;`;
 
   try {
-    const resp = await fetch(url, { signal: AbortSignal.timeout(25000) });
-    if (!resp.ok) throw new Error(`Overpass ${resp.status}`);
-    const json = await resp.json();
+    const json = await _overpassQuery(query);
 
-    const pharmacies = (json.elements || []).map(el => ({
-      id: el.id,
-      lat: el.lat,
-      lng: el.lon,
-      name: el.tags?.name || el.tags?.['name:fr'] || 'Pharmacie',
-      opening_hours: el.tags?.opening_hours || null,
-      phone: el.tags?.phone || null,
-      addr: [
-        el.tags?.['addr:housenumber'],
-        el.tags?.['addr:street'],
-        el.tags?.['addr:city'],
-      ].filter(Boolean).join(' '),
-      dispensing: el.tags?.dispensing !== 'no',
-    }));
+    const pharmacies = (json.elements || []).map(el => {
+      // ways/relations ont leurs coords dans el.center, nodes directement dans el
+      const lat = el.lat ?? el.center?.lat;
+      const lng = el.lon ?? el.center?.lon;
+      if (!lat || !lng) return null;
+      return {
+        id: el.id,
+        lat, lng,
+        name: el.tags?.name || el.tags?.['name:fr'] || el.tags?.['name:en'] || 'Pharmacie',
+        opening_hours: el.tags?.opening_hours || null,
+        phone: el.tags?.phone || el.tags?.['contact:phone'] || null,
+        website: el.tags?.website || el.tags?.['contact:website'] || null,
+        addr: [
+          el.tags?.['addr:housenumber'],
+          el.tags?.['addr:street'],
+          el.tags?.['addr:postcode'],
+          el.tags?.['addr:city'],
+        ].filter(Boolean).join(' '),
+        dispensing: el.tags?.dispensing !== 'no',
+        wheelchair: el.tags?.wheelchair || null,
+      };
+    }).filter(Boolean);
 
     cacheSet(cacheKey, pharmacies, CACHE_TTL.pharmacies);
     return { pharmacies, fromCache: false };
   } catch (err) {
-    console.warn('[stocks-live] Overpass error:', err.message);
+    console.warn('[stocks-live] fetchPharmaciesOSM error:', err.message);
     return { pharmacies: [], error: err.message };
   }
 }

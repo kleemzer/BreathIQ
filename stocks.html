@@ -629,10 +629,12 @@ async function loadPharmacyMarkers() {
       m.bindPopup(`
         <div class="map-popup-stocks">
           <strong>🏪 ${p.name}</strong>
-          ${p.addr ? `<div style="font-size:.76rem;color:#718096;margin:.2rem 0">${p.addr}</div>` : ''}
-          ${p.opening_hours ? `<div style="font-size:.74rem"><strong>Horaires :</strong> ${p.opening_hours}</div>` : ''}
-          ${p.phone ? `<div style="font-size:.74rem"><strong>Tél :</strong> <a href="tel:${p.phone}">${p.phone}</a></div>` : ''}
-          <div style="margin-top:.5rem;font-size:.7rem;color:#9CA3AF">📡 Source : OpenStreetMap</div>
+          ${p.addr ? `<div style="font-size:.76rem;color:#718096;margin:.2rem 0">📍 ${p.addr}</div>` : ''}
+          ${p.opening_hours ? `<div style="font-size:.74rem;margin:.15rem 0">🕐 <strong>Horaires :</strong> ${p.opening_hours}</div>` : ''}
+          ${p.phone ? `<div style="font-size:.74rem;margin:.15rem 0">📞 <a href="tel:${p.phone}" style="color:#2563EB">${p.phone}</a></div>` : ''}
+          ${p.website ? `<div style="font-size:.74rem;margin:.15rem 0">🌐 <a href="${p.website}" target="_blank" rel="noopener" style="color:#2563EB">Site web</a></div>` : ''}
+          ${p.wheelchair === 'yes' ? `<div style="font-size:.72rem;color:#10B981;margin:.1rem 0">♿ Accessible PMR</div>` : ''}
+          <div style="margin-top:.5rem;font-size:.7rem;color:#9CA3AF;border-top:1px solid #e5e7eb;padding-top:.3rem">📡 OpenStreetMap · Stocks non disponibles en temps réel</div>
         </div>
       `);
       pharmacyLayer.addLayer(m);
