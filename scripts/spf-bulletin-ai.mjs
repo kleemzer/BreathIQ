@@ -76,7 +76,7 @@ async function fetchPage(source) {
       return null;
     }
     const html = await resp.text();
-    const text = htmlToText(html).slice(0, 9000); // max ~2 250 tokens per source
+    const text = htmlToText(html).slice(0, 5000); // max ~1 250 tokens per source
     console.log(`✅  ${source.name} (${text.length} chars)`);
     return { id: source.id, name: source.name, url: source.url, text };
   } catch (e) {
