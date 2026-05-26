@@ -1878,29 +1878,102 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 /* ── Action guide (compact) ──────────────────────────────────── */
 .action-guide-section { background: var(--bg-section-alt); padding: var(--s5) 0; }
 .action-guide-title {
-  font-size: 1.1rem; font-weight: 700; text-align: center;
-  color: var(--text-primary); margin-bottom: var(--s3);
+  font-size: 1.15rem; font-weight: 700; text-align: center;
+  color: var(--text-primary); margin-bottom: .3rem;
 }
-.action-steps-compact {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: var(--s3);
+.action-guide-subtitle {
+  text-align: center; font-size: .85rem; color: var(--text-muted);
+  margin-bottom: var(--s3);
 }
-@media (max-width: 640px) { .action-steps-compact { grid-template-columns: 1fr; } }
-.action-step-compact {
-  background: var(--bg-card); border-radius: 14px; padding: var(--s3);
-  display: flex; gap: var(--s2); align-items: flex-start;
-  box-shadow: var(--shadow-sm); border: 1px solid var(--border);
+
+/* ── Bande d'alarme permanente ─────────────────────────────── */
+.triage-alarm-strip {
+  display: flex; align-items: center; gap: var(--s2); flex-wrap: wrap;
+  background: #FEF2F2; border: 1.5px solid #FECACA;
+  border-radius: 12px; padding: .7rem var(--s3); margin-bottom: var(--s3);
 }
-.action-step-urgent { border-color: #FECACA; }
-.step-num-compact {
-  flex-shrink: 0; width: 32px; height: 32px;
-  background: var(--c-navy); color: #fff; border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 1rem; font-weight: 800;
+.dark .triage-alarm-strip { background: rgba(239,68,68,.1); border-color: rgba(239,68,68,.3); }
+.triage-alarm-icon { font-size: 1.4rem; flex-shrink: 0; }
+.triage-alarm-body { flex: 1; min-width: 0; }
+.triage-alarm-body strong { display: block; font-size: .82rem; color: #B91C1C; margin-bottom: .15rem; }
+.triage-alarm-body span  { font-size: .78rem; color: #7F1D1D; }
+.dark .triage-alarm-body strong { color: #FCA5A5; }
+.dark .triage-alarm-body span   { color: #FCA5A5; opacity: .85; }
+.triage-alarm-nums {
+  display: flex; gap: .4rem; flex-shrink: 0; flex-wrap: wrap;
 }
-.step-num-urgent { background: #EF4444; }
-.step-compact-body h3 { font-size: .9rem; font-weight: 700; margin-bottom: .3rem; }
-.step-compact-body p  { font-size: .82rem; color: var(--text-secondary); line-height: 1.5; }
+.triage-alarm-nums span {
+  font-size: .75rem; font-weight: 700; background: #EF4444; color: #fff;
+  border-radius: 6px; padding: .2rem .45rem; white-space: nowrap;
+}
+
+/* ── Grille triage ─────────────────────────────────────────── */
+.triage-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--s3);
+}
+@media (max-width: 700px) { .triage-grid { grid-template-columns: 1fr; } }
+
+.triage-card {
+  background: var(--bg-card); border-radius: 16px;
+  border: 1.5px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  display: flex; flex-direction: column; gap: .65rem;
+  padding: var(--s3);
+  transition: box-shadow .18s;
+}
+.triage-card:hover { box-shadow: var(--shadow-md); }
+.triage-mild     { border-top: 3px solid #10B981; }
+.triage-moderate { border-top: 3px solid #F59E0B; }
+.triage-severe   { border-top: 3px solid #EF4444; }
+
+.triage-card-head { display: flex; flex-direction: column; gap: .3rem; }
+.triage-badge {
+  display: inline-flex; align-self: flex-start;
+  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  padding: .18rem .5rem; border-radius: 20px;
+}
+.triage-badge-mild     { background: rgba(16,185,129,.12);  color: #059669; border: 1px solid rgba(16,185,129,.3); }
+.triage-badge-moderate { background: rgba(245,158,11,.12);  color: #D97706; border: 1px solid rgba(245,158,11,.3); }
+.triage-badge-severe   { background: rgba(239,68,68,.12);   color: #DC2626; border: 1px solid rgba(239,68,68,.3); }
+
+.triage-card-title { font-size: .92rem; font-weight: 700; color: var(--text-primary); margin: 0; }
+.triage-when { font-size: .74rem; color: var(--text-muted); line-height: 1.4; margin: 0; }
+
+.triage-checklist {
+  list-style: none; padding: 0; margin: 0;
+  display: flex; flex-direction: column; gap: .35rem; flex: 1;
+}
+.triage-checklist li {
+  display: flex; align-items: baseline; gap: .45rem;
+  font-size: .8rem; color: var(--text-secondary); line-height: 1.45;
+}
+.triage-ck { color: #10B981; font-weight: 800; flex-shrink: 0; font-size: .85rem; }
+
+.triage-alarms li { color: var(--text-primary); font-weight: 500; }
+.triage-dot { color: #EF4444; font-size: .5rem; flex-shrink: 0; position: relative; top: -.1em; }
+
+.triage-escalate {
+  font-size: .73rem; color: var(--text-muted); border-top: 1px solid var(--border);
+  padding-top: .45rem; line-height: 1.4;
+}
+.triage-escalate-severe { color: #DC2626; font-weight: 600; }
+.dark .triage-escalate-severe { color: #FCA5A5; }
+
+.triage-severe-nums {
+  display: flex; gap: .4rem; flex-wrap: wrap;
+}
+.triage-num-btn {
+  font-size: .78rem; font-weight: 700;
+  background: #EF4444; color: #fff; border-radius: 8px;
+  padding: .3rem .65rem; text-decoration: none;
+  transition: background .15s;
+}
+.triage-num-btn:hover { background: #B91C1C; }
+
+/* Legacy — gardés pour compatibilité éventuelle */
+.action-steps-compact { display: none; }
+.action-step-compact, .step-num-compact, .step-num-urgent,
+.step-compact-body h3, .step-compact-body p { display: none; }
 
 .action-steps {
   display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));

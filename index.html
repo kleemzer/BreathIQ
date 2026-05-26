@@ -492,32 +492,80 @@
 <!-- ===== GUIDE D'ACTION (Mode Patient) ===== -->
 <section class="action-guide-section patient-only" id="actionGuide" aria-labelledby="action-guide-title">
   <div class="container">
-    <h2 class="action-guide-title" id="action-guide-title" data-i18n="action-guide-title">Que faire si vous avez des symptômes ?</h2>
+    <h2 class="action-guide-title" id="action-guide-title" data-i18n="action-guide-title">J'ai des symptômes — que faire ?</h2>
+    <p class="action-guide-subtitle" data-i18n="action-guide-subtitle">Évaluez votre situation et agissez au bon niveau d'urgence</p>
 
-    <div class="action-steps-compact">
-      <div class="action-step-compact">
-        <span class="step-num-compact" aria-hidden="true">1</span>
-        <div class="step-compact-body">
-          <h3>🩺 Portez un masque FFP2</h3>
-          <p>Protégez votre entourage dès les premiers symptômes.</p>
-        </div>
+    <!-- Bande d'alarme permanente — signes de gravité immédiats -->
+    <div class="triage-alarm-strip" role="alert" aria-live="assertive">
+      <span class="triage-alarm-icon" aria-hidden="true">🚨</span>
+      <div class="triage-alarm-body">
+        <strong>Urgence absolue — appelez le 15 ou 112 MAINTENANT :</strong>
+        <span>Difficultés à respirer · Lèvres/ongles bleus · Confusion soudaine · Douleur thoracique · Perte de connaissance</span>
       </div>
-      <div class="action-step-compact">
-        <span class="step-num-compact" aria-hidden="true">2</span>
-        <div class="step-compact-body">
-          <h3>🏠 Isolez-vous</h3>
-          <p>Pièce séparée, fenêtres ouvertes. Évitez les personnes âgées et vulnérables.</p>
-        </div>
+      <div class="triage-alarm-nums" aria-label="Numéros d'urgence">
+        <span>🇫🇷&nbsp;15</span><span>🇪🇺&nbsp;112</span><span>🇬🇧&nbsp;999</span><span>🇺🇸&nbsp;911</span>
       </div>
-      <div class="action-step-compact action-step-urgent">
-        <span class="step-num-compact step-num-urgent" aria-hidden="true">3</span>
-        <div class="step-compact-body">
-          <h3>🚨 Consultez un médecin ou les secours</h3>
-          <p>Appelez le numéro d'urgence de votre pays<br>
-          <small>🇫🇷 15 · 🇪🇺 112 · 🇬🇧 999 · 🇺🇸 911</small><br>
-          <small>Difficultés à respirer → appelez immédiatement</small></p>
+    </div>
+
+    <!-- Grille triage 3 niveaux de gravité -->
+    <div class="triage-grid">
+
+      <!-- NIVEAU 1 — BÉNIN -->
+      <div class="triage-card triage-mild">
+        <div class="triage-card-head">
+          <span class="triage-badge triage-badge-mild">Léger</span>
+          <h3 class="triage-card-title">🏠 Restez chez vous</h3>
+          <p class="triage-when">Symptômes supportables · Fièvre &lt; 38,5°C · Début &lt; 3 jours</p>
         </div>
+        <ul class="triage-checklist">
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Masque FFP2 en présence d'autres personnes</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Isolez-vous 5 jours (ou 48h sans fièvre)</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Aérez votre pièce régulièrement</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Hydratez-vous — repos complet</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Prenez votre température 2× par jour</li>
+        </ul>
+        <div class="triage-escalate">⬆ Consultez si aggravation ou pas d'amélioration après 5 jours</div>
       </div>
+
+      <!-- NIVEAU 2 — MODÉRÉ -->
+      <div class="triage-card triage-moderate">
+        <div class="triage-card-head">
+          <span class="triage-badge triage-badge-moderate">Modéré</span>
+          <h3 class="triage-card-title">🩺 Consultez sous 24–48h</h3>
+          <p class="triage-when">Fièvre &gt; 38,5°C · Toux productive · Symptômes &gt; 5 jours · Personne à risque</p>
+        </div>
+        <ul class="triage-checklist">
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Téléconsultation ou médecin traitant</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Portez FFP2 en salle d'attente</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Notez vos symptômes et leur évolution</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>N'attendez pas si aggravation rapide</li>
+        </ul>
+        <div class="triage-escalate">⬆ Aggravation soudaine → appelez le 15/112 sans attendre</div>
+      </div>
+
+      <!-- NIVEAU 3 — GRAVE -->
+      <div class="triage-card triage-severe">
+        <div class="triage-card-head">
+          <span class="triage-badge triage-badge-severe">Grave</span>
+          <h3 class="triage-card-title">🚨 Appelez le 15 ou 112</h3>
+          <p class="triage-when">Signes de gravité présents — ne pas attendre, ne pas conduire seul</p>
+        </div>
+        <ul class="triage-checklist triage-alarms">
+          <li><span class="triage-dot" aria-hidden="true">●</span>Difficultés à respirer sévères</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Lèvres ou ongles bleus (cyanose)</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Confusion, désorientation, somnolence</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Douleur thoracique intense</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Pouls &gt; 120/min · SpO₂ &lt; 92%</li>
+        </ul>
+        <div class="triage-severe-nums" aria-label="Numéros d'urgence">
+          <a href="tel:15" class="triage-num-btn">🇫🇷 15</a>
+          <a href="tel:112" class="triage-num-btn">🇪🇺 112</a>
+          <a href="tel:999" class="triage-num-btn">🇬🇧 999</a>
+          <a href="tel:911" class="triage-num-btn">🇺🇸 911</a>
+        </div>
+        <div class="triage-escalate triage-escalate-severe">Attendez les secours sur place — ne conduisez pas seul</div>
+      </div>
+
     </div>
   </div>
 </section>
