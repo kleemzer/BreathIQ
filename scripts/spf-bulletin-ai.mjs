@@ -5,7 +5,7 @@
  * Required env: ANTHROPIC_API_KEY
  */
 
-import Anthropic from '@anthropic-ai/sdk';
+import { GoogleGenerativeAI } from '@google/generative-ai';
 import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -150,9 +150,9 @@ Extrais les informations épidémiologiques clés et retourne un JSON structuré
 
 // ── Main pipeline ───────────────────────────────────────────────────────────
 async function main() {
-  const apiKey = process.env.ANTHROPIC_API_KEY;
+  const apiKey = process.env.GEMINI_API_KEY;
   if (!apiKey) {
-    console.error('❌  ANTHROPIC_API_KEY manquante');
+    console.error('❌  GEMINI_API_KEY manquante');
     process.exit(1);
   }
 
@@ -170,21 +170,18 @@ async function main() {
 
   console.log(`\n📡  ${pages.length}/${SPF_SOURCES.length} sources récupérées\n`);
 
-  // 2. Call Claude API
-  const client = new Anthropic({ apiKey });
+  // 2. Call Gemini API (free tier)
+  const genAI = new GoogleGenerativeAI(apiKey);
+  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
   const prompt = buildPrompt(pages, today);
 
-  console.log('🤖  Analyse Claude en cours...');
+  console.log('🤖  Analyse Gemini en cours...');
   let rawResponse;
   try {
-    const message = await client.messages.create({
-      model: 'claude-opus-4-7',
-      max_tokens: 4096,
-      messages: [{ role: 'user', content: prompt }],
-    });
-    rawResponse = message.content[0].text;
+    const result = await model.generateContent(prompt);
+    rawResponse = result.response.text();
   } catch (e) {
-    console.error(`❌  Erreur API Claude: ${e.message}`);
+    console.error(`❌  Erreur API Gemini: ${e.message}`);
     process.exit(1);
   }
 

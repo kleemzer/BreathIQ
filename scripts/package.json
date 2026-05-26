@@ -4,6 +4,6 @@
   "type": "module",
   "description": "SPF bulletin AI automation for BreathIQ",
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.36.0"
+    "@google/generative-ai": "^0.21.0"
   }
 }
