@@ -2,10 +2,10 @@
  * SPF Bulletin Épidémiologique Hebdomadaire — AI extraction pipeline
  * Runs weekly via GitHub Actions → writes data/spf-live.json
  *
- * Required env: ANTHROPIC_API_KEY
+ * Required env: GROQ_API_KEY
  */
 
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import Groq from 'groq-sdk';
 import { writeFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
@@ -150,9 +150,9 @@ Extrais les informations épidémiologiques clés et retourne un JSON structuré
 
 // ── Main pipeline ───────────────────────────────────────────────────────────
 async function main() {
-  const apiKey = process.env.GEMINI_API_KEY;
+  const apiKey = process.env.GROQ_API_KEY;
   if (!apiKey) {
-    console.error('❌  GEMINI_API_KEY manquante');
+    console.error('❌  GROQ_API_KEY manquante');
     process.exit(1);
   }
 
@@ -170,18 +170,22 @@ async function main() {
 
   console.log(`\n📡  ${pages.length}/${SPF_SOURCES.length} sources récupérées\n`);
 
-  // 2. Call Gemini API (free tier)
-  const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
+  // 2. Call Groq API (free tier — Llama 3.3 70B)
+  const groq = new Groq({ apiKey });
   const prompt = buildPrompt(pages, today);
 
-  console.log('🤖  Analyse Gemini en cours...');
+  console.log('🤖  Analyse Groq/Llama en cours...');
   let rawResponse;
   try {
-    const result = await model.generateContent(prompt);
-    rawResponse = result.response.text();
+    const completion = await groq.chat.completions.create({
+      model: 'llama-3.3-70b-versatile',
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 4096,
+      temperature: 0.1,
+    });
+    rawResponse = completion.choices[0].message.content;
   } catch (e) {
-    console.error(`❌  Erreur API Gemini: ${e.message}`);
+    console.error(`❌  Erreur API Groq: ${e.message}`);
     process.exit(1);
   }
 
