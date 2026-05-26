@@ -958,16 +958,17 @@ const OUTBREAK_DATA = [
     transmission_route: 'Contact cutané lésions, sécrétions respiratoires, fomites, transmission sexuelle',
     currentStatus: 'active',
     outbreakStart: '2023-09',
-    lastUpdate: '2026-04',
+    lastUpdate: '2026-05',
     iconColor: '#DC2626',
     references: [
+      'SPF — Bulletin surveillance IDF S18, 13 mai 2026 : Mpox en légère augmentation, comparable à 2025, <<2022',
       'WHO PHEIC Declaration Mpox August 2024',
       'Kibungu EM et al. N Engl J Med 2024 — Clade Ib monkeypox outbreak',
-      'ECDC Mpox Epidemiological Update 2024',
+      'ECDC Mpox Epidemiological Update 2025',
       'Titanji BK et al. Lancet Infect Dis 2022 — Monkeypox disease'
     ],
-    descFR: 'USPPI déclaré par OMS août 2024 pour clade Ib (RDC/Afrique orientale). Clade Ib plus transmissible que clade IIb (2022). Transmission via contact cutané, gouttelettes respiratoires lors de contact prolongé. FFP2 + EPI contact requis pour soignants.',
-    descEN: 'WHO PHEIC declared August 2024 for clade Ib (DRC/East Africa). Clade Ib more transmissible than 2022 clade IIb outbreak. Transmission via skin contact, respiratory droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.'
+    descFR: '📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025, nettement inférieure au pic 2022. Urgence de santé publique OMS (clade Ib) maintenue. Clade Ib plus transmissible que clade IIb (2022). Transmission contact cutané et gouttelettes en contact prolongé. FFP2 + EPI contact requis pour soignants.',
+    descEN: '📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.'
   },
   {
     id: 'MERS',
@@ -1108,16 +1109,17 @@ const OUTBREAK_DATA = [
     transmission_route: 'Gouttelettes et aérosols de petites particules. Contagiosité 1 jour avant apparition des symptômes.',
     currentStatus: 'seasonal',
     outbreakStart: 'Saisonnier',
-    lastUpdate: '2026-04',
+    lastUpdate: '2026-05',
     iconColor: '#6366F1',
     references: [
+      'SPF — Bilan saison IRA 2025-2026 (grippe, bronchiolite, COVID-19), mai 2026',
       'WHO Influenza (Seasonal) Fact Sheet 2023',
       'Tellier R et al. Sci Rep 2019 — Recognition of aerosol transmission of infectious agents',
       'Cowling BJ et al. Nat Med 2013 — Aerosol transmission of influenza',
-      'ECDC Seasonal Influenza Surveillance 2024'
+      'ECDC Seasonal Influenza Surveillance 2025'
     ],
-    descFR: '290 000–650 000 décès/an (OMS). Transmission aérienne par aérosols démontrée (Cowling 2013). FFP2 recommandé pour soignants, immunodéprimés et personnes > 65 ans lors des pics épidémiques.',
-    descEN: '290,000-650,000 deaths/year (WHO). Airborne aerosol transmission demonstrated. FFP2 recommended for healthcare workers, immunocompromised and >65 year-olds during epidemic peaks.'
+    descFR: '📊 SPF Bilan saison 2025-2026 : épidémie exclusivement type A (déc 2025 – mi-fév 2026, 10 semaines). Intensité faible à modérée en ville, élevée en hospitalier. Impact mortalité important en début 2026. Hors saison en mai 2026 — surveillance inter-épidémique. 290 000–650 000 décès/an (OMS). FFP2 recommandé soignants et personnes à risque lors du prochain pic.',
+    descEN: '📊 SPF Season review 2025-2026: exclusively type A influenza (Dec 2025–mid-Feb 2026, 10 weeks). Low-to-moderate intensity in community, high in hospitals. Significant mortality impact early 2026. Off-season in May 2026 — inter-epidemic surveillance. 290,000–650,000 deaths/year (WHO). FFP2 recommended for healthcare workers and at-risk individuals during next peak.'
   },
   {
     id: 'RSYNCYTIAL',
@@ -1200,12 +1202,14 @@ const OUTBREAK_DATA = [
     lastUpdate: '2026-05',
     iconColor: '#6366F1',
     references: [
+      'SPF — Bulletin IDF semaine 18, 13 mai 2026 : SARS-CoV-2 eaux usées en baisse, faible intensité',
+      'SPF — Bilan saison IRA 2025-2026 : faible recours aux soins COVID-19',
       'WHO Tracking SARS-CoV-2 Variants 2024–2026',
       'GISAID Variant Tracker 2026',
       'ECDC SARS-CoV-2 Variants of Concern/Interest — Monthly Report'
     ],
-    descFR: 'Surveillance continue des nouveaux variants SARS-CoV-2 (GISAID/ECDC/OMS). XEC, KP.3.1.1 en circulation 2025. FFP2 recommandé dans attente de caractérisation complète de tout nouveau variant à transmissibilité accrue.',
-    descEN: 'Continuous surveillance of new SARS-CoV-2 variants (GISAID/ECDC/WHO). XEC, KP.3.1.1 circulating 2025. FFP2 recommended while awaiting complete characterization of any new variant with increased transmissibility.'
+    descFR: '📊 SPF mai 2026 : circulation SARS-CoV-2 basse (eaux usées S18 en déclin). Faible recours aux soins sur l\'ensemble de la saison 2025-2026. Circulation continue dans la population générale sans pic significatif. Surveillance génomique active pour nouveaux variants (XEC, KP.3.1.1 dominants 2025). FFP2 recommandé milieux à risque.',
+    descEN: '📊 SPF May 2026: low SARS-CoV-2 circulation (wastewater week 18 declining). Low healthcare utilization throughout 2025-2026 season. Continuous background circulation without significant peak. Active genomic surveillance for new variants (XEC, KP.3.1.1 dominant 2025). FFP2 recommended in high-risk settings.'
   },
   {
     id: 'CANDIDA',
@@ -1243,8 +1247,8 @@ const OUTBREAK_DATA = [
     pathogen: 'Ebola virus (Zaire, Sudan, Bundibugyo strains)',
     category: 'epidemic',
     riskLevel: 'critical',
-    lat: -12.83, lon: 45.17, // Mayotte — foyer actif 2026
-    activeRegions: ['🚨 Mayotte (France) — foyer actif mai 2026', 'RD Congo (historique)', 'Ouganda (historique)', 'Guinée (historique)'],
+    lat: 1.65, lon: 30.25, // Ituri, RD Congo — foyer actif avr 2026
+    activeRegions: ['🚨 Ituri (RD Congo) — foyer actif avr 2026 · 8 cas confirmés OMS', '⚠️ Mayotte (France) — vigilance renforcée, aucun cas confirmé', 'Ouganda (historique)', 'Guinée (historique)'],
     transmission: ['Contact direct fluides biologiques', 'Contact avec corps de personnes décédées', 'Transmission nosocomiale (soignants sans EPI)'],
     protectionRequired: 'FFP3/P100 + équipement BSL-4 complet',
     protectionLevel: 3,
@@ -1254,18 +1258,18 @@ const OUTBREAK_DATA = [
     incubation: '2–21 jours (médiane 8–10 jours)',
     transmission_route: 'Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée en conditions naturelles.',
     currentStatus: 'outbreak',
-    outbreakStart: '2026-05 (Mayotte, France)',
+    outbreakStart: '2026-04 (Ituri, RD Congo)',
     lastUpdate: '2026-05',
     iconColor: '#7F1D1D',
     references: [
-      'WHO Ebola — Key Facts 2023',
-      'WHO DON Ebola DRC 2024',
+      'WHO DON Ebola DRC Ituri avril 2026 — 8 cas confirmés, 240+ suspects',
+      'info.gouv.fr — Ebola : point de situation et mesures mises en oeuvre, mai 2026',
       'Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever',
       'CDC Ebola (Ebola Virus Disease) 2023',
-      'Santé Publique France — Point épidémio Mayotte 2026'
+      'Santé Publique France — Surveillance renforcée Mayotte, mai 2026'
     ],
-    descFR: '⚠️ FOYER ACTIF à Mayotte (mai 2026). CFR 25–90% selon souche. Transmission directe par fluides biologiques — non aéroporté en conditions naturelles. Si fièvre + retour de Mayotte : appeler le 15 sans se déplacer seul. Soignants : FFP3 + tenue BSL-4 obligatoire. Réservoir présumé : chauves-souris frugivores.',
-    descEN: '⚠️ ACTIVE OUTBREAK in Mayotte, France (May 2026). CFR 25–90% by strain. Direct transmission via biological fluids — not airborne in natural conditions. If fever + recent travel to Mayotte: call emergency services immediately. Healthcare workers: FFP3 + BSL-4 suit mandatory. Presumed reservoir: fruit bats.'
+    descFR: '⚠️ FOYER ACTIF en RD Congo (province Ituri, avr 2026) — 8 cas confirmés OMS, 240+ suspects. AUCUN cas confirmé sur territoire français. Mayotte : vigilance renforcée activée le 19 mai 2026 (circuit de prise en charge identifié, prélèvements sécurisés vers CNR métropole). Si fièvre + retour d\'Afrique centrale : appeler le 15. Soignants : FFP3 + tenue BSL-4 obligatoire. CFR 25–90% selon souche (Zaire : ~70%).',
+    descEN: '⚠️ ACTIVE OUTBREAK in DRC (Ituri province, Apr 2026) — 8 confirmed WHO cases, 240+ suspected. NO confirmed cases on French territory. Mayotte: enhanced surveillance activated May 19, 2026. If fever after travel from Central Africa: call emergency services immediately. Healthcare workers: FFP3 + BSL-4 suit mandatory. CFR 25–90% by strain (Zaire: ~70%).'
   },
   {
     id: 'RSVA_HMPV',
