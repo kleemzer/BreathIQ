@@ -17,23 +17,23 @@ const OUTPUT_PATH = join(__dirname, '../data/spf-live.json');
 const SPF_SOURCES = [
   {
     id: 'grippe',
-    name: 'SPF Grippe/IRA — bulletin hebdomadaire',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/grippe/donnees/bulletin-epidemiologique-grippe',
+    name: 'SPF Grippe/IRA — surveillance',
+    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/grippe',
   },
   {
     id: 'covid',
     name: 'SPF COVID-19 — bulletin de santé publique',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/infection-a-coronavirus/donnees/bulletin-de-sante-publique-covid-19',
+    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/infection-a-coronavirus',
   },
   {
     id: 'mpox',
-    name: 'SPF Mpox — bulletin épidémiologique',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-a-potentiel-epidemique-et-a-declaration-obligatoire/mpox/donnees/bulletin-epidemiologique-mpox',
+    name: 'SPF Mpox — surveillance',
+    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-a-potentiel-epidemique-et-a-declaration-obligatoire/mpox',
   },
   {
     id: 'ebola',
-    name: 'SPF Maladie à virus Ebola — données',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-a-potentiel-epidemique-et-a-declaration-obligatoire/maladie-a-virus-ebola/donnees/',
+    name: 'SPF Maladie à virus Ebola',
+    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-a-potentiel-epidemique-et-a-declaration-obligatoire/maladie-a-virus-ebola',
   },
   {
     id: 'beh',
@@ -172,7 +172,7 @@ async function main() {
 
   // 2. Call Gemini API (free tier)
   const genAI = new GoogleGenerativeAI(apiKey);
-  const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
+  const model = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' });
   const prompt = buildPrompt(pages, today);
 
   console.log('🤖  Analyse Gemini en cours...');
