@@ -1763,8 +1763,8 @@ function renderPathogens() {
     en: { pandemic:'Pandemic', epidemic:'Epidemic', endemic:'Endemic', emerging:'Emerging' }
   };
   const statusLabels = {
-    fr: { active:'Actif', endemic:'Endémique', sporadic:'Sporadique', seasonal:'Saisonnier', monitoring:'Surveillance' },
-    en: { active:'Active', endemic:'Endemic', sporadic:'Sporadic', seasonal:'Seasonal', monitoring:'Monitoring' }
+    fr: { active:'Actif', outbreak:'🚨 Foyer actif', endemic:'Endémique', sporadic:'Sporadique', seasonal:'Saisonnier', monitoring:'Surveillance' },
+    en: { active:'Active', outbreak:'🚨 Active outbreak', endemic:'Endemic', sporadic:'Sporadic', seasonal:'Seasonal', monitoring:'Monitoring' }
   };
 
   grid.innerHTML = filtered.map(ob => {
@@ -1819,8 +1819,15 @@ function renderPathogens() {
       </article>`;
     }
 
-    // ── Mode EXPERT : carte technique complète ──
-    return `<article class="pathogen-card" data-id="${ob.id}" data-category="${ob.category}">
+    // ── Mode EXPERT : fiche clinique complète pour infectiologues ──
+    const isOutbreak = ob.currentStatus === 'outbreak' || ob.currentStatus === 'active';
+    const lbl = currentLang === 'fr';
+    const transModes = ob.transmission || [];
+    const regions = ob.activeRegions || [];
+
+    return `<article class="pathogen-card pathogen-card-expert${isOutbreak ? ' pc-outbreak-active' : ''}" data-id="${ob.id}" data-category="${ob.category}">
+
+      <!-- ① En-tête identité -->
       <div class="pc-header">
         <div class="pc-dot" style="background:${ob.iconColor}"></div>
         <div class="pc-titles">
@@ -1829,30 +1836,88 @@ function renderPathogens() {
         </div>
         <span class="pc-risk" style="color:${riskColor};border-color:${riskColor}40;background:${riskColor}10">${riskLabel}</span>
       </div>
+
+      <!-- ② Badges statut + EPI -->
       <div class="pc-badges">
         <span class="pc-badge pc-cat">${catLabel}</span>
-        <span class="pc-badge pc-status ${ob.currentStatus==='active'?'status-active':''}">${statLabel}</span>
+        <span class="pc-badge pc-status${isOutbreak ? ' status-active' : ''}">${statLabel}</span>
         <span class="pc-badge ${protBadgeClass}">${ob.protectionRequired}</span>
+        ${ob.lastUpdate ? `<span class="pc-badge pc-update">🗓 ${lbl?'Màj':'Upd'} ${ob.lastUpdate}</span>` : ''}
       </div>
+
+      <!-- ③ Régions actives -->
+      ${regions.length ? `<div class="pc-regions">
+        <span class="pc-section-label">${lbl?'Zones actives':'Active zones'}</span>
+        <div class="pc-region-chips">${regions.map(r=>`<span class="pc-region-chip">${r}</span>`).join('')}</div>
+      </div>` : ''}
+
+      <!-- ④ Description clinique -->
       <p class="pc-desc">${desc || ''}</p>
-      ${sympList.length ? `
-        <div class="pc-symptoms-section">
-          <div class="pc-symptoms-title">🤒 ${currentLang === 'fr' ? 'Symptômes à surveiller' : 'Symptoms to watch for'}</div>
-          <div class="pc-symptom-tags">${sympList.map(s => `<span class="pc-symptom-tag">${s}</span>`).join('')}</div>
+
+      <!-- ⑤ Grille épidémiologique -->
+      <div class="pc-epi-grid">
+        <div class="pc-epi-cell">
+          <span class="pc-epi-label">R₀ / Reff</span>
+          <span class="pc-epi-val">${ob.reproductionNumber}</span>
         </div>
-        ${alarmList.length ? `<div class="pc-alarm-section">
-          <div class="pc-alarm-title">⚠️ ${currentLang === 'fr' ? 'Signes d\'alarme — Urgence médicale' : 'Alarm signs — Medical emergency'}</div>
-          <ul class="pc-alarm-list">${alarmList.map(a => `<li>${a}</li>`).join('')}</ul>
-        </div>` : ''}
-        <div class="pc-isolation-note">🏠 ${isoNote || ''}</div>` : ''}
-      <div class="pc-meta">
-        <div class="pc-meta-item"><span class="pc-meta-label">R₀ / Reff</span><span class="pc-meta-val">${ob.reproductionNumber}</span></div>
-        <div class="pc-meta-item"><span class="pc-meta-label">${currentLang==='fr'?'Létalité':'CFR'}</span><span class="pc-meta-val">${ob.cfr}</span></div>
-        <div class="pc-meta-item"><span class="pc-meta-label">${currentLang==='fr'?'Incubation':'Incubation'}</span><span class="pc-meta-val">${ob.incubation}</span></div>
-        <div class="pc-meta-item"><span class="pc-meta-label">${currentLang==='fr'?'Transmission':'Transmission'}</span><span class="pc-meta-val">${ob.transmission_route.substring(0,80)}…</span></div>
+        <div class="pc-epi-cell">
+          <span class="pc-epi-label">${lbl?'Létalité (CFR)':'Case fatality rate'}</span>
+          <span class="pc-epi-val">${ob.cfr}</span>
+        </div>
+        <div class="pc-epi-cell">
+          <span class="pc-epi-label">${lbl?'Incubation':'Incubation'}</span>
+          <span class="pc-epi-val">${ob.incubation}</span>
+        </div>
+        <div class="pc-epi-cell pc-epi-wide">
+          <span class="pc-epi-label">${lbl?'Voie de transmission':'Transmission route'}</span>
+          <span class="pc-epi-val">${ob.transmission_route}</span>
+        </div>
       </div>
-      ${ob.maskNote ? `<div class="pc-mask-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>${ob.maskNote}</div>` : ''}
-      ${refList ? `<details class="pc-refs"><summary>${currentLang==='fr'?'Références scientifiques':'Scientific references'} (${ob.references.length})</summary><ul>${refList}</ul></details>` : ''}
+
+      <!-- ⑥ Modes de transmission -->
+      ${transModes.length ? `<div class="pc-trans-modes">
+        <span class="pc-section-label">${lbl?'Modes de transmission':'Transmission modes'}</span>
+        <div class="pc-trans-chips">${transModes.map(t=>`<span class="pc-trans-chip">${t}</span>`).join('')}</div>
+      </div>` : ''}
+
+      <!-- ⑦ EPI & Protection -->
+      ${ob.maskNote ? `<div class="pc-epi-block">
+        <div class="pc-epi-block-title">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          ${lbl?'Protection EPI requise':'Required PPE'}
+        </div>
+        <p class="pc-epi-block-body">${ob.maskNote}</p>
+      </div>` : ''}
+
+      <!-- ⑧ Tableau clinique & Conduite à tenir -->
+      ${sympList.length ? `<details class="pc-clinical-details" open>
+        <summary class="pc-clinical-summary">🩺 ${lbl?'Tableau clinique & Conduite à tenir':'Clinical picture & Management'}</summary>
+        <div class="pc-clinical-body">
+          <div class="pc-symptoms-section">
+            <div class="pc-symptoms-title">${lbl?'Symptômes':'Symptoms'}</div>
+            <div class="pc-symptom-tags">${sympList.map(s=>`<span class="pc-symptom-tag">${s}</span>`).join('')}</div>
+          </div>
+          ${alarmList.length ? `<div class="pc-alarm-section">
+            <div class="pc-alarm-title">⚠️ ${lbl?'Signes d\'alarme — urgence médicale immédiate':'Alarm signs — immediate medical emergency'}</div>
+            <ul class="pc-alarm-list">${alarmList.map(a=>`<li>${a}</li>`).join('')}</ul>
+          </div>` : ''}
+          ${isoNote ? `<div class="pc-isolation-expert">
+            <span class="pc-section-label">📋 ${lbl?'Conduite à tenir':'Management'}</span>
+            <p>${isoNote}</p>
+          </div>` : ''}
+        </div>
+      </details>` : ''}
+
+      <!-- ⑨ Références scientifiques -->
+      ${refList ? `<details class="pc-refs">
+        <summary>📚 ${lbl?'Références scientifiques':'Scientific references'} (${ob.references.length})</summary>
+        <ul class="pc-refs-list">${refList}</ul>
+      </details>` : ''}
+
+      <!-- ⑩ Pied de carte : foyer + mise à jour -->
+      ${ob.outbreakStart ? `<div class="pc-footer-meta">
+        <span>📍 ${lbl?'Foyer':'Outbreak'} : ${ob.outbreakStart}</span>
+      </div>` : ''}
     </article>`;
   }).join('');
 }

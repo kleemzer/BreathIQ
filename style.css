@@ -1045,8 +1045,97 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   padding: .4rem .6rem;
 }
 .pc-mask-note svg { flex-shrink: 0; margin-top: 1px; }
+
+/* ── Expert card enhancements ──────────────────────────────── */
+.pathogen-card-expert { display: flex; flex-direction: column; gap: .75rem; }
+
+.pc-outbreak-active { border-color: rgba(239,68,68,.4) !important; box-shadow: 0 0 0 1px rgba(239,68,68,.2); }
+.pc-update { background: rgba(99,102,241,.12); color: #818CF8; border: 1px solid rgba(99,102,241,.25); }
+
+.pc-section-label {
+  display: block; font-size: .68rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .06em; color: var(--text-muted);
+  margin-bottom: .35rem;
+}
+
+/* Zones actives */
+.pc-regions { }
+.pc-region-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.pc-region-chip {
+  font-size: .75rem; padding: .2rem .55rem; border-radius: 20px;
+  background: rgba(59,130,246,.1); color: var(--c-blue);
+  border: 1px solid rgba(59,130,246,.25);
+}
+
+/* Grille épidémiologique */
+.pc-epi-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: .5rem; border: 1px solid var(--border); border-radius: var(--r-sm);
+  overflow: hidden;
+}
+.pc-epi-cell {
+  padding: .5rem .65rem; background: var(--bg-card-2);
+}
+.pc-epi-cell:not(:last-child) { border-bottom: 1px solid var(--border); }
+.pc-epi-wide { grid-column: 1 / -1; }
+.pc-epi-label {
+  display: block; font-size: .65rem; font-weight: 700;
+  text-transform: uppercase; letter-spacing: .05em; color: var(--text-muted);
+  margin-bottom: .15rem;
+}
+.pc-epi-val { font-size: .82rem; color: var(--text-primary); line-height: 1.45; }
+
+/* Modes de transmission */
+.pc-trans-modes { }
+.pc-trans-chips { display: flex; flex-wrap: wrap; gap: .3rem; }
+.pc-trans-chip {
+  font-size: .73rem; padding: .2rem .55rem; border-radius: 20px;
+  background: rgba(239,68,68,.08); color: #EF4444;
+  border: 1px solid rgba(239,68,68,.2);
+}
+
+/* Bloc EPI */
+.pc-epi-block {
+  background: rgba(14,140,122,.07); border-radius: var(--r-sm);
+  padding: .55rem .7rem; border-left: 3px solid var(--c-teal);
+}
+.pc-epi-block-title {
+  display: flex; align-items: center; gap: .35rem;
+  font-size: .75rem; font-weight: 700; color: var(--c-teal);
+  text-transform: uppercase; letter-spacing: .04em; margin-bottom: .25rem;
+}
+.pc-epi-block-body { font-size: .8rem; color: var(--text-secondary); margin: 0; line-height: 1.5; }
+
+/* Tableau clinique collapsible */
+.pc-clinical-details { border: 1px solid var(--border); border-radius: var(--r-sm); overflow: hidden; }
+.pc-clinical-summary {
+  padding: .5rem .7rem; cursor: pointer;
+  font-size: .82rem; font-weight: 700; color: var(--text-primary);
+  background: var(--bg-card-2); user-select: none;
+  list-style: none; display: flex; align-items: center; gap: .4rem;
+}
+.pc-clinical-summary::marker, .pc-clinical-summary::-webkit-details-marker { display: none; }
+.pc-clinical-details[open] .pc-clinical-summary { border-bottom: 1px solid var(--border); }
+.pc-clinical-body { padding: .65rem .7rem; display: flex; flex-direction: column; gap: .65rem; }
+
+/* Conduite à tenir expert */
+.pc-isolation-expert {
+  background: rgba(16,185,129,.07); border-radius: var(--r-sm);
+  padding: .5rem .65rem; border-left: 3px solid #10B981;
+}
+.pc-isolation-expert p { font-size: .8rem; color: var(--text-secondary); margin: .2rem 0 0; line-height: 1.5; }
+
+/* Pied de carte */
+.pc-footer-meta {
+  font-size: .72rem; color: var(--text-muted);
+  border-top: 1px solid var(--border); padding-top: .4rem;
+  display: flex; gap: var(--s3);
+}
+
+/* Références */
 .pc-refs { font-size: .75rem; color: var(--text-muted); }
 .pc-refs summary { cursor: pointer; font-weight: 600; color: var(--c-blue); padding: .3rem 0; }
+.pc-refs-list { padding-left: 1.2rem; margin-top: .4rem; display: flex; flex-direction: column; gap: .25rem; list-style: disc; }
 .pc-refs ul { padding-left: 1.2rem; margin-top: .4rem; display: flex; flex-direction: column; gap: .2rem; }
 .pathogens-note {
   display: flex; align-items: flex-start; gap: .4rem;
