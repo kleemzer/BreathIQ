@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-05-26T19:02:03.556Z",
+  "generatedAt": "2026-06-01T14:57:15.361Z",
   "bulletinDate": "2026-05-26",
   "sources": [
     "https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/infection-a-coronavirus",
@@ -10,13 +10,23 @@
       "currentStatus": "endemic",
       "riskLevel": "low",
       "activeRegions": [],
-      "descFR": "La COVID-19 est toujours présente en France, mais le nombre de cas est en baisse. Selon les données de Santé Publique France, il y a eu une nette diminution de la détection de cas humains d'infection à MERS-CoV observée depuis 2020.",
-      "descEN": "COVID-19 is still present in France, but the number of cases is decreasing. According to data from Santé Publique France, there has been a significant decrease in the detection of human cases of MERS-CoV infection since 2020.",
+      "descFR": "La COVID-19 reste une maladie endémique avec un faible niveau de risque. Le nombre de cas confirmés est en diminution depuis 2020.",
+      "descEN": "COVID-19 remains an endemic disease with a low risk level. The number of confirmed cases has been decreasing since 2020.",
+      "lastUpdate": "2025-12"
+    },
+    "MERS-CoV": {
+      "currentStatus": "monitoring",
+      "riskLevel": "low",
+      "activeRegions": [
+        "péninsule arabique"
+      ],
+      "descFR": "Le MERS-CoV est toujours sous surveillance, avec un faible niveau de risque. Des cas ont été signalés dans la péninsule arabique.",
+      "descEN": "MERS-CoV is still under monitoring, with a low risk level. Cases have been reported in the Arabian Peninsula.",
       "lastUpdate": "2025-11"
     }
   },
   "globalAlertLevel": "low",
-  "alertSummaryFR": "La situation épidémique en France est actuellement stable, avec une baisse du nombre de cas de COVID-19.",
-  "alertSummaryEN": "The epidemic situation in France is currently stable, with a decrease in the number of COVID-19 cases.",
+  "alertSummaryFR": "La situation épidémique est calme, avec un faible niveau de risque pour les maladies surveillées.",
+  "alertSummaryEN": "The epidemic situation is calm, with a low risk level for the monitored diseases.",
   "newOutbreaks": []
 }
