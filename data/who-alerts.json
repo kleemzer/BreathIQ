@@ -1,6 +1,56 @@
 {
-  "generatedAt": "2026-06-03T17:55:47.773Z",
+  "generatedAt": "2026-06-03T18:35:25.673Z",
   "fetchDate": "2026-06-03",
-  "alertCount": 0,
-  "alerts": []
+  "alertCount": 6,
+  "source": "scraping",
+  "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus — DRC & Uganda (PHEIC)",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON605",
+      "donId": "2026-DON605",
+      "pubDate": "2026-06",
+      "riskLevel": "critical",
+      "source": "WHO DON (fallback)"
+    },
+    {
+      "title": "Hantavirus cluster linked to cruise ship travel — Multi-country (Andes virus)",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON604",
+      "donId": "2026-DON604",
+      "pubDate": "2026-05",
+      "riskLevel": "high",
+      "source": "WHO DON (fallback)"
+    },
+    {
+      "title": "Hantavirus cluster linked to cruise ship travel — Multi-country",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600",
+      "donId": "2026-DON600",
+      "pubDate": "2026-05",
+      "riskLevel": "high",
+      "source": "WHO DON (fallback)"
+    },
+    {
+      "title": "Nipah virus infection — Bangladesh",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON594",
+      "donId": "2026-DON594",
+      "pubDate": "2026-02",
+      "riskLevel": "critical",
+      "source": "WHO DON (fallback)"
+    },
+    {
+      "title": "Nipah virus disease — India (West Bengal)",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON593",
+      "donId": "2026-DON593",
+      "pubDate": "2026-02",
+      "riskLevel": "critical",
+      "source": "WHO DON (fallback)"
+    },
+    {
+      "title": "Marburg virus disease — Ethiopia (outbreak ended Jan 2026)",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON592",
+      "donId": "2026-DON592",
+      "pubDate": "2026-01",
+      "riskLevel": "high",
+      "source": "WHO DON (fallback)"
+    }
+  ]
 }
