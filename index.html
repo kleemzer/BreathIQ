@@ -73,7 +73,7 @@
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
   <!-- BreathIQ styles -->
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=20260603">
   <!-- Preconnect pour API live -->
   <link rel="preconnect" href="https://api.openaq.org">
   <link rel="preconnect" href="https://data.santepubliquefrance.fr">
@@ -160,12 +160,12 @@
      ======================================================= -->
 <div class="epidemic-alert-banner" id="epidemicAlertBanner" role="alert" aria-live="assertive">
   <div class="epidemic-alert-inner">
-    <div class="epidemic-level orange">🟠 VIGILANCE RENFORCÉE</div>
+    <div class="epidemic-level rouge">🔴 URGENCE INTERNATIONALE — PHEIC OMS</div>
     <div class="epidemic-alert-body">
-      <strong class="epidemic-disease">Ebola · RD Congo (Ituri) — Vigilance Mayotte</strong>
-      <span class="epidemic-date">Foyer actif RDC · Aucun cas en France · Mise à jour : mai 2026</span>
-      <p class="epidemic-msg">Épidémie active en RD Congo (8 cas confirmés OMS). Mayotte sous <strong>vigilance renforcée</strong> depuis le 19 mai 2026 — aucun cas confirmé sur territoire français. Si fièvre après retour d'Afrique centrale, <strong>appelez le 15 sans vous déplacer</strong>.</p>
-      <p class="epidemic-mask">🩺 <strong>Soignants :</strong> FFP3 obligatoire pour tout cas suspect, circuit d'isolement BSL-4 activé</p>
+      <strong class="epidemic-disease">Ebola Bundibugyo · RD Congo + Ouganda — 344 cas confirmés</strong>
+      <span class="epidemic-date">PHEIC déclarée le 17 mai 2026 · 60 décès confirmés · Mise à jour : 3 juin 2026</span>
+      <p class="epidemic-msg">🚨 <strong>Urgence sanitaire internationale (PHEIC)</strong> — Souche Bundibugyo : <strong>aucun vaccin, aucun traitement</strong>. RDC : 344 cas confirmés, 60 décès (Ituri 322 · Nord-Kivu 19 · Sud-Kivu 3). Ouganda : 15 cas confirmés. Mayotte : vigilance renforcée, <strong>aucun cas confirmé en France</strong>. Si fièvre + retour d'Afrique centrale/est : <strong>appelez le 15 sans vous déplacer</strong>.</p>
+      <p class="epidemic-mask">🩺 <strong>Soignants :</strong> FFP3 + tenue BSL-4 complète obligatoire pour tout cas suspect · Circuit isolement activé</p>
     </div>
     <div class="epidemic-alert-actions">
       <a href="#pathogens" class="epidemic-link" onclick="return navTo(event,'#pathogens')">Fiche Ebola →</a>
@@ -207,24 +207,28 @@
       <span class="risk-level-label" id="patientRiskLabel">RISQUE FAIBLE</span>
       <h1 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h1>
       <p id="patientRiskDesc">Aucune alerte épidémique active — continuez vos activités normalement</p>
+      <div class="risk-pheic-strip" id="riskPheicStrip">
+        🚨 <strong>PHEIC OMS ACTIVE</strong> — Ebola Bundibugyo · RDC + Ouganda · 344 cas confirmés · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">Voir la fiche →</a>
+      </div>
     </div>
 
     <!-- Trois chemins d'action clairs -->
     <div class="hero-paths" role="navigation" aria-label="Que souhaitez-vous faire ?">
       <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
+        <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
         <span class="path-icon">🤒</span>
-        <span class="path-title">J'ai des symptômes</span>
-        <span class="path-sub">Que faire ?</span>
+        <span class="path-title">Je me sens malade</span>
+        <span class="path-sub">Savoir quoi faire maintenant</span>
       </a>
       <a href="#careFinder" class="path-card path-doctor" onclick="return navTo(event,'#careFinder')">
         <span class="path-icon">📍</span>
         <span class="path-title">Trouver un médecin</span>
-        <span class="path-sub">Près de chez moi</span>
+        <span class="path-sub">Hôpital · Clinique · Pharmacie</span>
       </a>
-      <button class="path-card path-pro" onclick="openSoignantModal()">
+      <button class="path-card path-pro" onclick="toggleMode()">
         <span class="path-icon">🩺</span>
         <span class="path-title">Je suis soignant</span>
-        <span class="path-sub">Espace professionnel</span>
+        <span class="path-sub">Outils cliniques · Déclaration</span>
       </button>
     </div>
 
@@ -254,6 +258,26 @@
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         Indice de risque
       </a>
+    </div>
+
+    <!-- Live outbreak stats bar -->
+    <div class="expert-stats-bar" id="expertStatsBar">
+      <div class="esb-item">
+        <span class="esb-num critical" id="esbPheic">1</span>
+        <span class="esb-label">PHEIC OMS</span>
+      </div>
+      <div class="esb-item">
+        <span class="esb-num warning" id="esbOutbreaks">3</span>
+        <span class="esb-label">Foyers actifs</span>
+      </div>
+      <div class="esb-item">
+        <span class="esb-num critical" id="esbEbolaCases">344</span>
+        <span class="esb-label">Cas Ebola confirmés</span>
+      </div>
+      <div class="esb-item">
+        <span class="esb-num ok" id="esbPathogens">17</span>
+        <span class="esb-label">Pathogènes suivis</span>
+      </div>
     </div>
 
     <p class="hero-disclaimer">
@@ -416,6 +440,18 @@
     <div class="section-header" style="text-align:center">
       <h2 id="checker-title" data-i18n="symptom-checker-title">Ai-je des symptômes qui doivent m'alerter ?</h2>
       <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Cochez ce que vous ressentez pour identifier le risque et savoir quoi faire</p>
+    </div>
+
+    <!-- Quick symptom chips -->
+    <div class="quick-symptoms-bar" role="group" aria-label="Symptômes fréquents">
+      <span class="quick-symptoms-label">Symptôme principal — touchez pour démarrer</span>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('fever')">🌡️ Fièvre</button>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('dry_cough')">😮‍💨 Toux</button>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('breathlessness')">🫁 Difficultés à respirer</button>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('headache')">🤕 Maux de tête</button>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('vomiting')">🤢 Nausées / vomissements</button>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('rash')">🔴 Boutons / éruption</button>
+      <button class="quick-sym-btn" onclick="quickSelectSymptom('bleeding')">🩸 Saignements</button>
     </div>
 
     <div class="symptom-checker symptom-checker-v2">
@@ -1417,38 +1453,20 @@
 <div id="soignantModal" class="soignant-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="soignantModalTitle" hidden>
   <div class="soignant-modal-box">
 
-    <!-- ── ÉTAPE 1 : Code d'accès ── -->
-    <div id="proStep1">
-      <div class="pro-step-indicator"><span class="pro-step-dot active"></span><span class="pro-step-dot"></span></div>
+    <!-- ── PROFIL SOIGNANT (accès direct, sans code) ── -->
+    <div id="proStep2">
       <div class="soignant-modal-icon">🏥</div>
       <h2 class="soignant-modal-title" id="soignantModalTitle">Espace Soignant</h2>
-      <p class="soignant-modal-desc">Code d'accès professionnel</p>
-      <div class="soignant-pass-group">
-        <input class="soignant-pass-input" type="password" id="soignantPassInput"
-               placeholder="Entrez votre code"
-               onkeydown="if(event.key==='Enter')validateSoignantPass()"
-               autocomplete="current-password">
-        <p class="soignant-pass-hint">Pas encore de code ? <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></p>
-      </div>
-      <div class="soignant-modal-actions">
-        <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
-        <button class="soignant-btn-validate" onclick="validateSoignantPass()">Continuer →</button>
-      </div>
-    </div>
-
-    <!-- ── ÉTAPE 2 : Profil rapide ── -->
-    <div id="proStep2" hidden>
-      <div class="pro-step-indicator"><span class="pro-step-dot"></span><span class="pro-step-dot active"></span></div>
-      <h2 class="soignant-modal-title">Votre profil <span class="pro-optional-badge">optionnel</span></h2>
-      <p class="soignant-modal-desc" style="margin-bottom:.75rem">Améliore la surveillance épidémique mondiale · 20 secondes</p>
+      <p class="soignant-modal-desc">Sélectionnez votre profession pour accéder aux outils cliniques</p>
 
       <!-- Pays auto-détecté -->
       <div class="pro-country-row">
         <span id="proCountryFlag" class="pro-country-flag"></span>
-        <select id="proCountrySelect" class="pro-country-select">
+        <select id="proCountrySelect" class="pro-country-select" onchange="_onCountryChange()">
           <option value="FR">🇫🇷 France</option>
           <option value="BE">🇧🇪 Belgique</option>
           <option value="CH">🇨🇭 Suisse</option>
+          <option value="LU">🇱🇺 Luxembourg</option>
           <option value="CA">🇨🇦 Canada</option>
           <option value="SN">🇸🇳 Sénégal</option>
           <option value="MA">🇲🇦 Maroc</option>
@@ -1473,16 +1491,17 @@
         <button class="pro-spec-card" data-spec="etudiant" onclick="selectSpecialty(this)">🎓<span>Étudiant santé</span></button>
       </div>
 
-      <!-- RPPS — France uniquement, optionnel -->
+      <!-- Identifiant professionnel — adapté au pays -->
       <div id="proRppsGroup" class="pro-rpps-group" hidden>
         <input id="proRppsInput" class="pro-rpps-input" type="text" inputmode="numeric"
-               maxlength="11" placeholder="N° RPPS (11 chiffres) — optionnel"
-               oninput="this.value=this.value.replace(/\D/g,'')">
-        <p class="pro-rpps-hint">Identifiant national · non obligatoire · jamais transmis</p>
+               placeholder="N° RPPS (11 chiffres) — optionnel"
+               oninput="this.value=this.value.replace(/\D/g,'').slice(0,11)">
+        <p class="pro-rpps-hint" id="proRppsHint">Identifiant national · non obligatoire · jamais transmis</p>
       </div>
 
-      <div class="soignant-modal-actions" style="margin-top:1rem">
-        <button class="soignant-btn-cancel" onclick="skipProProfile()">Passer</button>
+      <p class="pro-declaration-note">En accédant à cet espace, je déclare exercer ou me former dans le domaine de la santé</p>
+      <div class="soignant-modal-actions" style="margin-top:.75rem">
+        <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
         <button class="soignant-btn-validate" id="proStep2Btn" onclick="saveProProfile()" disabled>Accéder →</button>
       </div>
     </div>

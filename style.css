@@ -1431,21 +1431,80 @@ body[data-mode="patient"] .expert-only { display: none !important; }
   transition: background .4s, border-color .4s;
   border: 2px solid transparent;
 }
-.risk-banner.risk-low    { background: rgba(16,185,129,.15); border-color: rgba(16,185,129,.4); }
-.risk-banner.risk-moderate { background: rgba(245,158,11,.15); border-color: rgba(245,158,11,.4); }
-.risk-banner.risk-high   { background: rgba(239,68,68,.15);  border-color: rgba(239,68,68,.4); }
+.risk-banner.risk-low      { background: rgba(16,185,129,.15);  border-color: rgba(16,185,129,.4); }
+.risk-banner.risk-moderate { background: rgba(245,158,11,.15);  border-color: rgba(245,158,11,.4); }
+.risk-banner.risk-high     { background: rgba(239,68,68,.15);   border-color: rgba(239,68,68,.4); }
+.risk-banner.risk-critical { background: rgba(127,29,29,.35);   border-color: #EF4444; animation: pulse-border 2s ease-in-out infinite; }
+@keyframes pulse-border {
+  0%,100% { border-color: #EF4444; box-shadow: 0 0 0 0 rgba(239,68,68,.4); }
+  50%      { border-color: #FCA5A5; box-shadow: 0 0 0 8px rgba(239,68,68,.0); }
+}
 .risk-level-icon { font-size: 3rem; line-height: 1; }
+.risk-level-icon.pulse { animation: icon-pulse 1.5s ease-in-out infinite; }
+@keyframes icon-pulse { 0%,100% { transform:scale(1); } 50% { transform:scale(1.15); } }
 .risk-level-label {
   font-size: .85rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
   padding: .25rem .85rem; border-radius: 20px; display: inline-block;
 }
-.risk-low .risk-level-label    { background: #10B981; color: #fff; }
+.risk-low .risk-level-label      { background: #10B981; color: #fff; }
 .risk-moderate .risk-level-label { background: #F59E0B; color: #fff; }
-.risk-high .risk-level-label   { background: #EF4444; color: #fff; }
+.risk-high .risk-level-label     { background: #EF4444; color: #fff; }
+.risk-critical .risk-level-label { background: #7F1D1D; color: #FCA5A5; border: 1px solid #EF4444; }
 .risk-banner h1 {
   font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.25; margin: 0; color: #fff;
 }
 .risk-banner p { font-size: .95rem; color: var(--text-on-dark-2); margin: 0; }
+.risk-pheic-strip {
+  display: none; width: 100%; background: rgba(239,68,68,.15); border: 1px solid rgba(239,68,68,.3);
+  border-radius: 10px; padding: .5rem var(--s3); font-size: .78rem; color: #FCA5A5;
+  text-align: center; font-weight: 600; gap: var(--s2); flex-wrap: wrap; justify-content: center; align-items: center;
+}
+.risk-critical .risk-pheic-strip { display: flex; }
+
+/* ── Quick symptom chips ────────────────────────────────────── */
+.quick-symptoms-bar {
+  display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center;
+  margin-bottom: var(--s3); padding: var(--s3); background: var(--bg-card);
+  border-radius: 14px; border: 1px solid var(--border);
+}
+.quick-symptoms-label { width: 100%; text-align: center; font-size: .75rem; font-weight: 700;
+  color: var(--text-muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: .25rem; }
+.quick-sym-btn {
+  display: inline-flex; align-items: center; gap: .4rem; background: var(--bg-secondary);
+  border: 1.5px solid var(--border); border-radius: 30px; padding: .55rem 1rem;
+  font-size: .82rem; font-weight: 600; color: var(--text-secondary); cursor: pointer;
+  transition: all .15s; white-space: nowrap;
+}
+.quick-sym-btn:hover { border-color: var(--c-blue); color: var(--c-blue); background: rgba(26,111,212,.07); }
+.quick-sym-btn.active { border-color: var(--c-blue); color: var(--c-blue); background: rgba(26,111,212,.12); }
+
+/* ── Expert stats bar ───────────────────────────────────────── */
+.expert-stats-bar {
+  display: flex; gap: 1px; background: var(--border); border-radius: 14px;
+  overflow: hidden; margin: var(--s3) 0; width: 100%; max-width: 600px;
+}
+.esb-item {
+  flex: 1; background: var(--bg-card); padding: .75rem .5rem; text-align: center;
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.esb-num { font-size: 1.5rem; font-weight: 800; line-height: 1; color: #fff; }
+.esb-num.critical { color: #F87171; }
+.esb-num.warning  { color: #FBBF24; }
+.esb-num.ok       { color: #34D399; }
+.esb-label { font-size: .65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+
+/* ── Path cards improvements ────────────────────────────────── */
+.path-card { position: relative; overflow: hidden; }
+.path-card::before {
+  content: ''; position: absolute; inset: 0; opacity: 0;
+  transition: opacity .2s; pointer-events: none;
+}
+.path-symptoms::before { background: radial-gradient(circle at 50% 0%, rgba(249,115,22,.15), transparent 70%); }
+.path-doctor::before   { background: radial-gradient(circle at 50% 0%, rgba(20,184,166,.15), transparent 70%); }
+.path-pro::before      { background: radial-gradient(circle at 50% 0%, rgba(26,111,212,.15), transparent 70%); }
+.path-card:hover::before { opacity: 1; }
+.path-urgency-dot { width: 8px; height: 8px; border-radius: 50%; background: #EF4444;
+  animation: icon-pulse 1.5s infinite; position: absolute; top: .75rem; right: .75rem; }
 
 /* ── Simple stats ────────────────────────────────────────────── */
 .simple-stats {
@@ -2833,6 +2892,7 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 
 /* ── Pro badge in nav ────────────────────────────────────── */
 .pro-profile-badge { display:inline-flex; align-items:center; gap:.3rem; font-size:.7rem; font-weight:600; background:rgba(26,111,212,.1); color:var(--c-blue); border-radius:20px; padding:.2rem .6rem; margin-left:.5rem; }
+.pro-declaration-note { font-size:.7rem; color:var(--text-muted); text-align:center; margin-top:.5rem; font-style:italic; }
 
 /* ── Champ pathologie dans le formulaire ────────────────── */
 .decl-field-pathologie { margin-bottom: var(--s3); }

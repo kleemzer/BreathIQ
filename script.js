@@ -1244,34 +1244,42 @@ const OUTBREAK_DATA = [
   },
   {
     id: 'EBOLA',
-    nameFR: 'Ebola',
-    nameEN: 'Ebola Virus Disease',
-    pathogen: 'Ebola virus (Zaire, Sudan, Bundibugyo strains)',
+    nameFR: 'Ebola Bundibugyo',
+    nameEN: 'Ebola Virus Disease (Bundibugyo)',
+    pathogen: 'Ebola virus — souche Bundibugyo (aucun vaccin, aucun traitement)',
     category: 'epidemic',
     riskLevel: 'critical',
-    lat: 1.65, lon: 30.25, // Ituri, RD Congo — foyer actif avr 2026
-    activeRegions: ['🚨 Ituri (RD Congo) — foyer actif avr 2026 · 8 cas confirmés OMS', '⚠️ Mayotte (France) — vigilance renforcée, aucun cas confirmé', 'Ouganda (historique)', 'Guinée (historique)'],
-    transmission: ['Contact direct fluides biologiques', 'Contact avec corps de personnes décédées', 'Transmission nosocomiale (soignants sans EPI)'],
+    lat: 1.65, lon: 30.25, // Ituri, RD Congo — épicentre
+    activeRegions: [
+      '🚨 Ituri (RD Congo) — 322 cas confirmés · épicentre',
+      '🚨 Nord-Kivu (RD Congo) — 19 cas confirmés',
+      '🚨 Sud-Kivu (RD Congo) — 3 cas confirmés',
+      '🚨 Ouganda — 15 cas confirmés · 1 décès · propagation transfrontalière',
+      '⚠️ Mayotte (France) — vigilance renforcée · aucun cas confirmé',
+    ],
+    transmission: ['Contact direct sang/fluides biologiques', 'Contact avec corps de personnes décédées', 'Transmission nosocomiale (soignants sans EPI)'],
     protectionRequired: 'FFP3/P100 + équipement BSL-4 complet',
     protectionLevel: 3,
-    maskNote: 'Transmission principalement par contact direct (non aéroporté). FFP3 obligatoire en milieu médical pour tout geste à risque d\'aérosolisation (intubation, aspiration, réanimation).',
+    maskNote: 'Transmission par contact direct (non aéroporté). FFP3 + BSL-4 obligatoires pour tout geste à risque. Aucun vaccin ni traitement pour la souche Bundibugyo.',
     reproductionNumber: 'R0 ≈ 1.5–2.5 (épidémie non contrôlée)',
-    cfr: '25–90% selon souche (Zaire : ~70%)',
-    incubation: '2–21 jours (médiane 8–10 jours)',
-    transmission_route: 'Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée en conditions naturelles.',
+    cfr: '25–50% (souche Bundibugyo)',
+    incubation: '2–21 jours (médiane 7 jours, Bundibugyo)',
+    transmission_route: 'Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée.',
     currentStatus: 'outbreak',
-    outbreakStart: '2026-04 (Ituri, RD Congo)',
-    lastUpdate: '2026-05',
+    outbreakStart: '2026-04',
+    lastUpdate: '2026-06',
     iconColor: '#7F1D1D',
     references: [
-      'WHO DON Ebola DRC Ituri avril 2026 — 8 cas confirmés, 240+ suspects',
+      'WHO — PHEIC déclarée le 17 mai 2026 · Épidémie Ebola Bundibugyo RDC & Ouganda',
+      'WHO DON 2026-DON605 — Ebola Bundibugyo, RDC & Uganda, juin 2026',
+      'ONU Info — 344 cas confirmés, 60 décès, RDC · 15 cas Ouganda, 3 juin 2026',
+      'INSERM/SPF — Risque importation France/Mayotte très faible · juin 2026',
       'info.gouv.fr — Ebola : point de situation et mesures mises en oeuvre, mai 2026',
-      'Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever',
-      'CDC Ebola (Ebola Virus Disease) 2023',
-      'Santé Publique France — Surveillance renforcée Mayotte, mai 2026'
+      'ECDC — Ebola outbreak DRC & Uganda 2026',
+      'Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever'
     ],
-    descFR: '⚠️ FOYER ACTIF en RD Congo (province Ituri, avr 2026) — 8 cas confirmés OMS, 240+ suspects. AUCUN cas confirmé sur territoire français. Mayotte : vigilance renforcée activée le 19 mai 2026 (circuit de prise en charge identifié, prélèvements sécurisés vers CNR métropole). Si fièvre + retour d\'Afrique centrale : appeler le 15. Soignants : FFP3 + tenue BSL-4 obligatoire. CFR 25–90% selon souche (Zaire : ~70%).',
-    descEN: '⚠️ ACTIVE OUTBREAK in DRC (Ituri province, Apr 2026) — 8 confirmed WHO cases, 240+ suspected. NO confirmed cases on French territory. Mayotte: enhanced surveillance activated May 19, 2026. If fever after travel from Central Africa: call emergency services immediately. Healthcare workers: FFP3 + BSL-4 suit mandatory. CFR 25–90% by strain (Zaire: ~70%).'
+    descFR: '🚨 URGENCE SANITAIRE INTERNATIONALE (PHEIC OMS — 17 mai 2026). Souche Bundibugyo : AUCUN vaccin, AUCUN traitement spécifique. RDC : 344 cas confirmés, 60 décès (Ituri 322, Nord-Kivu 19, Sud-Kivu 3). Ouganda : 15 cas, propagation transfrontalière. Mayotte : vigilance renforcée — aucun cas confirmé en France. Si fièvre + retour Afrique centrale/est (21 derniers jours) : appelez le 15 SANS vous déplacer. Soignants : FFP3 + tenue BSL-4 complète obligatoire.',
+    descEN: '🚨 PUBLIC HEALTH EMERGENCY OF INTERNATIONAL CONCERN (WHO PHEIC — May 17, 2026). Bundibugyo strain: NO vaccine, NO specific treatment. DRC: 344 confirmed cases, 60 deaths (Ituri 322, North Kivu 19, South Kivu 3). Uganda: 15 confirmed cases — cross-border spread. Mayotte: enhanced surveillance, NO confirmed cases in France. If fever after travel from Central/East Africa (last 21 days): call emergency services immediately, do NOT go to hospital. Healthcare workers: FFP3 + full BSL-4 suit mandatory.'
   },
   {
     id: 'RSVA_HMPV',
@@ -2132,8 +2140,8 @@ function initMode() {
 
 function toggleMode() {
   if (currentMode === 'patient') {
-    // Vérifier si déjà authentifié dans cette session
-    if (sessionStorage.getItem('biq-soignant-auth') === '1') {
+    // Si profil déjà enregistré → accès direct sans re-saisie
+    if (localStorage.getItem('biq-pro-profile')) {
       activateExpertMode();
     } else {
       openSoignantModal();
@@ -2178,13 +2186,17 @@ function _detectCountry() {
 function openSoignantModal() {
   const modal = document.getElementById('soignantModal');
   if (!modal) return;
-  // Show step 1, hide step 2
-  document.getElementById('proStep1').hidden = false;
-  document.getElementById('proStep2').hidden = true;
   modal.hidden = false;
   modal.removeAttribute('hidden');
-  const inp = document.getElementById('soignantPassInput');
-  if (inp) { inp.value = ''; inp.classList.remove('soignant-pass-error'); inp.focus(); }
+  // Pre-select detected country and reset specialty
+  const sel = document.getElementById('proCountrySelect');
+  if (sel) {
+    sel.value = _detectCountry();
+    _onCountryChange();
+  }
+  document.querySelectorAll('.pro-spec-card').forEach(c => c.classList.remove('selected'));
+  const btn = document.getElementById('proStep2Btn');
+  if (btn) btn.disabled = true;
 }
 
 function closeSoignantModal() {
@@ -2192,53 +2204,42 @@ function closeSoignantModal() {
   if (modal) modal.hidden = true;
 }
 
-function validateSoignantPass() {
-  const inp = document.getElementById('soignantPassInput');
-  const val = (inp?.value || '').trim();
-  const storedPass = localStorage.getItem('biq-soignant-pass') || SOIGNANT_PASS;
-  if (val === storedPass) {
-    sessionStorage.setItem('biq-soignant-auth', '1');
-    // Check if profile already saved → skip step 2
-    if (localStorage.getItem('biq-pro-profile')) {
-      closeSoignantModal();
-      activateExpertMode();
-    } else {
-      _showProStep2();
-    }
-  } else {
-    if (inp) {
-      inp.classList.add('soignant-pass-error');
-      inp.value = '';
-      inp.placeholder = currentLang === 'fr' ? 'Code incorrect — réessayez' : 'Wrong code — retry';
-      setTimeout(() => {
-        inp.classList.remove('soignant-pass-error');
-        inp.placeholder = currentLang === 'fr' ? 'Entrez votre code' : 'Enter your code';
-      }, 2000);
-      inp.focus();
-    }
-  }
-}
+// validateSoignantPass kept for backward compatibility but no longer used
+function validateSoignantPass() { saveProProfile(); }
+function _showProStep2() { /* no-op — single step now */ }
 
-function _showProStep2() {
-  document.getElementById('proStep1').hidden = true;
-  const step2 = document.getElementById('proStep2');
-  step2.hidden = false;
-  // Pre-select detected country
-  const sel = document.getElementById('proCountrySelect');
-  if (sel) {
-    const detected = _detectCountry();
-    const opt = [...sel.options].find(o => o.value === detected);
-    if (opt) sel.value = detected;
-    _onCountryChange();
-    sel.addEventListener('change', _onCountryChange);
-  }
-}
+// Identifiant professionnel adapté au pays
+const PRO_ID_CONFIG = {
+  FR: { label: 'N° RPPS (11 chiffres)', hint: 'Répertoire Partagé des Professionnels de Santé · optionnel · jamais transmis', maxlen: 11, numeric: true },
+  BE: { label: 'N° INAMI / RIZIV (11 chiffres)', hint: 'Institut National d\'Assurance Maladie-Invalidité · optionnel', maxlen: 11, numeric: true },
+  CH: { label: 'N° GLN / EAN (13 chiffres)', hint: 'Global Location Number · RCC Suisse · optionnel', maxlen: 13, numeric: true },
+  LU: { label: 'N° CMSS (optionnel)', hint: 'Caisse de Maladie des Secteurs Santé · optionnel', maxlen: 20, numeric: false },
+  CA: { label: 'N° provincial (optionnel)', hint: 'Numéro d\'inscription au collège provincial · optionnel', maxlen: 20, numeric: false },
+  GB: { label: 'GMC / NMC number (optional)', hint: 'General Medical Council or Nursing & Midwifery Council · optional', maxlen: 20, numeric: false },
+  US: { label: 'NPI number (optional)', hint: 'National Provider Identifier · optional', maxlen: 10, numeric: true },
+};
 
 function _onCountryChange() {
   const sel = document.getElementById('proCountrySelect');
   const rppsGroup = document.getElementById('proRppsGroup');
+  const rppsInput = document.getElementById('proRppsInput');
+  const rppsHint = document.getElementById('proRppsHint');
   if (!sel || !rppsGroup) return;
-  rppsGroup.hidden = sel.value !== 'FR';
+
+  const cfg = PRO_ID_CONFIG[sel.value];
+  if (cfg) {
+    rppsGroup.hidden = false;
+    if (rppsInput) {
+      rppsInput.placeholder = cfg.label;
+      rppsInput.maxLength = cfg.maxlen;
+      rppsInput.oninput = cfg.numeric
+        ? function() { this.value = this.value.replace(/\D/g,'').slice(0, cfg.maxlen); }
+        : function() { this.value = this.value.slice(0, cfg.maxlen); };
+    }
+    if (rppsHint) rppsHint.textContent = cfg.hint;
+  } else {
+    rppsGroup.hidden = true;
+  }
 }
 
 function selectSpecialty(btn) {
@@ -2306,26 +2307,75 @@ function updatePatientRiskBanner() {
   const desc  = document.getElementById('patientRiskDesc');
   const lang  = currentLang;
 
+  // ── Check for active PHEIC → override to CRITIQUE ──────────
+  const hasPHEIC = OUTBREAK_DATA.some(ob => ob.currentStatus === 'outbreak' && ob.riskLevel === 'critical');
+
   banner.className = 'risk-banner';
-  if (score.sr <= 45) {
+
+  if (hasPHEIC) {
+    banner.classList.add('risk-critical');
+    if (icon)  { icon.textContent = '🚨'; icon.classList.add('pulse'); }
+    if (label) label.textContent = lang === 'fr' ? 'ALERTE MONDIALE ACTIVE' : 'GLOBAL ALERT ACTIVE';
+    if (title) title.textContent = lang === 'fr' ? 'Urgence sanitaire internationale déclarée par l\'OMS' : 'International Public Health Emergency declared by WHO';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'Ebola Bundibugyo : épidémie active en RDC et Ouganda · 344 cas confirmés · aucun cas en France' : 'Ebola Bundibugyo: active outbreak in DRC and Uganda · 344 confirmed cases · no cases in France';
+    // Show urgency dot on symptoms path card
+    const dot = document.getElementById('heroUrgencyDot');
+    if (dot) dot.hidden = false;
+  } else if (score.sr <= 45) {
     banner.classList.add('risk-low');
-    if (icon)  icon.textContent  = '🟢';
+    if (icon)  { icon.textContent = '🟢'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'RISQUE FAIBLE' : 'LOW RISK';
     if (title) title.textContent = lang === 'fr' ? 'Risque respiratoire actuellement faible dans votre région' : 'Currently low respiratory risk in your region';
     if (desc)  desc.textContent  = lang === 'fr' ? 'La situation épidémiologique est sous contrôle — restez vigilant' : 'Epidemiological situation is under control — stay alert';
   } else if (score.sr <= 65) {
     banner.classList.add('risk-moderate');
-    if (icon)  icon.textContent  = '🟡';
+    if (icon)  { icon.textContent = '🟡'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'VIGILANCE RECOMMANDÉE' : 'CAUTION ADVISED';
     if (title) title.textContent = lang === 'fr' ? 'Risque modéré — des foyers épidémiques sont actifs dans le monde' : 'Moderate risk — active disease outbreaks worldwide';
     if (desc)  desc.textContent  = lang === 'fr' ? 'Portez un masque dans les espaces bondés. Lavez-vous les mains régulièrement.' : 'Wear a mask in crowded spaces. Wash your hands regularly.';
   } else {
     banner.classList.add('risk-high');
-    if (icon)  icon.textContent  = '🔴';
+    if (icon)  { icon.textContent = '🔴'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'RISQUE ÉLEVÉ' : 'HIGH RISK';
     if (title) title.textContent = lang === 'fr' ? 'Risque élevé — protection respiratoire fortement recommandée' : 'High risk — respiratory protection strongly recommended';
     if (desc)  desc.textContent  = lang === 'fr' ? 'Port du masque FFP2 recommandé. Évitez les espaces confinés.' : 'FFP2 mask recommended. Avoid confined and crowded spaces.';
   }
+
+  // Update expert stats bar
+  _updateExpertStats();
+}
+
+function _updateExpertStats() {
+  const pheicCount = OUTBREAK_DATA.filter(o => o.currentStatus === 'outbreak' && o.riskLevel === 'critical').length;
+  const outbreakCount = OUTBREAK_DATA.filter(o => o.currentStatus === 'outbreak' || o.currentStatus === 'active').length;
+  const el = (id, val) => { const e = document.getElementById(id); if (e) e.textContent = val; };
+  el('esbPheic', pheicCount);
+  el('esbOutbreaks', outbreakCount);
+  el('esbPathogens', OUTBREAK_DATA.length);
+}
+
+// ── Quick symptom selection from chips ──────────────────────────
+function quickSelectSymptom(symptomValue) {
+  // Check the corresponding checkbox in the full checker
+  const cb = document.querySelector(`input[type="checkbox"][value="${symptomValue}"]`);
+  if (cb) {
+    cb.checked = true;
+    const label = cb.closest('.symptom-check');
+    if (label) label.classList.add('checked');
+  }
+  // Mark chip as active
+  document.querySelectorAll('.quick-sym-btn').forEach(btn => {
+    if (btn.getAttribute('onclick')?.includes(`'${symptomValue}'`)) btn.classList.add('active');
+  });
+  // Enable checker button
+  const btn = document.getElementById('checkerBtn');
+  if (btn) btn.disabled = false;
+  // Trigger critical symptom auto-analysis
+  if (['breathlessness','confusion','bleeding'].includes(symptomValue)) {
+    setTimeout(checkSymptoms, 300);
+  }
+  // Smooth scroll to checker
+  document.getElementById('symptomChecker')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 // ── Vérificateur de symptômes ────────────────────────────────
