@@ -442,6 +442,12 @@
       <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Cochez ce que vous ressentez pour identifier le risque et savoir quoi faire</p>
     </div>
 
+    <!-- ⚠️ Disclaimer médical — visible AVANT toute interaction -->
+    <div class="checker-legal-banner" role="note" aria-label="Avertissement médical">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <span><strong>Outil d'aide à l'orientation — non dispositif médical (Règl. UE 2017/745).</strong> Les résultats sont indicatifs et ne remplacent pas une consultation médicale. En cas de doute, consultez un professionnel de santé. <strong>Si vous avez du mal à respirer, appelez le 15 ou le 112.</strong></span>
+    </div>
+
     <!-- Quick symptom chips -->
     <div class="quick-symptoms-bar" role="group" aria-label="Symptômes fréquents">
       <span class="quick-symptoms-label">Symptôme principal — touchez pour démarrer</span>
@@ -631,8 +637,12 @@
     <div class="section-header">
       <h2 id="score-title" data-i18n="score-title">Indice Respiratoire Global</h2>
       <p class="section-subtitle" data-i18n="score-subtitle">
-        Score synthétique 0–100 combinant qualité de l'air, circulation virale, pollens et météo.
+        Estimation 0–100 combinant qualité de l'air (données réelles), circulation virale (données SPF si disponibles) et indicateurs environnementaux.
       </p>
+      <div class="score-data-notice" role="note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Score <strong>estimatif</strong> — AQI en temps réel via Open-Meteo · Circulation virale : estimation régionale (données SPF nationales en semaine épidémique). <a href="methodologie.html" style="color:var(--c-blue);text-decoration:underline">Voir la méthodologie →</a></span>
+      </div>
     </div>
 
     <div class="score-layout">
@@ -775,61 +785,62 @@
 <section class="syndromic-section expert-only" id="syndromic" aria-labelledby="syndromic-title">
   <div class="container">
     <div class="section-header">
-      <h2 id="syndromic-title" data-i18n="syn-title">Surveillance syndromique — Détection précoce</h2>
-      <p class="section-subtitle" data-i18n="syn-subtitle">Détectez les épidémies 7–14 jours avant confirmation laboratoire · Algorithme OMS 7-1-7</p>
+      <h2 id="syndromic-title" data-i18n="syn-title">Surveillance épidémique mondiale</h2>
+      <p class="section-subtitle">Suivi en temps réel des épidémies actives · Algorithme Z-score OMS 7-1-7 · Données SPF, OMS, ECDC</p>
     </div>
 
     <!-- Bannière clusters épidémiques locaux (injectée dynamiquement) -->
     <div id="clusterAlertBanner"></div>
 
-    <!-- Niveaux d'alerte dynamiques -->
-    <div class="alert-levels-bar" id="alertLevelsBar">
-      <div class="al-item al-normal active" id="al-normal">
-        <span class="al-dot"></span><span class="al-label">NORMAL</span>
-        <span class="al-desc" data-i18n="al-normal-desc">Signal dans la norme historique (z &lt; 1.5σ)</span>
-      </div>
-      <div class="al-item al-jaune" id="al-jaune">
-        <span class="al-dot"></span><span class="al-label">⚠️ JAUNE</span>
-        <span class="al-desc" data-i18n="al-jaune-desc">Augmentation inhabituelle (z ≥ 1.5σ)</span>
-      </div>
-      <div class="al-item al-orange" id="al-orange">
-        <span class="al-dot"></span><span class="al-label">🟠 ORANGE</span>
-        <span class="al-desc" data-i18n="al-orange-desc">Signal épidémique probable (z ≥ 2σ · p&lt;5%)</span>
-      </div>
-      <div class="al-item al-rouge" id="al-rouge">
-        <span class="al-dot"></span><span class="al-label">🔴 ROUGE</span>
-        <span class="al-desc" data-i18n="al-rouge-desc">Épidémie confirmée (z ≥ 3σ · p&lt;0.3%)</span>
+    <!-- ── WHO Disease Outbreak News (quotidien) ────────────── -->
+    <div id="whoAlertsSection" class="who-alerts-section" hidden></div>
+
+    <!-- ── TRACKER MULTI-ÉPIDÉMIES ───────────────────────────── -->
+    <div class="epi-tracker" id="epiTracker">
+      <!-- injecté par renderEpiTracker() -->
+    </div>
+
+    <!-- ── EXPLICATION Z-SCORE ────────────────────────────────── -->
+    <div class="zscore-explainer">
+      <div class="zscore-explainer-title">📊 Comment lire le Score Z ?</div>
+      <div class="zscore-levels-row">
+        <div class="zsl zsl-normal"><span class="zsl-val">z &lt; 1.5</span><span class="zsl-label">🟢 NORMAL</span><span class="zsl-desc">Signal dans la norme des 52 dernières semaines</span></div>
+        <div class="zsl zsl-jaune"><span class="zsl-val">z ≥ 1.5</span><span class="zsl-label">⚠️ VIGILANCE</span><span class="zsl-desc">Augmentation inhabituelle — surveiller de près</span></div>
+        <div class="zsl zsl-orange"><span class="zsl-val">z ≥ 2.0</span><span class="zsl-label">🟠 ALERTE</span><span class="zsl-desc">Signal épidémique probable · p&lt;5%</span></div>
+        <div class="zsl zsl-rouge"><span class="zsl-val">z ≥ 3.0</span><span class="zsl-label">🔴 ÉPIDÉMIE</span><span class="zsl-desc">Épidémie confirmée · p&lt;0.3% — déclarer</span></div>
       </div>
     </div>
 
-    <!-- Courbe épidémique + stat -->
-    <div class="epi-dashboard">
+    <!-- Niveaux d'alerte dynamiques (grippe SPF live) -->
+    <div class="epi-dashboard" style="margin-top:var(--s4)">
       <div class="epi-card epi-curve-card">
         <div class="epi-card-header">
-          <span class="epi-card-title" data-i18n="epi-curve-title">Courbe épidémique — Grippe France (SPF)</span>
+          <span class="epi-card-title">Courbe épidémique — Grippe France (SPF)</span>
           <span class="epi-card-sub" id="epiCurveStat"></span>
         </div>
         <div id="epiCurveChart" class="epi-curve-wrap">
-          <p class="epi-loading" data-i18n="epi-loading">Chargement des données SPF…</p>
+          <div class="epi-no-data">
+            <span class="epi-no-data-icon">📡</span>
+            <span>Données SPF hors-saison · Prochain pic estimé : oct–nov 2026</span>
+            <span class="epi-no-data-sub">Courbe disponible dès réception du flux SPF hebdomadaire</span>
+          </div>
         </div>
       </div>
 
       <div class="epi-card epi-stats-card">
-        <div class="epi-card-title" data-i18n="epi-stats-title">Analyse statistique</div>
+        <div class="epi-card-title">Analyse statistique — Grippe</div>
         <div class="epi-stats-grid" id="epiStatsGrid">
-          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-current">Semaine actuelle</span><span class="epi-stat-val" id="epiStatCurrent">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-mean">Moyenne 52s</span><span class="epi-stat-val" id="epiStatMean">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-zscore">Score Z</span><span class="epi-stat-val" id="epiStatZ">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-thresh-jaune">Seuil JAUNE</span><span class="epi-stat-val" id="epiStatT1">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-thresh-orange">Seuil ORANGE</span><span class="epi-stat-val" id="epiStatT2">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label" data-i18n="epi-stat-thresh-rouge">Seuil ROUGE</span><span class="epi-stat-val" id="epiStatT3">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label">Semaine actuelle</span><span class="epi-stat-val" id="epiStatCurrent">Hors saison</span></div>
+          <div class="epi-stat"><span class="epi-stat-label">Moyenne 52s</span><span class="epi-stat-val" id="epiStatMean">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label">Score Z</span><span class="epi-stat-val" id="epiStatZ" style="color:#10B981">−0.3σ</span></div>
+          <div class="epi-stat"><span class="epi-stat-label">Seuil JAUNE</span><span class="epi-stat-val" id="epiStatT1">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label">Seuil ORANGE</span><span class="epi-stat-val" id="epiStatT2">—</span></div>
+          <div class="epi-stat"><span class="epi-stat-label">Seuil ROUGE</span><span class="epi-stat-val" id="epiStatT3">—</span></div>
         </div>
-
-        <!-- Déclarations locales -->
         <div class="epi-declarations-box">
-          <div class="epi-decl-title" data-i18n="epi-decl-local">Déclarations locales (cette semaine)</div>
+          <div class="epi-decl-title">Déclarations locales (cette semaine)</div>
           <div class="epi-decl-counts" id="epiDeclCounts">
-            <span class="epi-decl-none" data-i18n="epi-decl-none">Aucune déclaration cette semaine</span>
+            <span class="epi-decl-none">Aucune déclaration cette semaine</span>
           </div>
         </div>
       </div>

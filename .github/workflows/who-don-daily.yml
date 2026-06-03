@@ -1,0 +1,44 @@
+name: WHO DON Daily Fetch
+
+on:
+  schedule:
+    # Every day at 07:00 UTC (WHO publishes DONs throughout the day)
+    - cron: '0 7 * * *'
+  workflow_dispatch:
+
+jobs:
+  fetch-who-don:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Fetch WHO Disease Outbreak News
+        run: node scripts/who-don-fetch.mjs
+
+      - name: Show fetched alerts
+        run: |
+          echo "--- who-alerts.json preview ---"
+          head -30 data/who-alerts.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "WHO-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/who-alerts.json
+          if git diff --staged --quiet; then
+            echo "✅ Aucune nouvelle alerte WHO"
+          else
+            ALERT_COUNT=$(node -e "const d=require('./data/who-alerts.json'); console.log(d.alertCount || 0)")
+            git commit -m "data: WHO DON update — ${ALERT_COUNT} alertes ($(date +%Y-%m-%d))"
+            git push
+            echo "✅ who-alerts.json mis à jour"
+          fi

@@ -951,9 +951,9 @@ const OUTBREAK_DATA = [
     lat: -2.0, lon: 29.0, // DRC, Eastern Africa
     activeRegions: ['RD Congo', 'Burundi', 'Rwanda', 'Ouganda', 'Kenya'],
     transmission: ['Contact direct lésions', 'Gouttelettes respiratoires', 'Contact prolongé'],
-    protectionRequired: 'FFP2/N95 + équipement contact',
+    protectionRequired: 'FFP2/N95 + surblouse imperméable + gants + lunettes',
     protectionLevel: 2,
-    maskNote: 'FFP2 + gants + lunettes pour soignants et contacts proches. Clade Ib plus transmissible que clade II.',
+    maskNote: 'COREB décembre 2025 + ECDC/ARS IDF 2026 : EPI complet = FFP2 + surblouse imperméable + gants non stériles + lunettes de protection/visière. Masque chirurgical acceptable pour soins à distance sans risque d\'aérosolisation. FFP2 obligatoire pour : examen direct lésions, soins avec risque de projection, contact < 1m prolongé. Clade Ib : transmission contact cutané, gouttelettes, et voie sexuelle.',
     reproductionNumber: 'R0 clade Ib ≈ 1.5–2.1 (transmission sexuelle et ménagère)',
     cfr: '3–10% (clade Ib, populations non vaccinées)',
     incubation: '5–21 jours',
@@ -963,11 +963,12 @@ const OUTBREAK_DATA = [
     lastUpdate: '2026-05',
     iconColor: '#DC2626',
     references: [
-      'SPF — Bulletin surveillance IDF S18, 13 mai 2026 : Mpox en légère augmentation, comparable à 2025, <<2022',
-      'WHO PHEIC Declaration Mpox August 2024',
+      'SPF — Bulletin surveillance IDF S18, 13 mai 2026 : Mpox en légère augmentation, comparable à 2025',
+      'WHO PHEIC Declaration Mpox — prolongée septembre 2025 jusqu\'en août 2026',
+      'COREB Nationale — Fiche soignant Mpox, décembre 2025 (EPI actualisé)',
+      'ECDC Mpox Threat Assessment Brief — octobre 2025',
       'Kibungu EM et al. N Engl J Med 2024 — Clade Ib monkeypox outbreak',
-      'ECDC Mpox Epidemiological Update 2025',
-      'Titanji BK et al. Lancet Infect Dis 2022 — Monkeypox disease'
+      'ARS Île-de-France — Mpox recommandations professionnels de santé 2026'
     ],
     descFR: '📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025, nettement inférieure au pic 2022. Urgence de santé publique OMS (clade Ib) maintenue. Clade Ib plus transmissible que clade IIb (2022). Transmission contact cutané et gouttelettes en contact prolongé. FFP2 + EPI contact requis pour soignants.',
     descEN: '📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.'
@@ -1042,9 +1043,9 @@ const OUTBREAK_DATA = [
     lat: 13.5, lon: 17.0, // Sahel Africa
     activeRegions: ['Afrique subsaharienne', 'Europe (foyers non-vaccinés)', 'Gaza 2024'],
     transmission: ['Aérosols (jusqu\'à 2h en air confiné)', 'Contact direct'],
-    protectionRequired: 'FFP2/N95 minimum — FFP3 soignants en zone épidémique',
+    protectionRequired: 'FFP2/N95 — non-immuns uniquement · immunisés dispensés',
     protectionLevel: 2,
-    maskNote: 'R0 12–18 : l\'un des pathogènes aéroportés les plus contagieux. Virus reste infectieux 2h en air confiné. FFP2 = protection minimale pour non-immuns. FFP3 recommandé pour soignants en service pédiatrique ou zone épidémique dense (HAS). Immunité = vaccin MMR×2 ou infection antérieure confirmée.',
+    maskNote: 'R0 12–18 : pathogène aéroporté extrêmement contagieux, persistance 2h en air confiné (CDC, WHO IPC 2024). FFP2/N95 OBLIGATOIRE pour soignants non-immuns entrant dans la chambre. IMPORTANT : soignants immunisés (2 doses MMR prouvées OU sérologie IgG+ confirmée) ne nécessitent PAS de protection respiratoire (CDC HICPAC 2024). FFP3 recommandé pour AGPs (intubation, aérosolisation) chez tout soignant. Vérifier l\'immunité avant toute exposition.',
     reproductionNumber: 'R0 ≈ 12–18 (le plus élevé des maladies à déclaration obligatoire)',
     cfr: '1–5% (pays à revenus faibles) ; 0.01–0.1% (pays vaccinés)',
     incubation: '10–14 jours',
@@ -1055,7 +1056,8 @@ const OUTBREAK_DATA = [
     iconColor: '#D97706',
     references: [
       'WHO Measles Global Status Update 2024 — 306,000 cases reported',
-      'ECDC Measles Surveillance 2024',
+      'ECDC Measles Annual Report EU/EEA 2024 — 9,603 cases Nov 2024–Oct 2025',
+      'CDC HICPAC 2024 — Airborne precautions: N95 required for non-immune HCW, immune HCW exempt',
       'Moss WJ. Lancet 2017 — Measles',
       'Mina MJ et al. Science 2015 — Measles virus infection diminishes preexisting antibodies'
     ],
@@ -1104,7 +1106,7 @@ const OUTBREAK_DATA = [
     transmission: ['Aérosols', 'Gouttelettes', 'Contact'],
     protectionRequired: 'FFP2/N95 recommandé — chirurgical insuffisant contre aérosols',
     protectionLevel: 2,
-    maskNote: 'FFP2 obligatoire pour soignants (HAS, ECDC). FFP1 = 80% filtration : INSUFFISANT pour protection individuelle contre aérosols grippaux. Chirurgical = protection source uniquement. Personnes à risque (>65 ans, immunodéprimés, cardio-respiratoire) : FFP2 en espaces bondés.',
+    maskNote: 'ECDC 2025 : FFP2 pour soignants lors d\'AGPs grippaux (intubation, bronchoscopie, aérosolisation) et contact haute intensité. Masque chirurgical acceptable pour soins courants à distance standard. FFP1 (80% filtration) = INSUFFISANT pour protection individuelle soignants (HAS). Grand public symptomatique : masque chirurgical pour protection source. Personnes à risque (>65 ans, immunodéprimés, insuffisance cardiorespiratoire) : FFP2 recommandé en espaces bondés.',
     reproductionNumber: 'R0 ≈ 1.2–1.4 (saisonnier)',
     cfr: '0.01–0.1% (estimé) ; 290 000–650 000 décès/an mondiaux (OMS)',
     incubation: '1–4 jours',
@@ -1116,9 +1118,10 @@ const OUTBREAK_DATA = [
     references: [
       'SPF — Bilan saison IRA 2025-2026 (grippe, bronchiolite, COVID-19), mai 2026',
       'WHO Influenza (Seasonal) Fact Sheet 2023',
+      'ECDC Influenza risk assessment EU/EEA — A(H3N2) subclade K, 2025',
       'Tellier R et al. Sci Rep 2019 — Recognition of aerosol transmission of infectious agents',
       'Cowling BJ et al. Nat Med 2013 — Aerosol transmission of influenza',
-      'ECDC Seasonal Influenza Surveillance 2025'
+      'CDC HICPAC Draft 2024 Guideline to Prevent Transmission of Pathogens in Healthcare Settings'
     ],
     descFR: '📊 SPF Bilan saison 2025-2026 : épidémie exclusivement type A (déc 2025 – mi-fév 2026, 10 semaines). Intensité faible à modérée en ville, élevée en hospitalier. Impact mortalité important en début 2026. Hors saison en mai 2026 — surveillance inter-épidémique. 290 000–650 000 décès/an (OMS). FFP2 recommandé soignants et personnes à risque lors du prochain pic.',
     descEN: '📊 SPF Season review 2025-2026: exclusively type A influenza (Dec 2025–mid-Feb 2026, 10 weeks). Low-to-moderate intensity in community, high in hospitals. Significant mortality impact early 2026. Off-season in May 2026 — inter-epidemic surveillance. 290,000–650,000 deaths/year (WHO). FFP2 recommended for healthcare workers and at-risk individuals during next peak.'
@@ -1260,7 +1263,7 @@ const OUTBREAK_DATA = [
     transmission: ['Contact direct sang/fluides biologiques', 'Contact avec corps de personnes décédées', 'Transmission nosocomiale (soignants sans EPI)'],
     protectionRequired: 'FFP3/P100 + équipement BSL-4 complet',
     protectionLevel: 3,
-    maskNote: 'Transmission par contact direct (non aéroporté). FFP3 + BSL-4 obligatoires pour tout geste à risque. Aucun vaccin ni traitement pour la souche Bundibugyo.',
+    maskNote: 'WHO Ebola PPE 2026 : EPI niveau 4 obligatoire = FFP3/PAPR + combinaison imperméable + double gantage + visière intégrale + couvre-bottes. Transmission = contact direct fluides biologiques (non aéroportée en conditions naturelles). FFP3 obligatoire pour TOUS les AGPs (intubation, aspiration, réanimation). ATTENTION : vaccin rVSV-ZEBOV (Ervebo) NON efficace contre souche Bundibugyo (FDA 2026). Aucun vaccin ni traitement spécifique disponible.',
     reproductionNumber: 'R0 ≈ 1.5–2.5 (épidémie non contrôlée)',
     cfr: '25–50% (souche Bundibugyo)',
     incubation: '2–21 jours (médiane 7 jours, Bundibugyo)',
@@ -1271,10 +1274,12 @@ const OUTBREAK_DATA = [
     iconColor: '#7F1D1D',
     references: [
       'WHO — PHEIC déclarée le 17 mai 2026 · Épidémie Ebola Bundibugyo RDC & Ouganda',
-      'WHO DON 2026-DON605 — Ebola Bundibugyo, RDC & Uganda, juin 2026',
-      'ONU Info — 344 cas confirmés, 60 décès, RDC · 15 cas Ouganda, 3 juin 2026',
+      'WHO DON 2026-DON605 — Ebola Bundibugyo virus, DRC & Uganda, juin 2026',
+      'WHO PPE for Ebola — Personal protective equipment guidance (teams.who.int)',
+      'CDC — Ebola Bundibugyo FAQ 2026 · vaccin rVSV-ZEBOV non efficace contre Bundibugyo',
+      'CDC Interim Guidance — Travelers from Ebola-affected countries 2026',
+      'ONU Info — 344 cas confirmés, 60 décès RDC · 15 cas Ouganda, 3 juin 2026',
       'INSERM/SPF — Risque importation France/Mayotte très faible · juin 2026',
-      'info.gouv.fr — Ebola : point de situation et mesures mises en oeuvre, mai 2026',
       'ECDC — Ebola outbreak DRC & Uganda 2026',
       'Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever'
     ],
@@ -1751,6 +1756,46 @@ const PATHOGEN_ICONS = {
   CANDIDA_AURIS:'🍄',
   DEFAULT:'🦠',
 };
+
+// ── WHO Disease Outbreak News (daily pipeline) ──────────────────────────────
+async function loadWHOAlerts() {
+  try {
+    const resp = await fetch('data/who-alerts.json?_=' + Date.now(), {
+      cache: 'no-store', signal: AbortSignal.timeout(6000),
+    });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    if (!data?.alerts?.length || !data.generatedAt) return;
+
+    // Inject WHO alerts into the epi tracker section
+    const whoSection = document.getElementById('whoAlertsSection');
+    if (!whoSection) return;
+
+    const d = new Date(data.generatedAt);
+    const dateLabel = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+
+    const riskColor = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
+    const riskLabel = { critical:'🔴 CRITIQUE', high:'🟠 ÉLEVÉ', moderate:'🟡 MODÉRÉ', low:'🟢 NORMAL' };
+
+    const items = data.alerts.slice(0, 6).map(a => `
+      <a href="${a.url || '#'}" target="_blank" rel="noopener noreferrer" class="who-alert-item">
+        <span class="who-alert-badge" style="background:${riskColor[a.riskLevel]}22;color:${riskColor[a.riskLevel]};border-color:${riskColor[a.riskLevel]}44">${riskLabel[a.riskLevel] || '⚪'}</span>
+        <span class="who-alert-title">${a.title}</span>
+        <span class="who-alert-date">${a.pubDate ? new Date(a.pubDate).toLocaleDateString('fr-FR', {day:'numeric',month:'short'}) : ''}</span>
+      </a>`).join('');
+
+    whoSection.innerHTML = `
+      <div class="who-alerts-header">
+        <span class="who-alerts-title">📡 OMS — Disease Outbreak News</span>
+        <span class="who-alerts-meta">Mis à jour le ${dateLabel} · <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">who.int →</a></span>
+      </div>
+      <div class="who-alerts-list">${items}</div>`;
+    whoSection.hidden = false;
+    console.log(`[BreathIQ] WHO DON chargé (${data.alerts.length} alertes)`);
+  } catch (e) {
+    console.debug('[BreathIQ] WHO DON non disponible:', e.message);
+  }
+}
 
 // ── SPF Live Data (AI-generated weekly) ─────────────────────────────────────
 // Fetches data/spf-live.json and merges AI-extracted patches into OUTBREAK_DATA
@@ -2288,6 +2333,8 @@ function activateExpertMode() {
   renderPathogens();
   renderLocalDeclarations();
   renderClusterAlertBanner();
+  renderEpiTracker();
+  loadWHOAlerts();
   setTimeout(() => {
     if (!worldMap) initMapWhenReady();
     else worldMap.invalidateSize(true);
@@ -3133,6 +3180,60 @@ function applyLiveData(parsed) {
   renderWaqiWidget(parsed.waqiLocal || parsed.localAqi);
   // Pollen
   renderPollenWidget(parsed.localAqi);
+}
+
+// ── Tracker multi-épidémies ──────────────────────────────────────
+function renderEpiTracker() {
+  const wrap = document.getElementById('epiTracker');
+  if (!wrap) return;
+
+  // Pathogens à suivre en priorité (actifs ou à surveiller)
+  const TRACK_IDS = ['EBOLA','MPOX','INFLUENZA','COVID19VAR','H5N1','MEASLES','PERTUSSIS','MARBURG','NIPAH'];
+
+  const statusLabel = {
+    outbreak:   { text: '🚨 ÉPIDÉMIE ACTIVE', cls: 'badge-outbreak' },
+    active:     { text: '📈 ACTIF',           cls: 'badge-active' },
+    endemic:    { text: '🔄 ENDÉMIQUE',        cls: 'badge-endemic' },
+    seasonal:   { text: '📅 SAISONNIER',       cls: 'badge-endemic' },
+    sporadic:   { text: '⚡ SPORADIQUE',       cls: 'badge-monitoring' },
+    monitoring: { text: '👁 SURVEILLANCE',     cls: 'badge-monitoring' },
+    resolved:   { text: '✅ RÉSOLU',           cls: 'badge-monitoring' },
+  };
+
+  const riskColor = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
+  const riskWidth = { critical: 95, high: 70, moderate: 45, low: 20 };
+
+  const cards = TRACK_IDS.map(id => {
+    const ob = OUTBREAK_DATA.find(o => o.id === id);
+    if (!ob) return '';
+    const sl = statusLabel[ob.currentStatus] || statusLabel.monitoring;
+    const color = riskColor[ob.riskLevel] || '#6366F1';
+    const width = riskWidth[ob.riskLevel] || 20;
+    const regions = (ob.activeRegions || []).slice(0,3).map(r =>
+      `<span class="epi-track-chip">${r.replace(/^[🚨⚠️]\s*/,'').split('—')[0].trim()}</span>`
+    ).join('');
+    // Short clinical summary
+    const summary = (ob.descFR || '').replace(/📊[^.]+\.\s*/,'').slice(0, 120) + '…';
+
+    return `
+    <div class="epi-track-card ${ob.riskLevel}" role="article" aria-label="${ob.nameFR}">
+      <div class="epi-track-header">
+        <span class="epi-track-name">${ob.nameFR}</span>
+        <span class="epi-track-badge ${sl.cls}">${sl.text}</span>
+      </div>
+      <p class="epi-track-desc">${summary}</p>
+      <div class="epi-track-meta">
+        ${regions}
+        <span class="epi-track-chip">CFR ${ob.cfr?.split('(')[0].trim() || '?'}</span>
+        <span class="epi-track-chip">Màj ${ob.lastUpdate || '?'}</span>
+      </div>
+      <div class="epi-track-progress" title="Niveau de risque : ${ob.riskLevel}">
+        <div class="epi-track-bar" style="width:${width}%;background:${color}"></div>
+      </div>
+    </div>`;
+  }).join('');
+
+  wrap.innerHTML = cards;
 }
 
 // ── Surveillance syndromique — Algorithme OMS 7-1-7 ──────────

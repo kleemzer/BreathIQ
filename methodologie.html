@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Méthodologie — BreathIQ</title>
+  <meta name="description" content="Méthodologie scientifique de BreathIQ : sources de données, algorithmes de détection, limites et niveau de confiance.">
+  <link rel="stylesheet" href="style.css?v=20260603">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <style>
+    .methodo-hero { background: var(--bg-dark); padding: var(--s6) var(--s4) var(--s4); text-align: center; border-bottom: 1px solid var(--border); }
+    .methodo-hero h1 { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 800; color: #fff; margin-bottom: .5rem; }
+    .methodo-hero p  { color: var(--text-muted); font-size: .95rem; max-width: 600px; margin: 0 auto; }
+    .methodo-body { max-width: 860px; margin: 0 auto; padding: var(--s5) var(--s4); display: flex; flex-direction: column; gap: var(--s5); }
+    .methodo-section { background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: var(--s4); }
+    .methodo-section h2 { font-size: 1.1rem; font-weight: 700; margin-bottom: var(--s3); color: var(--text); display: flex; align-items: center; gap: .5rem; }
+    .methodo-section h3 { font-size: .9rem; font-weight: 700; color: var(--text-secondary); margin: var(--s3) 0 .5rem; }
+    .methodo-table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+    .methodo-table th { text-align: left; padding: .5rem .75rem; background: rgba(255,255,255,.04); color: var(--text-muted); font-weight: 600; font-size: .75rem; text-transform: uppercase; letter-spacing: .05em; border-bottom: 1px solid var(--border); }
+    .methodo-table td { padding: .5rem .75rem; border-bottom: 1px solid rgba(255,255,255,.05); color: var(--text-secondary); vertical-align: top; }
+    .methodo-table tr:last-child td { border-bottom: none; }
+    .methodo-table td:first-child { font-weight: 600; color: var(--text); white-space: nowrap; }
+    .formula-block { background: rgba(99,102,241,.08); border: 1px solid rgba(99,102,241,.2); border-radius: 10px; padding: .75rem var(--s3); font-family: monospace; font-size: .9rem; color: #A5B4FC; margin: .5rem 0; }
+    .limit-item { display: flex; gap: .75rem; padding: .6rem 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .84rem; color: var(--text-secondary); }
+    .limit-item:last-child { border-bottom: none; }
+    .limit-icon { font-size: 1.1rem; flex-shrink: 0; margin-top: .1rem; }
+    .badge-real { background: rgba(16,185,129,.12); color: #34D399; border: 1px solid rgba(16,185,129,.3); padding: .15rem .5rem; border-radius: 6px; font-size: .7rem; font-weight: 700; }
+    .badge-est  { background: rgba(245,158,11,.12); color: #FBBF24; border: 1px solid rgba(245,158,11,.3); padding: .15rem .5rem; border-radius: 6px; font-size: .7rem; font-weight: 700; }
+    .badge-off  { background: rgba(239,68,68,.1); color: #F87171; border: 1px solid rgba(239,68,68,.2); padding: .15rem .5rem; border-radius: 6px; font-size: .7rem; font-weight: 700; }
+    .warning-box { background: rgba(245,158,11,.08); border: 1px solid rgba(245,158,11,.25); border-radius: 10px; padding: var(--s3); font-size: .84rem; color: var(--text-secondary); }
+    .warning-box strong { color: #FBBF24; }
+    .methodo-nav { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) var(--s4); background: var(--bg-dark); border-bottom: 1px solid var(--border); }
+    .methodo-nav a { color: var(--c-blue); text-decoration: none; font-size: .85rem; }
+    .methodo-nav span { color: var(--text-muted); font-size: .85rem; }
+    .contact-box { background: rgba(26,111,212,.08); border: 1px solid rgba(26,111,212,.2); border-radius: 10px; padding: var(--s3); font-size: .84rem; }
+    .contact-box a { color: var(--c-blue); }
+  </style>
+</head>
+<body data-theme="dark">
+
+<nav class="methodo-nav">
+  <a href="index.html">← BreathIQ</a>
+  <span>·</span>
+  <span>Méthodologie</span>
+</nav>
+
+<div class="methodo-hero">
+  <h1>📐 Méthodologie</h1>
+  <p>Sources de données, algorithmes de détection, limites et niveau de confiance de BreathIQ.</p>
+</div>
+
+<main class="methodo-body">
+
+  <!-- 1. Sources -->
+  <section class="methodo-section">
+    <h2>🗂 1. Sources de données</h2>
+    <table class="methodo-table">
+      <thead>
+        <tr><th>Source</th><th>Donnée</th><th>Fréquence</th><th>Licence</th><th>Statut</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Santé Publique France (SPF)</td><td>Incidence grippale ILI, COVID-19, Mpox</td><td>Hebdomadaire</td><td>Open data Etalab</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>SUM'EAU / data.gouv.fr</td><td>SARS-CoV-2 dans les eaux usées (signal précoce)</td><td>Hebdomadaire</td><td>Open data Etalab</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>ECDC opendata</td><td>Cas Mpox Union Européenne / EEE</td><td>Hebdomadaire</td><td>CC BY 4.0</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>WHO Disease Outbreak News</td><td>Alertes épidémiques mondiales officielles</td><td>Quotidien</td><td>Public</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>Open-Meteo</td><td>Qualité de l'air (PM2.5, PM10, AQI européen)</td><td>Horaire</td><td>CC BY 4.0</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>WAQI (World Air Quality Index)</td><td>AQI stations locales</td><td>Horaire</td><td>Token requis</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>OpenStreetMap / Overpass API</td><td>Pharmacies locales (géolocalisation)</td><td>Continue</td><td>ODbL</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>Score régional /100</td><td>Indice respiratoire composite</td><td>—</td><td>—</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem">
+      <span class="badge-real">RÉEL</span> = données issues de sources officielles vérifiables ·
+      <span class="badge-est">ESTIMATIF</span> = modèle interne pondéré, non validé cliniquement ·
+      <span class="badge-off">DÉSACTIVÉ</span> = source indisponible
+    </p>
+  </section>
+
+  <!-- 2. Algorithme Z-score -->
+  <section class="methodo-section">
+    <h2>📊 2. Algorithme de détection — Z-score (OMS 7-1-7)</h2>
+    <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--s3)">Le score Z mesure l'écart d'une valeur hebdomadaire par rapport à la norme historique des 52 semaines précédentes.</p>
+
+    <div class="formula-block">Z = (valeur_semaine_N − μ₅₂) / σ₅₂</div>
+
+    <h3>Seuils d'alerte — Algorithme OMS 7-1-7</h3>
+    <table class="methodo-table">
+      <thead><tr><th>Niveau</th><th>Seuil Z</th><th>p-value</th><th>Signification clinique</th></tr></thead>
+      <tbody>
+        <tr><td>🟢 NORMAL</td><td>z &lt; 1.5σ</td><td>p &gt; 6.7%</td><td>Signal dans la norme historique — aucune action requise</td></tr>
+        <tr><td>⚠️ JAUNE</td><td>z ≥ 1.5σ</td><td>p &lt; 6.7%</td><td>Augmentation inhabituelle — surveiller, renforcer la déclaration</td></tr>
+        <tr><td>🟠 ORANGE</td><td>z ≥ 2.0σ</td><td>p &lt; 2.3%</td><td>Signal épidémique probable — déclencher l'investigation</td></tr>
+        <tr><td>🔴 ROUGE</td><td>z ≥ 3.0σ</td><td>p &lt; 0.3%</td><td>Épidémie confirmée — déclarer aux autorités, activer la réponse</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box" style="margin-top:var(--s3)">
+      <strong>⚠️ Limite importante :</strong> Le score Z n'est calculé que sur les maladies disposant d'une série temporelle SPF/ECDC de 52+ semaines (grippe, COVID-19, Mpox). Pour les pathogènes sans historique disponible (Ebola, Marburg, Nipah), les statuts affichés sont basés directement sur les alertes OMS.
+    </div>
+  </section>
+
+  <!-- 3. Pipeline AI SPF -->
+  <section class="methodo-section">
+    <h2>🤖 3. Pipeline IA — Analyse automatique SPF</h2>
+
+    <h3>Fonctionnement</h3>
+    <table class="methodo-table">
+      <thead><tr><th>Étape</th><th>Description</th></tr></thead>
+      <tbody>
+        <tr><td>1. Collecte</td><td>Chaque lundi à 09h UTC, un script GitHub Actions récupère 5 pages de Santé Publique France</td></tr>
+        <tr><td>2. Extraction</td><td>Le texte HTML est nettoyé et envoyé au modèle Groq/Llama-3.3-70b avec un prompt structuré</td></tr>
+        <tr><td>3. Structuration</td><td>Le modèle extrait : statut épidémique, régions actives, CFR, description patient-friendly</td></tr>
+        <tr><td>4. Validation</td><td>Le JSON est validé par format avant publication (présence des champs obligatoires)</td></tr>
+        <tr><td>5. Publication</td><td>Le fichier <code>data/spf-live.json</code> est commité sur GitHub → Netlify redéploie en &lt; 2 min</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Modèle utilisé</h3>
+    <p style="font-size:.84rem;color:var(--text-secondary)">Llama-3.3-70b-versatile via Groq API (gratuit, tier public). Les données médicales sont vérifiées manuellement par le Dr Clément Médeau avant publication si une anomalie est détectée.</p>
+
+    <div class="warning-box" style="margin-top:var(--s3)">
+      <strong>⚠️ Limite :</strong> L'IA peut produire des erreurs d'extraction ou des hallucinations. Toute information critique doit être vérifiée sur <a href="https://www.santepubliquefrance.fr" target="_blank" rel="noopener" style="color:#FBBF24">santepubliquefrance.fr</a> avant tout acte médical.
+    </div>
+  </section>
+
+  <!-- 4. WHO DON -->
+  <section class="methodo-section">
+    <h2>🌍 4. Alertes OMS — Disease Outbreak News</h2>
+    <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--s3)">Chaque jour à 07h UTC, un pipeline récupère le flux RSS officiel des Disease Outbreak News (DON) de l'OMS.</p>
+
+    <table class="methodo-table">
+      <thead><tr><th>Source</th><th>URL</th><th>Fréquence</th></tr></thead>
+      <tbody>
+        <tr><td>WHO DON RSS</td><td>who.int/feeds/entity/csr/don/en/rss.xml</td><td>Quotidien</td></tr>
+        <tr><td>WHO Emergencies</td><td>who.int/emergencies/disease-outbreak-news</td><td>Quotidien</td></tr>
+      </tbody>
+    </table>
+
+    <p style="font-size:.78rem;color:var(--text-muted);margin-top:.5rem">Classification du niveau de risque automatique basée sur les mots-clés du titre (PHEIC, Ebola, outbreak…). Classification définitive = OMS uniquement.</p>
+  </section>
+
+  <!-- 5. Indice respiratoire -->
+  <section class="methodo-section">
+    <h2>🌬️ 5. Indice Respiratoire Global /100 — Méthodologie et limites</h2>
+
+    <div class="warning-box" style="margin-bottom:var(--s3)">
+      <strong>⚠️ Score ESTIMATIF :</strong> L'indice /100 est un score composite pondéré, non validé cliniquement. Il ne reflète pas une réalité épidémique régionale précise.
+    </div>
+
+    <h3>Pondération</h3>
+    <div class="formula-block">Score = 0.40 × AQI + 0.30 × circulation_virale + 0.20 × pollen + 0.10 × météo</div>
+
+    <table class="methodo-table">
+      <thead><tr><th>Composante</th><th>Poids</th><th>Source</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td>Qualité air (AQI)</td><td>40%</td><td>Open-Meteo / WAQI</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>Circulation virale</td><td>30%</td><td>SPF national (extrapolé région)</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
+        <tr><td>Indice pollinique</td><td>20%</td><td>Modèle saisonnier approximatif</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
+        <tr><td>Météo</td><td>10%</td><td>Open-Meteo</td><td><span class="badge-real">RÉEL</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6. Checker symptômes -->
+  <section class="methodo-section">
+    <h2>🔬 6. Checker de symptômes — Moteur diagnostique</h2>
+
+    <div class="warning-box" style="margin-bottom:var(--s3)">
+      <strong>⚠️ Non dispositif médical (Règlement UE 2017/745) :</strong> Le checker n'est pas homologué CE. Il ne pose aucun diagnostic. Il fournit une orientation indicative basée sur des référentiels publiés.
+    </div>
+
+    <h3>Algorithme</h3>
+    <p style="font-size:.84rem;color:var(--text-secondary)">Moteur bayésien pondéré basé sur les critères de définition de cas ILI (OMS), CURB-65, FLU score et SARI. Chaque symptôme coché incrémente le score de probabilité des pathogènes correspondants selon des coefficients issus de la littérature.</p>
+
+    <h3>Références</h3>
+    <p style="font-size:.84rem;color:var(--text-secondary)">OMS Influenza Surveillance, ECDC Case Definitions, CDC Influenza, HCSP France, Critères SARI (Severe Acute Respiratory Illness).</p>
+  </section>
+
+  <!-- 7. Limites -->
+  <section class="methodo-section">
+    <h2>⚠️ 7. Limites et incertitudes</h2>
+
+    <div class="limit-item"><span class="limit-icon">📍</span><div><strong>Granularité géographique limitée</strong> — Les données SPF sont disponibles au niveau national/régional, pas communal. Les scores locaux sont extrapolés.</div></div>
+    <div class="limit-item"><span class="limit-icon">⏱️</span><div><strong>Délai de publication</strong> — Les bulletins SPF sont publiés avec un délai de 7 à 10 jours. Les données affichées ne sont donc pas en temps réel pour la France.</div></div>
+    <div class="limit-item"><span class="limit-icon">🤖</span><div><strong>Extraction IA non infaillible</strong> — Le pipeline Llama/Groq peut commettre des erreurs d'interprétation. Une validation humaine est prévue pour les données critiques.</div></div>
+    <div class="limit-item"><span class="limit-icon">🌍</span><div><strong>Couverture internationale inégale</strong> — La surveillance est plus complète pour la France et l'UE. Les données Afrique, Asie et Amériques reposent principalement sur les alertes OMS/ECDC.</div></div>
+    <div class="limit-item"><span class="limit-icon">📊</span><div><strong>Score Z basé sur déclarations</strong> — Les déclarations locales sont stockées uniquement en localStorage. Le score Z local repose sur des données non agrégées au niveau national.</div></div>
+    <div class="limit-item"><span class="limit-icon">💊</span><div><strong>Non substitut à l'expertise clinique</strong> — Aucune information de BreathIQ ne peut se substituer à l'examen clinique, l'anamnèse ou le jugement d'un professionnel de santé.</div></div>
+  </section>
+
+  <!-- 8. RGPD -->
+  <section class="methodo-section">
+    <h2>🔒 8. Données personnelles et RGPD</h2>
+    <table class="methodo-table">
+      <thead><tr><th>Donnée</th><th>Stockage</th><th>Transmission</th><th>Durée</th></tr></thead>
+      <tbody>
+        <tr><td>Préférences (thème, langue)</td><td>localStorage navigateur</td><td>Aucune</td><td>Jusqu'à effacement</td></tr>
+        <tr><td>Profil soignant (pays, spécialité)</td><td>localStorage navigateur</td><td>Aucune</td><td>Jusqu'à effacement</td></tr>
+        <tr><td>Déclarations de cas</td><td>localStorage navigateur</td><td>Aucune</td><td>Jusqu'à effacement</td></tr>
+        <tr><td>Position géographique (optionnel)</td><td>Mémoire session uniquement</td><td>API Open-Meteo/WAQI (coordonnées arrondies)</td><td>Session uniquement</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem">Aucune donnée personnelle n'est transmise à des serveurs BreathIQ. Les données de déclaration de cas ne quittent jamais votre navigateur.</p>
+  </section>
+
+  <!-- 9. Contact -->
+  <section class="methodo-section">
+    <h2>📬 9. Contact et signalement</h2>
+    <div class="contact-box">
+      <p style="font-size:.85rem;color:var(--text-secondary)">Pour signaler une erreur médicale, une donnée incorrecte ou une amélioration :</p>
+      <p style="margin-top:.5rem"><strong>Dr Clément Médeau</strong> — Docteur en médecine, La Rochelle (France)</p>
+      <p><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></p>
+      <p style="font-size:.78rem;color:var(--text-muted);margin-top:.5rem">BreathIQ est un projet indépendant open-source. Il n'est affilié à aucune institution publique.</p>
+    </div>
+  </section>
+
+</main>
+
+<footer style="text-align:center;padding:var(--s4);font-size:.78rem;color:var(--text-muted);border-top:1px solid var(--border)">
+  BreathIQ · Non dispositif médical · Données agrégées publiques · <a href="index.html" style="color:var(--c-blue)">Retour au site</a>
+</footer>
+
+</body>
+</html>

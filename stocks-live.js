@@ -160,37 +160,8 @@ async function fetchPharmaciesOSM(bounds) {
   }
 }
 
-// ── Masques Corée (HIRA/NIA — modèle de référence mondial) ───────────────────
-function koreanStatToScore(stat) {
-  return { plenty: 90, some: 60, few: 25, empty: 5 }[stat] ?? 50;
-}
-
-async function fetchKoreanMaskStock(lat, lng) {
-  const cacheKey = `kr-${Math.round(lat * 10)}-${Math.round(lng * 10)}`;
-  const cached = cacheGet(cacheKey);
-  if (cached) return cached;
-
-  const url = `https://8oi9s0nnth.apigw.ntruss.com/corona19-masks/v1/stores/json?lat=${lat}&lng=${lng}&m=5000`;
-  try {
-    const resp = await fetch(url, { signal: AbortSignal.timeout(8000) });
-    if (!resp.ok) throw new Error(`Korean API ${resp.status}`);
-    const data = await resp.json();
-    const stores = (data.stores || []).map(s => ({
-      id: s.code,
-      name: s.name,
-      lat: s.lat,
-      lng: s.lng,
-      addr: s.addr,
-      remain_stat: s.remain_stat,
-      stock_at: s.stock_at,
-    }));
-    cacheSet(cacheKey, stores, CACHE_TTL.korean);
-    return stores;
-  } catch (err) {
-    console.warn('[stocks-live] Korean mask API error:', err.message);
-    return null;
-  }
-}
+// Korean mask API (HIRA/NIA) — DÉSACTIVÉE : endpoint inactif depuis 2023
+// function fetchKoreanMaskStock() { return null; }
 
 // ── AQI — Open-Meteo (gratuit) + WAQI fallback ────────────────────────────────
 async function fetchAQI(lat, lng) {
@@ -231,32 +202,10 @@ async function fetchAQI(lat, lng) {
   return null;
 }
 
-// ── Ruptures France (ANSM via data.gouv) ─────────────────────────────────────
+// ANSM ruptures (data.gouv) — DÉSACTIVÉE : endpoint retourne HTTP 405
+// Sera remplacée en V1 par une Netlify Function avec scraping du nouveau portail ANSM
 async function fetchShortagesFR() {
-  const cacheKey = 'shortages-fr';
-  const cached = cacheGet(cacheKey);
-  if (cached) return cached;
-
-  // ANSM — liste des ruptures de stock déclarées (open data)
-  const url = 'https://www.data.gouv.fr/api/1/datasets/5e7e104ace2080d9162b61d8/resources/?page=1&type=main';
-  try {
-    const resp = await fetch(url, { signal: AbortSignal.timeout(8000) });
-    if (!resp.ok) throw new Error(`ANSM ${resp.status}`);
-    const json = await resp.json();
-    const resources = json.data || [];
-    const csvRes = resources.find(r => r.format === 'csv' || r.url?.endsWith('.csv'));
-    const result = {
-      count: resources.length,
-      latestFile: csvRes?.url || null,
-      updatedAt: csvRes?.last_modified || null,
-      source: 'ansm-data-gouv',
-    };
-    cacheSet(cacheKey, result, CACHE_TTL.shortages);
-    return result;
-  } catch (err) {
-    console.warn('[stocks-live] Shortages FR error:', err.message);
-    return { count: 0, source: 'fallback' };
-  }
+  return { count: 0, source: 'disabled' };
 }
 
 // ── Score de disponibilité composite ─────────────────────────────────────────
@@ -298,32 +247,8 @@ async function enrichStocksData() {
     liveSource: 'static',
   }));
 
-  // Corée : API directe masques
-  const krIdx = enriched.findIndex(d => d.id === 'KR');
-  if (krIdx >= 0) {
-    try {
-      const stores = await fetchKoreanMaskStock(37.5665, 126.978);
-      if (stores && stores.length > 0) {
-        const avgScore = stores.reduce((s, st) => s + koreanStatToScore(st.remain_stat), 0) / stores.length;
-        enriched[krIdx].liveScore = Math.round(avgScore);
-        enriched[krIdx].liveSource = 'korean-api';
-        enriched[krIdx].liveDetail = `${stores.length} points de vente`;
-      }
-    } catch {}
-  }
-
-  // France : signal ruptures ANSM
-  const frIdx = enriched.findIndex(d => d.id === 'FR');
-  if (frIdx >= 0) {
-    try {
-      const shortages = await fetchShortagesFR();
-      const score = computeAvailabilityScore('FR', {
-        shortageReports: shortages.count > 100 ? 3 : shortages.count > 20 ? 1 : 0,
-      });
-      enriched[frIdx].liveScore = score;
-      enriched[frIdx].liveSource = shortages.source;
-    } catch {}
-  }
+  // Korean API + ANSM désactivées (endpoints inactifs)
+  // Les scores KR et FR utilisent les données statiques STOCKS_DEMO_DATA
 
   return enriched;
 }

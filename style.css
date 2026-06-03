@@ -2365,6 +2365,69 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 [data-theme="light"] .syndromic-section { background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%); }
 
 /* Niveaux d'alerte */
+/* ── Epi Tracker multi-épidémies ──────────────────────────────── */
+.epi-tracker {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: var(--s3); margin-bottom: var(--s4);
+}
+.epi-track-card {
+  background: var(--bg-card); border: 1.5px solid var(--border); border-radius: 14px;
+  padding: var(--s3); display: flex; flex-direction: column; gap: .6rem;
+  transition: border-color .2s;
+}
+.epi-track-card.critical { border-color: #EF4444; }
+.epi-track-card.high     { border-color: #F59E0B; }
+.epi-track-card.moderate { border-color: #6366F1; }
+.epi-track-card.low      { border-color: #10B981; }
+
+.epi-track-header { display: flex; align-items: center; justify-content: space-between; gap: .5rem; }
+.epi-track-name { font-weight: 700; font-size: .9rem; color: var(--text); }
+.epi-track-badge {
+  font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em;
+  padding: .18rem .55rem; border-radius: 20px;
+}
+.badge-critical { background: rgba(239,68,68,.15); color: #F87171; border: 1px solid rgba(239,68,68,.3); }
+.badge-outbreak { background: rgba(239,68,68,.15); color: #F87171; border: 1px solid rgba(239,68,68,.3); }
+.badge-active   { background: rgba(245,158,11,.12); color: #FBBF24; border: 1px solid rgba(245,158,11,.3); }
+.badge-endemic  { background: rgba(99,102,241,.12); color: #A5B4FC; border: 1px solid rgba(99,102,241,.3); }
+.badge-monitoring { background: rgba(16,185,129,.1); color: #34D399; border: 1px solid rgba(16,185,129,.3); }
+
+.epi-track-desc { font-size: .78rem; color: var(--text-secondary); line-height: 1.5; }
+.epi-track-meta { display: flex; gap: var(--s2); flex-wrap: wrap; margin-top: .2rem; }
+.epi-track-chip {
+  font-size: .68rem; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px; padding: .15rem .45rem; color: var(--text-muted);
+}
+.epi-track-progress { height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; margin-top: .3rem; }
+.epi-track-bar { height: 100%; border-radius: 2px; transition: width .6s ease; }
+
+/* ── Z-score explainer ────────────────────────────────────────── */
+.zscore-explainer {
+  background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px;
+  padding: var(--s3); margin-bottom: var(--s4);
+}
+.zscore-explainer-title { font-size: .82rem; font-weight: 700; color: var(--text-muted);
+  text-transform: uppercase; letter-spacing: .06em; margin-bottom: .75rem; }
+.zscore-levels-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: .5rem; }
+@media (max-width: 600px) { .zscore-levels-row { grid-template-columns: repeat(2,1fr); } }
+.zsl { display: flex; flex-direction: column; gap: .2rem; padding: .6rem .75rem;
+  border-radius: 10px; border: 1px solid transparent; }
+.zsl-normal  { background: rgba(16,185,129,.08);  border-color: rgba(16,185,129,.2); }
+.zsl-jaune   { background: rgba(245,158,11,.08);  border-color: rgba(245,158,11,.2); }
+.zsl-orange  { background: rgba(249,115,22,.08);  border-color: rgba(249,115,22,.2); }
+.zsl-rouge   { background: rgba(239,68,68,.08);   border-color: rgba(239,68,68,.2); }
+.zsl-val     { font-size: .85rem; font-weight: 800; color: #fff; }
+.zsl-label   { font-size: .72rem; font-weight: 700; }
+.zsl-desc    { font-size: .68rem; color: var(--text-muted); line-height: 1.4; }
+
+/* ── No-data state ────────────────────────────────────────────── */
+.epi-no-data {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: .5rem; padding: 2rem; text-align: center; color: var(--text-muted); font-size: .82rem;
+}
+.epi-no-data-icon { font-size: 2rem; }
+.epi-no-data-sub  { font-size: .72rem; color: var(--text-muted); opacity: .7; }
+
 .alert-levels-bar {
   display: flex; gap: .5rem; flex-wrap: wrap; margin: 1.25rem 0 1.75rem;
   padding: .75rem; background: rgba(255,255,255,.04); border-radius: 14px;
@@ -2893,6 +2956,49 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 /* ── Pro badge in nav ────────────────────────────────────── */
 .pro-profile-badge { display:inline-flex; align-items:center; gap:.3rem; font-size:.7rem; font-weight:600; background:rgba(26,111,212,.1); color:var(--c-blue); border-radius:20px; padding:.2rem .6rem; margin-left:.5rem; }
 .pro-declaration-note { font-size:.7rem; color:var(--text-muted); text-align:center; margin-top:.5rem; font-style:italic; }
+
+/* ── Score data notice ───────────────────────────────────────── */
+.score-data-notice {
+  display:flex; align-items:flex-start; gap:.5rem; margin-top:.75rem;
+  background:rgba(245,158,11,.07); border:1px solid rgba(245,158,11,.2);
+  border-radius:10px; padding:.6rem .875rem; font-size:.78rem; color:var(--text-muted);
+  text-align:left; max-width:700px; margin-left:auto; margin-right:auto;
+}
+.score-data-notice svg { flex-shrink:0; margin-top:.1rem; stroke:#FBBF24; }
+
+/* ── Checker legal banner ────────────────────────────────────── */
+.checker-legal-banner {
+  display:flex; align-items:flex-start; gap:.75rem;
+  background:rgba(99,102,241,.07); border:1px solid rgba(99,102,241,.2);
+  border-radius:12px; padding:.75rem var(--s3); font-size:.8rem;
+  color:var(--text-secondary); margin-bottom:var(--s3); line-height:1.5;
+}
+.checker-legal-banner svg { flex-shrink:0; margin-top:.15rem; stroke:#A5B4FC; }
+
+/* ── WHO Alerts section ──────────────────────────────────────── */
+.who-alerts-section {
+  background:var(--bg-card); border:1.5px solid rgba(26,111,212,.25);
+  border-radius:14px; padding:var(--s3); margin-bottom:var(--s4);
+}
+.who-alerts-header {
+  display:flex; align-items:center; justify-content:space-between;
+  flex-wrap:wrap; gap:.5rem; margin-bottom:.75rem;
+}
+.who-alerts-title { font-size:.85rem; font-weight:700; color:var(--text); }
+.who-alerts-meta  { font-size:.72rem; color:var(--text-muted); }
+.who-alerts-meta a { color:var(--c-blue); }
+.who-alerts-list  { display:flex; flex-direction:column; gap:.35rem; }
+.who-alert-item {
+  display:grid; grid-template-columns:auto 1fr auto;
+  align-items:center; gap:.6rem; padding:.45rem .5rem;
+  border-radius:8px; background:rgba(255,255,255,.03);
+  border:1px solid rgba(255,255,255,.06); text-decoration:none;
+  transition:background .15s;
+}
+.who-alert-item:hover { background:rgba(255,255,255,.06); }
+.who-alert-badge { font-size:.62rem; font-weight:700; padding:.12rem .45rem; border-radius:5px; white-space:nowrap; }
+.who-alert-title { font-size:.78rem; color:var(--text-secondary); line-height:1.35; }
+.who-alert-date  { font-size:.68rem; color:var(--text-muted); white-space:nowrap; }
 
 /* ── Champ pathologie dans le formulaire ────────────────── */
 .decl-field-pathologie { margin-bottom: var(--s3); }
