@@ -16,29 +16,29 @@ const OUTPUT_PATH = join(__dirname, '../data/spf-live.json');
 // ── SPF pages to monitor ────────────────────────────────────────────────────
 const SPF_SOURCES = [
   {
-    id: 'grippe',
-    name: 'SPF Grippe/IRA — surveillance',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/grippe',
-  },
-  {
     id: 'covid',
-    name: 'SPF COVID-19 — bulletin de santé publique',
+    name: 'SPF COVID-19 — infection à coronavirus',
     url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/infection-a-coronavirus',
-  },
-  {
-    id: 'mpox',
-    name: 'SPF Mpox — surveillance',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-a-potentiel-epidemique-et-a-declaration-obligatoire/mpox',
-  },
-  {
-    id: 'ebola',
-    name: 'SPF Maladie à virus Ebola',
-    url: 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-a-potentiel-epidemique-et-a-declaration-obligatoire/maladie-a-virus-ebola',
   },
   {
     id: 'beh',
     name: 'SPF Bulletin Épidémiologique Hebdomadaire',
     url: 'https://www.santepubliquefrance.fr/revues/beh/bulletin-epidemiologique-hebdomadaire',
+  },
+  {
+    id: 'idf_latest',
+    name: 'SPF IDF — Surveillance sanitaire (grippe + mpox + COVID)',
+    url: 'https://www.santepubliquefrance.fr/regions-et-territoires/ile-de-france/bulletin-regional/surveillance-sanitaire-en-ile-de-france-bulletin-du-27-mai-2026',
+  },
+  {
+    id: 'grippe_surv',
+    name: 'SPF Surveillance épidémiologique grippe (EN)',
+    url: 'https://www.santepubliquefrance.fr/en/grippe/epidemiological-surveillance-influenza',
+  },
+  {
+    id: 'mayotte',
+    name: 'SPF Mayotte — Surveillance Ebola/maladies importées',
+    url: 'https://www.santepubliquefrance.fr/regions-et-territoires/ocean-indien/bulletin-regional/surveillance-sanitaire-a-mayotte-bulletin-du-27-mars-2026',
   },
 ];
 

@@ -1732,7 +1732,7 @@ function updateMapStats() {
   const el = (id) => document.getElementById(id);
   if (el('mstatCritical'))  el('mstatCritical').textContent  = critical;
   if (el('mstatOutbreaks')) el('mstatOutbreaks').textContent = outbreaks;
-  if (el('mstatMonitored')) el('mstatMonitored').textContent = DEMO_DATA.length;
+  if (el('mstatMonitored')) el('mstatMonitored').textContent = 7; // 7 sources officielles réelles
   if (el('mstatLastUpdate'))el('mstatLastUpdate').textContent = '2026-05-19';
 
   // Simple patient count
@@ -2805,12 +2805,17 @@ function renderDiagnosticResult(result, state) {
       </button>
     </div>
     <div class="diag-legal-footer">
-      <p class="diag-disclaimer">${fr
-        ? 'Outil indicatif non diagnostique — consultez toujours un professionnel de santé. Orientations basées sur les référentiels publiés OMS / ECDC / CDC / HCSP.'
-        : 'Indicative tool — always consult a healthcare professional. Based on published WHO/ECDC/CDC/HCSP guidelines.'}</p>
-      <p class="diag-ai-notice">${fr
-        ? '🤖 Système d\'aide algorithmique — Règlement UE IA Act (2024). Cet outil n\'est pas un dispositif médical (Règl. UE 2017/745). Il ne pose aucun diagnostic et ne remplace pas l\'examen clinique. La décision appartient toujours au clinicien.'
-        : '🤖 Algorithmic assistance system — EU AI Act (2024). This tool is not a medical device (EU Reg. 2017/745). It does not diagnose and does not replace clinical examination.'}</p>
+      <div class="diag-legal-box">
+        <p class="diag-disclaimer">${fr
+          ? '⚠️ <strong>Ces résultats sont indicatifs et non diagnostiques.</strong> Ils ne remplacent pas une consultation médicale. En cas de doute ou d\'aggravation, consultez immédiatement un professionnel de santé.'
+          : '⚠️ <strong>These results are indicative, not diagnostic.</strong> They do not replace medical consultation. If in doubt or symptoms worsen, seek immediate medical care.'}</p>
+        <p class="diag-legal-meta">${fr
+          ? '📋 Références : OMS · ECDC · CDC · HCSP · Critères ILI/SARI. Orientations basées sur des définitions de cas publiées, non sur votre dossier médical.'
+          : '📋 References: WHO · ECDC · CDC · HCSP · ILI/SARI criteria. Guidance based on published case definitions, not your medical history.'}</p>
+        <p class="diag-ai-notice">${fr
+          ? '🤖 Système d\'aide algorithmique — Règlement UE IA Act (2024) · Non dispositif médical (Règl. UE 2017/745) · Décision clinique appartient au praticien · <a href="methodologie.html" style="color:var(--c-blue)">Méthodologie →</a>'
+          : '🤖 Algorithmic assistance — EU AI Act (2024) · Not a medical device (EU Reg. 2017/745) · Clinical decision belongs to the practitioner · <a href="methodologie.html" style="color:var(--c-blue)">Methodology →</a>'}</p>
+      </div>
     </div>
   </div>`;
 
@@ -3200,12 +3205,31 @@ function applyLiveData(parsed) {
 }
 
 // ── Tracker multi-épidémies ──────────────────────────────────────
+// ── Niveaux de confiance des sources ─────────────────────────────────────────
+// R1 + R2 : indicateur ★ et délai publication (priorité médico-légale)
+const SOURCE_CONFIDENCE = {
+  // id pathogène → { stars, source, delayNote, trend }
+  EBOLA:      { stars: 5, source: 'OMS DON · ECDC',     delay: 'Données J-0 (alerte active)', trend: '↗' },
+  HANTA:      { stars: 5, source: 'OMS DON · NEJM',     delay: 'Données mai 2026',            trend: '↗' },
+  MPOX:       { stars: 5, source: 'ECDC opendata',       delay: 'Données hebdomadaires S18',   trend: '→' },
+  INFLUENZA:  { stars: 4, source: 'SPF data.gouv',       delay: 'Délai publication : ~7 jours', trend: '↘' },
+  COVID19VAR: { stars: 4, source: 'SPF SUM\'EAU',        delay: 'Délai publication : ~7 jours', trend: '↘' },
+  H5N1:       { stars: 4, source: 'OMS · CDC',           delay: 'Données avril 2026',          trend: '→' },
+  MEASLES:    { stars: 4, source: 'ECDC · OMS',          delay: 'Données mars 2026',           trend: '↗' },
+  PERTUSSIS:  { stars: 3, source: 'ECDC · SPF',          delay: 'Données mars 2026',           trend: '→' },
+  MARBURG:    { stars: 5, source: 'OMS AFRO',            delay: 'Foyer terminé jan 2026',      trend: '✅' },
+  NIPAH:      { stars: 5, source: 'OMS DON594',          delay: 'Données fév 2026',            trend: '→' },
+};
+
+function _confidenceStars(n) {
+  return '★'.repeat(n) + '☆'.repeat(5 - n);
+}
+
 function renderEpiTracker() {
   const wrap = document.getElementById('epiTracker');
   if (!wrap) return;
 
-  // Pathogens à suivre en priorité (actifs ou à surveiller)
-  const TRACK_IDS = ['EBOLA','MPOX','INFLUENZA','COVID19VAR','H5N1','MEASLES','PERTUSSIS','MARBURG','NIPAH'];
+  const TRACK_IDS = ['EBOLA','HANTA','MPOX','INFLUENZA','COVID19VAR','H5N1','MEASLES','PERTUSSIS','MARBURG','NIPAH'];
 
   const statusLabel = {
     outbreak:   { text: '🚨 ÉPIDÉMIE ACTIVE', cls: 'badge-outbreak' },
@@ -3217,20 +3241,28 @@ function renderEpiTracker() {
     resolved:   { text: '✅ RÉSOLU',           cls: 'badge-monitoring' },
   };
 
-  const riskColor = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
-  const riskWidth = { critical: 95, high: 70, moderate: 45, low: 20 };
+  const trendColor = { '↗':'#EF4444', '↘':'#10B981', '→':'#F59E0B', '✅':'#10B981' };
+  const riskColor  = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
+  const riskWidth  = { critical: 95, high: 70, moderate: 45, low: 20 };
 
   const cards = TRACK_IDS.map(id => {
     const ob = OUTBREAK_DATA.find(o => o.id === id);
     if (!ob) return '';
-    const sl = statusLabel[ob.currentStatus] || statusLabel.monitoring;
+    const sl   = statusLabel[ob.currentStatus] || statusLabel.monitoring;
+    const conf = SOURCE_CONFIDENCE[id] || { stars: 3, source: 'Source interne', delay: '', trend: '→' };
     const color = riskColor[ob.riskLevel] || '#6366F1';
     const width = riskWidth[ob.riskLevel] || 20;
-    const regions = (ob.activeRegions || []).slice(0,3).map(r =>
-      `<span class="epi-track-chip">${r.replace(/^[🚨⚠️]\s*/,'').split('—')[0].trim()}</span>`
+    const tc    = trendColor[conf.trend] || '#F59E0B';
+
+    const regions = (ob.activeRegions || []).slice(0, 2).map(r =>
+      `<span class="epi-track-chip">${r.replace(/^[🚨⚠️✅]\s*/,'').split('—')[0].trim().slice(0,30)}</span>`
     ).join('');
-    // Short clinical summary
-    const summary = (ob.descFR || '').replace(/📊[^.]+\.\s*/,'').slice(0, 120) + '…';
+
+    const summary = (ob.descFR || '').replace(/^[🚨⚠️📊✅][^.]+\.\s*/,'').slice(0, 110) + '…';
+
+    // CFR avec source — R7
+    const cfrRaw   = ob.cfr || '?';
+    const cfrLabel = cfrRaw.length > 30 ? cfrRaw.slice(0, 30) + '…' : cfrRaw;
 
     return `
     <div class="epi-track-card ${ob.riskLevel}" role="article" aria-label="${ob.nameFR}">
@@ -3241,9 +3273,15 @@ function renderEpiTracker() {
       <p class="epi-track-desc">${summary}</p>
       <div class="epi-track-meta">
         ${regions}
-        <span class="epi-track-chip">CFR ${ob.cfr?.split('(')[0].trim() || '?'}</span>
-        <span class="epi-track-chip">Màj ${ob.lastUpdate || '?'}</span>
+        <span class="epi-track-chip" title="Taux de létalité (source : ${conf.source})">CFR ${cfrLabel}</span>
       </div>
+      <!-- R1 : confiance + R2 : tendance + R5 : délai publication -->
+      <div class="epi-track-footer">
+        <span class="epi-conf-stars" title="Niveau de confiance de la source : ${conf.source}">${_confidenceStars(conf.stars)}</span>
+        <span class="epi-conf-source">${conf.source}</span>
+        <span class="epi-trend" style="color:${tc};font-weight:700" title="Tendance">${conf.trend}</span>
+      </div>
+      <div class="epi-pub-delay" title="Délai et fraîcheur des données">${conf.delay}</div>
       <div class="epi-track-progress" title="Niveau de risque : ${ob.riskLevel}">
         <div class="epi-track-bar" style="width:${width}%;background:${color}"></div>
       </div>

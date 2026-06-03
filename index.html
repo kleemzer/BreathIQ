@@ -118,6 +118,7 @@
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
       <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li><a href="#about" onclick="return navTo(event,'#about')" data-i18n="nav-about">À propos</a></li>
+      <li><a href="methodologie.html" style="opacity:.75">Méthodologie</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -327,10 +328,10 @@
         <span class="hsc-status" id="heroScoreStatus"><span class="skeleton" aria-hidden="true">Calcul…</span></span>
       </div>
       <div class="hero-stat-card">
-        <span class="hsc-label" data-i18n="hsc-regions">Régions surveillées</span>
-        <span class="hsc-value">67</span>
-        <span class="hsc-unit" data-i18n="hsc-regions-unit">régions</span>
-        <span class="hsc-status hsc-ok">Actif</span>
+        <span class="hsc-label">Sources officielles</span>
+        <span class="hsc-value">7</span>
+        <span class="hsc-unit">flux temps réel</span>
+        <span class="hsc-status hsc-ok">SPF · ECDC · OMS · OSM</span>
       </div>
       <div class="hero-stat-card">
         <span class="hsc-label" data-i18n="hsc-pathogens">Pathogènes suivis</span>
@@ -641,7 +642,14 @@
       </p>
       <div class="score-data-notice" role="note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        <span>Score <strong>estimatif</strong> — AQI en temps réel via Open-Meteo · Circulation virale : estimation régionale (données SPF nationales en semaine épidémique). <a href="methodologie.html" style="color:var(--c-blue);text-decoration:underline">Voir la méthodologie →</a></span>
+        <span>
+          ⚡ <strong>Score ESTIMATIF — non validé cliniquement.</strong>
+          AQI : données réelles Open-Meteo (★★★★★) ·
+          Circulation virale : extrapolation nationale SPF, délai ~7 jours (★★★☆☆) ·
+          Pollen/météo : modèle saisonnier (★★☆☆☆).
+          <strong>Ne pas utiliser pour une décision clinique.</strong>
+          <a href="methodologie.html" style="color:var(--c-blue);text-decoration:underline">Méthodologie complète →</a>
+        </span>
       </div>
     </div>
 
@@ -1078,8 +1086,8 @@
         <span class="mstat-label" data-i18n="mstat-outbreaks">foyers actifs</span>
       </div>
       <div class="mstat">
-        <span class="mstat-val" id="mstatMonitored">67</span>
-        <span class="mstat-label" data-i18n="mstat-monitored">régions surveillées</span>
+        <span class="mstat-val" id="mstatMonitored">7</span>
+        <span class="mstat-label">sources officielles</span>
       </div>
       <div class="mstat">
         <span class="mstat-val" id="mstatLastUpdate">—</span>
@@ -1404,6 +1412,7 @@
     </div>
 
     <nav class="footer-links" aria-label="Liens légaux et ressources">
+      <a href="methodologie.html" style="font-weight:600">📐 Méthodologie</a>
       <a href="bibliography.html">Bibliographie scientifique</a>
       <a href="stocks.html">Masques &amp; Stocks FFP2</a>
       <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>

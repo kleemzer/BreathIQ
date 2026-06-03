@@ -2400,6 +2400,18 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 }
 .epi-track-progress { height: 4px; background: rgba(255,255,255,.08); border-radius: 2px; overflow: hidden; margin-top: .3rem; }
 .epi-track-bar { height: 100%; border-radius: 2px; transition: width .6s ease; }
+/* R1 — confiance + R2 — tendance + R5 — délai */
+.epi-track-footer { display:flex; align-items:center; gap:.5rem; margin-top:.4rem; flex-wrap:wrap; }
+.epi-conf-stars { font-size:.72rem; color:#FBBF24; letter-spacing:.05em; }
+.epi-conf-source { font-size:.68rem; color:var(--text-muted); flex:1; }
+.epi-trend { font-size:.85rem; }
+.epi-pub-delay { font-size:.67rem; color:var(--text-muted); font-style:italic; margin-top:.15rem; }
+
+/* R5 — Disclaimer checker renforcé */
+.diag-legal-box { background:rgba(99,102,241,.06); border:1px solid rgba(99,102,241,.18); border-radius:10px; padding:.75rem var(--s3); margin-top:.5rem; display:flex; flex-direction:column; gap:.4rem; }
+.diag-disclaimer { font-size:.78rem; color:var(--text-secondary); line-height:1.5; margin:0; }
+.diag-legal-meta { font-size:.72rem; color:var(--text-muted); line-height:1.4; margin:0; }
+.diag-ai-notice  { font-size:.7rem;  color:var(--text-muted); line-height:1.4; margin:0; }
 
 /* ── Z-score explainer ────────────────────────────────────────── */
 .zscore-explainer {
