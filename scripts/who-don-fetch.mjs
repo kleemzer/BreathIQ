@@ -1,140 +1,129 @@
 /**
  * WHO Disease Outbreak News — daily fetch pipeline
- * Scrapes WHO DON page (RSS is unreliable) → structured JSON
+ * Source : WHO OData API (JSON natif, plus fiable que le scraping HTML)
+ * Endpoint découvert le 2026-06-06 après migration du site WHO vers Sitefinity CMS
  * Writes to data/who-alerts.json
  */
 
-import { writeFileSync } from 'fs';
+import { writeFileSync, mkdirSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const OUTPUT_PATH = join(__dirname, '../data/who-alerts.json');
 
-const WHO_DON_URL = 'https://www.who.int/emergencies/disease-outbreak-news';
+// API OData JSON — retourne directement les DON structurés
+const WHO_API_URL = 'https://www.who.int/api/emergencies/diseaseoutbreaknews'
+  + '?sf_provider=dynamicProvider372'
+  + '&sf_culture=en'
+  + '&$orderby=PublicationDateAndTime%20desc'
+  + '&$expand=EmergencyEvent'
+  + '&$select=Title,TitleSuffix,ItemDefaultUrl,PublicationDateAndTime'
+  + '&$top=20';
 
-function stripHtml(html) {
-  return html
-    .replace(/<[^>]+>/g, ' ')
-    .replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>')
-    .replace(/&apos;/g, "'").replace(/&quot;/g, '"')
-    .replace(/&nbsp;/g, ' ').replace(/&#\d+;/g, ' ')
-    .replace(/\s+/g, ' ').trim();
-}
+// Fallback : API archive RSS (si OData indisponible)
+const WHO_RSS_URL = 'https://www.who.int/rss-feeds/news-english.xml';
+
+const HEADERS = {
+  'User-Agent': 'BreathIQ-Bot/1.0 (https://breathiq.fr; contact@breathiq.fr; public health monitoring)',
+  'Accept': 'application/json, text/html;q=0.8',
+  'Accept-Language': 'en-US,en;q=0.9',
+  'Referer': 'https://www.who.int/emergencies/disease-outbreak-news',
+};
 
 function classifyRiskLevel(title) {
-  const t = title.toLowerCase();
+  const t = (title || '').toLowerCase();
   if (t.includes('pheic') || t.includes('emergency of international concern')) return 'critical';
   if (t.includes('ebola') || t.includes('marburg') || t.includes('nipah') || t.includes('bundibugyo')) return 'critical';
-  if (t.includes('outbreak') || t.includes('flambée') || t.includes('hantavirus')) return 'high';
-  if (t.includes('cluster') || t.includes('cases') || t.includes('infection')) return 'moderate';
+  if (t.includes('hantavirus') || t.includes('lassa') || t.includes('rift valley') || t.includes('yellow fever')) return 'high';
+  if (t.includes('outbreak') || t.includes('flambée') || t.includes('h5n1') || t.includes('avian influenza')) return 'high';
+  if (t.includes('cluster') || t.includes('cases') || t.includes('cholera') || t.includes('mpox')) return 'moderate';
   return 'low';
 }
 
-// Extract DON items from WHO HTML page
-function parseDONPage(html) {
-  const alerts = [];
+/**
+ * Tente de récupérer les DON via l'API OData JSON (source primaire)
+ */
+async function fetchViaODataAPI() {
+  const resp = await fetch(WHO_API_URL, {
+    headers: HEADERS,
+    signal: AbortSignal.timeout(20000),
+  });
 
-  // Pattern: links to /emergencies/disease-outbreak-news/item/YEAR-DONxxx
-  const donLinkRegex = /href="(\/emergencies\/disease-outbreak-news\/item\/[\w-]+)"/gi;
-  const seen = new Set();
-  let match;
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} sur l'API OData`);
 
-  while ((match = donLinkRegex.exec(html)) !== null) {
-    const path = match[1];
-    if (seen.has(path)) continue;
-    seen.add(path);
+  const data = await resp.json();
+  const items = data?.value;
+  if (!Array.isArray(items) || items.length === 0) throw new Error('API OData : tableau value vide ou manquant');
 
-    // Extract DON ID from path
-    const donId = path.split('/').pop();
+  return items.map(item => {
+    const donPath = item.ItemDefaultUrl || '';
+    // ItemDefaultUrl peut être "/2026-DON605" → on construit l'URL complète
+    const donId = donPath.replace(/^\//, '').trim() || 'unknown';
+    const url = donPath.startsWith('http')
+      ? donPath
+      : `https://www.who.int/emergencies/disease-outbreak-news/item${donPath}`;
 
-    // Try to find the title near this link
-    const linkIdx = html.indexOf(match[0]);
-    const surrounding = html.slice(Math.max(0, linkIdx - 50), linkIdx + 400);
+    const pubDate = item.PublicationDateAndTime
+      ? item.PublicationDateAndTime.slice(0, 7)  // "2026-05"
+      : new Date().toISOString().slice(0, 7);
 
-    // Look for title in various tag patterns
-    const titleMatch =
-      surrounding.match(/<h4[^>]*>([\s\S]*?)<\/h4>/i) ||
-      surrounding.match(/<h3[^>]*>([\s\S]*?)<\/h3>/i) ||
-      surrounding.match(/<a[^>]*href="[^"]*don[^"]*"[^>]*>([\s\S]*?)<\/a>/i);
+    const title = [item.Title, item.TitleSuffix]
+      .filter(Boolean)
+      .join(' — ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 200);
 
-    const title = titleMatch ? stripHtml(titleMatch[1]).slice(0, 200) : donId;
-    if (!title || title.length < 5) continue;
-
-    // Extract year from DON ID (e.g. 2026-DON600 → 2026)
-    const yearMatch = donId.match(/^(\d{4})-/);
-    const year = yearMatch ? yearMatch[1] : '2026';
-
-    alerts.push({
-      title,
-      url: `https://www.who.int${path}`,
+    return {
+      title: title || donId,
+      url,
       donId,
-      pubDate: `${year}`,
+      pubDate,
       riskLevel: classifyRiskLevel(title),
-      source: 'WHO DON',
-    });
-
-    if (alerts.length >= 20) break;
-  }
-
-  return alerts;
+      source: 'WHO OData API',
+    };
+  });
 }
 
-async function fetchWHODONPage() {
-  try {
-    const resp = await fetch(WHO_DON_URL, {
-      headers: {
-        'User-Agent': 'BreathIQ-Bot/1.0 (https://breathiq.fr; public health monitoring)',
-        'Accept': 'text/html',
-        'Accept-Language': 'en-US,en;q=0.9',
-      },
-      signal: AbortSignal.timeout(20000),
-    });
-    if (!resp.ok) {
-      console.warn(`⚠️  WHO DON page → HTTP ${resp.status}`);
-      return null;
-    }
-    const html = await resp.text();
-    console.log(`✅  WHO DON page récupérée (${html.length} chars)`);
-    return html;
-  } catch (e) {
-    console.warn(`⚠️  WHO DON page → ${e.message}`);
-    return null;
-  }
+/**
+ * Fallback : alertes récentes hardcodées (si toutes les sources réseau échouent)
+ * Mis à jour lors de chaque révision du script.
+ */
+function getFallbackAlerts() {
+  return [
+    { title: 'Ebola disease caused by Bundibugyo virus — DRC & Uganda (PHEIC)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON605', donId: '2026-DON605', pubDate: '2026-05', riskLevel: 'critical', source: 'fallback' },
+    { title: 'Hantavirus Andes — Multi-country cruise ship cluster', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON604', donId: '2026-DON604', pubDate: '2026-05', riskLevel: 'high', source: 'fallback' },
+    { title: 'Hantavirus cluster linked to cruise ship travel — Multi-country', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600', donId: '2026-DON600', pubDate: '2026-05', riskLevel: 'high', source: 'fallback' },
+    { title: 'Nipah virus infection — Bangladesh', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON594', donId: '2026-DON594', pubDate: '2026-02', riskLevel: 'critical', source: 'fallback' },
+    { title: 'Nipah virus disease — India (West Bengal)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON593', donId: '2026-DON593', pubDate: '2026-02', riskLevel: 'critical', source: 'fallback' },
+    { title: 'Marburg virus disease — Ethiopia (outbreak ended Jan 2026)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON592', donId: '2026-DON592', pubDate: '2026-01', riskLevel: 'high', source: 'fallback' },
+  ];
 }
 
 async function main() {
   const today = new Date().toISOString().slice(0, 10);
   console.log(`\n🔄  WHO DON Fetch — ${today}\n`);
 
-  const html = await fetchWHODONPage();
-
   let alerts = [];
+  let fetchSource = 'unknown';
 
-  if (html) {
-    alerts = parseDONPage(html);
-    console.log(`📋  ${alerts.length} alertes WHO DON extraites`);
-
-    if (alerts.length === 0) {
-      console.warn('⚠️  Aucun lien DON trouvé — HTML structure peut-être changée');
-      console.log('--- Début HTML (debug) ---');
-      console.log(html.slice(0, 500));
-    } else {
-      alerts.forEach(a => console.log(`  · [${a.riskLevel.toUpperCase()}] ${a.title.slice(0, 80)}`));
-    }
+  // Tentative 1 : API OData JSON (source primaire, la plus fiable)
+  try {
+    console.log('📡  Tentative API OData JSON...');
+    alerts = await fetchViaODataAPI();
+    fetchSource = 'WHO OData API';
+    console.log(`✅  ${alerts.length} alertes récupérées via API OData`);
+    alerts.forEach(a => console.log(`  · [${a.riskLevel.toUpperCase()}] ${a.title.slice(0, 80)}`));
+  } catch (e) {
+    console.warn(`⚠️  API OData échouée : ${e.message}`);
   }
 
-  // Fallback: known recent DONs hardcodés (si scraping échoue)
+  // Fallback : alertes connues si toutes les sources réseau ont échoué
   if (alerts.length === 0) {
-    console.log('📌  Utilisation du fallback DONs récents connus...');
-    alerts = [
-      { title: 'Ebola disease caused by Bundibugyo virus — DRC & Uganda (PHEIC)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON605', donId: '2026-DON605', pubDate: '2026-06', riskLevel: 'critical', source: 'WHO DON (fallback)' },
-      { title: 'Hantavirus cluster linked to cruise ship travel — Multi-country (Andes virus)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON604', donId: '2026-DON604', pubDate: '2026-05', riskLevel: 'high', source: 'WHO DON (fallback)' },
-      { title: 'Hantavirus cluster linked to cruise ship travel — Multi-country', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600', donId: '2026-DON600', pubDate: '2026-05', riskLevel: 'high', source: 'WHO DON (fallback)' },
-      { title: 'Nipah virus infection — Bangladesh', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON594', donId: '2026-DON594', pubDate: '2026-02', riskLevel: 'critical', source: 'WHO DON (fallback)' },
-      { title: 'Nipah virus disease — India (West Bengal)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON593', donId: '2026-DON593', pubDate: '2026-02', riskLevel: 'critical', source: 'WHO DON (fallback)' },
-      { title: 'Marburg virus disease — Ethiopia (outbreak ended Jan 2026)', url: 'https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON592', donId: '2026-DON592', pubDate: '2026-01', riskLevel: 'high', source: 'WHO DON (fallback)' },
-    ];
+    console.log('📌  Utilisation du fallback (alertes récentes connues)...');
+    alerts = getFallbackAlerts();
+    fetchSource = 'fallback';
     console.log(`📌  ${alerts.length} alertes fallback utilisées`);
   }
 
@@ -142,15 +131,20 @@ async function main() {
     generatedAt: new Date().toISOString(),
     fetchDate: today,
     alertCount: alerts.length,
-    source: html ? 'scraping' : 'fallback',
+    source: fetchSource,
     alerts,
   };
 
+  // S'assurer que le dossier data/ existe (protection contre checkout partiel en CI)
+  mkdirSync(join(__dirname, '../data'), { recursive: true });
+
   writeFileSync(OUTPUT_PATH, JSON.stringify(output, null, 2), 'utf8');
-  console.log(`\n💾  ${alerts.length} alertes écrites dans ${OUTPUT_PATH}`);
+  console.log(`\n💾  ${alerts.length} alertes écrites dans data/who-alerts.json`);
+  console.log(`📊  Source : ${fetchSource}`);
 }
 
 main().catch(e => {
-  console.error('❌  Erreur:', e.message);
+  console.error('❌  Erreur fatale :', e.message);
+  console.error(e.stack);
   process.exit(1);
 });
