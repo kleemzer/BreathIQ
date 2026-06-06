@@ -27,6 +27,17 @@
   <meta name="twitter:creator" content="@breathiq">
   <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
   <meta name="twitter:image:alt" content="BreathIQ — Surveillance épidémique mondiale">
+  <!-- hreflang — indexation multilingue Google/Bing -->
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/?lang=fr">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/?lang=en">
+  <link rel="alternate" hreflang="es" href="https://breathiq.fr/?lang=es">
+  <link rel="alternate" hreflang="pt" href="https://breathiq.fr/?lang=pt">
+  <link rel="alternate" hreflang="ar" href="https://breathiq.fr/?lang=ar">
+  <link rel="alternate" hreflang="zh" href="https://breathiq.fr/?lang=zh">
+  <link rel="alternate" hreflang="hi" href="https://breathiq.fr/?lang=hi">
+  <link rel="alternate" hreflang="sw" href="https://breathiq.fr/?lang=sw">
+  <link rel="alternate" hreflang="ru" href="https://breathiq.fr/?lang=ru">
+  <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/">
   <!-- Favicon & PWA -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="/favicon.svg">
@@ -210,8 +221,13 @@
   <div class="creator-strip-inner">
     <div class="creator-photo-wrap">
       <picture>
-        <source srcset="assets/dr-medeau.webp" type="image/webp">
-        <img src="assets/dr-medeau.jpg" alt="Dr Clément Médeau, docteur en médecine" class="creator-avatar" width="64" height="64" loading="eager" decoding="async">
+        <source type="image/webp"
+          srcset="assets/dr-medeau-64.webp 1x, assets/dr-medeau.webp 2x">
+        <img src="assets/dr-medeau.jpg"
+          alt="Dr Clément Médeau, docteur en médecine"
+          class="creator-avatar"
+          width="64" height="64"
+          loading="eager" decoding="async">
       </picture>
     </div>
     <div class="creator-body">
@@ -1588,6 +1604,13 @@
 
   </div>
 </div>
+
+<!-- ===== BOUTON RETOUR EN HAUT ===== -->
+<button id="scrollTopBtn" class="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut de page" data-i18n-aria="scroll-top-aria" title="Retour en haut">
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <polyline points="18 15 12 9 6 15"/>
+  </svg>
+</button>
 
 <!-- ===== MODAL ALERTE AUTORITÉS (injecté par JS) ===== -->
 

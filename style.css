@@ -3395,6 +3395,45 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 }
 
 /* ================================================================
+   BOUTON SCROLL TOP
+   ================================================================ */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 5rem;
+  right: 1.25rem;
+  z-index: 1200;
+  width: 44px; height: 44px;
+  border-radius: var(--r-full);
+  background: var(--c-blue);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 16px rgba(42,127,212,.45);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity var(--t-med), transform var(--t-med), background var(--t-fast);
+}
+.scroll-top-btn.visible {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+.scroll-top-btn:hover { background: #1558b0; transform: translateY(-2px); }
+.scroll-top-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 3px;
+}
+/* Sur mobile : légèrement au-dessus de la nav bottom */
+@media (max-width: 768px) {
+  .scroll-top-btn { bottom: 5.5rem; right: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .scroll-top-btn { transition: none; transform: none !important; }
+}
+
+/* ================================================================
    ACCESSIBILITÉ — Skip link (visible uniquement au focus clavier)
    ================================================================ */
 .skip-link {
