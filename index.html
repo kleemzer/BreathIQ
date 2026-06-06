@@ -108,6 +108,7 @@
   <link rel="preconnect" href="https://data.santepubliquefrance.fr">
 </head>
 <body id="mainBody">
+<a href="#patientHero" class="skip-link" data-i18n="skip-link">Aller au contenu principal</a>
 
 <!-- ===== BANDEAU CONSENTEMENT RGPD ===== -->
 <div id="consentBanner" class="consent-banner" role="dialog" aria-labelledby="consentBannerTitle" aria-live="polite" hidden>
@@ -208,7 +209,10 @@
 <div class="creator-strip" id="creatorStrip">
   <div class="creator-strip-inner">
     <div class="creator-photo-wrap">
-      <img src="assets/dr-medeau.jpg" alt="Dr Clément Médeau, docteur en médecine" class="creator-avatar" width="64" height="64" loading="eager">
+      <picture>
+        <source srcset="assets/dr-medeau.webp" type="image/webp">
+        <img src="assets/dr-medeau.jpg" alt="Dr Clément Médeau, docteur en médecine" class="creator-avatar" width="64" height="64" loading="eager" decoding="async">
+      </picture>
     </div>
     <div class="creator-body">
       <div class="creator-identity">
@@ -1599,37 +1603,37 @@
       </svg>
       <span class="onboarding-brand">Breath<strong>IQ</strong></span>
     </div>
-    <h2 id="onboardingTitle" class="onboarding-title">Bienvenue sur BreathIQ</h2>
-    <p class="onboarding-subtitle">Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.</p>
+    <h2 id="onboardingTitle" class="onboarding-title" data-i18n="ob-title">Bienvenue sur BreathIQ</h2>
+    <p class="onboarding-subtitle" data-i18n="ob-subtitle">Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.</p>
 
     <div class="onboarding-modes">
-      <button class="onboarding-mode-card onboarding-mode-patient" onclick="closeOnboarding('patient')" aria-label="Continuer en mode patient">
+      <button class="onboarding-mode-card onboarding-mode-patient" onclick="closeOnboarding('patient')" data-i18n-aria="ob-patient-aria">
         <span class="om-icon">👤</span>
-        <span class="om-title">Je suis patient / citoyen</span>
+        <span class="om-title" data-i18n="ob-patient-title">Je suis patient / citoyen</span>
         <ul class="om-features">
-          <li>✓ Vérifier mes symptômes</li>
-          <li>✓ Trouver un médecin proche</li>
-          <li>✓ Maladies à surveiller</li>
-          <li>✓ Triage urgences</li>
+          <li data-i18n="ob-patient-f1">✓ Vérifier mes symptômes</li>
+          <li data-i18n="ob-patient-f2">✓ Trouver un médecin proche</li>
+          <li data-i18n="ob-patient-f3">✓ Maladies à surveiller</li>
+          <li data-i18n="ob-patient-f4">✓ Triage urgences</li>
         </ul>
-        <span class="om-cta">Commencer →</span>
+        <span class="om-cta" data-i18n="ob-patient-cta">Commencer →</span>
       </button>
 
-      <button class="onboarding-mode-card onboarding-mode-expert" onclick="closeOnboarding('expert')" aria-label="Continuer en mode soignant">
+      <button class="onboarding-mode-card onboarding-mode-expert" onclick="closeOnboarding('expert')" data-i18n-aria="ob-expert-aria">
         <span class="om-icon">🩺</span>
-        <span class="om-title">Je suis soignant / expert</span>
+        <span class="om-title" data-i18n="ob-expert-title">Je suis soignant / expert</span>
         <ul class="om-features">
-          <li>✓ Tableau de bord épidémique</li>
-          <li>✓ Score respiratoire 0–100</li>
-          <li>✓ Carte mondiale des foyers</li>
-          <li>✓ Déclaration de cas</li>
+          <li data-i18n="ob-expert-f1">✓ Tableau de bord épidémique</li>
+          <li data-i18n="ob-expert-f2">✓ Score respiratoire 0–100</li>
+          <li data-i18n="ob-expert-f3">✓ Carte mondiale des foyers</li>
+          <li data-i18n="ob-expert-f4">✓ Déclaration de cas</li>
         </ul>
-        <span class="om-cta om-cta-expert">Accès soignant →</span>
+        <span class="om-cta om-cta-expert" data-i18n="ob-expert-cta">Accès soignant →</span>
       </button>
     </div>
 
-    <p class="onboarding-disclaimer">Outil d'information publique — <strong>non dispositif médical</strong> (Règl. UE 2017/745) · <a href="privacy.html" tabindex="0">Confidentialité</a></p>
-    <button class="onboarding-skip" onclick="closeOnboarding(null)" aria-label="Ignorer l'introduction">Continuer sans choisir</button>
+    <p class="onboarding-disclaimer" data-i18n="ob-disclaimer">Outil d'information publique — <strong>non dispositif médical</strong> (Règl. UE 2017/745) · <a href="privacy.html" tabindex="0">Confidentialité</a></p>
+    <button class="onboarding-skip" onclick="closeOnboarding(null)" data-i18n="ob-skip">Continuer sans choisir</button>
   </div>
 </div>
 

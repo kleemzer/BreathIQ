@@ -4,8 +4,7 @@
    © 2026 Clément MÉDEAU — Tous droits réservés
    ================================================================ */
 
-/* ── Google Fonts ────────────────────────────────────────────── */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+/* ── Google Fonts : chargé via <link> dans le HTML (pas de double @import) ── */
 
 /* ── Variables — Thème Clair ─────────────────────────────────── */
 :root {
@@ -3360,4 +3359,120 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 @keyframes fade-in {
   from { opacity: 0; transform: scale(.97); }
   to   { opacity: 1; transform: scale(1); }
+}
+
+/* ================================================================
+   ACCESSIBILITÉ — prefers-reduced-motion (WCAG 2.1 AA / EAA 2025)
+   Désactive toutes les animations continues pour les utilisateurs
+   qui ont activé "Réduire les animations" dans leur OS.
+   ================================================================ */
+@media (prefers-reduced-motion: reduce) {
+  /* Règle globale : transitions et animations raccourcies */
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Animations spécifiques BreathIQ à stopper */
+  .ring-1, .ring-2, .ring-3 { animation: none; }
+  .breath-rings .ring { animation: none; }
+  .live-dot { animation: none; }
+  .skeleton { animation: none; background: #e2e8f0; }
+  .ai-dot   { animation: none; }
+  .epidemic-alert-banner { animation: none; }
+
+  /* Marqueurs pulsants sur la carte */
+  [style*="ob-pulse"] { animation: none !important; }
+  .biq-outbreak-marker > div:first-child { animation: none !important; }
+
+  /* Onboarding : pas de scale au focus */
+  .onboarding-mode-card:hover { transform: none; }
+
+  /* Scrolling doux désactivé */
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   ACCESSIBILITÉ — Skip link (visible uniquement au focus clavier)
+   ================================================================ */
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  padding: .6rem 1.2rem;
+  background: var(--c-blue);
+  color: #fff;
+  border-radius: var(--r-md);
+  font-weight: 600;
+  font-size: .9rem;
+  z-index: 99999;
+  text-decoration: none;
+  transition: top var(--t-fast);
+  white-space: nowrap;
+  box-shadow: var(--shadow-md);
+}
+.skip-link:focus {
+  top: 1rem;
+  outline: 3px solid #fff;
+  outline-offset: 2px;
+}
+
+/* ================================================================
+   ACCESSIBILITÉ — Print styles (pour médecins, zones rurales)
+   ================================================================ */
+@media print {
+  /* Masquer les éléments non imprimables */
+  .biq-nav, .mobile-bottom-nav, .consent-banner,
+  .onboarding-overlay, .soignant-modal-overlay, .geo-modal-overlay,
+  .theme-toggle, .lang-select, .mode-toggle-btn,
+  .live-badge, .hero-visual, .breath-rings,
+  #worldMap, .map-wrap, .map-controls,
+  .care-finder-section, .mydata-section,
+  .expert-toggle-section, .scroll-top-btn,
+  footer .footer-links { display: none !important; }
+
+  /* Fond blanc, texte noir */
+  body, * { background: #fff !important; color: #000 !important; }
+
+  /* Sections visibles */
+  .patient-only, .expert-only { display: block !important; }
+
+  /* Cartes de triage imprimables */
+  .triage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5cm; }
+  .triage-card { border: 1pt solid #333 !important; border-radius: 4pt; padding: .3cm; }
+  .triage-badge { font-size: 8pt; }
+  .triage-card-title { font-size: 11pt; font-weight: bold; }
+  .triage-checklist li { font-size: 9pt; }
+
+  /* Pathogènes : grille compacte */
+  .pathogens-grid { display: grid !important; grid-template-columns: repeat(3, 1fr); gap: .3cm; }
+  .pathogen-card { break-inside: avoid; border: 1pt solid #666 !important; padding: .2cm; }
+  .pathogen-card-body { font-size: 8pt; }
+
+  /* En-tête de page imprimée */
+  .creator-strip { border-bottom: 1pt solid #000; margin-bottom: .5cm; }
+  .creator-strip-inner { display: flex; gap: .3cm; align-items: center; }
+  .creator-avatar { width: 32pt; height: 32pt; border-radius: 50%; }
+
+  /* Alerte PHEIC : toujours imprimée en rouge */
+  .epidemic-alert-banner { display: block !important; border: 2pt solid #c00 !important; padding: .3cm; margin-bottom: .5cm; }
+  .epidemic-level.rouge { color: #c00 !important; font-weight: bold; }
+
+  /* Liens : afficher l'URL */
+  a[href]::after { content: " (" attr(href) ")"; font-size: 7pt; color: #555; }
+  a[href^="#"]::after, a[href^="tel:"]::after { content: none; }
+
+  /* Numéros d'urgence : bien visibles */
+  .triage-severe-nums { display: flex !important; gap: .2cm; flex-wrap: wrap; }
+  .triage-num-btn { border: 1pt solid #000 !important; padding: .1cm .3cm; font-size: 10pt; font-weight: bold; }
+
+  /* Page break logique */
+  .pathogens-section { page-break-before: always; }
+  .protection-section { page-break-before: always; }
+
+  /* Pied de page imprimé */
+  .biq-footer { border-top: 1pt solid #333; padding-top: .3cm; font-size: 8pt; }
+  .biq-footer .footer-links { display: flex !important; flex-wrap: wrap; gap: .2cm; }
 }
