@@ -11,12 +11,16 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    # Note: actions/checkout@v4 et setup-node@v4 tournent sur Node.js 20
+    # (standard jusqu'au 16 juin 2026). Ne pas forcer Node.js 24 pour les actions
+    # car elles ne le supportent pas encore pleinement.
+    # L'utilisateur Node.js (scripts) utilise la version définie dans setup-node.
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0   # historique complet pour les rebases
 
       - name: Setup Node.js 24
         uses: actions/setup-node@v4
@@ -29,7 +33,7 @@ jobs:
       - name: Show fetched alerts
         run: |
           echo "--- who-alerts.json preview ---"
-          head -30 data/who-alerts.json
+          head -30 data/who-alerts.json || echo "(fichier non généré)"
 
       - name: Commit and push if changed
         run: |
@@ -37,10 +41,20 @@ jobs:
           git config user.email "bot@breathiq.fr"
           git add data/who-alerts.json
           if git diff --staged --quiet; then
-            echo "✅ Aucune nouvelle alerte WHO"
+            echo "✅ Aucune nouvelle alerte WHO — pas de commit"
           else
-            ALERT_COUNT=$(node -e "const d=require('./data/who-alerts.json'); console.log(d.alertCount || 0)")
+            ALERT_COUNT=$(node --input-type=module <<'EOF'
+import { readFileSync } from 'fs';
+const d = JSON.parse(readFileSync('data/who-alerts.json', 'utf8'));
+process.stdout.write(String(d.alertCount || 0));
+EOF
+)
             git commit -m "data: WHO DON update — ${ALERT_COUNT} alertes ($(date +%Y-%m-%d))"
-            git push
-            echo "✅ who-alerts.json mis à jour"
+            # Synchroniser avec le remote avant de pousser (évite les rejets fast-forward)
+            git pull --rebase origin main || true
+            git push origin main || {
+              echo "⚠️  Push échoué — données écrites localement, sera retenté au prochain run"
+              exit 0
+            }
+            echo "✅ who-alerts.json mis à jour (${ALERT_COUNT} alertes)"
           fi

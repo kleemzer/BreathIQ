@@ -10,8 +10,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     name: Tests unitaires + validation données
-    env:
-      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
     steps:
       - name: Checkout
