@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="BreathIQ — Surveillance épidémique mondiale. Alertes pathogènes en temps réel, détection précoce des épidémies, stocks FFP2. Protégez-vous avec des données, pas des craintes.">
+  <meta name="description" content="BreathIQ — outil indépendant d'information médicale et de surveillance épidémique mondiale par le Dr Clément Médeau : alertes pathogènes, données publiques, qualité de l'air et protection respiratoire.">
   <meta name="keywords" content="qualité air, FFP2, masque respiratoire, prévention respiratoire, épidémie, pathogènes, influenza, pollution, santé publique">
   <meta name="author" content="Dr. Clément MÉDEAU — BreathIQ">
   <meta name="copyright" content="© 2026 Clément MÉDEAU">
@@ -16,14 +16,26 @@
   <meta property="og:site_name" content="BreathIQ">
   <meta property="og:locale" content="fr_FR">
   <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:image" content="https://breathiq.fr/assets/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="BreathIQ — Surveillance épidémique mondiale · 17 pathogènes · 9 langues · Données OMS/ECDC/SPF">
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BreathIQ — Surveillance épidémique mondiale">
   <meta name="twitter:description" content="Alertes pathogènes en temps réel. Qualité de l'air, circulation virale, détection précoce des épidémies.">
   <meta name="twitter:creator" content="@breathiq">
-  <!-- Favicon -->
+  <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
+  <meta name="twitter:image:alt" content="BreathIQ — Surveillance épidémique mondiale">
+  <!-- Favicon & PWA -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="alternate icon" href="/favicon.svg">
+  <link rel="apple-touch-icon" href="/assets/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BreathIQ">
   <meta name="theme-color" content="#1A3C5E">
   <link rel="canonical" href="https://breathiq.fr/">
   <link rel="humans" href="/humans.txt">
@@ -31,38 +43,56 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "BreathIQ",
-    "alternateName": "BreathIQ — Surveillance épidémique mondiale",
-    "url": "https://breathiq.fr",
-    "description": "Outil de surveillance épidémique mondiale et de protection individuelle. Alertes pathogènes en temps réel, stocks FFP2, détection précoce des épidémies.",
-    "inLanguage": ["fr", "en"],
-    "author": {
-      "@type": "Person",
-      "name": "Clément MÉDEAU",
-      "jobTitle": "Docteur en médecine",
-      "email": "contact@breathiq.fr",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "La Rochelle",
-        "addressRegion": "Charente-Maritime",
-        "addressCountry": "FR"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://breathiq.fr/#website",
+        "name": "BreathIQ",
+        "alternateName": "BreathIQ — Surveillance épidémique mondiale",
+        "url": "https://breathiq.fr",
+        "inLanguage": ["fr", "en"],
+        "publisher": { "@id": "https://breathiq.fr/#publisher" },
+        "license": "https://breathiq.fr/conditions-utilisation.html"
+      },
+      {
+        "@type": "MedicalWebPage",
+        "@id": "https://breathiq.fr/#medicalwebpage",
+        "name": "BreathIQ — surveillance épidémique mondiale",
+        "url": "https://breathiq.fr/",
+        "description": "Outil indépendant d'information médicale sur les alertes épidémiques, la qualité de l'air et la protection respiratoire. Ne remplace pas une consultation médicale.",
+        "dateModified": "2026-06-03",
+        "medicalAudience": ["Patient", "Clinician"],
+        "about": [
+          { "@type": "MedicalCondition", "name": "Infections respiratoires" },
+          { "@type": "MedicalCondition", "name": "Maladies infectieuses émergentes" }
+        ],
+        "reviewedBy": { "@id": "https://breathiq.fr/#publisher" },
+        "isPartOf": { "@id": "https://breathiq.fr/#website" }
+      },
+      {
+        "@type": "Dataset",
+        "@id": "https://breathiq.fr/#dataset",
+        "name": "BreathIQ public epidemiological monitoring dataset",
+        "description": "Synthèse de sources publiques institutionnelles : OMS, Santé Publique France, ECDC, Open-Meteo, OpenStreetMap.",
+        "creator": { "@id": "https://breathiq.fr/#publisher" },
+        "license": "https://breathiq.fr/conditions-utilisation.html",
+        "temporalCoverage": "2026/..",
+        "isAccessibleForFree": true
+      },
+      {
+        "@type": "Person",
+        "@id": "https://breathiq.fr/#publisher",
+        "name": "Clément MÉDEAU",
+        "jobTitle": "Docteur en médecine",
+        "email": "contact@breathiq.fr",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "La Rochelle",
+          "addressRegion": "Charente-Maritime",
+          "addressCountry": "FR"
+        }
       }
-    },
-    "publisher": {
-      "@type": "Person",
-      "name": "Clément MÉDEAU"
-    },
-    "copyrightYear": "2026",
-    "copyrightHolder": {
-      "@type": "Person",
-      "name": "Clément MÉDEAU"
-    },
-    "license": "https://breathiq.fr/conditions-utilisation.html",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": "https://breathiq.fr/#pathogens"
-    }
+    ]
   }
   </script>
   <title>BreathIQ — Surveillance épidémique mondiale</title>
@@ -70,8 +100,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-  <!-- Leaflet -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles -->
   <link rel="stylesheet" href="style.css?v=20260603">
   <!-- Preconnect pour API live -->
@@ -1129,6 +1158,8 @@
       <span id="spfLiveBadge" style="display:none;font-size:.75rem;color:var(--text-muted);background:var(--bg-card);border:1px solid var(--border);border-radius:20px;padding:.25rem .75rem;gap:.35rem"></span>
     </div>
 
+    <div id="spfLiveSummary" class="spf-live-summary" hidden></div>
+
     <div class="pathogens-grid" id="pathogensGrid" aria-live="polite"></div>
 
     <div class="pathogens-note">
@@ -1154,6 +1185,31 @@
       <button class="care-finder-btn" id="findCareBtn" onclick="findNearbyCare()" data-i18n="care-btn">
         📍 Trouver un médecin proche de moi
       </button>
+
+      <!-- Fallback : recherche par ville / code postal -->
+      <div class="care-city-fallback" id="careCityFallback">
+        <div class="care-city-divider">
+          <span>ou rechercher par ville</span>
+        </div>
+        <div class="care-city-row" role="search" aria-label="Recherche par ville ou code postal">
+          <input
+            type="search"
+            id="careCityInput"
+            class="care-city-input"
+            placeholder="Ville ou code postal (ex : Paris, Lagos, Mumbai…)"
+            aria-label="Ville ou code postal"
+            inputmode="search"
+            autocomplete="address-level2"
+            onkeydown="if(event.key==='Enter') searchCareByCity()"
+          >
+          <button id="careCityBtn" class="care-city-btn" onclick="searchCareByCity()" aria-label="Lancer la recherche">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            Rechercher
+          </button>
+        </div>
+        <p class="care-city-note">Recherche via OpenStreetMap — fonctionne dans le monde entier.</p>
+      </div>
+
       <p class="care-privacy-note">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <span data-i18n="care-privacy">Votre position reste sur votre appareil — jamais transmise à nos serveurs.</span>
@@ -1531,11 +1587,58 @@
 
 <!-- ===== MODAL ALERTE AUTORITÉS (injecté par JS) ===== -->
 
+<!-- ===== ONBOARDING PREMIÈRE VISITE ===== -->
+<div id="onboardingModal" class="onboarding-overlay" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle" hidden>
+  <div class="onboarding-box">
+    <div class="onboarding-logo" aria-hidden="true">
+      <svg width="48" height="48" viewBox="0 0 32 32" fill="none">
+        <rect width="32" height="32" rx="8" fill="#1A3C5E"/>
+        <circle cx="16" cy="16" r="12" fill="none" stroke="#2A7FD4" stroke-width="1.2" opacity="0.4"/>
+        <circle cx="16" cy="16" r="8" fill="none" stroke="#0E8C7A" stroke-width="1.2" opacity="0.7"/>
+        <circle cx="16" cy="16" r="4" fill="#0E8C7A"/>
+      </svg>
+      <span class="onboarding-brand">Breath<strong>IQ</strong></span>
+    </div>
+    <h2 id="onboardingTitle" class="onboarding-title">Bienvenue sur BreathIQ</h2>
+    <p class="onboarding-subtitle">Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.</p>
+
+    <div class="onboarding-modes">
+      <button class="onboarding-mode-card onboarding-mode-patient" onclick="closeOnboarding('patient')" aria-label="Continuer en mode patient">
+        <span class="om-icon">👤</span>
+        <span class="om-title">Je suis patient / citoyen</span>
+        <ul class="om-features">
+          <li>✓ Vérifier mes symptômes</li>
+          <li>✓ Trouver un médecin proche</li>
+          <li>✓ Maladies à surveiller</li>
+          <li>✓ Triage urgences</li>
+        </ul>
+        <span class="om-cta">Commencer →</span>
+      </button>
+
+      <button class="onboarding-mode-card onboarding-mode-expert" onclick="closeOnboarding('expert')" aria-label="Continuer en mode soignant">
+        <span class="om-icon">🩺</span>
+        <span class="om-title">Je suis soignant / expert</span>
+        <ul class="om-features">
+          <li>✓ Tableau de bord épidémique</li>
+          <li>✓ Score respiratoire 0–100</li>
+          <li>✓ Carte mondiale des foyers</li>
+          <li>✓ Déclaration de cas</li>
+        </ul>
+        <span class="om-cta om-cta-expert">Accès soignant →</span>
+      </button>
+    </div>
+
+    <p class="onboarding-disclaimer">Outil d'information publique — <strong>non dispositif médical</strong> (Règl. UE 2017/745) · <a href="privacy.html" tabindex="0">Confidentialité</a></p>
+    <button class="onboarding-skip" onclick="closeOnboarding(null)" aria-label="Ignorer l'introduction">Continuer sans choisir</button>
+  </div>
+</div>
+
 <!-- BreathIQ script -->
-<!-- Leaflet — en bas pour ne pas bloquer le premier rendu -->
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="" defer></script>
+<!-- Leaflet chargé dynamiquement via initMapWhenReady() — ne bloque pas le rendu initial -->
 <!-- API live santé publique -->
-<script src="api-live.js?v=20260522" defer></script>
-<script src="script.js?v=20260522" defer></script>
+<script src="api-live.js?v=20260603" defer></script>
+<script src="js/clinical-orientation.js?v=20260603" defer></script>
+<script src="js/care-facilities.js?v=20260603" defer></script>
+<script src="script.js?v=20260603" defer></script>
 </body>
 </html>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0F2A45"/>
+      <stop offset="50%" stop-color="#1A3C5E"/>
+      <stop offset="100%" stop-color="#0E4D6E"/>
+    </linearGradient>
+    <linearGradient id="tealGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0E8C7A" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2A7FD4" stop-opacity="0.15"/>
+    </linearGradient>
+    <filter id="blur">
+      <feGaussianBlur stdDeviation="40"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+
+  <!-- Decorative glow circles -->
+  <circle cx="1050" cy="120" r="280" fill="#0E8C7A" opacity="0.08" filter="url(#blur)"/>
+  <circle cx="150" cy="500" r="220" fill="#2A7FD4" opacity="0.10" filter="url(#blur)"/>
+
+  <!-- Breathing rings — top right -->
+  <circle cx="980" cy="315" r="220" fill="none" stroke="#0E8C7A" stroke-width="1.5" opacity="0.15"/>
+  <circle cx="980" cy="315" r="160" fill="none" stroke="#0E8C7A" stroke-width="1.5" opacity="0.22"/>
+  <circle cx="980" cy="315" r="100" fill="none" stroke="#2A7FD4" stroke-width="1.5" opacity="0.32"/>
+  <circle cx="980" cy="315" r="50"  fill="none" stroke="#2A7FD4" stroke-width="2"   opacity="0.55"/>
+  <circle cx="980" cy="315" r="18"  fill="#0E8C7A" opacity="0.9"/>
+
+  <!-- Logo icon -->
+  <rect x="72" y="64" width="52" height="52" rx="12" fill="#1A3C5E" stroke="#2A7FD4" stroke-width="1.5" stroke-opacity="0.6"/>
+  <circle cx="98" cy="90" r="20" fill="none" stroke="#2A7FD4" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="98" cy="90" r="13" fill="none" stroke="#0E8C7A" stroke-width="1.5" opacity="0.7"/>
+  <circle cx="98" cy="90" r="6"  fill="#0E8C7A"/>
+
+  <!-- Brand name -->
+  <text x="140" y="102" font-family="Inter, system-ui, sans-serif" font-size="40" font-weight="700" fill="#E8F0F7" letter-spacing="-0.5">Breath<tspan fill="#0E8C7A">IQ</tspan></text>
+
+  <!-- Separator -->
+  <rect x="72" y="148" width="420" height="1.5" fill="#2A7FD4" opacity="0.35"/>
+
+  <!-- Main headline -->
+  <text x="72" y="240" font-family="Inter, system-ui, sans-serif" font-size="62" font-weight="800" fill="#FFFFFF" letter-spacing="-1.5">Surveillance</text>
+  <text x="72" y="316" font-family="Inter, system-ui, sans-serif" font-size="62" font-weight="800" fill="#FFFFFF" letter-spacing="-1.5">épidémique</text>
+  <text x="72" y="392" font-family="Inter, system-ui, sans-serif" font-size="62" font-weight="800" letter-spacing="-1.5">
+    <tspan fill="#0E8C7A">mondiale</tspan>
+    <tspan fill="#2A7FD4" font-size="54"> en temps réel</tspan>
+  </text>
+
+  <!-- Sub-headline -->
+  <text x="72" y="452" font-family="Inter, system-ui, sans-serif" font-size="26" font-weight="400" fill="#A0B4C8">
+    Alertes pathogènes · Qualité de l'air · Données officielles OMS / ECDC / SPF
+  </text>
+
+  <!-- Badges row -->
+  <!-- Badge 1: OMS -->
+  <rect x="72" y="496" width="120" height="40" rx="20" fill="#0E8C7A" opacity="0.18" stroke="#0E8C7A" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="132" y="521" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#0E8C7A" text-anchor="middle">🌍 OMS</text>
+
+  <!-- Badge 2: ECDC -->
+  <rect x="206" y="496" width="120" height="40" rx="20" fill="#2A7FD4" opacity="0.18" stroke="#2A7FD4" stroke-width="1" stroke-opacity="0.6"/>
+  <text x="266" y="521" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#2A7FD4" text-anchor="middle">🇪🇺 ECDC</text>
+
+  <!-- Badge 3: Open access -->
+  <rect x="340" y="496" width="168" height="40" rx="20" fill="#A0B4C8" opacity="0.12" stroke="#A0B4C8" stroke-width="1" stroke-opacity="0.4"/>
+  <text x="424" y="521" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#A0B4C8" text-anchor="middle">🔓 Open access</text>
+
+  <!-- Badge 4: Non-DMN -->
+  <rect x="522" y="496" width="188" height="40" rx="20" fill="#D97706" opacity="0.14" stroke="#D97706" stroke-width="1" stroke-opacity="0.5"/>
+  <text x="616" y="521" font-family="Inter, system-ui, sans-serif" font-size="18" font-weight="600" fill="#D97706" text-anchor="middle">⚕️ Non-dispositif médical</text>
+
+  <!-- Author line -->
+  <text x="72" y="590" font-family="Inter, system-ui, sans-serif" font-size="20" font-weight="500" fill="#667A8E">
+    Dr. Clément Médeau — Docteur en médecine · breathiq.fr
+  </text>
+
+  <!-- Right stats panel -->
+  <rect x="750" y="190" width="320" height="220" rx="16" fill="#FFFFFF" fill-opacity="0.04" stroke="#FFFFFF" stroke-opacity="0.1" stroke-width="1"/>
+
+  <!-- Stat 1 -->
+  <text x="910" y="244" font-family="Inter, system-ui, sans-serif" font-size="52" font-weight="800" fill="#0E8C7A" text-anchor="middle">17</text>
+  <text x="910" y="272" font-family="Inter, system-ui, sans-serif" font-size="16" font-weight="400" fill="#A0B4C8" text-anchor="middle">Pathogènes suivis</text>
+
+  <rect x="770" y="290" width="280" height="1" fill="#FFFFFF" fill-opacity="0.1"/>
+
+  <!-- Stat 2 -->
+  <text x="828" y="340" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="800" fill="#2A7FD4" text-anchor="middle">9</text>
+  <text x="828" y="363" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="400" fill="#A0B4C8" text-anchor="middle">Langues</text>
+
+  <rect x="875" y="305" width="1" height="80" fill="#FFFFFF" fill-opacity="0.1"/>
+
+  <!-- Stat 3 -->
+  <text x="992" y="340" font-family="Inter, system-ui, sans-serif" font-size="42" font-weight="800" fill="#E07A2E" text-anchor="middle">1</text>
+  <text x="992" y="363" font-family="Inter, system-ui, sans-serif" font-size="15" font-weight="400" fill="#A0B4C8" text-anchor="middle">PHEIC OMS</text>
+</svg>

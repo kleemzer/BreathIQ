@@ -500,6 +500,39 @@ const I18N = {
     'care-no-geo': 'Geolocalización no disponible.', 'care-geo-denied': 'Permiso de ubicación denegado. Actívelo en su navegador.',
     'care-error': 'Error de búsqueda. Verifique su conexión.', 'care-no-results': 'Sin establecimientos en 10 km.',
     'care-btn-refresh': '🔄 Actualizar',
+    // RGPD / Consentimiento
+    'consent-title': 'Sus datos y privacidad',
+    'consent-body': 'Sus preferencias se guardan en su dispositivo. Se consultan datos públicos sobre calidad del aire y epidemias en tiempo real desde fuentes oficiales (OMS, CDC, ECDC). No se transmiten datos personales.',
+    'consent-accept': '✓ Aceptar',
+    'consent-decline': 'Continuar sin aceptar',
+    'consent-more': 'Política de privacidad',
+    // Modal geolocalización
+    'geo-modal-title': 'Acceder a su ubicación',
+    'geo-modal-body': 'Para mostrar los médicos y hospitales más cercanos, BreathIQ necesita acceso temporal a su ubicación.',
+    'geo-modal-g1': 'Su ubicación nunca se almacena en nuestros servidores',
+    'geo-modal-g2': 'Usada únicamente para buscar atención cercana',
+    'geo-modal-g3': 'Eliminada al cerrar la página',
+    'geo-modal-refuse': '✕ Rechazar',
+    'geo-modal-accept': '✓ Aceptar',
+    // Mis datos
+    'mydata-title': 'Mis datos y privacidad',
+    'mydata-subtitle': 'Consulte, gestione y elimine los datos almacenados en su dispositivo.',
+    'mydata-decl-label': 'Declaraciones sindrómicas',
+    'mydata-cache-label': 'Caché API',
+    'mydata-prefs-label': 'Preferencias',
+    'mydata-consent-label': 'Consentimiento RGPD',
+    'mydata-clear-decl': 'Eliminar mis declaraciones',
+    'mydata-clear-cache': 'Vaciar caché',
+    'mydata-clear-all': 'Restablecer todo',
+    'mydata-confirm': '¿Confirma la eliminación?',
+    'mydata-done': 'Datos eliminados.',
+    'mydata-export': 'Exportar declaraciones (JSON)',
+    'mydata-rights': 'Conforme a los artículos 15, 17 y 21 del RGPD, puede acceder, eliminar u oponerse a sus datos en cualquier momento.',
+    'mydata-dpo': 'Contacto DPD',
+    'nav-syndromic': 'Vigilancia',
+    'nav-mydata': 'Mis datos',
+    'decl-consent-art9': 'Declaro actuar como profesional sanitario o ciudadano informado, y doy mi consentimiento expreso para el tratamiento de este dato de salud (Art. 9 RGPD) con fines exclusivos de vigilancia epidemiológica local, sin transmisión al servidor.',
+    'disclaimer-text': 'BreathIQ es exclusivamente una herramienta de información pública. No constituye un dispositivo médico y no emite recomendaciones médicas individuales. Para cualquier consejo médico, consulte a un profesional de salud.',
   },
   pt: {
     'nav-score': 'Minha Pontuação', 'nav-map': 'Mapa Mundial', 'nav-stocks': 'Stocks EPI',
@@ -536,6 +569,36 @@ const I18N = {
     'care-no-geo': 'Geolocalização não disponível.', 'care-geo-denied': 'Permissão de localização negada.',
     'care-error': 'Erro na pesquisa. Verifique sua conexão.', 'care-no-results': 'Sem resultados em 10 km.',
     'care-btn-refresh': '🔄 Atualizar',
+    'consent-title': 'Seus dados e privacidade',
+    'consent-body': 'Suas preferências são salvas no seu dispositivo. Dados públicos sobre qualidade do ar e epidemias são consultados em tempo real de fontes oficiais (OMS, CDC, ECDC). Nenhum dado pessoal é transmitido.',
+    'consent-accept': '✓ Aceitar',
+    'consent-decline': 'Continuar sem aceitar',
+    'consent-more': 'Política de privacidade',
+    'geo-modal-title': 'Acessar sua localização',
+    'geo-modal-body': 'Para mostrar os médicos e hospitais mais próximos, BreathIQ precisa de acesso temporário à sua localização.',
+    'geo-modal-g1': 'Sua localização nunca é armazenada em nossos servidores',
+    'geo-modal-g2': 'Usada somente para buscar atendimento próximo',
+    'geo-modal-g3': 'Apagada ao fechar a página',
+    'geo-modal-refuse': '✕ Recusar',
+    'geo-modal-accept': '✓ Aceitar',
+    'mydata-title': 'Meus dados e privacidade',
+    'mydata-subtitle': 'Consulte, gerencie e exclua os dados armazenados no seu dispositivo.',
+    'mydata-decl-label': 'Declarações sindrômicas',
+    'mydata-cache-label': 'Cache da API',
+    'mydata-prefs-label': 'Preferências',
+    'mydata-consent-label': 'Consentimento LGPD/RGPD',
+    'mydata-clear-decl': 'Excluir minhas declarações',
+    'mydata-clear-cache': 'Limpar cache',
+    'mydata-clear-all': 'Redefinir tudo',
+    'mydata-confirm': 'Confirma a exclusão?',
+    'mydata-done': 'Dados excluídos.',
+    'mydata-export': 'Exportar declarações (JSON)',
+    'mydata-rights': 'De acordo com os artigos 15, 17 e 21 do RGPD, você pode acessar, excluir ou opor-se aos seus dados a qualquer momento.',
+    'mydata-dpo': 'Contato DPO',
+    'nav-syndromic': 'Vigilância',
+    'nav-mydata': 'Meus dados',
+    'decl-consent-art9': 'Declaro agir na qualidade de profissional de saúde ou cidadão informado, e consinto expressamente no tratamento deste dado de saúde (Art. 9 RGPD) para fins exclusivos de vigilância epidemiológica local, sem transmissão ao servidor.',
+    'disclaimer-text': 'BreathIQ é exclusivamente uma ferramenta de informação pública. Não constitui dispositivo médico e não emite recomendações médicas individuais. Para qualquer conselho médico, consulte um profissional de saúde.',
   },
   ar: {
     'nav-score': 'نتيجتي', 'nav-map': 'الخريطة العالمية', 'nav-stocks': 'مخزون EPI',
@@ -570,6 +633,36 @@ const I18N = {
     'care-no-geo': 'تحديد الموقع غير متاح.', 'care-geo-denied': 'تم رفض إذن الموقع.',
     'care-error': 'خطأ في البحث. تحقق من اتصالك.', 'care-no-results': 'لا توجد مرافق في نطاق ١٠ كم.',
     'care-btn-refresh': '🔄 تحديث',
+    'consent-title': 'بياناتك وخصوصيتك',
+    'consent-body': 'يتم حفظ تفضيلاتك على جهازك. يتم الاستعلام عن بيانات عامة حول جودة الهواء والأوبئة في الوقت الفعلي من مصادر رسمية (WHO, CDC, ECDC). لا يتم إرسال أي بيانات شخصية.',
+    'consent-accept': '✓ قبول',
+    'consent-decline': 'المتابعة بدون قبول',
+    'consent-more': 'سياسة الخصوصية',
+    'geo-modal-title': 'الوصول إلى موقعك',
+    'geo-modal-body': 'لعرض أقرب الأطباء والمستشفيات، تحتاج BreathIQ إلى وصول مؤقت إلى موقعك.',
+    'geo-modal-g1': 'موقعك لا يُخزّن أبداً على خوادمنا',
+    'geo-modal-g2': 'يُستخدم فقط للبحث عن الرعاية القريبة',
+    'geo-modal-g3': 'يُحذف عند إغلاق الصفحة',
+    'geo-modal-refuse': '✕ رفض',
+    'geo-modal-accept': '✓ قبول',
+    'mydata-title': 'بياناتي وخصوصيتي',
+    'mydata-subtitle': 'عرض وإدارة وحذف البيانات المخزنة على جهازك.',
+    'mydata-decl-label': 'الإبلاغات السريرية',
+    'mydata-cache-label': 'ذاكرة التخزين المؤقت',
+    'mydata-prefs-label': 'التفضيلات',
+    'mydata-consent-label': 'موافقة RGPD',
+    'mydata-clear-decl': 'حذف إبلاغاتي',
+    'mydata-clear-cache': 'مسح التخزين المؤقت',
+    'mydata-clear-all': 'إعادة ضبط الكل',
+    'mydata-confirm': 'هل تأكد الحذف؟',
+    'mydata-done': 'تم حذف البيانات.',
+    'mydata-export': 'تصدير الإبلاغات (JSON)',
+    'mydata-rights': 'وفقاً للمواد 15 و17 و21 من RGPD، يمكنك الوصول إلى بياناتك أو حذفها أو الاعتراض عليها في أي وقت.',
+    'mydata-dpo': 'اتصل بمسؤول حماية البيانات',
+    'nav-syndromic': 'المراقبة',
+    'nav-mydata': 'بياناتي',
+    'decl-consent-art9': 'أصرّح بأنني أتصرف بوصفي متخصصاً صحياً أو مواطناً مطلعاً، وأوافق صراحةً على معالجة هذه البيانات الصحية (المادة 9 RGPD) لأغراض المراقبة الوبائية المحلية حصراً، دون إرسالها إلى الخادم.',
+    'disclaimer-text': 'BreathIQ هو أداة معلومات عامة حصراً. لا يشكّل جهازاً طبياً ولا يُصدر توصيات طبية فردية. للحصول على أي نصيحة طبية، استشر مختصاً صحياً.',
   },
   zh: {
     'nav-score': '我的评分', 'nav-map': '世界地图', 'nav-stocks': 'EPI库存',
@@ -604,6 +697,36 @@ const I18N = {
     'care-no-geo': '无法使用地理定位。', 'care-geo-denied': '位置权限被拒绝。',
     'care-error': '搜索错误。请检查您的连接。', 'care-no-results': '10公里范围内无结果。',
     'care-btn-refresh': '🔄 刷新',
+    'consent-title': '您的数据与隐私',
+    'consent-body': '您的偏好设置保存在您的设备上。来自官方来源（世卫组织、CDC、ECDC）的空气质量和疫情公开数据实时查询。不传输任何个人数据。',
+    'consent-accept': '✓ 接受',
+    'consent-decline': '不接受继续',
+    'consent-more': '隐私政策',
+    'geo-modal-title': '访问您的位置',
+    'geo-modal-body': '为了显示最近的医生和医院，BreathIQ需要临时访问您的位置。',
+    'geo-modal-g1': '您的位置从不存储在我们的服务器上',
+    'geo-modal-g2': '仅用于搜索附近的医疗机构',
+    'geo-modal-g3': '关闭页面时即删除',
+    'geo-modal-refuse': '✕ 拒绝',
+    'geo-modal-accept': '✓ 接受',
+    'mydata-title': '我的数据与隐私',
+    'mydata-subtitle': '查看、管理和删除存储在您设备上的数据。',
+    'mydata-decl-label': '综合征申报',
+    'mydata-cache-label': 'API缓存',
+    'mydata-prefs-label': '偏好设置',
+    'mydata-consent-label': 'RGPD同意',
+    'mydata-clear-decl': '删除我的申报',
+    'mydata-clear-cache': '清除缓存',
+    'mydata-clear-all': '重置全部',
+    'mydata-confirm': '确认删除？',
+    'mydata-done': '数据已删除。',
+    'mydata-export': '导出申报 (JSON)',
+    'mydata-rights': '根据RGPD第15、17和21条，您可以随时访问、删除或反对处理您的数据。',
+    'mydata-dpo': '联系数据保护官',
+    'nav-syndromic': '监测',
+    'nav-mydata': '我的数据',
+    'decl-consent-art9': '我声明以医疗专业人员或知情公民身份行事，并明确同意处理此健康数据（RGPD第9条），仅用于本地流行病学监测，不向服务器传输。',
+    'disclaimer-text': 'BreathIQ仅为公共信息工具。不构成医疗设备，不发布个人医疗建议。如需医疗建议，请咨询医疗专业人员。',
   },
   hi: {
     'nav-score': 'मेरा स्कोर', 'nav-map': 'विश्व मानचित्र', 'nav-stocks': 'EPI स्टॉक',
@@ -637,6 +760,36 @@ const I18N = {
     'care-no-geo': 'जियोलोकेशन उपलब्ध नहीं।', 'care-geo-denied': 'स्थान अनुमति अस्वीकार।',
     'care-error': 'खोज त्रुटि। कनेक्शन जांचें।', 'care-no-results': '10 किमी में कोई परिणाम नहीं।',
     'care-btn-refresh': '🔄 रिफ्रेश',
+    'consent-title': 'आपका डेटा और गोपनीयता',
+    'consent-body': 'आपकी प्राथमिकताएं आपके डिवाइस पर सहेजी जाती हैं। वायु गुणवत्ता और महामारी पर सार्वजनिक डेटा आधिकारिक स्रोतों (WHO, CDC, ECDC) से वास्तविक समय में प्राप्त किया जाता है। कोई व्यक्तिगत डेटा प्रेषित नहीं किया जाता।',
+    'consent-accept': '✓ स्वीकार करें',
+    'consent-decline': 'बिना स्वीकार किए जारी रखें',
+    'consent-more': 'गोपनीयता नीति',
+    'geo-modal-title': 'आपका स्थान एक्सेस करें',
+    'geo-modal-body': 'निकटतम डॉक्टर और अस्पताल दिखाने के लिए, BreathIQ को आपके स्थान तक अस्थायी पहुंच की आवश्यकता है।',
+    'geo-modal-g1': 'आपका स्थान कभी भी हमारे सर्वर पर संग्रहीत नहीं किया जाता',
+    'geo-modal-g2': 'केवल निकटतम देखभाल खोजने के लिए उपयोग किया जाता है',
+    'geo-modal-g3': 'पृष्ठ बंद करने पर हटा दिया जाता है',
+    'geo-modal-refuse': '✕ अस्वीकार',
+    'geo-modal-accept': '✓ स्वीकार',
+    'mydata-title': 'मेरा डेटा और गोपनीयता',
+    'mydata-subtitle': 'अपने डिवाइस पर संग्रहीत डेटा देखें, प्रबंधित करें और हटाएं।',
+    'mydata-decl-label': 'सिंड्रोमिक घोषणाएं',
+    'mydata-cache-label': 'API कैश',
+    'mydata-prefs-label': 'प्राथमिकताएं',
+    'mydata-consent-label': 'RGPD सहमति',
+    'mydata-clear-decl': 'मेरी घोषणाएं हटाएं',
+    'mydata-clear-cache': 'कैश साफ करें',
+    'mydata-clear-all': 'सब कुछ रीसेट करें',
+    'mydata-confirm': 'क्या आप हटाने की पुष्टि करते हैं?',
+    'mydata-done': 'डेटा हटा दिया गया।',
+    'mydata-export': 'घोषणाएं निर्यात करें (JSON)',
+    'mydata-rights': 'RGPD के अनुच्छेद 15, 17 और 21 के अनुसार, आप किसी भी समय अपने डेटा तक पहुंच सकते हैं, उसे हटा सकते हैं या उसका विरोध कर सकते हैं।',
+    'mydata-dpo': 'DPO से संपर्क करें',
+    'nav-syndromic': 'निगरानी',
+    'nav-mydata': 'मेरा डेटा',
+    'decl-consent-art9': 'मैं घोषणा करता/करती हूं कि मैं स्वास्थ्य पेशेवर या सूचित नागरिक के रूप में कार्य कर रहा/रही हूं, और RGPD अनुच्छेद 9 के तहत इस स्वास्थ्य डेटा के प्रसंस्करण के लिए स्पष्ट सहमति देता/देती हूं।',
+    'disclaimer-text': 'BreathIQ केवल एक सार्वजनिक सूचना उपकरण है। यह चिकित्सा उपकरण नहीं है और व्यक्तिगत चिकित्सा सिफारिशें नहीं देता। किसी भी चिकित्सा सलाह के लिए, स्वास्थ्य पेशेवर से परामर्श करें।',
   },
   sw: {
     'nav-score': 'Alama Yangu', 'nav-map': 'Ramani ya Dunia', 'nav-stocks': 'Hifadhi EPI',
@@ -670,6 +823,36 @@ const I18N = {
     'care-no-geo': 'Eneo haliwezi kutambuliwa.', 'care-geo-denied': 'Ruhusa ya eneo imekataliwa.',
     'care-error': 'Hitilafu ya utafutaji. Angalia muunganisho wako.', 'care-no-results': 'Hakuna matokeo km 10.',
     'care-btn-refresh': '🔄 Sasisha',
+    'consent-title': 'Data yako na faragha',
+    'consent-body': 'Mapendeleo yako yamehifadhiwa kwenye kifaa chako. Data za umma kuhusu ubora wa hewa na magonjwa ya mlipuko zinaulizwa wakati halisi kutoka kwa vyanzo rasmi (WHO, CDC, ECDC). Hakuna data ya kibinafsi inayotumwa.',
+    'consent-accept': '✓ Kukubali',
+    'consent-decline': 'Endelea bila kukubali',
+    'consent-more': 'Sera ya faragha',
+    'geo-modal-title': 'Fikia eneo lako',
+    'geo-modal-body': 'Ili kuonyesha madaktari na hospitali zilizo karibu nawe, BreathIQ inahitaji ufikiaji wa muda wa eneo lako.',
+    'geo-modal-g1': 'Eneo lako halihifadhiwi kamwe kwenye seva zetu',
+    'geo-modal-g2': 'Inatumika tu kutafuta huduma za karibu',
+    'geo-modal-g3': 'Inafutwa ukifunga ukurasa',
+    'geo-modal-refuse': '✕ Kataa',
+    'geo-modal-accept': '✓ Kukubali',
+    'mydata-title': 'Data yangu na faragha',
+    'mydata-subtitle': 'Angalia, simamia na ufute data zilizohifadhiwa kwenye kifaa chako.',
+    'mydata-decl-label': 'Matangazo ya ugonjwa',
+    'mydata-cache-label': 'Kumbukumbu ya API',
+    'mydata-prefs-label': 'Mapendeleo',
+    'mydata-consent-label': 'Idhini ya RGPD',
+    'mydata-clear-decl': 'Futa matangazo yangu',
+    'mydata-clear-cache': 'Futa kumbukumbu',
+    'mydata-clear-all': 'Rudisha kila kitu',
+    'mydata-confirm': 'Uthibitisha kufuta?',
+    'mydata-done': 'Data imefutwa.',
+    'mydata-export': 'Hamisha matangazo (JSON)',
+    'mydata-rights': 'Kulingana na vifungu 15, 17 na 21 vya RGPD, unaweza kufikia, kufuta au kupinga data yako wakati wowote.',
+    'mydata-dpo': 'Wasiliana na DPO',
+    'nav-syndromic': 'Ufuatiliaji',
+    'nav-mydata': 'Data yangu',
+    'decl-consent-art9': 'Natangaza kwamba ninafanya kazi kama mtaalamu wa afya au raia mwenye ufahamu, na nakubali wazi kuchakata data hii ya afya (Ibara ya 9 RGPD) kwa madhumuni ya ufuatiliaji wa magonjwa ya ndani tu, bila kutuma kwa seva.',
+    'disclaimer-text': 'BreathIQ ni zana ya habari za umma peke yake. Haiundi kifaa cha matibabu na haitoi mapendekezo ya matibabu ya mtu binafsi. Kwa ushauri wowote wa matibabu, wasiliana na mtaalamu wa afya.',
   },
   ru: {
     'nav-score': 'Мой счёт', 'nav-map': 'Карта мира', 'nav-stocks': 'Запасы EPI',
@@ -704,6 +887,36 @@ const I18N = {
     'care-no-geo': 'Геолокация недоступна.', 'care-geo-denied': 'Разрешение геолокации отклонено.',
     'care-error': 'Ошибка поиска. Проверьте подключение.', 'care-no-results': 'Нет результатов в 10 км.',
     'care-btn-refresh': '🔄 Обновить',
+    'consent-title': 'Ваши данные и конфиденциальность',
+    'consent-body': 'Ваши настройки сохранены на вашем устройстве. Публичные данные о качестве воздуха и эпидемиях запрашиваются в режиме реального времени из официальных источников (ВОЗ, CDC, ECDC). Никакие личные данные не передаются.',
+    'consent-accept': '✓ Принять',
+    'consent-decline': 'Продолжить без принятия',
+    'consent-more': 'Политика конфиденциальности',
+    'geo-modal-title': 'Доступ к вашему местоположению',
+    'geo-modal-body': 'Для отображения ближайших врачей и больниц BreathIQ нужен временный доступ к вашему местоположению.',
+    'geo-modal-g1': 'Ваше местоположение никогда не хранится на наших серверах',
+    'geo-modal-g2': 'Используется только для поиска ближайшей помощи',
+    'geo-modal-g3': 'Удаляется при закрытии страницы',
+    'geo-modal-refuse': '✕ Отказать',
+    'geo-modal-accept': '✓ Принять',
+    'mydata-title': 'Мои данные и конфиденциальность',
+    'mydata-subtitle': 'Просматривайте, управляйте и удаляйте данные, хранящиеся на вашем устройстве.',
+    'mydata-decl-label': 'Синдромные декларации',
+    'mydata-cache-label': 'Кэш API',
+    'mydata-prefs-label': 'Настройки',
+    'mydata-consent-label': 'Согласие RGPD',
+    'mydata-clear-decl': 'Удалить мои декларации',
+    'mydata-clear-cache': 'Очистить кэш',
+    'mydata-clear-all': 'Сбросить всё',
+    'mydata-confirm': 'Подтвердите удаление?',
+    'mydata-done': 'Данные удалены.',
+    'mydata-export': 'Экспорт деклараций (JSON)',
+    'mydata-rights': 'Согласно статьям 15, 17 и 21 RGPD, вы можете получить доступ к своим данным, удалить их или отказаться от обработки в любое время.',
+    'mydata-dpo': 'Связаться с DPO',
+    'nav-syndromic': 'Наблюдение',
+    'nav-mydata': 'Мои данные',
+    'decl-consent-art9': 'Я заявляю, что действую как медицинский работник или информированный гражданин, и явно соглашаюсь на обработку этих медицинских данных (ст. 9 RGPD) исключительно в целях местного эпидемиологического наблюдения, без передачи на сервер.',
+    'disclaimer-text': 'BreathIQ является исключительно инструментом публичной информации. Не является медицинским устройством и не выдаёт индивидуальных медицинских рекомендаций. Для получения медицинской консультации обращайтесь к специалисту.',
   },
 };
 
@@ -1477,8 +1690,69 @@ let worldMap = null;
 let stockLayer = null;
 let outbreakLayer = null;
 let activeLayer = 'both';
-let currentFilter = 'all';
+let currentFilter = localStorage.getItem('biq-pathogen-filter') || 'all';
 let selectedRegionId = null;
+let outbreakDataVersion = 0;
+let lastPathogensRenderSignature = '';
+let latestClinicalOrientation = null;
+
+const JSON_FETCH_DEFAULTS = {
+  timeout: 7000,
+  cache: 'no-store',
+};
+
+function isDebugMode() {
+  return location.hostname === 'localhost' || location.hostname === '127.0.0.1' || location.search.includes('debug=1');
+}
+
+function logDataWarning(label, error) {
+  if (isDebugMode()) console.warn(`[BreathIQ] ${label}:`, error);
+  else console.debug(`[BreathIQ] ${label}: ${error.message}`);
+}
+
+function escapeHTML(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+async function fetchJsonWithTimeout(url, options = {}) {
+  const timeout = options.timeout ?? JSON_FETCH_DEFAULTS.timeout;
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeout);
+
+  try {
+    const resp = await fetch(url, {
+      cache: options.cache ?? JSON_FETCH_DEFAULTS.cache,
+      headers: { Accept: 'application/json', ...(options.headers || {}) },
+      signal: controller.signal,
+    });
+
+    if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+
+    const contentType = resp.headers.get('content-type') || '';
+    if (contentType && !contentType.includes('json')) {
+      console.debug(`[BreathIQ] ${url} content-type inattendu: ${contentType}`);
+    }
+
+    const data = await resp.json();
+    if (!data || typeof data !== 'object') throw new Error('JSON racine invalide');
+    if (options.validate && !options.validate(data)) throw new Error('Schema JSON inattendu');
+    return data;
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function formatFrenchDate(value, options = { day: 'numeric', month: 'long', year: 'numeric' }) {
+  if (!value) return '';
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return String(value);
+  return d.toLocaleDateString('fr-FR', options);
+}
 
 // ── Language ─────────────────────────────────────────────────
 const LANG_CYCLE = ['fr', 'en', 'es', 'pt', 'ar', 'zh', 'hi', 'sw', 'ru'];
@@ -1508,6 +1782,9 @@ function setLang(lang) {
   updateScoreDisplay(selectedRegionId || DEMO_DATA[0].id);
   updateModeToggleBtn();
   updatePatientRiskBanner();
+  // Mettre à jour les numéros d'urgence et l'alerte PHEIC selon la langue
+  renderEmergencyNumbers();
+  loadPheicAlert();
 }
 
 // ── Theme ────────────────────────────────────────────────────
@@ -1777,29 +2054,30 @@ const PATHOGEN_ICONS = {
 // ── WHO Disease Outbreak News (daily pipeline) ──────────────────────────────
 async function loadWHOAlerts() {
   try {
-    const resp = await fetch('data/who-alerts.json?_=' + Date.now(), {
-      cache: 'no-store', signal: AbortSignal.timeout(6000),
+    const data = await fetchJsonWithTimeout('data/who-alerts.json?_=' + Date.now(), {
+      timeout: 6000,
+      validate: payload => Array.isArray(payload.alerts) && typeof payload.generatedAt === 'string',
     });
-    if (!resp.ok) return;
-    const data = await resp.json();
     if (!data?.alerts?.length || !data.generatedAt) return;
 
     // Inject WHO alerts into the epi tracker section
     const whoSection = document.getElementById('whoAlertsSection');
     if (!whoSection) return;
 
-    const d = new Date(data.generatedAt);
-    const dateLabel = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long' });
+    const dateLabel = formatFrenchDate(data.generatedAt, { day: 'numeric', month: 'long' });
 
     const riskColor = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
     const riskLabel = { critical:'🔴 CRITIQUE', high:'🟠 ÉLEVÉ', moderate:'🟡 MODÉRÉ', low:'🟢 NORMAL' };
 
-    const items = data.alerts.slice(0, 6).map(a => `
-      <a href="${a.url || '#'}" target="_blank" rel="noopener noreferrer" class="who-alert-item">
-        <span class="who-alert-badge" style="background:${riskColor[a.riskLevel]}22;color:${riskColor[a.riskLevel]};border-color:${riskColor[a.riskLevel]}44">${riskLabel[a.riskLevel] || '⚪'}</span>
-        <span class="who-alert-title">${a.title}</span>
-        <span class="who-alert-date">${a.pubDate ? new Date(a.pubDate).toLocaleDateString('fr-FR', {day:'numeric',month:'short'}) : ''}</span>
-      </a>`).join('');
+    const items = data.alerts.slice(0, 6).map(a => {
+      const color = riskColor[a.riskLevel] || '#6B7280';
+      return `
+      <a href="${escapeHTML(a.url || '#')}" target="_blank" rel="noopener noreferrer" class="who-alert-item">
+        <span class="who-alert-badge" style="background:${color}22;color:${color};border-color:${color}44">${riskLabel[a.riskLevel] || '⚪'}</span>
+        <span class="who-alert-title">${escapeHTML(a.title)}</span>
+        <span class="who-alert-date">${a.pubDate ? formatFrenchDate(a.pubDate, {day:'numeric',month:'short'}) : ''}</span>
+      </a>`;
+    }).join('');
 
     whoSection.innerHTML = `
       <div class="who-alerts-header">
@@ -1810,65 +2088,143 @@ async function loadWHOAlerts() {
     whoSection.hidden = false;
     console.log(`[BreathIQ] WHO DON chargé (${data.alerts.length} alertes)`);
   } catch (e) {
-    console.debug('[BreathIQ] WHO DON non disponible:', e.message);
+    logDataWarning('WHO DON non disponible', e);
   }
 }
 
+function isLegacySPFLiveData(live) {
+  return Boolean(live && typeof live === 'object' && live.patches && typeof live.patches === 'object');
+}
+
+function isCompactSPFLiveData(live) {
+  return Boolean(
+    live &&
+    typeof live === 'object' &&
+    typeof live.run_date === 'string' &&
+    typeof live.overall_summary === 'string' &&
+    Array.isArray(live.sources) &&
+    Array.isArray(live.recommended_action)
+  );
+}
+
+function applySPFPatches(live) {
+  if (!isLegacySPFLiveData(live)) return 0;
+
+  const UPDATABLE_KEYS = ['currentStatus', 'riskLevel', 'activeRegions', 'descFR', 'descEN', 'lastUpdate'];
+  let patchCount = 0;
+
+  for (const entry of OUTBREAK_DATA) {
+    const patch = live.patches[entry.id];
+    if (!patch || typeof patch !== 'object') continue;
+    for (const key of UPDATABLE_KEYS) {
+      if (patch[key] !== undefined) entry[key] = patch[key];
+    }
+    patchCount += 1;
+  }
+
+  if (Array.isArray(live.newOutbreaks)) {
+    for (const nov of live.newOutbreaks) {
+      if (!nov || typeof nov !== 'object') continue;
+      const name = nov.nameFR || nov.nameEN || nov.name || 'Alerte SPF';
+      const id = nov.id || 'SPF_' + name.replace(/\s+/g, '_').toUpperCase().slice(0, 12);
+      if (!OUTBREAK_DATA.find(e => e.id === id)) {
+        OUTBREAK_DATA.push({
+          id,
+          category: 'epidemic',
+          lat: 0,
+          lon: 20,
+          transmission: [],
+          protectionLevel: 1,
+          protectionRequired: 'Masque chirurgical',
+          iconColor: '#F59E0B',
+          references: ['Santé Publique France — bulletin automatisé'],
+          ...nov,
+        });
+        patchCount += 1;
+      }
+    }
+  }
+
+  if (patchCount) outbreakDataVersion += 1;
+  return patchCount;
+}
+
+function updateSPFLiveBadge(live) {
+  const badge = document.getElementById('spfLiveBadge');
+  if (!badge) return;
+
+  const dateValue = live.generatedAt || live.run_date || live.bulletinDate;
+  if (!dateValue) return;
+
+  const label = formatFrenchDate(dateValue);
+  badge.textContent = `📡 Données SPF mises à jour le ${label}`;
+  badge.style.display = 'inline-flex';
+}
+
+function renderSPFCompactSummary(live) {
+  const panel = document.getElementById('spfLiveSummary');
+  if (!panel) return;
+
+  if (!isCompactSPFLiveData(live)) {
+    panel.hidden = true;
+    panel.innerHTML = '';
+    return;
+  }
+
+  const riskClass = {
+    high: 'spf-risk-high',
+    medium: 'spf-risk-medium',
+    low: 'spf-risk-low',
+  };
+
+  const sourceItems = live.sources.slice(0, 5).map(source => {
+    const title = escapeHTML(source.title || 'Bulletin SPF');
+    const region = escapeHTML(source.region || 'France');
+    const risk = ['low', 'medium', 'high'].includes(source.risk_level) ? source.risk_level : 'low';
+    const signals = Array.isArray(source.signals) ? source.signals.slice(0, 3) : [];
+    const points = Array.isArray(source.key_points) ? source.key_points.slice(0, 3) : [];
+
+    return `<article class="spf-source-item ${riskClass[risk]}">
+      <div class="spf-source-head">
+        <strong>${title}</strong>
+        <span>${region} · ${risk}</span>
+      </div>
+      ${signals.length ? `<ul>${signals.map(signal => `<li>${escapeHTML(signal)}</li>`).join('')}</ul>` : ''}
+      ${points.length ? `<p>${points.map(escapeHTML).join(' · ')}</p>` : ''}
+    </article>`;
+  }).join('');
+
+  const actions = live.recommended_action.slice(0, 4).map(action => `<li>${escapeHTML(action)}</li>`).join('');
+
+  panel.innerHTML = `
+    <div class="spf-summary-head">
+      <span>🇫🇷 Synthèse SPF automatisée</span>
+      <time datetime="${escapeHTML(live.run_date)}">${escapeHTML(formatFrenchDate(live.run_date))}</time>
+    </div>
+    <p class="spf-summary-text">${escapeHTML(live.overall_summary)}</p>
+    ${sourceItems ? `<div class="spf-source-list">${sourceItems}</div>` : ''}
+    ${actions ? `<div class="spf-actions"><strong>Actions recommandées</strong><ul>${actions}</ul></div>` : ''}
+  `;
+  panel.hidden = false;
+}
+
 // ── SPF Live Data (AI-generated weekly) ─────────────────────────────────────
-// Fetches data/spf-live.json and merges AI-extracted patches into OUTBREAK_DATA
+// Supports both legacy "patches" data and compact SPF summaries.
 async function loadSPFLiveData() {
   try {
-    const resp = await fetch('data/spf-live.json?_=' + Date.now(), {
-      cache: 'no-store',
-      signal: AbortSignal.timeout(8000),
+    const live = await fetchJsonWithTimeout('data/spf-live.json?_=' + Date.now(), {
+      timeout: 8000,
+      validate: payload => isLegacySPFLiveData(payload) || isCompactSPFLiveData(payload),
     });
-    if (!resp.ok) return;
-    const live = await resp.json();
-    if (!live || !live.patches || typeof live.patches !== 'object') return;
-    if (!live.generatedAt) return; // empty initial file → skip
 
-    const UPDATABLE_KEYS = ['currentStatus', 'riskLevel', 'activeRegions', 'descFR', 'descEN', 'lastUpdate'];
+    const patchCount = applySPFPatches(live);
+    updateSPFLiveBadge(live);
+    renderSPFCompactSummary(live);
 
-    for (const entry of OUTBREAK_DATA) {
-      const patch = live.patches[entry.id];
-      if (!patch) continue;
-      for (const key of UPDATABLE_KEYS) {
-        if (patch[key] !== undefined) entry[key] = patch[key];
-      }
-    }
-
-    // Append genuinely new outbreaks not already tracked
-    if (Array.isArray(live.newOutbreaks)) {
-      for (const nov of live.newOutbreaks) {
-        if (!nov.id) nov.id = 'SPF_' + nov.nameFR?.replace(/\s+/g, '_').toUpperCase().slice(0, 12);
-        if (!OUTBREAK_DATA.find(e => e.id === nov.id)) {
-          OUTBREAK_DATA.push({
-            category: 'epidemic',
-            lat: 0, lon: 20,
-            transmission: [],
-            protectionLevel: 1,
-            protectionRequired: 'Masque chirurgical',
-            iconColor: '#F59E0B',
-            references: ['Santé Publique France — bulletin automatisé'],
-            ...nov,
-          });
-        }
-      }
-    }
-
-    // Show last-update badge on pathogens section
-    const badge = document.getElementById('spfLiveBadge');
-    if (badge && live.generatedAt) {
-      const d = new Date(live.generatedAt);
-      const label = d.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' });
-      badge.textContent = `📡 Données SPF mises à jour le ${label}`;
-      badge.style.display = 'inline-flex';
-    }
-
-    console.log(`[BreathIQ] SPF live data chargée (${Object.keys(live.patches).length} pathogènes, ${live.bulletinDate || '?'})`);
+    const sourceCount = Array.isArray(live.sources) ? live.sources.length : 0;
+    console.log(`[BreathIQ] SPF live data chargée (${patchCount} patchs, ${sourceCount} sources compactes)`);
   } catch (e) {
-    // Silent fail — site works perfectly with static OUTBREAK_DATA
-    console.debug('[BreathIQ] SPF live data non disponible:', e.message);
+    logDataWarning('SPF live data non disponible', e);
   }
 }
 
@@ -1879,6 +2235,16 @@ function renderPathogens() {
   const filtered = currentFilter === 'all'
     ? OUTBREAK_DATA
     : OUTBREAK_DATA.filter(ob => ob.category === currentFilter);
+
+  const renderSignature = [
+    currentFilter,
+    currentLang,
+    currentMode,
+    outbreakDataVersion,
+    filtered.length,
+  ].join('|');
+  if (renderSignature === lastPathogensRenderSignature) return;
+  lastPathogensRenderSignature = renderSignature;
 
   const riskColors = { critical:'#EF4444', high:'#F97316', moderate:'#F59E0B', low:'#10B981' };
   const riskLabels = {
@@ -2071,14 +2437,30 @@ function initNavScroll() {
 }
 
 // ── Map init — robust (window.load + scroll fallback) ────────
+let _leafletLoading = false;
 function initMapWhenReady() {
-  // S'assurer que Leaflet est bien chargé
-  if (typeof L === 'undefined') {
-    console.warn('BreathIQ: Leaflet not ready, retrying in 300ms');
-    setTimeout(initMapWhenReady, 300);
-    return;
+  if (typeof L !== 'undefined') { initMap(); return; }
+  if (_leafletLoading) return;
+  _leafletLoading = true;
+
+  // Inject Leaflet CSS only if not already present
+  if (!document.querySelector('link[href*="leaflet"]')) {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
+    css.crossOrigin = '';
+    document.head.appendChild(css);
   }
-  initMap();
+
+  // Dynamically load Leaflet JS
+  const script = document.createElement('script');
+  script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
+  script.crossOrigin = '';
+  script.onload = () => { _leafletLoading = false; initMap(); };
+  script.onerror = () => { _leafletLoading = false; console.warn('[BreathIQ] Leaflet failed to load'); };
+  document.head.appendChild(script);
 }
 
 function initMapObserver() {
@@ -2140,10 +2522,12 @@ function bindEvents() {
 
   // Pathogen filters
   document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.filter === currentFilter);
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
       currentFilter = btn.dataset.filter;
+      localStorage.setItem('biq-pathogen-filter', currentFilter);
       renderPathogens();
     });
   });
@@ -2637,6 +3021,36 @@ function collectCheckerState() {
   return { symptoms, alarm, ctx, onset, fever, age };
 }
 
+function buildClinicalOrientationInput(state) {
+  const symptoms = [...state.symptoms, ...state.alarm];
+  const riskFactors = [...state.ctx];
+  if (state.fever && state.fever !== 'no_fever') symptoms.push(state.fever);
+  if (state.onset === 'weeks') symptoms.push('persistent_cough');
+  if (state.age === 'senior') riskFactors.push('age_senior');
+  if (state.age === 'infant') riskFactors.push('age_infant');
+
+  const durationDays = state.onset === 'weeks'
+    ? 21
+    : state.onset === 'days_4_7'
+      ? 5
+      : state.onset === 'days_1_3'
+        ? 2
+        : 1;
+
+  const hasGlobalCriticalOutbreak = OUTBREAK_DATA.some(ob => ob.currentStatus === 'outbreak' && ob.riskLevel === 'critical');
+  return {
+    symptoms,
+    durationDays,
+    ageGroup: state.age === 'senior' || state.age === 'infant' || state.age === 'child' ? state.age : 'adult',
+    riskFactors,
+    context: {
+      localOutbreakRisk: hasGlobalCriticalOutbreak ? 'high' : 'medium',
+      userCountry: 'FR',
+      userRegion: selectedRegionId ? String(selectedRegionId) : '',
+    },
+  };
+}
+
 function runDiagnosticEngine(state) {
   const { symptoms, alarm, ctx, onset, fever, age } = state;
   const allFlags = [...symptoms, ...alarm, ...ctx];
@@ -2729,34 +3143,61 @@ function runDiagnosticEngine(state) {
 function checkSymptoms() {
   const state  = collectCheckerState();
   const result = runDiagnosticEngine(state);
+  const clinicalEngine = window.BIQ_CLINICAL;
+  result.clinical = clinicalEngine?.evaluateClinicalOrientation
+    ? clinicalEngine.evaluateClinicalOrientation(buildClinicalOrientationInput(state))
+    : null;
+  latestClinicalOrientation = result.clinical;
   renderDiagnosticResult(result, state);
 }
 
 function renderDiagnosticResult(result, state) {
-  const { ranked, flags, orientLevel, alarmReason } = result;
+  const { ranked, orientLevel, alarmReason, clinical } = result;
   const lang = currentLang;
   const fr   = lang === 'fr';
 
-  if (!orientLevel) return;
+  if (!orientLevel && !clinical) return;
 
-  const orient = DIAG_ENGINE.ORIENTATION[orientLevel];
+  const clinicalVisuals = {
+    emergency: { icon: '🔴', labelFR: 'Urgence immédiate', labelEN: 'Immediate emergency', color: '#dc2626', bg: '#fef2f2', border: '#fca5a5', phone: '15 / 112' },
+    medical_regulation: { icon: '🟠', labelFR: 'Régulation médicale avant déplacement', labelEN: 'Medical regulation before travelling', color: '#ea580c', bg: '#fff7ed', border: '#fdba74', phone: '15 / 112' },
+    same_day_doctor: { icon: '🟡', labelFR: 'Avis médical le jour même', labelEN: 'Same-day medical advice', color: '#d97706', bg: '#fffbeb', border: '#fcd34d', phone: '116 117' },
+    pharmacy: { icon: '🔵', labelFR: 'Pharmacie ou avis médical si aggravation', labelEN: 'Pharmacy advice or medical review if worse', color: '#2563eb', bg: '#eff6ff', border: '#93c5fd', phone: '' },
+    self_monitoring: { icon: '🟢', labelFR: 'Auto-surveillance prudente', labelEN: 'Careful self-monitoring', color: '#16a34a', bg: '#f0fdf4', border: '#86efac', phone: '' },
+  };
+  const fallbackOrient = orientLevel ? DIAG_ENGINE.ORIENTATION[orientLevel] : null;
+  const visual = clinical
+    ? clinicalVisuals[clinical.level] || clinicalVisuals.self_monitoring
+    : {
+        icon: fallbackOrient.icon,
+        labelFR: fallbackOrient.label,
+        labelEN: fallbackOrient.label,
+        color: fallbackOrient.color,
+        bg: fallbackOrient.bg,
+        border: fallbackOrient.border,
+        phone: fallbackOrient.phone,
+      };
+  const orientationLabel = fr ? visual.labelFR : visual.labelEN;
+  const patientMessage = clinical ? (fr ? clinical.patientMessageFR : clinical.patientMessageEN) : '';
+  const careLabel = clinical ? (fr ? clinical.careLabelFR : clinical.careLabelEN) : '';
 
   // ── Bloc orientation ────────────────────────────────────────
-  const alarmBlock = alarmReason
-    ? `<div class="diag-alarm-reason">${fr ? '⚠️ Motif :' : '⚠️ Reason:'} ${alarmReason}</div>`
+  const reasons = clinical?.reasons?.length ? clinical.reasons : (alarmReason ? [alarmReason] : []);
+  const alarmBlock = reasons.length
+    ? `<div class="diag-alarm-reason">${fr ? 'Pourquoi :' : 'Why:'} ${reasons.map(escapeHTML).join(' · ')}</div>`
     : '';
 
-  const phoneBlock = orient.phone
-    ? `<a class="diag-phone-btn" href="tel:${orient.phone.replace(/\s/g,'')}">
+  const phoneBlock = visual.phone
+    ? `<a class="diag-phone-btn" href="tel:${visual.phone.replace(/[^\d]/g,'')}">
          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-         ${orient.phone}
+         ${visual.phone}
        </a>`
     : '';
 
   // ── Pathogènes probables ────────────────────────────────────
   let pathoBlock = '';
   if (ranked.length > 0) {
-    pathoBlock = `<div class="diag-patho-title">${fr ? '🔬 Diagnostics à évoquer' : '🔬 Suspected diagnoses'}</div>`;
+    pathoBlock = `<div class="diag-patho-title">${fr ? '🔬 Hypothèses à discuter avec un professionnel' : '🔬 Possibilities to discuss with a clinician'}</div>`;
     ranked.forEach((d,i) => {
       const p = DIAG_ENGINE.pathogens[d.pid];
       if (!p) return;
@@ -2769,26 +3210,36 @@ function renderDiagnosticResult(result, state) {
           <div class="diag-patho-row">
             <span class="diag-patho-icon">${p.icon}</span>
             <div class="diag-patho-info">
-              <div class="diag-patho-name">${name} ${reportBadge}</div>
-              <div class="diag-patho-criterion">${criterion}</div>
+              <div class="diag-patho-name">${escapeHTML(name)} ${reportBadge}</div>
+              <div class="diag-patho-criterion">${escapeHTML(criterion)}</div>
             </div>
             <div class="diag-patho-bar-wrap">
               <div class="diag-patho-bar"><div class="diag-patho-fill" style="width:${Math.min(d.pct*2.5,100)}%"></div></div>
-              <span class="diag-patho-prot">${p.protection}</span>
+              <span class="diag-patho-prot">${escapeHTML(p.protection)}</span>
             </div>
           </div>
-          ${i===0&&p.isolationFR ? `<div class="diag-isolation">${fr?'🔒 Isolement :':' 🔒 Isolation:'} ${p.isolationFR}</div>` : ''}
+          ${i===0&&p.isolationFR ? `<div class="diag-isolation">${fr?'🔒 Mesure de prudence :':' 🔒 Precaution:'} ${escapeHTML(p.isolationFR)}</div>` : ''}
         </div>`;
     });
   }
 
   // ── Assemblage final ────────────────────────────────────────
+  const careButton = clinical?.careNeed && clinical.careNeed !== 'self_monitoring'
+    ? `<button class="result-action-btn result-action-primary" onclick="findNearbyCare('${clinical.careNeed}')">
+        ${fr ? `📍 Trouver : ${escapeHTML(careLabel)}` : `📍 Find: ${escapeHTML(careLabel)}`}
+      </button>`
+    : `<button class="result-action-btn result-action-primary" onclick="document.getElementById('actionGuide')?.scrollIntoView({behavior:'smooth'})">
+        ${fr ? '→ Que faire maintenant ?' : '→ What to do now?'}
+      </button>`;
+
   const html = `
-  <div class="diag-result-card" style="--orient-color:${orient.color};--orient-bg:${orient.bg};--orient-border:${orient.border}">
+  <div class="diag-result-card" style="--orient-color:${visual.color};--orient-bg:${visual.bg};--orient-border:${visual.border}">
     <div class="diag-orient-header">
-      <span class="diag-orient-icon">${orient.icon}</span>
+      <span class="diag-orient-icon">${visual.icon}</span>
       <div>
-        <div class="diag-orient-label">${orient.label}</div>
+        <div class="diag-orient-label">${escapeHTML(orientationLabel)}</div>
+        ${patientMessage ? `<div class="diag-patient-message">${escapeHTML(patientMessage)}</div>` : ''}
+        ${clinical ? `<div class="diag-care-need">${fr ? 'Type de recours conseillé :' : 'Suggested care type:'} <strong>${escapeHTML(careLabel)}</strong> · ${fr ? 'Score urgence' : 'Urgency score'} ${clinical.urgencyScore}/100</div>` : ''}
         ${alarmBlock}
       </div>
       ${phoneBlock}
@@ -2797,9 +3248,7 @@ function renderDiagnosticResult(result, state) {
     ${pathoBlock}
 
     <div class="diag-result-actions">
-      <button class="result-action-btn result-action-primary" onclick="document.getElementById('actionGuide')?.scrollIntoView({behavior:'smooth'})">
-        ${fr ? '→ Que faire maintenant ?' : '→ What to do now?'}
-      </button>
+      ${careButton}
       <button class="result-action-btn result-action-secondary" onclick="resetChecker()">
         ${fr ? '↺ Recommencer' : '↺ Reset'}
       </button>
@@ -2807,8 +3256,8 @@ function renderDiagnosticResult(result, state) {
     <div class="diag-legal-footer">
       <div class="diag-legal-box">
         <p class="diag-disclaimer">${fr
-          ? '⚠️ <strong>Ces résultats sont indicatifs et non diagnostiques.</strong> Ils ne remplacent pas une consultation médicale. En cas de doute ou d\'aggravation, consultez immédiatement un professionnel de santé.'
-          : '⚠️ <strong>These results are indicative, not diagnostic.</strong> They do not replace medical consultation. If in doubt or symptoms worsen, seek immediate medical care.'}</p>
+          ? `⚠️ <strong>${escapeHTML(clinical?.disclaimerFR || 'Orientation indicative, non diagnostique.')}</strong> En cas de doute ou d'aggravation, consultez immédiatement un professionnel de santé.`
+          : `⚠️ <strong>${escapeHTML(clinical?.disclaimerEN || 'Indicative, non-diagnostic guidance.')}</strong> If in doubt or symptoms worsen, seek immediate medical care.`}</p>
         <p class="diag-legal-meta">${fr
           ? '📋 Références : OMS · ECDC · CDC · HCSP · Critères ILI/SARI. Orientations basées sur des définitions de cas publiées, non sur votre dossier médical.'
           : '📋 References: WHO · ECDC · CDC · HCSP · ILI/SARI criteria. Guidance based on published case definitions, not your medical history.'}</p>
@@ -2821,7 +3270,7 @@ function renderDiagnosticResult(result, state) {
 
   const resultEl = document.getElementById('symptomResult');
   if (!resultEl) return;
-  resultEl.className = `symptom-result diag-result-${orientLevel.toLowerCase()}`;
+  resultEl.className = `symptom-result diag-result-${(clinical?.level || orientLevel || 'self_monitoring').toLowerCase()}`;
   resultEl.innerHTML = html;
   resultEl.classList.remove('hidden');
   resultEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -2931,8 +3380,111 @@ function renderGeoDeniedHelp() {
   </div>`;
 }
 
+function careTypeLabel(type) {
+  const labels = {
+    fr: {
+      emergency: 'Urgences',
+      hospital: 'Hôpital',
+      pharmacy: 'Pharmacie',
+      doctor: 'Médecin',
+      clinic: 'Clinique',
+      dispensary: 'Dispensaire',
+      health_center: 'Centre de santé',
+      unknown: 'Lieu de soins',
+    },
+    en: {
+      emergency: 'Emergency',
+      hospital: 'Hospital',
+      pharmacy: 'Pharmacy',
+      doctor: 'Doctor',
+      clinic: 'Clinic',
+      dispensary: 'Dispensary',
+      health_center: 'Health centre',
+      unknown: 'Healthcare facility',
+    },
+  };
+  return (labels[currentLang] || labels.en)[type] || type;
+}
+
+function careIcon(type) {
+  return {
+    emergency: '🚑',
+    hospital: '🏥',
+    pharmacy: '💊',
+    doctor: '👨‍⚕️',
+    clinic: '🏥',
+    dispensary: '🩺',
+    health_center: '🩺',
+    unknown: '📍',
+  }[type] || '📍';
+}
+
+function confidenceLabel(score) {
+  if (score >= 80) return currentLang === 'fr' ? 'Très pertinent' : 'High relevance';
+  if (score >= 60) return currentLang === 'fr' ? 'Pertinent' : 'Relevant';
+  return currentLang === 'fr' ? 'À vérifier' : 'Check details';
+}
+
+function renderCareFacilities(payload, need) {
+  const fr = currentLang === 'fr';
+  const items = payload.results || [];
+  const requested = latestClinicalOrientation?.careNeed || need || 'doctor';
+  const warning = requested === 'medical_regulation' || requested === 'emergency_department'
+    ? `<div class="care-critical-note">${fr
+        ? '🚨 En cas de signe grave, appelez la régulation médicale ou les urgences avant tout déplacement.'
+        : '🚨 If severe warning signs are present, call medical regulation or emergency services before travelling.'}</div>`
+    : '';
+
+  if (!items.length) {
+    return `${warning}<p class="care-no-results">${fr
+      ? 'Aucun lieu adapté trouvé dans le rayon choisi. Appelez le numéro d’urgence local si la situation est préoccupante.'
+      : 'No suitable facility found nearby. Call local emergency services if the situation is concerning.'}</p>`;
+  }
+
+  const sourceMeta = (payload.providers || [])
+    .filter(p => p.ok)
+    .map(p => `${p.provider}: ${p.count}`)
+    .join(' · ');
+
+  return `
+    ${warning}
+    <div class="care-location">
+      <span class="care-city">📍 ${fr ? 'Résultats proches de votre position' : 'Results near your location'}</span>
+      <span class="care-emergency">🚨 ${fr ? 'Urgence' : 'Emergency'}: <strong>15 / 112</strong></span>
+      ${sourceMeta ? `<span class="care-source-summary">${escapeHTML(sourceMeta)}</span>` : ''}
+    </div>
+    <ul class="care-list care-list-ranked">
+      ${items.map(facility => {
+        const dist = facility.distance_km === null ? '' : facility.distance_km < 1 ? `${Math.round(facility.distance_km * 1000)} m` : `${facility.distance_km.toFixed(1)} km`;
+        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${facility.lat},${facility.lon}`)}`;
+        return `<li class="care-item care-item-ranked">
+          <span class="care-icon">${careIcon(facility.type)}</span>
+          <div class="care-info">
+            <div class="care-row-head">
+              <strong>${escapeHTML(facility.name)}</strong>
+              <span class="care-confidence">${confidenceLabel(facility.relevance_score)} · ${facility.relevance_score}/100</span>
+            </div>
+            <span class="care-type">${escapeHTML(careTypeLabel(facility.type))} · ${escapeHTML(facility.source || 'source')}</span>
+            ${dist ? `<span class="care-dist">📍 ${dist}</span>` : ''}
+            ${facility.address ? `<span class="care-address">${escapeHTML(facility.address)}</span>` : ''}
+            ${facility.opening_hours ? `<span class="care-hours">🕐 ${escapeHTML(facility.opening_hours)}</span>` : '<span class="care-hours">🕐 Horaires à vérifier</span>'}
+            <div class="care-actions-row">
+              ${facility.phone ? `<a href="tel:${escapeHTML(facility.phone)}" class="care-phone">📞 ${escapeHTML(facility.phone)}</a>` : ''}
+              ${facility.website ? `<a href="${escapeHTML(facility.website)}" class="care-web" target="_blank" rel="noopener">🌐 ${fr ? 'Site' : 'Website'}</a>` : ''}
+              <a href="${mapsUrl}" class="care-web" target="_blank" rel="noopener">🧭 ${fr ? 'Itinéraire' : 'Directions'}</a>
+            </div>
+          </div>
+        </li>`;
+      }).join('')}
+    </ul>
+    <p class="care-data-warning">${fr
+      ? 'Données issues de sources publiques. Téléphone, horaires et capacité d’urgence doivent être vérifiés avant déplacement.'
+      : 'Data comes from public sources. Phone, opening hours and emergency capacity should be checked before travelling.'}</p>
+  `;
+}
+
 // ── Localisateur de soins ─────────────────────────────────────
-async function findNearbyCare() {
+async function findNearbyCare(needOverride) {
   const btn = document.getElementById('findCareBtn');
   const results = document.getElementById('careResults');
   if (!btn || !results) return;
@@ -2947,102 +3499,23 @@ async function findNearbyCare() {
   // ceux-ci créaient des conditions de course avec l'état mémorisé par Chrome.
   btn.disabled = true;
   btn.textContent = t('care-searching') || 'Recherche en cours…';
+  results.innerHTML = `<p class="care-loading">${t('care-searching') || 'Recherche en cours…'}</p>`;
 
   navigator.geolocation.getCurrentPosition(
     async ({ coords: { latitude: lat, longitude: lon } }) => {
       try {
-        const ovQuery = (amenities, limit) =>
-          `[out:json][timeout:20];(node[amenity~"${amenities}"](around:10000,${lat},${lon});way[amenity~"${amenities}"](around:10000,${lat},${lon}););out center ${limit};`;
-
-        const ovFetch = (query) => fetch('/api/overpass', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: query }),
+        const careNeed = needOverride || latestClinicalOrientation?.careNeed || 'doctor';
+        const url = `/api/care-nearby?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}&need=${encodeURIComponent(careNeed)}&radiusKm=10`;
+        const payload = await fetchJsonWithTimeout(url, {
+          timeout: 22000,
+          validate: data => data && Array.isArray(data.results),
         });
-
-        const [geoResp, ovHospResp, ovPharmResp] = await Promise.all([
-          fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json&accept-language=${currentLang.substring(0,2)}`),
-          ovFetch(ovQuery('hospital|clinic|doctors|health_post', 8)),
-          ovFetch(ovQuery('pharmacy', 8)),
-        ]);
-
-        const geoData   = await geoResp.json();
-        const ovHosp    = await ovHospResp.json();
-        const ovPharm   = await ovPharmResp.json();
-        const addr      = geoData.address || {};
-        const city      = addr.city || addr.town || addr.village || addr.county || '';
-        const country   = addr.country || '';
-        const cc        = (addr.country_code || '').toUpperCase();
-        const emerNum   = getEmergencyNumber(cc);
-        const fr        = currentLang === 'fr';
-
-        const calcDist = (el) => Math.round(Math.sqrt(
-          Math.pow(((el.lat || el.center?.lat) - lat) * 111320, 2) +
-          Math.pow(((el.lon || el.center?.lon) - lon) * 111320 * Math.cos(lat * Math.PI / 180), 2)
-        ));
-
-        const mapFacilities = (elements) => (elements || [])
-          .filter(el => el.tags?.name)
-          .map(el => ({
-            name:    el.tags.name,
-            amenity: el.tags.amenity,
-            phone:   el.tags.phone || el.tags['contact:phone'] || null,
-            hours:   el.tags['opening_hours'] || null,
-            website: el.tags.website || el.tags['contact:website'] || null,
-            dist:    calcDist(el),
-          }))
-          .sort((a,b) => a.dist - b.dist)
-          .slice(0, 6);
-
-        const hospitals  = mapFacilities(ovHosp.elements);
-        const pharmacies = mapFacilities(ovPharm.elements);
-
-        const renderList = (items, icons) => {
-          if (!items.length) return `<p class="care-no-results">${t('care-no-results')}</p>`;
-          return `<ul class="care-list">${items.map(f => {
-            const icon = icons[f.amenity] || icons.default;
-            const dist = f.dist < 1000 ? `${f.dist} m` : `${(f.dist/1000).toFixed(1)} km`;
-            return `<li class="care-item">
-              <span class="care-icon">${icon}</span>
-              <div class="care-info">
-                <strong>${f.name}</strong>
-                <span class="care-dist">📍 ${dist}</span>
-                ${f.hours ? `<span class="care-hours">🕐 ${f.hours}</span>` : ''}
-                ${f.phone ? `<a href="tel:${f.phone}" class="care-phone">📞 ${f.phone}</a>` : ''}
-                ${f.website ? `<a href="${f.website}" class="care-web" target="_blank" rel="noopener">🌐 ${fr ? 'Site' : 'Website'}</a>` : ''}
-              </div>
-            </li>`;
-          }).join('')}</ul>`;
-        };
-
-        const html = `
-          <div class="care-location">
-            <span class="care-city">📍 ${city}${country ? ', ' + country : ''}</span>
-            <span class="care-emergency">🚨 ${fr ? 'Urgences' : 'Emergency'}: <strong>${emerNum}</strong></span>
-          </div>
-          <div class="care-tabs">
-            <button class="care-tab-btn active" onclick="switchCareTab(this,'care-tab-hosp')">${fr ? '🏥 Soins médicaux' : '🏥 Medical care'} <span class="care-tab-count">${hospitals.length}</span></button>
-            <button class="care-tab-btn" onclick="switchCareTab(this,'care-tab-pharm')">${fr ? '💊 Pharmacies' : '💊 Pharmacies'} <span class="care-tab-count">${pharmacies.length}</span></button>
-          </div>
-          <div id="care-tab-hosp" class="care-tab-panel active">
-            ${renderList(hospitals, { hospital:'🏥', clinic:'🏥', doctors:'👨‍⚕️', health_post:'🩺', default:'🏥' })}
-          </div>
-          <div id="care-tab-pharm" class="care-tab-panel hidden">
-            ${pharmacies.length ? `
-              <div class="pharm-epi-note">
-                ${fr
-                  ? '💊 Les pharmacies vendent généralement masques FFP2, FFP3 et chirurgicaux. Appelez avant de vous déplacer pour confirmer les stocks.'
-                  : '💊 Pharmacies typically stock FFP2, FFP3 and surgical masks. Call ahead to confirm availability.'}
-              </div>
-            ` : ''}
-            ${renderList(pharmacies, { pharmacy:'💊', default:'💊' })}
-          </div>
-        `;
-
-        results.innerHTML = html;
+        results.innerHTML = renderCareFacilities(payload, careNeed);
         btn.textContent = t('care-btn-refresh') || '🔄 Actualiser';
-      } catch {
-        results.innerHTML = `<p class="care-error">${t('care-error')}</p>`;
+      } catch (error) {
+        logDataWarning('Recherche de soins indisponible', error);
+        results.innerHTML = `<p class="care-error">${t('care-error')}</p>
+          <div class="care-critical-note">🚨 ${currentLang === 'fr' ? 'Si la situation est urgente, appelez le 15 ou le 112 sans attendre.' : 'If this is urgent, call emergency services now.'}</div>`;
         btn.textContent = t('care-btn');
       }
       btn.disabled = false;
@@ -3123,6 +3596,15 @@ domReady(() => {
   // RGPD consent + mes données
   initConsent();
   renderMyDataSection();
+
+  // PHEIC alert — chargement dynamique
+  loadPheicAlert();
+
+  // Numéros d'urgence localisés
+  renderEmergencyNumbers();
+
+  // Onboarding première visite
+  initOnboarding();
 
   // Proactive geolocation permission state → update care-finder button label
   if (navigator.permissions) {
@@ -4190,6 +4672,247 @@ function exportMyDeclarations() {
   a.download = `breathiq-declarations-${getCurrentISOWeek()}.json`;
   a.click();
   URL.revokeObjectURL(url);
+}
+
+// ── PHEIC Alert — chargement dynamique depuis data/pheic-alerts.json ─────────
+async function loadPheicAlert() {
+  const banner = document.getElementById('epidemicAlertBanner');
+  if (!banner) return;
+  try {
+    const data = await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 6000 });
+    const active = data?.alerts?.find(a => a.active);
+    if (!active) {
+      banner.classList.add('alert-inactive');
+      return;
+    }
+    const lang = currentLang in (active.levelLabel || {}) ? currentLang : 'fr';
+    const L = (obj) => (obj && (obj[lang] || obj['fr'])) || '';
+
+    const levelEl = banner.querySelector('.epidemic-level');
+    const diseaseEl = banner.querySelector('.epidemic-disease');
+    const dateEl = banner.querySelector('.epidemic-date');
+    const msgEl = banner.querySelector('.epidemic-msg');
+    const maskEl = banner.querySelector('.epidemic-mask');
+    const linkEl = banner.querySelector('.epidemic-link');
+
+    if (levelEl) {
+      levelEl.className = `epidemic-level ${active.level}`;
+      levelEl.textContent = (active.level === 'rouge' ? '🔴 ' : active.level === 'orange' ? '🟠 ' : '⚠️ ') + L(active.levelLabel);
+    }
+    if (diseaseEl) {
+      diseaseEl.textContent = `${active.disease} · ${L(active.subtitle)}`;
+    }
+    if (dateEl) {
+      const pheicFormatted = active.pheicDate ? new Date(active.pheicDate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+      const updateFormatted = active.lastUpdate ? new Date(active.lastUpdate).toLocaleDateString(lang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '';
+      const pheicLabel = { fr:'PHEIC déclarée le', en:'PHEIC declared', es:'PHEIC declarada el', pt:'PHEIC declarada em', ar:'أُعلن PHEIC في', zh:'PHEIC宣布于', hi:'PHEIC घोषित', sw:'PHEIC ilitangazwa', ru:'PHEIC объявлен' }[lang] || 'PHEIC';
+      const deathsLabel = { fr:'décès confirmés', en:'confirmed deaths', es:'muertes confirmadas', pt:'mortes confirmadas', ar:'وفاة مؤكدة', zh:'确认死亡', hi:'पुष्ट मृत्यु', sw:'vifo vilivyothibitishwa', ru:'подтверждённых смертей' }[lang] || 'deaths';
+      const updateLabel = { fr:'Mise à jour :', en:'Updated:', es:'Actualizado:', pt:'Atualizado:', ar:'تحديث:', zh:'更新:', hi:'अपडेट:', sw:'Ilisasishwa:', ru:'Обновлено:' }[lang] || 'Updated:';
+      const franceLabel = L(active.franceStatus);
+      dateEl.textContent = `${pheicLabel} ${pheicFormatted} · ${active.deaths} ${deathsLabel} · ${updateLabel} ${updateFormatted}${franceLabel ? ' · ' + franceLabel : ''}`;
+    }
+    if (msgEl) {
+      msgEl.innerHTML = `🚨 <strong>${active.level === 'rouge' ? (lang === 'fr' ? 'Urgence sanitaire internationale (PHEIC)' : 'International Health Emergency (PHEIC)') : 'Alerte OMS'}</strong> — ${L(active.message)}`;
+    }
+    if (maskEl) {
+      const hcwLabel = { fr:'Soignants', en:'Healthcare workers', es:'Sanitarios', pt:'Profissionais de saúde', ar:'الكوادر الصحية', zh:'医护人员', hi:'स्वास्थ्यकर्मी', sw:'Wahudumu wa afya', ru:'Медработники' }[lang] || 'HCW';
+      maskEl.innerHTML = `🩺 <strong>${hcwLabel} :</strong> ${L(active.hcwNote)}`;
+    }
+    if (linkEl && active.pathogen_id) {
+      const seeLabel = { fr:'Fiche →', en:'Factsheet →', es:'Ficha →', pt:'Ficha →', ar:'الملف ←', zh:'详情 →', hi:'विवरण →', sw:'Faili →', ru:'Подробнее →' }[lang] || 'Info →';
+      linkEl.textContent = `${active.disease} — ${seeLabel}`;
+    }
+
+    // Render PHEIC strip in patient hero
+    const strip = document.getElementById('riskPheicStrip');
+    if (strip) {
+      const see = { fr:'Voir la fiche →', en:'See factsheet →', es:'Ver ficha →', pt:'Ver ficha →', ar:'انظر الملف ←', zh:'查看详情 →', hi:'विवरण देखें →', sw:'Tazama faili →', ru:'Подробнее →' }[lang] || '→';
+      strip.innerHTML = `🚨 <strong>PHEIC OMS</strong> — ${active.disease} · ${L(active.subtitle)} · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">${see}</a>`;
+      strip.style.display = '';
+    }
+
+    // Update expert stats bar
+    const esbPheic = document.getElementById('esbPheic');
+    if (esbPheic) esbPheic.textContent = data.alerts.filter(a => a.active).length;
+
+    banner.classList.remove('alert-inactive');
+  } catch (e) {
+    logDataWarning('PHEIC alert load failed', e);
+    // On error: keep the hardcoded HTML as fallback, just don't hide the banner
+  }
+}
+
+// ── Numéros d'urgence — localisation par langue/pays ─────────────────────────
+const EMERGENCY_NUMBERS = {
+  // [primary, secondary, description]
+  fr: [{ num:'15', label:'SAMU', tel:'15' }, { num:'15', label:'SAMU', tel:'15' }, { num:'18', label:'Pompiers', tel:'18' }, { num:'112', label:'Urgences EU', tel:'112' }],
+  'fr-BE': [{ num:'112', label:'Urgences', tel:'112' }, { num:'100', label:'Ambulance', tel:'100' }],
+  'fr-CH': [{ num:'144', label:'Ambulance', tel:'144' }, { num:'112', label:'Urgences EU', tel:'112' }],
+  'fr-CA': [{ num:'911', label:'Urgences', tel:'911' }],
+  en: [{ num:'999', label:'Emergency', tel:'999' }, { num:'112', label:'EU Emergency', tel:'112' }],
+  'en-US': [{ num:'911', label:'Emergency', tel:'911' }],
+  'en-AU': [{ num:'000', label:'Emergency', tel:'000' }, { num:'112', label:'Intl', tel:'112' }],
+  'en-IN': [{ num:'108', label:'Ambulance', tel:'108' }, { num:'112', label:'Emergency', tel:'112' }],
+  es: [{ num:'112', label:'Emergencias', tel:'112' }, { num:'061', label:'Ambulancia', tel:'061' }],
+  'es-MX': [{ num:'911', label:'Emergencias', tel:'911' }],
+  'es-AR': [{ num:'107', label:'SAME', tel:'107' }, { num:'911', label:'Policía', tel:'911' }],
+  pt: [{ num:'192', label:'SAMU', tel:'192' }, { num:'190', label:'Polícia', tel:'190' }],
+  'pt-PT': [{ num:'112', label:'Emergência', tel:'112' }],
+  ar: [{ num:'123', label:'إسعاف', tel:'123' }, { num:'112', label:'طوارئ', tel:'112' }],
+  'ar-SA': [{ num:'997', label:'هلال أحمر', tel:'997' }, { num:'911', label:'طوارئ', tel:'911' }],
+  'ar-MA': [{ num:'150', label:'SAMU', tel:'150' }, { num:'15', label:'SAMU', tel:'15' }],
+  zh: [{ num:'120', label:'急救', tel:'120' }, { num:'110', label:'警察', tel:'110' }],
+  'zh-TW': [{ num:'119', label:'救護', tel:'119' }],
+  hi: [{ num:'108', label:'एम्बुलेंस', tel:'108' }, { num:'112', label:'आपातकाल', tel:'112' }],
+  sw: [{ num:'112', label:'Dharura', tel:'112' }, { num:'999', label:'Polisi', tel:'999' }],
+  ru: [{ num:'103', label:'Скорая', tel:'103' }, { num:'112', label:'Единый', tel:'112' }],
+  default: [{ num:'112', label:'Emergency EU', tel:'112' }, { num:'911', label:'USA', tel:'911' }, { num:'999', label:'UK', tel:'999' }],
+};
+
+function getEmergencyNumbers() {
+  const lang = currentLang || 'fr';
+  // Try lang-REGION variant first (e.g. navigator.language = 'pt-BR')
+  const navLang = navigator.language || '';
+  if (navLang && EMERGENCY_NUMBERS[navLang]) return EMERGENCY_NUMBERS[navLang];
+  // Try base language
+  if (EMERGENCY_NUMBERS[lang]) return EMERGENCY_NUMBERS[lang];
+  // Map language to most common country variant
+  const fallbacks = { pt:'pt', es:'es', zh:'zh', hi:'hi', ar:'ar', sw:'sw', ru:'ru', en:'en', fr:'fr' };
+  return EMERGENCY_NUMBERS[fallbacks[lang]] || EMERGENCY_NUMBERS.default;
+}
+
+function renderEmergencyNumbers() {
+  const containers = document.querySelectorAll('.triage-severe-nums, .triage-alarm-nums');
+  const numbers = getEmergencyNumbers();
+  // Always include 112 if not already present
+  const has112 = numbers.some(n => n.num === '112');
+  const display = has112 ? numbers : [...numbers, { num:'112', label:'International', tel:'112' }];
+
+  containers.forEach(container => {
+    const isAlarm = container.classList.contains('triage-alarm-nums');
+    if (isAlarm) {
+      container.innerHTML = display.slice(0, 4).map(n =>
+        `<span aria-label="${n.label}">${getFlagForNumber(n.num)} ${n.num}</span>`
+      ).join('');
+    } else {
+      container.innerHTML = display.slice(0, 4).map(n =>
+        `<a href="tel:${n.tel}" class="triage-num-btn" aria-label="${n.label}">${getFlagForNumber(n.num)} ${n.num}</a>`
+      ).join('');
+    }
+  });
+}
+
+function getFlagForNumber(num) {
+  const map = { '15':'🇫🇷', '18':'🇫🇷', '112':'🌍', '999':'🇬🇧', '911':'🇺🇸', '120':'🇨🇳',
+    '108':'🇮🇳', '103':'🇷🇺', '192':'🇧🇷', '107':'🇦🇷', '123':'🇪🇬', '150':'🇲🇦',
+    '997':'🇸🇦', '119':'🇹🇼', '144':'🇨🇭', '100':'🇧🇪', '000':'🇦🇺', '061':'🇪🇸' };
+  return map[num] || '📞';
+}
+
+// ── Onboarding first-visit ────────────────────────────────────────────────────
+const ONBOARDING_KEY = 'biq-onboarded';
+
+function initOnboarding() {
+  try {
+    if (localStorage.getItem(ONBOARDING_KEY)) return;
+  } catch { return; }
+
+  const modal = document.getElementById('onboardingModal');
+  if (!modal) return;
+
+  // Show after a brief delay so the page renders first
+  setTimeout(() => {
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    // Trap focus on first button
+    const firstBtn = modal.querySelector('button');
+    if (firstBtn) firstBtn.focus();
+  }, 800);
+}
+
+function closeOnboarding(chosenMode) {
+  try { localStorage.setItem(ONBOARDING_KEY, '1'); } catch { /* rien */ }
+  const modal = document.getElementById('onboardingModal');
+  if (modal) {
+    modal.setAttribute('hidden', '');
+    modal.setAttribute('aria-hidden', 'true');
+  }
+  if (chosenMode && chosenMode !== currentMode) {
+    if (chosenMode === 'expert') {
+      toggleMode();
+    }
+  }
+}
+
+// ── Care Finder — fallback recherche par ville ────────────────────────────────
+async function searchCareByCity() {
+  const input = document.getElementById('careCityInput');
+  const resultsEl = document.getElementById('careResults');
+  if (!input || !resultsEl) return;
+
+  const query = input.value.trim();
+  if (!query) return;
+
+  const btn = document.getElementById('careCityBtn');
+  if (btn) { btn.disabled = true; btn.textContent = t('care-searching'); }
+
+  resultsEl.innerHTML = `<p class="care-loading">${t('care-searching')}</p>`;
+
+  try {
+    // Step 1: Geocode city name via Nominatim
+    const geoUrl = `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1&addressdetails=1`;
+    const geoResp = await fetch(geoUrl, { headers: { 'Accept-Language': currentLang || 'fr', 'User-Agent': 'BreathIQ/1.0 (contact@breathiq.fr)' } });
+    if (!geoResp.ok) throw new Error('Geocoding failed');
+    const geoData = await geoResp.json();
+    if (!geoData.length) {
+      resultsEl.innerHTML = `<p class="care-error">${currentLang === 'fr' ? 'Ville introuvable. Essayez un nom plus précis.' : 'City not found. Try a more specific name.'}</p>`;
+      return;
+    }
+    const { lat, lon } = geoData[0];
+    // Step 2: Query Overpass via existing API
+    await findNearbyCareAtCoords(parseFloat(lat), parseFloat(lon));
+  } catch (e) {
+    resultsEl.innerHTML = `<p class="care-error">${t('care-error')}</p>`;
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = currentLang === 'fr' ? 'Rechercher' : 'Search'; }
+  }
+}
+
+// Wrapper: expose findNearbyCare to work with explicit coords too
+async function findNearbyCareAtCoords(lat, lon) {
+  // Delegate to the existing care-facilities module if available
+  if (typeof window.BIQ_CARE !== 'undefined' && typeof window.BIQ_CARE.findAtCoords === 'function') {
+    return window.BIQ_CARE.findAtCoords(lat, lon);
+  }
+  // Fallback: call the API directly
+  const apiUrl = `/api/care-nearby?lat=${lat}&lon=${lon}&lang=${currentLang || 'fr'}`;
+  const resultsEl = document.getElementById('careResults');
+  try {
+    const resp = await fetch(apiUrl);
+    if (!resp.ok) throw new Error('API error');
+    const data = await resp.json();
+    renderCareResults(data, resultsEl);
+  } catch {
+    if (resultsEl) resultsEl.innerHTML = `<p class="care-error">${t('care-error')}</p>`;
+  }
+}
+
+function renderCareResults(data, container) {
+  if (!container) return;
+  if (!data?.results?.length) {
+    container.innerHTML = `<p class="care-no-results">${t('care-no-results')}</p>`;
+    return;
+  }
+  container.innerHTML = data.results.slice(0, 8).map(r => `
+    <div class="care-result-item">
+      <span class="care-result-icon">${r.type === 'hospital' ? '🏥' : r.type === 'pharmacy' ? '💊' : '🩺'}</span>
+      <div class="care-result-body">
+        <strong class="care-result-name">${escapeHTML(r.name || (currentLang === 'fr' ? 'Établissement de santé' : 'Healthcare facility'))}</strong>
+        <span class="care-result-dist">${r.distance ? Math.round(r.distance) + ' m' : ''}</span>
+        ${r.address ? `<span class="care-result-addr">${escapeHTML(r.address)}</span>` : ''}
+      </div>
+      ${r.phone ? `<a href="tel:${escapeHTML(r.phone)}" class="care-result-call">📞</a>` : ''}
+    </div>`).join('');
 }
 
 function renderMyDataSection() {

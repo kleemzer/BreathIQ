@@ -1,0 +1,60 @@
+{
+  "name": "BreathIQ — Surveillance épidémique mondiale",
+  "short_name": "BreathIQ",
+  "description": "Alertes pathogènes en temps réel. Qualité de l'air, circulation virale, détection précoce des épidémies. Outil d'information publique — non dispositif médical.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0F2A45",
+  "theme_color": "#1A3C5E",
+  "orientation": "any",
+  "lang": "fr",
+  "dir": "ltr",
+  "categories": ["health", "medical", "news"],
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide",
+      "label": "BreathIQ — Tableau de bord épidémique"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Symptômes",
+      "short_name": "Symptômes",
+      "description": "Vérifier mes symptômes",
+      "url": "/#symptomChecker",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    },
+    {
+      "name": "Carte mondiale",
+      "short_name": "Carte",
+      "description": "Carte des foyers pathogènes",
+      "url": "/#map",
+      "icons": [{ "src": "/favicon.svg", "sizes": "any" }]
+    }
+  ],
+  "related_applications": [],
+  "prefer_related_applications": false
+}
