@@ -116,6 +116,28 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/terms-of-use.html"/>
   </url>
 
+  <!-- À propos — FR -->
+  <url>
+    <loc>https://breathiq.fr/about.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/about-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/about-en.html"/>
+  </url>
+
+  <!-- About — EN -->
+  <url>
+    <loc>https://breathiq.fr/about-en.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/about.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/about-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/about-en.html"/>
+  </url>
+
   <!-- Méthodologie -->
   <url>
     <loc>https://breathiq.fr/methodologie.html</loc>
