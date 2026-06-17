@@ -2,45 +2,127 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
+  <!-- Page d'accueil — 9 langues -->
   <url>
     <loc>https://breathiq.fr/</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/"/>
+    <xhtml:link rel="alternate" hreflang="fr"       href="https://breathiq.fr/?lang=fr"/>
+    <xhtml:link rel="alternate" hreflang="en"       href="https://breathiq.fr/?lang=en"/>
+    <xhtml:link rel="alternate" hreflang="es"       href="https://breathiq.fr/?lang=es"/>
+    <xhtml:link rel="alternate" hreflang="pt"       href="https://breathiq.fr/?lang=pt"/>
+    <xhtml:link rel="alternate" hreflang="ar"       href="https://breathiq.fr/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="zh"       href="https://breathiq.fr/?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="hi"       href="https://breathiq.fr/?lang=hi"/>
+    <xhtml:link rel="alternate" hreflang="sw"       href="https://breathiq.fr/?lang=sw"/>
+    <xhtml:link rel="alternate" hreflang="ru"       href="https://breathiq.fr/?lang=ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/"/>
   </url>
 
-  <url>
-    <loc>https://breathiq.fr/mentions-legales.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/mentions-legales.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/legal-notice.html"/>
-  </url>
-
-  <url>
-    <loc>https://breathiq.fr/legal-notice.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/mentions-legales.html"/>
-    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/legal-notice.html"/>
-  </url>
-
-  <url>
-    <loc>https://breathiq.fr/conditions-utilisation.html</loc>
-    <lastmod>2026-05-19</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.4</priority>
-  </url>
-
+  <!-- Politique de confidentialité — FR -->
   <url>
     <loc>https://breathiq.fr/privacy.html</loc>
-    <lastmod>2026-05-19</lastmod>
+    <lastmod>2026-06-17</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/privacy-en.html"/>
+  </url>
+
+  <!-- Privacy Policy — EN -->
+  <url>
+    <loc>https://breathiq.fr/privacy-en.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/privacy-en.html"/>
+  </url>
+
+  <!-- Política de privacidad — ES -->
+  <url>
+    <loc>https://breathiq.fr/privacy-es.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/privacy-en.html"/>
+  </url>
+
+  <!-- سياسة الخصوصية — AR -->
+  <url>
+    <loc>https://breathiq.fr/privacy-ar.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html"/>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/privacy-en.html"/>
+  </url>
+
+  <!-- Mentions légales — FR -->
+  <url>
+    <loc>https://breathiq.fr/mentions-legales.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/legal-notice.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/legal-notice.html"/>
+  </url>
+
+  <!-- Legal Notice — EN -->
+  <url>
+    <loc>https://breathiq.fr/legal-notice.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/mentions-legales.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/legal-notice.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/legal-notice.html"/>
+  </url>
+
+  <!-- Conditions d'utilisation — FR -->
+  <url>
+    <loc>https://breathiq.fr/conditions-utilisation.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+
+  <!-- Méthodologie -->
+  <url>
+    <loc>https://breathiq.fr/methodologie.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Bibliographie -->
+  <url>
+    <loc>https://breathiq.fr/bibliography.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <!-- Stocks FFP2 -->
+  <url>
+    <loc>https://breathiq.fr/stocks.html</loc>
+    <lastmod>2026-06-17</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.5</priority>
   </url>
 

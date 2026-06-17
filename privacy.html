@@ -7,6 +7,10 @@
   <meta name="description" content="Politique de confidentialité BreathIQ — Traitement des données, droits RGPD, transferts internationaux, durées de conservation, données de santé Art. 9.">
   <title>Politique de confidentialité — BreathIQ</title>
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html">
+  <link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html">
+  <link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -66,8 +70,15 @@
 <header class="page-header">
   <div class="brand">Breath<strong>IQ</strong></div>
   <h1>Politique de confidentialité</h1>
-  <p class="updated">Version 2.0 — 20 mai 2026 · Conforme RGPD (Règl. UE 2016/679) &amp; recommandations CNIL</p>
+  <p class="updated">Version 2.1 — 17 juin 2026 · Conforme RGPD (Règl. UE 2016/679) &amp; recommandations CNIL</p>
 </header>
+
+<div style="display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;padding:1rem 1.5rem 0;max-width:900px;margin:0 auto" role="navigation" aria-label="Versions linguistiques">
+  <a href="privacy.html" style="font-size:.78rem;font-weight:600;color:#1A3C5E;background:rgba(26,60,94,.12);padding:.25rem .65rem;border-radius:20px;border:1px solid rgba(26,60,94,.2);text-decoration:none">🇫🇷 Français (actuel)</a>
+  <a href="privacy-en.html" style="font-size:.78rem;font-weight:600;color:#2A7FD4;background:rgba(42,127,212,.08);padding:.25rem .65rem;border-radius:20px;border:1px solid rgba(42,127,212,.18);text-decoration:none">🇬🇧 English</a>
+  <a href="privacy-es.html" style="font-size:.78rem;font-weight:600;color:#2A7FD4;background:rgba(42,127,212,.08);padding:.25rem .65rem;border-radius:20px;border:1px solid rgba(42,127,212,.18);text-decoration:none">🇪🇸 Español</a>
+  <a href="privacy-ar.html" style="font-size:.78rem;font-weight:600;color:#2A7FD4;background:rgba(42,127,212,.08);padding:.25rem .65rem;border-radius:20px;border:1px solid rgba(42,127,212,.18);text-decoration:none">🇸🇦 العربية</a>
+</div>
 
 <nav class="page-nav" aria-label="Sommaire">
   <a href="#responsable">1. Responsable</a>
@@ -77,8 +88,9 @@
   <a href="#durees">5. Durées</a>
   <a href="#droits">6. Droits</a>
   <a href="#cookies">7. Cookies</a>
-  <a href="#securite">8. Sécurité</a>
-  <a href="#cnil">9. CNIL</a>
+  <a href="#analytique">8. Analytique</a>
+  <a href="#securite">9. Sécurité</a>
+  <a href="#cnil">10. CNIL</a>
   <a href="#contact">Contact DPO</a>
 </nav>
 
@@ -181,6 +193,7 @@
         <tr><td>Géolocalisation (recherche de soins, qualité air locale)</td><td>Consentement explicite (modal dédié)</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
         <tr><td>Déclarations syndromiques (données de santé)</td><td>Consentement explicite + intérêt public (surveillance épidémiologique)</td><td><span class="chip chip-amber">Art. 9(2)(a) + (i)</span></td></tr>
         <tr><td>Logs serveur Vercel</td><td>Intérêt légitime (sécurité, lutte contre les abus)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Analytique anonyme (Plausible)</td><td>Intérêt légitime (statistiques agrégées anonymes)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -338,8 +351,29 @@
     Le stockage des déclarations syndromiques requiert le double consentement explicite Art. 6 + Art. 9.</p>
   </section>
 
+  <section id="analytique">
+    <h2><span class="num">8</span> Analytique respectueuse de la vie privée (Plausible)</h2>
+    <p>BreathIQ utilise <strong>Plausible Analytics</strong>, un service d'analyse hébergé dans l'UE (Estonie), conçu sans cookies et respectueux de la vie privée, afin de comprendre l'utilisation du site et l'améliorer.</p>
+    <p><strong>Ce que Plausible ne collecte PAS :</strong></p>
+    <ul>
+      <li>Aucun identifiant personnel (nom, e-mail, adresse IP stockée)</li>
+      <li>Aucun cookie ni identifiant persistant d'aucune sorte</li>
+      <li>Aucun suivi inter-sites</li>
+      <li>Aucun fingerprinting d'appareil</li>
+    </ul>
+    <p><strong>Ce que Plausible collecte (agrégé, anonyme) :</strong></p>
+    <ul>
+      <li>Pages vues et nombre de visiteurs (calculé sans stocker les IP)</li>
+      <li>Sources de trafic (référent, campagne)</li>
+      <li>Localisation au niveau pays (dérivée de l'IP, jamais stockée)</li>
+      <li>Type de navigateur et système d'exploitation (agrégé)</li>
+    </ul>
+    <p>Le traitement est fondé sur l'intérêt légitime (art. 6(1)(f) RGPD), la collecte de Plausible étant anonyme par conception et ne nécessitant pas de consentement préalable au titre du RGPD ou de la directive ePrivacy.
+    <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Politique de données Plausible →</a></p>
+  </section>
+
   <section id="securite">
-    <h2><span class="num">8</span> Sécurité technique</h2>
+    <h2><span class="num">9</span> Sécurité technique</h2>
     <ul>
       <li>HTTPS obligatoire avec HSTS (Strict-Transport-Security)</li>
       <li>Content Security Policy (CSP) stricte — configurée dans vercel.json</li>
@@ -353,7 +387,7 @@
   </section>
 
   <section id="cnil">
-    <h2><span class="num">9</span> Réclamation — CNIL</h2>
+    <h2><span class="num">10</span> Réclamation — CNIL</h2>
     <p>Conformément à l'article 77 du RGPD, vous avez le droit d'introduire une réclamation auprès
     de la Commission Nationale de l'Informatique et des Libertés (CNIL) si vous estimez que le
     traitement de vos données porte atteinte à vos droits.</p>

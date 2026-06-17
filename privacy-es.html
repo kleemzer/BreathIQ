@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Política de privacidad de BreathIQ — Tratamiento de datos, derechos RGPD, transferencias internacionales, datos de salud Art. 9.">
+  <title>Política de privacidad — BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html">
+  <link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html">
+  <link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#1A3C5E; --blue:#2A7FD4; --teal:#0E8C7A; --amber:#D97706; --red:#C0392B; --bg:#F5F7FA; --card:#fff; --text:#1A2B3C; --muted:#4A5568; --border:rgba(26,60,94,.12); --font:'Inter',system-ui,sans-serif; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--blue); }
+    .page-header { background: linear-gradient(145deg, #0F2A45 0%, #1A3C5E 100%); padding: 3rem 1.5rem 2.5rem; color: #fff; text-align: center; }
+    .page-header .brand { font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,.55); margin-bottom: .75rem; }
+    .page-header .brand strong { color: #2A7FD4; font-weight: 800; }
+    .page-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -.03em; }
+    .page-header .updated { margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.4); }
+    .lang-switch { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 1.5rem 0; max-width: 900px; margin: 0 auto; }
+    .lang-switch a { font-size: .78rem; font-weight: 600; color: var(--blue); background: rgba(42,127,212,.08); padding: .25rem .65rem; border-radius: 20px; border: 1px solid rgba(42,127,212,.18); text-decoration: none; }
+    .lang-switch a[aria-current] { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .page-nav { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; padding: 1.5rem 1.5rem 0; max-width: 900px; margin: 0 auto; }
+    .page-nav a { font-size: .8rem; font-weight: 600; color: var(--blue); background: rgba(42,127,212,.08); padding: .3rem .75rem; border-radius: 20px; border: 1px solid rgba(42,127,212,.18); text-decoration: none; white-space: nowrap; }
+    .page-nav a:hover { background: rgba(42,127,212,.15); }
+    .main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .alert { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 1.5rem; }
+    .alert-teal { background: #F0FDF9; border: 1px solid #99F6E4; border-left: 4px solid var(--teal); }
+    .alert-amber { background: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid var(--amber); }
+    .alert strong { display: block; font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
+    .alert p { font-size: .85rem; color: #374151; margin: 0; line-height: 1.6; }
+    section[id] { scroll-margin-top: 20px; margin-bottom: 2.5rem; }
+    h2 { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: .9rem; padding-bottom: .4rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: .5rem; }
+    h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-size: .72rem; font-weight: 800; flex-shrink: 0; }
+    h3 { font-size: .98rem; font-weight: 700; color: var(--navy); margin: 1.2rem 0 .5rem; }
+    p { margin-bottom: .85rem; font-size: .92rem; color: #374151; }
+    ul { padding-left: 1.3rem; margin-bottom: .9rem; }
+    li { font-size: .9rem; color: #374151; margin-bottom: .35rem; line-height: 1.6; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; margin-bottom: 1.2rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    thead { background: #EEF2F7; }
+    th { padding: .6rem .9rem; font-weight: 700; color: var(--navy); text-align: left; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid var(--border); }
+    td { padding: .55rem .9rem; border-top: 1px solid var(--border); color: #374151; vertical-align: top; }
+    tr:nth-child(even) td { background: rgba(245,247,250,.5); }
+    .chip { display: inline-block; padding: .15rem .55rem; border-radius: 999px; font-size: .7rem; font-weight: 700; white-space: nowrap; }
+    .chip-green { background: #CCFBF1; color: #065F46; }
+    .chip-blue  { background: #DBEAFE; color: #1D4ED8; }
+    .chip-amber { background: #FEF3C7; color: #92400E; }
+    .chip-red   { background: #FEE2E2; color: #991B1B; }
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; margin: .75rem 0 1rem; }
+    .right-item { background: rgba(42,127,212,.04); border: 1px solid rgba(42,127,212,.15); border-radius: 10px; padding: .85rem; }
+    .right-item .ri { font-size: 1.1rem; margin-bottom: .3rem; }
+    .right-item strong { display: block; font-size: .85rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; }
+    .right-item p { font-size: .78rem; color: var(--muted); margin: 0; }
+    .contact-box { background: #0F2A45; color: #e2e8f0; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1rem; }
+    .contact-box h3 { color: #fff; font-size: 1rem; margin-bottom: .5rem; margin-top: 0; }
+    .contact-box a { color: #60a5fa; }
+    .contact-box p { color: #94a3b8; font-size: .85rem; margin: .25rem 0; }
+    .page-footer { background: #0D1E2D; color: rgba(255,255,255,.4); text-align: center; padding: 1.5rem; font-size: .78rem; }
+    .page-footer a { color: rgba(255,255,255,.5); }
+    code { background: rgba(26,60,94,.07); padding: .1rem .4rem; border-radius: 4px; font-size: .82rem; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="brand">Breath<strong>IQ</strong></div>
+  <h1>Política de privacidad</h1>
+  <p class="updated">Versión 2.1 — 17 de junio de 2026 · Conforme al RGPD (Regl. UE 2016/679)</p>
+</header>
+
+<div class="lang-switch" role="navigation" aria-label="Versiones de idioma">
+  <a href="privacy.html">🇫🇷 Français</a>
+  <a href="privacy-en.html">🇬🇧 English</a>
+  <a href="privacy-es.html" aria-current="page">🇪🇸 Español</a>
+  <a href="privacy-ar.html">🇸🇦 العربية</a>
+</div>
+
+<nav class="page-nav" aria-label="Índice">
+  <a href="#responsable">1. Responsable</a>
+  <a href="#datos">2. Datos</a>
+  <a href="#bases">3. Bases legales</a>
+  <a href="#transferencias">4. Transferencias</a>
+  <a href="#conservacion">5. Conservación</a>
+  <a href="#derechos">6. Derechos</a>
+  <a href="#analitica">7. Analítica</a>
+  <a href="#reclamaciones">8. Reclamaciones</a>
+</nav>
+
+<main class="main">
+
+  <div class="alert alert-teal">
+    <span style="font-size:1.4rem;flex-shrink:0">🔐</span>
+    <div>
+      <strong>Resumen: BreathIQ no almacena datos personales en sus servidores</strong>
+      <p>Este sitio está construido sobre el principio de <em>Privacidad por Diseño</em> (art. 25 RGPD).
+      Todos los datos (preferencias, declaraciones sindrómicas, caché API) permanecen exclusivamente
+      en su dispositivo. Sin cuenta, sin cookies publicitarias, sin rastreadores de terceros.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-amber">
+    <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
+    <div>
+      <strong>Datos de salud (Art. 9 RGPD)</strong>
+      <p>Si utiliza el formulario de vigilancia sindrómica (modo Experto), sus declaraciones
+      constituyen datos de salud. Permanecen almacenados <strong>únicamente en su dispositivo</strong>
+      y requieren doble consentimiento explícito. Puede eliminarlos en cualquier momento desde
+      la sección <a href="index.html#mydata">Mis datos</a>.</p>
+    </div>
+  </div>
+
+  <section id="responsable">
+    <h2><span class="num">1</span> Responsable del tratamiento</h2>
+    <table>
+      <tr><td style="font-weight:600;width:35%">Responsable</td><td>Dr. Clément MÉDEAU</td></tr>
+      <tr><td style="font-weight:600">Calidad</td><td>Médico — Editor persona física (LCEN Art. 6.II)</td></tr>
+      <tr><td style="font-weight:600">Localización</td><td>La Rochelle (17000), Francia</td></tr>
+      <tr><td style="font-weight:600">Contacto general</td><td><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></td></tr>
+      <tr><td style="font-weight:600">DPD / Referente datos</td><td><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></td></tr>
+    </table>
+  </section>
+
+  <section id="datos">
+    <h2><span class="num">2</span> Datos tratados</h2>
+    <h3>2.1 Datos almacenados localmente en su dispositivo (localStorage)</h3>
+    <p>Estos datos <strong>nunca se envían a nuestros servidores</strong> y permanecen en su navegador:</p>
+    <table>
+      <thead><tr><th>Clave localStorage</th><th>Contenido</th><th>Base legal</th><th>Eliminable</th></tr></thead>
+      <tbody>
+        <tr><td><code>biq-theme</code></td><td>Tema claro u oscuro</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Sí — Mis datos</td></tr>
+        <tr><td><code>biq-lang</code></td><td>Idioma de interfaz elegido</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Sí — Mis datos</td></tr>
+        <tr><td><code>biq-mode</code></td><td>Modo Paciente o Experto</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Sí — Mis datos</td></tr>
+        <tr><td><code>biq-consent</code></td><td>Respuesta al banner de consentimiento</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Sí — Mis datos</td></tr>
+        <tr><td><code>biq-declarations</code></td><td>Declaraciones sindrómicas anónimas (máx. 500)</td><td><span class="chip chip-amber">Art. 9(2)(i)</span></td><td>Sí — Mis datos</td></tr>
+        <tr><td><code>biq-live-*</code></td><td>Caché de datos API (calidad del aire, epidemiología)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td><td>Sí — Mis datos</td></tr>
+      </tbody>
+    </table>
+    <h3>2.2 Geolocalización</h3>
+    <p>Cuando autoriza el acceso a su posición geográfica, las coordenadas precisas se usan solo en memoria de trabajo (nunca almacenadas). Para declaraciones sindrómicas, las coordenadas se redondean a 0,5° (±55 km) antes del almacenamiento.</p>
+  </section>
+
+  <section id="bases">
+    <h2><span class="num">3</span> Bases legales</h2>
+    <table>
+      <thead><tr><th>Tratamiento</th><th>Base legal</th><th>Artículo RGPD</th></tr></thead>
+      <tbody>
+        <tr><td>Almacenamiento de preferencias de interfaz</td><td>Consentimiento</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
+        <tr><td>Caché API (calidad del aire, datos epidemiológicos)</td><td>Interés legítimo (rendimiento)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Geolocalización</td><td>Consentimiento explícito</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
+        <tr><td>Declaraciones sindrómicas (datos de salud)</td><td>Consentimiento explícito + interés público</td><td><span class="chip chip-amber">Art. 9(2)(a) + (i)</span></td></tr>
+        <tr><td>Analítica anónima (Plausible)</td><td>Interés legítimo (estadísticas agregadas anónimas)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="transferencias">
+    <h2><span class="num">4</span> Transferencias internacionales</h2>
+    <p>BreathIQ consulta varias API de terceros para datos en tiempo real. Estas solicitudes se realizan
+    <strong>directamente desde su navegador</strong> y transmiten su dirección IP a dichos terceros.
+    Los servicios basados en la UE están sujetos directamente al RGPD. Para las transferencias a
+    EE.UU. (WAQI, CDC, Google Fonts, Vercel), se aplica el Art. 49(1)(b) o cláusulas contractuales
+    tipo (Art. 46 RGPD). <strong>Plausible Analytics</strong> está alojado en la UE (Estonia) y no
+    almacena ningún dato personal identificable.</p>
+  </section>
+
+  <section id="conservacion">
+    <h2><span class="num">5</span> Períodos de conservación</h2>
+    <table>
+      <thead><tr><th>Dato</th><th>Duración</th><th>Control del usuario</th></tr></thead>
+      <tbody>
+        <tr><td>Preferencias de interfaz</td><td>Indefinida, hasta eliminación</td><td>Sección "Mis datos" → Restablecer</td></tr>
+        <tr><td>Declaraciones sindrómicas</td><td>Indefinida, máx. 500 entradas</td><td>"Mis datos" → Eliminar mis declaraciones</td></tr>
+        <tr><td>Caché API — Calidad del aire</td><td>5 minutos</td><td>"Mis datos" → Vaciar caché</td></tr>
+        <tr><td>Geolocalización precisa</td><td>Solo sesión (memoria de trabajo)</td><td>— (se borra al cerrar la página)</td></tr>
+        <tr><td>Logs servidor Vercel</td><td>30 días (política Vercel)</td><td>No — subcontratista Vercel</td></tr>
+        <tr><td>Analítica Plausible</td><td>Hasta 2 años (agregada, anónima)</td><td>No se almacenan datos individuales</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="derechos">
+    <h2><span class="num">6</span> Sus derechos RGPD</h2>
+    <div class="rights-grid">
+      <div class="right-item"><div class="ri">👁️</div><strong>Art. 15 — Acceso</strong><p>Consulte sus datos desde <a href="index.html#mydata">Mis datos</a> o exporte sus declaraciones en JSON.</p></div>
+      <div class="right-item"><div class="ri">🗑️</div><strong>Art. 17 — Supresión</strong><p>Elimine sus declaraciones, caché o todo su perfil desde <a href="index.html#mydata">Mis datos</a>.</p></div>
+      <div class="right-item"><div class="ri">📦</div><strong>Art. 20 — Portabilidad</strong><p>Exporte sus declaraciones sindrómicas en formato JSON.</p></div>
+      <div class="right-item"><div class="ri">🚫</div><strong>Art. 21 — Oposición</strong><p>Retire su consentimiento en cualquier momento desde <a href="index.html#mydata">Mis datos</a>.</p></div>
+      <div class="right-item"><div class="ri">✉️</div><strong>Contacto DPD</strong><p><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a> — respuesta en 30 días.</p></div>
+    </div>
+  </section>
+
+  <section id="analitica">
+    <h2><span class="num">7</span> Analítica respetuosa con la privacidad (Plausible)</h2>
+    <p>BreathIQ usa <strong>Plausible Analytics</strong> (Estonia, UE) para mejorar el sitio.
+    Plausible <strong>no utiliza cookies</strong>, no almacena direcciones IP, no rastrea entre sitios
+    y no crea perfiles individuales. Solo recopila estadísticas agregadas y anónimas (páginas vistas,
+    fuentes de tráfico, país a nivel agregado). No se requiere consentimiento bajo el RGPD.
+    <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Política de datos de Plausible →</a></p>
+  </section>
+
+  <section id="reclamaciones">
+    <h2><span class="num">8</span> Reclamaciones — Autoridad de control</h2>
+    <p>Conforme al artículo 77 del RGPD, tiene derecho a presentar una reclamación ante una autoridad
+    de control si considera que el tratamiento de sus datos infringe sus derechos.</p>
+    <p><strong>CNIL (Francia)</strong> — <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+    <p>También puede dirigirse a la autoridad de control de su país de residencia en la UE/EEE.
+    Lista: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a></p>
+  </section>
+
+  <div class="contact-box">
+    <h3>Delegado de Protección de Datos (DPD)</h3>
+    <p><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></p>
+    <p>Dr. Clément MÉDEAU — BreathIQ · La Rochelle (17000), Francia</p>
+    <p style="margin-top:.75rem;font-size:.8rem">Plazo máximo de respuesta: 30 días (Art. 12 RGPD)</p>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <p>© 2026 Dr. Clément MÉDEAU — BreathIQ · Todos los derechos reservados</p>
+  <p style="margin-top:.3rem">
+    <a href="index.html">Inicio</a> ·
+    <a href="legal-notice.html">Aviso legal</a> ·
+    <a href="index.html#mydata">Mis datos</a>
+  </p>
+</footer>
+</body>
+</html>

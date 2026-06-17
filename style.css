@@ -1411,8 +1411,9 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .creator-avatar {
   width: 100%; height: 100%;
   object-fit: cover;
-  object-position: 50% 8%;
+  object-position: center top;
   display: block;
+  image-orientation: from-image; /* applique l'orientation EXIF du navigateur */
 }
 .creator-body {
   display: flex; flex-direction: column; gap: .2rem; flex: 1; min-width: 200px;

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="سياسة خصوصية BreathIQ — معالجة البيانات، حقوق RGPD، النقل الدولي، بيانات الصحة المادة 9.">
+  <title>سياسة الخصوصية — BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html">
+  <link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html">
+  <link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#1A3C5E; --blue:#2A7FD4; --teal:#0E8C7A; --amber:#D97706; --bg:#F5F7FA; --text:#1A2B3C; --muted:#4A5568; --border:rgba(26,60,94,.12); --font:'Inter',system-ui,sans-serif; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.9; font-size: 16px; -webkit-font-smoothing: antialiased; direction: rtl; }
+    a { color: var(--blue); }
+    .page-header { background: linear-gradient(145deg, #0F2A45 0%, #1A3C5E 100%); padding: 3rem 1.5rem 2.5rem; color: #fff; text-align: center; }
+    .page-header .brand { font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,.55); margin-bottom: .75rem; }
+    .page-header .brand strong { color: #2A7FD4; font-weight: 800; }
+    .page-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; }
+    .page-header .updated { margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.4); }
+    .lang-switch { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 1.5rem 0; max-width: 900px; margin: 0 auto; }
+    .lang-switch a { font-size: .78rem; font-weight: 600; color: var(--blue); background: rgba(42,127,212,.08); padding: .25rem .65rem; border-radius: 20px; border: 1px solid rgba(42,127,212,.18); text-decoration: none; }
+    .lang-switch a[aria-current] { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .alert { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 1.5rem; }
+    .alert-teal { background: #F0FDF9; border: 1px solid #99F6E4; border-right: 4px solid var(--teal); border-left: none; }
+    .alert-amber { background: #FFFBEB; border: 1px solid #FDE68A; border-right: 4px solid var(--amber); border-left: none; }
+    .alert strong { display: block; font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
+    .alert p { font-size: .85rem; color: #374151; margin: 0; line-height: 1.8; }
+    section[id] { scroll-margin-top: 20px; margin-bottom: 2.5rem; }
+    h2 { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: .9rem; padding-bottom: .4rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: .5rem; }
+    h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-size: .72rem; font-weight: 800; flex-shrink: 0; }
+    h3 { font-size: .98rem; font-weight: 700; color: var(--navy); margin: 1.2rem 0 .5rem; }
+    p { margin-bottom: .85rem; font-size: .92rem; color: #374151; }
+    ul { padding-right: 1.3rem; padding-left: 0; margin-bottom: .9rem; }
+    li { font-size: .9rem; color: #374151; margin-bottom: .35rem; line-height: 1.8; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; margin-bottom: 1.2rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    thead { background: #EEF2F7; }
+    th { padding: .6rem .9rem; font-weight: 700; color: var(--navy); text-align: right; font-size: .78rem; border-bottom: 1px solid var(--border); }
+    td { padding: .55rem .9rem; border-top: 1px solid var(--border); color: #374151; vertical-align: top; text-align: right; }
+    tr:nth-child(even) td { background: rgba(245,247,250,.5); }
+    .chip { display: inline-block; padding: .15rem .55rem; border-radius: 999px; font-size: .7rem; font-weight: 700; white-space: nowrap; }
+    .chip-green { background: #CCFBF1; color: #065F46; }
+    .chip-blue  { background: #DBEAFE; color: #1D4ED8; }
+    .chip-amber { background: #FEF3C7; color: #92400E; }
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; margin: .75rem 0 1rem; }
+    .right-item { background: rgba(42,127,212,.04); border: 1px solid rgba(42,127,212,.15); border-radius: 10px; padding: .85rem; }
+    .right-item .ri { font-size: 1.1rem; margin-bottom: .3rem; }
+    .right-item strong { display: block; font-size: .85rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; }
+    .right-item p { font-size: .78rem; color: var(--muted); margin: 0; }
+    .contact-box { background: #0F2A45; color: #e2e8f0; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1rem; }
+    .contact-box h3 { color: #fff; font-size: 1rem; margin-bottom: .5rem; margin-top: 0; }
+    .contact-box a { color: #60a5fa; }
+    .contact-box p { color: #94a3b8; font-size: .85rem; margin: .25rem 0; }
+    .page-footer { background: #0D1E2D; color: rgba(255,255,255,.4); text-align: center; padding: 1.5rem; font-size: .78rem; }
+    .page-footer a { color: rgba(255,255,255,.5); }
+    code { background: rgba(26,60,94,.07); padding: .1rem .4rem; border-radius: 4px; font-size: .82rem; font-family: monospace; direction: ltr; display: inline-block; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="brand">Breath<strong>IQ</strong></div>
+  <h1>سياسة الخصوصية</h1>
+  <p class="updated">الإصدار 2.1 — 17 يونيو 2026 · متوافق مع اللائحة الأوروبية RGPD (UE 2016/679)</p>
+</header>
+
+<div class="lang-switch" role="navigation" aria-label="اختيار اللغة">
+  <a href="privacy.html">🇫🇷 Français</a>
+  <a href="privacy-en.html">🇬🇧 English</a>
+  <a href="privacy-es.html">🇪🇸 Español</a>
+  <a href="privacy-ar.html" aria-current="page">🇸🇦 العربية</a>
+</div>
+
+<main class="main">
+
+  <div class="alert alert-teal">
+    <span style="font-size:1.4rem;flex-shrink:0">🔐</span>
+    <div>
+      <strong>ملخص: BreathIQ لا يخزّن أي بيانات شخصية على خوادمه</strong>
+      <p>تم بناء هذا الموقع وفق مبدأ <em>الخصوصية بالتصميم</em> (المادة 25 من RGPD).
+      تبقى جميع البيانات (التفضيلات، الإعلانات السريرية، ذاكرة التخزين المؤقت) حصراً على جهازك.
+      لا حساب، لا كوكيز إعلانية، لا متتبعات من طرف ثالث.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-amber">
+    <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
+    <div>
+      <strong>بيانات الصحة (المادة 9 من RGPD)</strong>
+      <p>إذا استخدمت نموذج المراقبة السريرية (الوضع الخبير)، تُشكّل إعلاناتك بيانات صحية.
+      تُخزَّن <strong>فقط على جهازك</strong> وتتطلب موافقة صريحة مزدوجة.
+      يمكنك حذفها في أي وقت من قسم <a href="index.html#mydata">بياناتي</a>.</p>
+    </div>
+  </div>
+
+  <section id="responsable">
+    <h2><span class="num">1</span> مسؤول المعالجة</h2>
+    <table>
+      <tr><td style="font-weight:600;width:35%">المسؤول</td><td>الدكتور Clément MÉDEAU</td></tr>
+      <tr><td style="font-weight:600">الصفة</td><td>طبيب — ناشر فردي (LCEN المادة 6.II)</td></tr>
+      <tr><td style="font-weight:600">الموقع</td><td>لاروشيل (17000)، فرنسا</td></tr>
+      <tr><td style="font-weight:600">التواصل العام</td><td><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></td></tr>
+      <tr><td style="font-weight:600">مسؤول حماية البيانات</td><td><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></td></tr>
+    </table>
+  </section>
+
+  <section id="datos">
+    <h2><span class="num">2</span> البيانات المعالَجة</h2>
+    <h3>2.1 البيانات المخزنة محلياً على جهازك (localStorage)</h3>
+    <p>هذه البيانات <strong>لا تُرسَل أبداً إلى خوادمنا</strong> وتبقى في متصفحك:</p>
+    <table>
+      <thead><tr><th>مفتاح localStorage</th><th>المحتوى</th><th>الأساس القانوني</th><th>قابل للحذف</th></tr></thead>
+      <tbody>
+        <tr><td><code>biq-theme</code></td><td>المظهر الفاتح أو الداكن</td><td><span class="chip chip-blue">المادة 6(1)(a)</span></td><td>نعم — بياناتي</td></tr>
+        <tr><td><code>biq-lang</code></td><td>لغة الواجهة المختارة</td><td><span class="chip chip-blue">المادة 6(1)(a)</span></td><td>نعم — بياناتي</td></tr>
+        <tr><td><code>biq-mode</code></td><td>وضع المريض أو الخبير</td><td><span class="chip chip-blue">المادة 6(1)(a)</span></td><td>نعم — بياناتي</td></tr>
+        <tr><td><code>biq-consent</code></td><td>رد شريط الموافقة</td><td><span class="chip chip-blue">المادة 6(1)(a)</span></td><td>نعم — بياناتي</td></tr>
+        <tr><td><code>biq-declarations</code></td><td>إعلانات سريرية مجهولة (حد أقصى 500)</td><td><span class="chip chip-amber">المادة 9(2)(i)</span></td><td>نعم — بياناتي</td></tr>
+        <tr><td><code>biq-live-*</code></td><td>ذاكرة تخزين مؤقتة للواجهات البرمجية</td><td><span class="chip chip-blue">المادة 6(1)(f)</span></td><td>نعم — بياناتي</td></tr>
+      </tbody>
+    </table>
+    <h3>2.2 تحديد الموقع الجغرافي</h3>
+    <p>عند منح الإذن بالوصول إلى موقعك، تُستخدم الإحداثيات الدقيقة فقط في الذاكرة العاملة ولا تُخزَّن أبداً. للإعلانات السريرية، تُقرَّب الإحداثيات إلى 0.5 درجة (±55 كم) قبل التخزين.</p>
+  </section>
+
+  <section id="bases">
+    <h2><span class="num">3</span> الأسس القانونية للمعالجة</h2>
+    <table>
+      <thead><tr><th>المعالجة</th><th>الأساس القانوني</th><th>مادة RGPD</th></tr></thead>
+      <tbody>
+        <tr><td>تخزين تفضيلات الواجهة</td><td>الموافقة</td><td><span class="chip chip-blue">المادة 6(1)(a)</span></td></tr>
+        <tr><td>ذاكرة التخزين المؤقتة للواجهات البرمجية</td><td>المصلحة المشروعة (الأداء)</td><td><span class="chip chip-blue">المادة 6(1)(f)</span></td></tr>
+        <tr><td>تحديد الموقع</td><td>موافقة صريحة</td><td><span class="chip chip-blue">المادة 6(1)(a)</span></td></tr>
+        <tr><td>الإعلانات السريرية (بيانات الصحة)</td><td>موافقة صريحة مزدوجة + مصلحة عامة</td><td><span class="chip chip-amber">المادة 9(2)(a)+(i)</span></td></tr>
+        <tr><td>التحليلات المجهولة (Plausible)</td><td>المصلحة المشروعة (إحصائيات مجمّعة)</td><td><span class="chip chip-blue">المادة 6(1)(f)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="transferencias">
+    <h2><span class="num">4</span> النقل الدولي للبيانات</h2>
+    <p>يستعلم BreathIQ من عدة واجهات برمجية لجهات ثالثة للحصول على بيانات في الوقت الفعلي.
+    تتم هذه الطلبات <strong>مباشرةً من متصفحك</strong> (لا وكيل لـ BreathIQ) وتنقل عنوان IP الخاص بك إلى هذه الجهات.
+    الخدمات المقيمة في الاتحاد الأوروبي تخضع للائحة RGPD مباشرةً.
+    بالنسبة للنقل إلى الولايات المتحدة (WAQI، CDC، Google Fonts، Vercel)، تطبق المادة 49(1)(b)
+    أو بنود تعاقدية نموذجية (المادة 46 من RGPD).
+    <strong>Plausible Analytics</strong> مستضاف في الاتحاد الأوروبي (إستونيا) ولا يخزّن أي بيانات شخصية قابلة للتحديد.</p>
+  </section>
+
+  <section id="derechos">
+    <h2><span class="num">5</span> حقوقك وفق RGPD</h2>
+    <div class="rights-grid">
+      <div class="right-item"><div class="ri">👁️</div><strong>المادة 15 — الوصول</strong><p>اطّلع على بياناتك من قسم <a href="index.html#mydata">بياناتي</a> أو صدّرها بتنسيق JSON.</p></div>
+      <div class="right-item"><div class="ri">🗑️</div><strong>المادة 17 — الحذف</strong><p>احذف إعلاناتك أو ذاكرة التخزين أو ملفك الكامل من <a href="index.html#mydata">بياناتي</a>.</p></div>
+      <div class="right-item"><div class="ri">📦</div><strong>المادة 20 — قابلية النقل</strong><p>صدّر إعلاناتك السريرية بتنسيق JSON من زر مخصص في بياناتي.</p></div>
+      <div class="right-item"><div class="ri">🚫</div><strong>المادة 21 — الاعتراض</strong><p>اسحب موافقتك في أي وقت من <a href="index.html#mydata">بياناتي</a>. الأثر فوري.</p></div>
+      <div class="right-item"><div class="ri">✉️</div><strong>التواصل مع مسؤول البيانات</strong><p><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a> — رد خلال 30 يوماً.</p></div>
+    </div>
+  </section>
+
+  <section id="analitica">
+    <h2><span class="num">6</span> التحليلات المحترمة للخصوصية (Plausible)</h2>
+    <p>يستخدم BreathIQ خدمة <strong>Plausible Analytics</strong> (إستونيا، الاتحاد الأوروبي) لتحسين الموقع.
+    Plausible <strong>لا يستخدم كوكيز</strong>، ولا يخزّن عناوين IP، ولا يتتبع المستخدمين عبر المواقع،
+    ولا ينشئ ملفات شخصية فردية. يجمع فقط إحصائيات مجمّعة ومجهولة (مشاهدات الصفحات، مصادر الزيارات،
+    الدولة بمستوى إجمالي). لا تُشترط الموافقة بموجب RGPD.
+    <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">سياسة بيانات Plausible ←</a></p>
+  </section>
+
+  <section id="reclamaciones">
+    <h2><span class="num">7</span> الشكاوى — هيئة الرقابة</h2>
+    <p>وفقاً للمادة 77 من RGPD، يحق لك تقديم شكوى إلى هيئة رقابية إذا كنت تعتقد أن معالجة بياناتك
+    تنتهك حقوقك.</p>
+    <p><strong>CNIL (فرنسا)</strong> — <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a></p>
+    <p>يمكنك أيضاً التوجه إلى هيئة الرقابة في بلد إقامتك داخل الاتحاد الأوروبي/المنطقة الاقتصادية الأوروبية.
+    القائمة: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a></p>
+  </section>
+
+  <div class="contact-box">
+    <h3>مسؤول حماية البيانات (DPD)</h3>
+    <p><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></p>
+    <p>الدكتور Clément MÉDEAU — BreathIQ · لاروشيل (17000)، فرنسا</p>
+    <p style="margin-top:.75rem;font-size:.8rem">الحد الأقصى لوقت الرد: 30 يوماً (المادة 12 من RGPD)</p>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <p>© 2026 الدكتور Clément MÉDEAU — BreathIQ · جميع الحقوق محفوظة</p>
+  <p style="margin-top:.3rem">
+    <a href="index.html">الرئيسية</a> ·
+    <a href="legal-notice.html">الإشعار القانوني</a> ·
+    <a href="index.html#mydata">بياناتي</a>
+  </p>
+</footer>
+</body>
+</html>

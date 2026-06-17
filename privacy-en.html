@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="BreathIQ Privacy Policy — Data processing, GDPR rights, international transfers, retention periods, health data Art. 9.">
+  <title>Privacy Policy — BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/privacy.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/privacy-en.html">
+  <link rel="alternate" hreflang="es" href="https://breathiq.fr/privacy-es.html">
+  <link rel="alternate" hreflang="ar" href="https://breathiq.fr/privacy-ar.html">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --navy:#1A3C5E; --blue:#2A7FD4; --teal:#0E8C7A; --amber:#D97706; --red:#C0392B; --bg:#F5F7FA; --card:#fff; --text:#1A2B3C; --muted:#4A5568; --border:rgba(26,60,94,.12); --font:'Inter',system-ui,sans-serif; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--blue); }
+    .page-header { background: linear-gradient(145deg, #0F2A45 0%, #1A3C5E 100%); padding: 3rem 1.5rem 2.5rem; color: #fff; text-align: center; }
+    .page-header .brand { font-size: 1.1rem; font-weight: 400; color: rgba(255,255,255,.55); margin-bottom: .75rem; }
+    .page-header .brand strong { color: #2A7FD4; font-weight: 800; }
+    .page-header h1 { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 800; letter-spacing: -.03em; }
+    .page-header .updated { margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.4); }
+    .lang-switch { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; padding: 1rem 1.5rem 0; max-width: 900px; margin: 0 auto; }
+    .lang-switch a { font-size: .78rem; font-weight: 600; color: var(--blue); background: rgba(42,127,212,.08); padding: .25rem .65rem; border-radius: 20px; border: 1px solid rgba(42,127,212,.18); text-decoration: none; }
+    .lang-switch a[aria-current] { background: var(--blue); color: #fff; border-color: var(--blue); }
+    .page-nav { display: flex; gap: .5rem; flex-wrap: wrap; justify-content: center; padding: 1.5rem 1.5rem 0; max-width: 900px; margin: 0 auto; }
+    .page-nav a { font-size: .8rem; font-weight: 600; color: var(--blue); background: rgba(42,127,212,.08); padding: .3rem .75rem; border-radius: 20px; border: 1px solid rgba(42,127,212,.18); text-decoration: none; white-space: nowrap; }
+    .page-nav a:hover { background: rgba(42,127,212,.15); }
+    .main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 4rem; }
+    .alert { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 1.5rem; }
+    .alert-teal { background: #F0FDF9; border: 1px solid #99F6E4; border-left: 4px solid var(--teal); }
+    .alert-amber { background: #FFFBEB; border: 1px solid #FDE68A; border-left: 4px solid var(--amber); }
+    .alert strong { display: block; font-size: .9rem; font-weight: 700; margin-bottom: .2rem; }
+    .alert p { font-size: .85rem; color: #374151; margin: 0; line-height: 1.6; }
+    section[id] { scroll-margin-top: 20px; margin-bottom: 2.5rem; }
+    h2 { font-size: 1.15rem; font-weight: 800; color: var(--navy); margin-bottom: .9rem; padding-bottom: .4rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: .5rem; }
+    h2 .num { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--navy); color: #fff; font-size: .72rem; font-weight: 800; flex-shrink: 0; }
+    h3 { font-size: .98rem; font-weight: 700; color: var(--navy); margin: 1.2rem 0 .5rem; }
+    p { margin-bottom: .85rem; font-size: .92rem; color: #374151; }
+    ul { padding-left: 1.3rem; margin-bottom: .9rem; }
+    li { font-size: .9rem; color: #374151; margin-bottom: .35rem; line-height: 1.6; }
+    table { width: 100%; border-collapse: collapse; font-size: .85rem; margin-bottom: 1.2rem; border-radius: 10px; overflow: hidden; border: 1px solid var(--border); }
+    thead { background: #EEF2F7; }
+    th { padding: .6rem .9rem; font-weight: 700; color: var(--navy); text-align: left; font-size: .78rem; text-transform: uppercase; letter-spacing: .04em; border-bottom: 1px solid var(--border); }
+    td { padding: .55rem .9rem; border-top: 1px solid var(--border); color: #374151; vertical-align: top; }
+    tr:nth-child(even) td { background: rgba(245,247,250,.5); }
+    .chip { display: inline-block; padding: .15rem .55rem; border-radius: 999px; font-size: .7rem; font-weight: 700; white-space: nowrap; }
+    .chip-green { background: #CCFBF1; color: #065F46; }
+    .chip-blue  { background: #DBEAFE; color: #1D4ED8; }
+    .chip-amber { background: #FEF3C7; color: #92400E; }
+    .chip-red   { background: #FEE2E2; color: #991B1B; }
+    .chip-gray  { background: #F3F4F6; color: #374151; }
+    .rights-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .75rem; margin: .75rem 0 1rem; }
+    .right-item { background: rgba(42,127,212,.04); border: 1px solid rgba(42,127,212,.15); border-radius: 10px; padding: .85rem; }
+    .right-item .ri { font-size: 1.1rem; margin-bottom: .3rem; }
+    .right-item strong { display: block; font-size: .85rem; font-weight: 700; color: var(--navy); margin-bottom: .25rem; }
+    .right-item p { font-size: .78rem; color: var(--muted); margin: 0; }
+    .contact-box { background: #0F2A45; color: #e2e8f0; border-radius: 14px; padding: 1.5rem; text-align: center; margin-top: 1rem; }
+    .contact-box h3 { color: #fff; font-size: 1rem; margin-bottom: .5rem; margin-top: 0; }
+    .contact-box a { color: #60a5fa; }
+    .contact-box p { color: #94a3b8; font-size: .85rem; margin: .25rem 0; }
+    .page-footer { background: #0D1E2D; color: rgba(255,255,255,.4); text-align: center; padding: 1.5rem; font-size: .78rem; }
+    .page-footer a { color: rgba(255,255,255,.5); }
+    code { background: rgba(26,60,94,.07); padding: .1rem .4rem; border-radius: 4px; font-size: .82rem; font-family: monospace; }
+  </style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="brand">Breath<strong>IQ</strong></div>
+  <h1>Privacy Policy</h1>
+  <p class="updated">Version 2.1 — 17 June 2026 · Compliant with GDPR (EU Reg. 2016/679)</p>
+</header>
+
+<div class="lang-switch" role="navigation" aria-label="Language versions">
+  <a href="privacy.html">🇫🇷 Français</a>
+  <a href="privacy-en.html" aria-current="page">🇬🇧 English</a>
+  <a href="privacy-es.html">🇪🇸 Español</a>
+  <a href="privacy-ar.html">🇸🇦 العربية</a>
+</div>
+
+<nav class="page-nav" aria-label="Table of contents">
+  <a href="#controller">1. Controller</a>
+  <a href="#data">2. Data</a>
+  <a href="#legal-bases">3. Legal bases</a>
+  <a href="#transfers">4. Transfers</a>
+  <a href="#retention">5. Retention</a>
+  <a href="#rights">6. Your rights</a>
+  <a href="#cookies">7. Cookies</a>
+  <a href="#analytics">8. Analytics</a>
+  <a href="#security">9. Security</a>
+  <a href="#complaints">10. Complaints</a>
+  <a href="#contact">DPO Contact</a>
+</nav>
+
+<main class="main">
+
+  <div class="alert alert-teal">
+    <span style="font-size:1.4rem;flex-shrink:0">🔐</span>
+    <div>
+      <strong>Summary: BreathIQ stores no personal data on its servers</strong>
+      <p>This site is built on the <em>Privacy by Design</em> principle (Art. 25 GDPR). All data
+      (preferences, syndromic declarations, API cache) stays exclusively on your device.
+      No account, no advertising cookies, no third-party trackers.</p>
+    </div>
+  </div>
+
+  <div class="alert alert-amber">
+    <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
+    <div>
+      <strong>Health data (Art. 9 GDPR)</strong>
+      <p>If you use the syndromic surveillance form (Expert mode), your declarations
+      constitute health data. They are stored <strong>only on your device</strong>
+      and require explicit dual consent. You can delete them at any time from the
+      <a href="index.html#mydata">My Data</a> section.</p>
+    </div>
+  </div>
+
+  <section id="controller">
+    <h2><span class="num">1</span> Data Controller</h2>
+    <table>
+      <tr><td style="font-weight:600;width:35%">Controller</td><td>Dr. Clément MÉDEAU</td></tr>
+      <tr><td style="font-weight:600">Capacity</td><td>Medical doctor — Individual publisher (LCEN Art. 6.II)</td></tr>
+      <tr><td style="font-weight:600">Location</td><td>La Rochelle (17000), France</td></tr>
+      <tr><td style="font-weight:600">General contact</td><td><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></td></tr>
+      <tr><td style="font-weight:600">DPO / Data contact</td><td><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></td></tr>
+    </table>
+  </section>
+
+  <section id="data">
+    <h2><span class="num">2</span> Data processed</h2>
+
+    <h3>2.1 Data stored locally on your device (localStorage)</h3>
+    <p>These data are <strong>never sent to our servers</strong> and remain in your browser:</p>
+    <table>
+      <thead><tr><th>localStorage key</th><th>Content</th><th>Legal basis</th><th>Deletable</th></tr></thead>
+      <tbody>
+        <tr><td><code>biq-theme</code></td><td>Light or dark theme</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Yes — My Data</td></tr>
+        <tr><td><code>biq-lang</code></td><td>Chosen interface language</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Yes — My Data</td></tr>
+        <tr><td><code>biq-mode</code></td><td>Patient or Expert mode</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Yes — My Data</td></tr>
+        <tr><td><code>biq-consent</code></td><td>Consent banner response</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td><td>Yes — My Data</td></tr>
+        <tr><td><code>biq-declarations</code></td><td>Anonymous syndromic declarations (max 500 entries)</td><td><span class="chip chip-amber">Art. 9(2)(i)</span></td><td>Yes — My Data</td></tr>
+        <tr><td><code>biq-live-*</code></td><td>API cache (air quality, epidemio) — 5 min to 6 h</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td><td>Yes — My Data</td></tr>
+      </tbody>
+    </table>
+
+    <h3>2.2 Health data — Art. 9 GDPR (Syndromic surveillance form)</h3>
+    <p>The syndromic declaration form (Expert mode only) allows entry of:</p>
+    <ul>
+      <li>Clinical syndrome type (flu-like, respiratory, diarrhoeal, febrile, neurological, haemorrhagic, cutaneous)</li>
+      <li>Age group (child, adult, senior)</li>
+      <li>Severity level (mild, moderate, severe, hospitalisation)</li>
+      <li>Number of cases (numeric)</li>
+      <li>Week of symptom onset (date)</li>
+      <li>Laboratory result (optional)</li>
+      <li>Approximate geographic region (rounded to 0.5° = ±55 km, if geolocation granted)</li>
+    </ul>
+    <p><strong>These data constitute health data</strong> under Article 9 GDPR. Protections in place:</p>
+    <ul>
+      <li>Explicit dual consent: Art. 6(1)(a) general + Art. 9(2)(i) specific to health data</li>
+      <li>Storage exclusively local on the user's device (never on our servers)</li>
+      <li>Non-persistent random identifier (8 characters, not linked to a person)</li>
+      <li>Geolocation rounded to 0.5° (no precise position stored)</li>
+      <li>Complete deletion possible at any time from the <a href="index.html#mydata">My Data</a> section</li>
+      <li>JSON export possible before deletion</li>
+    </ul>
+
+    <h3>2.3 Geolocation</h3>
+    <p>When you grant access to your geographic position (via the dedicated modal):</p>
+    <ul>
+      <li>The precise position is used in working memory only (never stored)</li>
+      <li>Coordinates are sent directly from your browser to the WAQI and Open-Meteo APIs</li>
+      <li>For syndromic declarations: coordinates are rounded to 0.5° before storage</li>
+      <li>No position is recorded on BreathIQ servers</li>
+    </ul>
+
+    <h3>2.4 Server logs (Vercel host)</h3>
+    <p>The site is hosted by <strong>Vercel Inc.</strong> (San Francisco, USA). Vercel automatically collects
+    technical logs (IP address, user-agent, timestamp) as part of server operations. These data are processed
+    by Vercel as a processor, under standard contractual clauses (SCC) ensuring adequate protection for
+    transfers to the United States (Art. 46 GDPR). Vercel policy:
+    <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com/legal/privacy-policy</a></p>
+  </section>
+
+  <section id="legal-bases">
+    <h2><span class="num">3</span> Legal bases</h2>
+    <table>
+      <thead><tr><th>Processing</th><th>Legal basis</th><th>GDPR Article</th></tr></thead>
+      <tbody>
+        <tr><td>Interface preference storage (theme, language, mode)</td><td>Consent</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
+        <tr><td>API cache (air quality, epidemiological data)</td><td>Legitimate interest (performance)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Geolocation (care search, local air quality)</td><td>Explicit consent (dedicated modal)</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
+        <tr><td>Syndromic declarations (health data)</td><td>Explicit consent + public interest (epidemiological surveillance)</td><td><span class="chip chip-amber">Art. 9(2)(a) + (i)</span></td></tr>
+        <tr><td>Vercel server logs</td><td>Legitimate interest (security, abuse prevention)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Privacy-first analytics (Plausible)</td><td>Legitimate interest (anonymous aggregated statistics)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="transfers">
+    <h2><span class="num">4</span> International data transfers</h2>
+    <p>BreathIQ queries several third-party APIs for real-time data. These requests are made
+    <strong>directly from your browser</strong> (no BreathIQ proxy) and transmit your IP address to these third parties:</p>
+    <table>
+      <thead><tr><th>API / Service</th><th>Publisher</th><th>Location</th><th>Data transmitted</th><th>Safeguards</th></tr></thead>
+      <tbody>
+        <tr><td>WAQI / AQICN</td><td>World Air Quality Index</td><td><span class="chip chip-red">United States</span></td><td>IP, GPS coordinates (if geoloc granted)</td><td><a href="https://aqicn.org/privacy/" target="_blank" rel="noopener">AQICN policy</a> · Art. 49(1)(b)</td></tr>
+        <tr><td>OpenAQ</td><td>OpenAQ Inc.</td><td><span class="chip chip-red">United States</span></td><td>IP, query parameters</td><td><a href="https://openaq.org/privacy/" target="_blank" rel="noopener">OpenAQ policy</a> · Art. 49(1)(b)</td></tr>
+        <tr><td>Open-Meteo Air Quality</td><td>Open-Meteo GmbH</td><td><span class="chip chip-green">Germany (EU)</span></td><td>IP, GPS coordinates (if geoloc granted)</td><td>GDPR directly applicable</td></tr>
+        <tr><td>SPF — data.santepubliquefrance.fr</td><td>Santé Publique France</td><td><span class="chip chip-green">France (EU)</span></td><td>IP only (public data)</td><td>GDPR directly applicable</td></tr>
+        <tr><td>CDC — data.cdc.gov</td><td>US Centers for Disease Control</td><td><span class="chip chip-red">United States</span></td><td>IP only (public data)</td><td>Public data · Art. 49(1)(b)</td></tr>
+        <tr><td>ECDC — opendata.ecdc.europa.eu</td><td>European Centre for Disease Prevention</td><td><span class="chip chip-green">EU</span></td><td>IP only (public data)</td><td>GDPR directly applicable</td></tr>
+        <tr><td>Nominatim / Overpass API (OSM)</td><td>OpenStreetMap Foundation</td><td><span class="chip chip-green">EU</span></td><td>IP, GPS coordinates (if geoloc granted)</td><td>GDPR directly applicable</td></tr>
+        <tr><td>Plausible Analytics</td><td>Plausible Insights OÜ</td><td><span class="chip chip-green">EU (Estonia)</span></td><td>Anonymous aggregated statistics — no IP stored, no cookies</td><td>GDPR directly applicable · <a href="https://plausible.io/privacy" target="_blank" rel="noopener">Plausible policy</a></td></tr>
+        <tr><td>Google Fonts</td><td>Google LLC</td><td><span class="chip chip-red">United States</span></td><td>IP, user-agent</td><td>Art. 49(1)(b) — technical necessity</td></tr>
+        <tr><td>Vercel (host)</td><td>Vercel Inc.</td><td><span class="chip chip-red">United States</span></td><td>IP, server logs</td><td>SCC (standard contractual clauses) · Art. 46 GDPR</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="retention">
+    <h2><span class="num">5</span> Retention periods</h2>
+    <table>
+      <thead><tr><th>Data</th><th>Duration</th><th>User control</th></tr></thead>
+      <tbody>
+        <tr><td>Interface preferences (theme, language, mode)</td><td>Indefinite, until deletion</td><td>"My Data" section → Reset</td></tr>
+        <tr><td>Syndromic declarations</td><td>Indefinite, max 500 rolling entries</td><td>"My Data" → Delete my declarations</td></tr>
+        <tr><td>API cache — Air quality</td><td>5 minutes</td><td>"My Data" → Clear cache</td></tr>
+        <tr><td>API cache — Flu data (SPF, CDC)</td><td>1 hour</td><td>"My Data" → Clear cache</td></tr>
+        <tr><td>API cache — Epidemic foci (ECDC)</td><td>6 hours</td><td>"My Data" → Clear cache</td></tr>
+        <tr><td>GDPR consent (biq-consent)</td><td>Indefinite, until withdrawal</td><td>"My Data" → Withdraw consent</td></tr>
+        <tr><td>Precise geolocation</td><td>Session only (working memory)</td><td>— (cleared when page closes)</td></tr>
+        <tr><td>Vercel server logs</td><td>30 days (Vercel policy)</td><td>No — Vercel processor</td></tr>
+        <tr><td>Plausible analytics</td><td>Up to 2 years (aggregated, anonymous)</td><td>No individual data stored</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="rights">
+    <h2><span class="num">6</span> Your GDPR rights</h2>
+    <div class="rights-grid">
+      <div class="right-item">
+        <div class="ri">👁️</div>
+        <strong>Art. 15 — Access</strong>
+        <p>View your data from the <a href="index.html#mydata">My Data</a> section or export your declarations as JSON.</p>
+      </div>
+      <div class="right-item">
+        <div class="ri">🗑️</div>
+        <strong>Art. 17 — Erasure</strong>
+        <p>Delete your declarations, cache or entire profile from <a href="index.html#mydata">My Data</a>.</p>
+      </div>
+      <div class="right-item">
+        <div class="ri">📦</div>
+        <strong>Art. 20 — Portability</strong>
+        <p>Export your syndromic declarations as JSON (dedicated button in My Data).</p>
+      </div>
+      <div class="right-item">
+        <div class="ri">🚫</div>
+        <strong>Art. 21 — Objection</strong>
+        <p>Withdraw consent at any time from <a href="index.html#mydata">My Data</a>. Immediate effect.</p>
+      </div>
+      <div class="right-item">
+        <div class="ri">⏸️</div>
+        <strong>Art. 18 — Restriction</strong>
+        <p>Use "Continue without accepting" in the consent banner to restrict non-essential processing.</p>
+      </div>
+      <div class="right-item">
+        <div class="ri">✉️</div>
+        <strong>DPO contact</strong>
+        <p>Any questions: <a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a> — response within 30 days (Art. 12 GDPR).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="cookies">
+    <h2><span class="num">7</span> Cookies &amp; local storage</h2>
+    <h3>What BreathIQ does NOT use</h3>
+    <ul>
+      <li>No tracking, profiling or advertising cookies</li>
+      <li>No Facebook pixel, Google Analytics, Hotjar or behavioural analysis tools</li>
+      <li>No user session cookies (no account, no registration)</li>
+      <li>No third-party advertising cookies</li>
+      <li>No fingerprinting technology</li>
+    </ul>
+    <h3>localStorage (not cookies)</h3>
+    <p>BreathIQ uses only the browser's <code>localStorage</code> API (distinct from cookies).
+    See section 2.1 for the detail of each key. Essential functional storage (<code>biq-theme</code>,
+    <code>biq-lang</code>) is exempt from prior consent as strictly necessary for the service requested
+    by the user. Syndromic declaration storage requires explicit dual consent Art. 6 + Art. 9.</p>
+  </section>
+
+  <section id="analytics">
+    <h2><span class="num">8</span> Privacy-first analytics (Plausible)</h2>
+    <p>BreathIQ uses <strong>Plausible Analytics</strong>, an EU-based (Estonia) privacy-first analytics
+    service, to understand how the site is used and improve it.</p>
+    <p><strong>What Plausible does NOT collect:</strong></p>
+    <ul>
+      <li>No personal identifiers (no name, email, IP address stored)</li>
+      <li>No cookies or persistent identifiers of any kind</li>
+      <li>No cross-site tracking</li>
+      <li>No device fingerprinting</li>
+    </ul>
+    <p><strong>What Plausible collects (aggregated, anonymous):</strong></p>
+    <ul>
+      <li>Page views and unique visitor counts (calculated without storing IPs)</li>
+      <li>Traffic sources (referrer, campaign)</li>
+      <li>Country-level location (derived from IP, which is never stored)</li>
+      <li>Browser type and operating system (aggregated)</li>
+    </ul>
+    <p>Processing is based on legitimate interest (Art. 6(1)(f) GDPR), as Plausible's data collection
+    is anonymous by design and does not require consent under GDPR or ePrivacy Directive.
+    Plausible is hosted in the EU and subject to GDPR.
+    <a href="https://plausible.io/data-policy" target="_blank" rel="noopener">Plausible data policy →</a></p>
+  </section>
+
+  <section id="security">
+    <h2><span class="num">9</span> Technical security</h2>
+    <ul>
+      <li>Mandatory HTTPS with HSTS (Strict-Transport-Security)</li>
+      <li>Strict Content Security Policy (CSP) — configured in vercel.json</li>
+      <li>X-Frame-Options DENY (clickjacking protection)</li>
+      <li>X-Content-Type-Options nosniff</li>
+      <li>Referrer-Policy strict-origin-when-cross-origin</li>
+      <li>Restrictive Permissions-Policy (camera, microphone, geolocation disabled by default)</li>
+      <li>SRI (Subresource Integrity) on external CDN resources (Leaflet)</li>
+      <li>No GPS field or identifier in the syndromic form (client-side control + CSP)</li>
+    </ul>
+  </section>
+
+  <section id="complaints">
+    <h2><span class="num">10</span> Complaints — Supervisory Authority</h2>
+    <p>Under Article 77 GDPR, you have the right to lodge a complaint with a supervisory authority
+    if you believe that the processing of your data infringes your rights.</p>
+    <p><strong>CNIL (France)</strong> — 3 place de Fontenoy, TSA 80715, 75334 Paris Cedex 07<br>
+    Website: <a href="https://www.cnil.fr" target="_blank" rel="noopener">www.cnil.fr</a> ·
+    Tel: +33 1 53 73 22 22</p>
+    <p>You may also contact the supervisory authority in your country of residence within the EU/EEA.
+    List of authorities: <a href="https://edpb.europa.eu/about-edpb/about-edpb/members_en" target="_blank" rel="noopener">edpb.europa.eu</a></p>
+  </section>
+
+  <div class="contact-box">
+    <h3>Data Protection Officer (DPO)</h3>
+    <p><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></p>
+    <p>Dr. Clément MÉDEAU — BreathIQ</p>
+    <p>La Rochelle (17000), France</p>
+    <p style="margin-top:.75rem;font-size:.8rem">Maximum response time: 30 days (Art. 12 GDPR)<br>
+    For complex requests, extendable by 2 months with prior notice.</p>
+  </div>
+
+</main>
+
+<footer class="page-footer">
+  <p>© 2026 Dr. Clément MÉDEAU — BreathIQ · All rights reserved</p>
+  <p style="margin-top:.3rem">
+    <a href="index.html">Home</a> ·
+    <a href="legal-notice.html">Legal Notice</a> ·
+    <a href="index.html#mydata">My Data</a>
+  </p>
+</footer>
+</body>
+</html>
