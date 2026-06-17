@@ -110,9 +110,12 @@
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preload police critique — évite le FOUT (Flash of Unstyled Text) -->
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
-  <!-- BreathIQ styles -->
+  <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
+  <link rel="preload" as="style" href="style.min.css?v=20260617">
   <link rel="stylesheet" href="style.min.css?v=20260617">
   <!-- Umami Analytics — privacy-first, sans cookies, gratuit jusqu'à 10k vues/mois -->
   <!-- Remplacer YOUR_WEBSITE_ID par l'id obtenu sur https://cloud.umami.is après inscription -->
@@ -278,8 +281,8 @@
         <span class="path-title">Trouver un médecin</span>
         <span class="path-sub">Hôpital · Clinique · Pharmacie</span>
       </a>
-      <button class="path-card path-pro" onclick="toggleMode()">
-        <span class="path-icon">🩺</span>
+      <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
+        <span class="path-icon" aria-hidden="true">🩺</span>
         <span class="path-title">Je suis soignant</span>
         <span class="path-sub">Outils cliniques · Déclaration</span>
       </button>
@@ -1499,6 +1502,7 @@
       <a href="privacy.html" data-i18n="footer-privacy">Confidentialité</a>
       <a href="#mydata" data-i18n="nav-mydata">Mes données</a>
       <a href="legal-notice.html" data-i18n="footer-legal-en">Legal Notice (EN)</a>
+      <a href="about.html" data-i18n="footer-about">À propos</a>
     </nav>
 
     <div class="footer-copy">
