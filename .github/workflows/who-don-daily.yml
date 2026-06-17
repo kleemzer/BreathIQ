@@ -43,12 +43,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "✅ Aucune nouvelle alerte WHO — pas de commit"
           else
-            ALERT_COUNT=$(node --input-type=module <<'EOF'
-import { readFileSync } from 'fs';
-const d = JSON.parse(readFileSync('data/who-alerts.json', 'utf8'));
-process.stdout.write(String(d.alertCount || 0));
-EOF
-)
+            ALERT_COUNT=$(jq -r '.alertCount // 0' data/who-alerts.json 2>/dev/null || echo 0)
             git commit -m "data: WHO DON update — ${ALERT_COUNT} alertes ($(date +%Y-%m-%d))"
             # Synchroniser avec le remote avant de pousser (évite les rejets fast-forward)
             git pull --rebase origin main || true

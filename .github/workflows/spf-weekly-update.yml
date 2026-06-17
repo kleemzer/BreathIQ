@@ -50,12 +50,7 @@ jobs:
           if git diff --staged --quiet; then
             echo "✅ Aucune modification détectée"
           else
-            BULLETIN_DATE=$(node --input-type=module <<'EOF'
-import { readFileSync } from 'fs';
-const d = JSON.parse(readFileSync('data/spf-live.json', 'utf8'));
-process.stdout.write(d.bulletinDate || 'inconnu');
-EOF
-)
+            BULLETIN_DATE=$(jq -r '.bulletinDate // "inconnu"' data/spf-live.json 2>/dev/null || echo "inconnu")
             git commit -m "data: SPF BEH auto-update ${BULLETIN_DATE} ($(date +%Y-%m-%d))"
             git pull --rebase origin main || true
             git push origin main || {
