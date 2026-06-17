@@ -50,6 +50,12 @@
       "has": [{ "type": "host", "value": "www.breathiq.fr" }],
       "destination": "https://breathiq.fr/:path*",
       "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "breathiq.vercel.app" }],
+      "destination": "https://breathiq.fr/:path*",
+      "permanent": true
     }
   ],
   "cleanUrls": true
