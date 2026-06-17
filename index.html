@@ -113,7 +113,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles -->
-  <link rel="stylesheet" href="style.css?v=20260603">
+  <link rel="stylesheet" href="style.min.css?v=20260617">
   <!-- Umami Analytics — privacy-first, sans cookies, gratuit jusqu'à 10k vues/mois -->
   <!-- Remplacer YOUR_WEBSITE_ID par l'id obtenu sur https://cloud.umami.is après inscription -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
@@ -258,7 +258,7 @@
     <div class="risk-banner risk-low" id="patientRiskBanner" role="status" aria-live="polite">
       <div class="risk-level-icon" id="patientRiskIcon">🟢</div>
       <span class="risk-level-label" id="patientRiskLabel">RISQUE FAIBLE</span>
-      <h1 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h1>
+      <h2 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h2>
       <p id="patientRiskDesc">Aucune alerte épidémique active — continuez vos activités normalement</p>
       <div class="risk-pheic-strip" id="riskPheicStrip">
         🚨 <strong>PHEIC OMS ACTIVE</strong> — Ebola Bundibugyo · RDC + Ouganda · 344 cas confirmés · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">Voir la fiche →</a>
@@ -1667,9 +1667,9 @@
 <!-- Leaflet chargé dynamiquement via initMapWhenReady() — ne bloque pas le rendu initial -->
 <!-- API live santé publique -->
 <script src="api-live.js?v=20260606" defer></script>
-<script src="js/clinical-orientation.js?v=20260606" defer></script>
-<script src="js/care-facilities.js?v=20260606" defer></script>
-<script src="js/diagnostic-engine.js?v=20260606" defer></script>
-<script src="script.js?v=20260606" defer></script>
+<script src="js/clinical-orientation.min.js?v=20260617" defer></script>
+<script src="js/care-facilities.min.js?v=20260617" defer></script>
+<script src="js/diagnostic-engine.min.js?v=20260617" defer></script>
+<script src="script.min.js?v=20260617" defer></script>
 </body>
 </html>

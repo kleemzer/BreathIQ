@@ -1490,7 +1490,7 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .risk-moderate .risk-level-label { background: #F59E0B; color: #fff; }
 .risk-high .risk-level-label     { background: #EF4444; color: #fff; }
 .risk-critical .risk-level-label { background: #7F1D1D; color: #FCA5A5; border: 1px solid #EF4444; }
-.risk-banner h1 {
+.risk-banner h2 {
   font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; line-height: 1.25; margin: 0; color: #fff;
 }
 .risk-banner p { font-size: .95rem; color: var(--text-on-dark-2); margin: 0; }
@@ -2211,7 +2211,7 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 @media (max-width: 640px) {
   .action-steps { grid-template-columns: 1fr; }
   .symptom-grid { grid-template-columns: repeat(2, 1fr); }
-  .risk-banner h1 { font-size: 1.3rem; }
+  .risk-banner h2 { font-size: 1.3rem; }
   .simple-stats { gap: var(--s3); }
 }
 

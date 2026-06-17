@@ -1768,7 +1768,7 @@ async function loadWHOAlerts() {
       </div>
       <div class="who-alerts-list">${items}</div>`;
     whoSection.hidden = false;
-    console.log(`[BreathIQ] WHO DON chargé (${data.alerts.length} alertes)`);
+    if (isDebugMode()) console.log(`[BreathIQ] WHO DON chargé (${data.alerts.length} alertes)`);
   } catch (e) {
     logDataWarning('WHO DON non disponible', e);
   }
@@ -1904,7 +1904,7 @@ async function loadSPFLiveData() {
     renderSPFCompactSummary(live);
 
     const sourceCount = Array.isArray(live.sources) ? live.sources.length : 0;
-    console.log(`[BreathIQ] SPF live data chargée (${patchCount} patchs, ${sourceCount} sources compactes)`);
+    if (isDebugMode()) console.log(`[BreathIQ] SPF live data chargée (${patchCount} patchs, ${sourceCount} sources compactes)`);
   } catch (e) {
     logDataWarning('SPF live data non disponible', e);
   }
