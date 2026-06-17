@@ -108,18 +108,64 @@
       <thead><tr><th>Étape</th><th>Description</th></tr></thead>
       <tbody>
         <tr><td>1. Collecte</td><td>Chaque lundi à 09h UTC, un script GitHub Actions récupère 5 pages de Santé Publique France</td></tr>
-        <tr><td>2. Extraction</td><td>Le texte HTML est nettoyé et envoyé au modèle Groq/Llama-3.3-70b avec un prompt structuré</td></tr>
-        <tr><td>3. Structuration</td><td>Le modèle extrait : statut épidémique, régions actives, CFR, description patient-friendly</td></tr>
-        <tr><td>4. Validation</td><td>Le JSON est validé par format avant publication (présence des champs obligatoires)</td></tr>
+        <tr><td>2. Compression locale</td><td>Le texte HTML est nettoyé localement puis réduit aux titres, dates, régions, maladies, chiffres et signaux importants</td></tr>
+        <tr><td>3. Synthèse LLM</td><td>Seuls les extraits compacts sont envoyés au modèle Groq/Llama-3.3-70b avec un budget strict de tokens</td></tr>
+        <tr><td>4. Validation</td><td>Le JSON est validé par format avant publication ; un fallback heuristique local est utilisé si l'IA échoue</td></tr>
         <tr><td>5. Publication</td><td>Le fichier <code>data/spf-live.json</code> est commité sur GitHub → Netlify redéploie en &lt; 2 min</td></tr>
       </tbody>
     </table>
 
     <h3>Modèle utilisé</h3>
-    <p style="font-size:.84rem;color:var(--text-secondary)">Llama-3.3-70b-versatile via Groq API (gratuit, tier public). Les données médicales sont vérifiées manuellement par le Dr Clément Médeau avant publication si une anomalie est détectée.</p>
+    <p style="font-size:.84rem;color:var(--text-secondary)">Llama-3.3-70b-versatile via Groq API. Le pipeline n'envoie jamais les bulletins complets groupés au modèle : il compresse d'abord localement les sources, limite la réponse et bascule vers une synthèse locale courte en cas d'erreur API.</p>
 
     <div class="warning-box" style="margin-top:var(--s3)">
       <strong>⚠️ Limite :</strong> L'IA peut produire des erreurs d'extraction ou des hallucinations. Toute information critique doit être vérifiée sur <a href="https://www.santepubliquefrance.fr" target="_blank" rel="noopener" style="color:#FBBF24">santepubliquefrance.fr</a> avant tout acte médical.
+    </div>
+  </section>
+
+  <!-- 3b. Orientation clinique -->
+  <section class="methodo-section">
+    <h2>🧭 3b. Orientation clinique — non diagnostique</h2>
+    <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--s3)">
+      Le vérificateur de symptômes BreathIQ n'établit aucun diagnostic. Il classe les informations saisies vers un niveau de recours prudent : urgence, régulation médicale, médecin le jour même, pharmacie ou auto-surveillance.
+    </p>
+
+    <table class="methodo-table">
+      <thead><tr><th>Signal</th><th>Orientation prioritaire</th><th>Raison</th></tr></thead>
+      <tbody>
+        <tr><td>Dyspnée au repos, cyanose, douleur thoracique, confusion</td><td>Urgences / régulation</td><td>Signes de gravité cardiorespiratoire ou neurologique</td></tr>
+        <tr><td>Fièvre + raideur de nuque, purpura, convulsions</td><td>Urgence immédiate</td><td>Méningite ou sepsis à exclure rapidement</td></tr>
+        <tr><td>Fièvre + retour zone à risque fièvre hémorragique</td><td>Régulation médicale avant déplacement</td><td>Éviter l'exposition non contrôlée d'autres patients et soignants</td></tr>
+        <tr><td>Nourrisson, senior, grossesse, immunodépression</td><td>Seuil d'avis médical abaissé</td><td>Terrain à risque de complication</td></tr>
+        <tr><td>Symptômes légers sans signe rouge</td><td>Pharmacie ou auto-surveillance</td><td>Orientation prudente avec réévaluation si aggravation</td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box" style="margin-top:var(--s3)">
+      <strong>Non-dispositif médical :</strong> l'algorithme est une aide d'information et d'orientation. Il ne remplace pas l'interrogatoire, l'examen clinique, la décision médicale ni les recommandations des autorités sanitaires.
+    </div>
+  </section>
+
+  <!-- 3c. Lieux de soins -->
+  <section class="methodo-section">
+    <h2>📍 3c. Recherche de soins locaux</h2>
+    <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--s3)">
+      La recherche locale transmet uniquement la latitude, la longitude et le type de recours demandé. Les symptômes saisis ne sont pas envoyés aux API de cartographie.
+    </p>
+
+    <table class="methodo-table">
+      <thead><tr><th>Couche</th><th>Usage</th><th>Statut</th></tr></thead>
+      <tbody>
+        <tr><td>OpenStreetMap / Overpass</td><td>Pharmacies, hôpitaux, médecins, cliniques, dispensaires, centres de santé</td><td><span class="badge-real">ACTIF</span></td></tr>
+        <tr><td>Normalisation BreathIQ</td><td>Format unique : type, distance, source, téléphone, site, horaires, confiance</td><td><span class="badge-real">ACTIF</span></td></tr>
+        <tr><td>Ranking de pertinence</td><td>Distance, type adapté, source, téléphone/horaires, fraîcheur</td><td><span class="badge-real">ACTIF</span></td></tr>
+        <tr><td>FINESS / RPPS / API FHIR Annuaire Santé</td><td>Source officielle française à brancher via adaptateur serveur</td><td><span class="badge-est">PRÉPARÉ</span></td></tr>
+        <tr><td>WHO GHFD / HDX / Google Places / HERE / Mapbox</td><td>Extensions internationales ou premium</td><td><span class="badge-est">PRÉPARÉ</span></td></tr>
+      </tbody>
+    </table>
+
+    <div class="warning-box" style="margin-top:var(--s3)">
+      <strong>Limite annuaires :</strong> les horaires, téléphones et capacités d'urgence peuvent être incomplets ou obsolètes. En cas de signe grave, appeler la régulation médicale ou les urgences avant tout déplacement.
     </div>
   </section>
 
