@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Ebola Bundibugyo 2026 — Complete clinical guide for patients and healthcare workers. Disease phases, PPE protocol, notification chain, strain comparison, post-recovery risks. Active WHO PHEIC.">
+  <title>Ebola Bundibugyo 2026 — Clinical Guide · BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://breathiq.fr/ebola-en.html">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/ebola.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/ebola-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/ebola-en.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Ebola Bundibugyo 2026 — Complete Clinical Guide",
+    "url": "https://breathiq.fr/ebola-en.html",
+    "description": "Complete clinical guide on Ebola Bundibugyo 2026 for patients and healthcare workers. Active WHO PHEIC.",
+    "dateModified": "2026-06-18",
+    "inLanguage": "en",
+    "medicalAudience": ["Patient", "MedicalResearcher", "Clinician"],
+    "author": {
+      "@type": "Person",
+      "name": "Clément MÉDEAU",
+      "honorificPrefix": "Dr",
+      "url": "https://breathiq.fr/about-en.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BreathIQ",
+      "url": "https://breathiq.fr"
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Ebola Virus Disease (Bundibugyo strain)",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "A98.4",
+        "codingSystem": "ICD-10"
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="style.min.css?v=20260617">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <style>
+    .ebola-hero {
+      background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #450a0a 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .ebola-hero .pheic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+    .ebola-hero h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 0.75rem; }
+    .ebola-hero .subtitle { font-size: 1rem; opacity: 0.88; max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.5; }
+    .ebola-hero .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .ebola-hero .stat-item { text-align: center; }
+    .ebola-hero .stat-num { font-size: 2rem; font-weight: 800; line-height: 1; }
+    .ebola-hero .stat-label { font-size: 0.75rem; opacity: 0.8; margin-top: 0.25rem; }
+    .medical-disclaimer { background: #fef3c7; border-left: 4px solid #d97706; padding: 1rem 1.25rem; margin: 1.5rem auto; max-width: 860px; border-radius: 0 0.5rem 0.5rem 0; font-size: 0.85rem; color: #78350f; }
+    .audience-tabs { display: flex; gap: 0.5rem; max-width: 860px; margin: 2rem auto 0; padding: 0 1rem; }
+    .audience-tab { flex: 1; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.75rem; background: #fff; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
+    .audience-tab.active-patient { border-color: #2563eb; background: #eff6ff; color: #1e40af; }
+    .audience-tab.active-hcw { border-color: #059669; background: #ecfdf5; color: #065f46; }
+    .page-content { max-width: 860px; margin: 0 auto; padding: 0 1rem 3rem; }
+    .section-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .section-card h2 { font-size: 1.15rem; font-weight: 700; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .section-card h3 { font-size: 0.95rem; font-weight: 600; color: #374151; margin: 1rem 0 0.5rem; }
+    .clinical-timeline { position: relative; padding-left: 0; }
+    .timeline-phase { position: relative; padding: 1rem 1rem 1rem 3rem; border-left: 3px solid #e5e7eb; margin-bottom: 0.5rem; }
+    .timeline-phase::before { content: attr(data-days); position: absolute; left: -1px; top: 1rem; transform: translateX(-50%); background: #7f1d1d; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 0.25rem; white-space: nowrap; }
+    .timeline-phase.phase-critical { border-color: #dc2626; }
+    .timeline-phase.phase-critical::before { background: #dc2626; }
+    .timeline-phase.phase-warning { border-color: #d97706; }
+    .timeline-phase.phase-warning::before { background: #d97706; }
+    .timeline-phase.phase-recovery { border-color: #059669; }
+    .timeline-phase.phase-recovery::before { background: #059669; }
+    .timeline-phase h4 { font-size: 0.9rem; font-weight: 700; margin: 0 0 0.4rem; }
+    .timeline-phase ul { margin: 0; padding-left: 1.2rem; font-size: 0.85rem; color: #374151; }
+    .timeline-phase .phase-note { margin-top: 0.4rem; font-size: 0.8rem; background: #f9fafb; padding: 0.4rem 0.6rem; border-radius: 0.35rem; color: #6b7280; font-style: italic; }
+    .alarm-box { background: #fef2f2; border: 2px solid #dc2626; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .alarm-box .alarm-title { font-size: 1rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem; }
+    .alarm-box .alarm-number { font-size: 2.5rem; font-weight: 900; color: #dc2626; line-height: 1; }
+    .alarm-box .alarm-steps { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .alarm-box .alarm-steps li { padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px solid #fecaca; display: flex; gap: 0.5rem; }
+    .alarm-box .alarm-steps li:last-child { border-bottom: none; }
+    .step-num { background: #dc2626; color: #fff; border-radius: 50%; width: 1.3rem; height: 1.3rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .ppe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+    .ppe-item { background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 0.6rem; padding: 0.75rem; font-size: 0.82rem; }
+    .ppe-item .ppe-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .ppe-item strong { display: block; font-size: 0.8rem; margin-bottom: 0.15rem; }
+    .strain-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.75rem; }
+    .strain-table th { background: #7f1d1d; color: #fff; padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; }
+    .strain-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+    .strain-table tr:nth-child(even) td { background: #fafafa; }
+    .strain-table .active-row td { background: #fef2f2; font-weight: 600; }
+    .badge-no-vaccine { background: #fef2f2; color: #991b1b; border: 1px solid #fca5a5; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 600; }
+    .badge-vaccine { background: #ecfdf5; color: #065f46; border: 1px solid #6ee7b7; padding: 0.15rem 0.4rem; border-radius: 0.25rem; font-size: 0.72rem; font-weight: 600; }
+    .notif-chain { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .notif-chain li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    .notif-chain li:last-child { border-bottom: none; }
+    .notif-num { background: #059669; color: #fff; border-radius: 50%; width: 1.6rem; height: 1.6rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+    .post-recovery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 0.75rem; }
+    .recovery-card { background: #fefce8; border: 1px solid #fde68a; border-radius: 0.6rem; padding: 1rem; }
+    .recovery-card h4 { font-size: 0.88rem; font-weight: 700; color: #78350f; margin: 0 0 0.5rem; }
+    .recovery-card ul { margin: 0; padding-left: 1.2rem; font-size: 0.82rem; color: #451a03; }
+    .faq-item { border: 1px solid #e5e7eb; border-radius: 0.6rem; margin-bottom: 0.6rem; overflow: hidden; }
+    .faq-q { width: 100%; background: #f9fafb; border: none; padding: 0.85rem 1rem; text-align: left; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #111827; }
+    .faq-q:hover { background: #f3f4f6; }
+    .faq-a { display: none; padding: 0.85rem 1rem; font-size: 0.85rem; color: #374151; line-height: 1.6; border-top: 1px solid #e5e7eb; }
+    .faq-a.open { display: block; }
+    .faq-q .faq-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .page-nav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .page-nav a { font-size: 0.85rem; color: #6b7280; text-decoration: none; }
+    .page-nav a:hover { color: #111827; }
+    .page-nav .breadcrumb-sep { color: #d1d5db; }
+    .page-nav .current { color: #7f1d1d; font-weight: 600; }
+    @media (max-width: 540px) {
+      .post-recovery-grid { grid-template-columns: 1fr; }
+      .ppe-grid { grid-template-columns: 1fr 1fr; }
+      .strain-table { font-size: 0.75rem; }
+      .strain-table th, .strain-table td { padding: 0.4rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="page-nav" aria-label="Breadcrumb">
+  <a href="/">BreathIQ</a>
+  <span class="breadcrumb-sep" aria-hidden="true">›</span>
+  <span class="current">Ebola Bundibugyo 2026</span>
+  <span style="flex:1"></span>
+  <a href="ebola.html" style="font-size:0.8rem;color:#4b5563;">🇫🇷 Français</a>
+</nav>
+
+<header class="ebola-hero">
+  <div class="pheic-badge">🔴 WHO PHEIC — May 17, 2026</div>
+  <h1>Ebola Bundibugyo 2026</h1>
+  <p class="subtitle">
+    Complete clinical guide — patients &amp; healthcare workers<br>
+    Active Public Health Emergency of International Concern · DRC &amp; Uganda
+  </p>
+  <div class="stat-row">
+    <div class="stat-item"><div class="stat-num">344</div><div class="stat-label">confirmed cases (DRC)</div></div>
+    <div class="stat-item"><div class="stat-num">60</div><div class="stat-label">deaths (DRC)</div></div>
+    <div class="stat-item"><div class="stat-num">15</div><div class="stat-label">cases Uganda</div></div>
+    <div class="stat-item"><div class="stat-num">0</div><div class="stat-label">vaccine available</div></div>
+  </div>
+</header>
+
+<div class="medical-disclaimer" role="note">
+  <strong>⚠️ Public information — Not a medical device.</strong>
+  This page is an information tool based on official WHO, CDC, ECDC and public health data. It does not replace medical consultation. If in doubt, contact your emergency services immediately.
+</div>
+
+<div class="audience-tabs" role="tablist" aria-label="Select audience">
+  <button class="audience-tab active-patient" onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
+    👤 I am a patient / traveler
+  </button>
+  <button class="audience-tab" onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
+    🩺 I am a healthcare worker
+  </button>
+</div>
+
+<main class="page-content">
+
+  <!-- PATIENT SECTION -->
+  <div id="section-patient" role="tabpanel" aria-labelledby="tab-patient">
+
+    <div class="alarm-box" style="margin-top:1.5rem;">
+      <div class="alarm-title">🚨 If you think you may have Ebola</div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.8rem;color:#991b1b;margin-bottom:0.2rem;">Call immediately</div>
+          <div class="alarm-number">15 / 112</div>
+          <div style="font-size:0.8rem;color:#991b1b;">Emergency services — 24/7</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <ul class="alarm-steps">
+            <li><span class="step-num">1</span> <span>Stay home — do NOT go to hospital without calling first</span></li>
+            <li><span class="step-num">2</span> <span>Call emergency services and mention your travel to Central/East Africa</span></li>
+            <li><span class="step-num">3</span> <span>Isolate yourself in a separate room, avoid any physical contact</span></li>
+            <li><span class="step-num">4</span> <span>Wait for instructions from the medical dispatcher</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🌡️ When should I be worried?</h2>
+      <p style="font-size:0.88rem;color:#374151;margin-bottom:1rem;">
+        Ebola spreads through <strong>direct contact with the blood or body fluids</strong> of an infected person.
+        <strong>It does NOT spread through the air.</strong>
+        The risk for someone in Europe without recent travel to Central/East Africa is <strong>extremely low</strong>.
+      </p>
+
+      <div style="background:#fef2f2;border-radius:0.6rem;padding:1rem;margin-bottom:1rem;">
+        <strong style="color:#991b1b;font-size:0.9rem;">⚠️ Call emergency services if you have BOTH of these:</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.88rem;color:#7f1d1d;">
+          <li><strong>Fever ≥ 38°C (100.4°F)</strong> appearing within <strong>21 days</strong> of return from Central/East Africa (DRC, Uganda, Burundi, Rwanda...)</li>
+          <li>+ <strong>any of these signs</strong>: unexplained bleeding, severe vomiting, profuse diarrhea, intense muscle pain</li>
+        </ul>
+      </div>
+
+      <div style="background:#f0fdf4;border-radius:0.6rem;padding:1rem;">
+        <strong style="color:#065f46;font-size:0.9rem;">✅ Ebola does NOT spread through:</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;display:grid;grid-template-columns:1fr 1fr;gap:0.2rem;">
+          <li>Air or breathing</li>
+          <li>Coughing or sneezing</li>
+          <li>Water or food (in Europe)</li>
+          <li>Insects or mosquitoes</li>
+          <li>Contact with asymptomatic person</li>
+          <li>Public transport</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📅 Disease timeline — day by day</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Bundibugyo strain — incubation 2 to 21 days (median: 7 days)</p>
+
+      <div class="clinical-timeline">
+        <div class="timeline-phase phase-warning" data-days="D1–D3">
+          <h4>Prodromal phase — resembles influenza</h4>
+          <ul>
+            <li>Sudden fever ≥ 38.5°C (101.3°F)</li>
+            <li>Intense headache</li>
+            <li>Muscle and joint pain</li>
+            <li>Severe fatigue</li>
+            <li>Sore throat</li>
+          </ul>
+          <p class="phase-note">⚠️ The patient is already contagious as soon as symptoms appear.</p>
+        </div>
+
+        <div class="timeline-phase phase-warning" data-days="D4–D7">
+          <h4>Gastrointestinal phase</h4>
+          <ul>
+            <li>Significant nausea and vomiting</li>
+            <li>Profuse diarrhea (10 to 20 stools per day)</li>
+            <li>Abdominal pain</li>
+            <li>Severe dehydration</li>
+            <li>Skin rash on the trunk</li>
+          </ul>
+          <p class="phase-note">Risk of fatal dehydration. IV rehydration in a specialized facility is critical.</p>
+        </div>
+
+        <div class="timeline-phase phase-critical" data-days="D7–D14">
+          <h4>Hemorrhagic phase (in 30–50% of patients)</h4>
+          <ul>
+            <li>Bleeding from gums, eyes, nose</li>
+            <li>Blood in vomit and stools</li>
+            <li>Spontaneous bruising</li>
+            <li>Organ failure (liver, kidneys)</li>
+          </ul>
+          <p class="phase-note">Death occurs mainly from shock, not exclusively from bleeding. All fluids are highly infectious.</p>
+        </div>
+
+        <div class="timeline-phase phase-recovery" data-days="D8–D21+">
+          <h4>Recovery or death</h4>
+          <ul>
+            <li>Survivors: recovery confirmed by 2 negative PCR tests</li>
+            <li>Fatigue and joint pain for 2 to 3 months</li>
+            <li>Risk of eye complications (uveitis)</li>
+            <li>Mandatory post-recovery medical follow-up</li>
+          </ul>
+          <p class="phase-note">Warning: the virus can persist in semen for up to 500 days after recovery.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>⚠️ After recovery — risks to know</h2>
+      <div class="post-recovery-grid">
+        <div class="recovery-card">
+          <h4>🔬 Sexual transmission</h4>
+          <ul>
+            <li>Ebola virus persists in <strong>semen up to 500 days</strong> after clinical recovery</li>
+            <li>WHO 2021: <strong>condom for 12 months</strong> (male survivors)</li>
+            <li>Breastfeeding contraindicated during illness</li>
+            <li>Semen PCR tests recommended before stopping contraception</li>
+          </ul>
+        </div>
+        <div class="recovery-card">
+          <h4>🧠 Post-Ebola syndrome</h4>
+          <ul>
+            <li>Uveitis (eye inflammation, risk of blindness)</li>
+            <li>Chronic joint pain</li>
+            <li>Persistent fatigue for months</li>
+            <li>Memory and concentration problems</li>
+            <li>Depression and PTSD</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>❓ Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I catch Ebola on a plane? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Very unlikely. Ebola does not spread through the air (no aerosols like influenza). Contamination would require direct contact with the body fluids of a symptomatic passenger. The risk on a plane is minimal — however, health authorities may still contact the neighbors of an identified case.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there a vaccine against this Ebola strain? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <strong>No.</strong> The rVSV-ZEBOV vaccine (Ervebo), effective against the Zaire strain, has <strong>no demonstrated efficacy against the Bundibugyo strain</strong> responsible for the 2026 outbreak. There is currently no approved vaccine or specific treatment for this strain.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Should I avoid traveling to Africa? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          The risk zones are specific: <strong>Ituri, North Kivu and South Kivu provinces (DRC) and border regions of Uganda</strong>. The rest of Africa is not affected. Check your government's travel advisories before any trip to Central Africa.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I have a fever and traveled to Africa 3 weeks ago. What should I do? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          The maximum incubation period for Ebola is <strong>21 days</strong>. If your trip was more than 21 days ago, Ebola is very unlikely. However, fever after travel to Africa can have other causes (malaria +++). See a doctor and mention your travel. If less than 21 days and you were in an outbreak area: <strong>call emergency services immediately</strong>.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HCW SECTION -->
+  <div id="section-hcw" role="tabpanel" aria-labelledby="tab-hcw" style="display:none;">
+
+    <div class="alarm-box" style="margin-top:1.5rem;border-color:#059669;background:#ecfdf5;">
+      <div class="alarm-title" style="color:#065f46;">🩺 A single suspected case = immediate mandatory notification</div>
+      <ul class="alarm-steps" style="color:#064e3b;">
+        <li><span class="step-num" style="background:#059669;">1</span> <span>Immediate contact isolation — single room, closed door</span></li>
+        <li><span class="step-num" style="background:#059669;">2</span> <span>Basic PPE: FFP2/N95 + gloves + gown (suspected case)</span></li>
+        <li><span class="step-num" style="background:#059669;">3</span> <span>Call emergency services and Regional Health Authority within 1 hour</span></li>
+        <li><span class="step-num" style="background:#059669;">4</span> <span>Hospital crisis unit + CORRUSS if reference center involved</span></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🔍 Suspicion criteria — possible Ebola case</h2>
+      <div style="background:#f0fdf4;border:1px solid #6ee7b7;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#065f46;">WHO 2026 case definition (possible case):</strong>
+        <p style="margin:0.5rem 0 0;font-size:0.88rem;color:#064e3b;">
+          <strong>Fever ≥ 38°C</strong> (or history of fever) within <strong>21 days after</strong>:
+        </p>
+        <ul style="margin:0.4rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;">
+          <li>Residence or travel in active outbreak area (Ituri, North Kivu, Uganda)</li>
+          <li>OR contact with confirmed/possible Ebola case</li>
+          <li>OR contact with biological products/corpse of an Ebola patient</li>
+          <li>OR contact with potentially infected wild animals (bats, primates)</li>
+        </ul>
+      </div>
+
+      <h3>Priority differential diagnosis</h3>
+      <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;">
+        <li><strong>Malaria</strong> (very common — blood smear / RDT mandatory)</li>
+        <li><strong>Typhoid fever</strong> (blood cultures)</li>
+        <li><strong>Bacterial meningitis</strong></li>
+        <li><strong>Lassa fever</strong> (West Africa — characteristic sensorineural deafness)</li>
+        <li><strong>Marburg</strong> (identical presentation, different geography)</li>
+        <li><strong>CCHF</strong> (Crimean-Congo — Balkans/Turkey travel, tick contact)</li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🦺 PPE Protocol — Level by level</h2>
+
+      <h3>Suspected case (PCR pending)</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item"><div class="ppe-icon">😷</div><strong>FFP2/N95 minimum</strong>Fitted filtering facepiece — do not use surgical mask</div>
+        <div class="ppe-item"><div class="ppe-icon">🧤</div><strong>Double gloving</strong>Sterile nitrile gloves × 2 layers</div>
+        <div class="ppe-item"><div class="ppe-icon">🥼</div><strong>Impermeable gown</strong>Long-sleeved, fluid-resistant</div>
+        <div class="ppe-item"><div class="ppe-icon">🥽</div><strong>Eye protection</strong>Goggles OR full face shield</div>
+      </div>
+
+      <h3 style="margin-top:1.25rem;">Confirmed case PCR+ or AGP (intubation, suction, resuscitation)</h3>
+      <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#991b1b;">⚠️ BSL-4 LEVEL MANDATORY — No exceptions</strong>
+      </div>
+      <div class="ppe-grid">
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;"><div class="ppe-icon">🌬️</div><strong>FFP3 or PAPR</strong>Fitted FFP3 mask OR powered air-purifying respirator (PAPR)</div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;"><div class="ppe-icon">🧪</div><strong>Full coverall suit</strong>Level 4 impermeable full-body suit (e.g., TYVEK)</div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;"><div class="ppe-icon">🧤</div><strong>Certified double gloves</strong>Inner + outer fluid-resistant gloves</div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;"><div class="ppe-icon">🥽</div><strong>Full face visor</strong>Total coverage of face, neck, and head</div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;"><div class="ppe-icon">👢</div><strong>Impermeable boot covers</strong>Splash-resistant overshoes</div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;"><div class="ppe-icon">🚪</div><strong>Doffing airlock</strong>2-stage doffing protocol before exit</div>
+      </div>
+
+      <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:0.6rem;padding:0.75rem;margin-top:1rem;font-size:0.83rem;color:#78350f;">
+        <strong>VACCINE REMINDER:</strong> The rVSV-ZEBOV vaccine (Ervebo) is <strong>NOT effective against the Bundibugyo strain</strong>. No healthcare worker should consider themselves protected by this vaccine for this outbreak.
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📞 Notification and alert chain</h2>
+      <ul class="notif-chain">
+        <li><span class="notif-num">1</span><div><strong>Emergency services (15 / 112)</strong> — immediate activation upon clinical suspicion<br><span style="font-size:0.8rem;color:#6b7280;">Medical dispatcher coordinates transfer to high-security isolation unit</span></div></li>
+        <li><span class="notif-num">2</span><div><strong>Regional Health Authority (ARS)</strong> — within 1 hour<br><span style="font-size:0.8rem;color:#6b7280;">Mandatory immediate notification (Public Health Code)</span></div></li>
+        <li><span class="notif-num">3</span><div><strong>Public Health France / National Agency</strong><br><span style="font-size:0.8rem;color:#6b7280;">National and international coordination — crisis unit activation</span></div></li>
+        <li><span class="notif-num">4</span><div><strong>Hospital management + crisis unit</strong><br><span style="font-size:0.8rem;color:#6b7280;">White plan activation if needed — contact tracing of exposed staff</span></div></li>
+        <li><span class="notif-num">5</span><div><strong>CORRUSS</strong> (National Health Emergency Operations Centre)<br><span style="font-size:0.8rem;color:#6b7280;">If reference establishment involved — inter-agency coordination</span></div></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🔬 Laboratory workup and clinical monitoring</h2>
+
+      <h3>Priority initial workup (suspected case)</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;margin-bottom:1rem;">
+        <div style="background:#f9fafb;padding:0.75rem;border-radius:0.5rem;border:1px solid #e5e7eb;">
+          <strong>Urgent blood work</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#374151;">
+            <li>CBC + differential</li>
+            <li>Platelets (thrombocytopenia)</li>
+            <li>ALT/AST (viral hepatitis)</li>
+            <li>Creatinine + urea</li>
+            <li>PT/aPTT (early DIC)</li>
+            <li>Blood smear + malaria RDT</li>
+          </ul>
+        </div>
+        <div style="background:#f9fafb;padding:0.75rem;border-radius:0.5rem;border:1px solid #e5e7eb;">
+          <strong>Virology (BSL-4 lab only)</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#374151;">
+            <li>Ebola PCR on EDTA blood</li>
+            <li>Collection per national protocol</li>
+            <li>Double packaging + cold chain</li>
+            <li>Result: 4 to 6 hours (dedicated BSL-4 lab)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>Supportive care (in high-security unit)</h3>
+      <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;">
+        <li><strong>Aggressive IV rehydration</strong> — crystalloid + electrolyte correction (K+, Na+)</li>
+        <li><strong>Antiemetics IV</strong> (ondansetron) — reduce contaminating vomiting</li>
+        <li><strong>Analgesia</strong> — paracetamol (avoid NSAIDs and aspirin: hemorrhagic risk)</li>
+        <li><strong>Transfusions</strong> if severe thrombocytopenia + active hemorrhage</li>
+        <li><strong>Dialysis</strong> if acute renal failure</li>
+        <li><strong>No systematic antibiotics</strong> — unless documented bacterial co-infection</li>
+        <li>Monoclonal antibody trials (Zaire strain only): Ansuvimab (Mab114), Inmazeb (REGN-EB3)</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Strain comparison — shared -->
+  <div class="section-card">
+    <h2>⚗️ Comparison of all 5 Ebola strains</h2>
+    <p style="font-size:0.83rem;color:#6b7280;margin-bottom:0.75rem;">
+      The Ebola virus comprises 5 species. Only the <strong>Zaire strain has an effective vaccine</strong> (not available against Bundibugyo).
+    </p>
+    <div style="overflow-x:auto;">
+      <table class="strain-table">
+        <thead>
+          <tr><th>Strain</th><th>CFR</th><th>Vaccine</th><th>Treatment</th><th>2026 Status</th></tr>
+        </thead>
+        <tbody>
+          <tr class="active-row">
+            <td><strong>Bundibugyo (BDBV)</strong><br><small>DRC, Uganda</small></td>
+            <td>25–50%</td>
+            <td><span class="badge-no-vaccine">None</span></td>
+            <td><span class="badge-no-vaccine">None</span></td>
+            <td>🚨 ACTIVE — PHEIC</td>
+          </tr>
+          <tr>
+            <td><strong>Zaire (EBOV)</strong><br><small>DRC, Central Africa</small></td>
+            <td>40–90%</td>
+            <td><span class="badge-vaccine">Ervebo ✓</span></td>
+            <td><span class="badge-vaccine">Mab114, REGN-EB3</span></td>
+            <td>✅ Controlled</td>
+          </tr>
+          <tr>
+            <td><strong>Sudan (SUDV)</strong><br><small>Sudan, Uganda</small></td>
+            <td>40–60%</td>
+            <td><span class="badge-no-vaccine">In trial</span></td>
+            <td><span class="badge-no-vaccine">None approved</span></td>
+            <td>⚠️ Sporadic</td>
+          </tr>
+          <tr>
+            <td><strong>Taï Forest (TAFV)</strong><br><small>Côte d'Ivoire</small></td>
+            <td>0% (1 case)</td>
+            <td><span class="badge-no-vaccine">None</span></td>
+            <td><span class="badge-no-vaccine">None</span></td>
+            <td>✅ Rare</td>
+          </tr>
+          <tr>
+            <td><strong>Reston (RESTV)</strong><br><small>Philippines</small></td>
+            <td>0% human</td>
+            <td><span class="badge-no-vaccine">None</span></td>
+            <td><span class="badge-no-vaccine">Not needed</span></td>
+            <td>✅ Asymptomatic</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="section-card" style="background:#f9fafb;">
+    <h2>📚 Official sources</h2>
+    <ul style="font-size:0.82rem;color:#374151;padding-left:1.4rem;line-height:1.8;">
+      <li>WHO — PHEIC Ebola Bundibugyo declared May 17, 2026</li>
+      <li>WHO DON 2026-DON605 — Ebola Bundibugyo virus, DRC &amp; Uganda, June 2026</li>
+      <li>CDC — Ebola Bundibugyo FAQ 2026 · rVSV-ZEBOV vaccine not effective against Bundibugyo</li>
+      <li>WHO PPE for Ebola 2026 — Personal protective equipment guidance</li>
+      <li>ECDC — Ebola outbreak DRC &amp; Uganda 2026</li>
+      <li>UN Info — 344 confirmed cases, 60 deaths DRC · 15 cases Uganda, June 3, 2026</li>
+      <li>WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors</li>
+      <li>Feldmann H, Geisbert TW. <em>Lancet</em> 2011 — Ebola haemorrhagic fever</li>
+      <li>Varkey JB et al. <em>N Engl J Med</em> 2015 — Persistence of Ebola virus in ocular fluid</li>
+    </ul>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Last updated: June 18, 2026 · By Dr Clément MÉDEAU, MD (La Rochelle, France)
+    </p>
+  </div>
+
+</main>
+
+<footer style="background:#1f2937;color:#9ca3af;text-align:center;padding:2rem 1rem;font-size:0.82rem;">
+  <p>
+    <a href="/" style="color:#d1d5db;text-decoration:none;">BreathIQ</a> ·
+    <a href="about-en.html" style="color:#d1d5db;text-decoration:none;">About</a> ·
+    <a href="methodologie.html" style="color:#d1d5db;text-decoration:none;">Methodology</a> ·
+    <a href="privacy-en.html" style="color:#d1d5db;text-decoration:none;">Privacy</a>
+  </p>
+  <p style="margin-top:0.5rem;">Public information tool · Not a medical device (EU 2017/745) · © 2026 Dr Clément MÉDEAU</p>
+</footer>
+
+<script>
+  function switchAudience(audience) {
+    const patSection = document.getElementById('section-patient');
+    const hcwSection = document.getElementById('section-hcw');
+    const tabPat = document.getElementById('tab-patient');
+    const tabHcw = document.getElementById('tab-hcw');
+    if (audience === 'patient') {
+      patSection.style.display = '';
+      hcwSection.style.display = 'none';
+      tabPat.classList.add('active-patient');
+      tabHcw.className = 'audience-tab';
+      tabPat.setAttribute('aria-selected', 'true');
+      tabHcw.setAttribute('aria-selected', 'false');
+    } else {
+      hcwSection.style.display = '';
+      patSection.style.display = 'none';
+      tabHcw.classList.add('active-hcw');
+      tabPat.className = 'audience-tab';
+      tabHcw.setAttribute('aria-selected', 'true');
+      tabPat.setAttribute('aria-selected', 'false');
+    }
+  }
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    answer.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>

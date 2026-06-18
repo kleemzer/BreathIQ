@@ -1,7 +1,7 @@
 {
   "generatedAt": "2026-06-06T13:45:42.457Z",
   "version": "1.0",
-  "pathogensCount": 17,
+  "pathogensCount": 19,
   "pathogens": [
     {
       "id": "H5N1",
@@ -631,6 +631,121 @@
       "outbreakStart": "2026-04",
       "lastUpdate": "2026-06",
       "iconColor": "#7F1D1D",
+      "clinicalPhases": [
+        {
+          "days": "J1–J3",
+          "phaseFR": "Phase prodromique",
+          "phaseEN": "Prodromal phase",
+          "symptomsFR": ["Fièvre brutale ≥ 38,5°C", "Céphalées intenses", "Myalgies et arthralgies", "Fatigue sévère", "Pharyngite"],
+          "symptomsEN": ["Sudden fever ≥ 38.5°C", "Severe headache", "Myalgias and arthralgias", "Severe fatigue", "Pharyngitis"],
+          "noteFR": "Phase non spécifique. Ressemble à paludisme ou grippe. Patient CONTAGIEUX dès que symptomatique.",
+          "noteEN": "Non-specific phase. Resembles malaria or influenza. Patient is CONTAGIOUS as soon as symptomatic."
+        },
+        {
+          "days": "J4–J7",
+          "phaseFR": "Phase gastro-intestinale",
+          "phaseEN": "Gastrointestinal phase",
+          "symptomsFR": ["Nausées et vomissements profus", "Diarrhée aqueuse (10–20 selles/jour)", "Douleurs abdominales", "Déshydratation sévère", "Éruption maculo-papuleuse (tronc)"],
+          "symptomsEN": ["Profuse nausea and vomiting", "Watery diarrhea (10–20 stools/day)", "Abdominal pain", "Severe dehydration", "Maculopapular rash (trunk)"],
+          "noteFR": "Risque de choc hypovolémique. Réhydratation IV urgente. Forte charge virale dans les selles.",
+          "noteEN": "Risk of hypovolemic shock. Emergency IV rehydration. High viral load in stools."
+        },
+        {
+          "days": "J7–J14",
+          "phaseFR": "Phase hémorragique (si évolution défavorable)",
+          "phaseEN": "Hemorrhagic phase (unfavorable course)",
+          "symptomsFR": ["Saignements muqueuses (gencives, yeux, nez)", "Hématémèse et méléna", "Pétéchies et ecchymoses", "Défaillance multi-viscérale (foie, reins, coagulation)", "CIVD (coagulation intra-vasculaire disséminée)"],
+          "symptomsEN": ["Mucosal bleeding (gums, eyes, nose)", "Hematemesis and melena", "Petechiae and ecchymosis", "Multi-organ failure (liver, kidneys, coagulation)", "DIC (disseminated intravascular coagulation)"],
+          "noteFR": "Présente dans 30–50% des cas seulement. La mort survient surtout par choc, pas exclusivement par saignement.",
+          "noteEN": "Present in only 30-50% of cases. Death occurs mainly from shock, not exclusively from bleeding."
+        },
+        {
+          "days": "J8–J21",
+          "phaseFR": "Phase de convalescence ou décès",
+          "phaseEN": "Convalescence or death",
+          "symptomsFR": ["Survivants : fatigue persistante 2–3 mois", "Arthralgies résiduelles", "Troubles visuels (uvéite post-Ebola)", "Syndrome post-Ebola (psychologique, neurologique)", "Persistance virale sperme 6+ mois"],
+          "symptomsEN": ["Survivors: persistent fatigue 2-3 months", "Residual arthralgias", "Visual disturbances (post-Ebola uveitis)", "Post-Ebola syndrome (psychological, neurological)", "Viral persistence in semen 6+ months"],
+          "noteFR": "Survivants déclarés GUÉRIS uniquement après 2 tests PCR négatifs. Suivi post-guérison obligatoire.",
+          "noteEN": "Survivors declared CURED only after 2 negative PCR tests. Mandatory post-recovery follow-up."
+        }
+      ],
+      "postRecoveryRisks": {
+        "sexualTransmission": {
+          "durationFR": "Jusqu'à 500 jours après guérison clinique (sperme)",
+          "durationEN": "Up to 500 days after clinical recovery (semen)",
+          "sourcesFR": ["Sperme (risque maximal, OMS recommande préservatif 12 mois)", "Lait maternel (contre-indication allaitement)", "Sécrétions vaginales (données limitées)"],
+          "sourcesEN": ["Semen (maximum risk, WHO recommends condom for 12 months)", "Breast milk (contraindication for breastfeeding)", "Vaginal secretions (limited data)"],
+          "guidelineFR": "OMS 2021 : abstinence ou préservatif pendant 12 mois après guérison pour les hommes. Tests PCR sperme recommandés.",
+          "guidelineEN": "WHO 2021: abstinence or condom for 12 months after recovery for men. Semen PCR tests recommended."
+        },
+        "postEbolaSyndrome": {
+          "symptomsFR": ["Uvéite (inflammation oculaire, risque cécité)", "Arthralgie chronique", "Fatigue persistante", "Troubles cognitifs et mémoire", "Dépression et PTSD"],
+          "symptomsEN": ["Uveitis (ocular inflammation, blindness risk)", "Chronic arthralgia", "Persistent fatigue", "Cognitive and memory impairment", "Depression and PTSD"]
+        }
+      },
+      "strainComparison": [
+        {
+          "strain": "Bundibugyo (BDBV)",
+          "cfr": "25–50%",
+          "vaccine": false,
+          "treatment": false,
+          "status": "🚨 ACTIF 2026 (PHEIC)",
+          "geography": "RDC, Ouganda"
+        },
+        {
+          "strain": "Zaïre (EBOV)",
+          "cfr": "40–90%",
+          "vaccine": true,
+          "vaccineNote": "rVSV-ZEBOV (Ervebo) — efficace",
+          "treatment": true,
+          "treatmentNote": "Mab114 (Ansuvimab), REGN-EB3 (Inmazeb)",
+          "status": "✅ Sous contrôle",
+          "geography": "RDC, Afrique Centrale"
+        },
+        {
+          "strain": "Soudan (SUDV)",
+          "cfr": "40–60%",
+          "vaccine": false,
+          "vaccineNote": "Vaccin ChAd3 en essai (Ouganda 2022)",
+          "treatment": false,
+          "status": "⚠️ Sporadique",
+          "geography": "Soudan, Ouganda"
+        },
+        {
+          "strain": "Taï Forest (TAFV)",
+          "cfr": "0% (1 seul cas humain survivant)",
+          "vaccine": false,
+          "treatment": false,
+          "status": "✅ Rare",
+          "geography": "Côte d'Ivoire"
+        },
+        {
+          "strain": "Reston (RESTV)",
+          "cfr": "0% (aucune maladie humaine prouvée)",
+          "vaccine": false,
+          "treatment": false,
+          "status": "✅ Asymptomatique",
+          "geography": "Philippines (primates), USA"
+        }
+      ],
+      "hcwProtocol": {
+        "suspicion": {
+          "levelFR": "Cas suspect (fièvre + retour zone < 21j)",
+          "levelEN": "Suspected case (fever + travel history < 21 days)",
+          "epiFR": ["Chambre individuelle + porte fermée", "FFP2 + gants + surblouse", "Appel SAMU 15 immédiat", "Signalement ARS dans l'heure"],
+          "epiEN": ["Single room + closed door", "FFP2 + gloves + gown", "Immediate emergency call", "Health authority notification within 1 hour"]
+        },
+        "confirmed": {
+          "levelFR": "Cas confirmé (PCR+)",
+          "levelEN": "Confirmed case (PCR+)",
+          "epiFR": ["Unité d'isolement haute sécurité (type UHSI)", "FFP3/PAPR obligatoire", "Combinaison imperméable complète", "Double gantage + couvre-bottes + visière intégrale", "Pas d'AGP sans EPI niveau 4 complet", "Décontamination sas avant sortie"],
+          "epiEN": ["High-security isolation unit (UHSI type)", "FFP3/PAPR mandatory", "Full impermeable suit", "Double gloves + boot covers + full-face visor", "No AGP without complete level 4 PPE", "Decontamination airlock before exit"]
+        },
+        "notification": {
+          "chainFR": ["1. SAMU 15 — activation immédiate", "2. ARS régionale — dans l'heure", "3. Santé Publique France — déclaration obligatoire", "4. Cellule de crise établissement", "5. CORRUSS (si établissement de référence)"],
+          "chainEN": ["1. Emergency services — immediate activation", "2. Regional Health Agency — within 1 hour", "3. Public Health France — mandatory declaration", "4. Hospital crisis unit", "5. CORRUSS (if reference establishment)"]
+        }
+      },
       "references": [
         "WHO — PHEIC déclarée le 17 mai 2026 · Épidémie Ebola Bundibugyo RDC & Ouganda",
         "WHO DON 2026-DON605 — Ebola Bundibugyo virus, DRC & Uganda, juin 2026",
@@ -640,10 +755,163 @@
         "ONU Info — 344 cas confirmés, 60 décès RDC · 15 cas Ouganda, 3 juin 2026",
         "INSERM/SPF — Risque importation France/Mayotte très faible · juin 2026",
         "ECDC — Ebola outbreak DRC & Uganda 2026",
-        "Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever"
+        "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors",
+        "Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever",
+        "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid"
       ],
       "descFR": "🚨 URGENCE SANITAIRE INTERNATIONALE (PHEIC OMS — 17 mai 2026). Souche Bundibugyo : AUCUN vaccin, AUCUN traitement spécifique. RDC : 344 cas confirmés, 60 décès (Ituri 322, Nord-Kivu 19, Sud-Kivu 3). Ouganda : 15 cas, propagation transfrontalière. Mayotte : vigilance renforcée — aucun cas confirmé en France. Si fièvre + retour Afrique centrale/est (21 derniers jours) : appelez le 15 SANS vous déplacer. Soignants : FFP3 + tenue BSL-4 complète obligatoire.",
       "descEN": "🚨 PUBLIC HEALTH EMERGENCY OF INTERNATIONAL CONCERN (WHO PHEIC — May 17, 2026). Bundibugyo strain: NO vaccine, NO specific treatment. DRC: 344 confirmed cases, 60 deaths (Ituri 322, North Kivu 19, South Kivu 3). Uganda: 15 confirmed cases — cross-border spread. Mayotte: enhanced surveillance, NO confirmed cases in France. If fever after travel from Central/East Africa (last 21 days): call emergency services immediately, do NOT go to hospital. Healthcare workers: FFP3 + full BSL-4 suit mandatory."
+    },
+    {
+      "id": "LASSA",
+      "nameFR": "Fièvre de Lassa",
+      "nameEN": "Lassa Fever",
+      "pathogen": "Lassa mammarenavirus (LASV)",
+      "category": "endemic",
+      "riskLevel": "high",
+      "lat": 8.5,
+      "lon": -11.5,
+      "activeRegions": [
+        "Sierra Leone (endémique — hyperendémique dans certaines provinces)",
+        "Guinée (zone forestière)",
+        "Liberia (endémique)",
+        "Nigeria (foyers saisonniers récurrents, jan–mars)",
+        "Mali (foyers sporadiques)"
+      ],
+      "transmission": [
+        "Contact urine/fèces du rat Mastomys natalensis (réservoir principal)",
+        "Ingestion d'aliments contaminés par excrétas rongeurs",
+        "Contact direct avec sang/fluides d'un patient infecté",
+        "Nosocomial (personnel soignant sans EPI)"
+      ],
+      "protectionRequired": "FFP2/FFP3 + équipement contact + protection oculaire",
+      "protectionLevel": 3,
+      "maskNote": "Transmission principalement zoonotique (rongeurs). Transmission interhumaine possible par contact direct sang/fluides. FFP2 + gants + surblouse pour soins patients Lassa. FFP3 pour AGPs. PAS de transmission par voie aérienne naturelle. Ribavrine IV efficace si précoce (< 6j symptômes) — UNIQUE traitement antiviral disponible.",
+      "reproductionNumber": "R0 ≈ 0.8–1.3 (formes hospitalières sans précautions)",
+      "cfr": "1% (cas communautaires estimés) ; 15–25% (cas hospitalisés) ; 80% enceintes 3e trimestre",
+      "incubation": "6–21 jours (médiane 10 jours)",
+      "transmission_route": "Zoonotique principale (rat Mastomys) : contact aliments/eau contaminés par urine/fèces. Transmission interhumaine par sang/sécrétions/urine patients infectés. Virus excrété dans urine semaines après guérison.",
+      "currentStatus": "endemic",
+      "outbreakStart": "Endémique (saison sèche = risque accru : jan–mars)",
+      "lastUpdate": "2026-06",
+      "iconColor": "#B45309",
+      "clinicalPhases": [
+        {
+          "days": "J1–J3",
+          "phaseFR": "Phase prodromique (80% des cas : forme légère)",
+          "phaseEN": "Prodromal phase (80% of cases: mild form)",
+          "symptomsFR": ["Fièvre progressive (non brutale)", "Malaise général", "Céphalées", "Douleurs thoraciques", "Pharyngite avec douleur à la déglutition"],
+          "symptomsEN": ["Progressive fever (not sudden onset)", "General malaise", "Headache", "Chest pain", "Pharyngitis with pain on swallowing"],
+          "noteFR": "80% des infections sont asymptomatiques ou légères. Signe distinctif : pharyngite douloureuse asymétrique.",
+          "noteEN": "80% of infections are asymptomatic or mild. Distinctive sign: painful asymmetric pharyngitis."
+        },
+        {
+          "days": "J4–J7",
+          "phaseFR": "Phase systémique (20% cas sévères)",
+          "phaseEN": "Systemic phase (20% severe cases)",
+          "symptomsFR": ["Vomissements et diarrhée", "Œdème facial", "Hémorragies muqueuses (10–20% cas sévères)", "Surdité de perception (caractéristique !)", "Protéinurie, oligurie"],
+          "symptomsEN": ["Vomiting and diarrhea", "Facial edema", "Mucosal hemorrhages (10-20% severe cases)", "Sensorineural deafness (characteristic!)", "Proteinuria, oliguria"],
+          "noteFR": "SIGNE PATHOGNOMONIQUE : surdité de perception, présente dans 25–30% des cas. Peut être permanente (séquelles neurologiques).",
+          "noteEN": "PATHOGNOMONIC SIGN: sensorineural deafness in 25-30% of cases. Can be permanent (neurological sequelae)."
+        }
+      ],
+      "diagnosticDifferential": {
+        "noteFR": "Lassa ressemble à Ebola, Marburg et typhoïde. Diagnostic différentiel indispensable chez tout voyageur d'Afrique de l'Ouest avec fièvre + pharyngite + surdité.",
+        "noteEN": "Lassa resembles Ebola, Marburg, and typhoid. Differential diagnosis essential in any West Africa traveler with fever + pharyngitis + deafness.",
+        "keyDiffFR": "Surdité (Lassa) vs Saignements massifs (Ebola/Marburg)",
+        "keyDiffEN": "Deafness (Lassa) vs Massive bleeding (Ebola/Marburg)"
+      },
+      "treatment": {
+        "availableFR": true,
+        "nameFR": "Ribavirine IV (antivirale)",
+        "efficacyFR": "Réduit la mortalité si administrée dans les 6 premiers jours de symptômes. CFR passe de 55% à < 5% si traitement précoce.",
+        "nameEN": "Ribavirin IV (antiviral)",
+        "efficacyEN": "Reduces mortality if administered within first 6 days of symptoms. CFR drops from 55% to <5% with early treatment."
+      },
+      "references": [
+        "WHO Lassa Fever Fact Sheet — mise à jour janvier 2024",
+        "Nigeria CDC — Lassa Fever Situation Report, Q1 2026",
+        "McCormick JB et al. N Engl J Med 1986 — Lassa Fever: effective therapy with ribavirin",
+        "Bausch DG et al. J Infect Dis 2010 — Assessment of the risk of Ebola virus transmission from bodily fluids and fomites",
+        "Raabe VN, Kann G. Viruses 2017 — Lassa Fever clinical review",
+        "Asogun DA et al. PLoS Negl Trop Dis 2012 — Molecular diagnostics for lassa fever"
+      ],
+      "descFR": "Endémique Afrique de l'Ouest. 100 000–300 000 infections/an estimées, 5 000–10 000 décès (OMS). CFR 15–25% formes hospitalisées. TRAITEMENT DISPONIBLE : Ribavirine IV efficace si < 6 jours. Signe distinctif : surdité de perception (25–30% cas). Transmission : rongeur Mastomys → aliments contaminés. Risque importation France : voyageurs retour Sierra Leone, Guinée, Liberia, Nigeria avec fièvre.",
+      "descEN": "Endemic in West Africa. 100,000-300,000 infections/year estimated, 5,000-10,000 deaths (WHO). CFR 15-25% hospitalized forms. TREATMENT AVAILABLE: IV Ribavirin effective if <6 days. Distinctive sign: sensorineural deafness (25-30% cases). Transmission: Mastomys rodent → contaminated food. Import risk to France: travelers returning from Sierra Leone, Guinea, Liberia, Nigeria with fever."
+    },
+    {
+      "id": "CCHF",
+      "nameFR": "Fièvre hémorragique Criméo-Congo (FHCC)",
+      "nameEN": "Crimean-Congo Hemorrhagic Fever (CCHF)",
+      "pathogen": "Crimean-Congo hemorrhagic fever orthonairovirus (CCHFV)",
+      "category": "emerging",
+      "riskLevel": "high",
+      "lat": 41.0,
+      "lon": 29.0,
+      "activeRegions": [
+        "Turquie (endémique, foyers récurrents)",
+        "Kosovo, Albanie, Grèce (Europe du Sud — résurgence 2022–2026)",
+        "Espagne (foyers Estrémadure 2022–2024 — premier pays d'Europe Occidentale)",
+        "Afrique subsaharienne (Sénégal, Mauritanie, Afrique du Sud)",
+        "Asie centrale (Ouzbékistan, Kazakhstan, Afghanistan, Pakistan)",
+        "Proche-Orient (Iran, Irak, Oman)"
+      ],
+      "transmission": [
+        "Piqûre de tique Hyalomma spp. (vecteur principal)",
+        "Contact sang/tissus animaux infectés (abattoirs, vétérinaires, éleveurs)",
+        "Transmission nosocomiale (soignants — risque majeur sans EPI)",
+        "Aérosols de sang/fluides (abattoirs, laboratoires)"
+      ],
+      "protectionRequired": "FFP2/FFP3 + précautions contact strict + protection oculaire",
+      "protectionLevel": 3,
+      "maskNote": "Transmission vectorielle principale (tiques Hyalomma). Risque nosocomial réel — plusieurs clusters hospitaliers documentés (Kosovo 2001, Turquie 2008). FFP2 + gants + surblouse pour soins patients. FFP3 pour AGPs et lors de manipulation de sang. Pas de transmission par aérosols naturels mais risque en laboratoire. Ribavirine IV recommandée par l'OMS (preuves limitées mais utilisée en pratique).",
+      "reproductionNumber": "R0 < 1 en général ; > 1 en contexte nosocomial non contrôlé",
+      "cfr": "10–40% (selon région et souche — Asie centrale 40%, Europe du Sud 10–15%)",
+      "incubation": "1–13 jours (tique) ; 3–6 jours (contact sang animal)",
+      "transmission_route": "Vecteur principal : tiques Hyalomma marginatum (Europe, Asie). Animaux réservoirs : bovins, ovins, caprins (asymptomatiques). Transmission aux humains : piqûre tique, écrasement tique, contact sang animal. Transmission interhumaine : contact direct sang/sécrétions/excrétas patients (nosocomial +++). Aérosol de sang lors d'abattage.",
+      "currentStatus": "active",
+      "outbreakStart": "Endémique avec résurgence Europe (2022–2026)",
+      "lastUpdate": "2026-06",
+      "iconColor": "#DC2626",
+      "clinicalPhases": [
+        {
+          "days": "J1–J3",
+          "phaseFR": "Phase pré-hémorragique",
+          "phaseEN": "Pre-hemorrhagic phase",
+          "symptomsFR": ["Début brutal : fièvre, céphalées intenses, myalgies", "Vertiges, photophobie", "Douleurs lombaires et abdominales", "Nausées, vomissements, diarrhée", "Hyperhémie faciale (faciès rouge congestif)"],
+          "symptomsEN": ["Abrupt onset: fever, intense headache, myalgias", "Dizziness, photophobia", "Low back and abdominal pain", "Nausea, vomiting, diarrhea", "Facial flushing (congested red face)"],
+          "noteFR": "Ressemble à Ebola mais début souvent plus brutal. Conjonctivite et pharyngite fréquentes.",
+          "noteEN": "Resembles Ebola but often more abrupt onset. Conjunctivitis and pharyngitis are common."
+        },
+        {
+          "days": "J4–J7",
+          "phaseFR": "Phase hémorragique",
+          "phaseEN": "Hemorrhagic phase",
+          "symptomsFR": ["Pétéchies (palais, conjonctives), ecchymoses", "Épistaxis, gingivorragie", "Hémorragies gastro-intestinales", "Hématurie", "CIVD — thrombopénie sévère < 20 G/L", "Hépatomégalie, transaminases très élevées"],
+          "symptomsEN": ["Petechiae (palate, conjunctivae), ecchymoses", "Epistaxis, gingival bleeding", "Gastrointestinal hemorrhages", "Hematuria", "DIC — severe thrombocytopenia < 20 G/L", "Hepatomegaly, very elevated transaminases"],
+          "noteFR": "SIGNE BIOLOGIQUE : thrombopénie franche + leucopénie + transaminases > 10N = tableau FHCC typique.",
+          "noteEN": "BIOLOGICAL SIGN: frank thrombocytopenia + leukopenia + transaminases > 10N = typical CCHF picture."
+        }
+      ],
+      "preventionTraveler": {
+        "tickPreventionFR": ["Porter des vêtements couvrants (manches longues, pantalons longs)", "Répulsifs DEET ou Icaridine ≥ 20% sur peau exposée", "Perméthrines sur vêtements", "Vérification systématique du corps après retour terrain/forêt (surtout Espagne, Balkans, Turquie)", "Retirer tique avec tire-tique dans les 24h (réduction transmission > 50%)", "NE PAS écraser la tique avec les doigts"],
+        "tickPreventionEN": ["Wear covering clothing (long sleeves, long trousers)", "DEET or Icaridin ≥ 20% repellents on exposed skin", "Permethrin on clothing", "Systematic full-body check after outdoor activities (especially Spain, Balkans, Turkey)", "Remove tick with tick remover within 24h (>50% transmission reduction)", "Do NOT crush tick with fingers"]
+      },
+      "europeanRisk": {
+        "noteFR": "ALERTE EUROPE : premier cas FHCC en Europe Occidentale confirmé en Espagne (Estrémadure, 2022). Extension géographique de Hyalomma marginatum liée au réchauffement climatique. France : vigilance renforcée dans le Sud (tiques Hyalomma présentes en Corse et PACA).",
+        "noteEN": "EUROPE ALERT: first CCHF case in Western Europe confirmed in Spain (Extremadura, 2022). Geographic expansion of Hyalomma marginatum linked to climate change. France: enhanced surveillance in the South (Hyalomma ticks present in Corsica and PACA)."
+      },
+      "references": [
+        "WHO CCHF Fact Sheet — janvier 2024",
+        "ECDC CCHF Factsheet for Health Professionals — 2023",
+        "Bente DA et al. Antiviral Res 2013 — Crimean-Congo hemorrhagic fever: history, epidemiology",
+        "Estrada-Peña A et al. Vector Borne Zoonotic Dis 2012 — CCHF virus geographic expansion",
+        "Papa A et al. Euro Surveill 2022 — CCHF in Western Europe (Spain case)",
+        "Keshtkar-Jahromi M et al. Antiviral Res 2010 — Treatment review: ribavirin",
+        "HCSP — Avis relatif à la prise en charge des patients suspects de FHCC, France 2019"
+      ],
+      "descFR": "Endémique Asie centrale, Moyen-Orient, Afrique subsaharienne. Extension vers l'Europe du Sud (Espagne 2022 — premier cas Europe Occidentale). CFR 10–40%. Transmission : tique Hyalomma (zones rurales), abattoirs, nosocomial. Risque France : régions PACA/Corse (tiques Hyalomma présentes), voyageurs retour Balkans/Turquie/Espagne rurale. Traitement : ribavirine IV (OMS, hors AMM).",
+      "descEN": "Endemic in Central Asia, Middle East, sub-Saharan Africa. Extension to Southern Europe (Spain 2022 — first Western Europe case). CFR 10-40%. Transmission: Hyalomma tick (rural areas), slaughterhouses, nosocomial. France risk: PACA/Corsica regions (Hyalomma ticks present), travelers returning from Balkans/Turkey/rural Spain. Treatment: IV ribavirin (WHO, off-label)."
     },
     {
       "id": "RSVA_HMPV",
