@@ -1,56 +1,168 @@
 {
-  "generatedAt": "2026-06-06T13:52:09.713Z",
-  "fetchDate": "2026-06-06",
-  "alertCount": 6,
-  "source": "scraping",
+  "generatedAt": "2026-06-18T11:05:16.869Z",
+  "fetchDate": "2026-06-18",
+  "alertCount": 20,
+  "source": "WHO OData API",
   "alerts": [
     {
-      "title": "Ebola disease caused by Bundibugyo virus — DRC & Uganda (PHEIC)",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON605",
-      "donId": "2026-DON605",
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON607",
+      "donId": "2026-DON607",
       "pubDate": "2026-06",
       "riskLevel": "critical",
-      "source": "WHO DON (fallback)"
+      "source": "WHO OData API"
     },
     {
-      "title": "Hantavirus cluster linked to cruise ship travel — Multi-country (Andes virus)",
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON606",
+      "donId": "2026-DON606",
+      "pubDate": "2026-06",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON605",
+      "donId": "2026-DON605",
+      "pubDate": "2026-05",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Hantavirus outbreak linked to cruise ship travel, Multi-locations",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON604",
       "donId": "2026-DON604",
       "pubDate": "2026-05",
       "riskLevel": "high",
-      "source": "WHO DON (fallback)"
+      "source": "WHO OData API"
     },
     {
-      "title": "Hantavirus cluster linked to cruise ship travel — Multi-country",
+      "title": "Ebola disease caused by Bundibugyo virus – Democratic Republic of the Congo",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON603",
+      "donId": "2026-DON603",
+      "pubDate": "2026-05",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602",
+      "donId": "2026-DON602",
+      "pubDate": "2026-05",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Hantavirus cluster linked to cruise ship travel, Multi-country",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601",
+      "donId": "2026-DON601",
+      "pubDate": "2026-05",
+      "riskLevel": "high",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Hantavirus cluster linked to cruise ship travel, Multi-country",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600",
       "donId": "2026-DON600",
       "pubDate": "2026-05",
       "riskLevel": "high",
-      "source": "WHO DON (fallback)"
+      "source": "WHO OData API"
     },
     {
-      "title": "Nipah virus infection — Bangladesh",
+      "title": "Hantavirus cluster linked to cruise ship travel, Multi-country",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599",
+      "donId": "2026-DON599",
+      "pubDate": "2026-05",
+      "riskLevel": "high",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Measles - Bangladesh",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON598",
+      "donId": "2026-DON598",
+      "pubDate": "2026-04",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Avian Influenza A(H9N2) - Italy",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON597",
+      "donId": "2026-DON597",
+      "pubDate": "2026-04",
+      "riskLevel": "high",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "International food safety event: Infant formula and products containing arachidonic acid oil contaminated with cereulide toxin - Multi-country",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON596",
+      "donId": "2026-DON596",
+      "pubDate": "2026-03",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Mpox: recombinant virus with genomic elements of clades Ib and IIb – Global situation",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595",
+      "donId": "2026-DON595",
+      "pubDate": "2026-02",
+      "riskLevel": "moderate",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Nipah virus infection - Bangladesh",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON594",
       "donId": "2026-DON594",
       "pubDate": "2026-02",
       "riskLevel": "critical",
-      "source": "WHO DON (fallback)"
+      "source": "WHO OData API"
     },
     {
-      "title": "Nipah virus disease — India (West Bengal)",
+      "title": "Nipah virus disease - India",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON593",
       "donId": "2026-DON593",
-      "pubDate": "2026-02",
+      "pubDate": "2026-01",
       "riskLevel": "critical",
-      "source": "WHO DON (fallback)"
+      "source": "WHO OData API"
     },
     {
-      "title": "Marburg virus disease — Ethiopia (outbreak ended Jan 2026)",
+      "title": "Marburg virus disease- Ethiopia",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON592",
       "donId": "2026-DON592",
       "pubDate": "2026-01",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Middle East respiratory syndrome coronavirus - Global update",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON591",
+      "donId": "2025-DON591",
+      "pubDate": "2025-12",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Seasonal influenza - Global situation",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON586",
+      "donId": "2025-DON586",
+      "pubDate": "2025-12",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Broader transmission of mpox due to clade Ib MPXV – Global situation",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON587",
+      "donId": "2025-DON587",
+      "pubDate": "2025-12",
+      "riskLevel": "moderate",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Avian Influenza A(H5N5)- United States of America",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON590",
+      "donId": "2025-DON590",
+      "pubDate": "2025-12",
       "riskLevel": "high",
-      "source": "WHO DON (fallback)"
+      "source": "WHO OData API"
     }
   ]
 }
