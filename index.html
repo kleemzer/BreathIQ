@@ -123,6 +123,67 @@
   <!-- Preconnect pour API live -->
   <link rel="preconnect" href="https://api.openaq.org">
   <link rel="preconnect" href="https://data.santepubliquefrance.fr">
+  <style>
+/* Wizard CSS — injected inline to bypass style.min.css parse truncation */
+.symptom-wizard{max-width:760px;margin:0 auto}
+.wizard-progress{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem}
+.wizard-step-dot{width:2rem;height:2rem;border-radius:50%;background:#e5e7eb;color:#9ca3af;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;transition:all .3s;flex-shrink:0}
+.wizard-step-dot.active{background:var(--c-blue,#2563eb);color:#fff}
+.wizard-step-dot.done{background:#16a34a;color:#fff}
+.wizard-step-line{flex:1;height:3px;background:#e5e7eb;max-width:80px;transition:background .3s}
+.wizard-step-line.done{background:#16a34a}
+.wizard-panel{display:none!important;animation:wizFadeIn .25s ease}
+.wizard-panel.active{display:block!important}
+@keyframes wizFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.wiz-step-label{font-size:.78rem;color:#6b7280;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem}
+.wiz-question{font-size:1.2rem;font-weight:700;color:#111827;margin:0 0 .35rem}
+.wiz-hint{font-size:.88rem;color:#6b7280;margin:0 0 1.2rem}
+.wiz-alarm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:.7rem;margin-bottom:1.2rem}
+.wiz-alarm{cursor:pointer}
+.wiz-alarm small{font-weight:400;color:#6b7280}
+.wiz-main-symptom-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.75rem;margin-bottom:1.5rem}
+.wiz-main-btn{display:flex;flex-direction:column;align-items:center;gap:.5rem;padding:1.1rem .75rem;border:2px solid #e5e7eb;border-radius:1rem;background:#fff;cursor:pointer;transition:all .2s;text-align:center}
+.wiz-main-btn:hover{border-color:var(--c-blue,#2563eb);background:#eff6ff;transform:translateY(-2px);box-shadow:0 4px 12px rgba(37,99,235,.12)}
+.wiz-main-btn.active{border-color:var(--c-blue,#2563eb);background:#dbeafe;font-weight:700}
+.wiz-main-icon{font-size:2rem}
+.wiz-main-label{font-size:.88rem;font-weight:600;color:#374151}
+.wiz-ctx-bar{display:flex;flex-direction:column;gap:.8rem;margin-bottom:1.2rem;padding:1rem;background:#f9fafb;border-radius:.75rem}
+.wiz-ctx-group{display:flex;align-items:flex-start;gap:.75rem;flex-wrap:wrap}
+.wiz-ctx-label{font-size:.8rem;font-weight:600;color:#374151;min-width:120px;padding-top:.3rem}
+.wiz-assoc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.55rem;margin-bottom:1.4rem}
+.wiz-vitals-block{margin-bottom:1.5rem}
+.wiz-vitals-title{font-size:.9rem;font-weight:700;color:#374151;margin-bottom:.8rem}
+.wiz-vitals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.wiz-vital-card{background:#f9fafb;border:1px solid #e5e7eb;border-radius:.75rem;padding:1rem}
+.wiz-vital-label{font-size:.85rem;font-weight:700;color:#374151;margin-bottom:.6rem}
+.wiz-vital-options{display:flex;flex-direction:column;gap:.4rem}
+.wiz-vital-opt{display:flex;align-items:center;gap:.5rem;font-size:.85rem;cursor:pointer;padding:.25rem;border-radius:.4rem}
+.wiz-vital-opt:hover{background:#f3f4f6}
+.alert-opt{color:#dc2626}
+.vital-badge{font-size:.7rem;font-weight:700;padding:.15rem .45rem;border-radius:9999px}
+.vital-ok{background:#d1fae5;color:#065f46}
+.vital-warn{background:#fef3c7;color:#92400e}
+.vital-crit{background:#fee2e2;color:#991b1b}
+.wiz-epid-block{margin-bottom:1.5rem}
+.wiz-epid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:.55rem}
+.wiz-epid-check{font-size:.85rem}
+.wiz-nav{display:flex;align-items:center;justify-content:flex-end;gap:.75rem;margin-top:.5rem}
+.wiz-btn-back{background:none;border:1.5px solid #d1d5db;color:#374151;padding:.6rem 1.1rem;border-radius:.5rem;cursor:pointer;font-size:.9rem}
+.wiz-btn-back:hover{background:#f9fafb}
+.wiz-btn-next{background:#2563eb;color:#fff;border:none;padding:.65rem 1.3rem;border-radius:.5rem;cursor:pointer;font-size:.9rem;font-weight:600}
+.wiz-btn-next:hover{background:#1d4ed8}
+.wiz-btn-primary{background:#111827;color:#fff;border:none;padding:.75rem 1.6rem;border-radius:.5rem;cursor:pointer;font-size:.95rem;font-weight:700;transition:background .2s}
+.wiz-btn-primary:hover{background:#1d4ed8}
+.wiz-btn-secondary{background:#f3f4f6;color:#374151;border:1.5px solid #d1d5db;padding:.65rem 1.2rem;border-radius:.5rem;cursor:pointer;font-size:.9rem;font-weight:600}
+.wiz-btn-secondary:hover{background:#e5e7eb}
+@media(max-width:640px){
+  .wiz-main-symptom-grid{grid-template-columns:1fr 1fr}
+  .wiz-main-btn{padding:.8rem .5rem}
+  .wiz-main-icon{font-size:1.5rem}
+  .wiz-vitals-grid{grid-template-columns:1fr}
+  .wiz-alarm-grid{grid-template-columns:1fr}
+}
+</style>
 </head>
 <body id="mainBody">
 <a href="#patientHero" class="skip-link" data-i18n="skip-link">Aller au contenu principal</a>
@@ -496,186 +557,238 @@
   <div class="container">
     <div class="section-header" style="text-align:center">
       <h2 id="checker-title" data-i18n="symptom-checker-title">Ai-je des symptômes qui doivent m'alerter ?</h2>
-      <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Cochez ce que vous ressentez pour identifier le risque et savoir quoi faire</p>
+      <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Répondez aux questions suivantes pour savoir quoi faire</p>
     </div>
 
-    <!-- ⚠️ Disclaimer médical — visible AVANT toute interaction -->
     <div class="checker-legal-banner" role="note" aria-label="Avertissement médical">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span><strong>Outil d'aide à l'orientation — non dispositif médical (Règl. UE 2017/745).</strong> Les résultats sont indicatifs et ne remplacent pas une consultation médicale. En cas de doute, consultez un professionnel de santé. <strong>Si vous avez du mal à respirer, appelez le 15 ou le 112.</strong></span>
+      <span><strong>Outil d'aide à l'orientation — non dispositif médical (Règl. UE 2017/745).</strong> Les résultats sont indicatifs et ne remplacent pas une consultation médicale. <strong>En cas de difficultés à respirer, appelez le 15 ou le 112.</strong></span>
     </div>
 
-    <!-- Quick symptom chips -->
-    <div class="quick-symptoms-bar" role="group" aria-label="Symptômes fréquents">
-      <span class="quick-symptoms-label">Symptôme principal — touchez pour démarrer</span>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('fever')">🌡️ Fièvre</button>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('dry_cough')">😮‍💨 Toux</button>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('breathlessness')">🫁 Difficultés à respirer</button>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('headache')">🤕 Maux de tête</button>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('vomiting')">🤢 Nausées / vomissements</button>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('rash')">🔴 Boutons / éruption</button>
-      <button class="quick-sym-btn" onclick="quickSelectSymptom('bleeding')">🩸 Saignements</button>
-    </div>
+    <!-- ══════════════════════════════════════════════════════
+         WIZARD SÉQUENTIEL — 4 étapes
+    ══════════════════════════════════════════════════════ -->
+    <div class="symptom-wizard" id="symptomWizard">
 
-    <div class="symptom-checker symptom-checker-v2">
-
-      <!-- ── Contexte rapide ────────────────────────────────── -->
-      <div class="checker-ctx-bar">
-        <div class="ctx-group">
-          <span class="ctx-label">📅 Début</span>
-          <div class="ctx-pills-row" role="group" aria-label="Début des symptômes">
-            <button class="ctx-pill selected" data-group="onset" data-value="sudden" onclick="toggleContextPill(this,'onset')">Brutal (&lt;12h)</button>
-            <button class="ctx-pill" data-group="onset" data-value="days_1_3" onclick="toggleContextPill(this,'onset')">1–3 jours</button>
-            <button class="ctx-pill" data-group="onset" data-value="days_4_7" onclick="toggleContextPill(this,'onset')">4–7 jours</button>
-            <button class="ctx-pill" data-group="onset" data-value="weeks" onclick="toggleContextPill(this,'onset')">&gt; 3 semaines</button>
-          </div>
-        </div>
-        <div class="ctx-group">
-          <span class="ctx-label">🌡️ Fièvre</span>
-          <div class="ctx-pills-row" role="group" aria-label="Niveau de fièvre">
-            <button class="ctx-pill selected" data-group="fever" data-value="no_fever" onclick="toggleContextPill(this,'fever')">Aucune</button>
-            <button class="ctx-pill" data-group="fever" data-value="fever_low" onclick="toggleContextPill(this,'fever')">&lt; 38,5°C</button>
-            <button class="ctx-pill" data-group="fever" data-value="fever_high" onclick="toggleContextPill(this,'fever')">38,5–39,5°C</button>
-            <button class="ctx-pill ctx-pill-alert" data-group="fever" data-value="fever_very_high" onclick="toggleContextPill(this,'fever')">&gt; 39,5°C</button>
-          </div>
-        </div>
-        <div class="ctx-group">
-          <span class="ctx-label">👤 Profil</span>
-          <div class="ctx-pills-row" role="group" aria-label="Tranche d'âge">
-            <button class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')">Nourrisson &lt;2 ans</button>
-            <button class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')">Enfant 2–15 ans</button>
-            <button class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')">Adulte</button>
-            <button class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')">Senior ≥ 65 ans</button>
-          </div>
-        </div>
+      <!-- Barre de progression -->
+      <div class="wizard-progress" id="wizardProgress" aria-hidden="true">
+        <div class="wizard-step-dot active" data-step="0">1</div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-dot" data-step="1">2</div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-dot" data-step="2">3</div>
+        <div class="wizard-step-line"></div>
+        <div class="wizard-step-dot" data-step="3">4</div>
       </div>
 
-      <!-- ── Symptômes groupés ──────────────────────────────── -->
-      <div class="symptom-groups-layout">
-        <div class="sym-group-col">
-          <div class="sym-group-header">🫁 Respiratoires &amp; Gorge</div>
-          <div class="symptom-grid symptom-grid-compact" role="group">
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="dry_cough"><span class="sym-icon">🫁</span><span>Toux sèche</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="wet_cough"><span class="sym-icon">💧</span><span>Toux avec crachats</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="persistent_cough"><span class="sym-icon">⏱️</span><span>Toux &gt; 3 semaines</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="breathlessness"><span class="sym-icon">😮‍💨</span><span>Essoufflement</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="wheezing"><span class="sym-icon">🌬️</span><span>Sifflements respiratoires</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="hemoptysis"><span class="sym-icon">🩸</span><span>Crachats avec sang</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="sore_throat"><span class="sym-icon">🤧</span><span>Maux de gorge</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rhinorrhea"><span class="sym-icon">💧</span><span>Nez qui coule</span></label>
-          </div>
-
-          <div class="sym-group-header" style="margin-top:.9rem">🌡️ Généraux</div>
-          <div class="symptom-grid symptom-grid-compact" role="group">
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="fever"><span class="sym-icon">🌡️</span><span>Fièvre / frissons</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="shivering"><span class="sym-icon">🥶</span><span>Frissons intenses</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="muscle_pain"><span class="sym-icon">💪</span><span>Douleurs musculaires</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="arthralgia"><span class="sym-icon">🦴</span><span>Douleurs articulaires</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="fatigue_severe"><span class="sym-icon">😴</span><span>Fatigue intense</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="night_sweats"><span class="sym-icon">💦</span><span>Sueurs nocturnes</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="weight_loss"><span class="sym-icon">⚖️</span><span>Amaigrissement</span></label>
-          </div>
-        </div>
-
-        <div class="sym-group-col">
-          <div class="sym-group-header">🧠 Tête &amp; Peau</div>
-          <div class="symptom-grid symptom-grid-compact" role="group">
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="headache"><span class="sym-icon">🤕</span><span>Maux de tête intenses</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="photophobia"><span class="sym-icon">🌟</span><span>Sensibilité à la lumière</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="neck_stiffness"><span class="sym-icon">🔒</span><span>Raideur de la nuque</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash"><span class="sym-icon">🩹</span><span>Éruption cutanée</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_pustular"><span class="sym-icon">⭕</span><span>Boutons avec pus</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="rash_maculopapular"><span class="sym-icon">🔴</span><span>Taches / boutons rouges</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="lymph_nodes"><span class="sym-icon">🔵</span><span>Ganglions gonflés</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="conjunctivitis"><span class="sym-icon">👁️</span><span>Yeux rouges</span></label>
-          </div>
-
-          <div class="sym-group-header" style="margin-top:.9rem">🤢 Digestifs &amp; Autres</div>
-          <div class="symptom-grid symptom-grid-compact" role="group">
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="vomiting"><span class="sym-icon">🤢</span><span>Vomissements</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="diarrhea"><span class="sym-icon">💧</span><span>Diarrhée</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="abdominal_pain"><span class="sym-icon">🫃</span><span>Douleur au ventre</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="smell_loss"><span class="sym-icon">👃</span><span>Perte odorat / goût</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="taste_loss"><span class="sym-icon">👅</span><span>Perte de goût</span></label>
-            <label class="symptom-check" onclick="toggleSymptom(this)"><input type="checkbox" value="retrobulbar_pain"><span class="sym-icon">👁️</span><span>Douleur derrière les yeux</span></label>
-          </div>
-        </div>
-      </div>
-
-      <!-- ── Signes d'alarme ────────────────────────────────── -->
-      <div class="alarm-signs-panel">
-        <div class="alarm-panel-title">🚨 Signes d'urgence — cochez si c'est votre cas</div>
-        <div class="alarm-grid" role="group" aria-label="Signes d'alarme">
-          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+      <!-- ── ÉTAPE 0 : Signes d'alarme immédiats ─────────── -->
+      <div class="wizard-panel active" id="wiz-step-0">
+        <div class="wiz-step-label">Étape 1 sur 4</div>
+        <h3 class="wiz-question">🚨 Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
+        <p class="wiz-hint">Si oui, cochez et nous vous orientons immédiatement.</p>
+        <div class="alarm-grid wiz-alarm-grid" role="group">
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="dyspnea_rest">
             <span class="alarm-icon">😮‍💨</span>
-            <span class="alarm-text"><strong>Difficultés à respirer au repos</strong></span>
+            <span class="alarm-text"><strong>Difficultés à respirer au repos</strong><br><small>Pas d'essoufflement en marchant — au repos</small></span>
           </label>
-          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="confusion">
             <span class="alarm-icon">🌀</span>
-            <span class="alarm-text"><strong>Confusion ou désorientation</strong></span>
+            <span class="alarm-text"><strong>Confusion ou désorientation</strong><br><small>Ne sait plus où il est, répond à côté</small></span>
           </label>
-          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="purpura">
             <span class="alarm-icon">🟣</span>
-            <span class="alarm-text"><strong>Taches violettes / rouges sur la peau non blanchissantes</strong></span>
+            <span class="alarm-text"><strong>Taches violettes / rouges qui ne s'effacent pas</strong><br><small>Appuyez un verre dessus — elles restent visibles</small></span>
           </label>
-          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="bleeding">
             <span class="alarm-icon">🩸</span>
-            <span class="alarm-text"><strong>Saignements (nez, gencives, selles noires)</strong></span>
+            <span class="alarm-text"><strong>Saignements inexpliqués</strong><br><small>Nez, gencives, sang dans selles/urines</small></span>
           </label>
-          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
-            <input type="checkbox" value="neck_stiffness_alarm">
-            <span class="alarm-icon">🔒</span>
-            <span class="alarm-text"><strong>Raideur nuque + fièvre + maux de tête violents</strong></span>
-          </label>
-          <label class="alarm-sign-check" onclick="toggleAlarmSign(this)">
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="cyanosis">
             <span class="alarm-icon">🫦</span>
-            <span class="alarm-text"><strong>Lèvres ou ongles bleutés (cyanose)</strong></span>
+            <span class="alarm-text"><strong>Lèvres ou ongles bleutés</strong><br><small>Signe de manque d'oxygène</small></span>
           </label>
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+            <input type="checkbox" value="seizures">
+            <span class="alarm-icon">⚡</span>
+            <span class="alarm-text"><strong>Convulsions / perte de connaissance</strong><br><small>Mouvements incontrôlés du corps</small></span>
+          </label>
+          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+            <input type="checkbox" value="neck_stiffness_alarm">
+            <span class="alarm-icon">🔒</span>
+            <span class="alarm-text"><strong>Nuque raide + fièvre + maux de tête violents</strong><br><small>Impossible de toucher le menton à la poitrine</small></span>
+          </label>
+        </div>
+        <div class="wiz-nav">
+          <button class="wiz-btn-secondary" onclick="wizNext(0)" id="wiz-no-alarm-btn">
+            Aucun de ces signes — Continuer →
+          </button>
         </div>
       </div>
 
-      <!-- ── Contexte épidémio (optionnel) ─────────────────── -->
-      <details class="ctx-epid-details">
-        <summary class="ctx-epid-summary">
-          + Informations complémentaires <small>(améliore la précision)</small>
-        </summary>
-        <div class="symptom-grid symptom-grid-compact ctx-epid-grid" role="group" aria-label="Contexte épidémiologique">
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span>Voyage tropical récent (&lt; 21 jours)</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span>Voyage Afrique sub-saharienne ou Mayotte &lt; 21j</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span>Voyage Asie du Sud-Est / Moyen-Orient</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span>Contact volailles malades / marché animaux</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Exposition eau stagnante / climatisation</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Système immunitaire affaibli (cancer, VIH, traitement)</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contexte de risque Mpox</span>
-          </label>
-          <label class="symptom-check ctx-check" onclick="toggleSymptom(this)">
-            <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span>Aggravation rapide en 24–48h</span>
-          </label>
+      <!-- ── ÉTAPE 1 : Symptôme principal ────────────────── -->
+      <div class="wizard-panel" id="wiz-step-1">
+        <div class="wiz-step-label">Étape 2 sur 4</div>
+        <h3 class="wiz-question">Quel est votre symptôme <strong>principal</strong> ?</h3>
+        <p class="wiz-hint">Choisissez celui qui vous gêne le plus. Les autres seront proposés ensuite.</p>
+        <div class="wiz-main-symptom-grid">
+          <button class="wiz-main-btn" onclick="wizSelectMain('fever')" data-main="fever">
+            <span class="wiz-main-icon">🌡️</span><span class="wiz-main-label">Fièvre / frissons</span>
+          </button>
+          <button class="wiz-main-btn" onclick="wizSelectMain('cough')" data-main="cough">
+            <span class="wiz-main-icon">🫁</span><span class="wiz-main-label">Toux / essoufflement</span>
+          </button>
+          <button class="wiz-main-btn" onclick="wizSelectMain('headache')" data-main="headache">
+            <span class="wiz-main-icon">🤕</span><span class="wiz-main-label">Maux de tête</span>
+          </button>
+          <button class="wiz-main-btn" onclick="wizSelectMain('rash')" data-main="rash">
+            <span class="wiz-main-icon">🔴</span><span class="wiz-main-label">Boutons / éruption cutanée</span>
+          </button>
+          <button class="wiz-main-btn" onclick="wizSelectMain('digestive')" data-main="digestive">
+            <span class="wiz-main-icon">🤢</span><span class="wiz-main-label">Douleurs ventre / diarrhée</span>
+          </button>
+          <button class="wiz-main-btn" onclick="wizSelectMain('pain')" data-main="pain">
+            <span class="wiz-main-icon">💪</span><span class="wiz-main-label">Douleurs musculaires / articulaires</span>
+          </button>
+          <button class="wiz-main-btn" onclick="wizSelectMain('other')" data-main="other">
+            <span class="wiz-main-icon">🔍</span><span class="wiz-main-label">Autre symptôme</span>
+          </button>
         </div>
-      </details>
+        <div class="wiz-nav">
+          <button class="wiz-btn-back" onclick="wizBack(1)">← Retour</button>
+        </div>
+      </div>
 
-      <button class="checker-btn" id="checkerBtn" onclick="checkSymptoms()" disabled data-i18n="checker-btn-text">
-        Analyser mes symptômes →
-      </button>
+      <!-- ── ÉTAPE 2 : Symptômes associés (dynamique) ─────── -->
+      <div class="wizard-panel" id="wiz-step-2">
+        <div class="wiz-step-label">Étape 3 sur 4</div>
+        <h3 class="wiz-question" id="wiz2-title">Symptômes associés</h3>
+        <p class="wiz-hint">Cochez tout ce que vous ressentez <strong>en plus</strong>.</p>
 
+        <!-- Contexte durée + fièvre + âge -->
+        <div class="wiz-ctx-bar">
+          <div class="wiz-ctx-group">
+            <span class="wiz-ctx-label">📅 Depuis quand ?</span>
+            <div class="ctx-pills-row">
+              <button class="ctx-pill selected" data-group="onset" data-value="sudden" onclick="toggleContextPill(this,'onset')">Moins de 24h</button>
+              <button class="ctx-pill" data-group="onset" data-value="days_1_3" onclick="toggleContextPill(this,'onset')">1–3 jours</button>
+              <button class="ctx-pill" data-group="onset" data-value="days_4_7" onclick="toggleContextPill(this,'onset')">4–7 jours</button>
+              <button class="ctx-pill" data-group="onset" data-value="weeks" onclick="toggleContextPill(this,'onset')">Plus de 3 semaines</button>
+            </div>
+          </div>
+          <div class="wiz-ctx-group">
+            <span class="wiz-ctx-label">🌡️ Température ?</span>
+            <div class="ctx-pills-row">
+              <button class="ctx-pill selected" data-group="fever" data-value="no_fever" onclick="toggleContextPill(this,'fever')">Pas de fièvre</button>
+              <button class="ctx-pill" data-group="fever" data-value="fever_low" onclick="toggleContextPill(this,'fever')">37,5–38,5°C</button>
+              <button class="ctx-pill" data-group="fever" data-value="fever_high" onclick="toggleContextPill(this,'fever')">38,5–39,5°C</button>
+              <button class="ctx-pill ctx-pill-alert" data-group="fever" data-value="fever_very_high" onclick="toggleContextPill(this,'fever')">≥ 39,5°C</button>
+            </div>
+          </div>
+          <div class="wiz-ctx-group">
+            <span class="wiz-ctx-label">👤 Qui est concerné ?</span>
+            <div class="ctx-pills-row">
+              <button class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')">Nourrisson &lt;2 ans</button>
+              <button class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')">Enfant 2–15 ans</button>
+              <button class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')">Adulte</button>
+              <button class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')">Senior ≥ 65 ans</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Grille dynamique de symptômes (générée par JS selon choix step 1) -->
+        <div class="wiz-assoc-grid" id="wizAssocGrid"></div>
+
+        <div class="wiz-nav">
+          <button class="wiz-btn-back" onclick="wizBack(2)">← Retour</button>
+          <button class="wiz-btn-next" onclick="wizNext(2)">Étape suivante →</button>
+        </div>
+      </div>
+
+      <!-- ── ÉTAPE 3 : Signes vitaux + contexte épidémio ─── -->
+      <div class="wizard-panel" id="wiz-step-3">
+        <div class="wiz-step-label">Étape 4 sur 4</div>
+        <h3 class="wiz-question">Signes vitaux &amp; contexte de vie</h3>
+        <p class="wiz-hint">Ces informations permettent d'affiner l'orientation. Répondez si vous les connaissez.</p>
+
+        <!-- Signes vitaux -->
+        <div class="wiz-vitals-block">
+          <div class="wiz-vitals-title">📊 Signes vitaux (si disponibles)</div>
+          <div class="wiz-vitals-grid">
+            <div class="wiz-vital-card">
+              <div class="wiz-vital-label">💧 SpO2 (saturomètre)</div>
+              <div class="wiz-vital-options">
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="unknown" checked onchange="wizUpdateVital('spo2',this.value)"> Je n'ai pas d'oxymètre</label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="normal" onchange="wizUpdateVital('spo2',this.value)"> ≥ 96% <span class="vital-badge vital-ok">Normal</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="low" onchange="wizUpdateVital('spo2',this.value)"> 94–95% <span class="vital-badge vital-warn">Bas</span></label>
+                <label class="wiz-vital-opt alert-opt"><input type="radio" name="spo2" value="critical" onchange="wizUpdateVital('spo2',this.value)"> &lt; 94% <span class="vital-badge vital-crit">Critique</span></label>
+              </div>
+            </div>
+            <div class="wiz-vital-card">
+              <div class="wiz-vital-label">❤️ Fréquence cardiaque</div>
+              <div class="wiz-vital-options">
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="unknown" checked onchange="wizUpdateVital('hr',this.value)"> Je ne sais pas</label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="normal" onchange="wizUpdateVital('hr',this.value)"> &lt; 100 bpm <span class="vital-badge vital-ok">Normal</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="high" onchange="wizUpdateVital('hr',this.value)"> 100–130 bpm <span class="vital-badge vital-warn">Élevée</span></label>
+                <label class="wiz-vital-opt alert-opt"><input type="radio" name="hr" value="very_high" onchange="wizUpdateVital('hr',this.value)"> &gt; 130 bpm <span class="vital-badge vital-crit">Très élevée</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contexte épidémiologique -->
+        <div class="wiz-epid-block">
+          <div class="wiz-vitals-title">✈️ Contexte de vie &amp; expositions</div>
+          <div class="wiz-epid-grid" id="wizEpidGrid">
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span>Voyage tropical récent (&lt; 21 jours)</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span>Voyage Afrique sub-saharienne / Mayotte &lt; 21j</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="travel_balkans"><span class="sym-icon">🌍</span><span>Voyage Balkans / Turquie / Espagne rurale</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span>Voyage Asie du Sud-Est / Moyen-Orient</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span>Contact volailles malades / marché animaux vivants</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="tick_bite"><span class="sym-icon">🕷️</span><span>Morsure de tique récente</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Exposition eau stagnante / tour de refroidissement</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Système immunitaire affaibli (cancer, VIH, corticoïdes)</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="pregnant"><span class="sym-icon">🤰</span><span>Grossesse</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contexte de risque Mpox</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span>Aggravation rapide en moins de 48h</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="wiz-nav">
+          <button class="wiz-btn-back" onclick="wizBack(3)">← Retour</button>
+          <button class="wiz-btn-primary" onclick="wizAnalyze()">
+            🔬 Analyser mes symptômes →
+          </button>
+        </div>
+      </div>
+
+      <!-- ── RÉSULTAT ────────────────────────────────────── -->
       <div class="symptom-result hidden" id="symptomResult" role="alert" aria-live="assertive"></div>
 
       <!-- CTA vers care finder — visible après analyse -->

@@ -3534,3 +3534,109 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
   h2 { page-break-after: avoid; }
   table { page-break-inside: avoid; }
 }
+
+/* ══════════════════════════════════════════════════════════
+   WIZARD SÉQUENTIEL — Vérificateur de symptômes v3
+   ══════════════════════════════════════════════════════════ */
+.symptom-wizard { max-width: 760px; margin: 0 auto; }
+
+/* Barre de progression */
+.wizard-progress {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin-bottom: 2rem;
+}
+.wizard-step-dot {
+  width: 2rem; height: 2rem; border-radius: 50%;
+  background: #e5e7eb; color: #9ca3af;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .8rem; font-weight: 700; transition: all .3s;
+  flex-shrink: 0;
+}
+.wizard-step-dot.active { background: var(--c-blue,#2563eb); color: #fff; }
+.wizard-step-dot.done   { background: #16a34a; color: #fff; }
+.wizard-step-line {
+  flex: 1; height: 3px; background: #e5e7eb; max-width: 80px; transition: background .3s;
+}
+.wizard-step-line.done { background: #16a34a; }
+
+/* Panneaux */
+.wizard-panel { display: none; animation: wizFadeIn .25s ease; }
+.wizard-panel.active { display: block; }
+@keyframes wizFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+.wiz-step-label { font-size: .78rem; color: #6b7280; font-weight: 600; letter-spacing: .05em; text-transform: uppercase; margin-bottom: .4rem; }
+.wiz-question   { font-size: 1.2rem; font-weight: 700; color: #111827; margin: 0 0 .35rem; }
+.wiz-hint       { font-size: .88rem; color: #6b7280; margin: 0 0 1.2rem; }
+
+/* Grille signes d'alarme wizard */
+.wiz-alarm-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: .7rem;
+  margin-bottom: 1.2rem;
+}
+.wiz-alarm { cursor: pointer; }
+.wiz-alarm small { font-weight: 400; color: #6b7280; }
+
+/* Grille symptôme principal */
+.wiz-main-symptom-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .75rem;
+  margin-bottom: 1.5rem;
+}
+.wiz-main-btn {
+  display: flex; flex-direction: column; align-items: center; gap: .5rem;
+  padding: 1.1rem .75rem; border: 2px solid #e5e7eb; border-radius: 1rem;
+  background: #fff; cursor: pointer; transition: all .2s; text-align: center;
+}
+.wiz-main-btn:hover  { border-color: var(--c-blue,#2563eb); background: #eff6ff; transform: translateY(-2px); box-shadow: 0 4px 12px rgba(37,99,235,.12); }
+.wiz-main-btn.active { border-color: var(--c-blue,#2563eb); background: #dbeafe; font-weight: 700; }
+.wiz-main-icon { font-size: 2rem; }
+.wiz-main-label { font-size: .88rem; font-weight: 600; color: #374151; }
+
+/* Barre contexte dans step 2 */
+.wiz-ctx-bar { display: flex; flex-direction: column; gap: .8rem; margin-bottom: 1.2rem; padding: 1rem; background: #f9fafb; border-radius: .75rem; }
+.wiz-ctx-group { display: flex; align-items: flex-start; gap: .75rem; flex-wrap: wrap; }
+.wiz-ctx-label { font-size: .8rem; font-weight: 600; color: #374151; min-width: 120px; padding-top: .3rem; }
+
+/* Grille symptômes associés */
+.wiz-assoc-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: .55rem;
+  margin-bottom: 1.4rem;
+}
+
+/* Signes vitaux */
+.wiz-vitals-block { margin-bottom: 1.5rem; }
+.wiz-vitals-title { font-size: .9rem; font-weight: 700; color: #374151; margin-bottom: .8rem; }
+.wiz-vitals-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; }
+.wiz-vital-card   { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: .75rem; padding: 1rem; }
+.wiz-vital-label  { font-size: .85rem; font-weight: 700; color: #374151; margin-bottom: .6rem; }
+.wiz-vital-options { display: flex; flex-direction: column; gap: .4rem; }
+.wiz-vital-opt    { display: flex; align-items: center; gap: .5rem; font-size: .85rem; cursor: pointer; padding: .25rem; border-radius: .4rem; }
+.wiz-vital-opt:hover { background: #f3f4f6; }
+.alert-opt        { color: #dc2626; }
+.vital-badge      { font-size: .7rem; font-weight: 700; padding: .15rem .45rem; border-radius: 9999px; }
+.vital-ok         { background: #d1fae5; color: #065f46; }
+.vital-warn       { background: #fef3c7; color: #92400e; }
+.vital-crit       { background: #fee2e2; color: #991b1b; }
+
+/* Contexte épidémio */
+.wiz-epid-block { margin-bottom: 1.5rem; }
+.wiz-epid-grid  { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: .55rem; }
+.wiz-epid-check { font-size: .85rem; }
+
+/* Boutons navigation */
+.wiz-nav { display: flex; align-items: center; justify-content: flex-end; gap: .75rem; margin-top: .5rem; }
+.wiz-btn-back    { background: none; border: 1.5px solid #d1d5db; color: #374151; padding: .6rem 1.1rem; border-radius: .5rem; cursor: pointer; font-size: .9rem; }
+.wiz-btn-back:hover { background: #f9fafb; }
+.wiz-btn-next    { background: #2563eb; color: #fff; border: none; padding: .65rem 1.3rem; border-radius: .5rem; cursor: pointer; font-size: .9rem; font-weight: 600; }
+.wiz-btn-next:hover { background: #1d4ed8; }
+.wiz-btn-primary { background: #111827; color: #fff; border: none; padding: .75rem 1.6rem; border-radius: .5rem; cursor: pointer; font-size: .95rem; font-weight: 700; transition: background .2s; }
+.wiz-btn-primary:hover { background: #1d4ed8; }
+.wiz-btn-secondary { background: #f3f4f6; color: #374151; border: 1.5px solid #d1d5db; padding: .65rem 1.2rem; border-radius: .5rem; cursor: pointer; font-size: .9rem; font-weight: 600; }
+.wiz-btn-secondary:hover { background: #e5e7eb; }
+
+@media (max-width: 640px) {
+  .wiz-main-symptom-grid { grid-template-columns: 1fr 1fr; }
+  .wiz-main-btn { padding: .8rem .5rem; }
+  .wiz-main-icon { font-size: 1.5rem; }
+  .wiz-vitals-grid { grid-template-columns: 1fr; }
+  .wiz-alarm-grid { grid-template-columns: 1fr; }
+}

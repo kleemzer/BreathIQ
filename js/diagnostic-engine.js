@@ -188,6 +188,54 @@
       isolationFR:'Isolement contact strict — SAMU 15 — Ribavirine IV hors AMM (OMS)',
       criterionFR:'Morsure tique / abattoir + fièvre + thrombopénie < 50 G/L = FHCC — zones : Balkans, Turquie, Espagne rurale, Afrique',
     },
+    MALARIA: {
+      nameFR: 'Paludisme (Plasmodium)',                        nameEN: 'Malaria (Plasmodium)',            icon: '🦟',
+      prior: 0.5,
+      weights: {
+        travel_africa_high_risk:50, travel_tropical:40,
+        fever_high:25, fever_very_high:30,
+        shivering:28,             // frissons en quintes = très évocateur
+        sweating:22,              // sueurs abondantes après les frissons
+        headache:18, myalgias:15,
+        vomiting_diarrhea:12, abdominal_pain:12,
+        jaundice:20,              // ictère = falciparum grave
+        confusion:30,             // neuropaludisme = URGENCE VITALE
+        splenomegaly:25,
+        // négatifs
+        smell_loss:-20, rash_pustular:-25, neck_stiffness:-10,
+        cough_3w:-15, sore_throat:-8, hearing_loss:-25,
+        bleeding:-15,
+      },
+      alarmSigns:['confusion','jaundice','dyspnea_rest'],
+      emergencyLevel:'ROUGE',
+      protection:'Moustiquaire + chimioprophylaxie',
+      mandatoryReport:true,
+      isolationFR:'Non contagieux inter-humain — URGENCE si retour tropical < 2 mois + fièvre — bilan parasitologique immédiat (goutte épaisse + TDR)',
+      criterionFR:'Retour zone tropicale < 2 mois + fièvre + frissons en quintes = PALUDISME jusqu\'à preuve du contraire — bilan en urgence',
+    },
+    MARBURG: {
+      nameFR: 'Fièvre de Marburg',                            nameEN: 'Marburg Hemorrhagic Fever',       icon: '🩸',
+      prior: 0.005,
+      weights: {
+        travel_africa_high_risk:55, travel_africa:30,
+        bleeding:50, fever_high:22, fever_very_high:25,
+        vomiting_diarrhea:20, myalgias:15,
+        rash_maculopapular:20,    // rash tronc J5-J7
+        rapid_deterioration:35,
+        conjunctivitis:18,        // yeux rouges fréquents dans Marburg
+        headache:15,
+        // négatifs
+        sore_throat:-10,
+        hearing_loss:-20,         // pathognomonique Lassa, absent Marburg
+        smell_loss:-20, cough_3w:-20,
+      },
+      alarmSigns:['bleeding'],
+      emergencyLevel:'ROUGE',
+      protection:'BSL-4 (hôpital spécialisé)',
+      mandatoryReport:true,
+      isolationFR:'URGENCE NATIONALE — SAMU 15 immédiat — Épidémie Éthiopie 2025-2026 active (CFR 64%) — protocole identique à Ebola',
+      criterionFR:'Voyage Éthiopie / Rwanda / Ouganda < 21j + saignements + fièvre = Marburg — SAMU 15 immédiat — CFR 64%',
+    },
   };
 
   // ── Niveaux d'orientation ──────────────────────────────────
@@ -202,16 +250,25 @@
   // ── Règles d'alarme (ordre : plus sévère en premier) ──────
   // Toutes les conditions d'un trigger doivent être présentes → niveau d'alerte
   const ALARM_RULES = [
+    // ── Signes vitaux critiques (priorité absolue) ─────────
+    { triggers:['spo2_critical'],                        level:'ROUGE',  reason:'SpO2 < 94% — hypoxémie critique — appel SAMU 15 immédiat' },
+    { triggers:['hr_very_high'],                         level:'ROUGE',  reason:'FC > 130 bpm — tachycardie sévère — évaluation urgente' },
+    { triggers:['temp_very_high'],                       level:'ROUGE',  reason:'Température ≥ 40°C — hyperthermie — prise en charge urgente' },
+    { triggers:['spo2_low'],                             level:'ORANGE', reason:'SpO2 94-95% — hypoxémie modérée — surveillance hospitalière urgente' },
+    { triggers:['hr_high'],                              level:'ORANGE', reason:'FC 100-130 bpm — tachycardie — évaluation médicale conseillée' },
+    // ── Signes d'alarme cliniques ──────────────────────────
     { triggers:['purpura'],                              level:'ROUGE',  reason:'Purpura cutané non blanchissant — méningococcémie à exclure en urgence absolue' },
     { triggers:['bleeding'],                             level:'ROUGE',  reason:'Saignements actifs — fièvre hémorragique virale à exclure' },
     { triggers:['seizures'],                             level:'ROUGE',  reason:'Convulsions — urgence neurologique' },
     { triggers:['apnea'],                                level:'ROUGE',  reason:'Apnées — détresse respiratoire aiguë (nourrisson)' },
     { triggers:['cyanosis'],                             level:'ROUGE',  reason:'Cyanose — hypoxémie sévère' },
+    { triggers:['jaundice','fever_high'],                level:'ROUGE',  reason:'Ictère fébrile — paludisme à falciparum grave à exclure en urgence' },
     { triggers:['confusion'],                            level:'ORANGE', reason:'Confusion/désorientation — évaluation neurologique urgente' },
     { triggers:['dyspnea_rest'],                         level:'ORANGE', reason:'Dyspnée au repos — insuffisance respiratoire à évaluer' },
     { triggers:['neck_stiffness','fever_high'],          level:'ROUGE',  reason:'Syndrome méningé fébrile — méningite à exclure en urgence' },
     { triggers:['neck_stiffness','fever_very_high'],     level:'ROUGE',  reason:'Syndrome méningé fébrile — méningite à exclure en urgence' },
-    { triggers:['travel_africa_high_risk','fever_high'], level:'ORANGE', reason:'Retour zone endémique paludisme — bilan parasitologique urgent' },
+    { triggers:['travel_africa_high_risk','fever_high'], level:'ORANGE', reason:'Retour zone endémique paludisme — bilan parasitologique urgent (goutte épaisse + TDR)' },
+    { triggers:['travel_tropical','fever_high'],         level:'ORANGE', reason:'Retour zone tropicale — paludisme à éliminer en priorité — bilan en urgence' },
     { triggers:['age_infant','fever_high'],              level:'ORANGE', reason:'Fièvre chez nourrisson < 3 mois — évaluation aux urgences pédiatriques' },
     { triggers:['immunocompromised','fever_high'],       level:'ORANGE', reason:'Immunodéprimé fébrile — neutropénie fébrile à éliminer' },
     { triggers:['hemoptysis'],                           level:'ORANGE', reason:'Hémoptysie — tuberculose ou embolie pulmonaire à explorer' },

@@ -2490,41 +2490,290 @@ function _updateExpertStats() {
 }
 
 // ── Quick symptom selection from chips ──────────────────────────
-function quickSelectSymptom(symptomValue) {
-  // Check the corresponding checkbox in the full checker
-  const cb = document.querySelector(`input[type="checkbox"][value="${symptomValue}"]`);
-  if (cb) {
-    cb.checked = true;
-    const label = cb.closest('.symptom-check');
-    if (label) label.classList.add('checked');
-  }
-  // Mark chip as active
-  document.querySelectorAll('.quick-sym-btn').forEach(btn => {
-    if (btn.getAttribute('onclick')?.includes(`'${symptomValue}'`)) btn.classList.add('active');
+// ════════════════════════════════════════════════════════════
+// WIZARD SÉQUENTIEL — Vérificateur de symptômes v3
+// ════════════════════════════════════════════════════════════
+
+const WIZ = {
+  currentStep: 0,
+  mainSymptom: null,
+  vitals: { spo2: 'unknown', hr: 'unknown' },
+  // Symptômes associés selon le symptôme principal
+  ASSOC_SYMPTOMS: {
+    fever: [
+      { v:'shivering',          icon:'🥶', label:'Frissons intenses (en quintes)' },
+      { v:'sweating',           icon:'💦', label:'Sueurs abondantes après les frissons' },
+      { v:'myalgias',           icon:'💪', label:'Douleurs musculaires' },
+      { v:'headache',           icon:'🤕', label:'Maux de tête' },
+      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
+      { v:'vomiting',           icon:'🤢', label:'Vomissements' },
+      { v:'diarrhea',           icon:'💧', label:'Diarrhée' },
+      { v:'sore_throat',        icon:'🤧', label:'Maux de gorge' },
+      { v:'rash',               icon:'🩹', label:'Éruption cutanée' },
+      { v:'jaundice',           icon:'🟡', label:'Jaunisse (yeux/peau jaunes)' },
+      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+      { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement récent' },
+    ],
+    cough: [
+      { v:'dry_cough',          icon:'🫁', label:'Toux sèche' },
+      { v:'wet_cough',          icon:'💧', label:'Toux avec crachats' },
+      { v:'persistent_cough',   icon:'⏱️', label:'Toux depuis plus de 3 semaines' },
+      { v:'hemoptysis',         icon:'🩸', label:'Crachats avec sang' },
+      { v:'wheezing',           icon:'🌬️', label:'Sifflements respiratoires' },
+      { v:'sore_throat',        icon:'🤧', label:'Maux de gorge' },
+      { v:'rhinorrhea',         icon:'💧', label:'Nez qui coule' },
+      { v:'breathlessness',     icon:'😮‍💨', label:'Essoufflement à l\'effort' },
+      { v:'chest_pain',         icon:'💔', label:'Douleur dans la poitrine' },
+      { v:'fever',              icon:'🌡️', label:'Fièvre' },
+      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+      { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement' },
+    ],
+    headache: [
+      { v:'photophobia',        icon:'🌟', label:'Sensibilité à la lumière' },
+      { v:'neck_stiffness',     icon:'🔒', label:'Raideur de la nuque' },
+      { v:'vomiting',           icon:'🤢', label:'Vomissements' },
+      { v:'fever',              icon:'🌡️', label:'Fièvre' },
+      { v:'retrobulbar_pain',   icon:'👁️', label:'Douleur derrière les yeux' },
+      { v:'conjunctivitis',     icon:'👁️', label:'Yeux rouges' },
+      { v:'myalgias',           icon:'💪', label:'Douleurs musculaires' },
+      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
+      { v:'rash',               icon:'🩹', label:'Éruption cutanée' },
+    ],
+    rash: [
+      { v:'rash_pustular',      icon:'⭕', label:'Boutons avec pus (pustules)' },
+      { v:'rash_maculopapular', icon:'🔴', label:'Taches / boutons rouges plats' },
+      { v:'lymph_nodes',        icon:'🔵', label:'Ganglions gonflés' },
+      { v:'fever',              icon:'🌡️', label:'Fièvre' },
+      { v:'myalgias',           icon:'💪', label:'Douleurs musculaires' },
+      { v:'arthralgia',         icon:'🦴', label:'Douleurs articulaires' },
+      { v:'conjunctivitis',     icon:'👁️', label:'Yeux rouges' },
+      { v:'rhinorrhea',         icon:'💧', label:'Nez qui coule' },
+      { v:'itching',            icon:'🤚', label:'Démangeaisons' },
+      { v:'sore_throat',        icon:'🤧', label:'Maux de gorge' },
+    ],
+    digestive: [
+      { v:'vomiting',           icon:'🤢', label:'Vomissements' },
+      { v:'diarrhea',           icon:'💧', label:'Diarrhée (selles liquides)' },
+      { v:'abdominal_pain',     icon:'🫃', label:'Douleurs au ventre' },
+      { v:'fever',              icon:'🌡️', label:'Fièvre' },
+      { v:'bleeding',           icon:'🩸', label:'Sang dans les selles' },
+      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
+      { v:'jaundice',           icon:'🟡', label:'Jaunisse (yeux/peau jaunes)' },
+      { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement' },
+    ],
+    pain: [
+      { v:'myalgias',           icon:'💪', label:'Douleurs musculaires diffuses' },
+      { v:'arthralgia',         icon:'🦴', label:'Douleurs articulaires' },
+      { v:'fever',              icon:'🌡️', label:'Fièvre' },
+      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
+      { v:'rash',               icon:'🩹', label:'Éruption cutanée' },
+      { v:'retrobulbar_pain',   icon:'👁️', label:'Douleur derrière les yeux' },
+      { v:'shivering',          icon:'🥶', label:'Frissons' },
+      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+    ],
+    other: [
+      { v:'smell_loss',         icon:'👃', label:'Perte d\'odorat' },
+      { v:'taste_loss',         icon:'👅', label:'Perte de goût' },
+      { v:'hearing_loss',       icon:'👂', label:'Perte d\'audition / surdité soudaine' },
+      { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement inexpliqué' },
+      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense et prolongée' },
+      { v:'lymph_nodes',        icon:'🔵', label:'Ganglions gonflés' },
+      { v:'fever',              icon:'🌡️', label:'Fièvre' },
+      { v:'conjunctivitis',     icon:'👁️', label:'Yeux rouges' },
+      { v:'facial_edema',       icon:'😶', label:'Gonflement du visage' },
+    ],
+  },
+};
+
+function wizGoTo(step) {
+  document.querySelectorAll('.wizard-panel').forEach(p => p.classList.remove('active'));
+  const panel = document.getElementById(`wiz-step-${step}`);
+  if (panel) { panel.classList.add('active'); }
+
+  // Met à jour les dots
+  document.querySelectorAll('.wizard-step-dot').forEach(dot => {
+    const s = parseInt(dot.dataset.step);
+    dot.classList.remove('active','done');
+    if (s === step) dot.classList.add('active');
+    else if (s < step) dot.classList.add('done');
   });
-  // Enable checker button
-  const btn = document.getElementById('checkerBtn');
-  if (btn) btn.disabled = false;
-  // Trigger critical symptom auto-analysis
-  if (['breathlessness','confusion','bleeding'].includes(symptomValue)) {
-    setTimeout(checkSymptoms, 300);
-  }
-  // Smooth scroll to checker
+  document.querySelectorAll('.wizard-step-line').forEach((line, i) => {
+    line.classList.toggle('done', i < step);
+  });
+
+  WIZ.currentStep = step;
   document.getElementById('symptomChecker')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-// ── Vérificateur de symptômes ────────────────────────────────
+function wizNext(fromStep) {
+  if (fromStep === 0) {
+    // "Aucun de ces signes" → décocher tout et aller step 1
+    document.querySelectorAll('#wiz-step-0 .alarm-sign-check input').forEach(cb => {
+      cb.checked = false;
+      cb.closest('.alarm-sign-check')?.classList.remove('alarm-checked');
+    });
+    wizGoTo(1);
+    return;
+  }
+  if (fromStep === 2) {
+    wizGoTo(3);
+    return;
+  }
+}
+
+// Appelé quand une alarme est cochée — analyse immédiate
+function wizAlarmChecked(labelEl) {
+  const cb = labelEl.querySelector('input[type="checkbox"]');
+  if (!cb) return;
+  cb.checked = !cb.checked;
+  labelEl.classList.toggle('alarm-checked', cb.checked);
+  if (cb.checked) {
+    // Analyse immédiate dès qu'un signe d'alarme est coché
+    setTimeout(wizAnalyze, 200);
+  }
+}
+
+function wizBack(fromStep) {
+  if (fromStep === 1) { wizGoTo(0); return; }
+  if (fromStep === 2) { wizGoTo(1); return; }
+  if (fromStep === 3) { wizGoTo(2); return; }
+}
+
+function wizToggleAlarm(labelEl) {
+  const cb = labelEl.querySelector('input[type="checkbox"]');
+  if (!cb) return;
+  cb.checked = !cb.checked;
+  labelEl.classList.toggle('alarm-checked', cb.checked);
+}
+
+function wizSelectMain(main) {
+  WIZ.mainSymptom = main;
+  // Highlight bouton sélectionné
+  document.querySelectorAll('.wiz-main-btn').forEach(b => b.classList.toggle('active', b.dataset.main === main));
+
+  // Titre étape 2
+  const titles = {
+    fever:'🌡️ Quels autres symptômes avez-vous avec la fièvre ?',
+    cough:'🫁 Comment est la toux et quels autres symptômes ?',
+    headache:'🤕 Quels symptômes accompagnent vos maux de tête ?',
+    rash:'🔴 Comment est l\'éruption et quels symptômes ?',
+    digestive:'🤢 Quels troubles digestifs ressentez-vous ?',
+    pain:'💪 Où avez-vous mal et quels autres symptômes ?',
+    other:'🔍 Quels symptômes ressentez-vous ?',
+  };
+  const titleEl = document.getElementById('wiz2-title');
+  if (titleEl) titleEl.textContent = titles[main] || 'Symptômes associés';
+
+  // Génère la grille
+  const grid = document.getElementById('wizAssocGrid');
+  if (grid) {
+    const items = WIZ.ASSOC_SYMPTOMS[main] || WIZ.ASSOC_SYMPTOMS.other;
+    grid.innerHTML = items.map(s => `
+      <label class="symptom-check" onclick="toggleSymptom(this)">
+        <input type="checkbox" value="${s.v}">
+        <span class="sym-icon">${s.icon}</span>
+        <span>${s.label}</span>
+      </label>`).join('');
+  }
+
+  wizGoTo(2);
+}
+
+function wizUpdateVital(type, value) {
+  WIZ.vitals[type] = value;
+}
+
+function wizCollectState() {
+  // Alarme step 0
+  const alarm = Array.from(document.querySelectorAll('#wiz-step-0 .alarm-sign-check input:checked')).map(cb => cb.value);
+
+  // Symptôme principal → flag engine
+  const mainFlagMap = {
+    fever: ['fever','fever_high'],
+    cough: ['dry_cough'],
+    headache: ['headache'],
+    rash: ['rash'],
+    digestive: ['vomiting','diarrhea'],
+    pain: ['myalgias'],
+    other: [],
+  };
+  const mainFlags = WIZ.mainSymptom ? (mainFlagMap[WIZ.mainSymptom] || []) : [];
+
+  // Symptômes associés (step 2)
+  const assoc = Array.from(document.querySelectorAll('#wizAssocGrid input:checked')).map(cb => cb.value);
+
+  // Contexte épidémio (step 3)
+  const ctx = Array.from(document.querySelectorAll('.wiz-epid-check input:checked')).map(cb => cb.value);
+
+  // Signes vitaux → flags
+  const vitalFlags = [];
+  if (WIZ.vitals.spo2 === 'critical')  vitalFlags.push('spo2_critical');
+  if (WIZ.vitals.spo2 === 'low')       vitalFlags.push('spo2_low');
+  if (WIZ.vitals.hr  === 'very_high')  vitalFlags.push('hr_very_high');
+  if (WIZ.vitals.hr  === 'high')       vitalFlags.push('hr_high');
+
+  const onset = document.querySelector('.ctx-pill[data-group="onset"].selected')?.dataset.value || 'unknown';
+  const fever = document.querySelector('.ctx-pill[data-group="fever"].selected')?.dataset.value || 'unknown';
+  const age   = document.querySelector('.ctx-pill[data-group="age"].selected')?.dataset.value  || 'adult';
+
+  return {
+    symptoms: [...new Set([...mainFlags, ...assoc, ...vitalFlags])],
+    alarm,
+    ctx,
+    onset,
+    fever,
+    age,
+  };
+}
+
+function wizAnalyze() {
+  const state  = wizCollectState();
+  const result = BIQ_DIAG.runDiagnosticEngine(state);
+  const clinicalInput = buildClinicalOrientationInput(state);
+  result.clinical = window.BIQ_CLINICAL?.evaluateClinicalOrientation
+    ? window.BIQ_CLINICAL.evaluateClinicalOrientation(clinicalInput)
+    : null;
+  latestClinicalOrientation = result.clinical;
+  renderDiagnosticResult(result, state);
+
+  // Afficher résultat sous le wizard
+  const res = document.getElementById('symptomResult');
+  if (res) {
+    res.classList.remove('hidden');
+    res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+}
+
+function quickSelectSymptom(symptomValue) {
+  // Mappe les quick chips vers le bon main symptom du wizard
+  const mainMap = {
+    fever:'fever', dry_cough:'cough', breathlessness:'cough',
+    headache:'headache', vomiting:'digestive', rash:'rash', bleeding:'other',
+  };
+  const main = mainMap[symptomValue] || 'other';
+  wizGoTo(0);
+  setTimeout(() => {
+    // Si signe d'alarme critique → sélectionner direct
+    if (['breathlessness','confusion','bleeding'].includes(symptomValue)) {
+      const cb = document.querySelector(`#wiz-step-0 input[value="${
+        symptomValue === 'breathlessness' ? 'dyspnea_rest' : symptomValue
+      }"]`);
+      if (cb) { cb.checked = true; cb.closest('.alarm-sign-check')?.classList.add('alarm-checked'); }
+      wizAnalyze();
+    } else {
+      wizSelectMain(main);
+    }
+  }, 100);
+  document.getElementById('symptomChecker')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+// ── Vérificateur de symptômes (compatibilité callbacks HTML) ─
 function toggleSymptom(labelEl) {
   const cb = labelEl.querySelector('input[type="checkbox"]');
   if (!cb) return;
   cb.checked = !cb.checked;
   labelEl.classList.toggle('checked', cb.checked);
-  const anyChecked = document.querySelectorAll('.symptom-check input:checked').length > 0;
-  const btn = document.getElementById('checkerBtn');
-  if (btn) btn.disabled = !anyChecked;
-  if (cb.checked && ['breathlessness','confusion','bleeding'].includes(cb.value)) {
-    setTimeout(checkSymptoms, 300);
-  }
 }
 
 // ============================================================
@@ -2538,13 +2787,7 @@ function toggleSymptom(labelEl) {
 
 
 function collectCheckerState() {
-  const symptoms = Array.from(document.querySelectorAll('.symptom-check input:checked')).map(cb => cb.value);
-  const alarm    = Array.from(document.querySelectorAll('.alarm-sign-check input:checked')).map(cb => cb.value);
-  const ctx      = Array.from(document.querySelectorAll('.ctx-check input:checked')).map(cb => cb.value);
-  const onset    = document.querySelector('.ctx-pill[data-group="onset"].selected')?.dataset.value || 'unknown';
-  const fever    = document.querySelector('.ctx-pill[data-group="fever"].selected')?.dataset.value || 'unknown';
-  const age      = document.querySelector('.ctx-pill[data-group="age"].selected')?.dataset.value || 'adult';
-  return { symptoms, alarm, ctx, onset, fever, age };
+  return wizCollectState();
 }
 
 function buildClinicalOrientationInput(state) {
@@ -2726,23 +2969,24 @@ function toggleContextPill(el, group) {
 }
 
 function toggleAlarmSign(labelEl) {
-  const cb = labelEl.querySelector('input[type="checkbox"]');
-  if (!cb) return;
-  cb.checked = !cb.checked;
-  labelEl.classList.toggle('alarm-checked', cb.checked);
-  const btn = document.getElementById('checkerBtn');
-  if (btn) btn.disabled = false;
-  checkSymptoms();
+  wizToggleAlarm(labelEl);
 }
 
 function resetChecker() {
-  document.querySelectorAll('.symptom-check').forEach(el => {
-    el.classList.remove('checked');
+  // Réinitialise toutes les checkboxes
+  document.querySelectorAll('.symptom-check, .alarm-sign-check').forEach(el => {
+    el.classList.remove('checked','alarm-checked');
     const cb = el.querySelector('input');
     if (cb) cb.checked = false;
   });
-  const btn = document.getElementById('checkerBtn');
-  if (btn) btn.disabled = true;
+  // Réinitialise les radios signes vitaux
+  document.querySelectorAll('input[name="spo2"], input[name="hr"]').forEach(r => {
+    r.checked = r.value === 'unknown';
+  });
+  WIZ.vitals = { spo2: 'unknown', hr: 'unknown' };
+  WIZ.mainSymptom = null;
+  // Retour étape 0
+  wizGoTo(0);
   const res = document.getElementById('symptomResult');
   if (res) res.classList.add('hidden');
 }
