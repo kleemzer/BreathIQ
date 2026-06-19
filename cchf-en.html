@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Crimean-Congo Haemorrhagic Fever (CCHF) — Complete clinical guide for patients and healthcare workers. Hyalomma tick prevention, Spain/Balkans risk, Ribavirin IV treatment, mandatory reporting.">
+  <title>Crimean-Congo Haemorrhagic Fever (CCHF) — Clinical Guide · BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://breathiq.fr/cchf-en.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/cchf-en.html">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/cchf.html">
+  <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/cchf-en.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Crimean-Congo Haemorrhagic Fever (CCHF) — Complete Clinical Guide",
+    "url": "https://breathiq.fr/cchf-en.html",
+    "description": "Clinical guide for CCHF, patients and healthcare workers. European resurgence 2022-2026, Hyalomma ticks, Ribavirin IV.",
+    "dateModified": "2026-06-19",
+    "inLanguage": "en",
+    "medicalAudience": ["Patient", "MedicalResearcher", "Clinician"],
+    "author": {
+      "@type": "Person",
+      "name": "Clément MÉDEAU",
+      "honorificPrefix": "Dr",
+      "url": "https://breathiq.fr/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BreathIQ",
+      "url": "https://breathiq.fr"
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Crimean-Congo Haemorrhagic Fever",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "A98.0",
+        "codingSystem": "ICD-10"
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="style.min.css?v=20260617">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <style>
+    .ebola-hero {
+      background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #3b0c02 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .ebola-hero .pheic-badge { display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.3); border-radius: 2rem; padding: 0.35rem 1rem; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.05em; margin-bottom: 1.25rem; }
+    .ebola-hero h1 { font-size: clamp(1.6rem, 4vw, 2.5rem); font-weight: 800; margin: 0 0 0.75rem; }
+    .ebola-hero .subtitle { font-size: 1rem; opacity: 0.88; max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.5; }
+    .ebola-hero .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .ebola-hero .stat-item { text-align: center; }
+    .ebola-hero .stat-num { font-size: 2rem; font-weight: 800; line-height: 1; }
+    .ebola-hero .stat-label { font-size: 0.75rem; opacity: 0.8; margin-top: 0.25rem; }
+    .medical-disclaimer { background: #fef3c7; border-left: 4px solid #d97706; padding: 1rem 1.25rem; margin: 1.5rem auto; max-width: 860px; border-radius: 0 0.5rem 0.5rem 0; font-size: 0.85rem; color: #78350f; }
+    .audience-tabs { display: flex; gap: 0.5rem; max-width: 860px; margin: 2rem auto 0; padding: 0 1rem; }
+    .audience-tab { flex: 1; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.75rem; background: #fff; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s; text-align: center; }
+    .audience-tab.active-patient { border-color: #2563eb; background: #eff6ff; color: #1e40af; }
+    .audience-tab.active-hcw { border-color: #059669; background: #ecfdf5; color: #065f46; }
+    .page-content { max-width: 860px; margin: 0 auto; padding: 0 1rem 3rem; }
+    .section-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06); }
+    .section-card h2 { font-size: 1.15rem; font-weight: 700; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .section-card h3 { font-size: 0.95rem; font-weight: 600; color: #374151; margin: 1rem 0 0.5rem; }
+    .clinical-timeline { position: relative; padding-left: 0; }
+    .timeline-phase { position: relative; padding: 1rem 1rem 1rem 3rem; border-left: 3px solid #e5e7eb; margin-bottom: 0.5rem; }
+    .timeline-phase::before { content: attr(data-days); position: absolute; left: -1px; top: 1rem; transform: translateX(-50%); background: #7c2d12; color: #fff; font-size: 0.65rem; font-weight: 700; padding: 0.15rem 0.4rem; border-radius: 0.25rem; white-space: nowrap; }
+    .timeline-phase.phase-critical { border-color: #dc2626; }
+    .timeline-phase.phase-critical::before { background: #dc2626; }
+    .timeline-phase.phase-warning { border-color: #d97706; }
+    .timeline-phase.phase-warning::before { background: #d97706; }
+    .timeline-phase h4 { font-size: 0.9rem; font-weight: 700; margin: 0 0 0.4rem; }
+    .timeline-phase ul { margin: 0; padding-left: 1.2rem; font-size: 0.85rem; color: #374151; }
+    .timeline-phase .phase-note { margin-top: 0.4rem; font-size: 0.8rem; background: #f9fafb; padding: 0.4rem 0.6rem; border-radius: 0.35rem; color: #6b7280; font-style: italic; }
+    .alarm-box { background: #fef2f2; border: 2px solid #dc2626; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .alarm-box .alarm-title { font-size: 1rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem; }
+    .alarm-box .alarm-number { font-size: 2.5rem; font-weight: 900; color: #dc2626; line-height: 1; }
+    .alarm-box .alarm-steps { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .alarm-box .alarm-steps li { padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px solid #fecaca; display: flex; gap: 0.5rem; }
+    .alarm-box .alarm-steps li:last-child { border-bottom: none; }
+    .step-num { background: #dc2626; color: #fff; border-radius: 50%; width: 1.3rem; height: 1.3rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem; }
+    .ppe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+    .ppe-item { background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 0.6rem; padding: 0.75rem; font-size: 0.82rem; }
+    .ppe-item .ppe-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .ppe-item strong { display: block; font-size: 0.8rem; margin-bottom: 0.15rem; }
+    .notif-chain { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .notif-chain li { display: flex; align-items: flex-start; gap: 0.75rem; padding: 0.6rem 0; border-bottom: 1px solid #f3f4f6; font-size: 0.88rem; }
+    .notif-chain li:last-child { border-bottom: none; }
+    .notif-num { background: #059669; color: #fff; border-radius: 50%; width: 1.6rem; height: 1.6rem; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; }
+    .faq-item { border: 1px solid #e5e7eb; border-radius: 0.6rem; margin-bottom: 0.6rem; overflow: hidden; }
+    .faq-q { width: 100%; background: #f9fafb; border: none; padding: 0.85rem 1rem; text-align: left; font-size: 0.88rem; font-weight: 600; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: #111827; }
+    .faq-q:hover { background: #f3f4f6; }
+    .faq-a { display: none; padding: 0.85rem 1rem; font-size: 0.85rem; color: #374151; line-height: 1.6; border-top: 1px solid #e5e7eb; }
+    .faq-a.open { display: block; }
+    .faq-q .faq-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+    .page-nav { background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 1rem; display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 100; }
+    .page-nav a { font-size: 0.85rem; color: #6b7280; text-decoration: none; }
+    .page-nav a:hover { color: #111827; }
+    .page-nav .breadcrumb-sep { color: #d1d5db; }
+    .page-nav .current { color: #7c2d12; font-weight: 600; }
+    .treatment-box { background: #ecfdf5; border: 2px solid #059669; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1rem; }
+    .treatment-box .treatment-title { font-size: 1rem; font-weight: 800; color: #065f46; margin-bottom: 0.5rem; }
+    @media (max-width: 540px) { .ppe-grid { grid-template-columns: 1fr 1fr; } }
+  </style>
+</head>
+<body>
+
+<nav class="page-nav" aria-label="Breadcrumb">
+  <a href="/">BreathIQ</a>
+  <span class="breadcrumb-sep" aria-hidden="true">›</span>
+  <span class="current">Crimean-Congo Haemorrhagic Fever</span>
+  <span style="flex:1"></span>
+  <a href="cchf.html" style="font-size:0.8rem;color:#4b5563;">🇫🇷 Français</a>
+</nav>
+
+<header class="ebola-hero">
+  <div class="pheic-badge">
+    ⚠️ European resurgence 2022–2026
+  </div>
+  <h1>Crimean-Congo Haemorrhagic Fever (CCHF)</h1>
+  <p class="subtitle">
+    Complete clinical guide — patients &amp; healthcare workers<br>
+    Hyalomma ticks · Spain / Balkans / Turkey · Ribavirin IV
+  </p>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">10–40%</div>
+      <div class="stat-label">CFR in hospitalised</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Hyalomma</div>
+      <div class="stat-label">main vector</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Spain</div>
+      <div class="stat-label">1st W. Europe case 2022</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Ribavirin</div>
+      <div class="stat-label">IV treatment available</div>
+    </div>
+  </div>
+</header>
+
+<div class="medical-disclaimer" role="note">
+  <strong>⚠️ Public information — Not a medical device.</strong>
+  This page is an information tool based on official WHO, ECDC and national health agency data. It does not replace medical consultation. If in doubt, call <strong>112 / emergency services</strong>.
+</div>
+
+<div class="audience-tabs" role="tablist" aria-label="Select audience">
+  <button class="audience-tab active-patient" onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
+    👤 I am a patient / traveller
+  </button>
+  <button class="audience-tab" onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
+    🩺 I am a healthcare worker
+  </button>
+</div>
+
+<main class="page-content">
+
+  <div id="section-patient" role="tabpanel" aria-labelledby="tab-patient">
+
+    <div class="alarm-box" style="margin-top:1.5rem;">
+      <div class="alarm-title">🚨 If fever + tick contact / return from endemic area</div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.8rem;color:#991b1b;margin-bottom:0.2rem;">Call immediately</div>
+          <div class="alarm-number">112</div>
+          <div style="font-size:0.8rem;color:#991b1b;">Emergency services — 24/7</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <ul class="alarm-steps">
+            <li><span class="step-num">1</span> <span>Stay home — do NOT go to the emergency room without calling first</span></li>
+            <li><span class="step-num">2</span> <span>Call <strong>112</strong> and mention the tick bite and the country visited</span></li>
+            <li><span class="step-num">3</span> <span>Isolate in a separate room, avoid any contact with blood</span></li>
+            <li><span class="step-num">4</span> <span>Wait for instructions from the emergency operator</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🗺️ CCHF risk areas in 2026</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;margin-bottom:1rem;">
+        <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#991b1b;">🇪🇸 Spain (Extremadura)</strong><br>
+          <span style="color:#7f1d1d;">First Western Europe case 2022. Elevated vigilance.</span>
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#991b1b;">🇽🇰🇦🇱🇬🇷 Balkans</strong><br>
+          <span style="color:#7f1d1d;">Kosovo, Albania, Greece — endemic.</span>
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#991b1b;">🇹🇷 Turkey</strong><br>
+          <span style="color:#7f1d1d;">Endemic — many cases each year.</span>
+        </div>
+        <div style="background:#fff7ed;border:1px solid #fed7aa;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#92400e;">🌍 Central Asia &amp; Africa</strong><br>
+          <span style="color:#78350f;">Kazakhstan, Uzbekistan, Pakistan, sub-Saharan Africa.</span>
+        </div>
+      </div>
+
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:0.6rem;padding:0.75rem;font-size:0.83rem;color:#78350f;">
+        <strong>🌡️ Climate change alert:</strong> The northward expansion of <em>Hyalomma marginatum</em> ticks is documented across Europe. Heightened vigilance for hikers and agricultural workers in southern regions.
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🛡️ Prevention — Hyalomma ticks</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Tick bite prevention is the only available protection (no approved vaccine).</p>
+
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.75rem;">
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#1e40af;">👕 Covering clothing</strong><br>
+          Long sleeves, trousers tucked into socks. Light colours (ticks visible).
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#1e40af;">🧴 Skin repellents</strong><br>
+          DEET or Icaridin ≥ 20% on exposed areas. Reapply as directed.
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#1e40af;">👔 Permethrin clothing</strong><br>
+          Insecticide treatment of clothing. Effective through multiple washes.
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#1e40af;">🔍 Body check</strong><br>
+          Systematic inspection after returning from the field: armpits, groin, nape, behind ears.
+        </div>
+        <div style="background:#eff6ff;border:1px solid #bfdbfe;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#1e40af;">🪤 Tick removal</strong><br>
+          Use tick remover tool (not fingers). Remove within 24h. Do NOT crush the tick.
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:0.75rem;font-size:0.85rem;">
+          <strong style="color:#991b1b;">🚫 Forbidden</strong><br>
+          Never crush a tick with your fingers — risk of contamination through blood.
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📅 Day-by-day disease progression</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">CCHF — incubation 1 to 13 days after tick bite (median: 3–5 days)</p>
+
+      <div class="clinical-timeline">
+        <div class="timeline-phase phase-warning" data-days="D1–D3">
+          <h4>Pre-haemorrhagic phase — sudden onset</h4>
+          <ul>
+            <li><strong>Sudden</strong> onset (unlike Lassa) — fever ≥ 39°C</li>
+            <li>Intense headache</li>
+            <li>Diffuse myalgia, lower back pain</li>
+            <li>Dizziness, nausea</li>
+            <li>Facial flushing (characteristic red face)</li>
+            <li>Conjunctivitis frequent</li>
+          </ul>
+          <p class="phase-note">⚠️ Resembles Ebola but with even more sudden onset. Epidemiological context (tick, area) is key.</p>
+        </div>
+
+        <div class="timeline-phase phase-critical" data-days="D4–D7">
+          <h4>Haemorrhagic phase — severity sign</h4>
+          <ul>
+            <li>Petechiae on skin and mucosae</li>
+            <li>Epistaxis (nosebleed)</li>
+            <li>Gum bleeding</li>
+            <li>Gastrointestinal haemorrhage</li>
+            <li>Haematuria</li>
+            <li>DIC, <strong>platelets &lt; 20 G/L</strong></li>
+            <li>Transaminases <strong>&gt; 10 × upper limit of normal</strong></li>
+          </ul>
+          <p class="phase-note">⚠️ TYPICAL BIOLOGICAL SIGN: frank thrombocytopenia + leucopenia + AST &gt; 10× ULN = CCHF until proven otherwise in the right epidemiological context.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>❓ Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Can I catch CCHF hiking in Spain? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Yes, the risk is real if you have a <em>Hyalomma</em> tick bite in Extremadura or other rural areas of Spain. Prevention relies on covering clothing and DEET/Icaridin repellents. Monitor yourself for 14 days after returning. If fever → call 112 immediately, mentioning the tick bite and the country.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Does CCHF spread from person to person? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Yes, but <strong>only through direct contact with blood or body fluids</strong> of an infected patient. There is no airborne transmission. Nosocomial clusters are documented (Kosovo 2001, Turkey 2008) but occur mainly without adequate PPE.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What should I do if a tick bit me in a risk area? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <ol style="padding-left:1.4rem;margin:0.3rem 0;">
+            <li>Remove the tick with a tick removal tool (not your fingers)</li>
+            <li>Note the date and location of the bite</li>
+            <li>Monitor your temperature for 14 days</li>
+            <li>If fever → call 112 immediately, mentioning the tick bite and the country visited</li>
+          </ol>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there a vaccine against CCHF? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <strong>No</strong>, no vaccine is approved and available in Western Europe. A Bulgarian inactivated-virus vaccine exists but is not distributed outside Bulgaria and its efficacy has not been validated by modern trials. Prevention relies solely on tick protection.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div id="section-hcw" role="tabpanel" aria-labelledby="tab-hcw" style="display:none;">
+
+    <div class="alarm-box" style="margin-top:1.5rem;border-color:#059669;background:#ecfdf5;">
+      <div class="alarm-title" style="color:#065f46;">🩺 Suspected CCHF = immediate mandatory reporting</div>
+      <ul class="alarm-steps" style="color:#064e3b;">
+        <li><span class="step-num" style="background:#059669;">1</span> <span>Immediate contact isolation — single room, contact + airborne precautions (AGPs)</span></li>
+        <li><span class="step-num" style="background:#059669;">2</span> <span>PPE: FFP2 + double gloving + waterproof gown + sealed goggles</span></li>
+        <li><span class="step-num" style="background:#059669;">3</span> <span>Call emergency services and regional health authority within the hour</span></li>
+        <li><span class="step-num" style="background:#059669;">4</span> <span>Emergency blood panel (FBC, platelets, AST/ALT, PT/APTT)</span></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🔍 At-risk profiles</h2>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;margin-bottom:1rem;">
+        <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:0.75rem;">
+          <strong style="color:#991b1b;">🧳 Travellers</strong>
+          <ul style="margin:0.4rem 0 0;padding-left:1.2rem;color:#7f1d1d;">
+            <li>Return from rural Spain (Extremadura)</li>
+            <li>Balkans (Kosovo, Albania, Greece)</li>
+            <li>Turkey (rural areas)</li>
+            <li>With tick bite + fever</li>
+          </ul>
+        </div>
+        <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:0.75rem;">
+          <strong style="color:#991b1b;">👨‍🌾 Occupationally exposed</strong>
+          <ul style="margin:0.4rem 0 0;padding-left:1.2rem;color:#7f1d1d;">
+            <li>Veterinarians in endemic areas</li>
+            <li>Farmers, shepherds</li>
+            <li>Slaughterhouse workers (imported livestock)</li>
+            <li>Military / humanitarian workers in risk areas</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="background:#fef2f2;border:2px solid #dc2626;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#991b1b;">⚠️ Pathognomonic biological sign:</strong>
+        <p style="font-size:0.88rem;color:#7f1d1d;margin:0.4rem 0 0;">
+          <strong>Platelets &lt; 50 G/L + AST &gt; 10× ULN + leucopenia</strong><br>
+          → CCHF until proven otherwise in the right epidemiological context.
+        </p>
+      </div>
+
+      <h3 style="color:#dc2626;">Differential diagnosis</h3>
+      <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;">
+        <li><strong>Malaria</strong> (blood film + RDT if African context)</li>
+        <li><strong>Leptospirosis</strong> (water/animal contact)</li>
+        <li><strong>Lassa fever</strong> (return from West Africa, hearing loss)</li>
+        <li><strong>Ebola/Marburg</strong> (Central Africa)</li>
+        <li><strong>Rickettsiosis</strong> (tick exposure, rash)</li>
+        <li><strong>Bacterial sepsis</strong> (blood cultures)</li>
+      </ul>
+
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:0.6rem;padding:0.75rem;margin-top:0.75rem;font-size:0.83rem;color:#78350f;">
+        <strong>Documented nosocomial clusters:</strong> Kosovo 2001 (8 healthcare workers infected), Turkey 2008 — transmission through blood contact without adequate PPE. Do not underestimate occupational risk.
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🦺 PPE Protocol — CCHF</h2>
+
+      <h3>Suspected case (PCR pending)</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item">
+          <div class="ppe-icon">😷</div>
+          <strong>FFP2 minimum</strong>
+          Fitted filtering mask
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🧤</div>
+          <strong>Double gloving</strong>
+          Nitrile gloves × 2 layers
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥼</div>
+          <strong>Waterproof gown</strong>
+          Fluid-resistant
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥽</div>
+          <strong>Sealed goggles</strong>
+          Mandatory splash protection
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.25rem;">Confirmed case / AGPs</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🌬️</div>
+          <strong>FFP3</strong>
+          For aerosol-generating procedures
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🧪</div>
+          <strong>Waterproof coverall</strong>
+          Full sealed suit
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🥽</div>
+          <strong>Full face visor</strong>
+          Complete face coverage
+        </div>
+      </div>
+
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:0.6rem;padding:0.75rem;margin-top:1rem;font-size:0.83rem;color:#78350f;">
+        <strong>DIFFERENCE vs Ebola:</strong> BSL-4 unit not mandatory (strict contact isolation + airborne precautions for AGPs only). CCHF is less contagious than Ebola by natural routes.
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>💊 Treatment — Ribavirin IV</h2>
+      <div class="treatment-box">
+        <div class="treatment-title">✅ Ribavirin IV — WHO recommendation (off-label)</div>
+        <ul style="font-size:0.88rem;color:#064e3b;padding-left:1.4rem;margin:0.5rem 0;">
+          <li><strong>Loading dose:</strong> 2 g IV over 30 min</li>
+          <li><strong>D1–D4:</strong> 1 g/6h IV</li>
+          <li><strong>D5–D10:</strong> 0.5 g/8h IV</li>
+          <li><strong>Total duration:</strong> 10 days</li>
+        </ul>
+        <p style="font-size:0.85rem;color:#065f46;margin:0.5rem 0;">Same protocol as Lassa. Start as early as possible upon confirmed clinical suspicion.</p>
+        <p style="font-size:0.78rem;color:#6b7280;margin:0.5rem 0;">Source: Bente DA et al. Antiviral Res 2013 · WHO CCHF recommendation</p>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📞 Reporting and alert chain</h2>
+      <ul class="notif-chain">
+        <li>
+          <span class="notif-num">1</span>
+          <div>
+            <strong>Emergency services (112)</strong> — clinical suspicion<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Coordinates transfer and pathway activation</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">2</span>
+          <div>
+            <strong>Regional health authority</strong> — within the hour<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Mandatory immediate notification</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">3</span>
+          <div>
+            <strong>National public health agency</strong> — mandatory reporting<br>
+            <span style="font-size:0.8rem;color:#6b7280;">National coordination</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">4</span>
+          <div>
+            <strong>Specialist tropical infectious diseases referral centre</strong><br>
+            <span style="font-size:0.8rem;color:#6b7280;">Transfer if PCR confirmed — specialist management</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="section-card" style="background:#f9fafb;">
+    <h2>📚 Official sources</h2>
+    <ul style="font-size:0.82rem;color:#374151;padding-left:1.4rem;line-height:1.8;">
+      <li>WHO CCHF Fact Sheet 2024</li>
+      <li>ECDC CCHF Factsheet for Health Professionals 2023</li>
+      <li>Papa A et al. <em>Euro Surveill</em> 2022 — CCHF Western Europe, Spain</li>
+      <li>Bente DA et al. <em>Antiviral Res</em> 2013 — Crimean-Congo hemorrhagic fever: history, epidemiology, pathogenesis, clinical syndrome and genetic diversity</li>
+      <li>HCSP opinion CCHF France 2019</li>
+    </ul>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Last updated: 19 June 2026 · By Dr Clément MÉDEAU, physician (La Rochelle, France)
+    </p>
+  </div>
+
+</main>
+
+<footer style="background:#1f2937;color:#9ca3af;text-align:center;padding:2rem 1rem;font-size:0.82rem;">
+  <p>
+    <a href="/" style="color:#d1d5db;text-decoration:none;">BreathIQ</a> ·
+    <a href="about-en.html" style="color:#d1d5db;text-decoration:none;">About</a> ·
+    <a href="methodologie.html" style="color:#d1d5db;text-decoration:none;">Methodology</a> ·
+    <a href="privacy-en.html" style="color:#d1d5db;text-decoration:none;">Privacy</a>
+  </p>
+  <p style="margin-top:0.5rem;">Public information tool · Not a medical device (EU 2017/745) · © 2026 Dr Clément MÉDEAU</p>
+</footer>
+
+<script>
+  function switchAudience(audience) {
+    const patSection = document.getElementById('section-patient');
+    const hcwSection = document.getElementById('section-hcw');
+    const tabPat = document.getElementById('tab-patient');
+    const tabHcw = document.getElementById('tab-hcw');
+    if (audience === 'patient') {
+      patSection.style.display = '';
+      hcwSection.style.display = 'none';
+      tabPat.classList.add('active-patient');
+      tabPat.classList.remove('active-hcw');
+      tabHcw.className = 'audience-tab';
+      tabPat.setAttribute('aria-selected', 'true');
+      tabHcw.setAttribute('aria-selected', 'false');
+    } else {
+      hcwSection.style.display = '';
+      patSection.style.display = 'none';
+      tabHcw.classList.add('active-hcw');
+      tabHcw.classList.remove('active-patient');
+      tabPat.className = 'audience-tab';
+      tabHcw.setAttribute('aria-selected', 'true');
+      tabPat.setAttribute('aria-selected', 'false');
+    }
+  }
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    answer.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>

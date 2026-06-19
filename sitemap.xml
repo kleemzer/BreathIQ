@@ -160,6 +160,50 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/ebola-en.html"/>
   </url>
 
+  <!-- Fièvre de Lassa — FR -->
+  <url>
+    <loc>https://breathiq.fr/lassa.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/lassa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/lassa-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/lassa-en.html"/>
+  </url>
+
+  <!-- Fièvre de Lassa — EN -->
+  <url>
+    <loc>https://breathiq.fr/lassa-en.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/lassa.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/lassa-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/lassa-en.html"/>
+  </url>
+
+  <!-- FHCC Criméo-Congo — FR -->
+  <url>
+    <loc>https://breathiq.fr/cchf.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/cchf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/cchf-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/cchf-en.html"/>
+  </url>
+
+  <!-- FHCC Criméo-Congo — EN -->
+  <url>
+    <loc>https://breathiq.fr/cchf-en.html</loc>
+    <lastmod>2026-06-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/cchf.html"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://breathiq.fr/cchf-en.html"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://breathiq.fr/cchf-en.html"/>
+  </url>
+
   <!-- Méthodologie -->
   <url>
     <loc>https://breathiq.fr/methodologie.html</loc>

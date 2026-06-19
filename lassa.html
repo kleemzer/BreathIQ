@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Fièvre de Lassa — Guide clinique complet pour patients et soignants. Timeline clinique, traitement Ribavirine IV, surdité de perception, transmission, EPI et déclaration obligatoire.">
+  <title>Fièvre de Lassa — Guide clinique · BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://breathiq.fr/lassa.html">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/lassa.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/lassa-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/lassa-en.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Fièvre de Lassa — Guide clinique complet",
+    "url": "https://breathiq.fr/lassa.html",
+    "description": "Guide clinique Fièvre de Lassa pour patients et soignants. Traitement disponible : Ribavirine IV.",
+    "dateModified": "2026-06-19",
+    "inLanguage": "fr",
+    "medicalAudience": ["Patient", "MedicalResearcher", "Clinician"],
+    "author": {
+      "@type": "Person",
+      "name": "Clément MÉDEAU",
+      "honorificPrefix": "Dr",
+      "url": "https://breathiq.fr/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BreathIQ",
+      "url": "https://breathiq.fr"
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Fièvre de Lassa",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "A96.2",
+        "codingSystem": "ICD-10"
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="style.min.css?v=20260617">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <style>
+    /* ── Page spécifique Lassa ── */
+    .ebola-hero {
+      background: linear-gradient(135deg, #92400e 0%, #b45309 50%, #451a03 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .ebola-hero .pheic-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+    .ebola-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin: 0 0 0.75rem;
+    }
+    .ebola-hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.88;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+    .ebola-hero .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .ebola-hero .stat-item {
+      text-align: center;
+    }
+    .ebola-hero .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .ebola-hero .stat-label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Disclaimer médical ── */
+    .medical-disclaimer {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem auto;
+      max-width: 860px;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-size: 0.85rem;
+      color: #78350f;
+    }
+
+    /* ── Audience tabs ── */
+    .audience-tabs {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 860px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+    }
+    .audience-tab {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .audience-tab.active-patient {
+      border-color: #2563eb;
+      background: #eff6ff;
+      color: #1e40af;
+    }
+    .audience-tab.active-hcw {
+      border-color: #059669;
+      background: #ecfdf5;
+      color: #065f46;
+    }
+
+    /* ── Content sections ── */
+    .page-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .section-card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
+      margin: 1rem 0 0.5rem;
+    }
+
+    /* ── Timeline clinique ── */
+    .clinical-timeline {
+      position: relative;
+      padding-left: 0;
+    }
+    .timeline-phase {
+      position: relative;
+      padding: 1rem 1rem 1rem 3rem;
+      border-left: 3px solid #e5e7eb;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-phase::before {
+      content: attr(data-days);
+      position: absolute;
+      left: -1px;
+      top: 1rem;
+      transform: translateX(-50%);
+      background: #92400e;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+    }
+    .timeline-phase.phase-critical { border-color: #dc2626; }
+    .timeline-phase.phase-critical::before { background: #dc2626; }
+    .timeline-phase.phase-warning { border-color: #d97706; }
+    .timeline-phase.phase-warning::before { background: #d97706; }
+    .timeline-phase.phase-recovery { border-color: #059669; }
+    .timeline-phase.phase-recovery::before { background: #059669; }
+
+    .timeline-phase h4 {
+      font-size: 0.9rem;
+      font-weight: 700;
+      margin: 0 0 0.4rem;
+    }
+    .timeline-phase ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: 0.85rem;
+      color: #374151;
+    }
+    .timeline-phase .phase-note {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      background: #f9fafb;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.35rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    /* ── Alarm box ── */
+    .alarm-box {
+      background: #fef2f2;
+      border: 2px solid #dc2626;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .alarm-box .alarm-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #991b1b;
+      margin-bottom: 0.75rem;
+    }
+    .alarm-box .alarm-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #dc2626;
+      line-height: 1;
+    }
+    .alarm-box .alarm-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+    }
+    .alarm-box .alarm-steps li {
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #fecaca;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .alarm-box .alarm-steps li:last-child { border-bottom: none; }
+    .step-num {
+      background: #dc2626;
+      color: #fff;
+      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    /* ── PPE Protocol ── */
+    .ppe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .ppe-item {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      border-radius: 0.6rem;
+      padding: 0.75rem;
+      font-size: 0.82rem;
+    }
+    .ppe-item .ppe-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .ppe-item strong { display: block; font-size: 0.8rem; margin-bottom: 0.15rem; }
+
+    /* ── Notification chain ── */
+    .notif-chain {
+      list-style: none;
+      padding: 0;
+      margin: 0.75rem 0 0;
+    }
+    .notif-chain li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.88rem;
+    }
+    .notif-chain li:last-child { border-bottom: none; }
+    .notif-num {
+      background: #059669;
+      color: #fff;
+      border-radius: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    /* ── Post-recovery ── */
+    .post-recovery-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+    @media (max-width: 540px) {
+      .post-recovery-grid { grid-template-columns: 1fr; }
+      .ppe-grid { grid-template-columns: 1fr 1fr; }
+    }
+    .recovery-card {
+      background: #fefce8;
+      border: 1px solid #fde68a;
+      border-radius: 0.6rem;
+      padding: 1rem;
+    }
+    .recovery-card h4 {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: #78350f;
+      margin: 0 0 0.5rem;
+    }
+    .recovery-card ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: 0.82rem;
+      color: #451a03;
+    }
+
+    /* ── FAQ ── */
+    .faq-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.6rem;
+      margin-bottom: 0.6rem;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: #f9fafb;
+      border: none;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111827;
+    }
+    .faq-q:hover { background: #f3f4f6; }
+    .faq-a {
+      display: none;
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+      color: #374151;
+      line-height: 1.6;
+      border-top: 1px solid #e5e7eb;
+    }
+    .faq-a.open { display: block; }
+    .faq-q .faq-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+    /* ── Nav ── */
+    .page-nav {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .page-nav a {
+      font-size: 0.85rem;
+      color: #6b7280;
+      text-decoration: none;
+    }
+    .page-nav a:hover { color: #111827; }
+    .page-nav .breadcrumb-sep { color: #d1d5db; }
+    .page-nav .current { color: #92400e; font-weight: 600; }
+
+    /* ── Traitement box ── */
+    .treatment-box {
+      background: #ecfdf5;
+      border: 2px solid #059669;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    .treatment-box .treatment-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #065f46;
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Barre de navigation / breadcrumb -->
+<nav class="page-nav" aria-label="Fil d'Ariane">
+  <a href="/">BreathIQ</a>
+  <span class="breadcrumb-sep" aria-hidden="true">›</span>
+  <span class="current">Fièvre de Lassa</span>
+  <span style="flex:1"></span>
+  <a href="lassa-en.html" style="font-size:0.8rem;color:#4b5563;">🇬🇧 English</a>
+</nav>
+
+<!-- Hero -->
+<header class="ebola-hero">
+  <div class="pheic-badge">
+    🌍 Endémique Afrique de l'Ouest
+  </div>
+  <h1>Fièvre de Lassa — Guide clinique</h1>
+  <p class="subtitle">
+    Guide clinique complet — patients &amp; soignants<br>
+    Traitement disponible · Ribavirine IV efficace si &lt; 6 jours
+  </p>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">100–300K</div>
+      <div class="stat-label">cas/an estimés</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">15–25%</div>
+      <div class="stat-label">CFR hospitalisés</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">Dispo</div>
+      <div class="stat-label">traitement disponible</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5</div>
+      <div class="stat-label">souches identifiées</div>
+    </div>
+  </div>
+</header>
+
+<!-- Disclaimer -->
+<div class="medical-disclaimer" role="note">
+  <strong>⚠️ Information publique — Non dispositif médical.</strong>
+  Cette page est un outil d'information basé sur les données officielles OMS, CDC, ECDC et SPF. Elle ne se substitue pas à une consultation médicale. En cas de doute, appelez le <strong>15</strong> (SAMU).
+</div>
+
+<!-- Tabs audience -->
+<div class="audience-tabs" role="tablist" aria-label="Sélectionner l'audience">
+  <button class="audience-tab active-patient" onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
+    👤 Je suis patient / voyageur
+  </button>
+  <button class="audience-tab" onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
+    🩺 Je suis soignant
+  </button>
+</div>
+
+<main class="page-content">
+
+  <!-- ══════════════════════════════════════════
+       SECTION PATIENT
+  ══════════════════════════════════════════ -->
+  <div id="section-patient" role="tabpanel" aria-labelledby="tab-patient">
+
+    <!-- Alarme principale -->
+    <div class="alarm-box" style="margin-top:1.5rem;">
+      <div class="alarm-title">🚨 Si fièvre + retour Afrique de l'Ouest (&lt; 21j)</div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.8rem;color:#991b1b;margin-bottom:0.2rem;">Appelez immédiatement</div>
+          <div class="alarm-number">15</div>
+          <div style="font-size:0.8rem;color:#991b1b;">SAMU — 24h/24</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <ul class="alarm-steps">
+            <li><span class="step-num">1</span> <span>Restez chez vous — NE PAS aller aux urgences sans appel préalable</span></li>
+            <li><span class="step-num">2</span> <span>Appelez le <strong>15</strong> et signalez votre retour d'Afrique de l'Ouest</span></li>
+            <li><span class="step-num">3</span> <span>Isolez-vous dans une pièce séparée, évitez tout contact physique</span></li>
+            <li><span class="step-num">4</span> <span>Attendez les instructions du médecin régulateur</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quand s'inquiéter -->
+    <div class="section-card">
+      <h2>🌡️ Quand dois-je m'inquiéter ?</h2>
+
+      <div style="background:#fef2f2;border-radius:0.6rem;padding:1rem;margin-bottom:1rem;">
+        <strong style="color:#991b1b;font-size:0.9rem;">⚠️ Appelez le 15 si vous réunissez ces deux critères :</strong>
+        <ol style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.88rem;color:#7f1d1d;">
+          <li><strong>Fièvre + retour Sierra Leone / Guinée / Liberia / Nigeria / Mali</strong> depuis moins de 21 jours</li>
+          <li>+ <strong>pharyngite douloureuse</strong> OU <strong>surdité soudaine</strong> OU <strong>saignements inexpliqués</strong></li>
+        </ol>
+      </div>
+
+      <div style="background:#f0fdf4;border-radius:0.6rem;padding:1rem;">
+        <strong style="color:#065f46;font-size:0.9rem;">✅ Lassa ne se transmet PAS par :</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;display:grid;grid-template-columns:1fr 1fr;gap:0.2rem;">
+          <li>L'air ou la toux</li>
+          <li>L'eau en bouteille ou aliments cuits</li>
+          <li>Contact avec personne asymptomatique</li>
+          <li>Les insectes ou moustiques</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Timeline clinique patient -->
+    <div class="section-card">
+      <h2>📅 Évolution de la maladie jour par jour</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Fièvre de Lassa — incubation 6 à 21 jours (médiane : 10 jours)</p>
+
+      <div class="clinical-timeline">
+        <div class="timeline-phase phase-warning" data-days="J1–J3">
+          <h4>Phase prodromique — début progressif (pas brutal)</h4>
+          <ul>
+            <li>Fièvre progressive (pas brutale, contrairement à Ebola)</li>
+            <li>Malaise général, fatigue</li>
+            <li>Céphalées</li>
+            <li>Douleurs thoraciques</li>
+            <li>Pharyngite douloureuse asymétrique</li>
+          </ul>
+          <p class="phase-note">⚠️ 80% des cas sont bénins ou asymptomatiques. Seulement 20% évoluent vers la forme sévère.</p>
+        </div>
+
+        <div class="timeline-phase phase-critical" data-days="J4–J7">
+          <h4>Phase systémique (20% des cas sévères)</h4>
+          <ul>
+            <li>Vomissements et diarrhée</li>
+            <li>Œdème facial</li>
+            <li><strong>🔔 SURDITÉ DE PERCEPTION</strong> — signe caractéristique (25–30% des cas)</li>
+            <li>Protéinurie</li>
+            <li>Saignements dans les formes graves</li>
+          </ul>
+          <p class="phase-note">⚠️ La surdité peut être PERMANENTE — séquelle neurologique majeure. Signe évocateur de Lassa par rapport aux autres fièvres hémorragiques.</p>
+        </div>
+
+        <div class="timeline-phase phase-recovery" data-days="Post-guérison">
+          <h4>Après la guérison — risques à connaître</h4>
+          <ul>
+            <li>Surdité permanente dans 25% des cas guéris</li>
+            <li>Fatigue persistante 2 à 3 mois</li>
+            <li>Virus éliminé dans l'urine jusqu'à 3–4 semaines après guérison</li>
+          </ul>
+          <p class="phase-note">Précautions d'hygiène maintenues plusieurs semaines après guérison clinique.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Différence avec Ebola -->
+    <div class="section-card">
+      <h2>💊 Différence clé avec Ebola : UN TRAITEMENT EXISTE</h2>
+      <div class="treatment-box">
+        <div class="treatment-title">✅ Ribavirine IV — Traitement efficace disponible</div>
+        <p style="font-size:0.88rem;color:#064e3b;margin:0.5rem 0;">
+          Contrairement à Ebola, la fièvre de Lassa dispose d'un traitement spécifique.
+        </p>
+        <ul style="font-size:0.88rem;color:#064e3b;padding-left:1.4rem;margin:0.5rem 0;">
+          <li>CFR sans traitement : <strong>55%</strong> dans les formes sévères</li>
+          <li>CFR avec Ribavirine IV débutée dans les 6 premiers jours : <strong>&lt; 5%</strong></li>
+        </ul>
+        <p style="font-size:0.88rem;color:#064e3b;margin:0.5rem 0;font-weight:700;">
+          → Raison supplémentaire d'appeler le 15 rapidement : chaque heure compte.
+        </p>
+      </div>
+    </div>
+
+    <!-- FAQ patient -->
+    <div class="section-card">
+      <h2>❓ Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Comment se transmet la fièvre de Lassa ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          La transmission se fait principalement via le rongeur <em>Mastomys natalensis</em> (rat africain). Les aliments et l'eau contaminés par l'urine ou les fèces de ce rongeur sont la source principale. La transmission interhumaine est possible par contact direct avec le sang ou les fluides biologiques d'un patient, mais <strong>Lassa ne se transmet PAS par voie aérienne</strong>, contrairement à la grippe.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Y a-t-il un traitement contre la fièvre de Lassa ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <strong>OUI</strong> — c'est la principale différence avec Ebola. La <strong>Ribavirine IV</strong> est efficace si débutée dans les 6 premiers jours de symptômes. Le taux de mortalité passe de 55% à moins de 5% avec un traitement précoce. C'est pourquoi il est crucial d'appeler le 15 dès les premiers signes suspects.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Comment distinguer la fièvre de Lassa d'Ebola ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Les deux signes les plus discriminants :
+          <ul style="margin:0.5rem 0;padding-left:1.4rem;">
+            <li><strong>Surdité soudaine</strong> → évoque Lassa (25–30% des cas)</li>
+            <li><strong>Saignements massifs</strong> → évoque Ebola ou Marburg</li>
+          </ul>
+          La zone géographique est aussi clé : Lassa = Afrique de l'Ouest (Sierra Leone, Guinée, Liberia, Nigeria) ; Ebola = Afrique Centrale (RDC, Ouganda).
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quel est le risque en France ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Le risque est <strong>exclusivement lié aux voyageurs</strong> revenant d'Afrique de l'Ouest. Il n'y a pas de circulation endémique en France. Les cas importés sont très rares mais surviennent chaque année en Europe. Les soignants ayant pris en charge un cas peuvent être exposés sans EPI adéquat.
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       SECTION SOIGNANT
+  ══════════════════════════════════════════ -->
+  <div id="section-hcw" role="tabpanel" aria-labelledby="tab-hcw" style="display:none;">
+
+    <!-- Alerte soignant -->
+    <div class="alarm-box" style="margin-top:1.5rem;border-color:#059669;background:#ecfdf5;">
+      <div class="alarm-title" style="color:#065f46;">🩺 Suspicion Lassa = déclaration obligatoire immédiate</div>
+      <ul class="alarm-steps" style="color:#064e3b;">
+        <li><span class="step-num" style="background:#059669;">1</span> <span>Isolement contact immédiat — chambre individuelle, porte fermée</span></li>
+        <li><span class="step-num" style="background:#059669;">2</span> <span>EPI : FFP2 + gants + surblouse + lunettes (suspicion)</span></li>
+        <li><span class="step-num" style="background:#059669;">3</span> <span>Appel SAMU 15 et ARS régionale dans l'heure</span></li>
+        <li><span class="step-num" style="background:#059669;">4</span> <span>Démarrer Ribavirine IV dès que possible (ne pas attendre confirmation PCR si contexte évocateur)</span></li>
+      </ul>
+    </div>
+
+    <!-- Critères de suspicion -->
+    <div class="section-card">
+      <h2>🔍 Critères OMS — cas possible Lassa</h2>
+      <div style="background:#f0fdf4;border:1px solid #6ee7b7;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#065f46;">Critère OMS (cas possible) — au moins un des éléments suivants :</strong>
+        <ul style="margin:0.4rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;">
+          <li>Voyage ou résidence en Afrique de l'Ouest (Sierra Leone, Guinée, Liberia, Nigeria, Mali) dans les 21 derniers jours</li>
+          <li>OU contact avec un cas confirmé de Lassa</li>
+          <li>OU exposition à des rongeurs Mastomys ou leurs déjections en zone endémique</li>
+        </ul>
+      </div>
+
+      <h3>Signes évocateurs</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;">
+        <div>
+          <strong style="color:#374151;">Phase prodromique (J1–J3)</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#4b5563;">
+            <li>Fièvre progressive (pas brutale)</li>
+            <li>Pharyngite asymétrique douloureuse</li>
+            <li>Myalgies, céphalées</li>
+            <li>Douleurs thoraciques</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color:#374151;">Phase sévère (J4–J7)</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#4b5563;">
+            <li><strong>Surdité de perception</strong> (pathognomonique)</li>
+            <li>Œdème facial</li>
+            <li>Protéinurie franche</li>
+            <li>Saignements muqueuses</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="color:#dc2626;">Diagnostic différentiel prioritaire</h3>
+      <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;">
+        <li><strong>Paludisme</strong> (frottis sanguin + TDR obligatoire en contexte africain)</li>
+        <li><strong>Ebola/Marburg</strong> (saignements massifs prédominants → différent)</li>
+        <li><strong>Typhoïde</strong> (hémocultures)</li>
+        <li><strong>Grippe sévère</strong> (PCR influenza)</li>
+        <li><strong>FHCC</strong> si contact tique, voyage Balkans/Turquie</li>
+      </ul>
+    </div>
+
+    <!-- EPI -->
+    <div class="section-card">
+      <h2>🦺 Protocole EPI — Lassa</h2>
+
+      <h3>Cas suspect (PCR en attente)</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item">
+          <div class="ppe-icon">😷</div>
+          <strong>FFP2 minimum</strong>
+          Masque filtrant ajusté — pas de chirurgical
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🧤</div>
+          <strong>Double gantage</strong>
+          Gants nitrile × 2 couches
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥼</div>
+          <strong>Surblouse imperméable</strong>
+          À manches longues, résistante aux liquides
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥽</div>
+          <strong>Lunettes étanches</strong>
+          OU visière intégrale
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.25rem;">Cas confirmé / AGPs (intubation, aspiration)</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🌬️</div>
+          <strong>FFP3</strong>
+          Pour les gestes aérosolisants uniquement
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🧤</div>
+          <strong>Double gantage certifié</strong>
+          Gants extérieurs résistants aux liquides
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🥽</div>
+          <strong>Visière intégrale</strong>
+          Couverture totale face, nuque, cou
+        </div>
+      </div>
+
+      <div style="background:#fefce8;border:1px solid #fde68a;border-radius:0.6rem;padding:0.75rem;margin-top:1rem;font-size:0.83rem;color:#78350f;">
+        <strong>DIFFÉRENCE vs Ebola :</strong> Lassa est moins contagieux qu'Ebola. Pas de transmission aérienne naturelle documentée. L'isolement contact strict suffit en dehors des AGPs (pas de nécessité d'unité BSL-4 systématique).
+      </div>
+    </div>
+
+    <!-- Traitement -->
+    <div class="section-card">
+      <h2>💊 Traitement — Ribavirine IV</h2>
+
+      <div class="treatment-box">
+        <div class="treatment-title">✅ Protocole Ribavirine IV (McCormick 1986)</div>
+        <ul style="font-size:0.88rem;color:#064e3b;padding-left:1.4rem;margin:0.5rem 0;">
+          <li><strong>Dose de charge :</strong> 2 g IV en 30 min</li>
+          <li><strong>J1–J4 :</strong> 1 g/6h IV</li>
+          <li><strong>J5–J10 :</strong> 0,5 g/8h IV</li>
+          <li><strong>Durée totale :</strong> 10 jours</li>
+        </ul>
+        <p style="font-size:0.85rem;color:#065f46;margin:0.5rem 0;font-weight:700;">
+          ⏱️ À démarrer impérativement dans les 6 premiers jours de symptômes (avant phase hémorragique).<br>
+          CFR : 55% → &lt;5% avec traitement précoce.
+        </p>
+        <p style="font-size:0.78rem;color:#6b7280;margin:0.5rem 0;">Source : McCormick JB et al. N Engl J Med 1986;314:20-26</p>
+      </div>
+    </div>
+
+    <!-- Chaîne de déclaration -->
+    <div class="section-card">
+      <h2>📞 Chaîne de déclaration et d'alerte</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.75rem;">
+        Lassa = Maladie à Déclaration Obligatoire (MDO) — un seul cas suspect déclenche la chaîne complète.
+      </p>
+      <ul class="notif-chain">
+        <li>
+          <span class="notif-num">1</span>
+          <div>
+            <strong>SAMU 15</strong> — activation immédiate dès suspicion clinique<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Le régulateur coordonne la prise en charge et l'orientation</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">2</span>
+          <div>
+            <strong>ARS régionale</strong> — dans l'heure<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Déclaration immédiate obligatoire</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">3</span>
+          <div>
+            <strong>Santé Publique France (SPF)</strong> — déclaration obligatoire<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Coordination nationale et investigation contact tracing</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">4</span>
+          <div>
+            <strong>CHU de référence maladies infectieuses tropicales</strong><br>
+            <span style="font-size:0.8rem;color:#6b7280;">Transfert si confirmation PCR — prise en charge spécialisée</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Sources -->
+  <div class="section-card" style="background:#f9fafb;">
+    <h2>📚 Sources officielles</h2>
+    <ul style="font-size:0.82rem;color:#374151;padding-left:1.4rem;line-height:1.8;">
+      <li>WHO Lassa Fever Fact Sheet 2024</li>
+      <li>Nigeria CDC — Lassa Fever Situation Report Q1 2026</li>
+      <li>McCormick JB et al. <em>N Engl J Med</em> 1986;314:20-26 — Lassa fever: effective therapy with ribavirin</li>
+      <li>Raabe VN, Kann G. <em>Viruses</em> 2017;9(6):149 — Lassa Hemorrhagic Fever: A Review</li>
+      <li>Bausch DG et al. <em>J Infect Dis</em> 2010;201(12):1764-72 — Assessment of the Risk of Ebola Virus Transmission</li>
+    </ul>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Dernière mise à jour : 19 juin 2026 · Par Dr Clément MÉDEAU, médecin (La Rochelle, France)
+    </p>
+  </div>
+
+</main>
+
+<!-- Footer -->
+<footer style="background:#1f2937;color:#9ca3af;text-align:center;padding:2rem 1rem;font-size:0.82rem;">
+  <p>
+    <a href="/" style="color:#d1d5db;text-decoration:none;">BreathIQ</a> ·
+    <a href="about.html" style="color:#d1d5db;text-decoration:none;">À propos</a> ·
+    <a href="methodologie.html" style="color:#d1d5db;text-decoration:none;">Méthodologie</a> ·
+    <a href="privacy.html" style="color:#d1d5db;text-decoration:none;">Confidentialité</a>
+  </p>
+  <p style="margin-top:0.5rem;">Outil d'information publique · Non dispositif médical (UE 2017/745) · © 2026 Dr Clément MÉDEAU</p>
+</footer>
+
+<script>
+  function switchAudience(audience) {
+    const patSection = document.getElementById('section-patient');
+    const hcwSection = document.getElementById('section-hcw');
+    const tabPat = document.getElementById('tab-patient');
+    const tabHcw = document.getElementById('tab-hcw');
+
+    if (audience === 'patient') {
+      patSection.style.display = '';
+      hcwSection.style.display = 'none';
+      tabPat.classList.add('active-patient');
+      tabPat.classList.remove('active-hcw');
+      tabHcw.className = 'audience-tab';
+      tabPat.setAttribute('aria-selected', 'true');
+      tabHcw.setAttribute('aria-selected', 'false');
+    } else {
+      hcwSection.style.display = '';
+      patSection.style.display = 'none';
+      tabHcw.classList.add('active-hcw');
+      tabHcw.classList.remove('active-patient');
+      tabPat.className = 'audience-tab';
+      tabHcw.setAttribute('aria-selected', 'true');
+      tabPat.setAttribute('aria-selected', 'false');
+    }
+  }
+
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    answer.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>
