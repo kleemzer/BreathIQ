@@ -220,13 +220,12 @@
         travel_africa_high_risk:55, travel_africa:30,
         bleeding:50, fever_high:22, fever_very_high:25,
         vomiting_diarrhea:20, myalgias:15,
-        rash_maculopapular:20,    // rash tronc J5-J7
+        rash_maculopapular:20,
         rapid_deterioration:35,
-        conjunctivitis:18,        // yeux rouges fréquents dans Marburg
+        conjunctivitis:18,
         headache:15,
-        // négatifs
         sore_throat:-10,
-        hearing_loss:-20,         // pathognomonique Lassa, absent Marburg
+        hearing_loss:-20,
         smell_loss:-20, cough_3w:-20,
       },
       alarmSigns:['bleeding'],
@@ -235,6 +234,185 @@
       mandatoryReport:true,
       isolationFR:'URGENCE NATIONALE — SAMU 15 immédiat — Épidémie Éthiopie 2025-2026 active (CFR 64%) — protocole identique à Ebola',
       criterionFR:'Voyage Éthiopie / Rwanda / Ouganda < 21j + saignements + fièvre = Marburg — SAMU 15 immédiat — CFR 64%',
+    },
+
+    // ── PATHOGÈNES LMIC PRIORITÉ HAUTE ────────────────────────
+    TYPHOID: {
+      nameFR: 'Fièvre typhoïde (Salmonella Typhi)', nameEN: 'Typhoid Fever', icon: '🌡️',
+      prior: 4,
+      weights: {
+        fever_high:25, fever_resistant:30, headache:20,
+        abdominal_pain:22, diarrhea:15, constipation:18,
+        rose_spots:40,                // taches rosées = pathognomonique
+        relative_bradycardia:35,      // dissociation pouls/température
+        splenomegaly:20, hepatomegaly:18,
+        travel_tropical:30, travel_africa:25,
+        contaminated_water:35,
+        onset_gradual:20, duration_weeks:25,
+        // négatifs
+        rash_pustular:-30, neck_stiffness:-15,
+        bleeding:-10, hearing_loss:-20, smell_loss:-20,
+      },
+      alarmSigns:['confusion','bleeding','abdominal_pain'],
+      protection:'Hygiène stricte mains + eau', mandatoryReport:true,
+      isolationFR:'Isolement entérique — éviction collectivité — déclaration ARS obligatoire',
+      criterionFR:'Fièvre en plateau + dissociation pouls/T° + céphalées + retour tropical = typhoïde — TDR Widal / hémocultures',
+      conduiteFR:'Médecin aujourd\'hui → hémocultures → Ciprofloxacine ou Azithromycine 7j',
+      conduiteEN:'Doctor today → blood cultures → Ciprofloxacin or Azithromycin 7d',
+      paysEndemiques:['BD','PK','IN','PH','NG','GH','CI','SN','ML','MR'],
+    },
+
+    CHOLERA: {
+      nameFR: 'Choléra (Vibrio cholerae)', nameEN: 'Cholera', icon: '💧',
+      prior: 0.5,
+      weights: {
+        diarrhea_profuse:55,          // diarrhée riziforme abondante = critère majeur
+        vomiting:30, dehydration:45,
+        travel_tropical:30, travel_africa:25,
+        contaminated_water:40,
+        onset_sudden:25,
+        // négatifs
+        fever_high:-15,               // choléra peu fébrile
+        neck_stiffness:-25, rash:-20, bleeding:-25,
+        smell_loss:-20, cough_3w:-25,
+      },
+      alarmSigns:['dehydration','diarrhea_profuse'],
+      emergencyLevel:'ORANGE',
+      protection:'Hygiène stricte — eau potable — vaccin oral',
+      mandatoryReport:true,
+      isolationFR:'Entérique strict — réhydratation IV urgente si choc — déclaration OMS obligatoire (RIIPM)',
+      criterionFR:'Diarrhée riziforme + vomissements + déshydratation rapide = choléra — réhydratation IMMÉDIATE',
+      conduiteFR:'Urgences si déshydratation sévère (yeux creux, peau qui reste plissée) — sinon SRO oral',
+      conduiteEN:'Emergency if severe dehydration — otherwise oral rehydration salts (ORS)',
+      paysEndemiques:['HT','CD','MZ','ZW','YE','SD','NG','ET','SO','BD'],
+    },
+
+    PNEUMONIA: {
+      nameFR: 'Pneumonie bactérienne (PAC)', nameEN: 'Community-Acquired Pneumonia', icon: '🫁',
+      prior: 6,
+      weights: {
+        wet_cough:25, fever_high:22, dyspnea:28,
+        chest_pain:22, tachypnea:20,
+        crepitants:30,                // crépitants = signe auscultatoire
+        fever_resistant:18, myalgias:12,
+        age_senior:15, age_infant:20,
+        immunocompromised:20,
+        onset_sudden:15, onset_gradual:10,
+        // négatifs
+        smell_loss:-15, cough_3w:-20,
+        rash:-10, neck_stiffness:-15, bleeding:-20,
+      },
+      alarmSigns:['dyspnea_rest','spo2_critical','confusion','tachypnea'],
+      protection:'Gouttelettes', mandatoryReport:false,
+      isolationFR:'Antibiothérapie Amoxicilline 1g x3/j 5-7j — hospitalisation si critères CURB-65 ≥ 2',
+      criterionFR:'Critères CURB-65 : confusion + urée + FR>30 + PA<90 + âge>65 → chaque point = risque hospitalisation',
+      conduiteFR:'Médecin aujourd\'hui si fièvre + toux + essoufflement — Urgences si lèvres bleues ou confusion',
+      conduiteEN:'Doctor today if fever + cough + shortness of breath — Emergency if blue lips or confusion',
+      paysEndemiques:['*'],
+    },
+
+    LEISHMANIASIS: {
+      nameFR: 'Leishmaniose viscérale (Kala-Azar)', nameEN: 'Visceral Leishmaniasis', icon: '🦟',
+      prior: 0.3,
+      weights: {
+        splenomegaly:45,              // splénomégalie massive = signe cardinal
+        hepatomegaly:30,
+        fever_resistant:35,           // fièvre prolongée plusieurs semaines
+        weight_loss:30, fatigue_chronic:25,
+        anemia_signs:28,              // pâleur, asthénie profonde
+        lymph_nodes:20,
+        travel_africa:30, travel_tropical:25,
+        duration_weeks:35,
+        age_infant:15,
+        // négatifs
+        rash_pustular:-20, neck_stiffness:-20,
+        bleeding:-10, smell_loss:-25,
+      },
+      alarmSigns:['anemia_signs','rapid_deterioration'],
+      protection:'Moustiquaire — répulsifs DEET', mandatoryReport:false,
+      isolationFR:'Non contagieux — traitement spécialisé : Amphotéricine B liposomale (hôpital référent)',
+      criterionFR:'Fièvre prolongée + splénomégalie + amaigrissement + zone endémique = Kala-Azar — diagnostic sérologique (rK39)',
+      conduiteFR:'Consultation spécialiste infectiologue — non traité = mortel dans 95% des cas',
+      conduiteEN:'Infectious disease specialist — untreated = 95% fatal',
+      paysEndemiques:['IN','BD','ET','SD','BR','BI','SO','KE','YE','NP'],
+    },
+
+    MEASLES: {
+      nameFR: 'Rougeole (Morbillivirus)', nameEN: 'Measles', icon: '🔴',
+      prior: 1,
+      weights: {
+        rash_maculopapular:35,        // exanthème maculopapuleux centrifuge J4
+        koplik_spots:50,              // taches de Koplik = pathognomonique
+        fever_high:22, fever_very_high:18,
+        conjunctivitis:25,            // conjonctivite précoce
+        rhinorrhea:20, dry_cough:18,
+        unvaccinated:40,              // facteur déclenchant majeur
+        contact_case:35,
+        age_infant:15,
+        travel_africa:20, travel_tropical:15,
+        // négatifs
+        smell_loss:-20, neck_stiffness:-15,
+        bleeding:-25, hearing_loss:-20,
+      },
+      alarmSigns:['dyspnea_rest','confusion','seizures'],
+      emergencyLevel:'ORANGE',
+      protection:'Éviction — vaccin ROR — signalement entourage',
+      mandatoryReport:true,
+      isolationFR:'Éviction 5j après début éruption — vaccin post-exposition < 72h efficace — déclaration ARS obligatoire',
+      criterionFR:'Fièvre + toux + conjonctivite + éruption centrifuge + non-vacciné = ROUGEOLE — extrêmement contagieuse (R0 = 15)',
+      conduiteFR:'Médecin aujourd\'hui — éviction scolaire — vacciner l\'entourage non immunisé',
+      conduiteEN:'Doctor today — school exclusion — vaccinate non-immune contacts',
+      paysEndemiques:['*'],
+    },
+
+    SEPSIS: {
+      nameFR: 'Sepsis / Choc septique', nameEN: 'Sepsis / Septic Shock', icon: '⚠️',
+      prior: 0.8,
+      weights: {
+        fever_very_high:30, fever_high:20,
+        tachycardia:35, confusion:40,
+        tachypnea:30,                 // FR > 22/min = critère qSOFA
+        hypotension:45,               // TA < 90/70 = choc
+        rapid_deterioration:40,
+        immunocompromised:30,
+        age_senior:20, age_infant:25,
+        spo2_critical:30, hr_very_high:30,
+        // négatifs
+        smell_loss:-20, cough_3w:-20, rash_pustular:-15,
+      },
+      alarmSigns:['confusion','hypotension','tachycardia','rapid_deterioration'],
+      emergencyLevel:'ROUGE',
+      protection:'Précautions standard',
+      mandatoryReport:false,
+      isolationFR:'URGENCE VITALE — SAMU 15 immédiat — Golden Hour : antibiotiques IV < 1h',
+      criterionFR:'qSOFA ≥ 2 critères (confusion + FR>22 + PAS<100) = sepsis probable — SAMU 15 immédiat',
+      conduiteFR:'Appelez le 15 MAINTENANT — ne pas attendre',
+      conduiteEN:'Call emergency services NOW — do not wait',
+      paysEndemiques:['*'],
+    },
+
+    SCHISTOSOMIASIS: {
+      nameFR: 'Bilharziose (Schistosoma)', nameEN: 'Schistosomiasis', icon: '🐌',
+      prior: 0.5,
+      weights: {
+        travel_africa:35, travel_tropical:30,
+        freshwater_exposure:45,       // baignade eau douce = critère essentiel
+        hematuria:40,                 // sang dans les urines = bilharziose urinaire
+        abdominal_pain:20, diarrhea:18,
+        hepatomegaly:25, splenomegaly:20,
+        fever_low:15, urticaria:20,
+        duration_weeks:25,
+        // négatifs
+        neck_stiffness:-20, rash_pustular:-20,
+        bleeding:-10, hearing_loss:-25,
+      },
+      alarmSigns:['hematuria','hepatomegaly'],
+      protection:'Éviter eaux douces Afrique sub-saharienne', mandatoryReport:false,
+      isolationFR:'Non contagieux — traitement : Praziquantel 40mg/kg dose unique',
+      criterionFR:'Sang dans les urines + baignade eau douce Afrique = bilharziose urinaire (95% des cas)',
+      conduiteFR:'Médecin sous 48h — traitement simple et efficace',
+      conduiteEN:'Doctor within 48h — simple effective treatment',
+      paysEndemiques:['TZ','UG','KE','MZ','ZW','ZM','MW','GH','SN','CI'],
     },
   };
 
@@ -273,6 +451,22 @@
     { triggers:['immunocompromised','fever_high'],       level:'ORANGE', reason:'Immunodéprimé fébrile — neutropénie fébrile à éliminer' },
     { triggers:['hemoptysis'],                           level:'ORANGE', reason:'Hémoptysie — tuberculose ou embolie pulmonaire à explorer' },
     { triggers:['age_senior','dyspnea_rest'],            level:'ORANGE', reason:'Dyspnée chez senior — décompensation cardiorespiratoire possible' },
+    // ── Nouvelles règles LMIC ──────────────────────────────────
+    { triggers:['hypotension'],                          level:'ROUGE',  reason:'Hypotension artérielle — choc septique à exclure — SAMU 15 immédiat' },
+    { triggers:['tachycardia','fever_high'],             level:'ORANGE', reason:'Tachycardie fébrile — sepsis à évaluer — consultation urgente' },
+    { triggers:['dehydration'],                          level:'ORANGE', reason:'Déshydratation — réhydratation urgente — choléra à exclure si retour tropical' },
+    { triggers:['diarrhea_profuse'],                     level:'ORANGE', reason:'Diarrhée profuse — risque de déshydratation grave — évaluation médicale' },
+    { triggers:['diarrhea_profuse','travel_tropical'],   level:'ORANGE', reason:'Diarrhée profuse + retour tropical — choléra ou typhoïde à exclure' },
+    { triggers:['contaminated_water','fever_high'],      level:'ORANGE', reason:'Eau non traitée + fièvre — typhoïde ou choléra à exclure' },
+    { triggers:['unvaccinated','rash_maculopapular'],    level:'ORANGE', reason:'Non-vacciné + éruption — rougeole à exclure — très contagieuse (R0=15)' },
+    { triggers:['pregnant','fever_high'],                level:'ORANGE', reason:'Femme enceinte fébrile — paludisme grave ou infection maternofœtale à exclure' },
+    { triggers:['pregnant','travel_tropical'],           level:'ORANGE', reason:'Femme enceinte + retour tropical — paludisme grave particulièrement dangereux' },
+    { triggers:['hematuria'],                            level:'JAUNE',  reason:'Sang dans les urines — bilharziose urinaire ou infection urinaire à exclure' },
+    { triggers:['splenomegaly','fever_resistant'],       level:'ORANGE', reason:'Splénomégalie + fièvre prolongée — leishmaniose viscérale ou paludisme chronique' },
+    { triggers:['contact_case','rash_maculopapular'],    level:'ORANGE', reason:'Contact + éruption — rougeole ou autre maladie éruptive contagieuse à évaluer' },
+    { triggers:['rapid_deterioration','fever_high'],     level:'ROUGE',  reason:'Détérioration rapide + fièvre — sepsis ou fièvre hémorragique — SAMU 15' },
+    { triggers:['rose_spots','fever_high'],              level:'ORANGE', reason:'Taches rosées + fièvre — fièvre typhoïde très probable — hémocultures urgentes' },
+    { triggers:['koplik_spots'],                         level:'ORANGE', reason:'Taches de Koplik — rougeole confirmée — isolement et déclaration obligatoires' },
   ];
 
   // ── Rang des niveaux (pour comparaison) ───────────────────

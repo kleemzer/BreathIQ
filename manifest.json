@@ -1,8 +1,8 @@
 {
   "name": "BreathIQ — Surveillance épidémique mondiale",
   "short_name": "BreathIQ",
-  "description": "Alertes pathogènes en temps réel. Qualité de l'air, circulation virale, détection précoce des épidémies. Outil d'information publique — non dispositif médical.",
-  "start_url": "/",
+  "description": "Triage symptomatique infectieux + surveillance épidémique mondiale. Fonctionne hors ligne. Gratuit, sans inscription. Outil d'information publique — non dispositif médical.",
+  "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#0F2A45",
   "theme_color": "#1A3C5E",

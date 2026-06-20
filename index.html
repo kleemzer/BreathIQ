@@ -115,15 +115,36 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
-  <link rel="preload" as="style" href="style.min.css?v=20260617">
-  <link rel="stylesheet" href="style.min.css?v=20260617">
+  <link rel="preload" as="style" href="style.min.css?v=20260620">
+  <link rel="stylesheet" href="style.min.css?v=20260620">
   <!-- Umami Analytics — privacy-first, sans cookies, gratuit jusqu'à 10k vues/mois -->
   <!-- Remplacer YOUR_WEBSITE_ID par l'id obtenu sur https://cloud.umami.is après inscription -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect pour API live -->
   <link rel="preconnect" href="https://api.openaq.org">
   <link rel="preconnect" href="https://data.santepubliquefrance.fr">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="BreathIQ">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
   <style>
+/* Blocs résultat triage enrichis */
+.diag-action-block,.diag-escalate-block,.diag-conduite-block{margin:.9rem 0;padding:.85rem 1rem;border-radius:.65rem;border-left:4px solid var(--orient-color,#2563eb)}
+.diag-action-block{background:#f0fdf4;border-color:#16a34a}
+.diag-escalate-block{background:#fff7ed;border-color:#ea580c}
+.diag-conduite-block{background:#eff6ff;border-color:#2563eb}
+.diag-action-title{font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.04em;color:#374151;margin-bottom:.5rem}
+.diag-action-list{margin:.3rem 0 0 1rem;padding:0;font-size:.88rem;color:#374151;line-height:1.6}
+.diag-action-list li{margin-bottom:.25rem}
+.diag-escalate-list li{color:#b45309}
+.diag-conduite-text{font-size:.9rem;color:#1e40af;margin:.3rem 0 .5rem}
+.diag-report-banner{font-size:.78rem;font-weight:700;background:#fef3c7;color:#92400e;padding:.3rem .7rem;border-radius:.4rem;display:inline-block;margin-top:.2rem}
+.diag-phone-block{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:.8rem 0;padding:.8rem;background:rgba(220,38,38,.08);border-radius:.65rem;border:1.5px solid rgba(220,38,38,.3)}
+.diag-phone-main{background:#dc2626!important;font-size:1rem!important;padding:.6rem 1.2rem!important}
+.diag-phone-alt{background:#7f1d1d!important;font-size:.9rem!important}
+.diag-phone-note{font-size:.75rem;color:#6b7280;width:100%}
 /* Wizard CSS — injected inline to bypass style.min.css parse truncation */
 .symptom-wizard{max-width:760px;margin:0 auto}
 .wizard-progress{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem}
@@ -757,6 +778,18 @@
               <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span>Voyage Asie du Sud-Est / Moyen-Orient</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="contaminated_water"><span class="sym-icon">🚰</span><span>Eau non traitée / puits / rivière bue récemment</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="freshwater_exposure"><span class="sym-icon">🏊</span><span>Baignade en eau douce (lac, rivière) en Afrique</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="contact_case"><span class="sym-icon">👥</span><span>Personne proche avec les mêmes symptômes</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="unvaccinated"><span class="sym-icon">💉</span><span>Non vacciné ou vaccins non à jour</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
               <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span>Contact volailles malades / marché animaux vivants</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
@@ -776,6 +809,12 @@
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
               <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span>Aggravation rapide en moins de 48h</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="hypotension"><span class="sym-icon">⬇️</span><span>Tension très basse / étourdissements debout</span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="tachycardia"><span class="sym-icon">💗</span><span>Cœur qui bat très vite (même au repos)</span>
             </label>
           </div>
         </div>
@@ -1785,9 +1824,25 @@
 <!-- Leaflet chargé dynamiquement via initMapWhenReady() — ne bloque pas le rendu initial -->
 <!-- API live santé publique -->
 <script src="api-live.js?v=20260606" defer></script>
-<script src="js/clinical-orientation.min.js?v=20260617" defer></script>
-<script src="js/care-facilities.min.js?v=20260617" defer></script>
-<script src="js/diagnostic-engine.min.js?v=20260617" defer></script>
-<script src="script.min.js?v=20260617" defer></script>
+<script src="js/clinical-orientation.min.js?v=20260620" defer></script>
+<script src="js/care-facilities.min.js?v=20260620" defer></script>
+<script src="js/diagnostic-engine.min.js?v=20260620" defer></script>
+<script src="script.min.js?v=20260620" defer></script>
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js')
+      .then(reg => {
+        reg.addEventListener('updatefound', () => {
+          const n = document.createElement('div');
+          n.style.cssText='position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:#16a34a;color:#fff;padding:.6rem 1.2rem;border-radius:.5rem;font-size:.85rem;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.2)';
+          n.textContent='✅ Site disponible hors-ligne';
+          document.body.appendChild(n);
+          setTimeout(() => n.remove(), 4000);
+        });
+      });
+  });
+}
+</script>
 </body>
 </html>

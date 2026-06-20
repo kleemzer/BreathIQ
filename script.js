@@ -2503,30 +2503,37 @@ const WIZ = {
     fever: [
       { v:'shivering',          icon:'🥶', label:'Frissons intenses (en quintes)' },
       { v:'sweating',           icon:'💦', label:'Sueurs abondantes après les frissons' },
+      { v:'fever_resistant',    icon:'🔁', label:'Fièvre qui ne baisse pas (> 3 jours)' },
+      { v:'night_sweats',       icon:'🌙', label:'Sueurs nocturnes (trempé le matin)' },
       { v:'myalgias',           icon:'💪', label:'Douleurs musculaires' },
       { v:'headache',           icon:'🤕', label:'Maux de tête' },
       { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
       { v:'vomiting',           icon:'🤢', label:'Vomissements' },
       { v:'diarrhea',           icon:'💧', label:'Diarrhée' },
       { v:'sore_throat',        icon:'🤧', label:'Maux de gorge' },
-      { v:'rash',               icon:'🩹', label:'Éruption cutanée' },
-      { v:'jaundice',           icon:'🟡', label:'Jaunisse (yeux/peau jaunes)' },
-      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+      { v:'rash_maculopapular', icon:'🔴', label:'Éruption rouge (visage puis corps)' },
+      { v:'rose_spots',         icon:'🌸', label:'Petites taches roses sur le ventre' },
+      { v:'jaundice',           icon:'🟡', label:'Jaunisse (yeux ou peau jaunes)' },
+      { v:'relative_bradycardia',icon:'💓',label:'Pouls lent malgré fièvre élevée' },
+      { v:'splenomegaly',       icon:'🫀', label:'Ventre gonflé (rate ou foie)' },
       { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement récent' },
+      { v:'rapid_deterioration',icon:'📉', label:'Aggravation très rapide (< 24h)' },
     ],
     cough: [
       { v:'dry_cough',          icon:'🫁', label:'Toux sèche' },
       { v:'wet_cough',          icon:'💧', label:'Toux avec crachats' },
-      { v:'persistent_cough',   icon:'⏱️', label:'Toux depuis plus de 3 semaines' },
+      { v:'cough_3w',           icon:'⏱️', label:'Toux depuis plus de 3 semaines' },
       { v:'hemoptysis',         icon:'🩸', label:'Crachats avec sang' },
       { v:'wheezing',           icon:'🌬️', label:'Sifflements respiratoires' },
+      { v:'tachypnea',          icon:'💨', label:'Respiration très rapide' },
       { v:'sore_throat',        icon:'🤧', label:'Maux de gorge' },
       { v:'rhinorrhea',         icon:'💧', label:'Nez qui coule' },
       { v:'breathlessness',     icon:'😮‍💨', label:'Essoufflement à l\'effort' },
       { v:'chest_pain',         icon:'💔', label:'Douleur dans la poitrine' },
       { v:'fever',              icon:'🌡️', label:'Fièvre' },
-      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+      { v:'night_sweats',       icon:'🌙', label:'Sueurs nocturnes' },
       { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement' },
+      { v:'koplik_spots',       icon:'⬜', label:'Taches blanches dans la bouche' },
     ],
     headache: [
       { v:'photophobia',        icon:'🌟', label:'Sensibilité à la lumière' },
@@ -2538,10 +2545,14 @@ const WIZ = {
       { v:'myalgias',           icon:'💪', label:'Douleurs musculaires' },
       { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
       { v:'rash',               icon:'🩹', label:'Éruption cutanée' },
+      { v:'confusion',          icon:'🌀', label:'Confusion / désorientation' },
+      { v:'tachycardia',        icon:'💗', label:'Cœur qui bat très vite' },
     ],
     rash: [
       { v:'rash_pustular',      icon:'⭕', label:'Boutons avec pus (pustules)' },
       { v:'rash_maculopapular', icon:'🔴', label:'Taches / boutons rouges plats' },
+      { v:'purpura',            icon:'🟣', label:'Taches violettes qui ne s\'effacent pas' },
+      { v:'koplik_spots',       icon:'⬜', label:'Taches blanches dans la bouche' },
       { v:'lymph_nodes',        icon:'🔵', label:'Ganglions gonflés' },
       { v:'fever',              icon:'🌡️', label:'Fièvre' },
       { v:'myalgias',           icon:'💪', label:'Douleurs musculaires' },
@@ -2550,16 +2561,22 @@ const WIZ = {
       { v:'rhinorrhea',         icon:'💧', label:'Nez qui coule' },
       { v:'itching',            icon:'🤚', label:'Démangeaisons' },
       { v:'sore_throat',        icon:'🤧', label:'Maux de gorge' },
+      { v:'urticaria',          icon:'🫧', label:'Plaques rouges qui démangent' },
     ],
     digestive: [
       { v:'vomiting',           icon:'🤢', label:'Vomissements' },
       { v:'diarrhea',           icon:'💧', label:'Diarrhée (selles liquides)' },
+      { v:'diarrhea_profuse',   icon:'🌊', label:'Diarrhée très abondante, eau de riz' },
       { v:'abdominal_pain',     icon:'🫃', label:'Douleurs au ventre' },
+      { v:'constipation',       icon:'⛔', label:'Constipation' },
       { v:'fever',              icon:'🌡️', label:'Fièvre' },
       { v:'bleeding',           icon:'🩸', label:'Sang dans les selles' },
+      { v:'hematuria',          icon:'🔴', label:'Sang dans les urines' },
+      { v:'dehydration',        icon:'🏜️', label:'Très soif, bouche sèche, peu d\'urines' },
       { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
       { v:'jaundice',           icon:'🟡', label:'Jaunisse (yeux/peau jaunes)' },
       { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement' },
+      { v:'hepatomegaly',       icon:'🫀', label:'Ventre gonflé (côté droit)' },
     ],
     pain: [
       { v:'myalgias',           icon:'💪', label:'Douleurs musculaires diffuses' },
@@ -2569,19 +2586,25 @@ const WIZ = {
       { v:'rash',               icon:'🩹', label:'Éruption cutanée' },
       { v:'retrobulbar_pain',   icon:'👁️', label:'Douleur derrière les yeux' },
       { v:'shivering',          icon:'🥶', label:'Frissons' },
-      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
+      { v:'night_sweats',       icon:'🌙', label:'Sueurs nocturnes' },
+      { v:'chest_pain',         icon:'💔', label:'Douleur dans la poitrine' },
+      { v:'splenomegaly',       icon:'🫀', label:'Ventre gonflé (rate)' },
     ],
     other: [
       { v:'smell_loss',         icon:'👃', label:'Perte d\'odorat' },
       { v:'taste_loss',         icon:'👅', label:'Perte de goût' },
       { v:'hearing_loss',       icon:'👂', label:'Perte d\'audition / surdité soudaine' },
       { v:'weight_loss',        icon:'⚖️', label:'Amaigrissement inexpliqué' },
-      { v:'night_sweats',       icon:'💦', label:'Sueurs nocturnes' },
-      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense et prolongée' },
+      { v:'night_sweats',       icon:'🌙', label:'Sueurs nocturnes' },
+      { v:'fatigue_chronic',    icon:'😴', label:'Fatigue intense et prolongée (> 1 mois)' },
+      { v:'fatigue_severe',     icon:'😴', label:'Fatigue intense' },
       { v:'lymph_nodes',        icon:'🔵', label:'Ganglions gonflés' },
       { v:'fever',              icon:'🌡️', label:'Fièvre' },
       { v:'conjunctivitis',     icon:'👁️', label:'Yeux rouges' },
       { v:'facial_edema',       icon:'😶', label:'Gonflement du visage' },
+      { v:'anemia_signs',       icon:'🫥', label:'Pâleur, grande fatigue, essoufflement' },
+      { v:'hematuria',          icon:'🔴', label:'Sang dans les urines' },
+      { v:'rapid_deterioration',icon:'📉', label:'Aggravation très rapide' },
     ],
   },
 };
@@ -2745,6 +2768,19 @@ function wizAnalyze() {
   }
 }
 
+function wizShare() {
+  const resultEl = document.getElementById('symptomResult');
+  const text = resultEl ? resultEl.innerText.substring(0, 500) : '';
+  if (navigator.share) {
+    navigator.share({ title: 'BreathIQ — Résultat triage', text, url: location.href })
+      .catch(() => {});
+  } else {
+    navigator.clipboard?.writeText(location.href + '\n\n' + text)
+      .then(() => alert('Lien copié dans le presse-papier'))
+      .catch(() => {});
+  }
+}
+
 function quickSelectSymptom(symptomValue) {
   // Mappe les quick chips vers le bon main symptom du wizard
   const mainMap = {
@@ -2834,6 +2870,49 @@ function checkSymptoms() {
   renderDiagnosticResult(result, state);
 }
 
+// ── Numéros d'urgence par langue/région ───────────────────────
+const EMERGENCY_NUMBERS = {
+  fr: { main:'15', alt:'112', label:'SAMU', note:'Ou 112 partout en Europe' },
+  en: { main:'999', alt:'112', label:'Emergency', note:'Or 112 in Europe / 911 in USA' },
+  es: { main:'112', alt:'061', label:'Emergencias', note:'O 061 para urgencias médicas' },
+  pt: { main:'112', alt:'192', label:'Emergência', note:'Ou 192 SAMU no Brasil' },
+  ar: { main:'15', alt:'190', label:'الإسعاف', note:'أو 190 في بعض الدول العربية' },
+  zh: { main:'120', alt:'110', label:'急救', note:'或呼叫 110 报警' },
+  hi: { main:'108', alt:'112', label:'आपातकाल', note:'या 112 राष्ट्रीय नंबर' },
+  sw: { main:'999', alt:'112', label:'Dharura', note:'Au 112 katika nchi nyingi za Afrika' },
+  ru: { main:'103', alt:'112', label:'Скорая', note:'Или 112 единый номер' },
+};
+
+// ── Conseils "en attendant" par niveau ────────────────────────
+const WAITING_ADVICE = {
+  ROUGE: {
+    fr: ['Ne vous déplacez PAS — attendez les secours', 'Restez allongé, ne mangez ni ne buvez rien', 'Gardez quelqu\'un à côté de vous', 'Desserrez les vêtements serrés', 'Si purpura : ne touchez pas les taches, allongez-vous'],
+    en: ['Do NOT move — wait for emergency services', 'Stay lying down, do not eat or drink', 'Keep someone with you', 'Loosen tight clothing', 'If purpura: do not touch spots, lie flat'],
+  },
+  ORANGE: {
+    fr: ['Allez aux urgences maintenant ou appelez le 15', 'Ne conduisez pas seul si vous vous sentez très mal', 'Prenez votre carte vitale et ordonnances', 'Notez l\'heure du début des symptômes'],
+    en: ['Go to emergency room now or call emergency services', 'Do not drive alone if feeling very unwell', 'Take your medical ID card', 'Note the time symptoms started'],
+  },
+  JAUNE: {
+    fr: ['Appelez votre médecin ou le 116 117 (médecin de garde)', 'Buvez de l\'eau régulièrement', 'Prenez du paracétamol si fièvre > 38.5°C (dose : 1g adulte)', 'Reposez-vous', 'Si ça empire dans les 2h → appelez le 15'],
+    en: ['Call your doctor or medical helpline', 'Drink water regularly', 'Take paracetamol if fever > 38.5°C (1g adult dose)', 'Rest', 'If worsening in 2h → call emergency services'],
+  },
+  BLEU: {
+    fr: ['Consultez un médecin dans les 48h', 'Buvez beaucoup d\'eau', 'Paracétamol si besoin', 'Portez un masque pour protéger votre entourage', 'Revenez ici si nouveaux symptômes'],
+    en: ['See a doctor within 48h', 'Drink plenty of water', 'Paracetamol if needed', 'Wear a mask to protect others', 'Return here if new symptoms develop'],
+  },
+  VERT: {
+    fr: ['Restez chez vous et reposez-vous', 'Buvez de l\'eau — minimum 1,5L par jour', 'Paracétamol si douleur ou fièvre légère', 'Isolez-vous des personnes fragiles (bébés, personnes âgées)', 'Revenez consulter si pas d\'amélioration en 5 jours'],
+    en: ['Stay home and rest', 'Drink water — minimum 1.5L per day', 'Paracetamol for pain or mild fever', 'Stay away from vulnerable people', 'See a doctor if no improvement in 5 days'],
+  },
+};
+
+// ── Signes d'escalade (quand revenir d'urgence) ───────────────
+const ESCALATE_SIGNS = {
+  fr: ['Difficultés à respirer au repos', 'Lèvres ou ongles qui deviennent bleus', 'Confusion ou perte de connaissance', 'Convulsions', 'Taches violettes sur la peau (purpura)', 'Saignements inexpliqués', 'Aggravation très rapide'],
+  en: ['Breathing difficulty at rest', 'Blue lips or fingernails', 'Confusion or loss of consciousness', 'Seizures', 'Purple skin spots (purpura)', 'Unexplained bleeding', 'Very rapid worsening'],
+};
+
 function renderDiagnosticResult(result, state) {
   const { ranked, orientLevel, alarmReason, clinical } = result;
   const lang = currentLang;
@@ -2906,47 +2985,95 @@ function renderDiagnosticResult(result, state) {
     });
   }
 
-  // ── Assemblage final ────────────────────────────────────────
-  const careButton = clinical?.careNeed && clinical.careNeed !== 'self_monitoring'
-    ? `<button class="result-action-btn result-action-primary" onclick="findNearbyCare('${clinical.careNeed}')">
-        ${fr ? `📍 Trouver : ${escapeHTML(careLabel)}` : `📍 Find: ${escapeHTML(careLabel)}`}
-      </button>`
-    : `<button class="result-action-btn result-action-primary" onclick="document.getElementById('actionGuide')?.scrollIntoView({behavior:'smooth'})">
-        ${fr ? '→ Que faire maintenant ?' : '→ What to do now?'}
-      </button>`;
+  // ── Numéros d'urgence ───────────────────────────────────────
+  const emNum = EMERGENCY_NUMBERS[lang] || EMERGENCY_NUMBERS.fr;
+  const isHighUrgency = ['ROUGE','ORANGE'].includes(orientLevel) ||
+    ['emergency','medical_regulation'].includes(clinical?.level);
 
+  // ── Conduite à tenir (waiting advice) ───────────────────────
+  const waitKey = orientLevel || (clinical?.level === 'emergency' ? 'ROUGE' :
+    clinical?.level === 'medical_regulation' ? 'ORANGE' :
+    clinical?.level === 'same_day_doctor' ? 'JAUNE' : 'VERT');
+  const waitingTips = (WAITING_ADVICE[waitKey] || WAITING_ADVICE.VERT)[fr ? 'fr' : 'en'];
+  const waitingBlock = `
+    <div class="diag-action-block">
+      <div class="diag-action-title">${fr ? '✅ Ce qu\'il faut faire maintenant' : '✅ What to do now'}</div>
+      <ul class="diag-action-list">
+        ${waitingTips.map(t => `<li>${escapeHTML(t)}</li>`).join('')}
+      </ul>
+    </div>`;
+
+  // ── Signes d'escalade ────────────────────────────────────────
+  const escalateBlock = !isHighUrgency ? `
+    <div class="diag-escalate-block">
+      <div class="diag-action-title">🚨 ${fr ? 'Appelez le ' + emNum.main + ' IMMÉDIATEMENT si :' : 'Call ' + emNum.main + ' IMMEDIATELY if:'}</div>
+      <ul class="diag-action-list diag-escalate-list">
+        ${ESCALATE_SIGNS[fr ? 'fr' : 'en'].map(s => `<li>${escapeHTML(s)}</li>`).join('')}
+      </ul>
+    </div>` : '';
+
+  // ── Bloc téléphone urgences renforcé ────────────────────────
+  const phoneBlockEnhanced = isHighUrgency ? `
+    <div class="diag-phone-block">
+      <a class="diag-phone-btn diag-phone-main" href="tel:${emNum.main}">
+        📞 ${emNum.label} : ${emNum.main}
+      </a>
+      <a class="diag-phone-btn diag-phone-alt" href="tel:${emNum.alt}">
+        📞 ${emNum.alt}
+      </a>
+      <div class="diag-phone-note">${escapeHTML(emNum.note)}</div>
+    </div>` : phoneBlock;
+
+  // ── Conduite 1er pathogène ───────────────────────────────────
+  const topPathogen = ranked[0] ? BIQ_DIAG.PATHOGENS[ranked[0].pid] : null;
+  const conduiteBlock = topPathogen?.conduiteFR ? `
+    <div class="diag-conduite-block">
+      <div class="diag-action-title">🩺 ${fr ? 'Conduite à tenir spécifique' : 'Specific guidance'}</div>
+      <p class="diag-conduite-text">${escapeHTML(fr ? topPathogen.conduiteFR : (topPathogen.conduiteEN || topPathogen.conduiteFR))}</p>
+      ${topPathogen.mandatoryReport ? `<div class="diag-report-banner">${fr ? '📋 Maladie à déclaration obligatoire — le médecin doit signaler à l\'ARS' : '📋 Mandatory reporting disease — doctor must notify health authorities'}</div>` : ''}
+    </div>` : '';
+
+  // ── Assemblage final ────────────────────────────────────────
   const html = `
   <div class="diag-result-card" style="--orient-color:${visual.color};--orient-bg:${visual.bg};--orient-border:${visual.border}">
+
     <div class="diag-orient-header">
       <span class="diag-orient-icon">${visual.icon}</span>
-      <div>
+      <div class="diag-orient-text">
         <div class="diag-orient-label">${escapeHTML(orientationLabel)}</div>
         ${patientMessage ? `<div class="diag-patient-message">${escapeHTML(patientMessage)}</div>` : ''}
-        ${clinical ? `<div class="diag-care-need">${fr ? 'Type de recours conseillé :' : 'Suggested care type:'} <strong>${escapeHTML(careLabel)}</strong> · ${fr ? 'Score urgence' : 'Urgency score'} ${clinical.urgencyScore}/100</div>` : ''}
         ${alarmBlock}
       </div>
-      ${phoneBlock}
     </div>
+
+    ${isHighUrgency ? phoneBlockEnhanced : ''}
+
+    ${waitingBlock}
+
+    ${escalateBlock}
+
+    ${conduiteBlock}
 
     ${pathoBlock}
 
+    ${!isHighUrgency ? phoneBlock : ''}
+
     <div class="diag-result-actions">
-      ${careButton}
       <button class="result-action-btn result-action-secondary" onclick="resetChecker()">
         ${fr ? '↺ Recommencer' : '↺ Reset'}
+      </button>
+      <button class="result-action-btn result-action-secondary" onclick="wizShare()">
+        ${fr ? '📤 Partager ce résultat' : '📤 Share result'}
       </button>
     </div>
     <div class="diag-legal-footer">
       <div class="diag-legal-box">
         <p class="diag-disclaimer">${fr
-          ? `⚠️ <strong>${escapeHTML(clinical?.disclaimerFR || 'Orientation indicative, non diagnostique.')}</strong> En cas de doute ou d'aggravation, consultez immédiatement un professionnel de santé.`
-          : `⚠️ <strong>${escapeHTML(clinical?.disclaimerEN || 'Indicative, non-diagnostic guidance.')}</strong> If in doubt or symptoms worsen, seek immediate medical care.`}</p>
+          ? `⚠️ <strong>Orientation indicative — non diagnostique.</strong> En cas de doute ou d'aggravation, consultez immédiatement un professionnel de santé.`
+          : `⚠️ <strong>Indicative guidance — not a diagnosis.</strong> If in doubt or symptoms worsen, seek immediate medical care.`}</p>
         <p class="diag-legal-meta">${fr
-          ? '📋 Références : OMS · ECDC · CDC · HCSP · Critères ILI/SARI. Orientations basées sur des définitions de cas publiées, non sur votre dossier médical.'
-          : '📋 References: WHO · ECDC · CDC · HCSP · ILI/SARI criteria. Guidance based on published case definitions, not your medical history.'}</p>
-        <p class="diag-ai-notice">${fr
-          ? '🤖 Système d\'aide algorithmique — Règlement UE IA Act (2024) · Non dispositif médical (Règl. UE 2017/745) · Décision clinique appartient au praticien · <a href="methodologie.html" style="color:var(--c-blue)">Méthodologie →</a>'
-          : '🤖 Algorithmic assistance — EU AI Act (2024) · Not a medical device (EU Reg. 2017/745) · Clinical decision belongs to the practitioner · <a href="methodologie.html" style="color:var(--c-blue)">Methodology →</a>'}</p>
+          ? '📋 Références : OMS · ECDC · CDC · HCSP · Critères ILI/SARI/CURB-65/qSOFA. Non dispositif médical (UE 2017/745).'
+          : '📋 References: WHO · ECDC · CDC · ILI/SARI/CURB-65/qSOFA criteria. Not a medical device (EU 2017/745).'}</p>
       </div>
     </div>
   </div>`;
