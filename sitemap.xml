@@ -5,7 +5,7 @@
   <!-- Page d'accueil — 9 langues -->
   <url>
     <loc>https://breathiq.fr/</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
     <xhtml:link rel="alternate" hreflang="fr"       href="https://breathiq.fr/?lang=fr"/>
@@ -119,7 +119,7 @@
   <!-- À propos — FR -->
   <url>
     <loc>https://breathiq.fr/about.html</loc>
-    <lastmod>2026-06-17</lastmod>
+    <lastmod>2026-06-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <xhtml:link rel="alternate" hreflang="fr" href="https://breathiq.fr/about.html"/>

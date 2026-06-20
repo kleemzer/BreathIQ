@@ -1,7 +1,7 @@
 // BreathIQ Service Worker — PWA Offline Support
 // Cache stratégique : triage disponible sans connexion
 
-const CACHE_NAME = 'breathiq-v2';
+const CACHE_NAME = 'breathiq-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',

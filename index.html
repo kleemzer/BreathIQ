@@ -19,7 +19,7 @@
   <meta property="og:image" content="https://breathiq.fr/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="BreathIQ — Surveillance épidémique mondiale · 17 pathogènes · 9 langues · Données OMS/ECDC/SPF">
+  <meta property="og:image:alt" content="BreathIQ — Surveillance épidémique mondiale · 21 pathogènes · 9 langues · Données OMS/ECDC/SPF">
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BreathIQ — Surveillance épidémique mondiale">
@@ -40,7 +40,7 @@
   <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/">
   <!-- Favicon & PWA -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-  <link rel="alternate icon" href="/favicon.svg">
+  <link rel="icon" href="/favicon.svg" sizes="any">
   <link rel="apple-touch-icon" href="/assets/icon-192.png">
   <link rel="manifest" href="/manifest.json">
   <meta name="mobile-web-app-capable" content="yes">
@@ -61,7 +61,7 @@
         "name": "BreathIQ",
         "alternateName": "BreathIQ — Surveillance épidémique mondiale",
         "url": "https://breathiq.fr",
-        "inLanguage": ["fr", "en"],
+        "inLanguage": ["fr", "en", "es", "pt", "ar", "zh", "hi", "sw", "ru"],
         "publisher": { "@id": "https://breathiq.fr/#publisher" },
         "license": "https://breathiq.fr/conditions-utilisation.html"
       },
@@ -111,8 +111,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <!-- Preload police critique — évite le FOUT (Flash of Unstyled Text) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
   <link rel="preload" as="style" href="style.min.css?v=20260620">
@@ -201,7 +201,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .wiz-ctx-label{font-size:.8rem;font-weight:600;color:#94a3b8;min-width:120px;padding-top:.3rem}
 .wiz-assoc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.55rem;margin-bottom:1.4rem}
 .wiz-vitals-block{margin-bottom:1.5rem}
-.wiz-vitals-title{font-size:.9rem;font-weight:700;color:#374151;margin-bottom:.8rem}
+.wiz-vitals-title{font-size:.9rem;font-weight:700;color:#e2e8f0;margin-bottom:.8rem}
 .wiz-vitals-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
 .wiz-vital-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem}
 .wiz-vital-label{font-size:.85rem;font-weight:700;color:#e2e8f0;margin-bottom:.6rem}
@@ -258,11 +258,17 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .biq-patho-name{font-weight:700;color:#e2e8f0;font-size:.88rem;line-height:1.2}
 .biq-patho-sub{font-size:.74rem;color:#94a3b8;line-height:1.3}
 .biq-patho-open{font-size:.75rem;color:#3b82f6;margin-top:auto;font-weight:600}
-/* Badges danger */
-.biq-danger-badge{font-size:.68rem;font-weight:700;padding:.15rem .45rem;border-radius:.3rem;text-transform:uppercase;letter-spacing:.03em}
+/* Badges danger — différenciation couleur + forme + icône (daltonisme-safe) */
+.biq-danger-badge{font-size:.75rem;font-weight:700;padding:.2rem .5rem;border-radius:.3rem;text-transform:uppercase;letter-spacing:.03em}
 .biq-danger-rouge{background:#dc2626;color:#fff}
+.biq-danger-rouge::before{content:'■ '} /* carré plein rouge */
 .biq-danger-orange{background:#ea580c;color:#fff}
+.biq-danger-orange::before{content:'▲ '} /* triangle orange */
 .biq-danger-jaune{background:#ca8a04;color:#fff}
+.biq-danger-jaune::before{content:'● '} /* cercle jaune */
+/* Liens urgence dans le bandeau alarme */
+.triage-alarm-tel{display:inline-flex;align-items:center;padding:.3rem .7rem;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);border-radius:.4rem;color:#fff;font-weight:700;font-size:.9rem;text-decoration:none;transition:background .15s}
+.triage-alarm-tel:hover,.triage-alarm-tel:focus{background:rgba(255,255,255,.3);text-decoration:none}
 .biq-do-chip{font-size:.7rem;background:rgba(99,102,241,.2);border:1px solid #6366f1;color:#a5b4fc;padding:.1rem .4rem;border-radius:.25rem;width:fit-content}
 /* Détail header */
 .biq-back-btn{background:none;border:1px solid #334155;color:#94a3b8;padding:.4rem .9rem;border-radius:.4rem;cursor:pointer;font-size:.82rem;margin-bottom:1rem;transition:all .2s}
@@ -341,6 +347,12 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .biq-ars-email{color:#60a5fa;font-size:.76rem;word-break:break-all}
 /* Pied de page légal */
 .biq-legal-footer{margin-top:1.5rem;padding:.75rem 1rem;background:rgba(15,23,42,.6);border:1px solid rgba(255,255,255,.07);border-radius:.5rem;font-size:.74rem;color:#475569;text-align:center;line-height:1.5}
+/* Footer attribution — discrète, professionnelle */
+.footer-author{font-size:.8rem;color:#64748b;margin-bottom:.3rem}
+.footer-author-link{color:#94a3b8;text-decoration:none;font-weight:600;border-bottom:1px solid rgba(148,163,184,.3);transition:color .2s,border-color .2s}
+.footer-author-link:hover{color:#e2e8f0;border-color:#e2e8f0}
+.footer-author-sep{margin:0 .35rem;color:#334155}
+.footer-sources{font-size:.72rem;color:#475569;margin-bottom:.4rem}
 .biq-loading-placeholder{display:flex;flex-direction:column;gap:.5rem;padding:.5rem 0}
 </style>
 </head>
@@ -444,35 +456,6 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 </div>
 
 <!-- ===== CREATOR TRUST BANNER (tous modes) ===== -->
-<div class="creator-strip" id="creatorStrip">
-  <div class="creator-strip-inner">
-    <div class="creator-photo-wrap">
-      <picture>
-        <source type="image/webp"
-          srcset="assets/dr-medeau-64.webp 1x, assets/dr-medeau.webp 2x">
-        <img src="assets/dr-medeau.jpg"
-          alt="Dr Clément Médeau, docteur en médecine"
-          class="creator-avatar"
-          width="64" height="64"
-          loading="eager" decoding="async">
-      </picture>
-    </div>
-    <div class="creator-body">
-      <div class="creator-identity">
-        <span class="creator-name">Dr Clément Médeau</span>
-        <span class="creator-sep">·</span>
-        <span class="creator-title">Docteur en médecine · France</span>
-      </div>
-      <p class="creator-mission">Initiative indépendante de surveillance épidémique mondiale — données scientifiques publiques, accès libre.</p>
-    </div>
-    <div class="creator-badges">
-      <span class="creator-badge badge-who">🌍 OMS</span>
-      <span class="creator-badge badge-ecdc">🇪🇺 ECDC</span>
-      <span class="creator-badge badge-spf">🇫🇷 SPF</span>
-      <span class="creator-badge badge-open">🔓 Open access</span>
-    </div>
-  </div>
-</div>
 
 <!-- ===== PATIENT HERO (Mode Simple — défaut) ===== -->
 <section class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
@@ -634,10 +617,13 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <span class="triage-alarm-icon" aria-hidden="true">🚨</span>
       <div class="triage-alarm-body">
         <strong>Appelez les secours MAINTENANT si vous avez l'un de ces signes :</strong>
-        <span>Vous n'arrivez plus à respirer · Lèvres ou ongles qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
+        <span>Vous n'arrivez plus à respirer · Lèvres, ongles ou langue qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
       </div>
       <div class="triage-alarm-nums" aria-label="Numéros d'urgence">
-        <span>🇫🇷&nbsp;15</span><span>🌍&nbsp;112</span><span>🇬🇧&nbsp;999</span><span>🇺🇸&nbsp;911</span>
+        <a href="tel:15"  class="triage-alarm-tel">🇫🇷&nbsp;15</a>
+        <a href="tel:112" class="triage-alarm-tel">🌍&nbsp;112</a>
+        <a href="tel:999" class="triage-alarm-tel">🇬🇧&nbsp;999</a>
+        <a href="tel:911" class="triage-alarm-tel">🇺🇸&nbsp;911</a>
       </div>
     </div>
 
@@ -652,13 +638,13 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
           <p class="triage-when">Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours</p>
         </div>
         <ul class="triage-checklist">
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez (masque FFP2, chirurgical, ou tissu propre)</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez (masque FFP2 ou chirurgical de préférence)</li>
           <li><span class="triage-ck" aria-hidden="true">✓</span>Restez dans une pièce à part, loin des autres</li>
           <li><span class="triage-ck" aria-hidden="true">✓</span>Ouvrez les fenêtres pour aérer la pièce</li>
           <li><span class="triage-ck" aria-hidden="true">✓</span>Buvez beaucoup d'eau — reposez-vous</li>
           <li><span class="triage-ck" aria-hidden="true">✓</span>Tenez-vous loin des personnes âgées, des bébés et des personnes malades</li>
         </ul>
-        <div class="triage-escalate">⬆ Si vous ne vous améliorez pas après 5 jours ou si ça empire, allez consulter</div>
+        <div class="triage-escalate">⬆ Si vous ne vous améliorez pas après 3 jours, ou si ça empire, allez consulter un médecin</div>
       </div>
 
       <!-- NIVEAU 2 — MODÉRÉ -->
@@ -666,7 +652,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
         <div class="triage-card-head">
           <span class="triage-badge triage-badge-moderate">Assez malade</span>
           <h3 class="triage-card-title">🩺 Allez au centre de santé</h3>
-          <p class="triage-when">Forte fièvre depuis plus de 2 jours · Toux avec crachats · Vous avez du mal à travailler · Personne âgée, enceinte ou enfant malade</p>
+          <p class="triage-when">Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, immunodéprimé ou diabétique</p>
         </div>
         <ul class="triage-checklist">
           <li><span class="triage-ck" aria-hidden="true">✓</span>Allez voir un médecin, un infirmier ou un centre de santé</li>
@@ -686,7 +672,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
         </div>
         <ul class="triage-checklist triage-alarms">
           <li><span class="triage-dot" aria-hidden="true">●</span>Vous n'arrivez presque plus à respirer</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vos lèvres ou vos ongles deviennent bleus</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span>Vos lèvres, vos ongles ou votre langue deviennent bleus</li>
           <li><span class="triage-dot" aria-hidden="true">●</span>Vous êtes confus, vous ne reconnaissez plus les gens</li>
           <li><span class="triage-dot" aria-hidden="true">●</span>Douleur très forte dans la poitrine</li>
           <li><span class="triage-dot" aria-hidden="true">●</span>Vous perdez connaissance ou faillez tomber</li>
@@ -1734,26 +1720,22 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <details class="collapsible-section">
       <summary class="collapsible-summary">
         <span class="collapsible-title" id="about-title" data-i18n="about-title">Confiance &amp; Transparence</span>
-        <span class="collapsible-sub">Dr. Clément MÉDEAU · Sources vérifiables · RGPD · Non-DMN</span>
+        <span class="collapsible-sub">Dr. Clément MÉDEAU · Sources vérifiables · RGPD · Non-DM</span>
         <span class="collapsible-chevron" aria-hidden="true">▾</span>
       </summary>
 
     <div class="trust-grid">
       <div class="trust-card author-card">
-        <div class="author-avatar" aria-hidden="true">
-          <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-            <circle cx="24" cy="24" r="24" fill="var(--c-navy)" opacity="0.15"/>
-            <circle cx="24" cy="20" r="8" fill="var(--c-navy)" opacity="0.5"/>
-            <ellipse cx="24" cy="38" rx="14" ry="8" fill="var(--c-navy)" opacity="0.3"/>
-          </svg>
-        </div>
         <div class="author-info">
           <h3>Dr. Clément MÉDEAU</h3>
           <span class="author-role" data-i18n="author-role">Docteur en médecine · La Rochelle, France</span>
           <p class="author-bio" data-i18n="author-bio">
             Service d'information médicale à vocation éducative et préventive. Non dispositif médical au sens du Règlement (UE) 2017/745. Ne constitue ni acte médical, ni consultation médicale, ni diagnostic individuel.
           </p>
-          <a href="mailto:contact@breathiq.fr" class="author-contact">contact@breathiq.fr</a>
+          <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem">
+            <a href="about.html" class="author-contact" style="font-weight:700">→ En savoir plus</a>
+            <a href="mailto:contact@breathiq.fr" class="author-contact">contact@breathiq.fr</a>
+          </div>
         </div>
       </div>
 
@@ -1837,8 +1819,13 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     </nav>
 
     <div class="footer-copy">
-      <p>© 2026 Dr. Clément MÉDEAU — BreathIQ</p>
-      <p class="footer-disclaimer" data-i18n="footer-disclaimer-short">Outil d'information publique · Non dispositif médical</p>
+      <p class="footer-author">
+        Conçu par <a href="about.html" class="footer-author-link">Dr Clément Médeau</a>
+        <span class="footer-author-sep">·</span>
+        Docteur en médecine · La Rochelle, France
+      </p>
+      <p class="footer-sources">Sources : OMS · ECDC · Santé Publique France · Open-Meteo · données publiques</p>
+      <p class="footer-disclaimer" data-i18n="footer-disclaimer-short">Outil d'information publique · Non dispositif médical (Règl. UE 2017/745) · © 2026</p>
     </div>
   </div>
 </footer>
@@ -1987,7 +1974,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
           <li data-i18n="ob-expert-f1">✓ Tableau de bord épidémique</li>
           <li data-i18n="ob-expert-f2">✓ Score respiratoire 0–100</li>
           <li data-i18n="ob-expert-f3">✓ Carte mondiale des foyers</li>
-          <li data-i18n="ob-expert-f4">✓ Déclaration de cas</li>
+          <li data-i18n="ob-expert-f4">✓ Référentiel 21 pathogènes</li>
         </ul>
         <span class="om-cta om-cta-expert" data-i18n="ob-expert-cta">Accès soignant →</span>
       </button>
@@ -2026,7 +2013,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   window._loadBiqPro=loadBiqPro;
 })();
 </script>
-<script src="api-live.js?v=20260606" defer></script>
+<script src="api-live.js?v=20260620" defer></script>
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/diagnostic-engine.min.js?v=20260620" defer></script>

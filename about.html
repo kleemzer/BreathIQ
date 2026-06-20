@@ -47,7 +47,7 @@
   </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
@@ -65,7 +65,7 @@
 
     /* Hero auteur */
     .author-hero { background: linear-gradient(145deg, #0F2A45 0%, #1A3C5E 100%); padding: 0 1.5rem 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
-    .author-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center top; border: 4px solid rgba(255,255,255,.2); box-shadow: 0 8px 32px rgba(0,0,0,.3); }
+    .author-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; object-position: center 5%; border: 4px solid rgba(255,255,255,.2); box-shadow: 0 8px 32px rgba(0,0,0,.3); }
     .author-meta { text-align: center; color: #fff; }
     .author-name { font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; letter-spacing: -.03em; }
     .author-title { margin-top: .4rem; font-size: 1rem; color: rgba(255,255,255,.65); font-weight: 400; }
@@ -143,8 +143,8 @@
 
 <div class="author-hero">
   <picture>
-    <source type="image/webp" srcset="assets/dr-medeau-64.webp 1x, assets/dr-medeau.webp 2x">
-    <img src="assets/dr-medeau.jpg" alt="Dr Clément Médeau" class="author-photo" width="120" height="120" loading="eager">
+    <source type="image/webp" srcset="assets/dr-medeau.webp 1x, assets/dr-medeau.webp 2x">
+    <img src="assets/dr-medeau.jpg" alt="Dr Clément Médeau" class="author-photo" width="120" height="120" loading="eager" decoding="async">
   </picture>
   <div class="author-meta">
     <h1 class="author-name">Dr Clément Médeau</h1>
