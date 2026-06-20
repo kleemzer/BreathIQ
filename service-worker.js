@@ -34,6 +34,12 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
 
+  // Module pro pathogènes → toujours réseau (lazy load, pas de cache SW)
+  if (url.pathname.startsWith('/pro/')) {
+    e.respondWith(fetch(e.request));
+    return;
+  }
+
   // Données épidémio live → Network First (fresh data si dispo)
   if (url.pathname.startsWith('/data/') || url.hostname !== location.hostname) {
     e.respondWith(

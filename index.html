@@ -204,6 +204,114 @@
   .wiz-vitals-grid{grid-template-columns:1fr}
   .wiz-alarm-grid{grid-template-columns:1fr}
 }
+
+/* ── BIQ PRO — Référentiel Pathogènes ── */
+.biq-pro-section{padding:2rem 0 1rem;background:linear-gradient(135deg,#0a1f35 0%,#0d2d4a 100%);border-top:2px solid #1e4a73}
+.biq-pro-header{text-align:center;margin-bottom:1.25rem}
+.biq-pro-title{font-size:1.4rem;font-weight:700;color:#e2e8f0;margin:0 0 .35rem}
+.biq-pro-subtitle{font-size:.82rem;color:#94a3b8;margin:0}
+/* Onglets */
+.biq-tabs{display:flex;gap:.5rem;border-bottom:2px solid #1e4a73;margin-bottom:1.25rem}
+.biq-tab{background:none;border:none;border-bottom:2px solid transparent;padding:.55rem 1.1rem;font-size:.88rem;color:#94a3b8;cursor:pointer;font-weight:600;margin-bottom:-2px;transition:all .2s;border-radius:.3rem .3rem 0 0}
+.biq-tab:hover{color:#e2e8f0;background:rgba(255,255,255,.05)}
+.biq-tab-active{color:#3b82f6!important;border-bottom-color:#3b82f6!important;background:rgba(59,130,246,.1)!important}
+/* Filtres */
+.biq-pro-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
+.biq-filter-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#cbd5e1;padding:.3rem .75rem;border-radius:1rem;font-size:.8rem;cursor:pointer;transition:all .2s}
+.biq-filter-btn.active,.biq-filter-btn:hover{background:#2563eb;border-color:#2563eb;color:#fff}
+/* Grille pathogènes */
+.biq-patho-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+@media(max-width:700px){.biq-patho-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:420px){.biq-patho-grid{grid-template-columns:1fr}}
+.biq-patho-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:.6rem;padding:.75rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:.3rem}
+.biq-patho-card:hover{background:rgba(59,130,246,.15);border-color:#3b82f6;transform:translateY(-1px)}
+.biq-patho-card-top{display:flex;align-items:center;justify-content:space-between}
+.biq-patho-icon{font-size:1.4rem}
+.biq-patho-name{font-weight:700;color:#e2e8f0;font-size:.88rem;line-height:1.2}
+.biq-patho-sub{font-size:.74rem;color:#94a3b8;line-height:1.3}
+.biq-patho-open{font-size:.75rem;color:#3b82f6;margin-top:auto;font-weight:600}
+/* Badges danger */
+.biq-danger-badge{font-size:.68rem;font-weight:700;padding:.15rem .45rem;border-radius:.3rem;text-transform:uppercase;letter-spacing:.03em}
+.biq-danger-rouge{background:#dc2626;color:#fff}
+.biq-danger-orange{background:#ea580c;color:#fff}
+.biq-danger-jaune{background:#ca8a04;color:#fff}
+.biq-do-chip{font-size:.7rem;background:rgba(99,102,241,.2);border:1px solid #6366f1;color:#a5b4fc;padding:.1rem .4rem;border-radius:.25rem;width:fit-content}
+/* Détail header */
+.biq-back-btn{background:none;border:1px solid #334155;color:#94a3b8;padding:.4rem .9rem;border-radius:.4rem;cursor:pointer;font-size:.82rem;margin-bottom:1rem;transition:all .2s}
+.biq-back-btn:hover{background:rgba(255,255,255,.07);color:#e2e8f0}
+.biq-detail-header{display:flex;align-items:flex-start;gap:1rem;padding:1rem;border-radius:.6rem;margin-bottom:1rem}
+.biq-danger-bg-rouge{background:linear-gradient(135deg,rgba(220,38,38,.25),rgba(153,27,27,.15));border:1px solid #dc2626}
+.biq-danger-bg-orange{background:linear-gradient(135deg,rgba(234,88,12,.25),rgba(154,52,18,.15));border:1px solid #ea580c}
+.biq-danger-bg-jaune{background:linear-gradient(135deg,rgba(202,138,4,.2),rgba(161,98,7,.1));border:1px solid #ca8a04}
+.biq-detail-icon{font-size:2.2rem;flex-shrink:0}
+.biq-detail-title{font-size:1.1rem;font-weight:700;color:#f1f5f9;margin:0 0 .4rem}
+.biq-detail-meta{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+.biq-detail-cfr{font-size:.78rem;color:#cbd5e1}
+/* Sections accordéon */
+.biq-section{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:.6rem;margin-bottom:.75rem;overflow:hidden}
+.biq-section-title{padding:.75rem 1rem;cursor:pointer;font-weight:700;font-size:.9rem;color:#e2e8f0;list-style:none;display:flex;align-items:center;gap:.5rem;user-select:none}
+.biq-section-title::-webkit-details-marker{display:none}
+.biq-section[open] .biq-section-title{border-bottom:1px solid rgba(255,255,255,.08)}
+.biq-section-urgent{color:#fca5a5}
+.biq-section-danger{color:#fcd34d}
+.biq-section-body{padding:1rem}
+/* Contenu section */
+.biq-epi-banner{background:rgba(99,102,241,.15);border:1px solid rgba(99,102,241,.3);border-radius:.4rem;padding:.6rem .9rem;font-size:.82rem;color:#c7d2fe;margin-bottom:.75rem}
+.biq-action-list{margin:0 0 .75rem;padding-left:1.2rem;color:#cbd5e1;font-size:.85rem;line-height:1.6}
+.biq-action-list li{margin-bottom:.25rem}
+.biq-treatment-box{background:rgba(16,185,129,.1);border-left:3px solid #10b981;padding:.7rem .9rem;border-radius:0 .4rem .4rem 0;font-size:.82rem;color:#a7f3d0;line-height:1.5}
+.biq-do-box{background:rgba(99,102,241,.1);border-left:3px solid #6366f1;padding:.7rem .9rem;border-radius:0 .4rem .4rem 0;font-size:.82rem;color:#c7d2fe;margin-top:.5rem}
+/* Tableau */
+.biq-data-table{width:100%;border-collapse:collapse;font-size:.82rem;margin-bottom:.5rem}
+.biq-data-table th{text-align:left;padding:.4rem .6rem;color:#94a3b8;font-weight:600;white-space:nowrap;width:30%;border-bottom:1px solid rgba(255,255,255,.06)}
+.biq-data-table td{padding:.4rem .6rem;color:#cbd5e1;border-bottom:1px solid rgba(255,255,255,.04)}
+/* Phases */
+.biq-phases-title{color:#94a3b8;font-size:.82rem;text-transform:uppercase;letter-spacing:.05em;margin:.75rem 0 .5rem}
+.biq-phases{display:flex;flex-wrap:wrap;align-items:flex-start;gap:.5rem}
+.biq-phase-item{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:.5rem;padding:.6rem .8rem;flex:1;min-width:160px;display:flex;gap:.6rem;align-items:flex-start}
+.biq-phase-num{width:1.4rem;height:1.4rem;background:#2563eb;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;color:#fff;flex-shrink:0;margin-top:.1rem}
+.biq-phase-name{font-weight:700;color:#e2e8f0;font-size:.82rem}
+.biq-phase-dur{font-weight:400;color:#64748b;font-size:.76rem}
+.biq-phase-signs{margin:.25rem 0 0;padding-left:1rem;font-size:.78rem;color:#94a3b8;line-height:1.5}
+.biq-phase-arrow{color:#475569;font-size:1.2rem;align-self:center;flex-shrink:0}
+/* Red flags */
+.biq-red-flags{margin:0;padding:0;list-style:none}
+.biq-red-flags li{padding:.35rem .6rem;margin-bottom:.25rem;background:rgba(220,38,38,.1);border-left:3px solid #dc2626;border-radius:0 .3rem .3rem 0;font-size:.83rem;color:#fca5a5}
+/* PubMed */
+.biq-pubmed-loading{display:flex;flex-direction:column;gap:.5rem}
+.biq-skeleton,.biq-sk{height:3.5rem;background:linear-gradient(90deg,rgba(255,255,255,.05) 0%,rgba(255,255,255,.1) 50%,rgba(255,255,255,.05) 100%);background-size:200% 100%;border-radius:.4rem;animation:biqSkel 1.4s ease-in-out infinite}
+.biq-sk{height:5rem;margin-bottom:.5rem}
+@keyframes biqSkel{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.biq-article{border-bottom:1px solid rgba(255,255,255,.07);padding:.7rem 0}
+.biq-article:last-child{border-bottom:none}
+.biq-article-title{font-size:.83rem;color:#e2e8f0;font-weight:600;line-height:1.4;margin-bottom:.3rem}
+.biq-article-link{color:#60a5fa;text-decoration:none}
+.biq-article-link:hover{text-decoration:underline}
+.biq-article-meta{font-size:.74rem;color:#64748b;margin-bottom:.25rem}
+.biq-pubmed-link{font-size:.74rem;color:#3b82f6;text-decoration:none;font-weight:600}
+.biq-pubmed-link:hover{text-decoration:underline}
+.biq-pubmed-offline,.biq-pubmed-empty{font-size:.82rem;color:#94a3b8;font-style:italic;padding:.5rem}
+.biq-pubmed-stale{font-size:.76rem;color:#f59e0b;margin-bottom:.5rem}
+.biq-pubmed-cache{font-size:.74rem;color:#64748b;margin-bottom:.5rem}
+/* Contacts */
+.biq-contacts-section{padding:.5rem 0}
+.biq-contacts-h3{font-size:.95rem;font-weight:700;color:#e2e8f0;margin:0 0 .75rem}
+.biq-contacts-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.6rem}
+@media(max-width:500px){.biq-contacts-grid{grid-template-columns:1fr}}
+.biq-contact-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:.6rem;padding:.75rem;display:flex;flex-direction:column;gap:.2rem}
+.biq-contact-urgent{border-color:#dc2626;background:rgba(220,38,38,.1)}
+.biq-contact-ars{border-color:#3b82f6;background:rgba(59,130,246,.1)}
+.biq-contact-label{font-size:.78rem;color:#94a3b8;font-weight:600;text-transform:uppercase;letter-spacing:.04em}
+.biq-contact-number{font-size:1.4rem;font-weight:800;color:#f1f5f9;text-decoration:none;letter-spacing:.05em}
+.biq-contact-number:hover{color:#60a5fa}
+.biq-contact-desc{font-size:.76rem;color:#64748b;line-height:1.3}
+.biq-ars-select-row{display:flex;flex-direction:column;gap:.4rem;margin-bottom:.75rem}
+.biq-ars-label{font-size:.82rem;color:#94a3b8}
+.biq-ars-select{background:#0d2d4a;border:1px solid #334155;color:#e2e8f0;padding:.45rem .7rem;border-radius:.4rem;font-size:.85rem;width:100%;max-width:340px}
+.biq-ars-email{color:#60a5fa;font-size:.76rem;word-break:break-all}
+/* Pied de page légal */
+.biq-legal-footer{margin-top:1.5rem;padding:.75rem 1rem;background:rgba(15,23,42,.6);border:1px solid rgba(255,255,255,.07);border-radius:.5rem;font-size:.74rem;color:#475569;text-align:center;line-height:1.5}
+.biq-loading-placeholder{display:flex;flex-direction:column;gap:.5rem;padding:.5rem 0}
 </style>
 </head>
 <body id="mainBody">
@@ -440,6 +548,10 @@
       <a href="stocks.html" class="sqn-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
         Masques FFP2
+      </a>
+      <a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" class="sqn-btn sqn-pathogens">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        Pathogènes
       </a>
     </nav>
   </div>
@@ -1398,6 +1510,42 @@
   </div>
 </section>
 
+<!-- ===== ESPACE SOIGNANT — RÉFÉRENTIEL PATHOGÈNES ===== -->
+<section class="expert-only biq-pro-section" id="proPathogens" aria-labelledby="proPathogensTitle">
+  <div class="container">
+    <div class="biq-pro-header">
+      <h2 id="proPathogensTitle" class="biq-pro-title">🦠 Référentiel Pathogènes Soignant</h2>
+      <p class="biq-pro-subtitle">Fiches cliniques • EPI • Bibliographie PubMed live — <strong>Non dispositif médical</strong></p>
+    </div>
+
+    <!-- Onglets -->
+    <div class="biq-tabs" role="tablist" aria-label="Sections espace soignant">
+      <button id="biqTabPathogens" class="biq-tab biq-tab-active" role="tab" aria-selected="true"
+              aria-controls="biqTabPathogensPanel" onclick="BIQ_PRO.switchTab('biqTabPathogens')">
+        🦠 Pathogènes
+      </button>
+      <button id="biqTabContacts" class="biq-tab" role="tab" aria-selected="false"
+              aria-controls="biqTabContactsPanel" onclick="BIQ_PRO.switchTab('biqTabContacts')">
+        📞 Contacts urgence
+      </button>
+    </div>
+
+    <!-- Panel Pathogènes -->
+    <div id="biqTabPathogensPanel" role="tabpanel" aria-labelledby="biqTabPathogens">
+      <div id="biqProWrapper">
+        <div id="biqProContent">
+          <div class="biq-loading-placeholder">
+            <div class="biq-sk"></div><div class="biq-sk"></div><div class="biq-sk"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel Contacts -->
+    <div id="biqTabContactsPanel" role="tabpanel" aria-labelledby="biqTabContacts" hidden></div>
+  </div>
+</section>
+
 <!-- ===== TOGGLE MODE EXPERT ===== -->
 <div class="expert-toggle-section patient-only" id="expertToggle">
   <button class="expert-toggle-btn" onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">
@@ -1823,6 +1971,31 @@
 <!-- BreathIQ script -->
 <!-- Leaflet chargé dynamiquement via initMapWhenReady() — ne bloque pas le rendu initial -->
 <!-- API live santé publique -->
+<!-- Chargement lazy BIQ_PRO — uniquement quand section visible -->
+<script>
+(function(){
+  function loadBiqPro(){
+    if(window.BIQ_PRO){BIQ_PRO.init();return;}
+    var s=document.createElement('script');
+    s.src='/pro/pathogens.js?v=20260620';
+    s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
+    document.head.appendChild(s);
+  }
+  // Observer la section pour chargement auto au scroll
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(entries){
+      if(entries[0].isIntersecting){obs.disconnect();loadBiqPro();}
+    },{threshold:0.1});
+    var section=document.getElementById('proPathogens');
+    if(section)obs.observe(section);
+  } else {
+    // Fallback : chargement immédiat si pas d'IntersectionObserver
+    loadBiqPro();
+  }
+  // Exposer pour appel depuis onglets
+  window._loadBiqPro=loadBiqPro;
+})();
+</script>
 <script src="api-live.js?v=20260606" defer></script>
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
