@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Marburg virus disease — Clinical guide for patients and healthcare workers. Transmission, symptoms, PPE, mandatory reporting. No approved vaccine.">
+  <title>Marburg Virus Disease — Clinical Guide · BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://breathiq.fr/marburg-en.html">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/marburg.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/marburg-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/marburg-en.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Marburg Virus Disease — Clinical Guide",
+    "url": "https://breathiq.fr/marburg-en.html",
+    "description": "Clinical guide for Marburg virus disease — patients and healthcare workers.",
+    "dateModified": "2026-06-21",
+    "inLanguage": "en",
+    "medicalAudience": ["Patient", "MedicalResearcher", "Clinician"],
+    "author": {
+      "@type": "Person",
+      "name": "Clément MÉDEAU",
+      "honorificPrefix": "Dr",
+      "url": "https://breathiq.fr/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BreathIQ",
+      "url": "https://breathiq.fr"
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Marburg virus disease",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "A98.3",
+        "codingSystem": "ICD-10"
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="style.min.css?v=20260617">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <style>
+    .marburg-hero {
+      background: linear-gradient(135deg, #581c87 0%, #6b21a8 50%, #3b0764 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .marburg-hero .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+    .marburg-hero h1 { font-size: clamp(1.6rem,4vw,2.5rem); font-weight: 800; margin: 0 0 0.75rem; }
+    .marburg-hero .subtitle { font-size: 1rem; opacity: 0.88; max-width: 600px; margin: 0 auto 1.5rem; line-height: 1.5; }
+    .marburg-hero .stat-row { display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; margin-top: 1.5rem; }
+    .marburg-hero .stat-item { text-align: center; }
+    .marburg-hero .stat-num { font-size: 2rem; font-weight: 800; line-height: 1; }
+    .marburg-hero .stat-label { font-size: 0.75rem; opacity: 0.8; margin-top: 0.25rem; }
+
+    .medical-disclaimer {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem auto;
+      max-width: 860px;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-size: 0.85rem;
+      color: #78350f;
+    }
+    .audience-tabs { display: flex; gap: 0.5rem; max-width: 860px; margin: 2rem auto 0; padding: 0 1rem; }
+    .audience-tab {
+      flex: 1; padding: 0.75rem 1rem; border: 2px solid #e5e7eb; border-radius: 0.75rem;
+      background: #fff; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s; text-align: center;
+    }
+    .audience-tab.active-patient { border-color: #2563eb; background: #eff6ff; color: #1e40af; }
+    .audience-tab.active-hcw { border-color: #059669; background: #ecfdf5; color: #065f46; }
+
+    .page-content { max-width: 860px; margin: 0 auto; padding: 0 1rem 3rem; }
+    .section-card {
+      background: #fff; border: 1px solid #e5e7eb; border-radius: 1rem;
+      padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .section-card h2 { font-size: 1.15rem; font-weight: 700; margin: 0 0 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .section-card h3 { font-size: 0.95rem; font-weight: 600; color: #374151; margin: 1rem 0 0.5rem; }
+
+    .clinical-timeline { position: relative; }
+    .timeline-phase { position: relative; padding: 1rem 1rem 1rem 3rem; border-left: 3px solid #e5e7eb; margin-bottom: 0.5rem; }
+    .timeline-phase::before {
+      content: attr(data-days); position: absolute; left: -1px; top: 1rem; transform: translateX(-50%);
+      background: #6b21a8; color: #fff; font-size: 0.65rem; font-weight: 700;
+      padding: 0.15rem 0.4rem; border-radius: 0.25rem; white-space: nowrap;
+    }
+    .timeline-phase.phase-critical { border-color: #dc2626; }
+    .timeline-phase.phase-critical::before { background: #dc2626; }
+    .timeline-phase.phase-warning { border-color: #d97706; }
+    .timeline-phase.phase-warning::before { background: #d97706; }
+    .timeline-phase.phase-recovery { border-color: #059669; }
+    .timeline-phase.phase-recovery::before { background: #059669; }
+    .timeline-phase h4 { font-size: 0.9rem; font-weight: 700; margin: 0 0 0.4rem; }
+    .timeline-phase ul { margin: 0; padding-left: 1.2rem; font-size: 0.85rem; color: #374151; }
+    .timeline-phase .phase-note { margin-top: 0.4rem; font-size: 0.8rem; background: #f9fafb; padding: 0.4rem 0.6rem; border-radius: 0.35rem; color: #6b7280; font-style: italic; }
+
+    .alarm-box { background: #fef2f2; border: 2px solid #dc2626; border-radius: 0.75rem; padding: 1.25rem; margin-bottom: 1.5rem; }
+    .alarm-box .alarm-title { font-size: 1rem; font-weight: 800; color: #991b1b; margin-bottom: 0.75rem; }
+    .alarm-box .alarm-number { font-size: 2.5rem; font-weight: 900; color: #dc2626; line-height: 1; }
+    .alarm-box .alarm-steps { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .alarm-box .alarm-steps li { padding: 0.4rem 0; font-size: 0.9rem; border-bottom: 1px solid #fecaca; display: flex; gap: 0.5rem; }
+    .alarm-box .alarm-steps li:last-child { border-bottom: none; }
+    .step-num {
+      background: #dc2626; color: #fff; border-radius: 50%; width: 1.3rem; height: 1.3rem;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.7rem; font-weight: 700; flex-shrink: 0; margin-top: 0.05rem;
+    }
+
+    .ppe-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.75rem; margin-top: 0.75rem; }
+    .ppe-item { background: #ecfdf5; border: 1px solid #6ee7b7; border-radius: 0.6rem; padding: 0.75rem; font-size: 0.82rem; }
+    .ppe-item .ppe-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .ppe-item strong { display: block; font-size: 0.8rem; margin-bottom: 0.15rem; }
+
+    .outbreak-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 0.75rem; }
+    .outbreak-table th { background: #581c87; color: #fff; padding: 0.5rem 0.75rem; text-align: left; font-weight: 600; }
+    .outbreak-table td { padding: 0.5rem 0.75rem; border-bottom: 1px solid #f3f4f6; vertical-align: top; }
+    .outbreak-table tr:nth-child(even) td { background: #fafafa; }
+
+    .faq-item { border: 1px solid #e5e7eb; border-radius: 0.6rem; margin-bottom: 0.6rem; overflow: hidden; }
+    .faq-q {
+      width: 100%; background: #f9fafb; border: none; padding: 0.85rem 1rem;
+      text-align: left; font-size: 0.88rem; font-weight: 600; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center; color: #111827;
+    }
+    .faq-q:hover { background: #f3f4f6; }
+    .faq-a { display: none; padding: 0.85rem 1rem; font-size: 0.85rem; color: #374151; line-height: 1.6; border-top: 1px solid #e5e7eb; }
+    .faq-a.open { display: block; }
+    .faq-q .faq-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+    .page-nav {
+      background: #fff; border-bottom: 1px solid #e5e7eb; padding: 0.75rem 1rem;
+      display: flex; align-items: center; gap: 1rem; position: sticky; top: 0; z-index: 100;
+    }
+    .page-nav a { font-size: 0.85rem; color: #6b7280; text-decoration: none; }
+    .page-nav a:hover { color: #111827; }
+    .page-nav .breadcrumb-sep { color: #d1d5db; }
+    .page-nav .current { color: #581c87; font-weight: 600; }
+
+    @media (max-width: 540px) {
+      .ppe-grid { grid-template-columns: 1fr 1fr; }
+      .outbreak-table { font-size: 0.75rem; }
+      .outbreak-table th, .outbreak-table td { padding: 0.4rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="page-nav" aria-label="Breadcrumb">
+  <a href="/">BreathIQ</a>
+  <span class="breadcrumb-sep" aria-hidden="true">›</span>
+  <span class="current">Marburg Virus</span>
+  <span style="flex:1"></span>
+  <a href="marburg.html" style="font-size:0.8rem;color:#4b5563;">🇫🇷 Français</a>
+</nav>
+
+<header class="marburg-hero">
+  <div class="status-badge">
+    🟡 WHO SURVEILLANCE — No active PHEIC in 2026
+  </div>
+  <h1>Marburg Virus Disease</h1>
+  <p class="subtitle">
+    Clinical guide — patients &amp; healthcare workers<br>
+    Viral hemorrhagic fever · Filoviridae family (Ebola relative)
+  </p>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">24–88%</div>
+      <div class="stat-label">case fatality rate (varies by outbreak)</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2–21d</div>
+      <div class="stat-label">incubation period</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">approved vaccines</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">MNR</div>
+      <div class="stat-label">mandatory notifiable disease</div>
+    </div>
+  </div>
+</header>
+
+<div class="medical-disclaimer" role="note">
+  <strong>⚠️ Public health information — Not a medical device.</strong>
+  This page is an information tool based on official WHO, CDC and ECDC data. It does not replace medical consultation. If in doubt, call your local emergency number.
+</div>
+
+<div class="audience-tabs" role="tablist" aria-label="Select audience">
+  <button class="audience-tab active-patient" onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
+    👤 I am a patient / traveler
+  </button>
+  <button class="audience-tab" onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
+    🩺 I am a healthcare worker
+  </button>
+</div>
+
+<main class="page-content">
+
+  <!-- PATIENT SECTION -->
+  <div id="section-patient" role="tabpanel" aria-labelledby="tab-patient">
+
+    <div class="alarm-box" style="margin-top:1.5rem;">
+      <div class="alarm-title">🚨 If you think you may have been exposed to Marburg virus</div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.8rem;color:#991b1b;margin-bottom:0.2rem;">Call immediately</div>
+          <div class="alarm-number" style="font-size:1.4rem;">Emergency services</div>
+          <div style="font-size:0.8rem;color:#991b1b;">DO NOT go to the ER without calling first</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <ul class="alarm-steps">
+            <li><span class="step-num">1</span> <span>Stay home — do NOT go to the emergency room without calling first</span></li>
+            <li><span class="step-num">2</span> <span>Call emergency services and mention your travel (sub-Saharan Africa, caves, mines)</span></li>
+            <li><span class="step-num">3</span> <span>Isolate in a separate room, avoid all physical contact</span></li>
+            <li><span class="step-num">4</span> <span>Follow the instructions of the medical dispatcher</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🌡️ When should I be concerned?</h2>
+      <p style="font-size:0.88rem;color:#374151;margin-bottom:1rem;">
+        Marburg spreads through <strong>direct contact with blood or body fluids</strong> of an infected person, or through contact with <strong>Egyptian fruit bats (Rousettus aegyptiacus)</strong> in caves and mines.
+        <strong>It does NOT spread through the air.</strong>
+      </p>
+
+      <div style="background:#fef2f2;border-radius:0.6rem;padding:1rem;margin-bottom:1rem;">
+        <strong style="color:#991b1b;font-size:0.9rem;">⚠️ Call emergency services if you have BOTH of these:</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.88rem;color:#7f1d1d;">
+          <li><strong>Fever ≥ 38°C (100.4°F)</strong> within <strong>21 days</strong> of travel in sub-Saharan Africa (especially cave visits), or contact with a Marburg case</li>
+          <li>+ <strong>any of these</strong>: unexplained bleeding, severe vomiting, severe diarrhea, skin rash, intense muscle pain</li>
+        </ul>
+      </div>
+
+      <div style="background:#f5f3ff;border-radius:0.6rem;padding:1rem;margin-bottom:1rem;">
+        <strong style="color:#4c1d95;font-size:0.9rem;">🦇 Marburg-specific risk factors:</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#3b0764;">
+          <li>Visiting caves or mines with fruit bats (Africa, equatorial regions)</li>
+          <li>Direct contact with a confirmed Marburg case (healthcare worker, family member)</li>
+          <li>Handling bats or non-human primates</li>
+          <li>Laboratory worker handling potentially infected specimens</li>
+        </ul>
+      </div>
+
+      <div style="background:#f0fdf4;border-radius:0.6rem;padding:1rem;">
+        <strong style="color:#065f46;font-size:0.9rem;">✅ Marburg does NOT spread through:</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;display:grid;grid-template-columns:1fr 1fr;gap:0.2rem;">
+          <li>Air or breathing</li>
+          <li>Coughing or sneezing</li>
+          <li>Water or food (in Europe)</li>
+          <li>Mosquitoes or insects</li>
+          <li>Contact with asymptomatic people</li>
+          <li>Public transportation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📅 Day-by-day disease progression</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Incubation: 2 to 21 days (median: 5–9 days)</p>
+
+      <div class="clinical-timeline">
+        <div class="timeline-phase phase-warning" data-days="D1–D4">
+          <h4>Prodromal phase — severe flu-like illness</h4>
+          <ul>
+            <li>Sudden fever ≥ 38.5°C, chills</li>
+            <li>Severe headache</li>
+            <li>Myalgias and arthralgias</li>
+            <li>Severe fatigue, general malaise</li>
+          </ul>
+          <p class="phase-note">⚠️ Patient is contagious as soon as symptoms appear. Difficult to distinguish from malaria or influenza without epidemiological context.</p>
+        </div>
+
+        <div class="timeline-phase phase-warning" data-days="D4–D7">
+          <h4>GI phase and skin rash</h4>
+          <ul>
+            <li>Nausea, vomiting, watery diarrhea</li>
+            <li>Abdominal and chest pain</li>
+            <li>Non-pruritic maculopapular rash (trunk, back)</li>
+            <li>Conjunctivitis (red eyes)</li>
+          </ul>
+          <p class="phase-note">The skin rash is characteristic and points toward a viral hemorrhagic fever. Risk of severe dehydration.</p>
+        </div>
+
+        <div class="timeline-phase phase-critical" data-days="D7–D14">
+          <h4>Hemorrhagic phase (severe cases)</h4>
+          <ul>
+            <li>Bleeding from gums, nose, ears</li>
+            <li>Hematemesis (bloody vomit)</li>
+            <li>Melena (bloody stools)</li>
+            <li>Multi-organ failure (liver, kidney, CNS)</li>
+            <li>Confusion, extreme agitation (neurological involvement)</li>
+          </ul>
+          <p class="phase-note">Neurological signs — confusion and agitation — are more prominent in Marburg than Ebola. All body fluids are highly infectious.</p>
+        </div>
+
+        <div class="timeline-phase phase-recovery" data-days="D8–D21+">
+          <h4>Recovery or death</h4>
+          <ul>
+            <li>Death: average D8–D9 in fatal cases (hemorrhagic shock or sepsis)</li>
+            <li>Survivors: prolonged fatigue, arthralgias, orchitis in males</li>
+            <li>Sequelae: uveitis, residual hepatitis, post-viral psychosis</li>
+            <li>Recovery confirmed by 2 negative PCR tests 48h apart</li>
+          </ul>
+          <p class="phase-note">Note: virus may persist in semen after recovery. Serological follow-up recommended for 3 months.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>❓ Frequently asked questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          What is the difference between Marburg and Ebola? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Both viruses belong to the same family (Filoviridae) and cause nearly identical clinical presentations. Key differences: <strong>Marburg is a single genus (Marburgvirus)</strong> with two variants (Marburg and Ravn), while Ebola has 5 distinct species. Clinically, Marburg causes more prominent early neurological symptoms. Neither has an approved vaccine for general use.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Is there a vaccine against Marburg? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <strong>No approved vaccine</strong> as of 2026. Phase 1–2 trials are underway (saRNA vaccine, MVA-based, rVSV). During the 2024 Rwanda outbreak, an experimental vaccine was administered on a compassionate basis. Research is advancing but no product is available to the general public.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          I visited a cave in Africa. Should I be worried? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          The risk is <strong>very low but real</strong>. Tourist visits to caves housing fruit bats in Africa are a recognized risk factor. If you develop fever within 21 days of the visit, inform the doctor of this exposure. Without symptoms after 21 days, you are not at risk.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- HCW SECTION -->
+  <div id="section-hcw" role="tabpanel" aria-labelledby="tab-hcw" style="display:none;">
+
+    <div class="alarm-box" style="margin-top:1.5rem;border-color:#059669;background:#ecfdf5;">
+      <div class="alarm-title" style="color:#065f46;">🩺 One suspect case = immediate mandatory reporting</div>
+      <ul class="alarm-steps" style="color:#064e3b;">
+        <li><span class="step-num" style="background:#059669;">1</span> <span>Immediate contact isolation — single room, door closed</span></li>
+        <li><span class="step-num" style="background:#059669;">2</span> <span>Basic PPE: FFP2/N95 + gloves + gown (suspected case)</span></li>
+        <li><span class="step-num" style="background:#059669;">3</span> <span>Alert emergency services and public health authorities within the hour</span></li>
+        <li><span class="step-num" style="background:#059669;">4</span> <span>Activate institutional crisis cell + national health emergency response</span></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🔍 Suspect case criteria — Possible Marburg</h2>
+      <div style="background:#f0fdf4;border:1px solid #6ee7b7;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#065f46;">WHO Criteria (possible case):</strong>
+        <p style="margin:0.5rem 0 0;font-size:0.88rem;color:#064e3b;">
+          <strong>Fever ≥ 38°C</strong> (or history of fever) within <strong>21 days of</strong>:
+        </p>
+        <ul style="margin:0.4rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;">
+          <li>Contact with a confirmed or probable Marburg case</li>
+          <li>OR visiting caves/mines with fruit bats in endemic areas</li>
+          <li>OR handling bats or non-human primates potentially infected</li>
+          <li>OR laboratory work on specimens from suspected VHF patients</li>
+        </ul>
+      </div>
+
+      <h3 style="color:#dc2626;">Priority differential diagnosis</h3>
+      <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;">
+        <li><strong>Malaria</strong> (very common — blood smear / RDT mandatory)</li>
+        <li><strong>Ebola</strong> (nearly identical presentation — PCR confirmation required)</li>
+        <li><strong>Typhoid fever</strong> (blood cultures)</li>
+        <li><strong>Lassa fever</strong> (West Africa — characteristic deafness)</li>
+        <li><strong>CCHF</strong> (Crimean-Congo — Balkans/Turkey travel, tick contact)</li>
+        <li><strong>Bacterial meningitis</strong> (if neurological signs dominant)</li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🦺 PPE Protocol for Marburg</h2>
+
+      <h3>Suspected case (PCR pending)</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item">
+          <div class="ppe-icon">😷</div>
+          <strong>FFP2/N95 minimum</strong>
+          Fitted filtering facepiece — no surgical mask
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🧤</div>
+          <strong>Double gloving</strong>
+          Sterile nitrile gloves × 2 layers
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥼</div>
+          <strong>Fluid-resistant gown</strong>
+          Long sleeves, liquid-resistant
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥽</div>
+          <strong>Eye protection</strong>
+          Sealed goggles OR full face shield
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.25rem;">Confirmed PCR+ or AGPs (intubation, aspiration)</h3>
+      <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#991b1b;">⚠️ BSL-4 LEVEL MANDATORY — No exceptions</strong>
+      </div>
+      <div class="ppe-grid">
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🌬️</div>
+          <strong>FFP3 or PAPR</strong>
+          Fitted FFP3 or powered air-purifying respirator
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🧪</div>
+          <strong>Full liquid-tight suit</strong>
+          Level 4 coverall (TYVEK-type)
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🧤</div>
+          <strong>Certified double gloving</strong>
+          Inner + outer liquid-resistant gloves
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🥽</div>
+          <strong>Full face shield</strong>
+          Total coverage — face, neck, nape
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">👢</div>
+          <strong>Waterproof boot covers</strong>
+          Splash-resistant overshoes
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🚪</div>
+          <strong>Decontamination airlock</strong>
+          2-step doffing protocol before exit
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- OUTBREAK HISTORY -->
+  <div class="section-card">
+    <h2>📊 Major outbreaks (1967–2026)</h2>
+    <div style="overflow-x:auto;">
+      <table class="outbreak-table">
+        <thead>
+          <tr><th>Year</th><th>Country</th><th>Cases</th><th>Deaths</th><th>CFR</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>1967</td><td>Germany / Yugoslavia</td><td>31</td><td>7</td><td>23%</td></tr>
+          <tr><td>1998–2000</td><td>DR Congo</td><td>154</td><td>128</td><td>83%</td></tr>
+          <tr><td>2005</td><td>Angola</td><td>252</td><td>227</td><td>90%</td></tr>
+          <tr><td>2007</td><td>Uganda</td><td>4</td><td>3</td><td>75%</td></tr>
+          <tr><td>2012</td><td>Uganda</td><td>15</td><td>4</td><td>27%</td></tr>
+          <tr><td>2023</td><td>Equatorial Guinea</td><td>17</td><td>12</td><td>71%</td></tr>
+          <tr><td>2023</td><td>Tanzania</td><td>9</td><td>6</td><td>67%</td></tr>
+          <tr><td>2024</td><td>Rwanda</td><td>66</td><td>15</td><td>23%</td></tr>
+          <tr><td>2026</td><td>No active outbreak</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Sources: WHO Disease Outbreak News · CDC Marburg hemorrhagic fever · Data as of June 21, 2026
+    </p>
+  </div>
+
+  <div class="section-card">
+    <h2>🔗 Related pages</h2>
+    <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;line-height:2;">
+      <li><a href="ebola-en.html" style="color:#581c87;">Ebola Bundibugyo 2026 clinical guide (active PHEIC) →</a></li>
+      <li><a href="lassa-en.html" style="color:#581c87;">Lassa fever →</a></li>
+      <li><a href="cchf-en.html" style="color:#581c87;">Crimean-Congo hemorrhagic fever (CCHF) →</a></li>
+      <li><a href="/" style="color:#581c87;">Back to BreathIQ — epidemic surveillance →</a></li>
+    </ul>
+  </div>
+
+  <div class="section-card" style="background:#f9fafb;">
+    <h2>📚 Official sources</h2>
+    <ul style="font-size:0.82rem;color:#374151;padding-left:1.4rem;line-height:1.8;">
+      <li>WHO — Marburg virus disease fact sheet, 2023</li>
+      <li>CDC — Marburg hemorrhagic fever (MHF), 2024</li>
+      <li>ECDC — Marburg virus disease outbreak in Rwanda, 2024</li>
+      <li>WHO DON 2023 — Marburg virus disease in Equatorial Guinea</li>
+      <li>WHO DON 2024 — Marburg virus disease in Rwanda</li>
+      <li>Towner JS et al. <em>PLoS Pathog</em> 2009 — Isolation of genetically diverse Marburg viruses from Egyptian fruit bats</li>
+      <li>Gear JSS et al. <em>BMJ</em> 1975 — Outbreaks of Marburg virus disease</li>
+    </ul>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Last updated: June 21, 2026 · By Dr Clément MÉDEAU, MD (La Rochelle, France)
+    </p>
+  </div>
+
+</main>
+
+<footer style="background:#1f2937;color:#9ca3af;text-align:center;padding:2rem 1rem;font-size:0.82rem;">
+  <p>
+    <a href="/" style="color:#d1d5db;text-decoration:none;">BreathIQ</a> ·
+    <a href="about.html" style="color:#d1d5db;text-decoration:none;">About</a> ·
+    <a href="methodologie.html" style="color:#d1d5db;text-decoration:none;">Methodology</a> ·
+    <a href="privacy-en.html" style="color:#d1d5db;text-decoration:none;">Privacy</a>
+  </p>
+  <p style="margin-top:0.5rem;">Public health information tool · Not a medical device (EU Reg. 2017/745) · © 2026 Dr Clément MÉDEAU</p>
+</footer>
+
+<script>
+  function switchAudience(audience) {
+    const patSection = document.getElementById('section-patient');
+    const hcwSection = document.getElementById('section-hcw');
+    const tabPat = document.getElementById('tab-patient');
+    const tabHcw = document.getElementById('tab-hcw');
+    if (audience === 'patient') {
+      patSection.style.display = '';
+      hcwSection.style.display = 'none';
+      tabPat.classList.add('active-patient');
+      tabHcw.className = 'audience-tab';
+      tabPat.setAttribute('aria-selected', 'true');
+      tabHcw.setAttribute('aria-selected', 'false');
+    } else {
+      hcwSection.style.display = '';
+      patSection.style.display = 'none';
+      tabHcw.classList.add('active-hcw');
+      tabPat.className = 'audience-tab';
+      tabHcw.setAttribute('aria-selected', 'true');
+      tabPat.setAttribute('aria-selected', 'false');
+    }
+  }
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    answer.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>

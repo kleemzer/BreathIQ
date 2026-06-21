@@ -1,0 +1,868 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <meta name="description" content="Maladie à virus Marburg — Guide clinique pour patients et soignants. Transmission, symptômes, EPI, déclaration obligatoire. Pas de vaccin approuvé.">
+  <title>Virus Marburg — Guide clinique · BreathIQ</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="canonical" href="https://breathiq.fr/marburg.html">
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/marburg.html">
+  <link rel="alternate" hreflang="en" href="https://breathiq.fr/marburg-en.html">
+  <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/marburg-en.html">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    "name": "Maladie à virus Marburg — Guide clinique",
+    "url": "https://breathiq.fr/marburg.html",
+    "description": "Guide clinique Marburg pour patients et soignants. Transmission, EPI, déclaration obligatoire.",
+    "dateModified": "2026-06-21",
+    "inLanguage": "fr",
+    "medicalAudience": ["Patient", "MedicalResearcher", "Clinician"],
+    "author": {
+      "@type": "Person",
+      "name": "Clément MÉDEAU",
+      "honorificPrefix": "Dr",
+      "url": "https://breathiq.fr/about.html"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "BreathIQ",
+      "url": "https://breathiq.fr"
+    },
+    "about": {
+      "@type": "MedicalCondition",
+      "name": "Maladie à virus Marburg",
+      "code": {
+        "@type": "MedicalCode",
+        "code": "A98.3",
+        "codingSystem": "ICD-10"
+      }
+    }
+  }
+  </script>
+  <link rel="stylesheet" href="style.min.css?v=20260617">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <style>
+    .marburg-hero {
+      background: linear-gradient(135deg, #581c87 0%, #6b21a8 50%, #3b0764 100%);
+      color: #fff;
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+    .marburg-hero .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 2rem;
+      padding: 0.35rem 1rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      margin-bottom: 1.25rem;
+    }
+    .marburg-hero h1 {
+      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-weight: 800;
+      margin: 0 0 0.75rem;
+    }
+    .marburg-hero .subtitle {
+      font-size: 1rem;
+      opacity: 0.88;
+      max-width: 600px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.5;
+    }
+    .marburg-hero .stat-row {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      flex-wrap: wrap;
+      margin-top: 1.5rem;
+    }
+    .marburg-hero .stat-item { text-align: center; }
+    .marburg-hero .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      line-height: 1;
+    }
+    .marburg-hero .stat-label {
+      font-size: 0.75rem;
+      opacity: 0.8;
+      margin-top: 0.25rem;
+    }
+
+    .medical-disclaimer {
+      background: #fef3c7;
+      border-left: 4px solid #d97706;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem auto;
+      max-width: 860px;
+      border-radius: 0 0.5rem 0.5rem 0;
+      font-size: 0.85rem;
+      color: #78350f;
+    }
+    .audience-tabs {
+      display: flex;
+      gap: 0.5rem;
+      max-width: 860px;
+      margin: 2rem auto 0;
+      padding: 0 1rem;
+    }
+    .audience-tab {
+      flex: 1;
+      padding: 0.75rem 1rem;
+      border: 2px solid #e5e7eb;
+      border-radius: 0.75rem;
+      background: #fff;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+      text-align: center;
+    }
+    .audience-tab.active-patient { border-color: #2563eb; background: #eff6ff; color: #1e40af; }
+    .audience-tab.active-hcw { border-color: #059669; background: #ecfdf5; color: #065f46; }
+
+    .page-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 1rem 3rem;
+    }
+    .section-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    .section-card h2 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .section-card h3 {
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #374151;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .clinical-timeline { position: relative; padding-left: 0; }
+    .timeline-phase {
+      position: relative;
+      padding: 1rem 1rem 1rem 3rem;
+      border-left: 3px solid #e5e7eb;
+      margin-bottom: 0.5rem;
+    }
+    .timeline-phase::before {
+      content: attr(data-days);
+      position: absolute;
+      left: -1px;
+      top: 1rem;
+      transform: translateX(-50%);
+      background: #6b21a8;
+      color: #fff;
+      font-size: 0.65rem;
+      font-weight: 700;
+      padding: 0.15rem 0.4rem;
+      border-radius: 0.25rem;
+      white-space: nowrap;
+    }
+    .timeline-phase.phase-critical { border-color: #dc2626; }
+    .timeline-phase.phase-critical::before { background: #dc2626; }
+    .timeline-phase.phase-warning { border-color: #d97706; }
+    .timeline-phase.phase-warning::before { background: #d97706; }
+    .timeline-phase.phase-recovery { border-color: #059669; }
+    .timeline-phase.phase-recovery::before { background: #059669; }
+    .timeline-phase h4 { font-size: 0.9rem; font-weight: 700; margin: 0 0 0.4rem; }
+    .timeline-phase ul { margin: 0; padding-left: 1.2rem; font-size: 0.85rem; color: #374151; }
+    .timeline-phase .phase-note {
+      margin-top: 0.4rem;
+      font-size: 0.8rem;
+      background: #f9fafb;
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.35rem;
+      color: #6b7280;
+      font-style: italic;
+    }
+
+    .alarm-box {
+      background: #fef2f2;
+      border: 2px solid #dc2626;
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .alarm-box .alarm-title {
+      font-size: 1rem;
+      font-weight: 800;
+      color: #991b1b;
+      margin-bottom: 0.75rem;
+    }
+    .alarm-box .alarm-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: #dc2626;
+      line-height: 1;
+    }
+    .alarm-box .alarm-steps { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .alarm-box .alarm-steps li {
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
+      border-bottom: 1px solid #fecaca;
+      display: flex;
+      gap: 0.5rem;
+    }
+    .alarm-box .alarm-steps li:last-child { border-bottom: none; }
+    .step-num {
+      background: #dc2626;
+      color: #fff;
+      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.05rem;
+    }
+
+    .ppe-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.75rem;
+      margin-top: 0.75rem;
+    }
+    .ppe-item {
+      background: #ecfdf5;
+      border: 1px solid #6ee7b7;
+      border-radius: 0.6rem;
+      padding: 0.75rem;
+      font-size: 0.82rem;
+    }
+    .ppe-item .ppe-icon { font-size: 1.4rem; margin-bottom: 0.3rem; }
+    .ppe-item strong { display: block; font-size: 0.8rem; margin-bottom: 0.15rem; }
+
+    .outbreak-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+      margin-top: 0.75rem;
+    }
+    .outbreak-table th {
+      background: #581c87;
+      color: #fff;
+      padding: 0.5rem 0.75rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .outbreak-table td {
+      padding: 0.5rem 0.75rem;
+      border-bottom: 1px solid #f3f4f6;
+      vertical-align: top;
+    }
+    .outbreak-table tr:nth-child(even) td { background: #fafafa; }
+
+    .notif-chain { list-style: none; padding: 0; margin: 0.75rem 0 0; }
+    .notif-chain li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      font-size: 0.88rem;
+    }
+    .notif-chain li:last-child { border-bottom: none; }
+    .notif-num {
+      background: #059669;
+      color: #fff;
+      border-radius: 50%;
+      width: 1.6rem;
+      height: 1.6rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+    }
+
+    .faq-item {
+      border: 1px solid #e5e7eb;
+      border-radius: 0.6rem;
+      margin-bottom: 0.6rem;
+      overflow: hidden;
+    }
+    .faq-q {
+      width: 100%;
+      background: #f9fafb;
+      border: none;
+      padding: 0.85rem 1rem;
+      text-align: left;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: #111827;
+    }
+    .faq-q:hover { background: #f3f4f6; }
+    .faq-a {
+      display: none;
+      padding: 0.85rem 1rem;
+      font-size: 0.85rem;
+      color: #374151;
+      line-height: 1.6;
+      border-top: 1px solid #e5e7eb;
+    }
+    .faq-a.open { display: block; }
+    .faq-q .faq-arrow { transition: transform 0.2s; font-size: 0.7rem; }
+    .faq-q.open .faq-arrow { transform: rotate(180deg); }
+
+    .page-nav {
+      background: #fff;
+      border-bottom: 1px solid #e5e7eb;
+      padding: 0.75rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .page-nav a { font-size: 0.85rem; color: #6b7280; text-decoration: none; }
+    .page-nav a:hover { color: #111827; }
+    .page-nav .breadcrumb-sep { color: #d1d5db; }
+    .page-nav .current { color: #581c87; font-weight: 600; }
+
+    @media (max-width: 540px) {
+      .ppe-grid { grid-template-columns: 1fr 1fr; }
+      .outbreak-table { font-size: 0.75rem; }
+      .outbreak-table th, .outbreak-table td { padding: 0.4rem 0.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="page-nav" aria-label="Fil d'Ariane">
+  <a href="/">BreathIQ</a>
+  <span class="breadcrumb-sep" aria-hidden="true">›</span>
+  <span class="current">Virus Marburg</span>
+  <span style="flex:1"></span>
+  <a href="marburg-en.html" style="font-size:0.8rem;color:#4b5563;">🇬🇧 English</a>
+</nav>
+
+<header class="marburg-hero">
+  <div class="status-badge">
+    🟡 SURVEILLANCE OMS — Pas de PHEIC active en 2026
+  </div>
+  <h1>Maladie à virus Marburg</h1>
+  <p class="subtitle">
+    Guide clinique — patients &amp; soignants<br>
+    Fièvre hémorragique virale · Famille des Filoviridae (cousin d'Ebola)
+  </p>
+  <div class="stat-row">
+    <div class="stat-item">
+      <div class="stat-num">24–88%</div>
+      <div class="stat-label">létalité selon les foyers</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2–21j</div>
+      <div class="stat-label">incubation</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0</div>
+      <div class="stat-label">vaccin approuvé</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">MDO</div>
+      <div class="stat-label">déclaration obligatoire</div>
+    </div>
+  </div>
+</header>
+
+<div class="medical-disclaimer" role="note">
+  <strong>⚠️ Information publique — Non dispositif médical.</strong>
+  Cette page est un outil d'information basé sur les données officielles OMS, CDC et ECDC. Elle ne se substitue pas à une consultation médicale. En cas de doute, appelez le <strong>15</strong> (SAMU).
+</div>
+
+<div class="audience-tabs" role="tablist" aria-label="Sélectionner l'audience">
+  <button class="audience-tab active-patient" onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
+    👤 Je suis patient / voyageur
+  </button>
+  <button class="audience-tab" onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
+    🩺 Je suis soignant
+  </button>
+</div>
+
+<main class="page-content">
+
+  <!-- SECTION PATIENT -->
+  <div id="section-patient" role="tabpanel" aria-labelledby="tab-patient">
+
+    <div class="alarm-box" style="margin-top:1.5rem;">
+      <div class="alarm-title">🚨 Si vous pensez avoir été exposé au virus Marburg</div>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <div>
+          <div style="font-size:0.8rem;color:#991b1b;margin-bottom:0.2rem;">Appelez immédiatement</div>
+          <div class="alarm-number">15</div>
+          <div style="font-size:0.8rem;color:#991b1b;">SAMU — 24h/24</div>
+        </div>
+        <div style="flex:1;min-width:220px;">
+          <ul class="alarm-steps">
+            <li><span class="step-num">1</span> <span>Restez chez vous — NE vous rendez PAS aux urgences sans appel préalable</span></li>
+            <li><span class="step-num">2</span> <span>Appelez le <strong>15</strong> et signalez votre voyage (Afrique sub-saharienne, grottes, mines)</span></li>
+            <li><span class="step-num">3</span> <span>Isolez-vous dans une pièce séparée, évitez tout contact physique</span></li>
+            <li><span class="step-num">4</span> <span>Attendez les instructions du médecin régulateur</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🌡️ Quand dois-je m'inquiéter ?</h2>
+      <p style="font-size:0.88rem;color:#374151;margin-bottom:1rem;">
+        Marburg se transmet par <strong>contact direct avec le sang ou les fluides biologiques</strong> d'une personne infectée, ou par contact avec des <strong>chauves-souris frugivores (Rousettus aegyptiacus)</strong> dans les grottes et mines.
+        <strong>Il ne se transmet PAS par l'air.</strong>
+      </p>
+
+      <div style="background:#fef2f2;border-radius:0.6rem;padding:1rem;margin-bottom:1rem;">
+        <strong style="color:#991b1b;font-size:0.9rem;">⚠️ Appelez le 15 si vous avez ces deux critères :</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.88rem;color:#7f1d1d;">
+          <li><strong>Fièvre ≥ 38°C</strong> dans les <strong>21 jours</strong> après séjour en Afrique sub-saharienne (notamment zones de grottes), mine ou visite d'un gisement de chauves-souris</li>
+          <li>+ <strong>l'un de ces signes</strong> : saignements inexpliqués, vomissements profus, diarrhée sévère, rash cutané, douleurs musculaires intenses</li>
+        </ul>
+      </div>
+
+      <div style="background:#f5f3ff;border-radius:0.6rem;padding:1rem;margin-bottom:1rem;">
+        <strong style="color:#4c1d95;font-size:0.9rem;">🦇 Facteurs de risque spécifiques à Marburg :</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#3b0764;">
+          <li>Visite de grottes ou mines avec chauves-souris frugivores (Afrique, Équateur)</li>
+          <li>Contact direct avec cas confirmé de Marburg (soignant, famille)</li>
+          <li>Manipulation de chauve-souris ou de primates non humains</li>
+          <li>Travailleur de laboratoire travaillant sur des spécimens potentiellement infectés</li>
+        </ul>
+      </div>
+
+      <div style="background:#f0fdf4;border-radius:0.6rem;padding:1rem;">
+        <strong style="color:#065f46;font-size:0.9rem;">✅ Marburg ne se transmet PAS par :</strong>
+        <ul style="margin:0.5rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;display:grid;grid-template-columns:1fr 1fr;gap:0.2rem;">
+          <li>L'air ou la respiration</li>
+          <li>La toux ou les éternuements</li>
+          <li>L'eau ou les aliments (Europe)</li>
+          <li>Les moustiques ou insectes</li>
+          <li>Le contact d'une personne non symptomatique</li>
+          <li>Les transports en commun</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📅 Évolution de la maladie jour par jour</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:1rem;">Incubation 2 à 21 jours (médiane : 5–9 jours)</p>
+
+      <div class="clinical-timeline">
+        <div class="timeline-phase phase-warning" data-days="J1–J4">
+          <h4>Phase prodromique — ressemble à une grippe sévère</h4>
+          <ul>
+            <li>Fièvre brutale ≥ 38,5°C, frissons</li>
+            <li>Céphalées intenses</li>
+            <li>Douleurs musculaires et articulaires (myalgies ++)</li>
+            <li>Fatigue sévère, malaise général</li>
+          </ul>
+          <p class="phase-note">⚠️ Le patient est contagieux dès l'apparition des symptômes. Stade difficile à distinguer du paludisme ou de la grippe sans notion épidémiologique.</p>
+        </div>
+
+        <div class="timeline-phase phase-warning" data-days="J4–J7">
+          <h4>Phase digestive et éruption cutanée</h4>
+          <ul>
+            <li>Nausées, vomissements, diarrhée aqueuse abondante</li>
+            <li>Douleurs abdominales et thoraciques</li>
+            <li>Éruption maculo-papuleuse non prurigineuse (tronc, dos)</li>
+            <li>Conjonctivite (yeux rouges)</li>
+          </ul>
+          <p class="phase-note">L'éruption cutanée est caractéristique et oriente vers une fièvre hémorragique virale. Risque de déshydratation sévère.</p>
+        </div>
+
+        <div class="timeline-phase phase-critical" data-days="J7–J14">
+          <h4>Phase hémorragique (cas graves)</h4>
+          <ul>
+            <li>Saignements des gencives, du nez, des oreilles</li>
+            <li>Hématémèse (sang dans les vomissements)</li>
+            <li>Méléna (sang dans les selles)</li>
+            <li>Défaillance multi-organique (foie, reins, SNC)</li>
+            <li>Confusion mentale, agressivité (atteinte neurologique)</li>
+          </ul>
+          <p class="phase-note">Les signes neurologiques — confusion, agitation extrême — sont plus fréquents dans Marburg que dans Ebola. Tous les fluides corporels sont hautement infectieux.</p>
+        </div>
+
+        <div class="timeline-phase phase-recovery" data-days="J8–J21+">
+          <h4>Guérison ou décès</h4>
+          <ul>
+            <li>Décès : J8 à J9 en moyenne pour les cas fatals (choc hémorragique ou sepsis)</li>
+            <li>Survivants : fatigue prolongée, arthralgies, orchite chez les hommes</li>
+            <li>Séquelles : uvéite, hépatite résiduelle, psychose post-virale</li>
+            <li>Guérison confirmée par 2 PCR négatives à 48h d'intervalle</li>
+          </ul>
+          <p class="phase-note">Attention : le virus peut persister dans le sperme après guérison. Surveillance sérologique recommandée pendant 3 mois.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>❓ Questions fréquentes</h2>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quelle est la différence entre Marburg et Ebola ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Les deux virus appartiennent à la même famille (Filoviridae) et provoquent des tableaux cliniques similaires. La principale différence : <strong>Marburg provient d'un seul genre (Marburgvirus)</strong>, avec deux variants (Marburg et Ravn), alors qu'Ebola comprend 5 souches distinctes. Cliniquement, Marburg provoque davantage de signes neurologiques précoces. Les deux n'ont pas de vaccin approuvé pour le grand public.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Y a-t-il un vaccin contre Marburg ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          <strong>Aucun vaccin approuvé</strong> à ce jour. Des essais de phase 1–2 sont en cours (vaccin saRNA Saipem/Oxford, vaccin MVA et rVSV). Lors de l'épidémie du Rwanda 2024, un vaccin expérimental a été administré en compassionnel. La recherche progresse mais aucun produit n'est disponible pour le grand public.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          Quelles sont les zones à risque en 2026 ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Les foyers historiques se situent principalement en <strong>Afrique sub-saharienne</strong> : Allemagne et Yougoslavie (1967, cas importés depuis l'Ouganda), Angola (2005), République Démocratique du Congo, Kenya, Ouganda, Guinée équatoriale (2023), Tanzanie (2023), Rwanda (2024). Le réservoir naturel — la chauve-souris frugivore <em>Rousettus aegyptiacus</em> — est présent dans les grottes d'Afrique et du Moyen-Orient. En 2026, aucune épidémie active déclarée.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          J'ai visité une grotte en Afrique. Dois-je m'inquiéter ? <span class="faq-arrow">▼</span>
+        </button>
+        <div class="faq-a">
+          Le risque est <strong>très faible mais réel</strong>. Les visites touristiques dans des grottes abritant des chauves-souris en Afrique sont un facteur de risque reconnu. Si vous développez de la fièvre dans les 21 jours suivant la visite, signalez cette exposition au médecin. En l'absence de symptômes après 21 jours, vous n'êtes pas à risque.
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- SECTION SOIGNANT -->
+  <div id="section-hcw" role="tabpanel" aria-labelledby="tab-hcw" style="display:none;">
+
+    <div class="alarm-box" style="margin-top:1.5rem;border-color:#059669;background:#ecfdf5;">
+      <div class="alarm-title" style="color:#065f46;">🩺 Un seul cas suspect = déclaration obligatoire immédiate</div>
+      <ul class="alarm-steps" style="color:#064e3b;">
+        <li><span class="step-num" style="background:#059669;">1</span> <span>Isolement contact immédiat — chambre individuelle, porte fermée</span></li>
+        <li><span class="step-num" style="background:#059669;">2</span> <span>EPI de base : FFP2 + gants + surblouse (suspicion)</span></li>
+        <li><span class="step-num" style="background:#059669;">3</span> <span>Appel SAMU 15 et ARS régionale dans l'heure</span></li>
+        <li><span class="step-num" style="background:#059669;">4</span> <span>Cellule de crise établissement + CORRUSS si UHSI concernée</span></li>
+      </ul>
+    </div>
+
+    <div class="section-card">
+      <h2>🔍 Critères de suspicion — cas possible Marburg</h2>
+      <div style="background:#f0fdf4;border:1px solid #6ee7b7;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#065f46;">Critère OMS (cas possible) :</strong>
+        <p style="margin:0.5rem 0 0;font-size:0.88rem;color:#064e3b;">
+          <strong>Fièvre ≥ 38°C</strong> (ou antécédent de fièvre) dans les <strong>21 jours après</strong> :
+        </p>
+        <ul style="margin:0.4rem 0 0;padding-left:1.4rem;font-size:0.85rem;color:#064e3b;">
+          <li>Contact avec un cas confirmé ou probable de Marburg</li>
+          <li>OU visite de grottes/mines avec chauves-souris frugivores en zone endémique</li>
+          <li>OU manipulation de chauves-souris ou de primates non humains potentiellement infectés</li>
+          <li>OU travail de laboratoire sur spécimens de patients suspects de FHV</li>
+        </ul>
+      </div>
+
+      <h3>Signes cliniques évocateurs</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;">
+        <div>
+          <strong style="color:#374151;">Phase précoce (J1–J5)</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#4b5563;">
+            <li>Fièvre brutale ≥ 38,5°C</li>
+            <li>Céphalées intenses, myalgies</li>
+            <li>Asthénie sévère</li>
+            <li>Transaminases élevées (ALAT/ASAT)</li>
+            <li>Leucopénie, thrombopénie précoces</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color:#374151;">Phase tardive (J5–J14)</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#4b5563;">
+            <li>Éruption maculo-papuleuse (tronc)</li>
+            <li>Saignements muqueuses, CIVD</li>
+            <li><strong>Signes neurologiques ++ (confusion, agitation)</strong></li>
+            <li>Insuffisance hépatique et rénale</li>
+            <li>Myocardite (rare, mauvais pronostic)</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3 style="color:#dc2626;">Diagnostic différentiel prioritaire</h3>
+      <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;">
+        <li><strong>Paludisme</strong> (++ fréquent — frottis sanguin / TDR obligatoire)</li>
+        <li><strong>Ebola</strong> (tableau quasi identique — confirmation PCR obligatoire)</li>
+        <li><strong>Fièvre typhoïde</strong> (hémocultures)</li>
+        <li><strong>Fièvre de Lassa</strong> (Afrique de l'Ouest — surdité caractéristique)</li>
+        <li><strong>FHCC Criméo-Congo</strong> (Balkans/Turquie, contact tique)</li>
+        <li><strong>Méningite bactérienne</strong> (si signes neurologiques dominants)</li>
+      </ul>
+
+      <h3>Bilan initial prioritaire (cas suspect)</h3>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;font-size:0.85rem;margin-bottom:1rem;">
+        <div style="background:#f9fafb;padding:0.75rem;border-radius:0.5rem;border:1px solid #e5e7eb;">
+          <strong>Biologie urgente</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#374151;">
+            <li>NFS + formule</li>
+            <li>Plaquettes (thrombopénie ++)</li>
+            <li>ALAT/ASAT</li>
+            <li>Créatinine + urée</li>
+            <li>TP/TCA (CIVD précoce)</li>
+            <li>Frottis + TDR paludisme</li>
+          </ul>
+        </div>
+        <div style="background:#f9fafb;padding:0.75rem;border-radius:0.5rem;border:1px solid #e5e7eb;">
+          <strong>Virologie (labo P4 uniquement)</strong>
+          <ul style="margin:0.3rem 0 0;padding-left:1.2rem;color:#374151;">
+            <li>PCR Marburg sur sang EDTA</li>
+            <li>Protocole double emballage + transport frigorigène</li>
+            <li>Résultat : 4 à 8h (laboratoire P4 dédié)</li>
+            <li>Sérologie possible dès J7</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>🦺 Protocole EPI Marburg</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.75rem;">
+        Identique aux recommandations Ebola — même famille, même niveau de dangerosité.
+      </p>
+
+      <h3>Cas suspect (PCR en attente)</h3>
+      <div class="ppe-grid">
+        <div class="ppe-item">
+          <div class="ppe-icon">😷</div>
+          <strong>FFP2 minimum</strong>
+          Masque filtrant ajusté — pas de masque chirurgical
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🧤</div>
+          <strong>Double gantage</strong>
+          Gants nitrile stériles × 2 couches
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥼</div>
+          <strong>Surblouse imperméable</strong>
+          À manches longues, résistante aux liquides
+        </div>
+        <div class="ppe-item">
+          <div class="ppe-icon">🥽</div>
+          <strong>Protection oculaire</strong>
+          Lunettes étanches OU visière intégrale
+        </div>
+      </div>
+
+      <h3 style="margin-top:1.25rem;">Cas confirmé PCR+ ou actes à risque (intubation, aspiration)</h3>
+      <div style="background:#fef2f2;border:1px solid #fca5a5;border-radius:0.6rem;padding:1rem;margin-bottom:0.75rem;">
+        <strong style="color:#991b1b;">⚠️ NIVEAU BSL-4 OBLIGATOIRE — Aucune exception</strong>
+      </div>
+      <div class="ppe-grid">
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🌬️</div>
+          <strong>FFP3 ou PAPR</strong>
+          FFP3 ajusté ou protection motorisée (PAPR)
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🧪</div>
+          <strong>Combinaison intégrale</strong>
+          Tenue étanche type TYVEK niveau 4
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🧤</div>
+          <strong>Double gantage certifié</strong>
+          Gants intérieurs + gants extérieurs
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🥽</div>
+          <strong>Visière intégrale</strong>
+          Couverture totale — face, nuque, cou
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">👢</div>
+          <strong>Couvre-bottes imperméables</strong>
+          Surchaussures résistantes aux éclaboussures
+        </div>
+        <div class="ppe-item" style="background:#fef2f2;border-color:#fca5a5;">
+          <div class="ppe-icon">🚪</div>
+          <strong>Sas de décontamination</strong>
+          Déséquipement en 2 temps avant sortie
+        </div>
+      </div>
+    </div>
+
+    <div class="section-card">
+      <h2>📞 Chaîne de déclaration et d'alerte</h2>
+      <p style="font-size:0.85rem;color:#6b7280;margin-bottom:0.75rem;">
+        Marburg = Maladie à Déclaration Obligatoire (MDO) — un seul cas suspect déclenche la chaîne complète.
+      </p>
+      <ul class="notif-chain">
+        <li>
+          <span class="notif-num">1</span>
+          <div>
+            <strong>SAMU 15</strong> — activation immédiate dès suspicion clinique<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Le régulateur coordonne le transfert vers l'établissement de référence (UHSI)</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">2</span>
+          <div>
+            <strong>ARS régionale</strong> — dans l'heure qui suit<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Déclaration immédiate obligatoire (Art. R3113-2 du Code de Santé Publique)</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">3</span>
+          <div>
+            <strong>Santé Publique France</strong> — via l'ARS<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Coordination nationale et internationale</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">4</span>
+          <div>
+            <strong>Direction établissement + cellule de crise</strong><br>
+            <span style="font-size:0.8rem;color:#6b7280;">Activation plan blanc si nécessaire — identification des contacts professionnels</span>
+          </div>
+        </li>
+        <li>
+          <span class="notif-num">5</span>
+          <div>
+            <strong>CORRUSS</strong> (Centre Opérationnel de Régulation et de Réponse aux Urgences Sanitaires)<br>
+            <span style="font-size:0.8rem;color:#6b7280;">Si établissement de référence impliqué — coordination inter-agences</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- SECTION COMMUNE — Historique foyers -->
+  <div class="section-card">
+    <h2>📊 Principaux foyers épidémiques (1967–2026)</h2>
+    <div style="overflow-x:auto;">
+      <table class="outbreak-table">
+        <thead>
+          <tr>
+            <th>Année</th>
+            <th>Pays</th>
+            <th>Cas</th>
+            <th>Décès</th>
+            <th>Létalité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>1967</td><td>Allemagne / Yougoslavie</td><td>31</td><td>7</td><td>23%</td></tr>
+          <tr><td>1998–2000</td><td>RD Congo</td><td>154</td><td>128</td><td>83%</td></tr>
+          <tr><td>2005</td><td>Angola</td><td>252</td><td>227</td><td>90%</td></tr>
+          <tr><td>2007</td><td>Ouganda</td><td>4</td><td>3</td><td>75%</td></tr>
+          <tr><td>2012</td><td>Ouganda</td><td>15</td><td>4</td><td>27%</td></tr>
+          <tr><td>2023</td><td>Guinée équatoriale</td><td>17</td><td>12</td><td>71%</td></tr>
+          <tr><td>2023</td><td>Tanzanie</td><td>9</td><td>6</td><td>67%</td></tr>
+          <tr><td>2024</td><td>Rwanda</td><td>66</td><td>15</td><td>23%</td></tr>
+          <tr><td>2026</td><td>Aucune épidémie active</td><td>—</td><td>—</td><td>—</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Sources : OMS Disease Outbreak News · CDC Marburg hemorrhagic fever · Données au 21 juin 2026
+    </p>
+  </div>
+
+  <div class="section-card">
+    <h2>🔗 Liens connexes</h2>
+    <ul style="font-size:0.85rem;color:#374151;padding-left:1.4rem;line-height:2;">
+      <li><a href="ebola.html" style="color:#581c87;">Guide clinique Ebola Bundibugyo 2026 (PHEIC active) →</a></li>
+      <li><a href="lassa.html" style="color:#581c87;">Fièvre de Lassa →</a></li>
+      <li><a href="cchf.html" style="color:#581c87;">Fièvre hémorragique Criméo-Congo (FHCC) →</a></li>
+      <li><a href="/" style="color:#581c87;">Retour à BreathIQ — surveillance épidémique →</a></li>
+    </ul>
+  </div>
+
+  <div class="section-card" style="background:#f9fafb;">
+    <h2>📚 Sources officielles</h2>
+    <ul style="font-size:0.82rem;color:#374151;padding-left:1.4rem;line-height:1.8;">
+      <li>OMS — Marburg virus disease fact sheet, 2023</li>
+      <li>CDC — Marburg hemorrhagic fever (MHF), 2024</li>
+      <li>ECDC — Marburg virus disease outbreak in Rwanda, 2024</li>
+      <li>WHO DON 2023 — Marburg virus disease in Equatorial Guinea</li>
+      <li>WHO DON 2024 — Marburg virus disease in Rwanda</li>
+      <li>Towner JS et al. <em>PLoS Pathog</em> 2009 — Isolation of genetically diverse Marburg viruses from Egyptian fruit bats</li>
+      <li>Gear JSS et al. <em>BMJ</em> 1975 — Outbreaks of Marburg virus disease</li>
+      <li>Santé Publique France — Fiche Maladie à virus Marburg</li>
+    </ul>
+    <p style="font-size:0.78rem;color:#9ca3af;margin-top:0.75rem;">
+      Dernière mise à jour : 21 juin 2026 · Par Dr Clément MÉDEAU, médecin (La Rochelle, France)
+    </p>
+  </div>
+
+</main>
+
+<footer style="background:#1f2937;color:#9ca3af;text-align:center;padding:2rem 1rem;font-size:0.82rem;">
+  <p>
+    <a href="/" style="color:#d1d5db;text-decoration:none;">BreathIQ</a> ·
+    <a href="about.html" style="color:#d1d5db;text-decoration:none;">À propos</a> ·
+    <a href="methodologie.html" style="color:#d1d5db;text-decoration:none;">Méthodologie</a> ·
+    <a href="privacy.html" style="color:#d1d5db;text-decoration:none;">Confidentialité</a>
+  </p>
+  <p style="margin-top:0.5rem;">Outil d'information publique · Non dispositif médical (UE 2017/745) · © 2026 Dr Clément MÉDEAU</p>
+</footer>
+
+<script>
+  function switchAudience(audience) {
+    const patSection = document.getElementById('section-patient');
+    const hcwSection = document.getElementById('section-hcw');
+    const tabPat = document.getElementById('tab-patient');
+    const tabHcw = document.getElementById('tab-hcw');
+    if (audience === 'patient') {
+      patSection.style.display = '';
+      hcwSection.style.display = 'none';
+      tabPat.classList.add('active-patient');
+      tabHcw.className = 'audience-tab';
+      tabPat.setAttribute('aria-selected', 'true');
+      tabHcw.setAttribute('aria-selected', 'false');
+    } else {
+      hcwSection.style.display = '';
+      patSection.style.display = 'none';
+      tabHcw.classList.add('active-hcw');
+      tabPat.className = 'audience-tab';
+      tabHcw.setAttribute('aria-selected', 'true');
+      tabPat.setAttribute('aria-selected', 'false');
+    }
+  }
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    answer.classList.toggle('open', !isOpen);
+    btn.classList.toggle('open', !isOpen);
+  }
+</script>
+</body>
+</html>
