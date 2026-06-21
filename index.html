@@ -1785,18 +1785,8 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   </div>
 </section>
 
-<!-- ===== MES DONNÉES ===== -->
-<section class="mydata-section" id="mydata" aria-labelledby="mydata-title">
-  <div class="section-inner">
-    <div class="section-header">
-      <h2 id="mydata-title" data-i18n="mydata-title">Mes données &amp; confidentialité</h2>
-      <p class="section-subtitle" data-i18n="mydata-subtitle">Consultez, gérez et effacez les données stockées sur votre appareil.</p>
-    </div>
-    <div id="myDataSummary" aria-live="polite">
-      <!-- Rendu dynamique par renderMyDataSection() -->
-    </div>
-  </div>
-</section>
+<!-- Conteneur caché pour renderMyDataSection() — contenu accessible via privacy.html -->
+<div id="myDataSummary" hidden aria-hidden="true"></div>
 
 <!-- ===== FOOTER ===== -->
 <footer class="biq-footer" role="contentinfo">
@@ -1813,7 +1803,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>
       <a href="conditions-utilisation.html" data-i18n="footer-cgu">CGU</a>
       <a href="privacy.html" data-i18n="footer-privacy">Confidentialité</a>
-      <a href="#mydata" data-i18n="nav-mydata">Mes données</a>
+      <a href="privacy.html#mydata" data-i18n="nav-mydata">Mes données</a>
       <a href="legal-notice.html" data-i18n="footer-legal-en">Legal Notice (EN)</a>
       <a href="about.html" data-i18n="footer-about">À propos</a>
     </nav>
