@@ -1572,8 +1572,18 @@ function updateScoreDisplay(regionId) {
   if (gpDial)  gpDial.style.setProperty('--score-color', grade.color);
   if (gpInner) gpInner.style.setProperty('--score-pct', score.sr + '%');
 
-  // Factor values
-  const gpFactorMap = { gpFactorAqi: score.aqi, gpFactorViral: score.viral, gpFactorPollen: score.pollen, gpFactorWeather: score.weather };
+  // Factor values — qualitative labels (not raw numbers) for grand public
+  function factorLabel(val, lang) {
+    const fr = val <= 25 ? 'Excellent' : val <= 45 ? 'Bon' : val <= 60 ? 'Modéré' : val <= 75 ? 'Élevé' : 'Critique';
+    const en = val <= 25 ? 'Excellent' : val <= 45 ? 'Good' : val <= 60 ? 'Moderate' : val <= 75 ? 'High' : 'Critical';
+    return lang === 'fr' ? fr : en;
+  }
+  const gpFactorMap = {
+    gpFactorAqi:     factorLabel(score.aqi,     currentLang),
+    gpFactorViral:   factorLabel(score.viral,   currentLang),
+    gpFactorPollen:  factorLabel(score.pollen,  currentLang),
+    gpFactorWeather: factorLabel(score.weather, currentLang)
+  };
   Object.entries(gpFactorMap).forEach(([id, val]) => {
     const el = document.getElementById(id);
     if (el) el.textContent = val;
@@ -1601,6 +1611,35 @@ function updateScoreDisplay(regionId) {
   const keys = Object.keys(stored).sort().reverse();
   if (keys.length > 8) keys.slice(8).forEach(k => delete stored[k]);
   try { localStorage.setItem('biq_score_history', JSON.stringify(stored)); } catch(e) {}
+
+  // Date de calcul sur le score card
+  const dateEl = document.getElementById('gpScoreDate');
+  if (dateEl) {
+    const d = new Date();
+    const opts = { day: 'numeric', month: 'long', year: 'numeric' };
+    const dateStr = d.toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', opts);
+    dateEl.textContent = currentLang === 'fr'
+      ? `Calculé aujourd'hui, ${dateStr} · Sources OMS · ECDC · SPF`
+      : `Calculated today, ${dateStr} · Sources WHO · ECDC · SPF`;
+  }
+}
+
+// ── Bannière épidémique — contrôle grand public / expert ─────
+function closePheicBanner() {
+  const banner = document.getElementById('epidemicAlertBanner');
+  if (banner) {
+    banner.classList.add('alert-inactive');
+    try { sessionStorage.setItem('biq_pheic_closed', '1'); } catch(e) {}
+  }
+}
+
+function updateEpidemicBannerMode(isExpert) {
+  const gpMsg = document.getElementById('epidemicGpMsg');
+  const expertMsg = document.getElementById('epidemicExpertMsg');
+  const expertLinks = document.querySelectorAll('#epidemicAlertBanner .expert-only');
+  if (gpMsg) gpMsg.style.display = isExpert ? 'none' : '';
+  if (expertMsg) expertMsg.style.display = isExpert ? '' : 'none';
+  expertLinks.forEach(el => { el.style.display = isExpert ? '' : 'none'; });
 }
 
 // ── Map ──────────────────────────────────────────────────────
@@ -2330,6 +2369,7 @@ function toggleMode() {
     sessionStorage.removeItem('biq-soignant-auth');
     document.body.dataset.mode = 'patient';
     updateModeToggleBtn();
+    updateEpidemicBannerMode(false);
     renderPathogens();
   }
 }
@@ -2458,6 +2498,7 @@ function activateExpertMode() {
   localStorage.setItem('biq-mode', 'expert');
   document.body.dataset.mode = 'expert';
   updateModeToggleBtn();
+  updateEpidemicBannerMode(true);
   // Restore pro badge if profile exists
   try {
     const p = JSON.parse(localStorage.getItem('biq-pro-profile') || 'null');
@@ -3477,6 +3518,19 @@ domReady(() => {
 
   // Onboarding première visite
   initOnboarding();
+
+  // Compteur de visites — proposition notification PWA à la 3ème
+  try {
+    if (!sessionStorage.getItem('biq_visit_counted')) {
+      sessionStorage.setItem('biq_visit_counted', '1');
+      const visits = parseInt(localStorage.getItem('biq_visits') || '0', 10) + 1;
+      localStorage.setItem('biq_visits', String(visits));
+      if (visits === 3 && 'Notification' in window && Notification.permission === 'default'
+          && !localStorage.getItem('biq_notif_declined')) {
+        setTimeout(promptPwaNotification, 4000);
+      }
+    }
+  } catch(e) {}
 
   // Proactive geolocation permission state → update care-finder button label
   if (navigator.permissions) {
@@ -4708,6 +4762,45 @@ function closeOnboarding(chosenMode) {
       toggleMode();
     }
   }
+  // Incrémenter le compteur de visites pour proposer les notifs PWA à J3
+  try {
+    const visits = parseInt(localStorage.getItem('biq_visits') || '0', 10) + 1;
+    localStorage.setItem('biq_visits', visits);
+    if (visits === 3 && 'Notification' in window && Notification.permission === 'default') {
+      setTimeout(promptPwaNotification, 2000);
+    }
+  } catch(e) {}
+}
+
+function promptPwaNotification() {
+  if (!('Notification' in window) || Notification.permission !== 'default') return;
+  const el = document.createElement('div');
+  el.id = 'pwaNotifPrompt';
+  el.setAttribute('role', 'dialog');
+  el.setAttribute('aria-labelledby', 'pwaNotifTitle');
+  el.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1e293b;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:16px 20px;max-width:340px;width:90%;z-index:9000;box-shadow:0 8px 32px rgba(0,0,0,.5);display:flex;flex-direction:column;gap:10px';
+  el.innerHTML = `
+    <p id="pwaNotifTitle" style="font-size:14px;font-weight:600;color:#f1f5f9;margin:0">🔔 Recevoir votre score chaque matin ?</p>
+    <p style="font-size:12px;color:#94a3b8;margin:0">Pas de spam. Une notification par jour. Désactivable à tout moment.</p>
+    <div style="display:flex;gap:8px">
+      <button onclick="acceptPwaNotif()" style="flex:1;padding:9px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">Oui, chaque matin</button>
+      <button onclick="declinePwaNotif()" style="padding:9px 14px;background:transparent;color:#64748b;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;cursor:pointer">Non merci</button>
+    </div>`;
+  document.body.appendChild(el);
+}
+
+function acceptPwaNotif() {
+  document.getElementById('pwaNotifPrompt')?.remove();
+  Notification.requestPermission().then(perm => {
+    if (perm === 'granted') {
+      try { localStorage.setItem('biq_notif_ok', '1'); } catch(e) {}
+    }
+  });
+}
+
+function declinePwaNotif() {
+  document.getElementById('pwaNotifPrompt')?.remove();
+  try { localStorage.setItem('biq_notif_declined', '1'); } catch(e) {}
 }
 
 // ── Care Finder — fallback recherche par ville ────────────────────────────────

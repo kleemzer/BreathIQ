@@ -315,6 +315,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .gp-trust-bar .container{max-width:860px}
 .gp-trust-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem 2.5rem}
 .gp-trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:#64748b;white-space:nowrap}
+@media(max-width:480px){.gp-trust-items{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1rem;justify-items:start}.gp-trust-item{font-size:.75rem;white-space:normal}}
 .gp-trust-item svg{flex-shrink:0;color:#2563eb}
 
 /* ── EXPLAINER 30 SECONDES ── */
@@ -568,19 +569,27 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
      Pour DÉSACTIVER → rajouter la classe "alert-inactive"
      Niveaux disponibles sur .epidemic-level : "jaune" | "orange" | "rouge"
      ======================================================= -->
-<div class="epidemic-alert-banner" id="epidemicAlertBanner" role="alert" aria-live="assertive">
+<div class="epidemic-alert-banner" id="epidemicAlertBanner" role="status" aria-live="polite" aria-label="Alerte sanitaire internationale en cours">
   <div class="epidemic-alert-inner">
-    <div class="epidemic-level rouge">🔴 URGENCE INTERNATIONALE — PHEIC OMS</div>
-    <div class="epidemic-alert-body">
+    <!-- Message grand public — simple, calme, sans jargon clinique -->
+    <div class="epidemic-alert-gp patient-only" id="epidemicGpMsg">
+      <span class="epidemic-level rouge" aria-hidden="true">🔴</span>
+      <span class="epidemic-gp-text">
+        <strong>Alerte OMS — Ebola en Afrique centrale.</strong>
+        Pas de cas confirmé en France. Si vous revenez d'Afrique centrale/est avec de la fièvre, appelez le 15.
+      </span>
+      <a href="ebola.html" class="epidemic-link">En savoir plus →</a>
+    </div>
+    <!-- Message soignants — complet, technique, affiché uniquement en mode expert -->
+    <div class="epidemic-alert-body expert-only" id="epidemicExpertMsg" style="display:none">
       <strong class="epidemic-disease">Ebola Bundibugyo · RD Congo + Ouganda — 344 cas confirmés</strong>
       <span class="epidemic-date">PHEIC déclarée le 17 mai 2026 · 60 décès confirmés · <strong>Données au 3 juin 2026</strong> — <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Source OMS ↗</a></span>
-      <p class="epidemic-msg">🚨 <strong>Urgence sanitaire internationale (PHEIC)</strong> — Souche Bundibugyo : <strong>aucun vaccin, aucun traitement</strong>. RDC : 344 cas confirmés, 60 décès (Ituri 322 · Nord-Kivu 19 · Sud-Kivu 3). Ouganda : 15 cas confirmés. Mayotte : vigilance renforcée, <strong>aucun cas confirmé en France</strong>. Si fièvre + retour d'Afrique centrale/est : <strong>appelez le 15 sans vous déplacer</strong>. <em style="font-size:0.85em;opacity:0.8;">Ces chiffres sont mis à jour manuellement — vérifier la source OMS pour les données les plus récentes.</em></p>
+      <p class="epidemic-msg">Urgence sanitaire internationale (PHEIC) — Souche Bundibugyo : aucun vaccin, aucun traitement. RDC : 344 cas (Ituri 322 · Nord-Kivu 19 · Sud-Kivu 3). Ouganda : 15 cas. Si fièvre + retour Afrique centrale/est : <strong>appelez le 15 sans vous déplacer</strong>.</p>
       <p class="epidemic-mask">🩺 <strong>Soignants :</strong> FFP3 + tenue BSL-4 complète obligatoire pour tout cas suspect · Circuit isolement activé</p>
     </div>
     <div class="epidemic-alert-actions">
-      <a href="ebola.html" class="epidemic-link">Guide clinique complet →</a>
-      <a href="#pathogens" class="epidemic-link" onclick="return navTo(event,'#pathogens')" style="opacity:0.8;font-size:0.85em;">Fiche rapide</a>
-      <button class="epidemic-close" onclick="this.closest('.epidemic-alert-banner').classList.add('alert-inactive')" aria-label="Fermer l'alerte">✕</button>
+      <a href="ebola.html" class="epidemic-link expert-only" style="display:none">Guide clinique complet →</a>
+      <button class="epidemic-close" onclick="closePheicBanner()" aria-label="Fermer l'alerte épidémique">✕</button>
     </div>
   </div>
 </div>
@@ -599,8 +608,8 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
     <!-- Indicateur de risque — universel, visuel, immédiat -->
     <div class="risk-banner risk-low" id="patientRiskBanner" role="status" aria-live="polite">
-      <div class="risk-level-icon" id="patientRiskIcon">🟢</div>
-      <span class="risk-level-label" id="patientRiskLabel">RISQUE FAIBLE</span>
+      <div class="risk-level-icon" id="patientRiskIcon" aria-hidden="true">🟢</div>
+      <span class="risk-level-label" id="patientRiskLabel">Risque faible</span>
       <h2 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h2>
       <p id="patientRiskDesc">Aucune alerte active — continuez vos activités normalement</p>
       <div class="risk-pheic-strip" id="riskPheicStrip">
@@ -675,7 +684,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
         </div>
         <div class="gp-score-info">
           <p class="gp-score-level" id="gpScoreLevel">Modéré</p>
-          <span id="gpScoreDelta" style="display:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:4px;display:inline-block"></span>
+          <span id="gpScoreDelta" style="display:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:4px" aria-live="polite" aria-label="Évolution par rapport à hier"></span>
           <p class="gp-score-loc" id="gpScoreLoc">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <span id="gpScoreLocText">Votre région</span>
@@ -715,6 +724,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
           Comprendre la méthode
         </a>
       </div>
+      <p class="gp-score-update-date" id="gpScoreDate" style="font-size:10px;color:var(--c-muted,#64748b);text-align:center;margin-bottom:.5rem"></p>
       <p class="gp-score-disclaimer">Ce score ne prédit pas votre risque individuel de maladie. Il vous aide à comprendre le contexte respiratoire autour de vous. Les conseils sont généraux et ne remplacent pas un avis médical.</p>
     </div>
   </div>
@@ -2243,7 +2253,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <span class="onboarding-brand">Breath<strong>IQ</strong></span>
     </div>
     <h2 id="onboardingTitle" class="onboarding-title" data-i18n="ob-title">Bienvenue sur BreathIQ</h2>
-    <p class="onboarding-subtitle" data-i18n="ob-subtitle">Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.</p>
+    <p class="onboarding-subtitle" data-i18n="ob-subtitle">Votre score respiratoire du jour — gratuit, sans inscription, sans publicité.</p>
 
     <div class="onboarding-modes">
       <button class="onboarding-mode-card onboarding-mode-patient" onclick="closeOnboarding('patient')" data-i18n-aria="ob-patient-aria">
@@ -2308,7 +2318,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/diagnostic-engine.min.js?v=20260620" defer></script>
-<script src="script.min.js?v=20260621" defer></script>
+<script src="script.min.js?v=20260621b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
