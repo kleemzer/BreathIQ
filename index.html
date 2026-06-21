@@ -532,8 +532,8 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     </ul>
 
     <div class="nav-actions">
-      <span class="live-badge" id="liveBadge" title="Données hors ligne — affichage demo" aria-label="Statut données live">
-        <span class="live-dot"></span><span class="live-label">LIVE <span id="liveLastUpdate">--:--</span></span>
+      <span class="live-badge live-off" id="liveBadge" title="Score estimatif — données simulées. L'AQI réel est chargé en arrière-plan si votre connexion le permet." aria-label="Statut données : estimatif">
+        <span class="live-dot"></span><span class="live-label" id="liveLabelText">ESTIMÉ</span>
       </span>
       <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé">👨‍⚕️ Espace Soignant</button>
       <select class="lang-select" id="langSelect" aria-label="Changer de langue" onchange="setLang(this.value)">
@@ -2317,7 +2317,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <script src="api-live.js?v=20260620" defer></script>
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
-<script src="js/diagnostic-engine.min.js?v=20260620" defer></script>
+<script src="js/symptom-guide.min.js?v=20260621" defer></script>
 <script src="script.min.js?v=20260621b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)

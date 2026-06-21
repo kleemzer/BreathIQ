@@ -1,7 +1,7 @@
 {
-  "name": "BreathIQ — Surveillance épidémique mondiale",
+  "name": "BreathIQ — Votre score respiratoire",
   "short_name": "BreathIQ",
-  "description": "Triage symptomatique infectieux + surveillance épidémique mondiale. Fonctionne hors ligne. Gratuit, sans inscription. Outil d'information publique — non dispositif médical.",
+  "description": "Score respiratoire quotidien : qualité de l'air, virus saisonniers, pollens. Conseils simples, données publiques OMS/ECDC/SPF. Gratuit, sans compte, sans publicité.",
   "start_url": "/?source=pwa",
   "display": "standalone",
   "background_color": "#0F2A45",
@@ -36,7 +36,7 @@
       "sizes": "1200x630",
       "type": "image/png",
       "form_factor": "wide",
-      "label": "BreathIQ — Tableau de bord épidémique"
+      "label": "BreathIQ — Score respiratoire du jour"
     }
   ],
   "shortcuts": [

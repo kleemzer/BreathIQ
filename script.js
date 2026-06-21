@@ -272,12 +272,12 @@ const I18N = {
     'nav-pathogens': 'Pathogens',
     'nav-protection': 'Protection',
     'nav-about': 'About',
-    'hero-badge': 'Respiratory Intelligence · Global Data',
-    'hero-title-1': 'The air you breathe,',
-    'hero-title-2': 'intelligently monitored.',
-    'hero-subtitle': 'Real-time respiratory index. Air quality, viral circulation, active pathogens. Make informed decisions — not anxious ones.',
-    'hero-cta-score': 'My Respiratory Index',
-    'hero-cta-map': 'Outbreak Map',
+    'hero-badge': 'Respiratory prevention · Public data',
+    'hero-title-1': 'Your daily respiratory',
+    'hero-title-2': 'co-pilot.',
+    'hero-subtitle': 'BreathIQ combines air quality, seasonal viruses and public health data to give you a simple read on your environment — every day.',
+    'hero-cta-score': 'See my respiratory score',
+    'hero-cta-map': 'Outbreak map',
     'hero-disclaimer': 'Public information tool — not a medical device · Free access, no registration',
     'hsc-label': 'Respiratory Index',
     'hsc-loading': 'Calculating…',
@@ -1227,6 +1227,54 @@ const SYMPTOM_MAP = {
 // ── Score calculation ────────────────────────────────────────
 // SR = (0.40 × AQI) + (0.30 × Viral) + (0.20 × Pollen) + (0.10 × Weather)
 // Components: 0–100 scale (100 = worst)
+// AQI réel via Open-Meteo Air Quality API quand disponible, sinon estimation
+
+// Cache AQI réels par région — persisté en sessionStorage pour éviter trop d'appels API
+const _liveAqiCache = (() => {
+  try { return JSON.parse(sessionStorage.getItem('biq_live_aqi') || '{}'); } catch(e) { return {}; }
+})();
+
+function _saveLiveAqiCache() {
+  try { sessionStorage.setItem('biq_live_aqi', JSON.stringify(_liveAqiCache)); } catch(e) {}
+}
+
+// Convertit un European AQI (0–500) en score BreathIQ (0–100, 100=pire)
+function _eaqiToScore(eaqi) {
+  // EAQI: 0-20 Good → 20-40 Fair → 40-60 Moderate → 60-80 Poor → 80-100 Very Poor → >100 Extremely Poor
+  if (eaqi <= 20)  return Math.round(eaqi * 0.5);          // 0-10
+  if (eaqi <= 40)  return Math.round(10 + (eaqi-20) * 1);  // 10-30
+  if (eaqi <= 60)  return Math.round(30 + (eaqi-40) * 1);  // 30-50
+  if (eaqi <= 80)  return Math.round(50 + (eaqi-60) * 1);  // 50-70
+  if (eaqi <= 100) return Math.round(70 + (eaqi-80) * 1);  // 70-90
+  return Math.min(100, Math.round(90 + (eaqi-100) * 0.5)); // 90-100
+}
+
+// Récupère l'AQI réel depuis Open-Meteo (gratuit, sans clé API)
+async function fetchLiveAqi(region) {
+  if (!region.lat || !region.lon) return null;
+  const cacheKey = `${region.id}`;
+  const cached = _liveAqiCache[cacheKey];
+  // Utiliser le cache si < 30 min
+  if (cached && cached.ts && (Date.now() - cached.ts) < 30 * 60 * 1000) return cached.score;
+
+  try {
+    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${region.lat}&longitude=${region.lon}&current=european_aqi,pm2_5,pm10&timezone=auto`;
+    const resp = await Promise.race([
+      fetch(url),
+      new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))
+    ]);
+    if (!resp.ok) throw new Error('API error');
+    const data = await resp.json();
+    const eaqi = data?.current?.european_aqi;
+    if (typeof eaqi !== 'number') throw new Error('No AQI value');
+    const score = _eaqiToScore(eaqi);
+    _liveAqiCache[cacheKey] = { score, eaqi, ts: Date.now() };
+    _saveLiveAqiCache();
+    return score;
+  } catch(e) {
+    return null; // Fallback vers l'estimation
+  }
+}
 
 function generateScoreForRegion(region) {
   const seed = region.id * 137 + 42;
@@ -1236,7 +1284,9 @@ function generateScoreForRegion(region) {
     critical: 75, low: 60, moderate: 45, sufficient: 25
   }[region.status] || 40;
 
-  const aqi    = Math.round(statusBase + (noise(seed * 1.1) - 0.5) * 20);
+  // AQI : utiliser la valeur live si disponible dans le cache, sinon estimation
+  const cachedAqi = _liveAqiCache[`${region.id}`];
+  const aqi    = cachedAqi ? cachedAqi.score : Math.round(statusBase + (noise(seed * 1.1) - 0.5) * 20);
   const viral  = Math.round(statusBase + (noise(seed * 2.3) - 0.5) * 25);
   const pollen = Math.round(30 + noise(seed * 3.7) * 40);
   const weather= Math.round(20 + noise(seed * 4.1) * 30);
@@ -1248,7 +1298,8 @@ function generateScoreForRegion(region) {
     aqi: Math.min(100, Math.max(0, aqi)),
     viral: Math.min(100, Math.max(0, viral)),
     pollen: Math.min(100, Math.max(0, pollen)),
-    weather: Math.min(100, Math.max(0, weather))
+    weather: Math.min(100, Math.max(0, weather)),
+    aqiIsLive: !!cachedAqi
   };
 }
 
@@ -2278,7 +2329,9 @@ function bindEvents() {
 
   // Region selector
   document.getElementById('regionSelect')?.addEventListener('change', (e) => {
-    updateScoreDisplay(parseInt(e.target.value, 10));
+    const rid = parseInt(e.target.value, 10);
+    updateScoreDisplay(rid);
+    fetchLiveAqiAndRefresh(rid);
   });
 
   // Layer buttons
@@ -3485,8 +3538,9 @@ domReady(() => {
   // Region selector
   buildRegionSelector();
 
-  // Score for first region
+  // Score for first region — immédiat avec données estimées, puis maj AQI réel
   updateScoreDisplay(DEMO_DATA[0].id);
+  fetchLiveAqiAndRefresh(DEMO_DATA[0].id);
 
   // Pathogens — charger JSON pathogènes + SPF en parallèle, puis rendre
   Promise.all([
@@ -4471,6 +4525,40 @@ function renderPollenWidget(data) {
   `;
 }
 
+// Lance une récupération AQI réelle en arrière-plan et rafraîchit le score si disponible
+async function fetchLiveAqiAndRefresh(regionId) {
+  const region = DEMO_DATA.find(r => r.id === parseInt(regionId, 10));
+  if (!region) return;
+  const aqiScore = await fetchLiveAqi(region);
+  if (aqiScore !== null) {
+    // AQI réel obtenu : refresher l'affichage avec la nouvelle valeur
+    updateScoreDisplay(region.id);
+    _updateLiveBadgeAqi(true);
+  }
+}
+
+// Met à jour le badge LIVE/ESTIMÉ selon disponibilité AQI réel
+function _updateLiveBadgeAqi(isLive) {
+  const badge = document.getElementById('liveBadge');
+  const label = document.getElementById('liveLabelText');
+  if (!badge) return;
+  if (isLive) {
+    badge.classList.remove('live-off');
+    badge.classList.add('live-partial');
+    if (label) label.textContent = 'LIVE';
+    const now = new Date();
+    const hhmm = now.toLocaleTimeString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
+    badge.title = currentLang === 'fr'
+      ? `AQI en temps réel (Open-Meteo) · mis à jour à ${hhmm}`
+      : `Real-time AQI (Open-Meteo) · updated at ${hhmm}`;
+  } else {
+    badge.classList.remove('live-partial');
+    badge.classList.add('live-off');
+    if (label) label.textContent = 'ESTIMÉ';
+    badge.title = 'Score estimatif — données simulées (AQI non disponible)';
+  }
+}
+
 function updateLiveStatusBadge(detail) {
   const badge = document.getElementById('liveBadge');
   if (!badge) return;
@@ -4655,10 +4743,34 @@ async function loadPheicAlert() {
     const esbPheic = document.getElementById('esbPheic');
     if (esbPheic) esbPheic.textContent = data.alerts.filter(a => a.active).length;
 
+    // Freshness warning : si données > 7 jours, ajouter un avertissement visible
+    if (active.lastUpdate) {
+      const daysSince = Math.floor((Date.now() - new Date(active.lastUpdate)) / 86400000);
+      if (daysSince > 7) {
+        const dateEl2 = banner.querySelector('.epidemic-date');
+        if (dateEl2) {
+          const staleMsg = {
+            fr: `⚠️ Ces données ont ${daysSince} jours — vérifier la source OMS`,
+            en: `⚠️ Data is ${daysSince} days old — check WHO source`,
+            es: `⚠️ Datos con ${daysSince} días — verificar fuente OMS`,
+            pt: `⚠️ Dados com ${daysSince} dias — verificar fonte OMS`,
+            ar: `⚠️ البيانات عمرها ${daysSince} يومًا — تحقق من مصدر منظمة الصحة العالمية`,
+            zh: `⚠️ 数据已有 ${daysSince} 天 — 请检查世卫组织来源`,
+            hi: `⚠️ डेटा ${daysSince} दिन पुराना — WHO स्रोत जांचें`,
+            sw: `⚠️ Data ina siku ${daysSince} — angalia chanzo cha WHO`,
+            ru: `⚠️ Данным ${daysSince} дней — проверьте источник ВОЗ`
+          }[currentLang] || `⚠️ Data ${daysSince} days old — check WHO source`;
+          const staleSpan = document.createElement('span');
+          staleSpan.style.cssText = 'display:block;font-size:0.78em;color:#FCA5A5;margin-top:3px;font-style:italic';
+          staleSpan.textContent = staleMsg;
+          dateEl2.appendChild(staleSpan);
+        }
+      }
+    }
+
     banner.classList.remove('alert-inactive');
   } catch (e) {
     logDataWarning('PHEIC alert load failed', e);
-    // On error: keep the hardcoded HTML as fallback, just don't hide the banner
   }
 }
 
