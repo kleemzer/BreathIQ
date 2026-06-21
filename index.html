@@ -125,6 +125,25 @@
   <link rel="preconnect" href="https://data.santepubliquefrance.fr">
   <link rel="preconnect" href="https://eutils.ncbi.nlm.nih.gov">
   <style>
+/* ── IMPRESSION : fond blanc, texte noir, masquer UI inutile ── */
+@media print {
+  body { background: #fff !important; color: #111 !important; font-size: 12pt; }
+  .biq-nav, .mobile-bottom-nav, .hero-visual, .breath-rings,
+  .triage-alarm-nums, .triage-severe-nums, .wiz-nav, .wiz-btn-next,
+  .wiz-btn-primary, .checker-after-cta, .biq-pro-section,
+  .syndromic-section, .score-section, .map-section,
+  .onboarding-overlay, .geo-modal-overlay, [id$="Modal"],
+  .biq-footer nav, button:not(.triage-num-btn) { display: none !important; }
+  .triage-alarm-strip { background: #fff3cd !important; border: 2px solid #f59e0b !important; color: #111 !important; }
+  .triage-card { border: 1px solid #ccc !important; background: #fff !important; color: #111 !important; break-inside: avoid; }
+  .triage-badge-mild  { background: #d1fae5 !important; color: #065f46 !important; }
+  .triage-badge-moderate { background: #fef3c7 !important; color: #92400e !important; }
+  .triage-badge-severe { background: #fee2e2 !important; color: #991b1b !important; }
+  .biq-footer { border-top: 1px solid #ccc !important; background: #fff !important; color: #555 !important; }
+  a[href]::after { content: none !important; }
+  .patient-hero-section .hero-paths { display: none !important; }
+  h1, h2, h3 { color: #111 !important; page-break-after: avoid; }
+}
 /* ── AUDIT FIX : Skip link visible au focus WCAG 2.4.1 ── */
 .skip-link{position:absolute;top:-100px;left:1rem;background:#2563eb;color:#fff;padding:.5rem 1rem;border-radius:0 0 .5rem .5rem;font-size:.9rem;font-weight:700;text-decoration:none;z-index:10000;transition:top .2s}
 .skip-link:focus{top:0}
@@ -397,7 +416,6 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
       <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li><a href="about.html" data-i18n="nav-about">À propos</a></li>
-      <li><a href="methodologie.html" style="opacity:.75">Méthodologie</a></li>
     </ul>
 
     <div class="nav-actions">
@@ -488,7 +506,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
         <span class="path-icon" aria-hidden="true">🩺</span>
         <span class="path-title">Je suis soignant</span>
-        <span class="path-sub">Outils cliniques · Déclaration</span>
+        <span class="path-sub">Outils cliniques · Référentiel pathogènes</span>
       </button>
     </div>
 
@@ -535,7 +553,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
         <span class="esb-label">Cas Ebola confirmés</span>
       </div>
       <div class="esb-item">
-        <span class="esb-num ok" id="esbPathogens">17</span>
+        <span class="esb-num ok" id="esbPathogens">21</span>
         <span class="esb-label">Pathogènes suivis</span>
       </div>
     </div>
@@ -598,7 +616,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       </div>
       <div class="hero-stat-card">
         <span class="hsc-label" data-i18n="hsc-pathogens">Pathogènes suivis</span>
-        <span class="hsc-value" id="heroPathCount">17</span>
+        <span class="hsc-value" id="heroPathCount">21</span>
         <span class="hsc-unit" data-i18n="hsc-pathogens-unit">pathogènes</span>
         <span class="hsc-status hsc-alert" id="heroOutbreakCount"><span class="skeleton" aria-hidden="true">0 foyers</span></span>
       </div>
@@ -1822,7 +1840,13 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
 <!-- Mobile bottom nav -->
 <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
-  <a href="#score" onclick="return navTo(event,'#score')" class="mbn-item" data-i18n="mbn-score">
+  <!-- Mode patient : Symptômes en premier -->
+  <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="mbn-item patient-only">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+    <span>Symptômes</span>
+  </a>
+  <!-- Mode expert : Score en premier -->
+  <a href="#score" onclick="return navTo(event,'#score')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span>Score</span>
   </a>
@@ -2009,6 +2033,23 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <script src="js/diagnostic-engine.min.js?v=20260620" defer></script>
 <script src="script.min.js?v=20260620" defer></script>
 <script>
+// Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
+(function(){
+  const RTL = ['ar','he','fa','ur'];
+  function applyLang(l){
+    if(!l) return;
+    document.documentElement.lang = l;
+    document.documentElement.dir = RTL.includes(l) ? 'rtl' : 'ltr';
+  }
+  // Appliquer au chargement
+  applyLang(localStorage.getItem('biq-lang') || 'fr');
+  // Patcher setLang pour mettre à jour en temps réel
+  const _orig = window.setLang;
+  window.setLang = function(l){ applyLang(l); if(_orig) _orig(l); };
+  // Observer le select au cas où setLang n'est pas encore défini
+  document.getElementById('langSelect')?.addEventListener('change', function(){ applyLang(this.value); });
+})();
+
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
