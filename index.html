@@ -161,6 +161,11 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 @media(max-width:860px){.lang-select{max-width:90px}}
 @media(max-width:640px){.lang-select{max-width:40px;font-size:1rem;padding:.3rem .2rem}}
 
+/* ── FIX : Modal soignant passe au-dessus de tous les éléments ── */
+.soignant-modal-overlay{z-index:9500!important;background:rgba(0,0,0,.82)!important}
+.onboarding-overlay{z-index:9500!important;background:rgba(0,0,0,.82)!important}
+.geo-modal-overlay{z-index:9500!important;background:rgba(0,0,0,.82)!important}
+
 /* ── AUDIT FIX : Bottom nav lisibilité améliorée ── */
 .mobile-bottom-nav{background:rgba(8,16,28,.97)!important;border-top:1px solid rgba(59,130,246,.2)!important;backdrop-filter:blur(12px)}
 .mobile-bottom-nav a,.mobile-bottom-nav button{color:#94a3b8!important;font-weight:500!important}
