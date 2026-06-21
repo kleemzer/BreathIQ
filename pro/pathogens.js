@@ -873,47 +873,175 @@ async function fetchPubMed(pathogen) {
   }
 }
 
+// ─── HELPERS LISTE ───────────────────────────────────────────────────────────
+function getTransmissionType(p) {
+  const t = (p.transmission || '').toLowerCase();
+  if (/aérosol|aérien|airborne|noyaux de wells|microgouttel/.test(t)) return 'AIRBORNE';
+  if (/moustique|tique|vecteur|phlébotome|biomphalaria/.test(t)) return 'VECTORIEL';
+  if (/fécal.oral|eau contaminée|alimentaire|ingestion|oro.fécal/.test(t)) return 'DIGESTIF';
+  return 'CONTACT';
+}
+
+function getEpiLevel(p) {
+  const epi = (p.epiSoignant || []).join(' ').toLowerCase();
+  if (/bsl.?4|combinaison intégrale|niveau 4/.test(epi)) return {cls:'bsl4', lbl:'BSL-4'};
+  if (/ffp2|ffp3|appareil respiratoire/.test(epi)) return {cls:'ffp2', lbl:'FFP2/N95'};
+  return {cls:'chir', lbl:'Chirurgical'};
+}
+
+const PAGE_URLS = {
+  HEMORRHAGIC_FEVER:'ebola.html',
+  LASSA:'lassa.html',
+  CCHF:'cchf.html',
+  MARBURG:'marburg.html',
+};
+
+function getDangerColor(level) {
+  if (level === 'ROUGE') return '#dc2626';
+  if (level === 'ORANGE') return '#ea580c';
+  return '#ca8a04';
+}
+
+// ─── RENDU UNE LIGNE ─────────────────────────────────────────────────────────
+function renderPathoRow(p) {
+  const txType = getTransmissionType(p);
+  const epiInfo = getEpiLevel(p);
+  const pageUrl = PAGE_URLS[p.id] || null;
+  const dangerColor = getDangerColor(p.dangerLevel);
+  const txLabels = {AIRBORNE:'Airborne', CONTACT:'Contact', VECTORIEL:'Vectoriel', DIGESTIF:'Fécal-oral'};
+  const txCls = {AIRBORNE:'airborne', CONTACT:'contact', VECTORIEL:'vectoriel', DIGESTIF:'digestif'}[txType] || 'contact';
+  const cfrShort = (p.cfr || '?').split('—')[0].split('/')[0].trim().substring(0, 14);
+  const epiDangerCls = p.dangerLevel === 'ROUGE' ? ' danger-rouge' : p.dangerLevel === 'ORANGE' ? ' danger-orange' : '';
+
+  const actionsHtml = [
+    pageUrl
+      ? `<a href="${pageUrl}" class="biq-row-action-btn btn-primary" target="_blank" rel="noopener">📄 Page clinique</a>`
+      : `<button class="biq-row-action-btn btn-primary" onclick="BIQ_PRO.showDetail('${p.id}');event.stopPropagation()">📋 Fiche détaillée</button>`,
+    p.declarationObligatoire
+      ? `<a href="https://signalement.sante.gouv.fr" class="biq-row-action-btn btn-do" target="_blank" rel="noopener noreferrer">📢 Déclarer (MDO)</a>`
+      : '',
+    `<button class="biq-row-action-btn" onclick="BIQ_PRO.switchTab('biqTabContacts');event.stopPropagation()">📞 Contacts ARS</button>`,
+  ].filter(Boolean).join('');
+
+  return `
+    <div class="biq-patho-row" data-danger="${p.dangerLevel}" data-do="${p.declarationObligatoire}" data-tx="${txType}" data-id="${p.id}" id="biqRow-${p.id}">
+      <div class="biq-row-head" onclick="BIQ_PRO.toggleRow('${p.id}')" role="button" tabindex="0"
+           aria-expanded="false" aria-controls="biqRowBody-${p.id}"
+           onkeydown="if(event.key==='Enter'||event.key===' '){BIQ_PRO.toggleRow('${p.id}');event.preventDefault()}">
+        <div class="biq-row-risk-bar" style="background:${dangerColor}" aria-hidden="true"></div>
+        <span class="biq-row-icon" aria-hidden="true">${p.icon}</span>
+        <div class="biq-row-info">
+          <div class="biq-row-name">${p.nameFR.split('(')[0].trim()}</div>
+          <div class="biq-row-chips">
+            <span class="biq-chip biq-chip-${txCls}">${txLabels[txType]}</span>
+            ${p.declarationObligatoire ? '<span class="biq-chip biq-chip-do">MDO</span>' : ''}
+            ${p.dangerLevel === 'ROUGE' ? '<span class="biq-chip biq-chip-urgence">Urgence</span>' : ''}
+          </div>
+        </div>
+        <span class="biq-row-epi biq-row-epi-${epiInfo.cls}">${epiInfo.lbl}</span>
+        <div class="biq-row-cfr">
+          <span class="biq-row-cfr-val">${cfrShort}</span>
+          <span class="biq-row-cfr-lbl">Létalité</span>
+        </div>
+        <span class="biq-row-chevron" aria-hidden="true">▶</span>
+      </div>
+      <div class="biq-row-body" id="biqRowBody-${p.id}" hidden>
+        <div class="biq-row-epi-full${epiDangerCls}">
+          <strong>EPI :</strong> ${p.epiSoignant.join(' · ')}<br>
+          <strong>Isolement :</strong> ${p.isolementPatient}
+        </div>
+        <div class="biq-row-stats-3">
+          <div class="biq-mini-stat">
+            <div class="biq-mini-stat-lbl">Incubation</div>
+            <div class="biq-mini-stat-val">${p.incubation}</div>
+          </div>
+          <div class="biq-mini-stat">
+            <div class="biq-mini-stat-lbl">Mode de transmission</div>
+            <div class="biq-mini-stat-val">${p.transmission.split(',')[0].split('—')[0].trim().substring(0,65)}</div>
+          </div>
+          <div class="biq-mini-stat">
+            <div class="biq-mini-stat-lbl">Zones endémiques</div>
+            <div class="biq-mini-stat-val">${p.zonesEndemiques.substring(0,60)}</div>
+          </div>
+        </div>
+        <div class="biq-row-actions">${actionsHtml}</div>
+      </div>
+    </div>`;
+}
+
 // ─── RENDU LISTE ─────────────────────────────────────────────────────────────
 function renderPathogenList(container) {
-  const dangerOrder = {ROUGE:0,ORANGE:1,JAUNE:2};
+  const dangerOrder = {ROUGE:0, ORANGE:1, JAUNE:2};
   const sorted = Object.values(PRO_PATHOGENS).sort((a,b) => (dangerOrder[a.dangerLevel]||9) - (dangerOrder[b.dangerLevel]||9));
 
   container.innerHTML = `
+    <div class="biq-search-wrap" role="search">
+      <span class="biq-search-icon" aria-hidden="true">🔍</span>
+      <input class="biq-search-input" id="biqSearchInput" type="search"
+             placeholder="Rechercher un pathogène, symptôme, région…"
+             aria-label="Rechercher dans la liste des pathogènes"
+             oninput="BIQ_PRO.searchPathogens(this.value)">
+    </div>
     <div class="biq-pro-filters" role="group" aria-label="Filtrer les pathogènes">
       <button class="biq-filter-btn active" data-filter="all" onclick="BIQ_PRO.applyFilter(this,'all')">Tous (${sorted.length})</button>
+      <button class="biq-filter-btn" data-filter="AIRBORNE" onclick="BIQ_PRO.applyFilter(this,'AIRBORNE')">💨 Airborne</button>
+      <button class="biq-filter-btn" data-filter="CONTACT" onclick="BIQ_PRO.applyFilter(this,'CONTACT')">🤝 Contact</button>
+      <button class="biq-filter-btn" data-filter="VECTORIEL" onclick="BIQ_PRO.applyFilter(this,'VECTORIEL')">🦟 Vectoriel</button>
+      <button class="biq-filter-btn" data-filter="DO" onclick="BIQ_PRO.applyFilter(this,'DO')">📋 MDO</button>
       <button class="biq-filter-btn" data-filter="ROUGE" onclick="BIQ_PRO.applyFilter(this,'ROUGE')">🔴 Urgence</button>
-      <button class="biq-filter-btn" data-filter="ORANGE" onclick="BIQ_PRO.applyFilter(this,'ORANGE')">🟠 Alerte</button>
-      <button class="biq-filter-btn" data-filter="DO" onclick="BIQ_PRO.applyFilter(this,'DO')">📋 Déclaration obligatoire</button>
     </div>
-    <div class="biq-patho-grid" id="biqPathoGrid">
-      ${sorted.map(p => `
-        <div class="biq-patho-card" data-danger="${p.dangerLevel}" data-do="${p.declarationObligatoire}"
-             onclick="BIQ_PRO.showDetail('${p.id}')" role="button" tabindex="0"
-             onkeydown="if(event.key==='Enter'||event.key===' ')BIQ_PRO.showDetail('${p.id}')"
-             aria-label="Ouvrir la fiche ${p.nameFR}">
-          <div class="biq-patho-card-top">
-            <span class="biq-patho-icon" aria-hidden="true">${p.icon}</span>
-            <span class="biq-danger-badge biq-danger-${p.dangerLevel.toLowerCase()}">${p.dangerLevel}</span>
-          </div>
-          <div class="biq-patho-name">${p.nameFR.split('(')[0].trim()}</div>
-          <div class="biq-patho-sub">${p.agent.split('—')[0].trim().substring(0,50)}…</div>
-          ${p.declarationObligatoire ? '<div class="biq-do-chip">📋 DO</div>' : ''}
-          <div class="biq-patho-open">Fiche clinique →</div>
-        </div>
-      `).join('')}
-    </div>`;
+    <div class="biq-patho-list" id="biqPathoList">
+      ${sorted.map(p => renderPathoRow(p)).join('')}
+    </div>
+    <p class="biq-no-results" id="biqNoResults">Aucun résultat pour cette recherche.</p>`;
+}
+
+function toggleRow(id) {
+  const row = document.getElementById('biqRow-' + id);
+  const body = document.getElementById('biqRowBody-' + id);
+  const head = row && row.querySelector('.biq-row-head');
+  if (!row || !body) return;
+  const isOpen = row.classList.toggle('open');
+  body.hidden = !isOpen;
+  if (head) head.setAttribute('aria-expanded', String(isOpen));
+}
+
+function searchPathogens(query) {
+  const q = query.toLowerCase().trim();
+  let visible = 0;
+  document.querySelectorAll('.biq-patho-row').forEach(row => {
+    const id = row.dataset.id;
+    const p = PRO_PATHOGENS[id];
+    if (!p) return;
+    const match = !q ||
+      p.nameFR.toLowerCase().includes(q) ||
+      p.nameEN.toLowerCase().includes(q) ||
+      p.agent.toLowerCase().includes(q) ||
+      p.zonesEndemiques.toLowerCase().includes(q) ||
+      (p.transmission || '').toLowerCase().includes(q);
+    row.style.display = match ? '' : 'none';
+    if (match) visible++;
+  });
+  const nr = document.getElementById('biqNoResults');
+  if (nr) nr.style.display = visible === 0 ? 'block' : 'none';
 }
 
 function applyFilter(btn, filter) {
   document.querySelectorAll('.biq-filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.biq-patho-card').forEach(card => {
+  const searchInput = document.getElementById('biqSearchInput');
+  if (searchInput) searchInput.value = '';
+  let visible = 0;
+  document.querySelectorAll('.biq-patho-row').forEach(row => {
     let show = true;
-    if (filter === 'ROUGE') show = card.dataset.danger === 'ROUGE';
-    else if (filter === 'ORANGE') show = card.dataset.danger === 'ORANGE';
-    else if (filter === 'DO') show = card.dataset.do === 'true';
-    card.style.display = show ? '' : 'none';
+    if (filter === 'ROUGE') show = row.dataset.danger === 'ROUGE';
+    else if (filter === 'DO') show = row.dataset.do === 'true';
+    else if (['AIRBORNE','CONTACT','VECTORIEL','DIGESTIF'].includes(filter)) show = row.dataset.tx === filter;
+    row.style.display = show ? '' : 'none';
+    if (show) visible++;
   });
+  const nr = document.getElementById('biqNoResults');
+  if (nr) nr.style.display = visible === 0 ? 'block' : 'none';
 }
 
 // ─── RENDU DÉTAIL ─────────────────────────────────────────────────────────────
@@ -1122,7 +1250,7 @@ function init() {
   if (c) renderPathogenList(c);
 }
 
-window.BIQ_PRO = { init, showDetail, showList, applyFilter, switchTab, showArs, renderContacts };
+window.BIQ_PRO = { init, showDetail, showList, applyFilter, toggleRow, searchPathogens, switchTab, showArs, renderContacts };
 return window.BIQ_PRO;
 
 })(); // fin BIQ_PRO

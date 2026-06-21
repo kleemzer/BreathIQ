@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta name="description" content="BreathIQ — outil indépendant d'information médicale et de surveillance épidémique mondiale par le Dr Clément Médeau : alertes pathogènes, données publiques, qualité de l'air et protection respiratoire.">
+  <meta name="description" content="BreathIQ croise qualité de l'air, virus saisonniers, pollution et données sanitaires publiques pour vous donner un score respiratoire simple chaque jour. Gratuit, sans compte, sans publicité.">
   <meta name="keywords" content="qualité air, FFP2, masque respiratoire, prévention respiratoire, épidémie, pathogènes, influenza, pollution, santé publique">
   <meta name="author" content="Dr. Clément MÉDEAU — BreathIQ">
   <meta name="copyright" content="© 2026 Clément MÉDEAU">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
-  <meta property="og:title" content="BreathIQ — Surveillance épidémique mondiale">
-  <meta property="og:description" content="Alertes pathogènes en temps réel. Qualité de l'air, circulation virale, détection précoce des épidémies. Protégez-vous avec des données, pas des craintes.">
+  <meta property="og:title" content="BreathIQ — Votre score respiratoire du jour">
+  <meta property="og:description" content="Comprenez votre environnement respiratoire en un coup d'œil. Score local, conseils simples, données publiques OMS/ECDC/SPF. Gratuit, sans compte.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://breathiq.fr">
   <meta property="og:site_name" content="BreathIQ">
@@ -19,14 +19,14 @@
   <meta property="og:image" content="https://breathiq.fr/assets/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="BreathIQ — Surveillance épidémique mondiale · 21 pathogènes · 9 langues · Données OMS/ECDC/SPF">
+  <meta property="og:image:alt" content="BreathIQ — Score respiratoire local · Données OMS/ECDC/SPF · Gratuit, sans compte">
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BreathIQ — Surveillance épidémique mondiale">
-  <meta name="twitter:description" content="Alertes pathogènes en temps réel. Qualité de l'air, circulation virale, détection précoce des épidémies.">
+  <meta name="twitter:title" content="BreathIQ — Votre score respiratoire du jour">
+  <meta name="twitter:description" content="Comprenez votre risque respiratoire aujourd'hui. Qualité de l'air, virus saisonniers, données publiques. Gratuit, sans compte.">
   <meta name="twitter:creator" content="@breathiq">
   <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
-  <meta name="twitter:image:alt" content="BreathIQ — Surveillance épidémique mondiale">
+  <meta name="twitter:image:alt" content="BreathIQ — Score respiratoire et prévention respiratoire quotidienne">
   <!-- hreflang — indexation multilingue Google/Bing -->
   <link rel="alternate" hreflang="fr" href="https://breathiq.fr/?lang=fr">
   <link rel="alternate" hreflang="en" href="https://breathiq.fr/?lang=en">
@@ -59,7 +59,7 @@
         "@type": "WebSite",
         "@id": "https://breathiq.fr/#website",
         "name": "BreathIQ",
-        "alternateName": "BreathIQ — Surveillance épidémique mondiale",
+        "alternateName": "BreathIQ — Votre score respiratoire du jour",
         "url": "https://breathiq.fr",
         "inLanguage": ["fr", "en", "es", "pt", "ar", "zh", "hi", "sw", "ru"],
         "publisher": { "@id": "https://breathiq.fr/#publisher" },
@@ -68,9 +68,9 @@
       {
         "@type": "MedicalWebPage",
         "@id": "https://breathiq.fr/#medicalwebpage",
-        "name": "BreathIQ — surveillance épidémique mondiale",
+        "name": "BreathIQ — score respiratoire et prévention respiratoire quotidienne",
         "url": "https://breathiq.fr/",
-        "description": "Outil indépendant d'information médicale sur les alertes épidémiques, la qualité de l'air et la protection respiratoire. Ne remplace pas une consultation médicale.",
+        "description": "BreathIQ croise qualité de l'air, virus saisonniers et données sanitaires publiques pour vous donner un score respiratoire simple chaque jour. Outil d'information et de prévention — ne remplace pas un avis médical.",
         "dateModified": "2026-06-20",
         "medicalAudience": ["Patient", "Clinician"],
         "about": [
@@ -106,7 +106,7 @@
     ]
   }
   </script>
-  <title>BreathIQ — Surveillance épidémique mondiale</title>
+  <title>BreathIQ — Votre score respiratoire du jour</title>
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -257,6 +257,75 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   .wiz-alarm-grid{grid-template-columns:1fr}
 }
 
+/* ── GRAND PUBLIC HERO ── */
+.gp-hero-intro{text-align:center;padding:2.5rem 1rem 1.5rem;max-width:700px;margin:0 auto}
+.gp-hero-title{font-size:clamp(1.7rem,5vw,2.6rem);font-weight:800;color:#f1f5f9;line-height:1.18;margin:0 0 .85rem;letter-spacing:-.02em}
+.gp-hero-subtitle{font-size:clamp(.95rem,2.5vw,1.08rem);color:#94a3b8;line-height:1.65;margin:0;font-weight:400;max-width:580px;margin-inline:auto}
+.path-score{background:linear-gradient(135deg,rgba(37,99,235,.18),rgba(59,130,246,.1))!important;border-color:rgba(59,130,246,.35)!important}
+.path-score:hover{background:linear-gradient(135deg,rgba(37,99,235,.3),rgba(59,130,246,.2))!important;border-color:#3b82f6!important}
+
+/* ── SCORE DU JOUR — section grand public ── */
+.gp-score-section{padding:2rem 0;background:linear-gradient(180deg,rgba(15,23,42,0) 0%,rgba(15,23,42,.6) 100%)}
+.gp-score-card{max-width:720px;margin:0 auto;background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.25);border-radius:1.2rem;padding:1.75rem 2rem;position:relative;overflow:hidden}
+.gp-score-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#2563eb,#06b6d4,#10b981)}
+.gp-score-label{font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#64748b;margin-bottom:1rem}
+.gp-score-main{display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.25rem}
+.gp-score-dial{width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;position:relative}
+.gp-score-dial::before{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--score-color,#2563eb) var(--score-pct,55%),rgba(255,255,255,.08) 0%);padding:4px}
+.gp-score-dial-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:74px;height:74px;border-radius:50%;background:#0f172a}
+.gp-score-num{font-size:1.6rem;font-weight:800;color:#f1f5f9;line-height:1}
+.gp-score-total{font-size:.65rem;color:#64748b;line-height:1;margin-top:.1rem}
+.gp-score-info{flex:1;min-width:0}
+.gp-score-level{font-size:1rem;font-weight:700;color:#f1f5f9;margin:0 0 .3rem}
+.gp-score-loc{font-size:.82rem;color:#64748b;margin:0 0 .5rem;display:flex;align-items:center;gap:.3rem}
+.gp-score-advice{font-size:.88rem;color:#94a3b8;line-height:1.5;margin:0;padding:.55rem .8rem;background:rgba(255,255,255,.04);border-left:2px solid #2563eb;border-radius:0 .4rem .4rem 0}
+.gp-factors{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem;margin-bottom:1.25rem}
+@media(min-width:500px){.gp-factors{grid-template-columns:repeat(4,1fr)}}
+.gp-factor{background:rgba(255,255,255,.04);border-radius:.6rem;padding:.55rem .65rem;text-align:center}
+.gp-factor-icon{font-size:1.1rem;display:block;margin-bottom:.2rem}
+.gp-factor-name{font-size:.68rem;color:#64748b;text-transform:uppercase;letter-spacing:.04em;display:block}
+.gp-factor-val{font-size:.8rem;font-weight:600;color:#e2e8f0;display:block;margin-top:.1rem}
+.gp-score-actions{display:flex;gap:.65rem;flex-wrap:wrap}
+.gp-btn-primary{display:inline-flex;align-items:center;gap:.4rem;background:#2563eb;color:#fff;border:none;border-radius:.5rem;padding:.6rem 1.1rem;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;transition:background .15s}
+.gp-btn-primary:hover{background:#1d4ed8;text-decoration:none;color:#fff}
+.gp-btn-ghost{display:inline-flex;align-items:center;gap:.4rem;background:transparent;color:#94a3b8;border:1px solid rgba(255,255,255,.15);border-radius:.5rem;padding:.6rem 1.1rem;font-size:.88rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all .15s}
+.gp-btn-ghost:hover{background:rgba(255,255,255,.06);color:#e2e8f0;text-decoration:none}
+.gp-score-disclaimer{font-size:.72rem;color:#475569;margin-top:1rem;text-align:center;line-height:1.5}
+
+/* ── QUE FAIRE AUJOURD'HUI ── */
+.gp-daily-section{padding:2.5rem 0 1.5rem}
+.gp-daily-section .container{max-width:860px}
+.gp-section-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#2563eb;margin-bottom:.5rem}
+.gp-section-title{font-size:clamp(1.2rem,3vw,1.55rem);font-weight:700;color:#f1f5f9;margin:0 0 .4rem;line-height:1.3}
+.gp-section-sub{font-size:.9rem;color:#64748b;margin:0 0 1.5rem;line-height:1.5}
+.gp-daily-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem}
+@media(min-width:640px){.gp-daily-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.gp-daily-grid{grid-template-columns:repeat(5,1fr)}}
+.gp-daily-card{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:.85rem;padding:1.1rem .9rem;display:flex;flex-direction:column;align-items:flex-start;gap:.4rem;transition:all .18s;cursor:default}
+.gp-daily-card:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.15);transform:translateY(-2px)}
+.gp-daily-icon{font-size:1.6rem;line-height:1}
+.gp-daily-title{font-size:.85rem;font-weight:700;color:#e2e8f0;line-height:1.3}
+.gp-daily-desc{font-size:.75rem;color:#64748b;line-height:1.45}
+.gp-daily-tag{font-size:.65rem;font-weight:600;padding:.12rem .4rem;border-radius:.2rem;background:rgba(37,99,235,.15);color:#93c5fd;border:1px solid rgba(37,99,235,.25);width:fit-content}
+.gp-daily-tag.tag-green{background:rgba(16,185,129,.12);color:#6ee7b7;border-color:rgba(16,185,129,.22)}
+.gp-daily-tag.tag-orange{background:rgba(245,158,11,.1);color:#fcd34d;border-color:rgba(245,158,11,.2)}
+
+/* ── TRUST BAR ── */
+.gp-trust-bar{padding:1.5rem 0;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.02)}
+.gp-trust-bar .container{max-width:860px}
+.gp-trust-items{display:flex;flex-wrap:wrap;justify-content:center;gap:1.25rem 2.5rem}
+.gp-trust-item{display:flex;align-items:center;gap:.5rem;font-size:.8rem;color:#64748b;white-space:nowrap}
+.gp-trust-item svg{flex-shrink:0;color:#2563eb}
+
+/* ── EXPLAINER 30 SECONDES ── */
+.gp-explainer{padding:2.5rem 0}
+.gp-explainer .container{max-width:800px}
+.gp-explainer-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.25rem}
+@media(min-width:640px){.gp-explainer-grid{grid-template-columns:repeat(4,1fr)}}
+.gp-explainer-step{text-align:center;padding:.75rem}
+.gp-explainer-num{width:2rem;height:2rem;border-radius:50%;background:rgba(37,99,235,.15);border:1px solid rgba(37,99,235,.3);color:#60a5fa;font-size:.82rem;font-weight:700;display:flex;align-items:center;justify-content:center;margin:0 auto .6rem}
+.gp-explainer-text{font-size:.82rem;color:#94a3b8;line-height:1.5}
+
 /* ── BIQ PRO — Référentiel Pathogènes ── */
 .biq-pro-section{padding:2rem 0 1rem;background:linear-gradient(135deg,#0a1f35 0%,#0d2d4a 100%);border-top:2px solid #1e4a73}
 .biq-pro-header{text-align:center;margin-bottom:1.25rem}
@@ -271,17 +340,55 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .biq-pro-filters{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1rem}
 .biq-filter-btn{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);color:#cbd5e1;padding:.3rem .75rem;border-radius:1rem;font-size:.8rem;cursor:pointer;transition:all .2s}
 .biq-filter-btn.active,.biq-filter-btn:hover{background:#2563eb;border-color:#2563eb;color:#fff}
-/* Grille pathogènes */
-.biq-patho-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
-@media(max-width:700px){.biq-patho-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:420px){.biq-patho-grid{grid-template-columns:1fr}}
-.biq-patho-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:.6rem;padding:.75rem;cursor:pointer;transition:all .2s;display:flex;flex-direction:column;gap:.3rem}
-.biq-patho-card:hover{background:rgba(59,130,246,.15);border-color:#3b82f6;transform:translateY(-1px)}
-.biq-patho-card-top{display:flex;align-items:center;justify-content:space-between}
-.biq-patho-icon{font-size:1.4rem}
-.biq-patho-name{font-weight:700;color:#e2e8f0;font-size:.88rem;line-height:1.2}
-.biq-patho-sub{font-size:.74rem;color:#94a3b8;line-height:1.3}
-.biq-patho-open{font-size:.75rem;color:#3b82f6;margin-top:auto;font-weight:600}
+/* Liste pathogènes — vue expandable */
+.biq-search-wrap{position:relative;margin-bottom:.75rem}
+.biq-search-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:.5rem;padding:.5rem .75rem .5rem 2rem;font-size:.85rem;color:#e2e8f0;outline:none;transition:border-color .2s;box-sizing:border-box}
+.biq-search-input::placeholder{color:#64748b}
+.biq-search-input:focus{border-color:#3b82f6;background:rgba(59,130,246,.07)}
+.biq-search-icon{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#64748b;font-size:.85rem;pointer-events:none;line-height:1}
+.biq-patho-list{display:flex;flex-direction:column;gap:.35rem}
+.biq-patho-row{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.09);border-radius:.55rem;overflow:hidden;transition:border-color .15s}
+.biq-patho-row:hover{border-color:rgba(255,255,255,.18)}
+.biq-patho-row.open{border-color:rgba(59,130,246,.35);background:rgba(59,130,246,.04)}
+.biq-row-head{display:grid;grid-template-columns:5px 1.3rem 1fr auto auto auto;align-items:center;gap:.6rem;padding:.55rem .85rem .55rem .4rem;cursor:pointer;user-select:none}
+.biq-row-risk-bar{border-radius:3px 0 0 3px;align-self:stretch;min-height:2rem}
+.biq-row-icon{font-size:1.05rem;text-align:center;flex-shrink:0}
+.biq-row-info{min-width:0}
+.biq-row-name{font-size:.85rem;font-weight:700;color:#e2e8f0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;line-height:1.3}
+.biq-row-chips{display:flex;flex-wrap:wrap;gap:.28rem;margin-top:.2rem}
+.biq-chip{font-size:.66rem;font-weight:600;padding:.1rem .38rem;border-radius:.2rem;line-height:1.4;text-transform:uppercase;letter-spacing:.03em;flex-shrink:0}
+.biq-chip-airborne{background:rgba(139,92,246,.18);color:#c4b5fd;border:1px solid rgba(139,92,246,.28)}
+.biq-chip-contact{background:rgba(234,88,12,.13);color:#fb923c;border:1px solid rgba(234,88,12,.22)}
+.biq-chip-vectoriel{background:rgba(34,197,94,.1);color:#86efac;border:1px solid rgba(34,197,94,.18)}
+.biq-chip-digestif{background:rgba(234,179,8,.1);color:#fde047;border:1px solid rgba(234,179,8,.18)}
+.biq-chip-do{background:rgba(99,102,241,.16);color:#a5b4fc;border:1px solid rgba(99,102,241,.26)}
+.biq-chip-urgence{background:rgba(220,38,38,.18);color:#fca5a5;border:1px solid rgba(220,38,38,.28)}
+.biq-row-epi{font-size:.7rem;font-weight:700;padding:.22rem .5rem;border-radius:.3rem;white-space:nowrap;flex-shrink:0}
+.biq-row-epi-bsl4{background:rgba(220,38,38,.18);color:#fca5a5;border:1px solid rgba(220,38,38,.28)}
+.biq-row-epi-ffp2{background:rgba(234,88,12,.13);color:#fb923c;border:1px solid rgba(234,88,12,.22)}
+.biq-row-epi-chir{background:rgba(59,130,246,.13);color:#93c5fd;border:1px solid rgba(59,130,246,.22)}
+.biq-row-cfr{text-align:right;flex-shrink:0;min-width:3.8rem}
+.biq-row-cfr-val{font-size:.82rem;font-weight:700;color:#f1f5f9;display:block;white-space:nowrap}
+.biq-row-cfr-lbl{font-size:.62rem;color:#64748b;text-transform:uppercase;letter-spacing:.04em}
+.biq-row-chevron{color:#475569;font-size:.7rem;transition:transform .2s;flex-shrink:0}
+.biq-patho-row.open .biq-row-chevron{transform:rotate(90deg);color:#60a5fa}
+.biq-row-body{border-top:1px solid rgba(255,255,255,.07);padding:.7rem .85rem}
+.biq-row-epi-full{border-left:3px solid #6366f1;border-radius:0 .35rem .35rem 0;padding:.48rem .75rem;margin-bottom:.6rem;font-size:.8rem;color:#c7d2fe;line-height:1.45;background:rgba(99,102,241,.1)}
+.biq-row-epi-full.danger-rouge{background:rgba(220,38,38,.1);border-left-color:#dc2626;color:#fca5a5}
+.biq-row-epi-full.danger-orange{background:rgba(234,88,12,.09);border-left-color:#ea580c;color:#fdba74}
+.biq-row-stats-3{display:grid;grid-template-columns:repeat(3,1fr);gap:.4rem;margin-bottom:.6rem}
+@media(max-width:520px){.biq-row-stats-3{grid-template-columns:1fr 1fr}}
+.biq-mini-stat{background:rgba(255,255,255,.05);border-radius:.35rem;padding:.45rem .6rem}
+.biq-mini-stat-lbl{font-size:.62rem;color:#64748b;text-transform:uppercase;letter-spacing:.04em}
+.biq-mini-stat-val{font-size:.79rem;font-weight:600;color:#e2e8f0;margin-top:.12rem;line-height:1.35}
+.biq-row-actions{display:flex;flex-wrap:wrap;gap:.4rem}
+.biq-row-action-btn{font-size:.77rem;font-weight:600;padding:.35rem .65rem;border-radius:.35rem;border:1px solid rgba(255,255,255,.13);background:rgba(255,255,255,.06);color:#cbd5e1;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.28rem;transition:all .15s;white-space:nowrap}
+.biq-row-action-btn:hover{background:rgba(59,130,246,.18);border-color:#3b82f6;color:#93c5fd}
+.biq-row-action-btn.btn-primary{background:rgba(37,99,235,.18);border-color:rgba(37,99,235,.5);color:#93c5fd}
+.biq-row-action-btn.btn-primary:hover{background:rgba(37,99,235,.32)}
+.biq-row-action-btn.btn-do{background:rgba(99,102,241,.14);border-color:rgba(99,102,241,.4);color:#a5b4fc}
+.biq-row-action-btn.btn-do:hover{background:rgba(99,102,241,.28)}
+.biq-no-results{text-align:center;color:#64748b;font-size:.85rem;padding:2rem 0;display:none}
 /* Badges danger — différenciation couleur + forme + icône (daltonisme-safe) */
 .biq-danger-badge{font-size:.75rem;font-weight:700;padding:.2rem .5rem;border-radius:.3rem;text-transform:uppercase;letter-spacing:.03em}
 .biq-danger-rouge{background:#dc2626;color:#fff}
@@ -484,12 +591,18 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <section class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
   <div class="patient-hero-inner">
 
+    <!-- H1 grand public — compréhension en 5 secondes -->
+    <div class="gp-hero-intro">
+      <h1 class="gp-hero-title" id="patient-hero-title">Comprenez votre risque respiratoire aujourd'hui.</h1>
+      <p class="gp-hero-subtitle">BreathIQ croise qualité de l'air, virus saisonniers et données sanitaires publiques pour vous donner une lecture simple de votre environnement — chaque jour.</p>
+    </div>
+
     <!-- Indicateur de risque — universel, visuel, immédiat -->
     <div class="risk-banner risk-low" id="patientRiskBanner" role="status" aria-live="polite">
       <div class="risk-level-icon" id="patientRiskIcon">🟢</div>
       <span class="risk-level-label" id="patientRiskLabel">RISQUE FAIBLE</span>
       <h2 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h2>
-      <p id="patientRiskDesc">Aucune alerte épidémique active — continuez vos activités normalement</p>
+      <p id="patientRiskDesc">Aucune alerte active — continuez vos activités normalement</p>
       <div class="risk-pheic-strip" id="riskPheicStrip">
         🚨 <strong>PHEIC OMS ACTIVE</strong> — Ebola Bundibugyo · RDC + Ouganda · 344 cas confirmés · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">Voir la fiche →</a>
       </div>
@@ -500,8 +613,13 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
         <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
         <span class="path-icon">🤒</span>
-        <span class="path-title">Je me sens malade</span>
+        <span class="path-title">J'ai des symptômes</span>
         <span class="path-sub">Savoir quoi faire maintenant</span>
+      </a>
+      <a href="#dailyScore" class="path-card path-score" onclick="return navTo(event,'#dailyScore')">
+        <span class="path-icon">📊</span>
+        <span class="path-title">Mon score du jour</span>
+        <span class="path-sub">Air · Virus · Conseils adaptés</span>
       </a>
       <a href="#careFinder" class="path-card path-doctor" onclick="return navTo(event,'#careFinder')">
         <span class="path-icon">📍</span>
@@ -516,6 +634,161 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     </div>
 
     <p class="hero-disclaimer">Gratuit · Sans inscription · Aucune donnée personnelle collectée</p>
+  </div>
+</section>
+
+<!-- ===== TRUST BAR (Mode Patient) ===== -->
+<div class="gp-trust-bar patient-only" role="complementary" aria-label="Garanties BreathIQ">
+  <div class="container">
+    <div class="gp-trust-items">
+      <span class="gp-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Données publiques OMS · ECDC · SPF
+      </span>
+      <span class="gp-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
+        Sans compte · Sans publicité
+      </span>
+      <span class="gp-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
+        Aucune donnée de santé collectée
+      </span>
+      <span class="gp-trust-item">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
+        Conçu par un médecin
+      </span>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SCORE DU JOUR (Mode Patient) ===== -->
+<section class="gp-score-section patient-only" id="dailyScore" aria-labelledby="dailyScoreTitle">
+  <div class="container" style="max-width:720px">
+    <div class="gp-score-card">
+      <div class="gp-score-label">Votre point respiratoire du jour · À vérifier avant de sortir</div>
+      <div class="gp-score-main">
+        <div class="gp-score-dial" style="--score-color:#2563eb;--score-pct:55%">
+          <div class="gp-score-dial-inner">
+            <span class="gp-score-num" id="gpScoreNum">55</span>
+            <span class="gp-score-total">/100</span>
+          </div>
+        </div>
+        <div class="gp-score-info">
+          <p class="gp-score-level" id="gpScoreLevel">Modéré</p>
+          <span id="gpScoreDelta" style="display:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:4px;display:inline-block"></span>
+          <p class="gp-score-loc" id="gpScoreLoc">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span id="gpScoreLocText">Votre région</span>
+          </p>
+          <p class="gp-score-advice" id="gpScoreAdvice">Contexte respiratoire modéré. Pas de précaution particulière pour la majorité. Si vous êtes asthmatique ou fragile, limitez l'exposition prolongée.</p>
+        </div>
+      </div>
+      <div class="gp-factors">
+        <div class="gp-factor">
+          <span class="gp-factor-icon">🌬️</span>
+          <span class="gp-factor-name">Qualité de l'air</span>
+          <span class="gp-factor-val" id="gpFactorAqi">Bonne</span>
+        </div>
+        <div class="gp-factor">
+          <span class="gp-factor-icon">🦠</span>
+          <span class="gp-factor-name">Circulation virale</span>
+          <span class="gp-factor-val" id="gpFactorViral">Modérée</span>
+        </div>
+        <div class="gp-factor">
+          <span class="gp-factor-icon">🌿</span>
+          <span class="gp-factor-name">Pollens</span>
+          <span class="gp-factor-val" id="gpFactorPollen">Élevés</span>
+        </div>
+        <div class="gp-factor">
+          <span class="gp-factor-icon">🌡️</span>
+          <span class="gp-factor-name">Météo</span>
+          <span class="gp-factor-val" id="gpFactorWeather">Favorable</span>
+        </div>
+      </div>
+      <div class="gp-score-actions">
+        <a href="#score" onclick="return navTo(event,'#score')" class="gp-btn-primary" aria-label="Voir le score détaillé et les composantes">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          Voir le score complet
+        </a>
+        <a href="methodologie.html" class="gp-btn-ghost">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          Comprendre la méthode
+        </a>
+      </div>
+      <p class="gp-score-disclaimer">Ce score ne prédit pas votre risque individuel de maladie. Il vous aide à comprendre le contexte respiratoire autour de vous. Les conseils sont généraux et ne remplacent pas un avis médical.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== QUE FAIRE AUJOURD'HUI (Mode Patient) ===== -->
+<section class="gp-daily-section patient-only" id="dailyActions" aria-labelledby="dailyActionsTitle">
+  <div class="container">
+    <p class="gp-section-label">Conseils du jour</p>
+    <h2 class="gp-section-title" id="dailyActionsTitle">Que faire aujourd'hui ?</h2>
+    <p class="gp-section-sub">Des gestes simples, fondés sur les données du jour. Sans alarmisme.</p>
+    <div class="gp-daily-grid">
+      <div class="gp-daily-card">
+        <span class="gp-daily-icon" aria-hidden="true">🪟</span>
+        <span class="gp-daily-title">Aérez votre logement</span>
+        <span class="gp-daily-desc">10 minutes le matin, même en hiver. Renouveler l'air réduit la concentration en virus.</span>
+        <span class="gp-daily-tag tag-green">Toujours bénéfique</span>
+      </div>
+      <div class="gp-daily-card">
+        <span class="gp-daily-icon" aria-hidden="true">😷</span>
+        <span class="gp-daily-title">Masque FFP2 si fragile</span>
+        <span class="gp-daily-desc">En transports bondés ou espaces clos si vous êtes à risque ou si la circulation virale est élevée.</span>
+        <span class="gp-daily-tag tag-orange">Selon profil</span>
+      </div>
+      <div class="gp-daily-card">
+        <span class="gp-daily-icon" aria-hidden="true">🏃</span>
+        <span class="gp-daily-title">Sport en extérieur</span>
+        <span class="gp-daily-desc">L'air extérieur reste généralement préférable. Vérifiez l'indice AQI local si vous êtes asthmatique.</span>
+        <span class="gp-daily-tag">Voir score air</span>
+      </div>
+      <div class="gp-daily-card">
+        <span class="gp-daily-icon" aria-hidden="true">👴</span>
+        <span class="gp-daily-title">Visites aux personnes âgées</span>
+        <span class="gp-daily-desc">Si vous êtes enrhumé ou si la circulation virale est forte, portez un masque ou reportez.</span>
+        <span class="gp-daily-tag tag-orange">Précaution</span>
+      </div>
+      <div class="gp-daily-card">
+        <span class="gp-daily-icon" aria-hidden="true">🩺</span>
+        <span class="gp-daily-title">Symptômes persistants ?</span>
+        <span class="gp-daily-desc">Fièvre, toux ou difficultés à respirer depuis plus de 3 jours : consultez un médecin.</span>
+        <span class="gp-daily-tag">Consulter →</span>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:#475569;margin-top:1.25rem;text-align:center">BreathIQ est un outil d'information et de prévention. Il ne remplace pas un avis médical. <a href="methodologie.html" style="color:#64748b">Méthodologie →</a></p>
+  </div>
+</section>
+
+<!-- ===== EN 30 SECONDES — EXPLAINER (Mode Patient) ===== -->
+<section class="gp-explainer patient-only" aria-label="Comment fonctionne BreathIQ ?">
+  <div class="container">
+    <p class="gp-section-label" style="text-align:center">Comment ça marche ?</p>
+    <h2 class="gp-section-title" style="text-align:center;max-width:480px;margin-inline:auto" id="explainerTitle">BreathIQ en 30 secondes</h2>
+    <div class="gp-explainer-grid" role="list">
+      <div class="gp-explainer-step" role="listitem">
+        <div class="gp-explainer-num" aria-hidden="true">1</div>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous observons</strong>
+        <p class="gp-explainer-text">Qualité de l'air, signaux viraux, pollens et données sanitaires publiques — en continu.</p>
+      </div>
+      <div class="gp-explainer-step" role="listitem">
+        <div class="gp-explainer-num" aria-hidden="true">2</div>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous transformons</strong>
+        <p class="gp-explainer-text">Ces données complexes deviennent un score simple 0–100, lisible en un coup d'œil.</p>
+      </div>
+      <div class="gp-explainer-step" role="listitem">
+        <div class="gp-explainer-num" aria-hidden="true">3</div>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous suggérons</strong>
+        <p class="gp-explainer-text">Des conseils généraux adaptés au contexte du jour. Sans diagnostic, sans alarmisme.</p>
+      </div>
+      <div class="gp-explainer-step" role="listitem">
+        <div class="gp-explainer-num" aria-hidden="true">4</div>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous citons tout</strong>
+        <p class="gp-explainer-text">OMS, ECDC, Santé Publique France. Chaque donnée est sourcée et vérifiable publiquement.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1462,9 +1735,9 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <!-- Header Mode Patient -->
     <div class="section-header patient-only">
       <div class="pathogens-patient-header">
-        <div class="ppb">17 maladies suivies en temps réel</div>
+        <div class="ppb">21 virus et infections suivis en temps réel</div>
       </div>
-      <h2 id="pathogens-title" data-i18n="pathogens-patient-title">Maladies infectieuses — quels symptômes surveiller ?</h2>
+      <h2 id="pathogens-title" data-i18n="pathogens-patient-title">Virus et infections — quels symptômes surveiller ?</h2>
       <p class="section-subtitle" data-i18n="pathogens-patient-sub">Cliquez sur une maladie pour voir ses symptômes et savoir quand s'isoler</p>
     </div>
     <!-- Header Mode Expert -->
@@ -1740,10 +2013,10 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <!-- ===== ABOUT / TRUST SECTION ===== -->
 <section class="about-section" id="about" aria-labelledby="about-title">
   <div class="container">
-    <details class="collapsible-section">
+    <details class="collapsible-section" open>
       <summary class="collapsible-summary">
-        <span class="collapsible-title" id="about-title" data-i18n="about-title">Confiance &amp; Transparence</span>
-        <span class="collapsible-sub">Dr. Clément MÉDEAU · Sources vérifiables · RGPD · Non-DM</span>
+        <span class="collapsible-title" id="about-title" data-i18n="about-title">Pourquoi faire confiance à BreathIQ ?</span>
+        <span class="collapsible-sub">Dr. Clément MÉDEAU · Données publiques · Sans pub · RGPD</span>
         <span class="collapsible-chevron" aria-hidden="true">▾</span>
       </summary>
 
@@ -1782,25 +2055,24 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
       <div class="trust-card">
         <div class="trust-icon">
-          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Protection juridique"><title>Protection juridique</title><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Pas de diagnostic"><title>Pas de diagnostic</title><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 data-i18n="trust-legal-title">Protection juridique</h3>
+        <h3 data-i18n="trust-legal-title">Pas de diagnostic</h3>
         <p data-i18n="trust-legal-desc">
-          Base de données protégée — droit sui generis Art. L341-1 CPI.
-          Toute reproduction à des fins d'entraînement IA est expressément interdite.
+          BreathIQ ne pose pas de diagnostic et ne remplace pas un médecin.
+          C'est un outil de prévention et d'information, fondé sur des données publiques.
         </p>
       </div>
     </div>
 
     <div class="disclaimer-box" role="note">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       <div>
-        <strong data-i18n="disclaimer-title">Non-dispositif médical — Important</strong>
+        <strong data-i18n="disclaimer-title">BreathIQ est un outil d'information et de prévention</strong>
         <p data-i18n="disclaimer-text">
-          BreathIQ est exclusivement un outil d'information publique et de gestion logistique.
-          Il ne constitue pas un dispositif médical, n'émet pas de recommandations médicales individuelles,
-          et ne participe pas au diagnostic, traitement ou prévention d'une maladie chez un individu.
-          Pour tout conseil médical, consultez un professionnel de santé.
+          Il ne remplace pas un avis médical et ne constitue pas un dispositif médical (Règlement UE 2017/745).
+          Les conseils affichés sont généraux et ne tiennent pas compte de votre situation personnelle.
+          En cas de symptômes sévères, consultez un professionnel de santé ou appelez le 15.
         </p>
       </div>
     </div>
@@ -1816,7 +2088,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   <div class="footer-inner">
     <div class="footer-brand">
       <span class="brand-text footer-brand-text">Breath<strong>IQ</strong></span>
-      <p class="footer-tagline" data-i18n="footer-tagline">Surveillance épidémique mondiale</p>
+      <p class="footer-tagline" data-i18n="footer-tagline">Prévention respiratoire · Données publiques</p>
     </div>
 
     <nav class="footer-links" aria-label="Liens légaux et ressources">
@@ -2036,7 +2308,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/diagnostic-engine.min.js?v=20260620" defer></script>
-<script src="script.min.js?v=20260620" defer></script>
+<script src="script.min.js?v=20260621" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

@@ -22,19 +22,19 @@ const WHO_THRESHOLDS_2021 = {
 // ── i18n ────────────────────────────────────────────────────
 const I18N = {
   fr: {
-    'nav-symptoms': 'Symptômes',
+    'nav-symptoms': 'Que faire ?',
     'nav-score': 'Mon Score',
-    'nav-map': 'Carte mondiale',
-    'nav-stocks': 'Masques & Stocks',
+    'nav-map': 'Carte',
+    'nav-stocks': 'Masques FFP2',
     'nav-pathogens': 'Maladies',
     'nav-protection': 'Protection',
     'nav-about': 'À propos',
-    'hero-badge': 'Surveillance épidémique · Données mondiales',
-    'hero-title-1': 'L\'air que vous respirez,',
-    'hero-title-2': 'intelligemment surveillé.',
-    'hero-subtitle': 'Indice respiratoire en temps réel. Qualité de l\'air, circulation virale, pathogènes actifs. Prenez des décisions éclairées — pas des décisions anxieuses.',
-    'hero-cta-score': 'Mon Indice Respiratoire',
-    'hero-cta-map': 'Carte des foyers',
+    'hero-badge': 'Prévention respiratoire · Données publiques',
+    'hero-title-1': 'Votre copilote de prévention',
+    'hero-title-2': 'respiratoire.',
+    'hero-subtitle': 'BreathIQ croise qualité de l\'air, virus saisonniers et données sanitaires publiques pour vous donner une lecture simple de votre environnement — chaque jour.',
+    'hero-cta-score': 'Voir mon score respiratoire',
+    'hero-cta-map': 'Carte mondiale',
     'hero-disclaimer': 'Outil d\'information publique — non dispositif médical · Accès libre et gratuit',
     'hsc-label': 'Indice respiratoire',
     'hsc-loading': 'Calcul en cours…',
@@ -42,8 +42,8 @@ const I18N = {
     'hsc-regions-unit': 'régions',
     'hsc-pathogens': 'Pathogènes suivis',
     'hsc-pathogens-unit': 'pathogènes',
-    'score-title': 'Indice Respiratoire Global',
-    'score-subtitle': 'Score synthétique 0–100 combinant qualité de l\'air, circulation virale, pollens et météo.',
+    'score-title': 'Votre score respiratoire du jour',
+    'score-subtitle': 'Un score 0–100 qui résume la qualité de l\'air, la circulation virale, les pollens et la météo autour de vous.',
     'score-label': '/100',
     'score-select-region': 'Région :',
     'score-components-title': 'Composantes du score',
@@ -1556,6 +1556,51 @@ function updateScoreDisplay(regionId) {
   // Region selector sync
   const sel = document.getElementById('regionSelect');
   if (sel) sel.value = selectedRegionId;
+
+  // ── GP Score Card (grand public) ──────────────────────────────
+  const gpNum   = document.getElementById('gpScoreNum');
+  const gpLevel = document.getElementById('gpScoreLevel');
+  const gpLoc   = document.getElementById('gpScoreLocText');
+  const gpAdv   = document.getElementById('gpScoreAdvice');
+  const gpDial  = document.querySelector('.gp-score-dial');
+  const gpInner = document.querySelector('.gp-score-dial-inner');
+
+  if (gpNum)   gpNum.textContent = score.sr;
+  if (gpLevel) { gpLevel.textContent = currentLang === 'fr' ? grade.grade : scoreGradeEN(score.sr); gpLevel.style.color = grade.color; }
+  if (gpLoc)   gpLoc.textContent = currentLang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR);
+  if (gpAdv)   gpAdv.textContent = aiMessageForRegion(region, score, currentLang);
+  if (gpDial)  gpDial.style.setProperty('--score-color', grade.color);
+  if (gpInner) gpInner.style.setProperty('--score-pct', score.sr + '%');
+
+  // Factor values
+  const gpFactorMap = { gpFactorAqi: score.aqi, gpFactorViral: score.viral, gpFactorPollen: score.pollen, gpFactorWeather: score.weather };
+  Object.entries(gpFactorMap).forEach(([id, val]) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  });
+
+  // Delta J vs J-1 (localStorage)
+  const TODAY = new Date().toISOString().slice(0, 10);
+  const stored = JSON.parse(localStorage.getItem('biq_score_history') || '{}');
+  const yesterday = Object.keys(stored).sort().reverse().find(d => d < TODAY);
+  const deltaEl = document.getElementById('gpScoreDelta');
+  if (deltaEl) {
+    if (yesterday && stored[yesterday] !== undefined) {
+      const diff = score.sr - stored[yesterday];
+      const sign = diff > 0 ? '+' : '';
+      deltaEl.textContent = `${sign}${diff} vs hier`;
+      deltaEl.style.color = diff > 0 ? '#EF4444' : diff < 0 ? '#10B981' : '#9CA3AF';
+      deltaEl.style.display = 'inline';
+    } else {
+      deltaEl.style.display = 'none';
+    }
+  }
+  // Save today's score
+  stored[TODAY] = score.sr;
+  // Keep only last 8 days
+  const keys = Object.keys(stored).sort().reverse();
+  if (keys.length > 8) keys.slice(8).forEach(k => delete stored[k]);
+  try { localStorage.setItem('biq_score_history', JSON.stringify(stored)); } catch(e) {}
 }
 
 // ── Map ──────────────────────────────────────────────────────
