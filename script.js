@@ -1670,9 +1670,35 @@ function updateScoreDisplay(regionId) {
     const opts = { day: 'numeric', month: 'long', year: 'numeric' };
     const dateStr = d.toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', opts);
     dateEl.textContent = currentLang === 'fr'
-      ? `Calculé aujourd'hui, ${dateStr} · Sources OMS · ECDC · SPF`
-      : `Calculated today, ${dateStr} · Sources WHO · ECDC · SPF`;
+      ? `Estimation calculée aujourd'hui, ${dateStr} — Sources : OMS · ECDC · SPF · Open-Meteo`
+      : `Estimate calculated today, ${dateStr} — Sources: WHO · ECDC · SPF · Open-Meteo`;
   }
+
+  // CTA contextuel selon niveau de risque
+  const ctaDiv  = document.getElementById('gpScoreCta');
+  const ctaBtn  = document.getElementById('gpScoreCtaBtn');
+  const ctaIcon = document.getElementById('gpScoreCtaIcon');
+  const ctaTxt  = document.getElementById('gpScoreCtaText');
+  if (ctaDiv && ctaBtn && ctaIcon && ctaTxt) {
+    ctaDiv.style.display = 'block';
+    if (score.sr <= 35) {
+      ctaIcon.textContent = '✅'; ctaTxt.textContent = currentLang === 'fr' ? 'Vous pouvez sortir — conseils du jour' : 'You can go out — daily tips';
+      ctaBtn.style.background = '#16a34a';
+    } else if (score.sr <= 55) {
+      ctaIcon.textContent = '💡'; ctaTxt.textContent = currentLang === 'fr' ? 'Quelques précautions utiles' : 'A few useful precautions';
+      ctaBtn.style.background = '#2563eb';
+    } else if (score.sr <= 70) {
+      ctaIcon.textContent = '⚠️'; ctaTxt.textContent = currentLang === 'fr' ? 'Précautions recommandées — voir les conseils' : 'Precautions recommended — see tips';
+      ctaBtn.style.background = '#d97706';
+    } else {
+      ctaIcon.textContent = '🔴'; ctaTxt.textContent = currentLang === 'fr' ? 'Contexte chargé — précautions importantes' : 'Heavy context — important precautions';
+      ctaBtn.style.background = '#dc2626';
+    }
+  }
+
+  // Révéler la carte (anti-flash : était opacity:0 au chargement)
+  const card = document.getElementById('gpScoreCard');
+  if (card) card.classList.add('js-ready');
 }
 
 // ── Bannière épidémique — contrôle grand public / expert ─────
@@ -2789,9 +2815,13 @@ function wizAlarmChecked(labelEl) {
   if (!cb) return;
   cb.checked = !cb.checked;
   labelEl.classList.toggle('alarm-checked', cb.checked);
-  if (cb.checked) {
-    // Analyse immédiate dès qu'un signe d'alarme est coché
-    setTimeout(wizAnalyze, 200);
+  // Bandeau urgence immédiat visible dès le premier cochage
+  const emergBanner = document.getElementById('wiz-emergency-banner');
+  const anyChecked = document.querySelectorAll('#wiz-step-0 input[type="checkbox"]:checked').length > 0;
+  if (emergBanner) emergBanner.classList.toggle('visible', anyChecked);
+  if (anyChecked) {
+    emergBanner?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    setTimeout(wizAnalyze, 400);
   }
 }
 
