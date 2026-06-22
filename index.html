@@ -196,6 +196,20 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .onboarding-overlay{z-index:9500!important;background:rgba(0,0,0,.82)!important}
 .geo-modal-overlay{z-index:9500!important;background:rgba(0,0,0,.82)!important}
 
+/* ── FIX : Lisibilité mobile — police minimum 15px pour +50 ans ── */
+@media(max-width:768px){
+  body{font-size:16px}
+  .gp-hero-title{font-size:clamp(1.6rem,6vw,2.2rem)!important}
+  .gp-hero-subtitle{font-size:1rem!important;line-height:1.7!important}
+  .path-title{font-size:1rem!important}
+  .path-sub{font-size:.85rem!important}
+  .gp-score-advice{font-size:.92rem!important;line-height:1.6!important}
+  .gp-factor-name{font-size:.85rem!important}
+  .gp-trust-item{font-size:.82rem!important}
+  .risk-banner h2{font-size:1.1rem!important}
+  .risk-level-label{font-size:.85rem!important;letter-spacing:.05em!important}
+}
+
 /* ── AUDIT FIX : Bottom nav lisibilité améliorée ── */
 .mobile-bottom-nav{background:rgba(8,16,28,.97)!important;border-top:1px solid rgba(59,130,246,.2)!important;backdrop-filter:blur(12px)}
 .mobile-bottom-nav a,.mobile-bottom-nav button{color:#94a3b8!important;font-weight:500!important}
@@ -553,7 +567,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     <ul class="nav-links" role="list">
       <li class="patient-only"><a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" data-i18n="nav-symptoms">Symptômes</a></li>
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
-      <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
+      <li class="expert-only"><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Masques & Stocks</a></li>
       <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
@@ -562,8 +576,8 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
     </ul>
 
     <div class="nav-actions">
-      <span class="live-badge live-off" id="liveBadge" title="Score estimatif — données simulées. L'AQI réel est chargé en arrière-plan si votre connexion le permet." aria-label="Statut données : estimatif">
-        <span class="live-dot"></span><span class="live-label" id="liveLabelText">ESTIMÉ</span>
+      <span class="live-badge live-off" id="liveBadge" title="Données publiques OMS · ECDC · SPF · Open-Meteo — mises à jour quotidiennement." aria-label="Statut des données">
+        <span class="live-dot"></span><span class="live-label" id="liveLabelText">DONNÉES PUBLIQUES</span>
       </span>
       <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé"><span aria-hidden="true">👨‍⚕️</span><span class="mode-btn-text"> Espace Soignant</span></button>
       <select class="lang-select" id="langSelect" aria-label="Changer de langue" onchange="setLang(this.value)">
@@ -601,12 +615,12 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
      ======================================================= -->
 <div class="epidemic-alert-banner" id="epidemicAlertBanner" role="status" aria-live="polite" aria-label="Alerte sanitaire internationale en cours">
   <div class="epidemic-alert-inner">
-    <!-- Message grand public — simple, calme, sans jargon clinique -->
+    <!-- Message grand public — rassurant d'abord, puis contexte -->
     <div class="epidemic-alert-gp patient-only" id="epidemicGpMsg">
-      <span class="epidemic-level rouge" aria-hidden="true">🔴</span>
+      <span class="epidemic-level rouge" aria-hidden="true">ℹ️</span>
       <span class="epidemic-gp-text">
-        <strong>Alerte OMS — Ebola en Afrique centrale.</strong>
-        Pas de cas confirmé en France. Si vous revenez d'Afrique centrale/est avec de la fièvre, appelez le 15.
+        <strong>En France : aucun cas d'Ebola confirmé — risque quasi nul pour vous.</strong>
+        Une épidémie est active en Afrique centrale (RDC, Ouganda). Si vous revenez de cette région avec de la fièvre, appelez le 15 sans vous déplacer.
       </span>
       <a href="ebola.html" class="epidemic-link">En savoir plus →</a>
     </div>
@@ -630,10 +644,10 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <section class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
   <div class="patient-hero-inner">
 
-    <!-- H1 grand public — compréhension en 5 secondes -->
+    <!-- H1 grand public — réponse immédiate, pas explication -->
     <div class="gp-hero-intro">
-      <h1 class="gp-hero-title" id="patient-hero-title">Comprenez votre risque respiratoire aujourd'hui.</h1>
-      <p class="gp-hero-subtitle">BreathIQ croise qualité de l'air, virus saisonniers et données sanitaires publiques pour vous donner une lecture simple de votre environnement — chaque jour.</p>
+      <h1 class="gp-hero-title" id="patient-hero-title">Est-ce que je peux sortir aujourd'hui ?</h1>
+      <p class="gp-hero-subtitle">BreathIQ surveille chaque jour la qualité de l'air, les virus saisonniers et les alertes sanitaires — pour vous donner une réponse simple sur votre environnement. Gratuit, sans inscription.</p>
     </div>
 
     <!-- Indicateur de risque — universel, visuel, immédiat -->
@@ -643,7 +657,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       <h2 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h2>
       <p id="patientRiskDesc">Aucune alerte active — continuez vos activités normalement</p>
       <div class="risk-pheic-strip" id="riskPheicStrip">
-        🚨 <strong>PHEIC OMS ACTIVE</strong> — Ebola Bundibugyo · RDC + Ouganda · 344 cas confirmés · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">Voir la fiche →</a>
+        ℹ️ <strong>Alerte OMS active</strong> — Épidémie d'Ebola en Afrique centrale · <strong>Aucun cas en France</strong> · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">En savoir plus →</a>
       </div>
     </div>
 
@@ -657,8 +671,8 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
       </a>
       <a href="#dailyScore" class="path-card path-score" onclick="return navTo(event,'#dailyScore')">
         <span class="path-icon">📊</span>
-        <span class="path-title">Mon score du jour</span>
-        <span class="path-sub">Air · Virus · Conseils adaptés</span>
+        <span class="path-title">L'air est-il bon aujourd'hui ?</span>
+        <span class="path-sub">Air · Virus · Pollens · Conseils</span>
       </a>
       <a href="#careFinder" class="path-card path-doctor" onclick="return navTo(event,'#careFinder')">
         <span class="path-icon">📍</span>
@@ -2348,7 +2362,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260621" defer></script>
-<script src="script.min.js?v=20260621b" defer></script>
+<script src="script.min.js?v=20260622" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

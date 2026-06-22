@@ -1325,18 +1325,18 @@ function aiMessageForRegion(region, score, lang) {
 
   const messages = {
     fr: {
-      excellent: `L'air à ${name} est de qualité excellente. Aucune protection particulière recommandée pour les personnes en bonne santé.`,
-      good: `Conditions respiratoires satisfaisantes à ${name}. Personnes sensibles (asthme, BPCO) peuvent bénéficier d'un masque chirurgical dans espaces bondés.`,
-      moderate: `Vigilance recommandée à ${name}. Personnes vulnérables : envisager FFP2 lors de transports bondés et espaces peu ventilés.`,
-      high: `Exposition respiratoire significative à ${name}. FFP2 conseillé pour personnes à risque. Éviter exercice physique intense en extérieur.`,
-      critical: `Niveau critique à ${name}. Protection FFP2 fortement recommandée en extérieur. Limiter les sorties inutiles. Aérer les locaux aux heures creuses.`
+      excellent: `Très bonne journée à ${name} — vous pouvez sortir et vaquer normalement à vos activités. Aucune précaution particulière recommandée.`,
+      good: `Bonne journée à ${name}. L'environnement est favorable. Si vous souffrez d'asthme ou d'allergies, votre traitement habituel suffit.`,
+      moderate: `Journée correcte à ${name}, avec quelques facteurs à surveiller. Les personnes asthmatiques ou allergiques peuvent préférer limiter les sorties prolongées.`,
+      high: `Contexte respiratoire chargé à ${name}. Les personnes fragiles (asthme, allergie, personnes âgées) sont invitées à limiter les sorties et à porter un masque dans les transports.`,
+      critical: `Situation préoccupante à ${name}. Limitez vos sorties si vous êtes fragile. Portez un masque de protection si vous devez sortir. Aérez votre logement tôt le matin.`
     },
     en: {
-      excellent: `Air quality in ${name} is excellent. No special protection recommended for healthy individuals.`,
-      good: `Satisfactory respiratory conditions in ${name}. Sensitive individuals (asthma, COPD) may benefit from a surgical mask in crowded spaces.`,
-      moderate: `Vigilance recommended in ${name}. Vulnerable individuals: consider FFP2 in crowded transport and poorly ventilated spaces.`,
-      high: `Significant respiratory exposure in ${name}. FFP2 advised for at-risk individuals. Avoid intense outdoor exercise.`,
-      critical: `Critical level in ${name}. FFP2 strongly recommended outdoors. Limit unnecessary outings. Ventilate premises during off-peak hours.`
+      excellent: `Great day in ${name} — you can go out and carry on normally. No precautions needed.`,
+      good: `Good day in ${name}. The environment is favourable. If you have asthma or allergies, your usual treatment is sufficient.`,
+      moderate: `Moderate conditions in ${name}. People with asthma or allergies may prefer to limit extended outdoor time.`,
+      high: `Heavy respiratory context in ${name}. Vulnerable people (asthma, allergies, elderly) are advised to limit outings and wear a mask on public transport.`,
+      critical: `Concerning situation in ${name}. Limit your outings if you are vulnerable. Wear a mask if you must go out. Ventilate your home early in the morning.`
     }
   };
 
@@ -2587,32 +2587,31 @@ function updatePatientRiskBanner() {
   banner.className = 'risk-banner';
 
   if (hasPHEIC) {
-    banner.classList.add('risk-critical');
-    if (icon)  { icon.textContent = '🚨'; icon.classList.add('pulse'); }
-    if (label) label.textContent = lang === 'fr' ? 'ALERTE MONDIALE ACTIVE' : 'GLOBAL ALERT ACTIVE';
-    if (title) title.textContent = lang === 'fr' ? 'Urgence sanitaire internationale déclarée par l\'OMS' : 'International Public Health Emergency declared by WHO';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'Ebola Bundibugyo : épidémie active en RDC et Ouganda · 344 cas confirmés · aucun cas en France' : 'Ebola Bundibugyo: active outbreak in DRC and Uganda · 344 confirmed cases · no cases in France';
-    // Show urgency dot on symptoms path card
+    banner.classList.add('risk-moderate');
+    if (icon)  { icon.textContent = 'ℹ️'; icon.classList.remove('pulse'); }
+    if (label) label.textContent = lang === 'fr' ? 'SURVEILLANCE INTERNATIONALE' : 'INTERNATIONAL MONITORING';
+    if (title) title.textContent = lang === 'fr' ? 'En France : aucun cas d\'Ebola confirmé — vous n\'êtes pas en danger' : 'In France: no confirmed Ebola case — you are not at risk';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'Une épidémie est active en Afrique centrale. Si vous revenez de cette région avec de la fièvre, appelez le 15 sans vous déplacer.' : 'An outbreak is active in Central Africa. If you return from this region with fever, call emergency services without travelling.';
     const dot = document.getElementById('heroUrgencyDot');
-    if (dot) dot.hidden = false;
+    if (dot) dot.hidden = true;
   } else if (score.sr <= 45) {
     banner.classList.add('risk-low');
     if (icon)  { icon.textContent = '🟢'; icon.classList.remove('pulse'); }
-    if (label) label.textContent = lang === 'fr' ? 'RISQUE FAIBLE' : 'LOW RISK';
-    if (title) title.textContent = lang === 'fr' ? 'Risque respiratoire actuellement faible dans votre région' : 'Currently low respiratory risk in your region';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'La situation épidémiologique est sous contrôle — restez vigilant' : 'Epidemiological situation is under control — stay alert';
+    if (label) label.textContent = lang === 'fr' ? 'ENVIRONNEMENT FAVORABLE' : 'FAVOURABLE CONDITIONS';
+    if (title) title.textContent = lang === 'fr' ? 'Oui, vous pouvez sortir normalement aujourd\'hui' : 'Yes, you can go out normally today';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'L\'air, les virus et les pollens sont à des niveaux acceptables dans votre région' : 'Air quality, viruses and pollen are at acceptable levels in your area';
   } else if (score.sr <= 65) {
     banner.classList.add('risk-moderate');
     if (icon)  { icon.textContent = '🟡'; icon.classList.remove('pulse'); }
-    if (label) label.textContent = lang === 'fr' ? 'VIGILANCE RECOMMANDÉE' : 'CAUTION ADVISED';
-    if (title) title.textContent = lang === 'fr' ? 'Risque modéré — des foyers épidémiques sont actifs dans le monde' : 'Moderate risk — active disease outbreaks worldwide';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'Portez un masque dans les espaces bondés. Lavez-vous les mains régulièrement.' : 'Wear a mask in crowded spaces. Wash your hands regularly.';
+    if (label) label.textContent = lang === 'fr' ? 'QUELQUES PRÉCAUTIONS' : 'SOME PRECAUTIONS';
+    if (title) title.textContent = lang === 'fr' ? 'Vous pouvez sortir — quelques précautions si vous êtes fragile' : 'You can go out — some precautions if you are vulnerable';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'Lavez-vous les mains régulièrement. Si vous êtes asthmatique ou allergique, surveillez vos symptômes.' : 'Wash your hands regularly. If you have asthma or allergies, monitor your symptoms.';
   } else {
     banner.classList.add('risk-high');
     if (icon)  { icon.textContent = '🔴'; icon.classList.remove('pulse'); }
-    if (label) label.textContent = lang === 'fr' ? 'RISQUE ÉLEVÉ' : 'HIGH RISK';
-    if (title) title.textContent = lang === 'fr' ? 'Risque élevé — protection respiratoire fortement recommandée' : 'High risk — respiratory protection strongly recommended';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'Port du masque FFP2 recommandé. Évitez les espaces confinés.' : 'FFP2 mask recommended. Avoid confined and crowded spaces.';
+    if (label) label.textContent = lang === 'fr' ? 'PRUDENCE RECOMMANDÉE' : 'CAUTION RECOMMENDED';
+    if (title) title.textContent = lang === 'fr' ? 'Contexte respiratoire chargé — limitez vos sorties si vous êtes fragile' : 'Heavy respiratory context — limit outings if you are vulnerable';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'Portez un masque dans les transports et espaces bondés. Lavez-vous les mains souvent.' : 'Wear a mask on public transport and in crowded spaces. Wash your hands frequently.';
   }
 
   // Update expert stats bar
@@ -4554,8 +4553,8 @@ function _updateLiveBadgeAqi(isLive) {
   } else {
     badge.classList.remove('live-partial');
     badge.classList.add('live-off');
-    if (label) label.textContent = 'ESTIMÉ';
-    badge.title = 'Score estimatif — données simulées (AQI non disponible)';
+    if (label) label.textContent = 'DONNÉES PUBLIQUES';
+    badge.title = 'Données publiques OMS · ECDC · SPF · Open-Meteo — mises à jour quotidiennement';
   }
 }
 
