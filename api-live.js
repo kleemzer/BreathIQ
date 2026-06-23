@@ -24,6 +24,23 @@ const BIQ_LIVE = (() => {
     stocks:      24 * 60 * 60 * 1000, // 24 h
   };
 
+  // Couverture vaccinale grippe France — données statiques SPF (fallback si API indisponible)
+  const VACC_GRIPPE_STATIC = {
+    nationalRate: 54.2, // % couverture vaccinale grippe saisonnière 2024-2025 (SPF, déc 2024)
+    target: 75,
+    season: '2024-2025',
+    belowTarget: true,
+    byRegion: [
+      { region: 'Bretagne', rate: 58.1 },
+      { region: 'Normandie', rate: 57.4 },
+      { region: 'Pays de la Loire', rate: 56.8 },
+      { region: 'Hauts-de-France', rate: 55.3 },
+      { region: 'Nouvelle-Aquitaine', rate: 54.9 },
+    ],
+    label: 'Couverture grippe 54.2% (SPF 2024-2025 — données statiques)',
+    _isStatic: true,
+  };
+
   // ── Endpoints statiques (sans géolocalisation) ─────────────────
   const EP = {
     // SPF — grippe France via data.gouv.fr (miroir stable, CORS *)
@@ -53,6 +70,13 @@ const BIQ_LIVE = (() => {
       label: 'SUM\'EAU — SARS-CoV-2 eaux usées France',
       url: 'https://static.data.gouv.fr/resources/surveillance-du-sars-cov-2-dans-les-eaux-usees-sumeau/20260121-132916/sumeau-indicateurs.csv',
       ttl: 'outbreaks',
+      region: 'FR',
+    },
+    // WHO FluNet — Grippe France (VIW_FNT)
+    who_flunet_fr: {
+      label: 'WHO FluNet — Grippe France (VIW_FNT)',
+      url: 'https://xmart-api-public.who.int/FLUMART/VIW_FNT?%24format=json&%24filter=COUNTRY_CODE%20eq%20%27FRA%27%20and%20HEMISPHERE%20eq%20%27NH%27&%24orderby=ISO_WEEK_START%20desc&%24top=12',
+      ttl: 'flu',
       region: 'FR',
     },
     // disease.sh — COVID-19 France (séries 30j)
@@ -474,6 +498,53 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
+  function parseFluNet(raw) {
+  try {
+    // FluNet renvoie { value: [{COUNTRY_CODE, ISO_WEEK_START, ISO_WEEK, ALL_INF, INF_A, INF_B, ...}] }
+    const records = raw?.value || [];
+    if (!records.length) return null;
+
+    // Filtrer les semaines avec données (ALL_INF non null)
+    const valid = records
+      .filter(r => r.ALL_INF != null && r.ALL_INF >= 0)
+      .sort((a, b) => (b.ISO_WEEK_START || '').localeCompare(a.ISO_WEEK_START || ''));
+
+    if (!valid.length) return null;
+
+    const latest = valid[0];
+    const series = valid.slice(0, 12).reverse().map(r => ({
+      week: r.ISO_WEEK || r.ISO_WEEK_START || '',
+      cases: parseInt(r.ALL_INF || 0),
+      infA: parseInt(r.INF_A || 0),
+      infB: parseInt(r.INF_B || 0),
+    }));
+
+    const totalCases = series.reduce((s, r) => s + r.cases, 0);
+    const avgCases = Math.round(totalCases / series.length);
+    const latestCases = series[series.length - 1]?.cases || 0;
+
+    // Score viral : normalisé (FluNet donne des cas/semaine, seuil épidémique ~500 cas/sem pour la France)
+    const viralScore = Math.min(100, Math.round((latestCases / 800) * 100));
+
+    // Tendance (comparer dernière semaine vs moyenne)
+    const trend = avgCases > 0 ? ((latestCases - avgCases) / avgCases) * 100 : 0;
+    const alertLevel = viralScore >= 70 ? 'rouge' : viralScore >= 45 ? 'orange' : viralScore >= 25 ? 'jaune' : 'normal';
+
+    return {
+      rate: latestCases, // nombre absolu (FluNet est différent de SPF /100k)
+      week: latest.ISO_WEEK || '',
+      label: `Grippe France ${latestCases} cas sem. ${latest.ISO_WEEK || ''} (WHO FluNet)`,
+      viralScore,
+      series,
+      infA: parseInt(latest.INF_A || 0),
+      infB: parseInt(latest.INF_B || 0),
+      trend: Math.round(trend),
+      alertLevel,
+      source: 'WHO FluNet',
+    };
+  } catch { return null; }
+}
+
   // ── Open-Meteo avec pollen ─────────────────────────────────────
   function fetchOpenMeteoForLocation(lat, lon) {
     const variables = [
@@ -640,8 +711,10 @@ const BIQ_LIVE = (() => {
     if (state.data.openmeteo_local?.data)  { out.localAqi   = parseOpenMeteo(state.data.openmeteo_local.data);   out.sources.openMeteoLocal = state.data.openmeteo_local.source; }
     if (state.data.waqi_local?.data)       { out.waqiLocal  = parseWAQI(state.data.waqi_local.data);             out.sources.waqiLocal      = state.data.waqi_local.source; }
     if (state.data.disease_sh_covid?.data) { out.covidFr    = parseDiseaseShCovid(state.data.disease_sh_covid.data); out.sources.covidFr   = state.data.disease_sh_covid.source; }
+    if (state.data.who_flunet_fr?.data) { out.frFlu = out.frFlu || parseFluNet(state.data.who_flunet_fr.data); out.sources.fluNetFr = state.data.who_flunet_fr.source; }
     if (state.data.flu_vacc_data?._direct) { out.fluVaccFr  = state.data.flu_vacc_data.data;                    out.sources.fluVaccFr      = state.data.flu_vacc_data.source; }
     else if (state.data.flu_vacc_fr?.data) { out.fluVaccMeta = parseFluVaccFr(state.data.flu_vacc_fr.data);     out.sources.fluVaccFr      = state.data.flu_vacc_fr.source; }
+    if (!out.fluVaccFr && !out.fluVaccMeta) out.fluVaccFr = VACC_GRIPPE_STATIC;
 
     // Qualité d'air locale : WAQI (géolocalisé) > Open-Meteo (géolocalisé)
     out.bestLocalAqi = out.waqiLocal || out.localAqi || null;

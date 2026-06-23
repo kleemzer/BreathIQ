@@ -1286,8 +1286,9 @@ function generateScoreForRegion(region) {
     critical: 75, low: 60, moderate: 45, sufficient: 25
   }[region.status] || 40;
 
-  // AQI : utiliser la valeur live si disponible dans le cache, sinon estimation
-  const cachedAqi = _liveAqiCache[`${region.id}`];
+  // AQI : si ville personnalisée active, utiliser son cache ; sinon cache régional
+  const cacheKey = _customCity ? 'custom' : String(region.id);
+  const cachedAqi = _liveAqiCache[cacheKey];
   const aqi    = cachedAqi ? cachedAqi.score : Math.round(statusBase + (noise(seed * 1.1) - 0.5) * 20);
   const viral  = Math.round(statusBase + (noise(seed * 2.3) - 0.5) * 25);
   const pollen = Math.round(30 + noise(seed * 3.7) * 40);
@@ -1387,6 +1388,7 @@ let outbreakLayer = null;
 let activeLayer = 'both';
 let currentFilter = localStorage.getItem('biq-pathogen-filter') || 'all';
 let selectedRegionId = null;
+let _customCity = null; // { name, lat, lon } quand l'utilisateur a cherché une ville ou utilisé la géolocalisation
 let outbreakDataVersion = 0;
 let lastPathogensRenderSignature = '';
 let latestClinicalOrientation = null;
@@ -1620,7 +1622,7 @@ function updateScoreDisplay(regionId) {
 
   if (gpNum)   gpNum.textContent = score.sr;
   if (gpLevel) { gpLevel.textContent = currentLang === 'fr' ? grade.grade : scoreGradeEN(score.sr); gpLevel.style.color = grade.color; }
-  if (gpLoc)   gpLoc.textContent = currentLang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR);
+  if (gpLoc)   gpLoc.textContent = _customCity ? '📍 ' + _customCity.name : (currentLang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR));
   if (gpAdv)   gpAdv.textContent = aiMessageForRegion(region, score, currentLang);
   if (gpDial)  gpDial.style.setProperty('--score-color', grade.color);
   if (gpInner) gpInner.style.setProperty('--score-pct', score.sr + '%');
@@ -4417,7 +4419,8 @@ function renderLiveSourcesPanel(parsed) {
     { key:'ecdcMpox',     icon:'🇪🇺', label: fr ? 'ECDC — Mpox Europe'             : 'ECDC — Mpox Europe',                  value: parsed.ecMpox      ? `${parsed.ecMpox.cases30d} cas/30j` : '—' },
     { key:'sumeau',       icon:'💧', label: fr ? 'SUM\'EAU — COVID eaux usées'      : 'SUM\'EAU — COVID wastewater',         value: parsed.sumeau      ? `${parsed.sumeau.intensity} (${parsed.sumeau.week})` : '—' },
     { key:'covidFr',      icon:'🦠', label: fr ? 'disease.sh — COVID-19 France 30j' : 'disease.sh — COVID-19 France 30d',     value: parsed.covidFr     ? `${parsed.covidFr.casesAvg7d?.toLocaleString()} cas/j · ${parsed.covidFr.trendDir === 'up' ? '↗' : parsed.covidFr.trendDir === 'down' ? '↘' : '→'}` : '—' },
-    { key:'fluVaccFr',    icon:'💉', label: fr ? 'SPF — Vaccination grippe France'   : 'SPF — Flu vaccination France',         value: parsed.fluVaccFr   ? `${parsed.fluVaccFr.nationalRate?.toFixed(1)}% (cible ${parsed.fluVaccFr.target}%)` : (parsed.fluVaccMeta ? 'métadonnées OK' : '—') },
+    { key:'fluVaccFr',    icon:'💉', label: fr ? 'SPF — Vaccination grippe France'   : 'SPF — Flu vaccination France',         value: parsed.fluVaccFr   ? `${parsed.fluVaccFr.nationalRate?.toFixed(1)}%${parsed.fluVaccFr._isStatic ? ' (statique)' : ''} / cible ${parsed.fluVaccFr.target}%` : '—' },
+    { key:'fluNetFr',     icon:'🌡️', label: fr ? 'WHO FluNet — Grippe France'        : 'WHO FluNet — Flu France',              value: parsed.frFlu       ? `${parsed.frFlu.rate} cas sem. ${parsed.frFlu.week} (${parsed.frFlu.source || 'FluNet'})` : '—' },
   ];
 
   const statusLabel = fr
@@ -4691,6 +4694,85 @@ async function fetchLiveAqiAndRefresh(regionId) {
     // AQI réel obtenu : refresher l'affichage avec la nouvelle valeur
     updateScoreDisplay(region.id);
     _updateLiveBadgeAqi(true);
+  }
+}
+
+// ── Géolocalisation GPS → AQI commune précise ────────────────────────────────
+async function activateGeolocationAqi() {
+  if (!navigator.geolocation) return;
+  const btn = document.getElementById('gpGeoBtn');
+  if (btn) { btn.disabled = true; btn.textContent = '⌛'; }
+
+  navigator.geolocation.getCurrentPosition(
+    async ({ coords: { latitude: lat, longitude: lon } }) => {
+      try {
+        const geoResp = await fetch(
+          `https://nominatim.openstreetmap.org/reverse?lat=${lat.toFixed(5)}&lon=${lon.toFixed(5)}&format=json`,
+          { headers: { 'Accept-Language': currentLang || 'fr', 'User-Agent': 'BreathIQ/1.0 (contact@breathiq.fr)' } }
+        );
+        let cityName = 'Position actuelle';
+        if (geoResp.ok) {
+          const geo = await geoResp.json();
+          cityName = geo.address?.city || geo.address?.town || geo.address?.village || geo.address?.county || 'Position actuelle';
+        }
+
+        _customCity = { name: cityName, lat, lon };
+        await fetchLiveAqi({ id: 'custom', lat, lon });
+        updateScoreDisplay(selectedRegionId || 1);
+        _updateLiveBadgeAqi(true);
+
+        const hint = document.getElementById('gpCityHint');
+        if (hint) { hint.textContent = '📍 ' + cityName; hint.style.color = '#10b981'; }
+        const input = document.getElementById('gpCityInput');
+        if (input) input.value = cityName;
+        if (btn) { btn.textContent = '📍'; btn.title = cityName; }
+      } catch {
+        if (btn) { btn.textContent = '📍'; }
+      }
+      if (btn) btn.disabled = false;
+    },
+    () => { if (btn) { btn.disabled = false; btn.textContent = '📍'; } },
+    { timeout: 10000, maximumAge: 60000 }
+  );
+}
+
+// ── Recherche ville → AQI précis ─────────────────────────────────────────────
+async function searchCityAqi() {
+  const input = document.getElementById('gpCityInput');
+  if (!input) return;
+  const query = input.value.trim();
+  if (!query) return;
+
+  const btn  = document.getElementById('gpCityBtn');
+  const hint = document.getElementById('gpCityHint');
+  if (btn)  { btn.disabled = true; btn.textContent = '…'; }
+  if (hint) { hint.textContent = ''; }
+
+  try {
+    const geoResp = await fetch(
+      `https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(query)}&format=json&limit=1&addressdetails=1`,
+      { headers: { 'Accept-Language': currentLang || 'fr', 'User-Agent': 'BreathIQ/1.0 (contact@breathiq.fr)' } }
+    );
+    if (!geoResp.ok) throw new Error('Geocoding error');
+    const geoData = await geoResp.json();
+    if (!geoData.length) {
+      if (hint) { hint.textContent = currentLang === 'fr' ? 'Ville introuvable' : 'City not found'; hint.style.color = '#ef4444'; }
+      return;
+    }
+
+    const { lat, lon, address } = geoData[0];
+    const cityName = address?.city || address?.town || address?.village || address?.county || query;
+
+    _customCity = { name: cityName, lat: parseFloat(lat), lon: parseFloat(lon) };
+    await fetchLiveAqi({ id: 'custom', lat: parseFloat(lat), lon: parseFloat(lon) });
+    updateScoreDisplay(selectedRegionId || 1);
+    _updateLiveBadgeAqi(true);
+
+    if (hint) { hint.textContent = '✅ ' + cityName; hint.style.color = '#10b981'; }
+  } catch {
+    if (hint) { hint.textContent = currentLang === 'fr' ? 'Erreur réseau' : 'Network error'; hint.style.color = '#ef4444'; }
+  } finally {
+    if (btn) { btn.disabled = false; btn.textContent = '→'; }
   }
 }
 
