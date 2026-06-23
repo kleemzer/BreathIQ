@@ -1268,7 +1268,9 @@ async function fetchLiveAqi(region) {
     const eaqi = data?.current?.european_aqi;
     if (typeof eaqi !== 'number') throw new Error('No AQI value');
     const score = _eaqiToScore(eaqi);
-    _liveAqiCache[cacheKey] = { score, eaqi, ts: Date.now() };
+    const pm25 = data?.current?.pm2_5 ?? null;
+    const pm10 = data?.current?.pm10 ?? null;
+    _liveAqiCache[cacheKey] = { score, eaqi, pm25, pm10, ts: Date.now() };
     _saveLiveAqiCache();
     return score;
   } catch(e) {
@@ -3675,6 +3677,23 @@ function applyLiveData(parsed) {
   const viralComp = document.getElementById('comp-viral-value');
   if (viralComp && parsed.frFlu) viralComp.title = parsed.frFlu.label || '';
 
+  // Affichage PM2.5 / PM10 (Open-Meteo régional, déjà fetchés dans _liveAqiCache)
+  const cachedAqi = _liveAqiCache[`${selectedRegionId || 1}`];
+  const pmBadgeEl = document.getElementById('gpPmBadge');
+  if (pmBadgeEl && (cachedAqi?.pm25 != null || cachedAqi?.pm10 != null)) {
+    const pm25 = cachedAqi.pm25 != null ? cachedAqi.pm25.toFixed(1) : '—';
+    const pm10 = cachedAqi.pm10 != null ? cachedAqi.pm10.toFixed(1) : '—';
+    const pm25AboveWHO = cachedAqi.pm25 != null && cachedAqi.pm25 > 15;
+    const pm25Color = pm25AboveWHO ? '#EF4444' : '#10B981';
+    pmBadgeEl.innerHTML = `
+      <span class="pm-chip" style="color:${pm25Color}" title="Valeur guide OMS 2021 : PM2.5 ≤ 15 µg/m³">
+        PM2.5 <strong>${pm25}</strong> µg/m³ ${pm25AboveWHO ? '⚠️' : '✅'}
+      </span>
+      ${cachedAqi.pm10 != null ? `<span class="pm-chip" title="PM10 (OMS : ≤ 45 µg/m³)">PM10 <strong>${pm10}</strong> µg/m³</span>` : ''}
+    `;
+    pmBadgeEl.style.display = 'flex';
+  }
+
   // Horodatage
   const tsEl = document.getElementById('liveLastUpdate');
   if (tsEl) {
@@ -3693,6 +3712,10 @@ function applyLiveData(parsed) {
   renderWaqiWidget(parsed.waqiLocal || parsed.localAqi);
   // Pollen
   renderPollenWidget(parsed.localAqi);
+  // Widget COVID-19 courbe épidémique (disease.sh)
+  renderCovidCurveWidget(parsed.covidFr);
+  // Widget vaccination grippe (data.gouv.fr SPF)
+  renderVaccGrippeWidget(parsed.fluVaccFr || parsed.fluVaccMeta);
 }
 
 // ── Tracker multi-épidémies ──────────────────────────────────────
@@ -4393,6 +4416,8 @@ function renderLiveSourcesPanel(parsed) {
     { key:'cdcFlu',       icon:'🇺🇸', label: fr ? 'CDC — Grippe USA'                : 'CDC — Flu USA',                       value: parsed.usFlu       ? `niv. ${parsed.usFlu.level}` : '—' },
     { key:'ecdcMpox',     icon:'🇪🇺', label: fr ? 'ECDC — Mpox Europe'             : 'ECDC — Mpox Europe',                  value: parsed.ecMpox      ? `${parsed.ecMpox.cases30d} cas/30j` : '—' },
     { key:'sumeau',       icon:'💧', label: fr ? 'SUM\'EAU — COVID eaux usées'      : 'SUM\'EAU — COVID wastewater',         value: parsed.sumeau      ? `${parsed.sumeau.intensity} (${parsed.sumeau.week})` : '—' },
+    { key:'covidFr',      icon:'🦠', label: fr ? 'disease.sh — COVID-19 France 30j' : 'disease.sh — COVID-19 France 30d',     value: parsed.covidFr     ? `${parsed.covidFr.casesAvg7d?.toLocaleString()} cas/j · ${parsed.covidFr.trendDir === 'up' ? '↗' : parsed.covidFr.trendDir === 'down' ? '↘' : '→'}` : '—' },
+    { key:'fluVaccFr',    icon:'💉', label: fr ? 'SPF — Vaccination grippe France'   : 'SPF — Flu vaccination France',         value: parsed.fluVaccFr   ? `${parsed.fluVaccFr.nationalRate?.toFixed(1)}% (cible ${parsed.fluVaccFr.target}%)` : (parsed.fluVaccMeta ? 'métadonnées OK' : '—') },
   ];
 
   const statusLabel = fr
@@ -4551,6 +4576,109 @@ function renderPollenWidget(data) {
         </div>
       `).join('')}
     </div>
+  `;
+}
+
+// ── Widget COVID-19 courbe épidémique (disease.sh) ───────────────────────────
+function renderCovidCurveWidget(data) {
+  const el = document.getElementById('covidCurveWidget');
+  if (!el) return;
+
+  if (!data?.dailyCases?.length) {
+    el.innerHTML = `<p class="lsd-loading">Données COVID non disponibles</p>`;
+    return;
+  }
+
+  const fr = currentLang === 'fr';
+  const trendIcon = data.trendDir === 'up' ? '↗' : data.trendDir === 'down' ? '↘' : '→';
+  const trendColor = data.trendDir === 'up' ? '#EF4444' : data.trendDir === 'down' ? '#10B981' : '#F59E0B';
+
+  // Mini courbe SVG 30j
+  const vals = data.dailyCases.map(d => d.cases);
+  const maxVal = Math.max(...vals, 1);
+  const W = 220, H = 50;
+  const pts = vals.map((v, i) => {
+    const x = Math.round((i / (vals.length - 1)) * W);
+    const y = Math.round(H - (v / maxVal) * H);
+    return `${x},${y}`;
+  }).join(' ');
+
+  // Couleur selon tendance
+  const curveColor = data.trendDir === 'up' ? '#EF4444' : data.trendDir === 'down' ? '#10B981' : '#F59E0B';
+
+  el.innerHTML = `
+    <div class="covid-curve-header">
+      <span class="covid-curve-val">${data.casesAvg7d.toLocaleString(fr ? 'fr-FR' : 'en-US')}</span>
+      <span class="covid-curve-unit">${fr ? 'cas/j moy. 7j' : 'cases/day avg 7d'}</span>
+      <span class="covid-curve-trend" style="color:${trendColor}">${trendIcon} ${data.trend > 0 ? '+' : ''}${data.trend}%</span>
+    </div>
+    <svg viewBox="0 0 ${W} ${H}" class="covid-svg" aria-hidden="true">
+      <polyline points="${pts}" fill="none" stroke="${curveColor}" stroke-width="2" stroke-linejoin="round"/>
+      <line x1="0" y1="${H}" x2="${W}" y2="${H}" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
+    </svg>
+    <div class="covid-curve-footer">
+      <span>💀 ${data.deathsAvg7d} ${fr ? 'décès/j moy.' : 'deaths/day avg'}</span>
+      <span class="covid-source">disease.sh · ${data.lastDate}</span>
+    </div>
+    <div class="covid-who-note">${fr
+      ? '⚠️ COVID-19 reste endémique — données déclaratives (sous-estimation probable)'
+      : '⚠️ COVID-19 remains endemic — declared cases (likely undercount)'}</div>
+  `;
+}
+
+// ── Widget vaccination grippe (data.gouv.fr SPF) ─────────────────────────────
+function renderVaccGrippeWidget(data) {
+  const el = document.getElementById('vaccGrippeWidget');
+  if (!el) return;
+
+  const fr = currentLang === 'fr';
+
+  // Cas où on a seulement les métadonnées (URL de ressource, pas encore les données)
+  if (data?._needsSecondFetch || !data?.nationalRate) {
+    if (data?.datasetTitle) {
+      el.innerHTML = `
+        <p class="lsd-loading">
+          📋 ${fr ? 'Jeu de données disponible' : 'Dataset available'} : <em>${data.datasetTitle}</em><br>
+          <small>${fr ? 'Ressource en cours de chargement…' : 'Loading resource…'}</small>
+        </p>`;
+    } else {
+      el.innerHTML = `<p class="lsd-loading">${fr ? 'Données vaccination non disponibles' : 'Vaccination data unavailable'}</p>`;
+    }
+    return;
+  }
+
+  const rate = data.nationalRate;
+  const target = data.target || 75;
+  const pct = Math.min(100, Math.round((rate / target) * 100));
+  const barColor = rate >= target ? '#10B981' : rate >= target * 0.85 ? '#F59E0B' : '#EF4444';
+
+  const regionRows = (data.byRegion || []).slice(0, 5).map(r => `
+    <div class="vacc-region-row">
+      <span class="vacc-region-name">${r.region}</span>
+      <div class="vacc-bar-wrap">
+        <div class="vacc-bar" style="width:${Math.min(100,(r.rate/target)*100)}%;background:${r.rate >= target ? '#10B981' : '#F59E0B'}"></div>
+      </div>
+      <span class="vacc-region-rate">${r.rate.toFixed(1)}%</span>
+    </div>
+  `).join('');
+
+  el.innerHTML = `
+    <div class="vacc-national">
+      <span class="vacc-national-val" style="color:${barColor}">${rate.toFixed(1)}%</span>
+      <span class="vacc-national-label">${fr ? 'couverture nationale' : 'national coverage'}</span>
+      <span class="vacc-target">cible OMS : ${target}%</span>
+    </div>
+    <div class="vacc-progress-wrap">
+      <div class="vacc-progress" style="width:${pct}%;background:${barColor}"></div>
+    </div>
+    ${regionRows ? `<div class="vacc-regions">${regionRows}</div>` : ''}
+    <div class="vacc-footer">
+      <span>Saison ${data.season}</span>
+      <span class="vacc-source">SPF · data.gouv.fr</span>
+    </div>
+    ${rate < target ? `<div class="vacc-alert">${fr
+      ? `⚠️ Couverture insuffisante (${rate.toFixed(0)}% < ${target}%) — risque épidémique accru`
+      : `⚠️ Insufficient coverage (${rate.toFixed(0)}% < ${target}%) — increased epidemic risk`}</div>` : ''}
   `;
 }
 

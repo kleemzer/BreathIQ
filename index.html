@@ -549,6 +549,38 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 @keyframes pulse-red{from{box-shadow:0 0 0 0 rgba(220,38,38,.4)}to{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
 #wiz-emergency-banner.visible{display:block}
 #wiz-emergency-banner a{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none}
+/* PM2.5 / PM10 badge sous composante AQI */
+.pm-badge{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.4rem}
+.pm-chip{font-size:.72rem;color:#94a3b8;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:.3rem;padding:.15rem .45rem}
+.pm-chip strong{color:inherit}
+/* Cartes Espace Soignant — COVID + Vaccination */
+.lsd-covid{border-top:3px solid #ef4444}
+.lsd-vacc{border-top:3px solid #10b981}
+/* COVID curve widget */
+.covid-curve-header{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.4rem}
+.covid-curve-val{font-size:1.4rem;font-weight:800;color:#f1f5f9}
+.covid-curve-unit{font-size:.72rem;color:#94a3b8;flex:1}
+.covid-curve-trend{font-size:.85rem;font-weight:700}
+.covid-svg{display:block;width:100%;height:50px;overflow:visible}
+.covid-curve-footer{display:flex;justify-content:space-between;font-size:.7rem;color:#64748b;margin-top:.3rem}
+.covid-source{opacity:.7}
+.covid-who-note{font-size:.68rem;color:#f59e0b;margin-top:.5rem;background:rgba(245,158,11,.08);border-radius:.3rem;padding:.3rem .5rem}
+/* Vaccination widget */
+.vacc-national{display:flex;align-items:baseline;gap:.5rem;margin-bottom:.4rem}
+.vacc-national-val{font-size:1.4rem;font-weight:800}
+.vacc-national-label{font-size:.75rem;color:#94a3b8;flex:1}
+.vacc-target{font-size:.68rem;color:#64748b}
+.vacc-progress-wrap{height:6px;background:rgba(255,255,255,.1);border-radius:3px;margin-bottom:.6rem}
+.vacc-progress{height:6px;border-radius:3px;transition:width .5s}
+.vacc-regions{display:flex;flex-direction:column;gap:.25rem;margin-bottom:.4rem}
+.vacc-region-row{display:grid;grid-template-columns:1fr 3fr auto;align-items:center;gap:.4rem;font-size:.7rem}
+.vacc-region-name{color:#94a3b8;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vacc-bar-wrap{height:4px;background:rgba(255,255,255,.1);border-radius:2px}
+.vacc-bar{height:4px;border-radius:2px;transition:width .4s}
+.vacc-region-rate{color:#f1f5f9;font-weight:600;text-align:right}
+.vacc-footer{display:flex;justify-content:space-between;font-size:.68rem;color:#64748b;margin-top:.3rem}
+.vacc-source{opacity:.7}
+.vacc-alert{font-size:.7rem;color:#fbbf24;background:rgba(251,191,36,.08);border-radius:.3rem;padding:.3rem .5rem;margin-top:.4rem}
 </style>
 </head>
 <body id="mainBody">
@@ -1408,6 +1440,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
               <div class="component-bar"><div class="component-fill aqi-fill" id="aqiFill" style="width:50%"></div></div>
               <span class="component-val" id="aqiVal"><span class="skeleton" aria-hidden="true">00</span></span>
             </div>
+            <div id="gpPmBadge" class="pm-badge" style="display:none"></div>
           </div>
           <div class="component-item">
             <div class="component-header">
@@ -1502,6 +1535,18 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
         <h3 class="lsd-title" data-i18n="live-src-sumeau">COVID-19 — Eaux usées</h3>
         <p class="lsd-subtitle" data-i18n="live-src-sumeau-sub">SUM'EAU · 54 collectivités · Signal précoce France</p>
         <div id="sumeauWidget"><p class="lsd-loading">Chargement…</p></div>
+      </div>
+      <!-- Widget COVID-19 courbe épidémique (disease.sh) -->
+      <div class="lsd-card lsd-covid">
+        <h3 class="lsd-title">COVID-19 — Courbe épidémique France</h3>
+        <p class="lsd-subtitle">disease.sh · Données officielles · Série 30 jours</p>
+        <div id="covidCurveWidget"><p class="lsd-loading">Chargement…</p></div>
+      </div>
+      <!-- Widget Vaccination grippe (SPF / data.gouv.fr) -->
+      <div class="lsd-card lsd-vacc">
+        <h3 class="lsd-title">Vaccination grippe — Couverture France</h3>
+        <p class="lsd-subtitle">SPF · data.gouv.fr · Saison 2025-2026</p>
+        <div id="vaccGrippeWidget"><p class="lsd-loading">Chargement…</p></div>
       </div>
     </div>
     </details>
@@ -2391,11 +2436,11 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
   window._loadBiqPro=loadBiqPro;
 })();
 </script>
-<script src="api-live.js?v=20260620" defer></script>
+<script src="api-live.js?v=20260623b" defer></script>
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260621" defer></script>
-<script src="script.min.js?v=20260623" defer></script>
+<script src="script.min.js?v=20260623b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
