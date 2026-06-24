@@ -1,9 +1,19 @@
 {
   "generatedAt": "2026-06-24T10:13:55.593Z",
   "fetchDate": "2026-06-24",
-  "alertCount": 20,
+  "alertCount": 21,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "FIRST EBOLA CASE IN FRANCE — Ebola Bundibugyo virus (imported from DRC), France",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/",
+      "donId": "2026-FRANCE-EBOLA-01",
+      "pubDate": "2026-06-24",
+      "riskLevel": "critical",
+      "source": "SPF / DGS / WHO",
+      "france": true,
+      "summary": "Premier cas d'Ebola confirmé en France — cas importé de RDC isolé en Unité d'Isolement Haute Sécurité (UHSI). Contact-tracing actif. Aucun risque de transmission communautaire si les mesures d'isolement sont maintenues."
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON608",

@@ -289,6 +289,7 @@ const I18N = {
     'score-subtitle': 'Composite score 0–100 combining air quality, viral circulation, pollen and weather.',
     'score-label': '/100',
     'score-select-region': 'Region:',
+    'gp-score-label': 'Your respiratory health briefing',
     'score-components-title': 'Score components',
     'comp-aqi': 'Air Quality (AQI)',
     'comp-viral': 'Viral circulation',
@@ -405,7 +406,7 @@ const I18N = {
     'care-no-results': 'No healthcare facilities found within 10 km.',
     'care-privacy': 'Your location stays on your device — never sent to our servers.',
     'nav-syndromic': 'Surveillance',
-    'syn-title': 'Syndromic surveillance — Early detection',
+    'syn-title': 'Global epidemic surveillance',
     'syn-subtitle': 'Detect outbreaks 7–14 days before lab confirmation · WHO 7-1-7 algorithm',
     'al-normal-desc': 'Signal within historical norm (z < 1.5σ)',
     'al-jaune-desc': 'Unusual increase (z ≥ 1.5σ)',
@@ -455,8 +456,8 @@ const I18N = {
     'live-src-air-sub': 'WAQI · 11 pollutants · 7-day forecast',
     'live-src-pollen': 'Local pollen',
     'live-src-pollen-sub': 'Open-Meteo · European pollen index',
-    'live-src-sumeau': 'COVID-19 — Wastewater',
-    'live-src-sumeau-sub': 'SUM\'EAU · 54 municipalities · Early warning France',
+    'live-src-sumeau': 'COVID-19 — Wastewater surveillance',
+    'live-src-sumeau-sub': 'SUM\'EAU · 54 municipalities · early warning France',
     'live-src-waiting': 'Waiting for geolocation…',
     'geo-modal-title': 'Access your location',
     'geo-modal-body': 'To show the nearest doctors and hospitals, BreathIQ needs temporary access to your location.',
@@ -498,13 +499,13 @@ const I18N = {
     'ob-patient-f3': '✓ Diseases to watch',
     'ob-patient-f4': '✓ Emergency triage',
     'ob-patient-cta': 'Get started →',
-    'ob-expert-aria': 'Continue as healthcare worker',
-    'ob-expert-title': 'I am a healthcare worker',
+    'ob-expert-aria': 'Continue in healthcare professional mode',
+    'ob-expert-title': 'I am a healthcare professional / expert',
     'ob-expert-f1': '✓ Epidemic dashboard',
     'ob-expert-f2': '✓ Respiratory score 0–100',
     'ob-expert-f3': '✓ Global outbreak map',
     'ob-expert-f4': '✓ Case reporting',
-    'ob-expert-cta': 'Clinician access →',
+    'ob-expert-cta': 'Healthcare access →',
     'ob-disclaimer': 'Public information tool — not a medical device (EU Reg. 2017/745)',
     'ob-skip': 'Continue without choosing',
   },
@@ -2620,7 +2621,9 @@ function updatePatientRiskBanner() {
     banner.classList.add('risk-moderate');
     if (icon)  { icon.textContent = 'ℹ️'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'SURVEILLANCE INTERNATIONALE' : 'INTERNATIONAL MONITORING';
-    if (title) title.textContent = lang === 'fr' ? 'En France : aucun cas d\'Ebola confirmé — vous n\'êtes pas en danger' : 'In France: no confirmed Ebola case — you are not at risk';
+    if (title) title.textContent = lang === 'fr'
+      ? '🚨 France : 1 cas Ebola confirmé (24/06/2026) — cas importé isolé en UHSI · population générale non exposée'
+      : '🚨 France: 1 Ebola case confirmed (June 24, 2026) — imported case in UHSI isolation · general population not at risk';
     if (desc)  desc.textContent  = lang === 'fr' ? 'Une épidémie est active en Afrique centrale. Si vous revenez de cette région avec de la fièvre, appelez le 15 sans vous déplacer.' : 'An outbreak is active in Central Africa. If you return from this region with fever, call emergency services without travelling.';
     const dot = document.getElementById('heroUrgencyDot');
     if (dot) dot.hidden = true;

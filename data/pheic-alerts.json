@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-06-21T00:00:00.000Z",
-  "fetchDate": "2026-06-21",
+  "generatedAt": "2026-06-24T00:00:00.000Z",
+  "fetchDate": "2026-06-24",
   "alerts": [
     {
       "id": "EBOLA-BUNDIBUGYO-2026",
@@ -8,19 +8,20 @@
       "level": "rouge",
       "levelLabel": { "fr": "URGENCE INTERNATIONALE — PHEIC OMS", "en": "INTERNATIONAL EMERGENCY — WHO PHEIC", "es": "EMERGENCIA INTERNACIONAL — PHEIC OMS", "pt": "EMERGÊNCIA INTERNACIONAL — PHEIC OMS", "ar": "طوارئ دولية — PHEIC منظمة الصحة العالمية", "zh": "国际紧急情况 — 世卫组织PHEIC", "hi": "अंतर्राष्ट्रीय आपातकाल — WHO PHEIC", "sw": "DHARURA YA KIMATAIFA — PHEIC WHO", "ru": "МЕЖДУНАРОДНАЯ ЧРЕЗВЫЧАЙНАЯ СИТУАЦИЯ — PHEIC ВОЗ" },
       "disease": "Ebola Bundibugyo",
-      "subtitle": { "fr": "RD Congo + Ouganda — 344 cas confirmés", "en": "DR Congo + Uganda — 344 confirmed cases", "es": "RD Congo + Uganda — 344 casos confirmados", "pt": "RD Congo + Uganda — 344 casos confirmados", "ar": "الكونغو الديمقراطية + أوغندا — 344 حالة مؤكدة", "zh": "刚果民主共和国 + 乌干达 — 344例确认", "hi": "DR कांगो + युगांडा — 344 पुष्ट मामले", "sw": "DRC + Uganda — kesi 344 zilizothibitishwa", "ru": "ДРК + Уганда — 344 подтверждённых случая" },
+      "subtitle": { "fr": "RDC + Ouganda + 🇫🇷 France — PREMIER CAS CONFIRMÉ EN FRANCE", "en": "DRC + Uganda + 🇫🇷 France — FIRST CONFIRMED CASE IN FRANCE", "es": "RDC + Uganda + 🇫🇷 Francia — PRIMER CASO CONFIRMADO EN FRANCIA", "pt": "RDC + Uganda + 🇫🇷 França — PRIMEIRO CASO CONFIRMADO NA FRANÇA", "ar": "جمهورية الكونغو الديمقراطية + أوغندا + 🇫🇷 فرنسا — أول حالة مؤكدة في فرنسا", "zh": "刚果民主共和国 + 乌干达 + 🇫🇷 法国 — 法国首例确诊", "hi": "DRC + युगांडा + 🇫🇷 फ्रांस — फ्रांस में पहला पुष्ट मामला", "sw": "DRC + Uganda + 🇫🇷 Ufaransa — KESI YA KWANZA ILIYOTHIBITISHWA UFARANSA", "ru": "ДРК + Уганда + 🇫🇷 Франция — ПЕРВЫЙ ПОДТВЕРЖДЁННЫЙ СЛУЧАЙ ВО ФРАНЦИИ" },
       "pheicDate": "2026-05-17",
       "deaths": 60,
-      "lastUpdate": "2026-06-03",
+      "lastUpdate": "2026-06-24",
       "regions": [
         { "country": "RDC", "detail": "Ituri 322 · Nord-Kivu 19 · Sud-Kivu 3" },
-        { "country": "Ouganda", "detail": "15 cas confirmés" }
+        { "country": "Ouganda", "detail": "15 cas confirmés" },
+        { "country": "🇫🇷 France", "detail": "1 cas importé confirmé · isolement UHSI · contact-tracing en cours" }
       ],
-      "franceStatus": { "fr": "Aucun cas confirmé en France", "en": "No confirmed case in France", "es": "Ningún caso confirmado en Francia", "pt": "Nenhum caso confirmado na França", "ar": "لا توجد حالات مؤكدة في فرنسا", "zh": "法国无确认病例", "hi": "फ्रांस में कोई पुष्ट मामला नहीं", "sw": "Hakuna kesi iliyothibitishwa nchini Ufaransa", "ru": "Во Франции подтверждённых случаев нет" },
+      "franceStatus": { "fr": "🚨 1 CAS CONFIRMÉ EN FRANCE — isolement UHSI · contact-tracing actif", "en": "🚨 1 CONFIRMED CASE IN FRANCE — UHSI isolation · active contact tracing", "es": "🚨 1 CASO CONFIRMADO EN FRANCIA — aislamiento UHSI · rastreo de contactos", "pt": "🚨 1 CASO CONFIRMADO NA FRANÇA — isolamento UHSI · rastreamento de contatos", "ar": "🚨 حالة مؤكدة واحدة في فرنسا — عزل UHSI · تتبع الاتصالات", "zh": "🚨 法国1例确诊 — UHSI隔离 · 主动接触追踪", "hi": "🚨 फ्रांस में 1 पुष्ट मामला — UHSI एकांतवास · सक्रिय संपर्क अनुरेखण", "sw": "🚨 KESI 1 ILIYOTHIBITISHWA UFARANSA — kutengwa UHSI · ufuatiliaji wa mawasiliano", "ru": "🚨 1 ПОДТВЕРЖДЁННЫЙ СЛУЧАЙ ВО ФРАНЦИИ — изоляция UHSI · отслеживание контактов" },
       "vigilanceArea": "Mayotte",
       "message": {
-        "fr": "Souche Bundibugyo : <strong>aucun vaccin, aucun traitement</strong>. Si fièvre + retour d'Afrique centrale/est : <strong>appelez le 15 sans vous déplacer</strong>.",
-        "en": "Bundibugyo strain: <strong>no vaccine, no treatment</strong>. If fever + return from Central/East Africa: <strong>call emergency services, do not travel</strong>.",
+        "fr": "🚨 PREMIER CAS EBOLA EN FRANCE (24 juin 2026) — cas importé isolé en UHSI. Souche Bundibugyo : <strong>aucun vaccin, aucun traitement</strong>. Si fièvre + retour d'Afrique centrale/est (21 derniers jours) : <strong>APPELEZ LE 15 SANS VOUS DÉPLACER</strong>.",
+        "en": "🚨 FIRST EBOLA CASE IN FRANCE (June 24, 2026) — imported case isolated in UHSI. Bundibugyo strain: <strong>no vaccine, no treatment</strong>. If fever after Central/East Africa travel (last 21 days): <strong>CALL EMERGENCY SERVICES, DO NOT TRAVEL</strong>.",
         "es": "Cepa Bundibugyo: <strong>sin vacuna, sin tratamiento</strong>. Si fiebre + regreso de África central/oriental: <strong>llame al 112 sin desplazarse</strong>.",
         "pt": "Cepa Bundibugyo: <strong>sem vacina, sem tratamento</strong>. Se febre + retorno da África central/oriental: <strong>ligue para emergências, não se desloque</strong>.",
         "ar": "سلالة بونديبوجيو: <strong>لا لقاح، لا علاج</strong>. إذا كانت لديك حمى بعد العودة من أفريقيا الوسطى أو الشرقية: <strong>اتصل بالطوارئ ولا تتنقل</strong>.",
