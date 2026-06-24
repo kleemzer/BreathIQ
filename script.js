@@ -3045,8 +3045,8 @@ function checkSymptoms() {
   renderDiagnosticResult(result, state);
 }
 
-// ── Numéros d'urgence par langue/région ───────────────────────
-const EMERGENCY_NUMBERS = {
+// ── Numéros d'urgence simples par langue (utilisé dans renderDiagnosticResult) ─
+const EMERGENCY_NUMBERS_SIMPLE = {
   fr: { main:'15', alt:'112', label:'SAMU', note:'Ou 112 partout en Europe' },
   en: { main:'999', alt:'112', label:'Emergency', note:'Or 112 in Europe / 911 in USA' },
   es: { main:'112', alt:'061', label:'Emergencias', note:'O 061 para urgencias médicas' },
@@ -3161,7 +3161,7 @@ function renderDiagnosticResult(result, state) {
   }
 
   // ── Numéros d'urgence ───────────────────────────────────────
-  const emNum = EMERGENCY_NUMBERS[lang] || EMERGENCY_NUMBERS.fr;
+  const emNum = EMERGENCY_NUMBERS_SIMPLE[lang] || EMERGENCY_NUMBERS_SIMPLE.fr;
   const isHighUrgency = ['ROUGE','ORANGE'].includes(orientLevel) ||
     ['emergency','medical_regulation'].includes(clinical?.level);
 
