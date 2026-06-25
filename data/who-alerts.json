@@ -1,18 +1,16 @@
 {
-  "generatedAt": "2026-06-24T10:13:55.593Z",
-  "fetchDate": "2026-06-24",
-  "alertCount": 21,
+  "generatedAt": "2026-06-25T10:11:46.504Z",
+  "fetchDate": "2026-06-25",
+  "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
     {
-      "title": "FIRST EBOLA CASE IN FRANCE — Ebola Bundibugyo virus (imported from DRC), France",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/",
-      "donId": "2026-FRANCE-EBOLA-01",
-      "pubDate": "2026-06-24",
-      "riskLevel": "critical",
-      "source": "SPF / DGS / WHO",
-      "france": true,
-      "summary": "Premier cas d'Ebola confirmé en France — cas importé de RDC isolé en Unité d'Isolement Haute Sécurité (UHSI). Contact-tracing actif. Aucun risque de transmission communautaire si les mesures d'isolement sont maintenues."
+      "title": "Yellow fever - Global",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON610",
+      "donId": "2026-DON610",
+      "pubDate": "2026-06",
+      "riskLevel": "high",
+      "source": "WHO OData API"
     },
     {
       "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
@@ -164,14 +162,6 @@
       "donId": "2025-DON586",
       "pubDate": "2025-12",
       "riskLevel": "low",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Broader transmission of mpox due to clade Ib MPXV – Global situation",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON587",
-      "donId": "2025-DON587",
-      "pubDate": "2025-12",
-      "riskLevel": "moderate",
       "source": "WHO OData API"
     }
   ]
