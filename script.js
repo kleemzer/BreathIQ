@@ -2927,6 +2927,34 @@ function wizCollectState() {
 
 function wizAnalyze() {
   const state  = wizCollectState();
+
+  // Cas spécial HAS/SFMU : nourrisson < 3 mois + fièvre ≥ 38°C → urgences sans délai
+  if (state.alarm.includes('infant_fever_alarm')) {
+    const infantResult = {
+      ranked: [],
+      orientLevel: 'emergency',
+      alarmReason: '👶 Nourrisson < 3 mois avec fièvre ≥ 38°C — urgences pédiatriques immédiates (HAS/SFMU)',
+      clinical: {
+        level: 'emergency',
+        urgencyScore: 98,
+        careNeed: 'emergency_department',
+        redFlags: ['infant_fever_alarm'],
+        reasons: ['Tout nourrisson de moins de 3 mois avec température ≥ 38°C doit être évalué aux urgences sans délai.'],
+        patientMessageFR: '🚨 Nourrisson < 3 mois avec fièvre ≥ 38°C : rendez-vous aux urgences pédiatriques immédiatement ou appelez le 15. Ne donnez aucun antipyrétique sans avis médical.',
+        patientMessageEN: '🚨 Infant < 3 months with fever ≥ 38°C: go to paediatric emergency immediately or call 15. Do not give any antipyretic without medical advice.',
+        careLabelFR: 'Urgences pédiatriques',
+        careLabelEN: 'Paediatric emergency department',
+        disclaimerFR: 'BreathIQ oriente vers un niveau de recours. Il ne pose pas de diagnostic et ne remplace pas une consultation médicale.',
+        disclaimerEN: 'BreathIQ suggests a level of care. It does not provide a diagnosis and does not replace medical consultation.',
+      },
+    };
+    latestClinicalOrientation = infantResult.clinical;
+    renderDiagnosticResult(infantResult, state);
+    const res = document.getElementById('symptomResult');
+    if (res) { res.classList.remove('hidden'); res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    return;
+  }
+
   const result = BIQ_DIAG.runDiagnosticEngine(state);
   const clinicalInput = buildClinicalOrientationInput(state);
   result.clinical = window.BIQ_CLINICAL?.evaluateClinicalOrientation
@@ -3667,6 +3695,8 @@ function applyLiveData(parsed) {
   if (parsed.frFlu?.viralScore != null) {
     score.viral = parsed.frFlu.viralScore;
     score.sr    = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
+    const viralBadge = document.getElementById('viralEstBadge');
+    if (viralBadge) viralBadge.style.display = 'none';
   }
   // Pollen local (Open-Meteo)
   if (parsed.localAqi?.pollenScore != null) {

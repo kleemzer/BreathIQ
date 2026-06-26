@@ -626,7 +626,7 @@
       "maskNote": "WHO Ebola PPE 2026 : EPI niveau 4 obligatoire = FFP3/PAPR + combinaison imperméable + double gantage + visière intégrale + couvre-bottes. Transmission = contact direct fluides biologiques (non aéroportée en conditions naturelles). FFP3 obligatoire pour TOUS les AGPs (intubation, aspiration, réanimation). ATTENTION : vaccin rVSV-ZEBOV (Ervebo) NON efficace contre souche Bundibugyo (FDA 2026). Aucun vaccin ni traitement spécifique disponible.",
       "reproductionNumber": "R0 ≈ 1.5–2.5 (épidémie non contrôlée)",
       "cfr": "25–50% (souche Bundibugyo)",
-      "incubation": "2–21 jours (médiane 7 jours, Bundibugyo)",
+      "incubation": "2–21 jours (médiane 9-11 jours, Bundibugyo)",
       "transmission_route": "Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée.",
       "currentStatus": "outbreak",
       "outbreakStart": "2026-04",
