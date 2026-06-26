@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-06-25T10:11:46.504Z",
-  "fetchDate": "2026-06-25",
+  "generatedAt": "2026-06-26T10:15:06.615Z",
+  "fetchDate": "2026-06-26",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Nipah virus disease - India",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON609",
+      "donId": "2026-DON609",
+      "pubDate": "2026-06",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Yellow fever - Global",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON610",
@@ -152,14 +160,6 @@
       "title": "Middle East respiratory syndrome coronavirus - Global update",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON591",
       "donId": "2025-DON591",
-      "pubDate": "2025-12",
-      "riskLevel": "low",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Seasonal influenza - Global situation",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON586",
-      "donId": "2025-DON586",
       "pubDate": "2025-12",
       "riskLevel": "low",
       "source": "WHO OData API"
