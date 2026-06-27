@@ -2078,6 +2078,23 @@ async function loadSPFLiveData() {
   }
 }
 
+function makeRefLink(ref) {
+  const e = ref.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  let url = '';
+  if (/WHO DON/i.test(ref))                          url = 'https://www.who.int/emergencies/disease-outbreak-news/';
+  else if (/ECDC/i.test(ref))                        url = 'https://www.ecdc.europa.eu/';
+  else if (/MMWR/i.test(ref))                        url = 'https://www.cdc.gov/mmwr/';
+  else if (/CDC/i.test(ref))                         url = 'https://www.cdc.gov/';
+  else if (/Lancet/i.test(ref))                      url = 'https://www.thelancet.com/';
+  else if (/N Engl J Med|NEJM/i.test(ref))           url = 'https://www.nejm.org/';
+  else if (/Santé Publique France|santepubliquefrance|SPF bulletin/i.test(ref)) url = 'https://www.santepubliquefrance.fr/';
+  else if (/\bOMS\b|\bWHO\b/i.test(ref))             url = 'https://www.who.int/';
+  else if (/PubMed|pubmed/i.test(ref))               url = 'https://pubmed.ncbi.nlm.nih.gov/';
+  return url
+    ? `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:#60a5fa;text-decoration:none;border-bottom:1px solid rgba(96,165,250,.3)">${e}</a>`
+    : e;
+}
+
 function renderPathogens() {
   const grid = document.getElementById('pathogensGrid');
   if (!grid) return;
@@ -2125,7 +2142,7 @@ function renderPathogens() {
     const catLabel  = (categoryLabels[currentLang] || categoryLabels.en || categoryLabels.fr)[ob.category] || ob.category;
     const statLabel = (statusLabels[currentLang] || statusLabels.en || statusLabels.fr)[ob.currentStatus] || ob.currentStatus;
     const protBadgeClass = ob.protectionLevel >= 3 ? 'prot-ffp3' : ob.protectionLevel === 2 ? 'prot-ffp2' : 'prot-surg';
-    const refList = ob.references ? ob.references.map(r => `<li>${r}</li>`).join('') : '';
+    const refList = ob.references ? ob.references.map(r => `<li>${makeRefLink(r)}</li>`).join('') : '';
     const pathIcon = PATHOGEN_ICONS[ob.id] || PATHOGEN_ICONS.DEFAULT;
     const symp = SYMPTOMS_DATA[ob.id];
     const sympList = symp ? ((currentLang === 'fr' ? symp.fr : symp.en) || []) : [];
