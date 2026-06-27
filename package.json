@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "check": "npm run check:js && npm run validate:data && npm run test",
-    "check:js": "node --check script.js && node --check api-live.js && node --check stocks-api.js && node --check stocks-live.js && node --check js/clinical-orientation.js && node --check js/care-facilities.js && node --check js/diagnostic-engine.js && node --check api/care-nearby.js && node --check api/overpass.js && node --check scripts/spf-bulletin-ai.mjs && node --check scripts/who-don-fetch.mjs && node --check scripts/validate-data.mjs && node --check scripts/test-clinical-care.mjs && node --check scripts/test-diagnostic-engine.mjs",
+    "check:js": "node --check script.js && node --check api-live.js && node --check stocks-api.js && node --check js/clinical-orientation.js && node --check js/care-facilities.js && node --check js/diagnostic-engine.js && node --check api/care-nearby.js && node --check api/overpass.js && node --check scripts/spf-bulletin-ai.mjs && node --check scripts/who-don-fetch.mjs && node --check scripts/validate-data.mjs && node --check scripts/test-clinical-care.mjs && node --check scripts/test-diagnostic-engine.mjs",
     "validate:data": "node scripts/validate-data.mjs",
     "test:clinical": "node scripts/test-clinical-care.mjs",
     "test:engine": "node scripts/test-diagnostic-engine.mjs",
