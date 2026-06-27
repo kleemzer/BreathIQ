@@ -2373,10 +2373,10 @@ function initMapObserver() {
   };
   window.addEventListener('scroll', onScroll, { passive: true });
 
-  // Essai 3 : window.load fallback ultime (2s max après chargement)
+  // Essai 3 : window.load fallback ultime — seulement si le conteneur est visible
   window.addEventListener('load', () => {
     setTimeout(() => {
-      if (!worldMap) initMapWhenReady();
+      if (!worldMap && mapEl.offsetParent !== null) initMapWhenReady();
     }, 500);
   }, { once: true });
 }
