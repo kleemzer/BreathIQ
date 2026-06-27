@@ -732,7 +732,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <ul class="nav-links" role="list">
       <li class="patient-only"><a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" data-i18n="nav-symptoms">Symptômes</a></li>
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
-      <li class="expert-only"><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
+      <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Masques & Stocks</a></li>
       <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
@@ -1922,7 +1922,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 </section>
 
 <!-- ===== MAP SECTION ===== -->
-<section class="map-section expert-only" id="map" aria-labelledby="map-title">
+<section class="map-section" id="map" aria-labelledby="map-title">
   <div class="container">
     <div class="section-header">
       <h2 id="map-title" data-i18n="map-title">Carte mondiale des stocks &amp; foyers</h2>
