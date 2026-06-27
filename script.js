@@ -2630,6 +2630,8 @@ function activateExpertMode() {
     else worldMap.invalidateSize(true);
     document.getElementById('syndromic')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, 100);
+  // Invalidate map size again after DOM reflow (tiles may not appear at 100ms)
+  [400, 1000, 2000].forEach(ms => setTimeout(() => { if (worldMap) worldMap.invalidateSize(true); }, ms));
 }
 
 function updatePatientRiskBanner() {
