@@ -2011,6 +2011,21 @@ function updateSPFLiveBadge(live) {
   badge.style.display = 'inline-flex';
 }
 
+const SPF_JUNK_RE = /en savoir plus|skip to|nos services|saisis des suggestions|facebook|twitter|linkedin|courriel|navigation|menu|recherche|fil d'ariane|cookie|abonnez-vous|newsletter|inscription|partager|imprimer|^Nous contacter|chargement en cours/i;
+
+function cleanSPFTitle(raw) {
+  if (!raw) return 'Bulletin SPF';
+  // Remove repeated title pattern "Title | Title ..."
+  const parts = raw.split('|');
+  return parts[0].trim().slice(0, 80);
+}
+
+function cleanSPFSignals(signals) {
+  return (Array.isArray(signals) ? signals : [])
+    .filter(s => s && s.length > 20 && s.length < 300 && !SPF_JUNK_RE.test(s))
+    .slice(0, 3);
+}
+
 function renderSPFCompactSummary(live) {
   const panel = document.getElementById('spfLiveSummary');
   if (!panel) return;
@@ -2028,10 +2043,10 @@ function renderSPFCompactSummary(live) {
   };
 
   const sourceItems = live.sources.slice(0, 5).map(source => {
-    const title = escapeHTML(source.title || 'Bulletin SPF');
+    const title = escapeHTML(cleanSPFTitle(source.title));
     const region = escapeHTML(source.region || 'France');
     const risk = ['low', 'medium', 'high'].includes(source.risk_level) ? source.risk_level : 'low';
-    const signals = Array.isArray(source.signals) ? source.signals.slice(0, 3) : [];
+    const signals = cleanSPFSignals(source.signals);
     const points = Array.isArray(source.key_points) ? source.key_points.slice(0, 3) : [];
 
     return `<article class="spf-source-item ${riskClass[risk]}">
