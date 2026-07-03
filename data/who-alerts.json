@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-07-02T09:53:02.577Z",
-  "fetchDate": "2026-07-02",
+  "generatedAt": "2026-07-03T09:49:51.006Z",
+  "fetchDate": "2026-07-03",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Hantavirus outbreak linked to cruise ship travel, Multi-locations",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON611",
+      "donId": "2026-DON611",
+      "pubDate": "2026-07",
+      "riskLevel": "high",
+      "source": "WHO OData API"
+    },
     {
       "title": "Nipah virus disease - India",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON609",
@@ -154,14 +162,6 @@
       "donId": "2026-DON592",
       "pubDate": "2026-01",
       "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Middle East respiratory syndrome coronavirus - Global update",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2025-DON591",
-      "donId": "2025-DON591",
-      "pubDate": "2025-12",
-      "riskLevel": "low",
       "source": "WHO OData API"
     }
   ]
