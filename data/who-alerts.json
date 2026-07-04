@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-07-03T09:49:51.006Z",
-  "fetchDate": "2026-07-03",
+  "generatedAt": "2026-07-04T09:14:09.682Z",
+  "fetchDate": "2026-07-04",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON612",
+      "donId": "2026-DON612",
+      "pubDate": "2026-07",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Hantavirus outbreak linked to cruise ship travel, Multi-locations",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON611",
@@ -152,14 +160,6 @@
       "title": "Nipah virus disease - India",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON593",
       "donId": "2026-DON593",
-      "pubDate": "2026-01",
-      "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Marburg virus disease- Ethiopia",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON592",
-      "donId": "2026-DON592",
       "pubDate": "2026-01",
       "riskLevel": "critical",
       "source": "WHO OData API"
