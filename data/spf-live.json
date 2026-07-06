@@ -1,85 +1,42 @@
 {
-  "run_date": "2026-06-29",
-  "overall_summary": "Les bulletins SPF rapportent plusieurs signaux sous surveillance, sans alerte majeure consolidee.",
+  "run_date": "2026-07-06",
+  "overall_summary": "La situation sanitaire en France montre une diminution de la detection de cas humains d'infection a MERS-CoV.",
   "sources": [
     {
-      "title": "Infection a coronavirus | Infection a coronavirus Les coronavirus sont tres repandus et peuvent causer des maladies gene...",
+      "title": "Infection a coronavirus",
       "region": "France",
       "signals": [
-        "En savoir plus En savoir plus Notre action Donnees Une nette diminution de la detection de cas humains d'infection a Mers-CoV observee depuis 2020 D’apres l' OMS et l’ ECDC , le nombre de cas confirmes d’infection a MERS...",
-        "Cependant, trois d’entre eux ont entraine de graves epidemies : le SRAS-CoV, le Mers-CoV et le Sars-CoV-2.",
-        "L’incidence des cas de Mers signal..."
-      ],
-      "risk_level": "medium",
-      "key_points": [
-        "Maladies citees: COVID-19, MERS-CoV",
-        "Chiffres reperes: 2, 4, 2025, 19, 2020",
-        "En savoir plus En savoir plus Notre action Donnees Une nette diminution de la detection de cas humains d'infection a Mers-CoV observee depuis 2020 D’apres l' OMS et l’ ECDC , le no..."
-      ]
-    },
-    {
-      "title": "Bulletin epidemiologique hebdomadaire | Bulletin epidemiologique hebdomadaire Le BEH est une revue a comite de lecture e...",
-      "region": "Guadeloupe",
-      "signals": [
-        "A partir de 3 caracteres saisis des suggestions de recherche apparaisseront ci-dessous.",
-        "En savoir plus Nos services santementale-info-service.fr Vivre avec la chaleur Vaccination info service Tabac info service Sexosafe QuestionSexualite Pour bien vieillir Onsexprime Manger Bouger Joueurs info service Alcoo..."
+        "Diminution de la detection de cas humains d'infection a MERS-CoV",
+        "Trois coronavirus ont entraine de graves epidemies",
+        "L'importation de cas d'infection a MERS-CoV en Europe est possible"
       ],
       "risk_level": "low",
       "key_points": [
-        "Maladies citees: tuberculose",
-        "Chiffres reperes: 26, 2026, 23, 15, 2024",
-        "A partir de 3 caracteres saisis des suggestions de recherche apparaisseront ci-dessous."
+        "Diminution de la detection de cas humains d'infection a MERS-CoV",
+        "Risque d'importation de cas d'infection a MERS-CoV en Europe",
+        "Surveillance sanitaire renforcee"
       ]
     },
     {
-      "title": "Surveillance sanitaire en Ile-de-France.",
+      "title": "Surveillance sanitaire en Ile-de-France",
       "region": "Ile-de-France",
       "signals": [
-        "Facebook Twitter Linkedin Courriel Publie le 27 mai 2026 Points cles Variole B (mpox) On denombre 73 cas confirmes et 2 probables en Ile-de-France en 2026 au 19 mai 2026.",
-        "Chikungunya, dengue et zika Du 1er au 26 mai 2026 (cas documentes) : 27 cas importes de dengue, 1 cas importe de chikungunya.",
-        "Covid-19 SARS-CoV-2 dans les eaux usees : une tendance globale a la stabilisation du niveau de circulation du SARS-CoV-2 dans les eaux usees etait observee en S21."
+        "73 cas confirmes de variole B (mpox) en Ile-de-France",
+        "27 cas importes de dengue",
+        "Stabilisation du niveau de circulation du SARS-CoV-2 dans les eaux usees"
       ],
       "risk_level": "medium",
       "key_points": [
-        "Maladies citees: COVID-19, mpox, dengue, chikungunya",
-        "Chiffres reperes: 27, 2026, 73 cas, 2, 19",
-        "Facebook Twitter Linkedin Courriel Publie le 27 mai 2026 Points cles Variole B (mpox) On denombre 73 cas confirmes et 2 probables en Ile-de-France en 2026 au 19 mai 2026."
-      ]
-    },
-    {
-      "title": "Epidemiological surveillance of influenza | Skip to main content Flu The flu is a contagious viral respiratory infection...",
-      "region": "France",
-      "signals": [
-        "Epidemiological surveillance of influenza | Skip to main content Flu The flu is a contagious viral respiratory infection that causes seasonal outbreaks every winter.",
-        "Learn more thematic dossier 12 March 2026 Aging Well People over the age of 60 could account for one-third of the population by 2050.",
-        "Learn more Vaccination thematic dossier 27 April 2026 Contagious diseases most often affect children at a very young age."
-      ],
-      "risk_level": "medium",
-      "key_points": [
-        "Maladies citees: grippe",
-        "Chiffres reperes: 15, 2026, 40, 29, 2023",
-        "Epidemiological surveillance of influenza | Skip to main content Flu The flu is a contagious viral respiratory infection that causes seasonal outbreaks every winter."
-      ]
-    },
-    {
-      "title": "Bulletin du 27 mars 2026. | Surveillance sanitaire a Mayotte.",
-      "region": "Mayotte",
-      "signals": [
-        "Variole B (Mpox) Trois nouveaux cas confirmes de Mpox ont ete identifies sur le territoire apres 4 semaines sans signalement, portant a 13 le nombre total de cas depuis le debut de l’annee (dont 10 cas autochtones et 3 i...",
-        "Bronchiolite Depuis le pic epidemique en S09-2026, une diminution de l’activite de la bronchiolite est observee, avec 18 prelevements positifs en S12 (taux de positivite : 30,5 %), mais le territoire reste en phase epide...",
-        "La bronchiolite representant 31 % de l’activite des urgences pediatriques en S12-2026."
-      ],
-      "risk_level": "medium",
-      "key_points": [
-        "Maladies citees: mpox, chikungunya, bronchiolite",
-        "Chiffres reperes: 27, 2026, 70 cas, S12, 37",
-        "Variole B (Mpox) Trois nouveaux cas confirmes de Mpox ont ete identifies sur le territoire apres 4 semaines sans signalement, portant a 13 le nombre total de cas depuis le debut de..."
+        "Augmentation des cas de variole B (mpox) en Ile-de-France",
+        "Risque d'importation de cas de dengue",
+        "Surveillance sanitaire renforcee"
       ]
     }
   ],
   "recommended_action": [
-    "Verifier les bulletins SPF originaux pour les chiffres detailles.",
-    "Surveiller les tendances respiratoires et les signaux regionaux.",
-    "Mettre a jour cette synthese lors du prochain bulletin."
+    "Renforcer la surveillance sanitaire",
+    "Mettre en place des mesures de prevention",
+    "Sensibiliser la population aux risques",
+    "Assurer une coordination entre les autorites sanitaires"
   ]
 }
