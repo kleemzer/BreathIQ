@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-07-17T09:03:29.952Z",
-  "fetchDate": "2026-07-17",
+  "generatedAt": "2026-07-18T08:43:05.141Z",
+  "fetchDate": "2026-07-18",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON613",
+      "donId": "2026-DON613",
+      "pubDate": "2026-07",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON612",
@@ -153,14 +161,6 @@
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON594",
       "donId": "2026-DON594",
       "pubDate": "2026-02",
-      "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Nipah virus disease - India",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON593",
-      "donId": "2026-DON593",
-      "pubDate": "2026-01",
       "riskLevel": "critical",
       "source": "WHO OData API"
     }
