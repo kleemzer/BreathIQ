@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T14:00:00.000Z",
+  "generatedAt": "2026-08-12T15:00:00.000Z",
   "version": "1.0",
   "pathogensCount": 19,
   "pathogens": [
@@ -86,7 +86,9 @@
       "descFR": "Circulation endémique mondiale. Variants KP.2/KP.1.1/JN.1. Transmission aérienne par aérosols démontrée (Morawska & Milton 2020, Lancet 2021). FFP2 recommandé dans espaces bondés, milieux médicaux, immunodéprimés.",
       "descEN": "Endemic global circulation. KP.2/JN.1 variants. Airborne aerosol transmission demonstrated. FFP2 recommended in crowded spaces, healthcare settings, immunocompromised individuals.",
       "descPatientFR": "🟢 COVID-19 en France (août 2026) : circulation basse, sans pic notable. La plupart des gens guérissent à la maison en quelques jours. Consultez si vous êtes essoufflé(e) au repos, très fatigué(e) depuis plus de 5 jours, ou si vous avez une maladie grave. Les tests rapides antigéniques restent disponibles en pharmacie. La vaccination reste recommandée pour les personnes vulnérables.",
-      "descPatientEN": "🟢 COVID-19 in France (August 2026): low circulation, no significant peak. Most people recover at home within a few days. Consult if you are short of breath at rest, very tired for more than 5 days, or have a serious illness. Rapid antigen tests remain available at pharmacies. Vaccination is still recommended for vulnerable people."
+      "descPatientEN": "🟢 COVID-19 in France (August 2026): low circulation, no significant peak. Most people recover at home within a few days. Consult if you are short of breath at rest, very tired for more than 5 days, or have a serious illness. Rapid antigen tests remain available at pharmacies. Vaccination is still recommended for vulnerable people.",
+      "descPatientES": "🟢 COVID-19 en Francia (agosto 2026): circulación baja. La mayoría se recupera en casa en pocos días. Consulte si tiene dificultad para respirar en reposo o fatiga intensa por más de 5 días. Los tests rápidos siguen disponibles en farmacias.",
+      "descPatientAR": "🟢 كوفيد-19 في فرنسا (أغسطس 2026): تداول منخفض. معظم الناس يتعافون في المنزل خلال أيام. استشر طبيباً إذا أصبح التنفس صعباً أو كنت متعباً جداً لأكثر من 5 أيام. الاختبارات السريعة متوفرة في الصيدليات."
     },
     {
       "id": "TB",
@@ -220,7 +222,9 @@
       "descFR": "🚨 CLUSTER ACTIF (mai 2026) — 10 cas Hantavirus Andes confirmés sur paquebot MV Hondius (Ushuaia → Atlantique Sud). 3 décès (CFR 38%). Ex-passagers dans 12+ pays, 600+ contacts dans 32 pays. Andes virus = seul hantavirus avec transmission interhumaine prouvée. Phase prodromique (J0–J5) : fièvre, myalgies, céphalées — INDISCERNABLE d'une grippe. Dégradation brutale à J5–J10 : détresse respiratoire, collapsus hémodynamique. Facteurs de risque : voyage Patagonie/Amérique du Sud + contact rongeurs/excrétas. Toute personne ayant voyagé en Amérique du Sud dans les 6 semaines avec ces symptômes doit contacter un médecin en mentionnant le voyage. Mortalité élevée si non pris en charge en réanimation.",
       "descEN": "🚨 ACTIVE CLUSTER (May 2026) — 10 confirmed Andes Hantavirus cases on cruise ship MV Hondius (Ushuaia → South Atlantic). 3 deaths (CFR 38%). Former passengers hospitalized in 12+ countries, 600+ contacts in 32 countries. Published in NEJM. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2.",
       "descPatientFR": "🟠 L'Hantavirus est rare mais grave. Il se transmet en respirant des poussières contenant les déjections de rongeurs infectés (souris, rats) — pas de personne à personne (sauf la souche des Andes). Risque si vous avez été en contact avec des rongeurs, des granges, ou des endroits poussiéreux en Amérique du Sud ou si vous étiez sur le paquebot MV Hondius en mai 2026. La maladie commence comme une grippe (J0–J5) puis peut devenir grave rapidement (difficultés à respirer).",
-      "descPatientEN": "🟠 Hantavirus is rare but serious. It spreads by breathing dust containing infected rodent droppings (mice, rats) — not person to person (except Andes strain). Risk if you had contact with rodents, barns, or dusty places in South America or if you were on cruise ship MV Hondius in May 2026. Disease starts like flu (day 0-5) then can worsen rapidly (breathing difficulty)."
+      "descPatientEN": "🟠 Hantavirus is rare but serious. It spreads by breathing dust containing infected rodent droppings (mice, rats) — not person to person (except Andes strain). Risk if you had contact with rodents, barns, or dusty places in South America or if you were on cruise ship MV Hondius in May 2026. Disease starts like flu (day 0-5) then can worsen rapidly (breathing difficulty).",
+      "descPatientES": "🟠 El Hantavirus es raro pero grave. Se transmite respirando polvo con excrementos de roedores infectados. Riesgo si estuvo en contacto con roedores en América del Sur o si viajó en el crucero MV Hondius en mayo 2026. La enfermedad empieza como gripe (días 0-5) y puede empeorar rápidamente.",
+      "descPatientAR": "🟠 فيروس هانتا نادر لكن خطير. ينتقل عبر استنشاق غبار يحتوي على فضلات قوارض مصابة. الخطر إذا كنت في أمريكا الجنوبية أو على سفينة MV Hondius في مايو 2026. يبدأ كالإنفلونزا ثم قد يتدهور بسرعة."
     },
     {
       "id": "MPOX",
@@ -271,7 +275,9 @@
       "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.",
       "descPatientFR": "🟠 Mpox provoque une fièvre et des boutons/vésicules sur la peau. Il se transmet par contact cutané direct avec les lésions d'une personne malade — pas dans l'air pour la plupart des cas. La nouvelle souche (clade Ib) peut se transmettre dans une famille par contact prolongé. Si vous avez des boutons suspects + fièvre : consultez un médecin, ne grattez pas les lésions, couvrez-les. Il existe une vaccination préventive.",
       "descPatientEN": "🟠 Mpox causes fever and skin blisters/vesicles. It spreads through direct skin contact with lesions of a sick person — not through the air in most cases. The new strain (clade Ib) can spread within a family through prolonged contact. If you have suspicious rash + fever: see a doctor, do not scratch lesions, cover them. Preventive vaccination is available.",
-      "r0": "Clade Ib : 1,8–2,2 (NEJM 2024, cluster Kibungo) vs Clade IIb 2022 : 1,1–1,3 · C'est pourquoi le clade Ib justifie une PHEIC OMS et pas le clade IIb"
+      "r0": "Clade Ib : 1,8–2,2 (NEJM 2024, cluster Kibungo) vs Clade IIb 2022 : 1,1–1,3 · C'est pourquoi le clade Ib justifie une PHEIC OMS et pas le clade IIb",
+      "descPatientES": "🟠 El Mpox causa fiebre y ampollas/vesículas en la piel. Se transmite por contacto directo con las lesiones de una persona enferma. Si tiene sarpullido sospechoso + fiebre: consulte un médico, no se rasque las lesiones y cúbralas. Hay vacuna preventiva disponible.",
+      "descPatientAR": "🟠 جدري القردة يسبب حمى وبثوراً جلدية. ينتقل عن طريق الاتصال المباشر بجروح شخص مريض. إذا كان لديك طفح جلدي مشبوه + حمى: زر الطبيب، لا تحك الجروح وغطّها. يوجد تطعيم وقائي."
     },
     {
       "id": "MERS",
@@ -470,7 +476,9 @@
       "descFR": "📊 SPF Bilan saison 2025-2026 : épidémie exclusivement type A (déc 2025 – mi-fév 2026, 10 semaines). Intensité faible à modérée en ville, élevée en hospitalier. Impact mortalité important en début 2026. Hors saison en mai 2026 — surveillance inter-épidémique. 290 000–650 000 décès/an (OMS). FFP2 recommandé soignants et personnes à risque lors du prochain pic.",
       "descEN": "📊 SPF Season review 2025-2026: exclusively type A influenza (Dec 2025–mid-Feb 2026, 10 weeks). Low-to-moderate intensity in community, high in hospitals. Significant mortality impact early 2026. Off-season in May 2026 — inter-epidemic surveillance. 290,000–650,000 deaths/year (WHO). FFP2 recommended for healthcare workers and at-risk individuals during next peak.",
       "descPatientFR": "🟡 La grippe est une infection respiratoire fréquente en hiver. Les symptômes arrivent d'un coup : fièvre élevée, gros mal de tête, douleurs dans tout le corps. C'est différent d'un rhume. En général, on guérit en 5 à 7 jours en restant au chaud. Si vous êtes âgé(e), enceinte, ou avez une maladie chronique → consultez un médecin rapidement. Appelez le 15 si vous avez du mal à respirer ou si vous ne vous levez plus.",
-      "descPatientEN": "🟡 Flu is a common respiratory infection in winter. Symptoms start suddenly: high fever, severe headache, body aches. It's different from a cold. Usually you recover in 5-7 days by resting. If you are elderly, pregnant, or have a chronic condition → see a doctor quickly. Call 15 if you have difficulty breathing or cannot get up."
+      "descPatientEN": "🟡 Flu is a common respiratory infection in winter. Symptoms start suddenly: high fever, severe headache, body aches. It's different from a cold. Usually you recover in 5-7 days by resting. If you are elderly, pregnant, or have a chronic condition → see a doctor quickly. Call 15 if you have difficulty breathing or cannot get up.",
+      "descPatientES": "🟡 La gripe es una infección respiratoria común en invierno. Los síntomas aparecen de repente: fiebre alta, dolor de cabeza intenso, dolores musculares. Generalmente se cura en 5-7 días. Si es mayor, embarazada o tiene enfermedad crónica: consulte un médico pronto. Llame al 15 si tiene dificultad para respirar.",
+      "descPatientAR": "🟡 الإنفلونزا عدوى تنفسية شائعة في الشتاء. تبدأ الأعراض فجأة: حمى شديدة، صداع قوي، آلام عضلية. عادةً تتعافى في 5-7 أيام. إذا كنت كبيراً في السن أو حاملاً أو مريضاً مزمناً: استشر طبيباً بسرعة. اتصل بـ 15 إذا أصبح التنفس صعباً."
     },
     {
       "id": "DENGUE",
@@ -503,7 +511,9 @@
         "SPF — Surveillance dengue France métropolitaine (vecteur Aedes albopictus, 60+ départements)",
         "Gubler DJ. Clin Microbiol Rev 1998 — Dengue and dengue hemorrhagic fever",
         "Martina BE et al. FEMS Microbiol Rev 2009 — Dengue virus pathogenesis"
-      ]
+      ],
+      "descPatientES": "🟡 El dengue lo transmiten los mosquitos — no entre personas. Si viajó a países cálidos (Caribe, Asia, Reunión, América del Sur) y tiene fiebre + dolor en los ojos + dolores musculares intensos: consulte un médico e infórmele sobre su viaje. NO tome ibuprofeno ni aspirina — solo paracetamol.",
+      "descPatientAR": "🟡 حمى الضنك تنتقل عبر البعوض — وليس بين البشر. إذا سافرت إلى بلدان دافئة (الكاريبي، آسيا، أمريكا الجنوبية) ولديك حمى + ألم في العينين + آلام عضلية شديدة: زر الطبيب وأخبره عن رحلتك. لا تأخذ إيبوبروفين أو أسبرين — باراسيتامول فقط."
     },
     {
       "id": "PALUDISME",
@@ -535,7 +545,9 @@
         "SPF — Bilan des cas de paludisme d'importation en France 2022",
         "White NJ. N Engl J Med 1996 — The treatment of malaria",
         "Dondorp AM et al. Lancet 2005 — Artesunate vs quinine for severe malaria"
-      ]
+      ],
+      "descPatientES": "🔴 Si tiene fiebre y viajó a África, Asia o América del Sur en los últimos 2 meses: vaya a urgencias o a su médico HOY — no espere. Infórmeles sobre su viaje. El paludismo puede volverse muy grave en pocas horas. No se contagia entre personas en Francia.",
+      "descPatientAR": "🔴 إذا كان لديك حمى وسافرت إلى أفريقيا أو آسيا أو أمريكا الجنوبية خلال الشهرين الماضيين: اذهب إلى الطوارئ أو طبيبك اليوم — لا تنتظر. أخبرهم عن رحلتك. الملاريا قد تصبح خطيرة جداً في ساعات. لا تنتقل بين البشر في فرنسا."
     },
     {
       "id": "RSYNCYTIAL",
@@ -957,7 +969,9 @@
       "descFR": "🚨 PREMIER CAS EN FRANCE (24/06/2026) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en UHSI — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
       "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in UHSI — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
       "descPatientFR": "🟥 Ebola est une maladie très grave mais qui ne se transmet PAS dans l'air. On l'attrape uniquement en touchant le sang ou les liquides corporels d'une personne malade. Si vous n'avez pas voyagé en Afrique centrale/Est récemment et n'avez pas eu de contact avec un malade, votre risque est extrêmement faible — même avec l'alerte en France. Si vous avez de la fièvre ET avez voyagé dans ces pays dans les 21 derniers jours : appelez le 15 avant d'aller aux urgences.",
-      "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room."
+      "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room.",
+      "descPatientES": "🟥 El Ébola es muy grave pero NO se transmite por el aire. Solo se contagia por contacto con sangre o fluidos de una persona enferma. Si no viajó a África central/oriental recientemente, su riesgo es extremadamente bajo. Si tiene fiebre Y viajó a esos países en los últimos 21 días: llame al 15 antes de ir a urgencias.",
+      "descPatientAR": "🟥 إيبولا مرض خطير جداً لكنه لا ينتقل عبر الهواء. لا يمكن الإصابة به إلا بلمس دم أو سوائل جسم شخص مريض. إذا لم تسافر مؤخراً إلى وسط أو شرق أفريقيا، فخطرك منخفض للغاية. إذا كان لديك حمى وسافرت إلى تلك المناطق خلال 21 يوماً: اتصل بـ 15 قبل الذهاب إلى المستشفى."
     },
     {
       "id": "LASSA",

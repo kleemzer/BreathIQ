@@ -769,6 +769,51 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .do-card p{font-size:.82rem}
 .do-contact{margin-top:.75rem;font-size:.75rem;color:#64748b;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.08)}
 
+/* ── #1 CTA symptômes above the fold ── */
+.hero-symptom-cta{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.1rem;padding:.7rem 1.6rem;background:#e53e3e;color:#fff;border-radius:2rem;font-size:1rem;font-weight:700;text-decoration:none;box-shadow:0 4px 18px rgba(229,62,62,.35);transition:background .15s,transform .15s}
+.hero-symptom-cta:hover{background:#c53030;transform:translateY(-2px)}
+.hero-cta-arrow{font-size:1.1rem;transition:transform .15s}
+.hero-symptom-cta:hover .hero-cta-arrow{transform:translateX(4px)}
+@media(max-width:640px){.hero-symptom-cta{font-size:.95rem;padding:.65rem 1.3rem}}
+
+/* ── #3 Fraîcheur des données ── */
+.hero-freshness{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:.5rem;letter-spacing:.02em}
+.hero-freshness.fresh{color:rgba(134,239,172,.7)}
+
+/* ── #4 Sélecteur langue prominent mobile ── */
+@media(max-width:640px){
+  .lang-select{max-width:none!important;padding:.4rem .6rem!important;font-size:.9rem!important;background:rgba(255,255,255,.1);color:#e8f0f7;border:1px solid rgba(255,255,255,.2);border-radius:.4rem}
+}
+
+/* ── #7 Score : phrase d'action en typographie principale ── */
+.gp-score-action{font-size:1.15rem;font-weight:700;color:#f1f5f9;text-align:center;margin:.4rem 0 .1rem;line-height:1.3}
+.gp-score-number-sub{font-size:.8rem;color:#94a3b8;text-align:center;margin-bottom:.5rem}
+
+/* ── #8 Badge durée wizard ── */
+.wiz-duration-badge{display:inline-block;font-size:.75rem;font-weight:600;padding:.15rem .55rem;background:rgba(37,99,235,.15);color:#93c5fd;border-radius:1rem;margin-left:.5rem;vertical-align:middle}
+
+/* ── #5 Bio auteur personnelle ── */
+.author-bio-personal{font-size:.88rem;line-height:1.65;color:#cbd5e1;font-style:italic;margin-top:.4rem}
+
+/* ── #2 Alertes inline wizard épidémio ── */
+.wiz-epi-inline-alert{margin:.75rem 0}
+.wiz-epi-inline-red,.wiz-epi-inline-orange{padding:.75rem 1rem;border-radius:.6rem;font-size:.85rem;line-height:1.55}
+.wiz-epi-inline-red{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.35);color:#fca5a5}
+.wiz-epi-inline-red strong,.wiz-epi-inline-orange strong{color:#fff}
+.wiz-epi-inline-red a{color:#fca5a5;font-weight:700}
+.wiz-epi-inline-orange{background:rgba(234,88,12,.15);border:1px solid rgba(234,88,12,.35);color:#fb923c}
+.wiz-epi-inline-orange a{color:#fb923c;font-weight:700}
+
+/* ── #9 PWA prompt ── */
+.pwa-prompt{position:fixed;bottom:5rem;left:50%;transform:translateX(-50%);background:#1e3a5f;border:1px solid rgba(99,179,237,.3);border-radius:1rem;padding:1rem 1.25rem;display:flex;gap:.75rem;align-items:center;z-index:8000;box-shadow:0 8px 32px rgba(0,0,0,.4);max-width:340px;width:calc(100% - 2rem);animation:slideUp .3s ease}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.pwa-prompt-icon{font-size:1.8rem;flex-shrink:0}
+.pwa-prompt-text strong{display:block;font-size:.9rem;color:#f1f5f9;margin-bottom:.2rem}
+.pwa-prompt-text p{font-size:.78rem;color:#94a3b8;line-height:1.4}
+.pwa-prompt-btns{display:flex;gap:.5rem;margin-top:.6rem}
+.pwa-btn-install{padding:.4rem .9rem;background:#2563eb;color:#fff;border-radius:.4rem;font-size:.82rem;font-weight:600;border:none;cursor:pointer}
+.pwa-btn-dismiss{padding:.4rem .7rem;background:transparent;color:#64748b;font-size:.82rem;border:none;cursor:pointer}
+
 /* ── Overlay score PHEIC non-respiratoire ── */
 .ebola-pheic-overlay{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.35);border-radius:.75rem;padding:.9rem 1.1rem;margin:0 0 1rem;font-size:.85rem;color:#fca5a5;line-height:1.5}
 .ebola-pheic-overlay strong{display:block;margin-bottom:.4rem;font-size:.9rem}
@@ -892,6 +937,12 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <div class="gp-hero-intro">
       <h1 class="gp-hero-title" id="patient-hero-title">Est-ce que je peux sortir aujourd'hui ?</h1>
       <p class="gp-hero-subtitle">BreathIQ surveille chaque jour la qualité de l'air, les virus saisonniers et les alertes sanitaires — pour vous donner une réponse simple sur votre environnement. Gratuit, sans inscription.</p>
+      <!-- #1 CTA symptômes above the fold — visible mobile + desktop -->
+      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-symptom-cta" aria-label="Démarrer le questionnaire de symptômes">
+        🤒 J'ai des symptômes — que faire ? <span class="hero-cta-arrow">→</span>
+      </a>
+      <!-- #3 Fraîcheur des données -->
+      <div class="hero-freshness" id="heroFreshness" aria-live="polite"></div>
     </div>
 
     <!-- Indicateur de risque — universel, visuel, immédiat -->
@@ -1314,8 +1365,9 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 </section>
 
 <!-- ===== VÉRIFICATEUR DE SYMPTÔMES (Mode Patient) ===== -->
-<!-- ===== ÉCRAN CONTEXTE ÉPIDÉMIQUE ACTIF ===== -->
-<section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle">
+<!-- ===== ÉCRAN CONTEXTE ÉPIDÉMIQUE ACTIF — ancre pour PHEIC strip ===== -->
+<!-- #2 : section réduite à son ancre + résultats conditionnels (les cartes complètes sont dans le wizard step 3) -->
+<section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
   <div class="container">
     <div class="epidemio-alert-header">
       <h2 id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
@@ -1387,7 +1439,8 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
   <div class="container">
     <div class="section-header" style="text-align:center">
       <h2 id="checker-title" data-i18n="symptom-checker-title">Ai-je des symptômes qui doivent m'alerter ?</h2>
-      <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Répondez aux questions suivantes pour savoir quoi faire</p>
+      <!-- #8 Durée estimée -->
+      <p class="section-subtitle checker-intro" data-i18n="symptom-checker-intro">Répondez aux questions suivantes pour savoir quoi faire <span class="wiz-duration-badge">⏱ ~2 minutes</span></p>
     </div>
 
     <div class="checker-legal-banner" role="note" aria-label="Avertissement médical">
@@ -2606,9 +2659,12 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
       <div class="trust-card author-card">
         <div class="author-info">
           <h3>Dr. Clément MÉDEAU</h3>
-          <span class="author-role" data-i18n="author-role">Docteur en médecine · La Rochelle, France</span>
-          <p class="author-bio" data-i18n="author-bio">
-            Service d'information médicale à vocation éducative et préventive. Non dispositif médical au sens du Règlement (UE) 2017/745. Ne constitue ni acte médical, ni consultation médicale, ni diagnostic individuel.
+          <span class="author-role" data-i18n="author-role">Médecin généraliste · La Rochelle, France</span>
+          <p class="author-bio author-bio-personal">
+            Médecin généraliste installé à La Rochelle, j'ai créé BreathIQ par conviction de santé publique : trop de patients consultent trop tard — ou trop tôt — faute d'un repère fiable entre leurs symptômes et les alertes épidémiques mondiales. BreathIQ est ma réponse : gratuite, sourcée, sans publicité.
+          </p>
+          <p class="author-bio" data-i18n="author-bio" style="margin-top:.4rem;font-size:.78rem;opacity:.7">
+            Outil d'information et d'orientation — non dispositif médical (Règl. UE 2017/745). Ne constitue pas un diagnostic individuel.
           </p>
           <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem">
             <a href="about.html" class="author-contact" style="font-weight:700">→ En savoir plus</a>

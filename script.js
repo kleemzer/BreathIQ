@@ -2632,6 +2632,8 @@ function activateExpertMode() {
   }, 100);
   // Invalidate map size again after DOM reflow (tiles may not appear at 100ms)
   [400, 1000, 2000].forEach(ms => setTimeout(() => { if (worldMap) worldMap.invalidateSize(true); }, ms));
+  // #6 — Signaler activation mode expert pour mise à jour du hash URL
+  document.dispatchEvent(new CustomEvent('biq:expertActivated'));
 }
 
 function updatePatientRiskBanner() {
@@ -3037,6 +3039,8 @@ function wizAnalyze() {
     res.classList.remove('hidden');
     res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
+  // #9 — Proposer installation PWA après première complétion du wizard
+  setTimeout(showPwaInstallBanner, 3000);
 }
 
 function wizShare() {
@@ -3701,6 +3705,21 @@ domReady(() => {
 
   // Numéros d'urgence localisés
   renderEmergencyNumbers();
+
+  // #3 — Fraîcheur des données dans le hero
+  initDataFreshness();
+
+  // #6 — Deep link #pro : activer mode soignant si URL contient #pro
+  if (window.location.hash === '#pro') {
+    setTimeout(() => {
+      const stored = localStorage.getItem('biq_pro_profile');
+      if (stored) activateExpertMode();
+      else toggleMode();
+    }, 600);
+  }
+
+  // #9 — PWA install prompt après complétion wizard
+  initPwaInstallPrompt();
 
   // Onboarding première visite
   initOnboarding();
@@ -5391,3 +5410,143 @@ function renderMyDataSection() {
     </div>
   `;
 }
+
+// ══════════════════════════════════════════════════════════════
+// UX IMPROVEMENTS — Marketing audit implementation
+// ══════════════════════════════════════════════════════════════
+
+// #3 — Fraîcheur des données dans le hero
+function initDataFreshness() {
+  const el = document.getElementById('heroFreshness');
+  if (!el) return;
+  const now = new Date();
+  const h = now.getHours();
+  // WHO DON mis à jour quotidiennement à 07:00 UTC, SPF hebdomadaire
+  const lastFetch = new Date();
+  lastFetch.setMinutes(0, 0, 0);
+  if (h < 7) lastFetch.setDate(lastFetch.getDate() - 1);
+  lastFetch.setHours(7);
+  const diffH = Math.round((now - lastFetch) / 36e5);
+  const label = diffH < 1 ? 'à l\'instant' : diffH < 2 ? 'il y a 1 heure' : `il y a ${diffH} heures`;
+  el.textContent = `🕐 Données mises à jour ${label} — OMS · ECDC · SPF`;
+  el.className = 'hero-freshness' + (diffH < 6 ? ' fresh' : '');
+}
+
+// #7 — Phrase d'action primaire au-dessus du score numérique
+function injectScoreActionPhrase() {
+  const dial = document.querySelector('.gp-score-dial-inner');
+  if (!dial || dial.querySelector('.gp-score-action')) return;
+  const banner = document.getElementById('patientRiskBanner');
+  if (!banner) return;
+  const title = document.getElementById('patientRiskTitle');
+  const actionText = title ? title.textContent : '';
+  if (!actionText) return;
+  // Insérer la phrase d'action au-dessus du dial
+  const wrapper = dial.closest('.gp-score-dial')?.parentElement;
+  if (!wrapper) return;
+  let phraseEl = wrapper.querySelector('.gp-score-action');
+  if (!phraseEl) {
+    phraseEl = document.createElement('p');
+    phraseEl.className = 'gp-score-action';
+    wrapper.insertBefore(phraseEl, wrapper.querySelector('.gp-score-dial'));
+  }
+  phraseEl.textContent = actionText;
+}
+
+// Observer le titre de risque pour mettre à jour la phrase d'action dès que le score est calculé
+(function() {
+  const titleEl = document.getElementById('patientRiskTitle');
+  if (!titleEl) return;
+  const obs = new MutationObserver(() => injectScoreActionPhrase());
+  obs.observe(titleEl, { childList: true, characterData: true, subtree: true });
+  setTimeout(injectScoreActionPhrase, 1000);
+})();
+
+// #2 — Alertes contextuelles Ebola/Hantavirus dans le wizard step 3 (au clic)
+function wizShowContextualEpiAlert(type) {
+  const ids = { ebola: 'epiResultEbola', hanta: 'epiResultHanta' };
+  // Afficher la carte dans l'écran épidémio et y scroller
+  const res = document.getElementById(ids[type]);
+  if (res) { res.hidden = false; }
+  // Afficher une mini-alerte inline dans le wizard
+  const inlineId = `wiz-epi-inline-${type}`;
+  let inline = document.getElementById(inlineId);
+  if (!inline) {
+    inline = document.createElement('div');
+    inline.id = inlineId;
+    inline.className = 'wiz-epi-inline-alert';
+    inline.setAttribute('role', 'alert');
+    const grid = document.getElementById('wizEpidGrid');
+    if (grid) grid.insertAdjacentElement('afterend', inline);
+  }
+  if (type === 'ebola') {
+    inline.innerHTML = `<div class="wiz-epi-inline-red">🚨 <strong>Voyage zone Ebola détecté</strong> — Si vous avez de la fièvre : <a href="tel:15"><strong>appelez le 15 maintenant</strong></a> en mentionnant votre voyage. Ne venez pas seul(e) aux urgences. <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">En savoir plus →</a></div>`;
+  } else {
+    inline.innerHTML = `<div class="wiz-epi-inline-orange">⚠️ <strong>MV Hondius / Patagonie détecté</strong> — Si vous avez de la fièvre ou des douleurs musculaires intenses : consultez un médecin aujourd'hui en mentionnant votre voyage. <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">En savoir plus →</a></div>`;
+  }
+  inline.hidden = false;
+}
+function wizHideContextualEpiAlert(type) {
+  const inline = document.getElementById(`wiz-epi-inline-${type}`);
+  if (inline) inline.hidden = true;
+}
+
+// Intercepter le changement d'état des cases épidémio du wizard
+document.addEventListener('change', function(e) {
+  const cb = e.target;
+  if (!cb.matches('.wiz-epid-check input[type=checkbox]')) return;
+  if (cb.value === 'travel_africa_high_risk') {
+    cb.checked ? wizShowContextualEpiAlert('ebola') : wizHideContextualEpiAlert('ebola');
+  }
+  if (cb.value === 'mv_hondius') {
+    cb.checked ? wizShowContextualEpiAlert('hanta') : wizHideContextualEpiAlert('hanta');
+  }
+});
+
+// #9 — PWA install prompt après complétion du wizard
+let _pwaInstallEvent = null;
+function initPwaInstallPrompt() {
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault();
+    _pwaInstallEvent = e;
+  });
+}
+function showPwaInstallBanner() {
+  if (!_pwaInstallEvent) return;
+  if (localStorage.getItem('biq_pwa_dismissed')) return;
+  if (document.getElementById('pwaInstallBanner')) return;
+  const banner = document.createElement('div');
+  banner.id = 'pwaInstallBanner';
+  banner.className = 'pwa-prompt';
+  banner.innerHTML = `
+    <div class="pwa-prompt-icon">📲</div>
+    <div class="pwa-prompt-text">
+      <strong>Installer BreathIQ</strong>
+      <p>Accès en 1 seconde depuis votre écran d'accueil — même sans connexion</p>
+      <div class="pwa-prompt-btns">
+        <button class="pwa-btn-install" onclick="pwaDoInstall()">Installer</button>
+        <button class="pwa-btn-dismiss" onclick="pwaDismiss()">Plus tard</button>
+      </div>
+    </div>`;
+  document.body.appendChild(banner);
+}
+function pwaDoInstall() {
+  if (_pwaInstallEvent) {
+    _pwaInstallEvent.prompt();
+    _pwaInstallEvent.userChoice.then(() => { _pwaInstallEvent = null; });
+  }
+  pwaDismiss();
+}
+function pwaDismiss() {
+  localStorage.setItem('biq_pwa_dismissed', '1');
+  const b = document.getElementById('pwaInstallBanner');
+  if (b) b.remove();
+}
+
+// #6 — Exposer URL #pro pour usage externe (lien bookmarkable)
+// Mise à jour du hash quand le mode expert est activé
+const _origActivateExpert = typeof activateExpertMode === 'function' ? activateExpertMode : null;
+// Patch léger : écouter l'activation du mode expert pour mettre le hash
+document.addEventListener('biq:expertActivated', () => {
+  if (history.replaceState) history.replaceState(null, '', '#pro');
+});
