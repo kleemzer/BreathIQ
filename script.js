@@ -3724,6 +3724,9 @@ domReady(() => {
   // PHEIC alert — chargement dynamique
   loadPheicAlert();
 
+  // Surveillance multi-pathogènes
+  loadSurveillanceData();
+
   // Numéros d'urgence localisés
   renderEmergencyNumbers();
 
@@ -3949,6 +3952,231 @@ function renderEpiTracker() {
 }
 
 // ── Surveillance syndromique — Algorithme OMS 7-1-7 ──────────
+
+// Données multi-pathogènes chargées au démarrage
+var _spfSurveillance = null;
+var _ecdcSurveillance = null;
+var _activeSurveillancePathogen = null;
+
+async function loadSurveillanceData() {
+  try {
+    const [spf, ecdc] = await Promise.all([
+      fetch('/data/spf-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/ecdc-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
+    ]);
+    _spfSurveillance = spf;
+    _ecdcSurveillance = ecdc;
+    const active = getActivePathogens();
+    if (active.length) {
+      _activeSurveillancePathogen = active[0].id;
+      renderSurveillanceModule(active);
+    }
+  } catch(e) { /* silencieux */ }
+}
+
+/**
+ * Détermine la saison courante (hiver = oct–mars, été = avr–sept)
+ * et retourne la liste ordonnée des pathogènes à afficher :
+ * 1. PHEIC actives (toujours)
+ * 2. Pathogènes Z ≥ 1.5 hors-saison
+ * 3. Pathogènes de saison courante
+ */
+function getActivePathogens() {
+  const month = new Date().getMonth() + 1; // 1-12
+  const isWinter = month >= 10 || month <= 3;
+  const currentSeason = isWinter ? 'winter' : 'summer';
+
+  const allPathogens = [
+    ...(((_spfSurveillance?.pathogens) || []).map(p => ({ ...p, _src: 'spf' }))),
+    ...(((_ecdcSurveillance?.pathogens) || []).map(p => ({ ...p, _src: 'ecdc' }))),
+  ];
+
+  const pheicIds = (window._pheicData?.alerts || []).map(a => a.pathogenId).filter(Boolean);
+
+  const pheic    = allPathogens.filter(p => pheicIds.includes(p.id) || (window._pheicData?.alerts?.length && p.id === 'ebola'));
+  const seasonal = allPathogens.filter(p => !pheicIds.includes(p.id) && (p.season === currentSeason || p.season === 'all'));
+  const offSeason = allPathogens.filter(p =>
+    !pheicIds.includes(p.id) && p.season !== 'all' && p.season !== currentSeason && (p.zscore || 0) >= 1.5
+  );
+
+  // tri par Z-score desc dans chaque groupe
+  const byZ = (a, b) => (b.zscore || 0) - (a.zscore || 0);
+  return [...pheic.sort(byZ), ...offSeason.sort(byZ), ...seasonal.sort(byZ)];
+}
+
+/**
+ * Calcule l'âge en jours d'une date ISO et retourne le badge de fraîcheur
+ */
+function freshnessInfo(generatedAt) {
+  if (!generatedAt) return { label: 'Date inconnue', cls: 'freshness-stale', icon: '⚠️' };
+  const ageDays = (Date.now() - new Date(generatedAt)) / 86400000;
+  if (ageDays < 7) return { label: `Actualisé il y a ${Math.round(ageDays)} j`, cls: 'freshness-ok', icon: '🔒' };
+  if (ageDays < 14) return { label: `Actualisé il y a ${Math.round(ageDays)} j — vérifier la source`, cls: 'freshness-warn', icon: '🕐' };
+  return { label: `Données potentiellement obsolètes (${Math.round(ageDays)} j) — consulter SPF/ECDC`, cls: 'freshness-stale', icon: '⚠️' };
+}
+
+/**
+ * Rend le module de surveillance complet : sélecteur + courbe + stats + fraîcheur
+ */
+function renderSurveillanceModule(activePathogens) {
+  const container = document.getElementById('epiSurveillanceModule');
+  if (!container) return;
+
+  if (!activePathogens?.length) {
+    container.innerHTML = '<div class="epi-no-data"><span class="epi-no-data-icon">📡</span><span>Aucune donnée de surveillance disponible</span></div>';
+    return;
+  }
+
+  // Sélecteur de pathogène
+  const tabs = activePathogens.map(p => {
+    const levelColors = { normal: '#10B981', jaune: '#F59E0B', orange: '#F97316', rouge: '#EF4444' };
+    const col = levelColors[p.alertLevel] || '#10B981';
+    const active = p.id === _activeSurveillancePathogen ? 'surv-tab-active' : '';
+    return `<button class="surv-tab ${active}" onclick="selectSurveillancePathogen('${p.id}')" data-pathogen="${p.id}">
+      <span class="surv-tab-dot" style="background:${col}"></span>
+      <span class="surv-tab-name">${p.nameFR}</span>
+      ${p.zscore != null ? `<span class="surv-tab-z" style="color:${col}">z${p.zscore >= 0 ? '+' : ''}${p.zscore}σ</span>` : ''}
+    </button>`;
+  }).join('');
+
+  container.innerHTML = `
+    <div class="surv-tabs" role="tablist" aria-label="Sélection pathogène">${tabs}</div>
+    <div id="survCurveArea"></div>
+  `;
+
+  renderSurveillanceCurve(_activeSurveillancePathogen, activePathogens);
+}
+
+function selectSurveillancePathogen(id) {
+  _activeSurveillancePathogen = id;
+  document.querySelectorAll('.surv-tab').forEach(btn => {
+    btn.classList.toggle('surv-tab-active', btn.dataset.pathogen === id);
+  });
+  const active = getActivePathogens();
+  renderSurveillanceCurve(id, active);
+}
+
+/**
+ * Dessine la courbe + stats + fraîcheur pour le pathogène sélectionné
+ */
+function renderSurveillanceCurve(pathogenId, activePathogens) {
+  const area = document.getElementById('survCurveArea');
+  if (!area) return;
+
+  const p = activePathogens.find(x => x.id === pathogenId);
+  if (!p) return;
+
+  const series = (p.series || []).slice(-52);
+  const b = p.baseline || {};
+  const lang = document.documentElement.lang || 'fr';
+
+  // Fraîcheur
+  const srcData = p._src === 'spf' ? _spfSurveillance : _ecdcSurveillance;
+  const fresh = freshnessInfo(srcData?.generatedAt);
+  const srcLabel = p._src === 'spf' ? 'SPF — Réseau Sentinelles' : 'ECDC — Surveillance Atlas';
+  const srcUrl = p.source_url || (p._src === 'spf'
+    ? 'https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires'
+    : 'https://atlas.ecdc.europa.eu/public/index.aspx');
+
+  // Stats Z
+  const levelColors = { normal: '#10B981', jaune: '#F59E0B', orange: '#F97316', rouge: '#EF4444' };
+  const levelLabels = { normal: 'NORMAL', jaune: 'VIGILANCE', orange: 'ALERTE', rouge: 'ÉPIDÉMIE' };
+  const col = levelColors[p.alertLevel] || '#10B981';
+  const zDisplay = p.zscore != null ? `${p.zscore >= 0 ? '+' : ''}${p.zscore}σ · ${levelLabels[p.alertLevel] || 'NORMAL'}` : '—';
+
+  // Mode patient : masquer les stats Z
+  const isPatient = document.body.dataset.mode === 'patient';
+
+  const statsHtml = isPatient ? '' : `
+    <div class="epi-stats-grid" style="margin-top:1rem">
+      <div class="epi-stat"><span class="epi-stat-label">Semaine actuelle</span><span class="epi-stat-val">${p.rate != null ? `${p.rate} ${p.unit}` : '—'}</span></div>
+      <div class="epi-stat"><span class="epi-stat-label">Moyenne 52s</span><span class="epi-stat-val">${b.mean != null ? `${b.mean} ${p.unit}` : '—'}</span></div>
+      <div class="epi-stat"><span class="epi-stat-label">Score Z</span><span class="epi-stat-val" style="color:${col}">${p.zscore != null ? `${p.zscore >= 0 ? '+' : ''}${p.zscore}σ` : '—'}</span></div>
+      <div class="epi-stat"><span class="epi-stat-label">Seuil vigilance</span><span class="epi-stat-val" style="color:#F59E0B">${b.t1 != null ? `${b.t1} ${p.unit}` : '—'}</span></div>
+      <div class="epi-stat"><span class="epi-stat-label">Seuil alerte</span><span class="epi-stat-val" style="color:#F97316">${b.t2 != null ? `${b.t2} ${p.unit}` : '—'}</span></div>
+      <div class="epi-stat"><span class="epi-stat-label">Seuil épidémie</span><span class="epi-stat-val" style="color:#EF4444">${b.t3 != null ? `${b.t3} ${p.unit}` : '—'}</span></div>
+    </div>`;
+
+  area.innerHTML = `
+    <div class="epi-card epi-curve-card" style="margin-top:.75rem">
+      <div class="epi-card-header">
+        <span class="epi-card-title">${p.nameFR}</span>
+        <span class="epi-card-sub" style="color:${col};font-weight:700">${!isPatient ? zDisplay : levelLabels[p.alertLevel] || 'NORMAL'}</span>
+      </div>
+      <div id="survCurveChart" class="epi-curve-wrap"></div>
+      ${statsHtml}
+      <div class="surv-freshness ${fresh.cls}">
+        ${fresh.icon} ${fresh.label} ·
+        <a href="${srcUrl}" target="_blank" rel="noopener noreferrer" class="surv-src-link">${srcLabel}</a>
+        · Semaine ${p.week || '—'}
+        ${p.alertLevel !== 'normal' ? `<br><small style="color:var(--text-muted)">Outil d'aide à la surveillance épidémiologique — ne se substitue pas aux recommandations SPF/ECDC officielles</small>` : ''}
+      </div>
+    </div>
+  `;
+
+  // Courbe SVG
+  if (series.length) {
+    _renderEpiCurveSVG(series, b, p, col);
+  } else {
+    document.getElementById('survCurveChart').innerHTML = `
+      <div class="epi-no-data">
+        <span class="epi-no-data-icon">📡</span>
+        <span>Données ${p.nameFR} non disponibles pour cette période</span>
+        <span class="epi-no-data-sub"><a href="${srcUrl}" target="_blank" rel="noopener noreferrer">Consulter ${srcLabel} directement</a></span>
+      </div>`;
+  }
+}
+
+function _renderEpiCurveSVG(series, b, p, accentColor) {
+  const wrap = document.getElementById('survCurveChart');
+  if (!wrap) return;
+
+  const vals = series.map(s => s.rate);
+  const maxVal = Math.max(...vals, b.t3 || 0, 1);
+  const W = 560, H = 150, padL = 52, padR = 16, padT = 16, padB = 30;
+  const iW = W - padL - padR, iH = H - padT - padB;
+
+  const xScale = i => padL + (i / (series.length - 1)) * iW;
+  const yScale = v => padT + iH - (v / maxVal) * iH;
+
+  const threshLine = (val, color, label) => {
+    if (val == null || isNaN(val)) return '';
+    const y = yScale(val).toFixed(1);
+    return `<line x1="${padL}" y1="${y}" x2="${W-padR}" y2="${y}" stroke="${color}" stroke-width="1" stroke-dasharray="4 3" opacity=".8"/>
+      <text x="${W-padR+3}" y="${parseFloat(y)+3.5}" font-size="9" fill="${color}">${label}</text>`;
+  };
+
+  const linePts = series.map((s,i) => `${xScale(i).toFixed(1)},${yScale(s.rate).toFixed(1)}`).join(' ');
+
+  const dots = series.map((s,i) => {
+    const isLast = i === series.length - 1;
+    const col = s.rate >= (b.t3||Infinity) ? '#EF4444'
+              : s.rate >= (b.t2||Infinity) ? '#F97316'
+              : s.rate >= (b.t1||Infinity) ? '#F59E0B' : accentColor;
+    return `<circle cx="${xScale(i).toFixed(1)}" cy="${yScale(s.rate).toFixed(1)}" r="${isLast?5:2}" fill="${col}" ${isLast?'stroke="#fff" stroke-width="2"':'opacity=".75"'}><title>${s.week}: ${s.rate} ${p.unit}</title></circle>`;
+  }).join('');
+
+  const xLabels = series.filter((_,i) => i % 8 === 0 || i === series.length-1).map(s => {
+    const origIdx = series.indexOf(s);
+    return `<text x="${xScale(origIdx).toFixed(1)}" y="${H-4}" font-size="8" fill="#9ca3af" text-anchor="middle">${s.week?.slice(-3)||''}</text>`;
+  }).join('');
+
+  const yLabels = [0, maxVal/2, maxVal].map(v =>
+    `<text x="${padL-4}" y="${yScale(v).toFixed(1)+3}" font-size="9" fill="#9ca3af" text-anchor="end">${Number(v.toFixed(2))}</text>`
+  ).join('');
+
+  wrap.innerHTML = `<svg viewBox="0 0 ${W} ${H}" width="100%" height="${H}" role="img" aria-label="Courbe épidémique ${p.nameFR} — 52 semaines" style="overflow:visible">
+    ${b.t3 != null ? `<rect x="${padL}" y="${yScale(b.t3).toFixed(1)}" width="${iW}" height="${(padT+iH-yScale(b.t3)).toFixed(1)}" fill="#EF4444" opacity=".05"/>` : ''}
+    ${b.t2 != null && b.t3 != null ? `<rect x="${padL}" y="${yScale(b.t2).toFixed(1)}" width="${iW}" height="${(yScale(b.t2)-yScale(b.t3)).toFixed(1)}" fill="#F97316" opacity=".06"/>` : ''}
+    ${b.t1 != null && b.t2 != null ? `<rect x="${padL}" y="${yScale(b.t1).toFixed(1)}" width="${iW}" height="${(yScale(b.t1)-yScale(b.t2)).toFixed(1)}" fill="#F59E0B" opacity=".06"/>` : ''}
+    ${[0,.25,.5,.75,1].map(f=>`<line x1="${padL}" y1="${(padT+iH*(1-f)).toFixed(1)}" x2="${W-padR}" y2="${(padT+iH*(1-f)).toFixed(1)}" stroke="#e5e7eb" stroke-width=".5" opacity=".4"/>`).join('')}
+    ${threshLine(b.t1,'#F59E0B','V')}${threshLine(b.t2,'#F97316','A')}${threshLine(b.t3,'#EF4444','E')}
+    ${b.mean != null ? threshLine(b.mean,'#6B7280','µ') : ''}
+    <polyline points="${linePts}" fill="none" stroke="${accentColor}" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
+    ${dots}
+    ${yLabels}${xLabels}
+  </svg>`;
+}
 
 /**
  * Met à jour les niveaux d'alerte et la courbe épidémique

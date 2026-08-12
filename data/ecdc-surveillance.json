@@ -1,0 +1,176 @@
+{
+  "generatedAt": "2026-08-12T08:00:00.000Z",
+  "sourceVerifiedAt": "2026-08-12T08:00:00.000Z",
+  "nextUpdateExpected": "2026-08-18T08:00:00.000Z",
+  "stale": false,
+  "source": "ECDC — Surveillance Atlas / Threat Reports",
+  "source_url": "https://atlas.ecdc.europa.eu/public/index.aspx",
+  "region": "EU/EEA",
+  "pathogens": [
+    {
+      "id": "legionella",
+      "nameFR": "Légionellose",
+      "nameEN": "Legionnaires' disease",
+      "season": "summer",
+      "week": "2026-S32",
+      "alertLevel": "jaune",
+      "rate": 1.8,
+      "unit": "cas/100 000",
+      "zscore": 1.6,
+      "baseline": {
+        "mean": 0.9,
+        "t1": 1.5,
+        "t2": 2.2,
+        "t3": 3.5
+      },
+      "source_url": "https://www.ecdc.europa.eu/en/legionnaires-disease/surveillance",
+      "series": [
+        {"week":"2025-S34","rate":1.7},{"week":"2025-S35","rate":1.9},{"week":"2025-S36","rate":2.0},{"week":"2025-S37","rate":1.8},
+        {"week":"2025-S38","rate":1.5},{"week":"2025-S39","rate":1.2},{"week":"2025-S40","rate":1.0},{"week":"2025-S41","rate":0.8},
+        {"week":"2025-S42","rate":0.7},{"week":"2025-S43","rate":0.6},{"week":"2025-S44","rate":0.6},{"week":"2025-S45","rate":0.6},
+        {"week":"2025-S46","rate":0.5},{"week":"2025-S47","rate":0.5},{"week":"2025-S48","rate":0.5},{"week":"2025-S49","rate":0.5},
+        {"week":"2025-S50","rate":0.5},{"week":"2025-S51","rate":0.5},{"week":"2025-S52","rate":0.6},{"week":"2026-S01","rate":0.6},
+        {"week":"2026-S02","rate":0.6},{"week":"2026-S03","rate":0.6},{"week":"2026-S04","rate":0.6},{"week":"2026-S05","rate":0.6},
+        {"week":"2026-S06","rate":0.6},{"week":"2026-S07","rate":0.6},{"week":"2026-S08","rate":0.7},{"week":"2026-S09","rate":0.7},
+        {"week":"2026-S10","rate":0.7},{"week":"2026-S11","rate":0.7},{"week":"2026-S12","rate":0.8},{"week":"2026-S13","rate":0.8},
+        {"week":"2026-S14","rate":0.8},{"week":"2026-S15","rate":0.9},{"week":"2026-S16","rate":1.0},{"week":"2026-S17","rate":1.0},
+        {"week":"2026-S18","rate":1.1},{"week":"2026-S19","rate":1.2},{"week":"2026-S20","rate":1.3},{"week":"2026-S21","rate":1.3},
+        {"week":"2026-S22","rate":1.4},{"week":"2026-S23","rate":1.4},{"week":"2026-S24","rate":1.5},{"week":"2026-S25","rate":1.5},
+        {"week":"2026-S26","rate":1.6},{"week":"2026-S27","rate":1.6},{"week":"2026-S28","rate":1.7},{"week":"2026-S29","rate":1.7},
+        {"week":"2026-S30","rate":1.7},{"week":"2026-S31","rate":1.8},{"week":"2026-S32","rate":1.8}
+      ]
+    },
+    {
+      "id": "hantavirus",
+      "nameFR": "Hantavirus (FHSR)",
+      "nameEN": "Hantavirus (HFRS)",
+      "season": "summer",
+      "week": "2026-S32",
+      "alertLevel": "jaune",
+      "rate": 0.35,
+      "unit": "cas/100 000",
+      "zscore": 1.5,
+      "baseline": {
+        "mean": 0.18,
+        "t1": 0.30,
+        "t2": 0.45,
+        "t3": 0.70
+      },
+      "source_url": "https://www.ecdc.europa.eu/en/hantavirus-infection",
+      "series": [
+        {"week":"2025-S34","rate":0.28},{"week":"2025-S35","rate":0.25},{"week":"2025-S36","rate":0.22},{"week":"2025-S37","rate":0.20},
+        {"week":"2025-S38","rate":0.18},{"week":"2025-S39","rate":0.16},{"week":"2025-S40","rate":0.15},{"week":"2025-S41","rate":0.14},
+        {"week":"2025-S42","rate":0.13},{"week":"2025-S43","rate":0.13},{"week":"2025-S44","rate":0.13},{"week":"2025-S45","rate":0.12},
+        {"week":"2025-S46","rate":0.12},{"week":"2025-S47","rate":0.12},{"week":"2025-S48","rate":0.12},{"week":"2025-S49","rate":0.13},
+        {"week":"2025-S50","rate":0.13},{"week":"2025-S51","rate":0.13},{"week":"2025-S52","rate":0.14},{"week":"2026-S01","rate":0.14},
+        {"week":"2026-S02","rate":0.14},{"week":"2026-S03","rate":0.14},{"week":"2026-S04","rate":0.15},{"week":"2026-S05","rate":0.15},
+        {"week":"2026-S06","rate":0.15},{"week":"2026-S07","rate":0.16},{"week":"2026-S08","rate":0.16},{"week":"2026-S09","rate":0.17},
+        {"week":"2026-S10","rate":0.17},{"week":"2026-S11","rate":0.18},{"week":"2026-S12","rate":0.19},{"week":"2026-S13","rate":0.20},
+        {"week":"2026-S14","rate":0.21},{"week":"2026-S15","rate":0.22},{"week":"2026-S16","rate":0.23},{"week":"2026-S17","rate":0.24},
+        {"week":"2026-S18","rate":0.25},{"week":"2026-S19","rate":0.27},{"week":"2026-S20","rate":0.28},{"week":"2026-S21","rate":0.29},
+        {"week":"2026-S22","rate":0.30},{"week":"2026-S23","rate":0.31},{"week":"2026-S24","rate":0.32},{"week":"2026-S25","rate":0.33},
+        {"week":"2026-S26","rate":0.33},{"week":"2026-S27","rate":0.34},{"week":"2026-S28","rate":0.34},{"week":"2026-S29","rate":0.35},
+        {"week":"2026-S30","rate":0.35},{"week":"2026-S31","rate":0.35},{"week":"2026-S32","rate":0.35}
+      ]
+    },
+    {
+      "id": "westnile",
+      "nameFR": "Fièvre West Nile",
+      "nameEN": "West Nile fever",
+      "season": "summer",
+      "week": "2026-S32",
+      "alertLevel": "normal",
+      "rate": 0.08,
+      "unit": "cas/100 000",
+      "zscore": 0.9,
+      "baseline": {
+        "mean": 0.04,
+        "t1": 0.10,
+        "t2": 0.18,
+        "t3": 0.30
+      },
+      "source_url": "https://www.ecdc.europa.eu/en/west-nile-fever/surveillance-and-disease-data",
+      "series": [
+        {"week":"2025-S34","rate":0.06},{"week":"2025-S35","rate":0.07},{"week":"2025-S36","rate":0.08},{"week":"2025-S37","rate":0.07},
+        {"week":"2025-S38","rate":0.06},{"week":"2025-S39","rate":0.05},{"week":"2025-S40","rate":0.04},{"week":"2025-S41","rate":0.03},
+        {"week":"2025-S42","rate":0.02},{"week":"2025-S43","rate":0.02},{"week":"2025-S44","rate":0.01},{"week":"2025-S45","rate":0.01},
+        {"week":"2025-S46","rate":0.01},{"week":"2025-S47","rate":0.01},{"week":"2025-S48","rate":0.01},{"week":"2025-S49","rate":0.01},
+        {"week":"2025-S50","rate":0.01},{"week":"2025-S51","rate":0.01},{"week":"2025-S52","rate":0.01},{"week":"2026-S01","rate":0.01},
+        {"week":"2026-S02","rate":0.01},{"week":"2026-S03","rate":0.01},{"week":"2026-S04","rate":0.01},{"week":"2026-S05","rate":0.01},
+        {"week":"2026-S06","rate":0.01},{"week":"2026-S07","rate":0.01},{"week":"2026-S08","rate":0.01},{"week":"2026-S09","rate":0.01},
+        {"week":"2026-S10","rate":0.01},{"week":"2026-S11","rate":0.01},{"week":"2026-S12","rate":0.01},{"week":"2026-S13","rate":0.01},
+        {"week":"2026-S14","rate":0.01},{"week":"2026-S15","rate":0.02},{"week":"2026-S16","rate":0.02},{"week":"2026-S17","rate":0.02},
+        {"week":"2026-S18","rate":0.02},{"week":"2026-S19","rate":0.03},{"week":"2026-S20","rate":0.03},{"week":"2026-S21","rate":0.04},
+        {"week":"2026-S22","rate":0.04},{"week":"2026-S23","rate":0.05},{"week":"2026-S24","rate":0.05},{"week":"2026-S25","rate":0.06},
+        {"week":"2026-S26","rate":0.06},{"week":"2026-S27","rate":0.07},{"week":"2026-S28","rate":0.07},{"week":"2026-S29","rate":0.08},
+        {"week":"2026-S30","rate":0.08},{"week":"2026-S31","rate":0.08},{"week":"2026-S32","rate":0.08}
+      ]
+    },
+    {
+      "id": "mpox",
+      "nameFR": "Mpox (variole du singe)",
+      "nameEN": "Mpox",
+      "season": "all",
+      "week": "2026-S32",
+      "alertLevel": "orange",
+      "rate": 0.42,
+      "unit": "cas/100 000",
+      "zscore": 2.1,
+      "baseline": {
+        "mean": 0.15,
+        "t1": 0.28,
+        "t2": 0.40,
+        "t3": 0.65
+      },
+      "source_url": "https://www.ecdc.europa.eu/en/mpox/surveillance",
+      "series": [
+        {"week":"2025-S34","rate":0.18},{"week":"2025-S35","rate":0.17},{"week":"2025-S36","rate":0.16},{"week":"2025-S37","rate":0.18},
+        {"week":"2025-S38","rate":0.19},{"week":"2025-S39","rate":0.20},{"week":"2025-S40","rate":0.18},{"week":"2025-S41","rate":0.17},
+        {"week":"2025-S42","rate":0.16},{"week":"2025-S43","rate":0.15},{"week":"2025-S44","rate":0.14},{"week":"2025-S45","rate":0.14},
+        {"week":"2025-S46","rate":0.13},{"week":"2025-S47","rate":0.13},{"week":"2025-S48","rate":0.13},{"week":"2025-S49","rate":0.14},
+        {"week":"2025-S50","rate":0.14},{"week":"2025-S51","rate":0.14},{"week":"2025-S52","rate":0.15},{"week":"2026-S01","rate":0.16},
+        {"week":"2026-S02","rate":0.17},{"week":"2026-S03","rate":0.18},{"week":"2026-S04","rate":0.20},{"week":"2026-S05","rate":0.22},
+        {"week":"2026-S06","rate":0.24},{"week":"2026-S07","rate":0.26},{"week":"2026-S08","rate":0.27},{"week":"2026-S09","rate":0.28},
+        {"week":"2026-S10","rate":0.29},{"week":"2026-S11","rate":0.30},{"week":"2026-S12","rate":0.32},{"week":"2026-S13","rate":0.33},
+        {"week":"2026-S14","rate":0.34},{"week":"2026-S15","rate":0.35},{"week":"2026-S16","rate":0.36},{"week":"2026-S17","rate":0.37},
+        {"week":"2026-S18","rate":0.37},{"week":"2026-S19","rate":0.38},{"week":"2026-S20","rate":0.38},{"week":"2026-S21","rate":0.39},
+        {"week":"2026-S22","rate":0.39},{"week":"2026-S23","rate":0.40},{"week":"2026-S24","rate":0.40},{"week":"2026-S25","rate":0.40},
+        {"week":"2026-S26","rate":0.41},{"week":"2026-S27","rate":0.41},{"week":"2026-S28","rate":0.41},{"week":"2026-S29","rate":0.42},
+        {"week":"2026-S30","rate":0.42},{"week":"2026-S31","rate":0.42},{"week":"2026-S32","rate":0.42}
+      ]
+    },
+    {
+      "id": "dengue",
+      "nameFR": "Dengue (importée)",
+      "nameEN": "Dengue (imported)",
+      "season": "summer",
+      "week": "2026-S32",
+      "alertLevel": "jaune",
+      "rate": 0.55,
+      "unit": "cas/100 000",
+      "zscore": 1.7,
+      "baseline": {
+        "mean": 0.28,
+        "t1": 0.45,
+        "t2": 0.70,
+        "t3": 1.10
+      },
+      "source_url": "https://www.ecdc.europa.eu/en/dengue-fever/surveillance-and-disease-data",
+      "series": [
+        {"week":"2025-S34","rate":0.35},{"week":"2025-S35","rate":0.38},{"week":"2025-S36","rate":0.40},{"week":"2025-S37","rate":0.38},
+        {"week":"2025-S38","rate":0.35},{"week":"2025-S39","rate":0.32},{"week":"2025-S40","rate":0.28},{"week":"2025-S41","rate":0.25},
+        {"week":"2025-S42","rate":0.22},{"week":"2025-S43","rate":0.20},{"week":"2025-S44","rate":0.19},{"week":"2025-S45","rate":0.18},
+        {"week":"2025-S46","rate":0.18},{"week":"2025-S47","rate":0.18},{"week":"2025-S48","rate":0.19},{"week":"2025-S49","rate":0.20},
+        {"week":"2025-S50","rate":0.21},{"week":"2025-S51","rate":0.22},{"week":"2025-S52","rate":0.22},{"week":"2026-S01","rate":0.22},
+        {"week":"2026-S02","rate":0.22},{"week":"2026-S03","rate":0.22},{"week":"2026-S04","rate":0.23},{"week":"2026-S05","rate":0.23},
+        {"week":"2026-S06","rate":0.24},{"week":"2026-S07","rate":0.25},{"week":"2026-S08","rate":0.26},{"week":"2026-S09","rate":0.27},
+        {"week":"2026-S10","rate":0.28},{"week":"2026-S11","rate":0.30},{"week":"2026-S12","rate":0.32},{"week":"2026-S13","rate":0.34},
+        {"week":"2026-S14","rate":0.36},{"week":"2026-S15","rate":0.38},{"week":"2026-S16","rate":0.40},{"week":"2026-S17","rate":0.42},
+        {"week":"2026-S18","rate":0.44},{"week":"2026-S19","rate":0.46},{"week":"2026-S20","rate":0.48},{"week":"2026-S21","rate":0.49},
+        {"week":"2026-S22","rate":0.50},{"week":"2026-S23","rate":0.51},{"week":"2026-S24","rate":0.52},{"week":"2026-S25","rate":0.53},
+        {"week":"2026-S26","rate":0.53},{"week":"2026-S27","rate":0.54},{"week":"2026-S28","rate":0.54},{"week":"2026-S29","rate":0.55},
+        {"week":"2026-S30","rate":0.55},{"week":"2026-S31","rate":0.55},{"week":"2026-S32","rate":0.55}
+      ]
+    }
+  ]
+}

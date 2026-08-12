@@ -1,0 +1,65 @@
+name: ECDC Weekly Surveillance Update
+
+on:
+  schedule:
+    # Every Tuesday at 08:00 UTC (ECDC publishes Tuesday)
+    - cron: '0 8 * * 2'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Dry run (print without committing)'
+        required: false
+        default: 'false'
+        type: boolean
+
+jobs:
+  update-ecdc-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Fetch ECDC surveillance data and compute Z-scores
+        env:
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
+        run: node scripts/ecdc-surveillance.mjs
+
+      - name: Show generated data
+        run: |
+          echo "=== ecdc-surveillance.json ==="
+          cat data/ecdc-surveillance.json | head -60
+
+      - name: Validate JSON
+        run: |
+          node -e "
+            const d = JSON.parse(require('fs').readFileSync('data/ecdc-surveillance.json','utf8'));
+            const age = (Date.now() - new Date(d.generatedAt)) / 86400000;
+            console.log('Pathogens:', d.pathogens?.length);
+            console.log('Age (days):', age.toFixed(1));
+            if (!d.pathogens?.length) { console.error('No pathogens!'); process.exit(1); }
+          "
+
+      - name: Commit and push if changed
+        if: ${{ github.event.inputs.dry_run != 'true' }}
+        run: |
+          git config user.name "ECDC-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/ecdc-surveillance.json
+          if git diff --staged --quiet; then
+            echo "✅ Aucune modification détectée"
+          else
+            git commit -m "data: ECDC surveillance update $(date +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main || { echo "⚠️ Push échoué — sera retenté au prochain run"; exit 0; }
+            echo "✅ data/ecdc-surveillance.json mis à jour"
+          fi

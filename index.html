@@ -1919,38 +1919,19 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
       </div>
     </div>
 
-    <!-- Niveaux d'alerte dynamiques (grippe SPF live) -->
-    <div class="epi-dashboard" style="margin-top:var(--s4)">
-      <div class="epi-card epi-curve-card">
-        <div class="epi-card-header">
-          <span class="epi-card-title">Courbe épidémique — Grippe France (SPF)</span>
-          <span class="epi-card-sub" id="epiCurveStat"></span>
-        </div>
-        <div id="epiCurveChart" class="epi-curve-wrap">
-          <div class="epi-no-data">
-            <span class="epi-no-data-icon">📡</span>
-            <span>Données SPF hors-saison · Prochain pic estimé : oct–nov 2026</span>
-            <span class="epi-no-data-sub">Courbe disponible dès réception du flux SPF hebdomadaire</span>
-          </div>
-        </div>
+    <!-- Module de surveillance multi-pathogènes (injecté par renderSurveillanceModule) -->
+    <div id="epiSurveillanceModule" style="margin-top:var(--s4)">
+      <div class="epi-no-data">
+        <span class="epi-no-data-icon">📡</span>
+        <span>Chargement des données de surveillance…</span>
       </div>
+    </div>
 
-      <div class="epi-card epi-stats-card">
-        <div class="epi-card-title">Analyse statistique — Grippe</div>
-        <div class="epi-stats-grid" id="epiStatsGrid">
-          <div class="epi-stat"><span class="epi-stat-label">Semaine actuelle</span><span class="epi-stat-val" id="epiStatCurrent">Hors saison</span></div>
-          <div class="epi-stat"><span class="epi-stat-label">Moyenne 52s</span><span class="epi-stat-val" id="epiStatMean">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label">Score Z</span><span class="epi-stat-val" id="epiStatZ" style="color:#10B981">−0.3σ</span></div>
-          <div class="epi-stat"><span class="epi-stat-label">Seuil JAUNE</span><span class="epi-stat-val" id="epiStatT1">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label">Seuil ORANGE</span><span class="epi-stat-val" id="epiStatT2">—</span></div>
-          <div class="epi-stat"><span class="epi-stat-label">Seuil ROUGE</span><span class="epi-stat-val" id="epiStatT3">—</span></div>
-        </div>
-        <div class="epi-declarations-box">
-          <div class="epi-decl-title">Déclarations locales (cette semaine)</div>
-          <div class="epi-decl-counts" id="epiDeclCounts">
-            <span class="epi-decl-none">Aucune déclaration cette semaine</span>
-          </div>
-        </div>
+    <!-- Déclarations locales -->
+    <div class="epi-card" style="margin-top:.75rem">
+      <div class="epi-card-title">Déclarations locales (cette semaine)</div>
+      <div class="epi-decl-counts" id="epiDeclCounts">
+        <span class="epi-decl-none">Aucune déclaration cette semaine</span>
       </div>
     </div>
 

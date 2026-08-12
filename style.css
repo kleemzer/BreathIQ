@@ -2592,6 +2592,40 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 .epi-stat-label { font-size: .68rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
 .epi-stat-val { font-size: .95rem; font-weight: 700; color: var(--text); }
 
+/* ── Tabs sélecteur pathogène ──────────────────────────────── */
+.surv-tabs {
+  display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: .5rem;
+}
+.surv-tab {
+  display: inline-flex; align-items: center; gap: .35rem;
+  padding: .35rem .75rem; border-radius: 999px;
+  border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.04);
+  cursor: pointer; font-size: .78rem; color: var(--text-muted);
+  transition: background .15s, border-color .15s;
+}
+.surv-tab:hover { background: rgba(255,255,255,.09); color: var(--text); }
+.surv-tab-active { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.28); color: var(--text); }
+[data-theme="light"] .surv-tab { border-color: var(--border); background: var(--bg); color: var(--text-muted); }
+[data-theme="light"] .surv-tab:hover { background: rgba(0,0,0,.04); }
+[data-theme="light"] .surv-tab-active { background: rgba(0,0,0,.06); border-color: rgba(0,0,0,.22); color: var(--text); }
+.surv-tab-dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+.surv-tab-name { font-weight: 500; }
+.surv-tab-z { font-size: .72rem; font-weight: 700; }
+
+/* ── Badge fraîcheur données ───────────────────────────────── */
+.surv-freshness {
+  margin-top: .75rem; padding: .4rem .7rem; border-radius: 6px;
+  font-size: .72rem; line-height: 1.5;
+}
+.freshness-ok    { background: rgba(16,185,129,.1);  color: #10B981; border: 1px solid rgba(16,185,129,.2); }
+.freshness-warn  { background: rgba(245,158,11,.1);  color: #F59E0B; border: 1px solid rgba(245,158,11,.2); }
+.freshness-stale { background: rgba(239,68,68,.1);   color: #EF4444; border: 1px solid rgba(239,68,68,.2); }
+[data-theme="light"] .freshness-ok    { background: rgba(16,185,129,.08);  }
+[data-theme="light"] .freshness-warn  { background: rgba(245,158,11,.08);  }
+[data-theme="light"] .freshness-stale { background: rgba(239,68,68,.08);   }
+.surv-src-link { color: inherit; text-decoration: underline; text-decoration-style: dotted; }
+.surv-src-link:hover { text-decoration-style: solid; }
+
 .epi-declarations-box {
   border-top: 1px solid rgba(255,255,255,.07); padding-top: .75rem; margin-top: .75rem;
 }

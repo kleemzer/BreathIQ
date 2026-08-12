@@ -1,0 +1,106 @@
+{
+  "generatedAt": "2026-08-11T09:00:00.000Z",
+  "sourceVerifiedAt": "2026-08-11T09:00:00.000Z",
+  "nextUpdateExpected": "2026-08-17T09:00:00.000Z",
+  "stale": false,
+  "source": "SPF — Réseau Sentinelles / BEH",
+  "source_url": "https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/grippe/articles/surveillance-epidemiologique-de-la-grippe-en-france",
+  "pathogens": [
+    {
+      "id": "flu",
+      "nameFR": "Grippe (ILI)",
+      "nameEN": "Influenza-like illness",
+      "season": "winter",
+      "week": "2026-S33",
+      "alertLevel": "normal",
+      "rate": 18,
+      "unit": "cas/100 000",
+      "zscore": -0.3,
+      "baseline": {
+        "mean": 95,
+        "t1": 150,
+        "t2": 300,
+        "t3": 500
+      },
+      "series": [
+        {"week":"2025-S34","rate":22},{"week":"2025-S35","rate":19},{"week":"2025-S36","rate":18},{"week":"2025-S37","rate":20},
+        {"week":"2025-S38","rate":21},{"week":"2025-S39","rate":25},{"week":"2025-S40","rate":30},{"week":"2025-S41","rate":38},
+        {"week":"2025-S42","rate":52},{"week":"2025-S43","rate":78},{"week":"2025-S44","rate":110},{"week":"2025-S45","rate":165},
+        {"week":"2025-S46","rate":220},{"week":"2025-S47","rate":310},{"week":"2025-S48","rate":420},{"week":"2025-S49","rate":510},
+        {"week":"2025-S50","rate":580},{"week":"2025-S51","rate":620},{"week":"2025-S52","rate":590},{"week":"2026-S01","rate":540},
+        {"week":"2026-S02","rate":480},{"week":"2026-S03","rate":410},{"week":"2026-S04","rate":340},{"week":"2026-S05","rate":280},
+        {"week":"2026-S06","rate":220},{"week":"2026-S07","rate":170},{"week":"2026-S08","rate":130},{"week":"2026-S09","rate":100},
+        {"week":"2026-S10","rate":78},{"week":"2026-S11","rate":58},{"week":"2026-S12","rate":45},{"week":"2026-S13","rate":36},
+        {"week":"2026-S14","rate":28},{"week":"2026-S15","rate":24},{"week":"2026-S16","rate":22},{"week":"2026-S17","rate":21},
+        {"week":"2026-S18","rate":20},{"week":"2026-S19","rate":19},{"week":"2026-S20","rate":19},{"week":"2026-S21","rate":18},
+        {"week":"2026-S22","rate":18},{"week":"2026-S23","rate":17},{"week":"2026-S24","rate":17},{"week":"2026-S25","rate":18},
+        {"week":"2026-S26","rate":18},{"week":"2026-S27","rate":19},{"week":"2026-S28","rate":18},{"week":"2026-S29","rate":18},
+        {"week":"2026-S30","rate":17},{"week":"2026-S31","rate":17},{"week":"2026-S32","rate":18},{"week":"2026-S33","rate":18}
+      ]
+    },
+    {
+      "id": "bronchiolite",
+      "nameFR": "Bronchiolite (VRS)",
+      "nameEN": "Bronchiolitis (RSV)",
+      "season": "winter",
+      "week": "2026-S33",
+      "alertLevel": "normal",
+      "rate": 4,
+      "unit": "cas/100 000 <2 ans",
+      "zscore": -0.6,
+      "baseline": {
+        "mean": 45,
+        "t1": 80,
+        "t2": 140,
+        "t3": 220
+      },
+      "series": [
+        {"week":"2025-S34","rate":5},{"week":"2025-S35","rate":4},{"week":"2025-S36","rate":5},{"week":"2025-S37","rate":6},
+        {"week":"2025-S38","rate":8},{"week":"2025-S39","rate":12},{"week":"2025-S40","rate":20},{"week":"2025-S41","rate":35},
+        {"week":"2025-S42","rate":60},{"week":"2025-S43","rate":95},{"week":"2025-S44","rate":140},{"week":"2025-S45","rate":185},
+        {"week":"2025-S46","rate":210},{"week":"2025-S47","rate":225},{"week":"2025-S48","rate":215},{"week":"2025-S49","rate":195},
+        {"week":"2025-S50","rate":170},{"week":"2025-S51","rate":140},{"week":"2025-S52","rate":110},{"week":"2026-S01","rate":85},
+        {"week":"2026-S02","rate":65},{"week":"2026-S03","rate":48},{"week":"2026-S04","rate":36},{"week":"2026-S05","rate":27},
+        {"week":"2026-S06","rate":20},{"week":"2026-S07","rate":15},{"week":"2026-S08","rate":11},{"week":"2026-S09","rate":9},
+        {"week":"2026-S10","rate":7},{"week":"2026-S11","rate":6},{"week":"2026-S12","rate":5},{"week":"2026-S13","rate":5},
+        {"week":"2026-S14","rate":4},{"week":"2026-S15","rate":4},{"week":"2026-S16","rate":4},{"week":"2026-S17","rate":4},
+        {"week":"2026-S18","rate":4},{"week":"2026-S19","rate":4},{"week":"2026-S20","rate":4},{"week":"2026-S21","rate":4},
+        {"week":"2026-S22","rate":4},{"week":"2026-S23","rate":3},{"week":"2026-S24","rate":3},{"week":"2026-S25","rate":3},
+        {"week":"2026-S26","rate":4},{"week":"2026-S27","rate":4},{"week":"2026-S28","rate":4},{"week":"2026-S29","rate":4},
+        {"week":"2026-S30","rate":4},{"week":"2026-S31","rate":4},{"week":"2026-S32","rate":4},{"week":"2026-S33","rate":4}
+      ]
+    },
+    {
+      "id": "gastro",
+      "nameFR": "Gastro-entérite aiguë",
+      "nameEN": "Acute gastroenteritis",
+      "season": "all",
+      "week": "2026-S33",
+      "alertLevel": "normal",
+      "rate": 145,
+      "unit": "cas/100 000",
+      "zscore": 0.4,
+      "baseline": {
+        "mean": 135,
+        "t1": 200,
+        "t2": 280,
+        "t3": 380
+      },
+      "series": [
+        {"week":"2025-S34","rate":118},{"week":"2025-S35","rate":115},{"week":"2025-S36","rate":112},{"week":"2025-S37","rate":120},
+        {"week":"2025-S38","rate":125},{"week":"2025-S39","rate":130},{"week":"2025-S40","rate":140},{"week":"2025-S41","rate":155},
+        {"week":"2025-S42","rate":170},{"week":"2025-S43","rate":195},{"week":"2025-S44","rate":220},{"week":"2025-S45","rate":250},
+        {"week":"2025-S46","rate":270},{"week":"2025-S47","rate":285},{"week":"2025-S48","rate":295},{"week":"2025-S49","rate":300},
+        {"week":"2025-S50","rate":290},{"week":"2025-S51","rate":275},{"week":"2025-S52","rate":260},{"week":"2026-S01","rate":240},
+        {"week":"2026-S02","rate":215},{"week":"2026-S03","rate":195},{"week":"2026-S04","rate":178},{"week":"2026-S05","rate":165},
+        {"week":"2026-S06","rate":158},{"week":"2026-S07","rate":150},{"week":"2026-S08","rate":148},{"week":"2026-S09","rate":145},
+        {"week":"2026-S10","rate":142},{"week":"2026-S11","rate":140},{"week":"2026-S12","rate":138},{"week":"2026-S13","rate":135},
+        {"week":"2026-S14","rate":132},{"week":"2026-S15","rate":130},{"week":"2026-S16","rate":128},{"week":"2026-S17","rate":130},
+        {"week":"2026-S18","rate":132},{"week":"2026-S19","rate":135},{"week":"2026-S20","rate":138},{"week":"2026-S21","rate":140},
+        {"week":"2026-S22","rate":142},{"week":"2026-S23","rate":140},{"week":"2026-S24","rate":138},{"week":"2026-S25","rate":140},
+        {"week":"2026-S26","rate":142},{"week":"2026-S27","rate":143},{"week":"2026-S28","rate":144},{"week":"2026-S29","rate":145},
+        {"week":"2026-S30","rate":145},{"week":"2026-S31","rate":144},{"week":"2026-S32","rate":145},{"week":"2026-S33","rate":145}
+      ]
+    }
+  ]
+}

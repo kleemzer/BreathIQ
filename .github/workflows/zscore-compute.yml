@@ -1,0 +1,84 @@
+name: Z-Score Compute
+
+on:
+  workflow_run:
+    workflows: ["SPF Bulletin AI Update", "ECDC Weekly Surveillance Update"]
+    types: [completed]
+  workflow_dispatch:
+
+jobs:
+  compute-zscores:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Compute Z-scores from 52-week baseline
+        run: |
+          node -e "
+          const fs = require('fs');
+
+          function computeZScore(series, currentRate) {
+            if (!series || series.length < 4) return null;
+            const rates = series.slice(-52).map(s => s.rate).filter(r => r != null && !isNaN(r));
+            if (rates.length < 4) return null;
+            const mean = rates.reduce((a,b) => a+b, 0) / rates.length;
+            const variance = rates.reduce((a,b) => a + Math.pow(b - mean, 2), 0) / rates.length;
+            const sd = Math.sqrt(variance);
+            if (sd === 0) return 0;
+            return Math.round(((currentRate - mean) / sd) * 10) / 10;
+          }
+
+          function alertLevel(z) {
+            if (z == null) return 'normal';
+            if (z >= 3.0) return 'rouge';
+            if (z >= 2.0) return 'orange';
+            if (z >= 1.5) return 'jaune';
+            return 'normal';
+          }
+
+          let changed = false;
+
+          for (const file of ['data/spf-surveillance.json','data/ecdc-surveillance.json']) {
+            if (!fs.existsSync(file)) continue;
+            const data = JSON.parse(fs.readFileSync(file, 'utf8'));
+            for (const p of data.pathogens || []) {
+              const lastPoint = p.series?.[p.series.length - 1];
+              if (!lastPoint) continue;
+              const z = computeZScore(p.series.slice(0, -1), lastPoint.rate);
+              if (z !== null && p.zscore !== z) {
+                p.zscore = z;
+                p.alertLevel = alertLevel(z);
+                changed = true;
+              }
+            }
+            data.generatedAt = new Date().toISOString();
+            fs.writeFileSync(file, JSON.stringify(data, null, 2));
+          }
+
+          console.log(changed ? '✅ Z-scores recalculés' : '✅ Z-scores inchangés');
+          "
+
+      - name: Commit computed Z-scores
+        run: |
+          git config user.name "ZScore-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/spf-surveillance.json data/ecdc-surveillance.json
+          if git diff --staged --quiet; then
+            echo "✅ Aucun changement de Z-score"
+          else
+            git commit -m "data: Z-scores recalculés $(date +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main || { echo "⚠️ Push échoué"; exit 0; }
+          fi
