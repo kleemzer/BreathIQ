@@ -780,6 +780,9 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .hero-freshness{font-size:.75rem;color:rgba(255,255,255,.45);margin-top:.5rem;letter-spacing:.02em}
 .hero-freshness.fresh{color:rgba(134,239,172,.7)}
 
+/* ── Auteur chip hero ── */
+.hero-author-chip{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:600;color:rgba(148,210,230,.9);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:2rem;padding:.3rem .9rem;letter-spacing:.01em;margin-bottom:.1rem}
+
 /* ── #4 Sélecteur langue prominent mobile ── */
 @media(max-width:640px){
   .lang-select{max-width:none!important;padding:.4rem .6rem!important;font-size:.9rem!important;background:rgba(255,255,255,.1);color:#e8f0f7;border:1px solid rgba(255,255,255,.2);border-radius:.4rem}
@@ -828,8 +831,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 <div id="consentBanner" class="consent-banner" role="dialog" aria-labelledby="consentBannerTitle" aria-live="polite" hidden>
   <div class="consent-banner-inner">
     <div class="consent-banner-text">
-      <strong id="consentBannerTitle" data-i18n="consent-title">Vos données et votre vie privée</strong>
-      <p data-i18n="consent-body">Vos préférences sont sauvegardées sur votre appareil. Des données publiques sur la qualité de l'air et les épidémies sont consultées en temps réel depuis des sources officielles (OMS, CDC, ECDC). Aucune donnée personnelle n'est transmise.</p>
+      <strong id="consentBannerTitle">🔒 Confidentialité — <span style="font-weight:400;font-size:.85em">Aucune donnée personnelle collectée. Données publiques OMS/ECDC uniquement.</span></strong>
     </div>
     <div class="consent-banner-actions">
       <button class="consent-btn-decline" onclick="declineConsent()" data-i18n="consent-decline">Continuer sans accepter</button>
@@ -935,6 +937,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 
     <!-- H1 grand public — réponse immédiate, pas explication -->
     <div class="gp-hero-intro">
+      <p class="hero-author-chip">🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle</p>
       <h1 class="gp-hero-title" id="patient-hero-title">Est-ce que je peux sortir aujourd'hui ?</h1>
       <p class="gp-hero-subtitle">BreathIQ surveille chaque jour la qualité de l'air, les virus saisonniers et les alertes sanitaires — pour vous donner une réponse simple sur votre environnement. Gratuit, sans inscription.</p>
       <!-- #1 CTA symptômes above the fold — visible mobile + desktop -->
@@ -991,7 +994,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <div class="gp-trust-items">
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        Données publiques OMS · ECDC · SPF
+        21 pathogènes · OMS · ECDC · SPF en temps réel
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
