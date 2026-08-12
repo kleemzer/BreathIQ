@@ -1,41 +1,81 @@
 {
-  "generatedAt": "2026-06-24T00:00:00.000Z",
-  "fetchDate": "2026-06-24",
+  "generatedAt": "2026-08-12T10:00:00.000Z",
+  "fetchDate": "2026-08-12",
+  "lastVerifiedBy": "WHO DON 2026-DON614 (août 2026)",
   "alerts": [
     {
       "id": "EBOLA-BUNDIBUGYO-2026",
       "active": true,
-      "level": "rouge",
-      "levelLabel": { "fr": "URGENCE INTERNATIONALE — PHEIC OMS", "en": "INTERNATIONAL EMERGENCY — WHO PHEIC", "es": "EMERGENCIA INTERNACIONAL — PHEIC OMS", "pt": "EMERGÊNCIA INTERNACIONAL — PHEIC OMS", "ar": "طوارئ دولية — PHEIC منظمة الصحة العالمية", "zh": "国际紧急情况 — 世卫组织PHEIC", "hi": "अंतर्राष्ट्रीय आपातकाल — WHO PHEIC", "sw": "DHARURA YA KIMATAIFA — PHEIC WHO", "ru": "МЕЖДУНАРОДНАЯ ЧРЕЗВЫЧАЙНАЯ СИТУАЦИЯ — PHEIC ВОЗ" },
+      "level": "orange",
+      "levelLabel": {
+        "fr": "SURVEILLANCE INTERNATIONALE — PHEIC OMS",
+        "en": "INTERNATIONAL MONITORING — WHO PHEIC",
+        "es": "VIGILANCIA INTERNACIONAL — PHEIC OMS",
+        "pt": "VIGILÂNCIA INTERNACIONAL — PHEIC OMS",
+        "ar": "مراقبة دولية — PHEIC منظمة الصحة العالمية",
+        "zh": "国际监测 — 世卫组织PHEIC",
+        "hi": "अंतर्राष्ट्रीय निगरानी — WHO PHEIC",
+        "sw": "UFUATILIAJI WA KIMATAIFA — PHEIC WHO",
+        "ru": "МЕЖДУНАРОДНЫЙ МОНИТОРИНГ — PHEIC ВОЗ"
+      },
       "disease": "Ebola Bundibugyo",
-      "subtitle": { "fr": "RDC + Ouganda + 🇫🇷 France — PREMIER CAS CONFIRMÉ EN FRANCE", "en": "DRC + Uganda + 🇫🇷 France — FIRST CONFIRMED CASE IN FRANCE", "es": "RDC + Uganda + 🇫🇷 Francia — PRIMER CASO CONFIRMADO EN FRANCIA", "pt": "RDC + Uganda + 🇫🇷 França — PRIMEIRO CASO CONFIRMADO NA FRANÇA", "ar": "جمهورية الكونغو الديمقراطية + أوغندا + 🇫🇷 فرنسا — أول حالة مؤكدة في فرنسا", "zh": "刚果民主共和国 + 乌干达 + 🇫🇷 法国 — 法国首例确诊", "hi": "DRC + युगांडा + 🇫🇷 फ्रांस — फ्रांस में पहला पुष्ट मामला", "sw": "DRC + Uganda + 🇫🇷 Ufaransa — KESI YA KWANZA ILIYOTHIBITISHWA UFARANSA", "ru": "ДРК + Уганда + 🇫🇷 Франция — ПЕРВЫЙ ПОДТВЕРЖДЁННЫЙ СЛУЧАЙ ВО ФРАНЦИИ" },
+      "subtitle": {
+        "fr": "RDC + Ouganda — PHEIC OMS active · Cas France (juin 2026) : résolu",
+        "en": "DRC + Uganda — WHO PHEIC active · France case (June 2026): resolved",
+        "es": "RDC + Uganda — PHEIC OMS activa · Caso Francia (jun 2026): resuelto",
+        "pt": "RDC + Uganda — PHEIC OMS ativa · Caso França (jun 2026): resolvido",
+        "ar": "جمهورية الكونغو الديمقراطية + أوغندا — PHEIC نشطة · حالة فرنسا (يونيو 2026): محلولة",
+        "zh": "刚果民主共和国 + 乌干达 — PHEIC活跃 · 法国病例（2026年6月）：已解决",
+        "hi": "DRC + युगांडा — PHEIC सक्रिय · फ्रांस मामला (जून 2026): हल हुआ",
+        "sw": "DRC + Uganda — PHEIC hai · Kesi ya Ufaransa (Juni 2026): imetatuliwa",
+        "ru": "ДРК + Уганда — PHEIC активна · Случай во Франции (июнь 2026): разрешён"
+      },
       "pheicDate": "2026-05-17",
       "deaths": 60,
-      "lastUpdate": "2026-06-24",
+      "lastUpdate": "2026-08-12",
       "regions": [
-        { "country": "RDC", "detail": "Ituri 322 · Nord-Kivu 19 · Sud-Kivu 3" },
-        { "country": "Ouganda", "detail": "15 cas confirmés" },
-        { "country": "🇫🇷 France", "detail": "1 cas importé confirmé · isolement UHSI · contact-tracing en cours" }
+        {
+          "country": "RDC",
+          "detail": "Ituri 322+ · Nord-Kivu 19+ · Sud-Kivu 3+"
+        },
+        {
+          "country": "Ouganda",
+          "detail": "15+ cas confirmés"
+        },
+        {
+          "country": "🇫🇷 France",
+          "detail": "Cas importé juin 2026 résolu · Aucun nouveau cas · Surveillance maintenue"
+        }
       ],
-      "franceStatus": { "fr": "🚨 1 CAS CONFIRMÉ EN FRANCE — isolement UHSI · contact-tracing actif", "en": "🚨 1 CONFIRMED CASE IN FRANCE — UHSI isolation · active contact tracing", "es": "🚨 1 CASO CONFIRMADO EN FRANCIA — aislamiento UHSI · rastreo de contactos", "pt": "🚨 1 CASO CONFIRMADO NA FRANÇA — isolamento UHSI · rastreamento de contatos", "ar": "🚨 حالة مؤكدة واحدة في فرنسا — عزل UHSI · تتبع الاتصالات", "zh": "🚨 法国1例确诊 — UHSI隔离 · 主动接触追踪", "hi": "🚨 फ्रांस में 1 पुष्ट मामला — UHSI एकांतवास · सक्रिय संपर्क अनुरेखण", "sw": "🚨 KESI 1 ILIYOTHIBITISHWA UFARANSA — kutengwa UHSI · ufuatiliaji wa mawasiliano", "ru": "🚨 1 ПОДТВЕРЖДЁННЫЙ СЛУЧАЙ ВО ФРАНЦИИ — изоляция UHSI · отслеживание контактов" },
+      "franceStatus": {
+        "fr": "✅ Cas importé de juin 2026 résolu — Aucun nouveau cas en France · Surveillance active maintenue",
+        "en": "✅ Imported case of June 2026 resolved — No new cases in France · Active surveillance maintained",
+        "es": "✅ Caso importado de junio 2026 resuelto — Sin nuevos casos en Francia · Vigilancia activa",
+        "pt": "✅ Caso importado de junho 2026 resolvido — Sem novos casos na França · Vigilância ativa",
+        "ar": "✅ تم حل الحالة المستوردة في يونيو 2026 — لا حالات جديدة في فرنسا · مراقبة نشطة",
+        "zh": "✅ 2026年6月进口病例已解决 — 法国无新病例 · 持续主动监测",
+        "hi": "✅ जून 2026 का आयातित मामला हल हुआ — फ्रांस में कोई नया मामला नहीं · सक्रिय निगरानी जारी",
+        "sw": "✅ Kesi iliyoingizwa ya Juni 2026 imetatuliwa — Hakuna kesi mpya Ufaransa · Ufuatiliaji unaendelea",
+        "ru": "✅ Ввезённый случай июня 2026 года разрешён — Новых случаев во Франции нет · Активный мониторинг продолжается"
+      },
       "vigilanceArea": "Mayotte",
       "message": {
-        "fr": "🚨 PREMIER CAS EBOLA EN FRANCE (24 juin 2026) — cas importé isolé en UHSI. Souche Bundibugyo : <strong>aucun vaccin, aucun traitement</strong>. Si fièvre + retour d'Afrique centrale/est (21 derniers jours) : <strong>APPELEZ LE 15 SANS VOUS DÉPLACER</strong>.",
-        "en": "🚨 FIRST EBOLA CASE IN FRANCE (June 24, 2026) — imported case isolated in UHSI. Bundibugyo strain: <strong>no vaccine, no treatment</strong>. If fever after Central/East Africa travel (last 21 days): <strong>CALL EMERGENCY SERVICES, DO NOT TRAVEL</strong>.",
-        "es": "Cepa Bundibugyo: <strong>sin vacuna, sin tratamiento</strong>. Si fiebre + regreso de África central/oriental: <strong>llame al 112 sin desplazarse</strong>.",
-        "pt": "Cepa Bundibugyo: <strong>sem vacina, sem tratamento</strong>. Se febre + retorno da África central/oriental: <strong>ligue para emergências, não se desloque</strong>.",
-        "ar": "سلالة بونديبوجيو: <strong>لا لقاح، لا علاج</strong>. إذا كانت لديك حمى بعد العودة من أفريقيا الوسطى أو الشرقية: <strong>اتصل بالطوارئ ولا تتنقل</strong>.",
-        "zh": "本迪布焦株：<strong>无疫苗，无治疗</strong>。如发烧且刚从中非/东非返回：<strong>立即拨打急救电话，不要外出</strong>。",
-        "hi": "बुंडीबुग्यो स्ट्रेन: <strong>कोई टीका नहीं, कोई उपचार नहीं</strong>। यदि बुखार + मध्य/पूर्वी अफ्रीका से वापसी: <strong>आपातकालीन सेवाओं को कॉल करें, यात्रा न करें</strong>।",
-        "sw": "Aina ya Bundibugyo: <strong>hakuna chanjo, hakuna matibabu</strong>. Kama homa + kurudi Afrika ya Kati/Mashariki: <strong>piga simu huduma za dharura, usisafiri</strong>.",
-        "ru": "Штамм Бундибугьо: <strong>нет вакцины, нет лечения</strong>. При лихорадке после возвращения из Центральной/Восточной Африки: <strong>вызовите скорую, не выходите из дома</strong>."
+        "fr": "L'épidémie Ebola Bundibugyo reste active en RDC et Ouganda (PHEIC OMS). Le cas importé en France (juin 2026) est résolu — aucune transmission communautaire. Si fièvre + retour d'Afrique centrale/est (21 derniers jours) : <strong>appelez le 15 SANS vous déplacer</strong>.",
+        "en": "The Ebola Bundibugyo outbreak remains active in DRC and Uganda (WHO PHEIC). The imported case in France (June 2026) has been resolved — no community transmission. If fever after Central/East Africa travel (last 21 days): <strong>call emergency services, do not travel</strong>.",
+        "es": "El brote de Ébola Bundibugyo sigue activo en RDC y Uganda (PHEIC OMS). El caso importado en Francia (junio 2026) está resuelto. Si fiebre + regreso de África central/oriental: <strong>llame al 112 sin desplazarse</strong>.",
+        "pt": "O surto de Ébola Bundibugyo permanece ativo na RDC e Uganda (PHEIC OMS). O caso importado na França (junho 2026) foi resolvido. Se febre + retorno da África central/oriental: <strong>ligue para emergências, não se desloque</strong>.",
+        "ar": "وباء إيبولا بوندي بوجيو لا يزال نشطاً في جمهورية الكونغو الديمقراطية وأوغندا. الحالة المستوردة في فرنسا (يونيو 2026) تم حلها. إذا كانت لديك حمى بعد العودة من أفريقيا الوسطى أو الشرقية: <strong>اتصل بالطوارئ ولا تتنقل</strong>.",
+        "zh": "埃博拉邦迪布焦疫情在刚果民主共和国和乌干达仍然活跃。法国进口病例（2026年6月）已解决，无社区传播。若发烧且刚从中非/东非返回：<strong>立即拨打急救电话，不要外出</strong>。",
+        "hi": "इबोला बुंडीबुग्यो प्रकोप DRC और युगांडा में अभी भी सक्रिय है। फ्रांस में आयातित मामला (जून 2026) हल हो गया है। यदि बुखार + मध्य/पूर्वी अफ्रीका से वापसी: <strong>आपातकालीन सेवाओं को कॉल करें, यात्रा न करें</strong>।",
+        "sw": "Mlipuko wa Ebola Bundibugyo bado una nguvu DRC na Uganda. Kesi iliyoingizwa Ufaransa (Juni 2026) imetatuliwa — hakuna maambukizi ya jamii. Kama homa + kurudi Afrika ya Kati/Mashariki: <strong>piga simu huduma za dharura, usisafiri</strong>.",
+        "ru": "Вспышка эболы Бундибугьо по-прежнему активна в ДРК и Уганде. Ввезённый случай во Франции (июнь 2026) разрешён — передачи в обществе не выявлено. При лихорадке после Центральной/Восточной Африки: <strong>вызовите скорую, не выходите из дома</strong>."
       },
       "hcwNote": {
-        "fr": "FFP3 + tenue BSL-4 complète obligatoire pour tout cas suspect · Circuit isolement activé",
-        "en": "FFP3 + full BSL-4 suit mandatory for any suspected case · Isolation circuit activated",
-        "es": "FFP3 + traje BSL-4 completo obligatorio para todo caso sospechoso",
-        "pt": "FFP3 + fato BSL-4 completo obrigatório para qualquer caso suspeito",
-        "ar": "FFP3 + بدلة BSL-4 كاملة إلزامية لأي حالة مشتبه بها",
+        "fr": "FFP3 + tenue BSL-4 obligatoire pour tout cas suspect · Signalement ARS + SAMU 15 + InVS",
+        "en": "FFP3 + full BSL-4 suit mandatory for any suspected case · Report to ARS + SAMU 15 + InVS",
+        "es": "FFP3 + traje BSL-4 obligatorio para todo caso sospechoso",
+        "pt": "FFP3 + fato BSL-4 obrigatório para qualquer caso suspeito",
+        "ar": "FFP3 + بدلة BSL-4 إلزامية لأي حالة مشتبه بها",
         "zh": "所有疑似病例须佩戴FFP3 + 完整BSL-4防护服",
         "hi": "किसी भी संदिग्ध मामले के लिए FFP3 + पूर्ण BSL-4 सूट अनिवार्य",
         "sw": "FFP3 + suti kamili ya BSL-4 lazima kwa kesi yoyote inayoshukiwa",

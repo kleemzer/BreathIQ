@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta name="description" content="BreathIQ — Score respiratoire quotidien, surveillance épidémique et prévention respiratoire. Données OMS, SPF et ECDC en temps réel. Outil d'information pour soignants et grand public. Créé par un médecin généraliste.">
+  <meta name="description" content="BreathIQ — Score respiratoire quotidien, surveillance épidémique et prévention respiratoire. Données OMS, SPF et ECDC actualisées quotidiennement. Outil d'information pour soignants et grand public. Créé par un médecin généraliste.">
   <meta name="keywords" content="surveillance épidémique, score respiratoire, qualité air, prévention respiratoire, SPF OMS ECDC, soignants, protocole EPI, santé publique">
   <meta name="author" content="Dr. Clément MÉDEAU — BreathIQ">
   <meta name="copyright" content="© 2026 Clément MÉDEAU">
@@ -24,7 +24,7 @@
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BreathIQ — Score respiratoire & surveillance épidémique">
-  <meta name="twitter:description" content="Score respiratoire quotidien, protocoles EPI soignants, carte mondiale des foyers, données OMS/SPF/ECDC en temps réel. Gratuit, sans compte. breathiq.fr">
+  <meta name="twitter:description" content="Score respiratoire quotidien, protocoles EPI soignants, carte mondiale des foyers, données OMS/SPF/ECDC actualisées quotidiennement. Gratuit, sans compte. breathiq.fr">
   <meta name="twitter:creator" content="@breathiq">
   <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
   <meta name="twitter:image:alt" content="BreathIQ — Score respiratoire et prévention respiratoire quotidienne">
@@ -112,7 +112,7 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "BreathIQ",
-    "description": "Outil de surveillance épidémique et qualité de l'air pour soignants et patients. Données OMS, SPF, ECDC en temps réel.",
+    "description": "Outil de surveillance épidémique et qualité de l'air pour soignants et patients. Données OMS, SPF, ECDC actualisées quotidiennement.",
     "url": "https://breathiq.fr",
     "applicationCategory": "HealthApplication",
     "author": {
@@ -910,16 +910,16 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <div class="epidemic-alert-gp patient-only" id="epidemicGpMsg">
       <span class="epidemic-level rouge" aria-hidden="true">🔴</span>
       <span class="epidemic-gp-text">
-        <strong>🚨 France : 1 cas Ebola confirmé (24/06/2026) — cas importé, isolé en UHSI · population générale non exposée.</strong>
-        Si fièvre + retour d'Afrique centrale/est dans les 21 derniers jours : <strong>appelez le 15 SANS vous déplacer</strong>.
+        <strong>Ebola Bundibugyo — PHEIC OMS active (RDC · Ouganda) · 🇫🇷 Cas France (juin 2026) : résolu.</strong>
+        Si fièvre + retour d'Afrique centrale/est dans les 21 derniers jours : <strong>appelez le 15 SANS vous déplacer</strong>. <span style="font-size:.8em;opacity:.7">Données au 12/08/2026</span>
       </span>
       <a href="ebola.html" class="epidemic-link">En savoir plus →</a>
     </div>
     <!-- Message soignants — complet, technique, affiché uniquement en mode expert -->
     <div class="epidemic-alert-body expert-only" id="epidemicExpertMsg" style="display:none">
-      <strong class="epidemic-disease">Ebola Bundibugyo · RDC + Ouganda + 🇫🇷 France — PHEIC OMS active</strong>
-      <span class="epidemic-date">PHEIC déclarée le 17 mai 2026 · <strong>🚨 1 cas confirmé en France (24/06/2026)</strong> · Données au 24 juin 2026 — <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Source OMS ↗</a></span>
-      <p class="epidemic-msg">🚨 PREMIER CAS EBOLA EN FRANCE — cas importé isolé en UHSI, contact-tracing actif. Souche Bundibugyo (BDBV) : <strong>AUCUN vaccin, AUCUN traitement spécifique</strong>. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Si fièvre + retour Afrique centrale/est (21j) : <strong>appelez le 15 SANS vous déplacer</strong>.</p>
+      <strong class="epidemic-disease">Ebola Bundibugyo · RDC + Ouganda — PHEIC OMS active · 🇫🇷 Cas France (juin 2026) : résolu</strong>
+      <span class="epidemic-date">PHEIC déclarée le 17 mai 2026 · ✅ Cas France résolu (aucun nouveau cas) · Données au 12 août 2026 — <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Source OMS ↗</a></span>
+      <p class="epidemic-msg">Épidémie Ebola Bundibugyo active en RDC et Ouganda (PHEIC OMS). Le cas importé en France (juin 2026) est résolu — aucune transmission communautaire confirmée. Souche Bundibugyo (BDBV) : <strong>aucun vaccin agréé, aucun traitement spécifique</strong>. Si fièvre + retour Afrique centrale/est (21j) : <strong>appelez le 15 SANS vous déplacer</strong>.</p>
       <p class="epidemic-mask">🩺 <strong>Soignants :</strong> FFP3 + tenue BSL-4 complète obligatoire · SAMU 15 + ARS dans l'heure · DGS cellule de crise activée</p>
     </div>
     <div class="epidemic-alert-actions">
@@ -994,7 +994,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <div class="gp-trust-items">
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        21 pathogènes · OMS · ECDC · SPF en temps réel
+        21 pathogènes · OMS · ECDC · SPF · mis à jour quotidiennement
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
@@ -2203,7 +2203,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <!-- Header Mode Patient -->
     <div class="section-header patient-only">
       <div class="pathogens-patient-header">
-        <div class="ppb">21 virus et infections suivis en temps réel</div>
+        <div class="ppb">21 virus et infections suivis · données actualisées quotidiennement</div>
       </div>
       <h2 id="pathogens-title" data-i18n="pathogens-patient-title">Virus et infections — quels symptômes surveiller ?</h2>
       <p class="section-subtitle" data-i18n="pathogens-patient-sub">Cliquez sur une maladie pour voir ses symptômes et savoir quand s'isoler</p>

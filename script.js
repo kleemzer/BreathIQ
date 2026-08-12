@@ -2637,6 +2637,7 @@ function activateExpertMode() {
 }
 
 function updatePatientRiskBanner() {
+  const hasLocation = !!(selectedRegionId || _customCity);
   const region = DEMO_DATA.find(r => r.id === (selectedRegionId || 1)) || DEMO_DATA[0];
   const score  = generateScoreForRegion(region);
   const banner = document.getElementById('patientRiskBanner');
@@ -2648,6 +2649,22 @@ function updatePatientRiskBanner() {
   const desc  = document.getElementById('patientRiskDesc');
   const lang  = currentLang;
 
+  // Avertissement si aucune localisation confirmée — score basé sur données nationales
+  let geoNote = banner.querySelector('.risk-geo-note');
+  if (!hasLocation) {
+    if (!geoNote) {
+      geoNote = document.createElement('p');
+      geoNote.className = 'risk-geo-note';
+      geoNote.style.cssText = 'font-size:.75rem;color:rgba(255,255,255,.5);margin:.4rem 0 0;font-style:italic';
+      banner.appendChild(geoNote);
+    }
+    geoNote.textContent = lang === 'fr'
+      ? '📍 Score national indicatif — entrez votre ville pour un score local précis'
+      : '📍 National indicative score — enter your city for a precise local score';
+  } else if (geoNote) {
+    geoNote.remove();
+  }
+
   // ── Check for active PHEIC → override to CRITIQUE ──────────
   const hasPHEIC = OUTBREAK_DATA.some(ob => ob.currentStatus === 'outbreak' && ob.riskLevel === 'critical');
 
@@ -2657,10 +2674,14 @@ function updatePatientRiskBanner() {
     banner.classList.add('risk-moderate');
     if (icon)  { icon.textContent = 'ℹ️'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'SURVEILLANCE INTERNATIONALE' : 'INTERNATIONAL MONITORING';
-    if (title) title.textContent = lang === 'fr'
-      ? '🚨 France : 1 cas Ebola confirmé (24/06/2026) — cas importé isolé en UHSI · population générale non exposée'
-      : '🚨 France: 1 Ebola case confirmed (June 24, 2026) — imported case in UHSI isolation · general population not at risk';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'Une épidémie est active en Afrique centrale. Si vous revenez de cette région avec de la fièvre, appelez le 15 sans vous déplacer.' : 'An outbreak is active in Central Africa. If you return from this region with fever, call emergency services without travelling.';
+    // Lire le statut depuis _pheicData si disponible, sinon message générique
+    const pheicAlert = window._pheicData?.alerts?.[0];
+    const pheicSubtitle = pheicAlert?.subtitle?.[lang] || pheicAlert?.subtitle?.fr || 'Épidémie active en Afrique centrale — PHEIC OMS';
+    const pheicLastUpdate = pheicAlert?.lastUpdate ? ` · Données au ${new Date(pheicAlert.lastUpdate).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'})}` : '';
+    if (title) title.textContent = '⚠️ ' + pheicSubtitle + pheicLastUpdate;
+    if (desc)  desc.textContent  = lang === 'fr'
+      ? 'Si fièvre + retour d\'Afrique centrale/est dans les 21 derniers jours : appelez le 15 SANS vous déplacer.'
+      : 'If fever + return from Central/East Africa in the last 21 days: call emergency services without travelling.';
     const dot = document.getElementById('heroUrgencyDot');
     if (dot) dot.hidden = true;
   } else if (score.sr <= 45) {
@@ -5047,6 +5068,7 @@ async function loadPheicAlert() {
   if (!banner) return;
   try {
     const data = await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 6000 });
+    window._pheicData = data;
     const active = data?.alerts?.find(a => a.active);
     if (!active) {
       banner.classList.add('alert-inactive');
