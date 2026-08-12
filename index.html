@@ -749,6 +749,10 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .epi4-contacts strong{display:block;margin-bottom:.3rem;width:100%;color:#a5b4fc}
 .epi4-contacts span{color:#e2e8f0}
 .epi4-refs{font-size:.72rem;color:#64748b;text-align:right}
+.epi4-quarantine-box{background:rgba(99,102,241,.1);border:1px solid rgba(99,102,241,.3);border-radius:.6rem;padding:.9rem 1.1rem;margin-bottom:1rem;font-size:.83rem;color:#e2e8f0}
+.epi4-quarantine-box strong:first-child{display:block;margin-bottom:.6rem;color:#a5b4fc;font-size:.9rem}
+.epi4-q-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+@media(max-width:600px){.epi4-q-grid{grid-template-columns:1fr}}
 
 /* ── DO obligatoires soignant ── */
 .contacts-guide{padding:1.5rem 0}
@@ -1431,7 +1435,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="purpura">
             <span class="alarm-icon">🟣</span>
-            <span class="alarm-text"><strong>Taches violettes / rouges qui ne s'effacent pas</strong><br><small>Appuyez un verre dessus — elles restent visibles</small></span>
+            <span class="alarm-text"><strong>Taches rouges / violettes qui ne s'effacent pas</strong><br><small>Petits points (pétéchies) ou grandes taches (purpura) — appuyez un verre dessus : elles restent visibles</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="bleeding">
@@ -2268,6 +2272,13 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <!-- Panel EPI Niveau 4 -->
     <div id="biqTabEpi4Panel" role="tabpanel" aria-labelledby="biqTabEpi4" hidden>
       <div class="epi4-guide">
+        <div class="epi4-quarantine-box" role="note">
+          <strong>📌 Quarantaine ≠ Isolement — distinction fondamentale</strong>
+          <div class="epi4-q-grid">
+            <div><strong>Isolement</strong> — pour le <em>cas confirmé ou probable</em> (malade) : séparation physique stricte, EPI soignants, chambre individuelle avec sas, déchets DASRI catégorie B.</div>
+            <div><strong>Quarantaine</strong> — pour le <em>contact asymptomatique</em> (exposé mais pas malade) : surveillance thermique quotidienne, restriction de déplacements, durée = période d'incubation max du pathogène. <strong>Un contact Ebola n'est pas isolé — il est mis en quarantaine 21 jours avec suivi ARS.</strong></div>
+          </div>
+        </div>
         <div class="epi4-disclaimer" role="note">
           ⚠️ <strong>Outil d'information — non dispositif médical (Règl. UE 2017/745).</strong> Ce contenu est destiné aux professionnels de santé formés. La prise en charge Ebola nécessite une formation institutionnelle préalable (UHSI/INSERM) et ne doit jamais être réalisée sans habilitation spécifique.
         </div>

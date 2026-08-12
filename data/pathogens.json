@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T12:00:00.000Z",
+  "generatedAt": "2026-08-12T14:00:00.000Z",
   "version": "1.0",
   "pathogensCount": 19,
   "pathogens": [
@@ -41,9 +41,10 @@
         "WHO DON 2024 — H5N1 Human Cases",
         "CDC H5 Bird Flu Situation Summary 2024",
         "Uyeki TM et al. N Engl J Med 2024",
-        "WHO Global Influenza Surveillance 2024"
+        "WHO Global Influenza Surveillance 2024",
+        "CDC H5N1 Bird Flu Situation Summary 2025 — B3.13 variant in US dairy cattle, >60 human cases"
       ],
-      "descFR": "⚠️ H5N1 HUMAIN : aucune transmission interhumaine soutenue à ce jour. Risque population générale : QUASI NUL. Les cas humains surviennent uniquement après contact direct prolongé avec volailles malades ou leurs déjections. CFR 52% calculé sur cas hospitalisés sévères (biais massif d'ascertainment — OMS reconnaît que le CFR réel, en comptant tous les cas, est probablement 1–5%). Surveillance continue : 16 pays concernés 2024–2026, foyers aviaires actifs Europe/Amérique du Nord. Pas de risque en milieu urbain sans contact animaux.",
+      "descFR": "⚠️ H5N1 HUMAIN : aucune transmission interhumaine soutenue à ce jour. Risque population générale : QUASI NUL. Les cas humains surviennent uniquement après contact direct prolongé avec volailles malades ou leurs déjections. CFR 52% calculé sur cas hospitalisés sévères (biais massif d'ascertainment — OMS reconnaît que le CFR réel, en comptant tous les cas, est probablement 1–5%). Surveillance continue : 16 pays concernés 2024–2026, foyers aviaires actifs Europe/Amérique du Nord. Pas de risque en milieu urbain sans contact animaux. · NOUVEAU 2024-2026 : variant H5N1 B3.13 détecté dans troupeaux bovins USA (> 60 cas humains confirmés CDC 2024-2025 — travailleurs agricoles laitiers). Réplication dans cellules mammaires bovines = nouveauté épidémiologique. Toujours aucune transmission interhumaine soutenue.",
       "descEN": "⚠️ H5N1 HUMAN: no sustained human-to-human transmission to date. Risk for general public: NEAR ZERO. Human cases occur only after direct prolonged contact with sick poultry or their droppings. CFR 52% calculated from severe hospitalized cases (massive ascertainment bias — WHO acknowledges true CFR including all cases is likely 1-5%). No risk in urban settings without animal contact.",
       "descPatientFR": "🟢 Grippe aviaire H5N1 : votre risque est quasi nul si vous vivez en ville et n'avez pas de contact avec des volailles. Cette maladie touche presque exclusivement des personnes en contact direct avec des poulets, dindes ou canards malades (éleveurs, marchés d'animaux vivants). Elle ne se transmet pas entre personnes. Si vous avez eu un contact avec des volailles malades + fièvre : consultez un médecin et signalez-le.",
       "descPatientEN": "🟢 H5N1 bird flu: your risk is near zero if you live in a city and have no contact with poultry. This disease affects almost exclusively people in direct contact with sick chickens, turkeys or ducks (farmers, live animal markets). It does not spread between people. If you had contact with sick poultry + fever: see a doctor and report it."
@@ -117,15 +118,17 @@
       "transmission_route": "Droplet nuclei (< 5 µm) restant en suspension dans l'air pendant heures",
       "currentStatus": "endemic",
       "outbreakStart": "Endémique",
-      "lastUpdate": "2026-01",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#EF4444",
       "references": [
         "WHO Global Tuberculosis Report 2023 — 10.6 million new cases worldwide",
         "Furin J et al. Lancet 2019 — Tuberculosis",
         "CDC TB Transmission and Pathogenesis 2023",
-        "Jensen PA et al. MMWR 2005 — Guidelines for Preventing TB Transmission"
+        "Jensen PA et al. MMWR 2005 — Guidelines for Preventing TB Transmission",
+        "SPF — Tuberculose en France : situation épidémiologique 2023 — 5% TB-MR",
+        "WHO — Treatment of drug-resistant tuberculosis, 2022 guidelines (bédaquiline/linézolide)"
       ],
-      "descFR": "Première cause infectieuse de mortalité mondiale (OMS 2023 : 1,3M décès). 10,6M nouveaux cas/an. Transmission par droplet nuclei en suspension. FFP2/N95 indispensable contact avec cas actif. TB multirésistante (TB-MR) : FFP3 requis.",
+      "descFR": "Première cause infectieuse de mortalité mondiale (OMS 2023 : 1,3M décès). 10,6M nouveaux cas/an. Transmission par droplet nuclei en suspension. FFP2/N95 indispensable contact avec cas actif. TB multirésistante (TB-MR) : FFP3 requis. · TB MULTI-RÉSISTANTE (TB-MR) : 5% des TB en France (SPF 2023). Traitement radicalement différent : bédaquiline + linézolide, 18–24 mois, center spécialisé. Isolement respiratoire prolongé jusqu'à négativation des cultures (peut prendre 2–4 mois). Ne pas interrompre le traitement — résistance secondaire si mauvaise observance.",
       "descEN": "Leading infectious cause of death worldwide (WHO 2023: 1.3M deaths). 10.6M new cases/year. Transmission via airborne droplet nuclei. FFP2/N95 essential for contact with active case. MDR-TB: FFP3 required."
     },
     {
@@ -154,7 +157,7 @@
       "maskNote": "BSL-4. FFP3 minimum + combinaison + double gantage. Transmission interhumaine documentée au Bangladesh (contacts familiaux). Pas de vaccin ni traitement approuvé. Cas Bangladesh fév 2026 : femme 40–50 ans, Naogaon District, Rajshahi. Isolement précoce critique.",
       "reproductionNumber": "R0 ≈ 0.3–0.5 (Kerala 2018) ; jusqu'à 1.0 en contexte familial/hospitalier",
       "cfr": "40–75% (Bangladesh 40–75% · Malaisie 40%)",
-      "incubation": "4–14 jours (jusqu'à 45 jours)",
+      "incubation": "4–14 jours (médiane 9 j, Hossain 2008 ; cas extrêmes non confirmés évoquant 45 j)",
       "transmission_route": "Contact avec réservoirs Pteropus spp. Consommation jus de palme cru (Bangladesh). Transmission interhumaine par contact étroit documentée (Bangladesh). Possible aérosol nosocomial.",
       "currentStatus": "sporadic",
       "outbreakStart": "Annuel Bangladesh (depuis 2001) · dernier cas : fév 2026",
@@ -196,7 +199,7 @@
       "protectionLevel": 2,
       "maskNote": "ALERTE 2026 : transmission interhumaine Andes virus confirmée sur paquebot (NEJM 2026). FFP2 + gants + surblouse pour soignants en contact avec cas suspect. FFP3 pour tout AGP. Signaler tout cas suspect de retour d'Argentine/Chili ou ayant voyagé sur paquebot Ushuaia.",
       "reproductionNumber": "R0 ≈ 1.0 (Andes, seul Hantavirus avec transmission H-H prouvée)",
-      "cfr": "38% (cluster paquebot 2026) ; 35–40% Sin Nombre ; 12% Andes endémique",
+      "cfr": "38% (cluster MV Hondius 2026) ; 25–40% SCPA virus Andes (Ferrés 2007, Vial 2008) ; 35–40% Sin Nombre",
       "incubation": "9–33 jours · Phase prodromique 3–5j (syndrome grippal) avant détresse respiratoire",
       "transmission_route": "Inhalation aérosols d'excrétas rongeurs (principal). Andes virus : transmission interhumaine par contact étroit prouvée. Cluster 2026 : probable aérosols cabines et espaces confinés.",
       "currentStatus": "outbreak",
@@ -210,7 +213,9 @@
         "ECDC Threat Assessment Brief — Hantavirus cruise ship 2026",
         "CDC HAN 00528 — Multi-country Hantavirus cluster cruise ship, mai 2026",
         "Ferres M et al. Emerg Infect Dis 2007 — Andes virus interhuman transmission",
-        "WHO DON 2026-DON600 — Hantavirus cluster cruise ship MV Hondius, mai 2026"
+        "WHO DON 2026-DON600 — Hantavirus cluster cruise ship MV Hondius, mai 2026",
+        "Ferrés M et al. Emerg Infect Dis 2007 — Andes hantavirus CFR 25-35% Chile",
+        "Vial PA et al. Clin Infect Dis 2006 — Andean hantavirus cardiopulmonary syndrome"
       ],
       "descFR": "🚨 CLUSTER ACTIF (mai 2026) — 10 cas Hantavirus Andes confirmés sur paquebot MV Hondius (Ushuaia → Atlantique Sud). 3 décès (CFR 38%). Ex-passagers dans 12+ pays, 600+ contacts dans 32 pays. Andes virus = seul hantavirus avec transmission interhumaine prouvée. Phase prodromique (J0–J5) : fièvre, myalgies, céphalées — INDISCERNABLE d'une grippe. Dégradation brutale à J5–J10 : détresse respiratoire, collapsus hémodynamique. Facteurs de risque : voyage Patagonie/Amérique du Sud + contact rongeurs/excrétas. Toute personne ayant voyagé en Amérique du Sud dans les 6 semaines avec ces symptômes doit contacter un médecin en mentionnant le voyage. Mortalité élevée si non pris en charge en réanimation.",
       "descEN": "🚨 ACTIVE CLUSTER (May 2026) — 10 confirmed Andes Hantavirus cases on cruise ship MV Hondius (Ushuaia → South Atlantic). 3 deaths (CFR 38%). Former passengers hospitalized in 12+ countries, 600+ contacts in 32 countries. Published in NEJM. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2.",
@@ -259,12 +264,14 @@
         "COREB Nationale — Fiche soignant Mpox, décembre 2025 (EPI actualisé)",
         "ECDC Mpox Threat Assessment Brief — octobre 2025",
         "Kibungu EM et al. N Engl J Med 2024 — Clade Ib monkeypox outbreak",
-        "ARS Île-de-France — Mpox recommandations professionnels de santé 2026"
+        "ARS Île-de-France — Mpox recommandations professionnels de santé 2026",
+        "Kibungo et al. NEJM 2024 — Mpox clade Ib R0 estimation 1.8-2.2, DRC outbreak"
       ],
       "descFR": "📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025. Clade Ib : plus transmissible que clade IIb (2022) — transmission contact cutané (lésions), gouttelettes en contact prolongé, et voie sexuelle. Cas importés en Europe documentés en 2026. Urgence de santé publique OMS (clade Ib) maintenue. FFP2 + EPI contact requis pour soignants. Différence critique avec clade IIb : CFR plus élevée (3–10% vs < 1%), transmission familiale et ménagère documentée, non limitée à la voie sexuelle.",
       "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.",
       "descPatientFR": "🟠 Mpox provoque une fièvre et des boutons/vésicules sur la peau. Il se transmet par contact cutané direct avec les lésions d'une personne malade — pas dans l'air pour la plupart des cas. La nouvelle souche (clade Ib) peut se transmettre dans une famille par contact prolongé. Si vous avez des boutons suspects + fièvre : consultez un médecin, ne grattez pas les lésions, couvrez-les. Il existe une vaccination préventive.",
-      "descPatientEN": "🟠 Mpox causes fever and skin blisters/vesicles. It spreads through direct skin contact with lesions of a sick person — not through the air in most cases. The new strain (clade Ib) can spread within a family through prolonged contact. If you have suspicious rash + fever: see a doctor, do not scratch lesions, cover them. Preventive vaccination is available."
+      "descPatientEN": "🟠 Mpox causes fever and skin blisters/vesicles. It spreads through direct skin contact with lesions of a sick person — not through the air in most cases. The new strain (clade Ib) can spread within a family through prolonged contact. If you have suspicious rash + fever: see a doctor, do not scratch lesions, cover them. Preventive vaccination is available.",
+      "r0": "Clade Ib : 1,8–2,2 (NEJM 2024, cluster Kibungo) vs Clade IIb 2022 : 1,1–1,3 · C'est pourquoi le clade Ib justifie une PHEIC OMS et pas le clade IIb"
     },
     {
       "id": "MERS",
@@ -370,7 +377,7 @@
       "maskNote": "R0 12–18 : pathogène aéroporté extrêmement contagieux, persistance 2h en air confiné (CDC, WHO IPC 2024). FFP2/N95 OBLIGATOIRE pour soignants non-immuns entrant dans la chambre. IMPORTANT : soignants immunisés (2 doses MMR prouvées OU sérologie IgG+ confirmée) ne nécessitent PAS de protection respiratoire (CDC HICPAC 2024). FFP3 recommandé pour AGPs (intubation, aérosolisation) chez tout soignant. Vérifier l'immunité avant toute exposition.",
       "reproductionNumber": "R0 ≈ 12–18 (le plus élevé des maladies à déclaration obligatoire)",
       "cfr": "1–5% (pays à revenus faibles) ; 0.01–0.1% (pays vaccinés)",
-      "incubation": "10–14 jours",
+      "incubation": "10–14 jours · CONTAGIEUX dès J-4 avant l'éruption (phase prodromique : fièvre + toux + coryza + conjonctivite) jusqu'à J+4 après l'éruption — soit 8 jours de contagiosité totale",
       "transmission_route": "Aérosols pouvant rester en suspension jusqu'à 2 heures. Contagiosité 4j avant–4j après éruption.",
       "currentStatus": "active",
       "outbreakStart": "Résurgence 2022–2026",
@@ -383,7 +390,7 @@
         "CDC HICPAC 2024 — Airborne precautions for measles",
         "Griffin DE. Measles virus-induced suppression of immune responses. Immunol Rev 2010"
       ],
-      "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
+      "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. CONTAGIEUX 4 JOURS AVANT LES BOUTONS : pendant la phase de fièvre+toux+yeux rouges, le patient est déjà très contagieux — même sans éruption visible. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
       "descEN": "Global resurgence 2022-2024: 306,000 cases reported (WHO 2024). R0 12-18. Long-range airborne transmission (2h in confined air). Post-measles immune suppression 2-3 years. FFP2 recommended for non-immune individuals in epidemic areas."
     },
     {
@@ -464,6 +471,71 @@
       "descEN": "📊 SPF Season review 2025-2026: exclusively type A influenza (Dec 2025–mid-Feb 2026, 10 weeks). Low-to-moderate intensity in community, high in hospitals. Significant mortality impact early 2026. Off-season in May 2026 — inter-epidemic surveillance. 290,000–650,000 deaths/year (WHO). FFP2 recommended for healthcare workers and at-risk individuals during next peak.",
       "descPatientFR": "🟡 La grippe est une infection respiratoire fréquente en hiver. Les symptômes arrivent d'un coup : fièvre élevée, gros mal de tête, douleurs dans tout le corps. C'est différent d'un rhume. En général, on guérit en 5 à 7 jours en restant au chaud. Si vous êtes âgé(e), enceinte, ou avez une maladie chronique → consultez un médecin rapidement. Appelez le 15 si vous avez du mal à respirer ou si vous ne vous levez plus.",
       "descPatientEN": "🟡 Flu is a common respiratory infection in winter. Symptoms start suddenly: high fever, severe headache, body aches. It's different from a cold. Usually you recover in 5-7 days by resting. If you are elderly, pregnant, or have a chronic condition → see a doctor quickly. Call 15 if you have difficulty breathing or cannot get up."
+    },
+    {
+      "id": "DENGUE",
+      "nameFR": "Dengue (arbovirose)",
+      "nameEN": "Dengue Fever",
+      "currentStatus": "active",
+      "cfr": "< 1% (dengue classique) ; 1–5% (dengue sévère non prise en charge)",
+      "r0": "2–6 selon contexte vectoriel",
+      "incubation": "4–10 jours après piqûre de moustique Aedes",
+      "transmission": [
+        "Vecteuriel (moustique Aedes aegypti / albopictus — tigre)"
+      ],
+      "activeRegions": [
+        "Antilles françaises",
+        "Guyane française",
+        "La Réunion",
+        "Mayotte",
+        "Asie du Sud-Est",
+        "Amérique latine",
+        "Pacifique"
+      ],
+      "lastUpdate": "2026-08-12",
+      "descFR": "🦟 DENGUE — 1ère arbovirose mondiale : 400 millions d'infections/an (OMS). Endémique dans tous les DROM-COM français (Guadeloupe, Martinique, Guyane, La Réunion, Mayotte). IMPORTANT : transmise par le moustique tigre (Aedes albopictus) présent en France métropolitaine (60+ départements). Transmission LOCALE possible en métropole en été. Pas de transmission directe entre personnes. Phase critique (J4–J6) : chute de plaquettes, risque de dengue sévère. Pas d'aspirine ni d'ibuprofène (risque hémorragique). Paracétamol uniquement.",
+      "descEN": "🦟 DENGUE — World's leading arboviral disease: 400 million infections/year (WHO). Endemic in all French overseas territories. Tiger mosquito (Aedes albopictus) present in 60+ French metropolitan departments — local transmission possible in summer.",
+      "descPatientFR": "🟡 La dengue est transmise par les moustiques — pas entre personnes. Si vous avez voyagé dans des pays chauds (Antilles, Asie, Réunion, Amérique du Sud) et avez de la fièvre + douleurs dans les yeux + douleurs musculaires intenses : consultez un médecin rapidement et dites-lui où vous avez voyagé. Ne prenez PAS d'ibuprofène ou d'aspirine — uniquement du paracétamol. La dengue n'est pas mortelle si prise en charge à temps.",
+      "descPatientEN": "🟡 Dengue is spread by mosquitoes — not between people. If you traveled to warm countries (Caribbean, Asia, Reunion, South America) and have fever + eye pain + intense muscle pain: see a doctor promptly and tell them where you traveled. Do NOT take ibuprofen or aspirin — paracetamol only.",
+      "references": [
+        "WHO Dengue and Severe Dengue Fact Sheet 2024 — 400 million infections/year",
+        "ECDC Dengue in Europe — autochthonous cases 2022-2024",
+        "SPF — Surveillance dengue France métropolitaine (vecteur Aedes albopictus, 60+ départements)",
+        "Gubler DJ. Clin Microbiol Rev 1998 — Dengue and dengue hemorrhagic fever",
+        "Martina BE et al. FEMS Microbiol Rev 2009 — Dengue virus pathogenesis"
+      ]
+    },
+    {
+      "id": "PALUDISME",
+      "nameFR": "Paludisme (Plasmodium falciparum / vivax)",
+      "nameEN": "Malaria (Plasmodium)",
+      "currentStatus": "endemic",
+      "cfr": "< 0,1% (P. falciparum traité) ; 10–20% (neuropaludisme non traité) ; 0% (P. vivax)",
+      "r0": "Non applicable (transmission vectorielle — pas de R0 interhumain)",
+      "incubation": "7–14 jours P. falciparum · jusqu'à plusieurs mois P. vivax/ovale (rechutes possibles)",
+      "transmission": [
+        "Vecteuriel (moustique Anopheles femelle — uniquement en zone d'endémie)"
+      ],
+      "activeRegions": [
+        "Afrique sub-saharienne",
+        "Guyane française",
+        "Asie du Sud-Est",
+        "Inde",
+        "Amérique centrale/du Sud",
+        "Océanie"
+      ],
+      "lastUpdate": "2026-08-12",
+      "descFR": "🦟 URGENCE MÉDICALE — 1ère cause de fièvre de retour de voyage tropical en France. Toute fièvre survenant dans les 2 mois après un retour de zone endémique = paludisme jusqu'à preuve du contraire. Bilan parasitologique (frottis sanguin + goutte épaisse + TDR) dans les 4 heures obligatoire. P. falciparum (Afrique) = forme mortelle si retard diagnostic. P. vivax/ovale (Asie, Amérique) = formes bénignes avec rechutes possibles sans traitement anti-rechute. Chimioprophylaxie imparfaite (jamais 100%). Non transmis de personne à personne en France métropolitaine.",
+      "descEN": "🦟 MEDICAL EMERGENCY — Leading cause of fever after travel to tropical areas in France. Any fever within 2 months of return from endemic zone = malaria until proven otherwise. Blood film + RDT required within 4 hours. P. falciparum (Africa) = potentially fatal if diagnosis delayed.",
+      "descPatientFR": "🔴 Si vous avez de la fièvre et avez voyagé en Afrique, en Asie ou en Amérique du Sud dans les 2 derniers mois : allez aux urgences ou chez votre médecin AUJOURD'HUI — ne pas attendre. Dites où vous avez voyagé. Le paludisme peut devenir très grave en quelques heures. Il ne se transmet pas entre personnes en France.",
+      "descPatientEN": "🔴 If you have fever and traveled to Africa, Asia, or South America in the last 2 months: go to emergency or your doctor TODAY — do not wait. Tell them where you traveled. Malaria can become very serious within hours. It does not spread between people in France.",
+      "references": [
+        "WHO World Malaria Report 2023 — 249 million cases, 608,000 deaths",
+        "SPILF — Prise en charge du paludisme d'importation en France 2024",
+        "SPF — Bilan des cas de paludisme d'importation en France 2022",
+        "White NJ. N Engl J Med 1996 — The treatment of malaria",
+        "Dondorp AM et al. Lancet 2005 — Artesunate vs quinine for severe malaria"
+      ]
     },
     {
       "id": "RSYNCYTIAL",
@@ -560,7 +632,7 @@
       "protectionLevel": 2,
       "maskNote": "FFP2 recommandé milieux à risque jusqu'à caractérisation épidémiologique complète du nouveau variant.",
       "reproductionNumber": "À déterminer",
-      "cfr": "À déterminer",
+      "cfr": "< 0,1% (variants XEC/KP.2/JN.1 en population vaccinée, ECDC/SPF 2026)",
       "incubation": "2–7 jours (estimé)",
       "transmission_route": "Aéroporté présumé (analogue Omicron)",
       "currentStatus": "monitoring",
@@ -641,7 +713,7 @@
       "maskNote": "WHO Ebola PPE 2026 : EPI niveau 4 obligatoire = FFP3/PAPR + combinaison imperméable + double gantage + visière intégrale + couvre-bottes. Transmission = contact direct fluides biologiques (non aéroportée en conditions naturelles). FFP3 obligatoire pour TOUS les AGPs (intubation, aspiration, réanimation). ATTENTION : vaccin rVSV-ZEBOV (Ervebo) NON efficace contre souche Bundibugyo (FDA 2026). Aucun vaccin ni traitement spécifique disponible.",
       "reproductionNumber": "R0 ≈ 1.5–2.5 (épidémie non contrôlée)",
       "cfr": "25–50% (souche Bundibugyo ; Zaïre 60–90%)",
-      "incubation": "2–21 jours (médiane 9–11 j, Bundibugyo) · Contagieux uniquement dès les symptômes",
+      "incubation": "2–21 jours (médiane 9–11 j, Bundibugyo) · Contagieux dès l'apparition des symptômes · ATTENTION survivants : transmission sexuelle possible jusqu'à 9 mois post-guérison (sperme — Varkey NEJM 2015)",
       "transmission_route": "Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée.",
       "currentStatus": "outbreak",
       "outbreakStart": "2026-04",
@@ -1020,7 +1092,7 @@
       "transmission_route": "Vecteur principal : tiques Hyalomma marginatum (Europe, Asie). Animaux réservoirs : bovins, ovins, caprins (asymptomatiques). Transmission aux humains : piqûre tique, écrasement tique, contact sang animal. Transmission interhumaine : contact direct sang/sécrétions/excrétas patients (nosocomial +++). Aérosol de sang lors d'abattage.",
       "currentStatus": "active",
       "outbreakStart": "Endémique avec résurgence Europe (2022–2026)",
-      "lastUpdate": "2026-06",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#DC2626",
       "clinicalPhases": [
         {
@@ -1097,9 +1169,10 @@
         "Estrada-Peña A et al. Vector Borne Zoonotic Dis 2012 — CCHF virus geographic expansion",
         "Papa A et al. Euro Surveill 2022 — CCHF in Western Europe (Spain case)",
         "Keshtkar-Jahromi M et al. Antiviral Res 2010 — Treatment review: ribavirin",
-        "HCSP — Avis relatif à la prise en charge des patients suspects de FHCC, France 2019"
+        "HCSP — Avis relatif à la prise en charge des patients suspects de FHCC, France 2019",
+        "Anses 2015-2022 — Présence de tiques Hyalomma marginatum en France méridionale (Occitanie, PACA)"
       ],
-      "descFR": "Endémique Asie centrale, Moyen-Orient, Afrique subsaharienne. Extension vers l'Europe du Sud (Espagne 2022 — premier cas Europe Occidentale). CFR 10–40%. Transmission : tique Hyalomma (zones rurales), abattoirs, nosocomial. Risque France : régions PACA/Corse (tiques Hyalomma présentes), voyageurs retour Balkans/Turquie/Espagne rurale. Traitement : ribavirine IV (OMS, hors AMM).",
+      "descFR": "Endémique Asie centrale, Moyen-Orient, Afrique subsaharienne. Extension vers l'Europe du Sud (Espagne 2022 — premier cas Europe Occidentale). CFR 10–40%. Transmission : tique Hyalomma (zones rurales), abattoirs, nosocomial. Risque France : régions PACA/Corse (tiques Hyalomma présentes), voyageurs retour Balkans/Turquie/Espagne rurale. Traitement : ribavirine IV (OMS, hors AMM). · FRANCE : tiques Hyalomma marginatum établies en France du Sud (Occitanie, PACA) depuis 2015 (Anses). Plusieurs cas suspects investigués en France. Risque faible mais réel pour travailleurs agricoles, chasseurs et randonneurs dans ces régions.",
       "descEN": "Endemic in Central Asia, Middle East, sub-Saharan Africa. Extension to Southern Europe (Spain 2022 — first Western Europe case). CFR 10-40%. Transmission: Hyalomma tick (rural areas), slaughterhouses, nosocomial. France risk: PACA/Corsica regions (Hyalomma ticks present), travelers returning from Balkans/Turkey/rural Spain. Treatment: IV ribavirin (WHO, off-label)."
     },
     {
