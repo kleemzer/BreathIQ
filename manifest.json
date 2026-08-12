@@ -9,7 +9,7 @@
   "orientation": "any",
   "lang": "fr",
   "dir": "ltr",
-  "categories": ["health", "medical", "news"],
+  "categories": ["health", "news", "lifestyle"],
   "icons": [
     {
       "src": "/favicon.svg",
