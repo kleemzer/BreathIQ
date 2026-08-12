@@ -2962,6 +2962,40 @@ function wizCollectState() {
 function wizAnalyze() {
   const state  = wizCollectState();
 
+  // P0 — Règle Ebola forcée : voyage Afrique centrale/Est + saignements → SAMU immédiat
+  // (Ebola n'est pas respiratory → le moteur de score sous-estimerait le risque)
+  const hasEbolaContext = state.context.includes('travel_africa_high_risk') || state.context.includes('mv_hondius');
+  const hasBleeding = state.alarm.includes('bleeding') || state.symptoms.includes('bleeding');
+  const hasFever = state.alarm.includes('fever_high') || state.symptoms.includes('fever') || state.symptoms.includes('fever_high');
+  if (hasEbolaContext && hasBleeding) {
+    const ebolaResult = {
+      ranked: [],
+      orientLevel: 'emergency',
+      alarmReason: '🚨 Combinaison critique : voyage zone Ebola/Hantavirus + saignements — orientation SAMU immédiate',
+      clinical: {
+        level: 'emergency',
+        urgencyScore: 99,
+        careNeed: 'emergency_department',
+        redFlags: ['travel_africa_high_risk_bleeding'],
+        reasons: [
+          'Voyage Afrique centrale/Est ou MV Hondius + saignements inexpliqués = combinaison nécessitant une évaluation médicale urgente pour éliminer une fièvre hémorragique virale (Ebola, Marburg, Lassa, CCHF).',
+          'Ces pathogènes ne sont PAS pris en compte dans le score respiratoire — seule une évaluation médicale directe est adaptée.'
+        ],
+        patientMessageFR: '🚨 Votre voyage récent en zone épidémique combiné à des saignements inexpliqués nécessite une évaluation médicale immédiate. Appelez le 15 maintenant et mentionnez votre voyage. N\'allez pas aux urgences seul(e) sans avoir appelé avant — le personnel doit être prévenu pour organiser votre accueil en sécurité.',
+        patientMessageEN: '🚨 Your recent travel to an epidemic zone combined with unexplained bleeding requires immediate medical evaluation. Call emergency services (15) now and mention your travel. Do not go to the emergency room alone without calling first.',
+        careLabelFR: '📞 Appelez le 15 immédiatement',
+        careLabelEN: '📞 Call emergency services immediately',
+        disclaimerFR: 'BreathIQ oriente vers un niveau de recours. Il ne pose pas de diagnostic et ne remplace pas une consultation médicale.',
+        disclaimerEN: 'BreathIQ suggests a level of care. It does not provide a diagnosis and does not replace medical consultation.',
+      },
+    };
+    latestClinicalOrientation = ebolaResult.clinical;
+    renderDiagnosticResult(ebolaResult, state);
+    const res = document.getElementById('symptomResult');
+    if (res) { res.classList.remove('hidden'); res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    return;
+  }
+
   // Cas spécial HAS/SFMU : nourrisson < 3 mois + fièvre ≥ 38°C → urgences sans délai
   if (state.alarm.includes('infant_fever_alarm')) {
     const infantResult = {

@@ -750,6 +750,21 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .epi4-contacts span{color:#e2e8f0}
 .epi4-refs{font-size:.72rem;color:#64748b;text-align:right}
 
+/* ── DO obligatoires soignant ── */
+.contacts-guide{padding:1.5rem 0}
+.do-section{}
+.do-title{font-size:1.15rem;font-weight:700;margin-bottom:.4rem;color:#f1f5f9}
+.do-subtitle{font-size:.85rem;color:#94a3b8;margin-bottom:1.25rem}
+.do-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+.do-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem 1.25rem}
+.do-card-red{border-color:rgba(220,38,38,.35);background:rgba(220,38,38,.07)}
+.do-card-orange{border-color:rgba(234,88,12,.3);background:rgba(234,88,12,.06)}
+.do-card-blue{border-color:rgba(59,130,246,.3);background:rgba(59,130,246,.06)}
+.do-card-header{font-size:.82rem;font-weight:700;margin-bottom:.65rem;color:#e2e8f0;padding-bottom:.5rem;border-bottom:1px solid rgba(255,255,255,.1)}
+.do-card ul{padding-left:1.1rem;font-size:.8rem;color:#cbd5e1;line-height:1.75}
+.do-card p{font-size:.82rem}
+.do-contact{margin-top:.75rem;font-size:.75rem;color:#64748b;padding-top:.5rem;border-top:1px solid rgba(255,255,255,.08)}
+
 /* ── Overlay score PHEIC non-respiratoire ── */
 .ebola-pheic-overlay{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.35);border-radius:.75rem;padding:.9rem 1.1rem;margin:0 0 1rem;font-size:.85rem;color:#fca5a5;line-height:1.5}
 .ebola-pheic-overlay strong{display:block;margin-bottom:.4rem;font-size:.9rem}
@@ -1373,7 +1388,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 
     <div class="checker-legal-banner" role="note" aria-label="Avertissement médical">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span><strong>Outil d'aide à l'orientation — non dispositif médical (Règl. UE 2017/745).</strong> Les résultats sont indicatifs et ne remplacent pas une consultation médicale. <strong>En cas de difficultés à respirer, appelez le 15 ou le 112.</strong></span>
+      <span><strong>Ce site vous aide à savoir quoi faire — il ne remplace pas votre médecin.</strong> Les résultats sont des orientations, pas un diagnostic. <strong>En cas de difficultés à respirer, appelez le 15 ou le 112 immédiatement.</strong> <em style="font-size:.78em;opacity:.7">(Outil d'information et d'orientation — non dispositif médical, Règl. UE 2017/745)</em></span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
@@ -1599,7 +1614,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
               <input type="checkbox" value="tick_bite"><span class="sym-icon">🕷️</span><span>Morsure de tique récente</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Exposition eau stagnante / tour de refroidissement</span>
+              <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Séjour hôtel, croisière, thermes, spa dans les 10 derniers jours (Légionellose)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
               <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Système immunitaire affaibli (cancer, VIH, corticoïdes)</span>
@@ -1608,7 +1623,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
               <input type="checkbox" value="pregnant"><span class="sym-icon">🤰</span><span>Grossesse</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contexte de risque Mpox</span>
+              <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contact avec personne ayant des lésions cutanées / Mpox confirmé (clade Ib : transmission familiale possible)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
               <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span>Aggravation rapide en moins de 48h</span>
@@ -2352,7 +2367,65 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     </div>
 
     <!-- Panel Contacts -->
-    <div id="biqTabContactsPanel" role="tabpanel" aria-labelledby="biqTabContacts" hidden></div>
+    <div id="biqTabContactsPanel" role="tabpanel" aria-labelledby="biqTabContacts" hidden>
+      <div class="contacts-guide">
+
+        <!-- Déclarations obligatoires -->
+        <div class="do-section">
+          <h3 class="do-title">📋 Maladies à Déclaration Obligatoire (DO) — France</h3>
+          <p class="do-subtitle">Déclaration immédiate à l'ARS dès la suspicion clinique, sans attendre la confirmation biologique.</p>
+
+          <div class="do-grid">
+            <div class="do-card do-card-red">
+              <div class="do-card-header">🚨 DO Immédiate — Fièvres hémorragiques virales</div>
+              <ul>
+                <li><strong>Ebola</strong> — ARS + SAMU 15 + UHSI de référence</li>
+                <li><strong>Marburg</strong> — ARS + SAMU 15 + UHSI de référence</li>
+                <li><strong>Lassa</strong> — ARS + SAMU 15</li>
+                <li><strong>CCHF</strong> (Fièvre Hémorragique Crimée-Congo) — ARS</li>
+                <li><strong>MERS-CoV</strong> — ARS + SAMU 15</li>
+                <li><strong>Nipah</strong> — ARS + SAMU 15</li>
+              </ul>
+              <div class="do-contact">ARS → <strong>numéro régional</strong> · InVS urgences : <strong>0 800 13 00 00</strong></div>
+            </div>
+
+            <div class="do-card do-card-orange">
+              <div class="do-card-header">⚠️ DO dans les 24–48h</div>
+              <ul>
+                <li><strong>Tuberculose</strong> — DO à l'ARS dans les 48h</li>
+                <li><strong>Rougeole</strong> — DO dès suspicion (avant confirmation)</li>
+                <li><strong>Coqueluche</strong> — DO chez nourrissons < 6 mois</li>
+                <li><strong>Méningite bactérienne</strong> — DO immédiate + chimioprophylaxie entourage</li>
+                <li><strong>Légionellose</strong> — DO ARS + investigation source</li>
+                <li><strong>Mpox (variole du singe)</strong> — DO à l'ARS</li>
+                <li><strong>H5N1 humain</strong> — DO ARS + signalement SPF</li>
+              </ul>
+            </div>
+
+            <div class="do-card do-card-blue">
+              <div class="do-card-header">📞 Numéros de référence soignants</div>
+              <ul>
+                <li>SAMU national : <strong>15</strong></li>
+                <li>InVS urgences épidémiques : <strong>0 800 13 00 00</strong></li>
+                <li>COREB nationale : <strong>coreb@aphp.fr</strong></li>
+                <li>UHSI Bichat (Paris) : <strong>01 40 25 85 85</strong></li>
+                <li>UHSI Croix-Rousse (Lyon) : <strong>04 26 10 93 30</strong></li>
+                <li>UHSI Pellegrin (Bordeaux) : <strong>05 57 82 13 82</strong></li>
+                <li>UHSI Timone (Marseille) : <strong>04 91 38 60 00</strong></li>
+              </ul>
+              <div class="do-contact">Liste complète ARS : <a href="https://www.health.gouv.fr" style="color:#93c5fd" target="_blank" rel="noopener">sante.gouv.fr</a></div>
+            </div>
+
+            <div class="do-card">
+              <div class="do-card-header">📄 Fiche DO pratique</div>
+              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6">La déclaration obligatoire se fait via le <strong>portail e-SI (signalement.social-sante.gouv.fr)</strong> ou par fiche papier cerfa transmise à l'ARS régionale.</p>
+              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6;margin-top:.5rem">Pour les maladies à risque épidémique immédiat (FHV, MERS, Nipah) : <strong>appel téléphonique direct à l'ARS avant tout</strong>, puis confirmation écrite.</p>
+              <p style="font-size:.82rem;color:#fbbf24;margin-top:.5rem">⚠️ Ne pas attendre la confirmation PCR pour signaler — la suspicion clinique suffit pour les FHV.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 

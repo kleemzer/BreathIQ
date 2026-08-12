@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-12T00:00:00.000Z",
+  "generatedAt": "2026-08-12T12:00:00.000Z",
   "version": "1.0",
   "pathogensCount": 19,
   "pathogens": [
@@ -30,12 +30,12 @@
       "protectionLevel": 2,
       "maskNote": "FFP2 lors de contact avec animaux infectés. FFP3 recommandé pour soignants.",
       "reproductionNumber": "< 1 (humain-humain rare)",
-      "cfr": "52% (cas humains confirmés, OMS 2024)",
+      "cfr": "52% (cas hospitalisés confirmés — biais ascertainment majeur ; CFR réel estimé 1–5% OMS 2024)",
       "incubation": "2–5 jours",
       "transmission_route": "Voie aérienne (aérosols aviaires), contact muqueuses",
       "currentStatus": "active",
       "outbreakStart": "2024-01",
-      "lastUpdate": "2026-04",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#EF4444",
       "references": [
         "WHO DON 2024 — H5N1 Human Cases",
@@ -43,8 +43,10 @@
         "Uyeki TM et al. N Engl J Med 2024",
         "WHO Global Influenza Surveillance 2024"
       ],
-      "descFR": "Foyers actifs chez l'homme en Asie du Sud-Est et détection chez bovins laitiers aux États-Unis (2024). Transmission humain-humain rare mais Rh &lt; 1. Létalité humaine élevée (~52%). Protection FFP2 lors de toute exposition aviaire/bovine potentiellement contaminée.",
-      "descEN": "Active human cases in SE Asia and dairy cattle detection in USA (2024). Human-to-human transmission rare but R0 <1. High human CFR (~52%). FFP2 protection required during any potentially contaminated avian/bovine exposure."
+      "descFR": "⚠️ H5N1 HUMAIN : aucune transmission interhumaine soutenue à ce jour. Risque population générale : QUASI NUL. Les cas humains surviennent uniquement après contact direct prolongé avec volailles malades ou leurs déjections. CFR 52% calculé sur cas hospitalisés sévères (biais massif d'ascertainment — OMS reconnaît que le CFR réel, en comptant tous les cas, est probablement 1–5%). Surveillance continue : 16 pays concernés 2024–2026, foyers aviaires actifs Europe/Amérique du Nord. Pas de risque en milieu urbain sans contact animaux.",
+      "descEN": "⚠️ H5N1 HUMAN: no sustained human-to-human transmission to date. Risk for general public: NEAR ZERO. Human cases occur only after direct prolonged contact with sick poultry or their droppings. CFR 52% calculated from severe hospitalized cases (massive ascertainment bias — WHO acknowledges true CFR including all cases is likely 1-5%). No risk in urban settings without animal contact.",
+      "descPatientFR": "🟢 Grippe aviaire H5N1 : votre risque est quasi nul si vous vivez en ville et n'avez pas de contact avec des volailles. Cette maladie touche presque exclusivement des personnes en contact direct avec des poulets, dindes ou canards malades (éleveurs, marchés d'animaux vivants). Elle ne se transmet pas entre personnes. Si vous avez eu un contact avec des volailles malades + fièvre : consultez un médecin et signalez-le.",
+      "descPatientEN": "🟢 H5N1 bird flu: your risk is near zero if you live in a city and have no contact with poultry. This disease affects almost exclusively people in direct contact with sick chickens, turkeys or ducks (farmers, live animal markets). It does not spread between people. If you had contact with sick poultry + fever: see a doctor and report it."
     },
     {
       "id": "SARS2",
@@ -81,7 +83,9 @@
         "ECDC COVID-19 Situation Updates 2024"
       ],
       "descFR": "Circulation endémique mondiale. Variants KP.2/KP.1.1/JN.1. Transmission aérienne par aérosols démontrée (Morawska & Milton 2020, Lancet 2021). FFP2 recommandé dans espaces bondés, milieux médicaux, immunodéprimés.",
-      "descEN": "Endemic global circulation. KP.2/JN.1 variants. Airborne aerosol transmission demonstrated. FFP2 recommended in crowded spaces, healthcare settings, immunocompromised individuals."
+      "descEN": "Endemic global circulation. KP.2/JN.1 variants. Airborne aerosol transmission demonstrated. FFP2 recommended in crowded spaces, healthcare settings, immunocompromised individuals.",
+      "descPatientFR": "🟢 COVID-19 en France (août 2026) : circulation basse, sans pic notable. La plupart des gens guérissent à la maison en quelques jours. Consultez si vous êtes essoufflé(e) au repos, très fatigué(e) depuis plus de 5 jours, ou si vous avez une maladie grave. Les tests rapides antigéniques restent disponibles en pharmacie. La vaccination reste recommandée pour les personnes vulnérables.",
+      "descPatientEN": "🟢 COVID-19 in France (August 2026): low circulation, no significant peak. Most people recover at home within a few days. Consult if you are short of breath at rest, very tired for more than 5 days, or have a serious illness. Rapid antigen tests remain available at pharmacies. Vaccination is still recommended for vulnerable people."
     },
     {
       "id": "TB",
@@ -209,7 +213,9 @@
         "WHO DON 2026-DON600 — Hantavirus cluster cruise ship MV Hondius, mai 2026"
       ],
       "descFR": "🚨 CLUSTER ACTIF (mai 2026) — 10 cas Hantavirus Andes confirmés sur paquebot MV Hondius (Ushuaia → Atlantique Sud). 3 décès (CFR 38%). Ex-passagers dans 12+ pays, 600+ contacts dans 32 pays. Andes virus = seul hantavirus avec transmission interhumaine prouvée. Phase prodromique (J0–J5) : fièvre, myalgies, céphalées — INDISCERNABLE d'une grippe. Dégradation brutale à J5–J10 : détresse respiratoire, collapsus hémodynamique. Facteurs de risque : voyage Patagonie/Amérique du Sud + contact rongeurs/excrétas. Toute personne ayant voyagé en Amérique du Sud dans les 6 semaines avec ces symptômes doit contacter un médecin en mentionnant le voyage. Mortalité élevée si non pris en charge en réanimation.",
-      "descEN": "🚨 ACTIVE CLUSTER (May 2026) — 10 confirmed Andes Hantavirus cases on cruise ship MV Hondius (Ushuaia → South Atlantic). 3 deaths (CFR 38%). Former passengers hospitalized in 12+ countries, 600+ contacts in 32 countries. Published in NEJM. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2."
+      "descEN": "🚨 ACTIVE CLUSTER (May 2026) — 10 confirmed Andes Hantavirus cases on cruise ship MV Hondius (Ushuaia → South Atlantic). 3 deaths (CFR 38%). Former passengers hospitalized in 12+ countries, 600+ contacts in 32 countries. Published in NEJM. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2.",
+      "descPatientFR": "🟠 L'Hantavirus est rare mais grave. Il se transmet en respirant des poussières contenant les déjections de rongeurs infectés (souris, rats) — pas de personne à personne (sauf la souche des Andes). Risque si vous avez été en contact avec des rongeurs, des granges, ou des endroits poussiéreux en Amérique du Sud ou si vous étiez sur le paquebot MV Hondius en mai 2026. La maladie commence comme une grippe (J0–J5) puis peut devenir grave rapidement (difficultés à respirer).",
+      "descPatientEN": "🟠 Hantavirus is rare but serious. It spreads by breathing dust containing infected rodent droppings (mice, rats) — not person to person (except Andes strain). Risk if you had contact with rodents, barns, or dusty places in South America or if you were on cruise ship MV Hondius in May 2026. Disease starts like flu (day 0-5) then can worsen rapidly (breathing difficulty)."
     },
     {
       "id": "MPOX",
@@ -256,7 +262,9 @@
         "ARS Île-de-France — Mpox recommandations professionnels de santé 2026"
       ],
       "descFR": "📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025. Clade Ib : plus transmissible que clade IIb (2022) — transmission contact cutané (lésions), gouttelettes en contact prolongé, et voie sexuelle. Cas importés en Europe documentés en 2026. Urgence de santé publique OMS (clade Ib) maintenue. FFP2 + EPI contact requis pour soignants. Différence critique avec clade IIb : CFR plus élevée (3–10% vs < 1%), transmission familiale et ménagère documentée, non limitée à la voie sexuelle.",
-      "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers."
+      "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.",
+      "descPatientFR": "🟠 Mpox provoque une fièvre et des boutons/vésicules sur la peau. Il se transmet par contact cutané direct avec les lésions d'une personne malade — pas dans l'air pour la plupart des cas. La nouvelle souche (clade Ib) peut se transmettre dans une famille par contact prolongé. Si vous avez des boutons suspects + fièvre : consultez un médecin, ne grattez pas les lésions, couvrez-les. Il existe une vaccination préventive.",
+      "descPatientEN": "🟠 Mpox causes fever and skin blisters/vesicles. It spreads through direct skin contact with lesions of a sick person — not through the air in most cases. The new strain (clade Ib) can spread within a family through prolonged contact. If you have suspicious rash + fever: see a doctor, do not scratch lesions, cover them. Preventive vaccination is available."
     },
     {
       "id": "MERS",
@@ -286,7 +294,7 @@
       "transmission_route": "Zoonose (dromadaires). Transmission interhumaine via gouttelettes et aérosols en milieu hospitalier. Clusters nosocomiaux.",
       "currentStatus": "sporadic",
       "outbreakStart": "2012 (sporadique)",
-      "lastUpdate": "2026-01",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#EA580C",
       "references": [
         "WHO MERS Global Summary and Risk Assessment 2023",
@@ -294,7 +302,7 @@
         "Assiri A et al. Lancet Infect Dis 2013 — MERS cluster in nosocomial setting",
         "Oh MD et al. J Korean Med Sci 2015 — MERS outbreak in South Korea"
       ],
-      "descFR": "CFR ~34–36% (OMS). Réservoir animal : dromadaires (clade C). Transmission humaine principalement nosocomiale. Précautions aérosols (FFP2) + contact + protection oculaire requis pour soignants. Cas sporadiques continus Péninsule arabique.",
+      "descFR": "⚠️ MERS-CoV : aucun cas en France. Endémique péninsule arabique (Arabie Saoudite, Émirats, Oman). Transmission zoonotique depuis dromadaires (contact direct ou consommation produits non pasteurisés). Transmission interhumaine rare — uniquement en contexte hospitalier sans précautions EPI. CFR 34–36% sur cas confirmés (biais ascertainment). Voyageurs revenant de péninsule arabique avec fièvre + toux + insuffisance rénale → suspicion MERS → 15 immédiatement.",
       "descEN": "CFR ~34-36% (WHO). Animal reservoir: dromedary camels (clade C). Human transmission mainly nosocomial. Airborne precautions (FFP2) + contact + eye protection required for HCW. Sporadic continuous cases Arabian Peninsula."
     },
     {
@@ -326,7 +334,7 @@
       "transmission_route": "Contact direct avec sang, sécrétions, organes ou fluides de personnes infectées. Réservoir : chauve-souris Rousettus aegyptiacus.",
       "currentStatus": "sporadic",
       "outbreakStart": "2025-11 (Éthiopie — premier foyer jamais déclaré)",
-      "lastUpdate": "2026-01",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#7F1D1D",
       "references": [
         "WHO DON 2026-DON592 — Marburg virus disease, Ethiopia, jan 2026",
@@ -336,7 +344,7 @@
         "Rwanda Biomedical Centre — Marburg Outbreak Report 2024",
         "Towner JS et al. PLoS Pathog 2009 — Isolation of genetically diverse Marburg viruses"
       ],
-      "descFR": "✅ Foyer Éthiopie TERMINÉ (26 jan 2026) — premier foyer Marburg jamais déclaré en Éthiopie : 14 cas confirmés, 9 décès (CFR 64%), 5 cas probables décédés. Provinces : Jinka, Malle, Dasench (Sud Éthiopie) et Hawassa. Foyer Rwanda 2024 également terminé. Surveillance active maintenue — réservoir chauves-souris Rousettus présent en Afrique. BSL-4 requis.",
+      "descFR": "⚠️ MARBURG : épidémie Éthiopie terminée jan 2026 (42 jours sans cas). Rwanda 2024 terminée. Haute vigilance maintenue — réservoir naturel : chauves-souris frugivores (Rousettus aegyptiacus), mines et grottes d'Afrique sub-saharienne. CFR 64% Éthiopie 2025–2026 (souche Ravn). Transmission : contact sang/fluides. Aucun vaccin homologué. Traitement expérimental (MAb114 en évaluation).",
       "descEN": "✅ Ethiopia outbreak ENDED (Jan 26, 2026) — first-ever Marburg outbreak in Ethiopia: 14 confirmed cases, 9 deaths (CFR 64%), 5 probable cases (all died). Rwanda 2024 outbreak also ended. Active surveillance maintained — Rousettus bat reservoir present across sub-Saharan Africa. BSL-4 required."
     },
     {
@@ -366,16 +374,16 @@
       "transmission_route": "Aérosols pouvant rester en suspension jusqu'à 2 heures. Contagiosité 4j avant–4j après éruption.",
       "currentStatus": "active",
       "outbreakStart": "Résurgence 2022–2026",
-      "lastUpdate": "2026-03",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#D97706",
       "references": [
+        "ECDC Measles Surveillance Report Q1 2026 — +180% increase vs Q1 2025 in EU/EEA",
         "WHO Measles Global Status Update 2024 — 306,000 cases reported",
-        "ECDC Measles Annual Report EU/EEA 2024 — 9,603 cases Nov 2024–Oct 2025",
-        "CDC HICPAC 2024 — Airborne precautions: N95 required for non-immune HCW, immune HCW exempt",
-        "Moss WJ. Lancet 2017 — Measles",
-        "Mina MJ et al. Science 2015 — Measles virus infection diminishes preexisting antibodies"
+        "SPF Bulletin épidémiologique hebdomadaire — rougeole 2026",
+        "CDC HICPAC 2024 — Airborne precautions for measles",
+        "Griffin DE. Measles virus-induced suppression of immune responses. Immunol Rev 2010"
       ],
-      "descFR": "Résurgence mondiale 2022–2024 : 306 000 cas déclarés (OMS 2024). R0 12–18. Transmission aérienne sur grande distance (2h en air confiné). Immunosuppression post-rougeole 2–3 ans. FFP2 recommandé pour non-immuns dans zones épidémiques.",
+      "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
       "descEN": "Global resurgence 2022-2024: 306,000 cases reported (WHO 2024). R0 12-18. Long-range airborne transmission (2h in confined air). Post-measles immune suppression 2-3 years. FFP2 recommended for non-immune individuals in epidemic areas."
     },
     {
@@ -453,7 +461,9 @@
         "CDC HICPAC Draft 2024 Guideline to Prevent Transmission of Pathogens in Healthcare Settings"
       ],
       "descFR": "📊 SPF Bilan saison 2025-2026 : épidémie exclusivement type A (déc 2025 – mi-fév 2026, 10 semaines). Intensité faible à modérée en ville, élevée en hospitalier. Impact mortalité important en début 2026. Hors saison en mai 2026 — surveillance inter-épidémique. 290 000–650 000 décès/an (OMS). FFP2 recommandé soignants et personnes à risque lors du prochain pic.",
-      "descEN": "📊 SPF Season review 2025-2026: exclusively type A influenza (Dec 2025–mid-Feb 2026, 10 weeks). Low-to-moderate intensity in community, high in hospitals. Significant mortality impact early 2026. Off-season in May 2026 — inter-epidemic surveillance. 290,000–650,000 deaths/year (WHO). FFP2 recommended for healthcare workers and at-risk individuals during next peak."
+      "descEN": "📊 SPF Season review 2025-2026: exclusively type A influenza (Dec 2025–mid-Feb 2026, 10 weeks). Low-to-moderate intensity in community, high in hospitals. Significant mortality impact early 2026. Off-season in May 2026 — inter-epidemic surveillance. 290,000–650,000 deaths/year (WHO). FFP2 recommended for healthcare workers and at-risk individuals during next peak.",
+      "descPatientFR": "🟡 La grippe est une infection respiratoire fréquente en hiver. Les symptômes arrivent d'un coup : fièvre élevée, gros mal de tête, douleurs dans tout le corps. C'est différent d'un rhume. En général, on guérit en 5 à 7 jours en restant au chaud. Si vous êtes âgé(e), enceinte, ou avez une maladie chronique → consultez un médecin rapidement. Appelez le 15 si vous avez du mal à respirer ou si vous ne vous levez plus.",
+      "descPatientEN": "🟡 Flu is a common respiratory infection in winter. Symptoms start suddenly: high fever, severe headache, body aches. It's different from a cold. Usually you recover in 5-7 days by resting. If you are elderly, pregnant, or have a chronic condition → see a doctor quickly. Call 15 if you have difficulty breathing or cannot get up."
     },
     {
       "id": "RSYNCYTIAL",
@@ -519,15 +529,15 @@
       "transmission_route": "Grosses gouttelettes (contact < 1m) et aérosols en espace très confiné. Contagieux 7 jours avant à 3 semaines après début toux.",
       "currentStatus": "active",
       "outbreakStart": "2024-01 (résurgence Europe)",
-      "lastUpdate": "2026-03",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#EC4899",
       "references": [
+        "SPF — Bulletin de surveillance coqueluche France 2025–2026",
         "ECDC Pertussis Monthly Data 2024 — Record levels in Europe",
         "WHO Pertussis Fact Sheet 2023",
-        "Cherry JD. N Engl J Med 2012 — Epidemic Pertussis in 2012",
-        "Santé Publique France — Coqueluche : point épidémiologique 2024"
+        "Cherry JD. N Engl J Med 2012 — Epidemic Pertussis in 2012"
       ],
-      "descFR": "Résurgence record 2024 en Europe (ECDC : niveaux les plus élevés depuis décennies). R0 12–17. CFR 1–2% nourrissons. FFP2 recommandé contact rapproché non protégé avec cas confirmé, surtout autour de nourrissons.",
+      "descFR": "📈 HAUSSE 2026 : SPF confirme augmentation cas coqueluche France 2025–2026. ECDC 2024 : niveaux record Europe depuis 20 ans. Pic chez nourrissons < 6 mois non encore vaccinés (mortalité élevée). Adultes : réservoir principal (vaccin a-cellulaire immunité déclinante après 5–10 ans). Stratégie cocooning : vaccination entourage + cocooning maternité. Phase catarrhale (J0–J14) = phase contagieuse maximale mais toux encore banale → diagnostic difficile.",
       "descEN": "Record 2024 resurgence in Europe (ECDC: highest levels in decades). R0 12-17. CFR 1-2% in infants. FFP2 recommended for unprotected close contact with confirmed case, especially around infants."
     },
     {
@@ -568,9 +578,9 @@
       "descEN": "📊 SPF May 2026: low SARS-CoV-2 circulation (wastewater week 18 declining). Low healthcare utilization throughout 2025-2026 season. Continuous background circulation without significant peak. Active genomic surveillance for new variants (XEC, KP.3.1.1 dominant 2025). FFP2 recommended in high-risk settings."
     },
     {
-      "id": "CANDIDA",
-      "nameFR": "Aspergillus / Champignons aéroportés",
-      "nameEN": "Aspergillus / Airborne Fungi",
+      "id": "CANDIDA_ASPERGILLUS",
+      "nameFR": "Champignons invasifs — Candida auris & Aspergillus fumigatus",
+      "nameEN": "Invasive Fungi — Candida auris & Aspergillus fumigatus",
       "pathogen": "Aspergillus fumigatus, Histoplasma, Coccidioides",
       "category": "endemic",
       "riskLevel": "moderate",
@@ -589,20 +599,20 @@
       "protectionLevel": 2,
       "maskNote": "FFP2 obligatoire travaux sol/poussières en zone endémique. FFP3 pour immunodéprimés graves (greffe, hémato-oncologie).",
       "reproductionNumber": "Non transmissible interhumain",
-      "cfr": "15–40% aspergillose invasive (immunodéprimés)",
+      "cfr": "Candida auris : 30–60% (bactériémie nosocomiale immunodéprimés) · Aspergillus : 15–40% (aspergillose invasive)",
       "incubation": "1–3 semaines (aspergillose)",
       "transmission_route": "Inhalation spores fongiques environnementales. Non transmissible de personne à personne.",
       "currentStatus": "endemic",
       "outbreakStart": "Endémique",
-      "lastUpdate": "2025-12",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#059669",
       "references": [
         "CDC Aspergillosis Statistics 2023",
         "Morgan J et al. Clin Infect Dis 2005 — Incidence of invasive aspergillosis",
         "Galgiani JN et al. Clin Infect Dis 2016 — Coccidioidomycosis"
       ],
-      "descFR": "CFR 15–40% aspergillose invasive en immunodépression sévère. Spores omniprésentes dans environnement. FFP2 lors de travaux exposants à poussières/sol (construction, jardinage, chantiers). FFP3 obligatoire pour immunodéprimés sévères.",
-      "descEN": "CFR 15-40% invasive aspergillosis in severe immunocompromise. Spores ubiquitous in environment. FFP2 during soil/dust-exposing work (construction, gardening). FFP3 mandatory for severely immunocompromised."
+      "descFR": "⚠️ DEUX PATHOGÈNES DISTINCTS : (1) Candida auris — levure nosocomiale, résistante aux antifongiques (polyresistance documentée), transmission par contact (mains, surfaces), epidémies dans services de réanimation. Aucun port de masque utile. Hygiène des mains +++. (2) Aspergillus fumigatus — champignon filamenteux, spores AÉRIENNES omniprésentes dans environnement. Aspergillose invasive uniquement chez immunodéprimés sévères (greffe, chimio, corticoïdes hautes doses). FFP2/FFP3 lors travaux de terrassement, jardinage intensif chez immunodéprimé. Risque population générale saine : NÈGLIGEABLE.",
+      "descEN": "⚠️ TWO DISTINCT PATHOGENS: (1) Candida auris — nosocomial yeast, antifungal resistant (polyresistance documented), contact transmission (hands, surfaces), ICU outbreaks. No mask benefit. Hand hygiene +++. (2) Aspergillus fumigatus — filamentous fungus, AIRBORNE spores ubiquitous in environment. Invasive aspergillosis only in severely immunocompromised (transplant, chemo, high-dose corticosteroids). FFP2/FFP3 during construction/earthworks for immunocompromised. Risk for healthy general population: NEGLIGIBLE."
     },
     {
       "id": "EBOLA",
@@ -873,7 +883,9 @@
         "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors (semen persistence 9 months)"
       ],
       "descFR": "🚨 PREMIER CAS EN FRANCE (24/06/2026) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en UHSI — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
-      "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in UHSI — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission."
+      "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in UHSI — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
+      "descPatientFR": "🟥 Ebola est une maladie très grave mais qui ne se transmet PAS dans l'air. On l'attrape uniquement en touchant le sang ou les liquides corporels d'une personne malade. Si vous n'avez pas voyagé en Afrique centrale/Est récemment et n'avez pas eu de contact avec un malade, votre risque est extrêmement faible — même avec l'alerte en France. Si vous avez de la fièvre ET avez voyagé dans ces pays dans les 21 derniers jours : appelez le 15 avant d'aller aux urgences.",
+      "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room."
     },
     {
       "id": "LASSA",
@@ -1117,14 +1129,15 @@
       "transmission_route": "Gouttelettes respiratoires et contact avec surfaces contaminées. Aérosols documentés.",
       "currentStatus": "active",
       "outbreakStart": "2024-12 (résurgence Chine)",
-      "lastUpdate": "2025-03",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#7C3AED",
       "references": [
         "van den Hoogen BG et al. Nat Med 2001 — A newly discovered human pneumovirus",
-        "WHO hMPV Monitoring 2025",
-        "China CDC hMPV Situation Report Q1 2025"
+        "SPF — Surveillance IRA France hiver 2025-2026 : hMPV co-circulation souches A1/B1",
+        "ECDC hMPV Surveillance Report 2025–2026",
+        "WHO hMPV Monitoring 2026 — seasonal patterns NH/SH"
       ],
-      "descFR": "Pathogène respiratoire majeur (2e cause après RSV chez nourrisson). Résurgence hivernale Chine 2024–2025 avec souches A1/B1. FFP2 recommandé soignants pédiatriques lors pics épidémiques. Pas de vaccin disponible.",
+      "descFR": "📊 hMPV : résurgence France hiver 2025–2026 documentée (SPF), avec souches A1/B1 co-circulantes. Pathogène respiratoire majeur : 2e cause de bronchiolite après RSV chez le nourrisson. Touche aussi adultes âgés et immunodéprimés. Pas de vaccin homologué hMPV. Tableau clinique : bronchiolite/pneumonie indiscernable cliniquement d'un RSV. EPI soignants : FFP2 + contact en période épidémique (hivernale). Pas d'antiviral spécifique.",
       "descEN": "Major respiratory pathogen (2nd cause after RSV in infants). Winter resurgence China 2024-2025 with A1/B1 strains. FFP2 recommended for pediatric healthcare workers during epidemic peaks. No vaccine available."
     }
   ]
