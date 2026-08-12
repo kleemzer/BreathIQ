@@ -695,6 +695,66 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .vacc-footer{display:flex;justify-content:space-between;font-size:.68rem;color:#64748b;margin-top:.3rem}
 .vacc-source{opacity:.7}
 .vacc-alert{font-size:.7rem;color:#fbbf24;background:rgba(251,191,36,.08);border-radius:.3rem;padding:.3rem .5rem;margin-top:.4rem}
+
+/* ── ÉCRAN ÉPIDÉMIO PRÉ-WIZARD ── */
+.epidemio-alert-section{background:linear-gradient(160deg,#1a0a0a,#1a1020);color:#e8f0f7;padding:3rem 0}
+.epidemio-alert-header{text-align:center;margin-bottom:2rem}
+.epidemio-alert-header h2{font-size:1.6rem;font-weight:700;margin-bottom:.4rem}
+.epidemio-alert-sub{color:#94a3b8;font-size:1rem}
+.epidemio-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:1rem;padding:1.25rem 1.5rem;margin-bottom:1.25rem;transition:border-color .2s}
+.epidemio-card:hover{border-color:rgba(255,255,255,.2)}
+.epi-card-question{display:flex;gap:1rem;align-items:flex-start;margin-bottom:1rem}
+.epi-card-icon{font-size:2rem;flex-shrink:0;margin-top:.1rem}
+.epi-card-text strong{font-size:1rem;line-height:1.45}
+.epi-card-hint{margin-top:.35rem;font-size:.85rem;color:#94a3b8}
+.epi-card-btns{display:flex;gap:.75rem;margin-bottom:.5rem}
+.epi-btn{padding:.55rem 1.5rem;border-radius:.5rem;border:none;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .15s}
+.epi-btn-yes{background:#dc2626;color:#fff}
+.epi-btn-yes:hover{background:#b91c1c}
+.epi-btn-no{background:rgba(255,255,255,.1);color:#e8f0f7}
+.epi-btn-no:hover{background:rgba(255,255,255,.18)}
+.epi-alert-result{margin-top:1rem}
+.epi-result-box{display:flex;gap:1rem;padding:1.25rem;border-radius:.75rem;margin-bottom:.75rem}
+.epi-result-red{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.4)}
+.epi-result-orange{background:rgba(234,88,12,.15);border:1px solid rgba(234,88,12,.4)}
+.epi-result-icon{font-size:1.75rem;flex-shrink:0}
+.epi-result-content strong{font-size:1rem;display:block;margin-bottom:.4rem;color:#fca5a5}
+.epi-result-orange .epi-result-content strong{color:#fb923c}
+.epi-result-content p{font-size:.88rem;line-height:1.5;color:#e8f0f7}
+.epi-call-btn{display:inline-block;margin-top:.75rem;padding:.55rem 1.25rem;background:#dc2626;color:#fff;border-radius:.5rem;font-weight:700;font-size:.9rem;text-decoration:none}
+.epi-call-btn-orange{background:#ea580c}
+.epi-reassure{font-size:.82rem;color:#94a3b8;margin:0;font-style:italic}
+.epi-cta-continue{text-align:center;padding:1.5rem 0 .5rem;color:#94a3b8}
+.epi-cta-continue p{margin-bottom:.75rem;font-size:.95rem}
+.epi-btn-continue{display:inline-block;padding:.65rem 1.75rem;background:rgba(255,255,255,.1);color:#e8f0f7;border-radius:.5rem;font-weight:600;font-size:.95rem;text-decoration:none;transition:background .15s}
+.epi-btn-continue:hover{background:rgba(255,255,255,.18)}
+
+/* wizard alert badges */
+.ctx-alert-badge{font-size:.68rem;font-weight:700;padding:.15rem .4rem;border-radius:.3rem;background:rgba(220,38,38,.25);color:#fca5a5;margin-left:.4rem;vertical-align:middle}
+.ctx-alert-badge.ctx-alert-orange{background:rgba(234,88,12,.25);color:#fb923c}
+.wiz-check-alert{border-color:rgba(220,38,38,.3)!important}
+
+/* ── EPI NIVEAU 4 GUIDE ── */
+.epi4-guide{padding:1.5rem 0}
+.epi4-disclaimer{background:rgba(251,191,36,.08);border:1px solid rgba(251,191,36,.25);color:#fbbf24;padding:.8rem 1rem;border-radius:.5rem;font-size:.82rem;margin-bottom:1.5rem}
+.epi4-section-title{font-size:1.2rem;font-weight:700;margin-bottom:1rem;color:#f1f5f9}
+.epi4-alert-box{background:rgba(220,38,38,.15);border:1px solid rgba(220,38,38,.35);color:#fca5a5;padding:1rem 1.25rem;border-radius:.6rem;font-size:.9rem;margin-bottom:1.25rem;line-height:1.55}
+.epi4-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem;margin-bottom:1.5rem}
+.epi4-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:.75rem;padding:1rem 1.25rem}
+.epi4-card-red{border-color:rgba(220,38,38,.3);background:rgba(220,38,38,.07)}
+.epi4-card h4{font-size:.88rem;font-weight:700;margin-bottom:.6rem;color:#e2e8f0}
+.epi4-card ul,.epi4-card ol{padding-left:1.2rem;font-size:.82rem;color:#cbd5e1;line-height:1.65}
+.epi4-card p{font-size:.82rem;color:#cbd5e1;line-height:1.55}
+.epi4-contacts{display:flex;flex-wrap:wrap;gap:.75rem 1.5rem;padding:.75rem 1rem;background:rgba(99,102,241,.1);border-radius:.5rem;font-size:.82rem;margin-bottom:.75rem}
+.epi4-contacts strong{display:block;margin-bottom:.3rem;width:100%;color:#a5b4fc}
+.epi4-contacts span{color:#e2e8f0}
+.epi4-refs{font-size:.72rem;color:#64748b;text-align:right}
+
+/* ── Overlay score PHEIC non-respiratoire ── */
+.ebola-pheic-overlay{background:rgba(220,38,38,.1);border:1px solid rgba(220,38,38,.35);border-radius:.75rem;padding:.9rem 1.1rem;margin:0 0 1rem;font-size:.85rem;color:#fca5a5;line-height:1.5}
+.ebola-pheic-overlay strong{display:block;margin-bottom:.4rem;font-size:.9rem}
+.ebola-pheic-overlay p{color:#e8f0f7;margin:0 0 .5rem}
+.ebola-pheic-overlay a{color:#fca5a5;font-weight:600}
 </style>
 </head>
 <body id="mainBody">
@@ -822,7 +882,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
       <h2 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h2>
       <p id="patientRiskDesc">Aucune alerte active — continuez vos activités normalement</p>
       <div class="risk-pheic-strip" id="riskPheicStrip">
-        ℹ️ <strong>Alerte OMS active</strong> — Épidémie d'Ebola en Afrique centrale · <strong>Aucun cas en France</strong> · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">En savoir plus →</a>
+        🚨 <strong>Alerte OMS active (Ebola)</strong> — 1 cas isolé en France (24/06/2026) · <strong>Risque population générale : extrêmement faible</strong> · Aucune transmission communautaire · <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" style="color:#FCA5A5">Suis-je concerné(e) ? →</a>
       </div>
     </div>
 
@@ -1235,6 +1295,75 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 </section>
 
 <!-- ===== VÉRIFICATEUR DE SYMPTÔMES (Mode Patient) ===== -->
+<!-- ===== ÉCRAN CONTEXTE ÉPIDÉMIQUE ACTIF ===== -->
+<section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle">
+  <div class="container">
+    <div class="epidemio-alert-header">
+      <h2 id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
+      <p class="epidemio-alert-sub">Deux questions pour savoir si vous êtes concerné(e)</p>
+    </div>
+
+    <!-- Question 1 : Ebola -->
+    <div class="epidemio-card" id="epiCardEbola">
+      <div class="epi-card-question">
+        <div class="epi-card-icon">🟥</div>
+        <div class="epi-card-text">
+          <strong>Avez-vous voyagé en RD Congo, Ouganda, Rwanda ou Burundi dans les 21 derniers jours ?</strong>
+          <p class="epi-card-hint">Ou avez-vous eu un contact rapproché avec quelqu'un qui revenait de ces pays ?</p>
+        </div>
+      </div>
+      <div class="epi-card-btns">
+        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('ebola')">Oui</button>
+        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('ebola')">Non</button>
+      </div>
+      <div class="epi-alert-result" id="epiResultEbola" hidden>
+        <div class="epi-result-box epi-result-red">
+          <div class="epi-result-icon">🚨</div>
+          <div class="epi-result-content">
+            <strong>Contactez immédiatement le SAMU (15)</strong>
+            <p>Mentionnez votre voyage et vos symptômes. <strong>N'allez pas aux urgences seul(e) sans avoir appelé avant.</strong></p>
+            <p style="margin-top:.5rem;font-size:.85rem;opacity:.85">Pourquoi ? Ebola se transmet par contact avec le sang ou les liquides d'une personne malade. Un médecin doit être prévenu pour organiser votre accueil en sécurité.</p>
+            <a href="tel:15" class="epi-call-btn">📞 Appeler le 15 maintenant</a>
+          </div>
+        </div>
+        <p class="epi-reassure">Si vous n'avez <em>aucun symptôme</em> (pas de fièvre, pas de fatigue intense) et que vous revenez depuis plus de 21 jours : votre risque est très faible. Restez vigilant(e) pendant 21 jours après votre retour.</p>
+      </div>
+    </div>
+
+    <!-- Question 2 : Hantavirus / MV Hondius -->
+    <div class="epidemio-card" id="epiCardHanta">
+      <div class="epi-card-question">
+        <div class="epi-card-icon">🚢</div>
+        <div class="epi-card-text">
+          <strong>Étiez-vous à bord du paquebot MV Hondius (croisière Atlantique Sud, mai 2026) ?</strong>
+          <p class="epi-card-hint">Ou avez-vous voyagé en Patagonie / Amérique du Sud dans les 6 dernières semaines ?</p>
+        </div>
+      </div>
+      <div class="epi-card-btns">
+        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('hanta')">Oui</button>
+        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('hanta')">Non</button>
+      </div>
+      <div class="epi-alert-result" id="epiResultHanta" hidden>
+        <div class="epi-result-box epi-result-orange">
+          <div class="epi-result-icon">⚠️</div>
+          <div class="epi-result-content">
+            <strong>Consultez un médecin aujourd'hui — mentionnez votre voyage</strong>
+            <p>Si vous avez de la fièvre, des douleurs musculaires ou une fatigue intense : ne tardez pas. <strong>L'Hantavirus peut s'aggraver très vite</strong> (en 5 à 10 jours).</p>
+            <p style="margin-top:.5rem;font-size:.85rem;opacity:.85">Surveillance recommandée : 33 jours après votre dernier contact à risque. En cas de difficultés à respirer ou de baisse de tension : appelez le 15.</p>
+            <a href="tel:15" class="epi-call-btn epi-call-btn-orange">📞 Appeler le 15 si difficultés à respirer</a>
+          </div>
+        </div>
+        <p class="epi-reassure">La plupart des personnes ayant voyagé en Patagonie sans contact avec des rongeurs ou leurs déjections n'ont aucun risque. La surveillance est une précaution, pas une certitude de maladie.</p>
+      </div>
+    </div>
+
+    <div class="epi-cta-continue">
+      <p>Aucune de ces situations ne vous concerne ?</p>
+      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
+    </div>
+  </div>
+</section>
+
 <section class="symptom-checker-section patient-only" id="symptomChecker" aria-labelledby="checker-title">
   <div class="container">
     <div class="section-header" style="text-align:center">
@@ -1439,8 +1568,11 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
               <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span>Voyage tropical récent (&lt; 21 jours)</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span>Voyage Afrique sub-saharienne / Mayotte &lt; 21j</span>
+            <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span>Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) &lt; 21j <span class="ctx-alert-badge">⚠️ Ebola PHEIC</span></span>
+            </label>
+            <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
+              <input type="checkbox" value="mv_hondius"><span class="sym-icon">🚢</span><span>À bord du MV Hondius (mai 2026) ou voyage Patagonie &lt; 6 sem. <span class="ctx-alert-badge ctx-alert-orange">⚠️ Hantavirus</span></span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
               <input type="checkbox" value="travel_balkans"><span class="sym-icon">🌍</span><span>Voyage Balkans / Turquie / Espagne rurale</span>
@@ -2097,6 +2229,10 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
               aria-controls="biqTabPathogensPanel" onclick="BIQ_PRO.switchTab('biqTabPathogens')">
         🦠 Pathogènes
       </button>
+      <button id="biqTabEpi4" class="biq-tab" role="tab" aria-selected="false"
+              aria-controls="biqTabEpi4Panel" onclick="BIQ_PRO.switchTab('biqTabEpi4')">
+        🛡️ EPI Niveau 4 / Ebola
+      </button>
       <button id="biqTabContacts" class="biq-tab" role="tab" aria-selected="false"
               aria-controls="biqTabContactsPanel" onclick="BIQ_PRO.switchTab('biqTabContacts')">
         📞 Contacts urgence
@@ -2110,6 +2246,107 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
           <div class="biq-loading-placeholder">
             <div class="biq-sk"></div><div class="biq-sk"></div><div class="biq-sk"></div>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Panel EPI Niveau 4 -->
+    <div id="biqTabEpi4Panel" role="tabpanel" aria-labelledby="biqTabEpi4" hidden>
+      <div class="epi4-guide">
+        <div class="epi4-disclaimer" role="note">
+          ⚠️ <strong>Outil d'information — non dispositif médical (Règl. UE 2017/745).</strong> Ce contenu est destiné aux professionnels de santé formés. La prise en charge Ebola nécessite une formation institutionnelle préalable (UHSI/INSERM) et ne doit jamais être réalisée sans habilitation spécifique.
+        </div>
+
+        <h3 class="epi4-section-title">🛡️ EPI Niveau 4 — Spécificités Ebola (souche Bundibugyo)</h3>
+
+        <div class="epi4-alert-box">
+          <strong>⚡ Différence critique EPI-4 ≠ EPI-3 (FFP3) :</strong> Ebola exige une combinaison étanche type BSL-4 (SCBA ou masque respiratoire intégral + combinaison étanche à double gants). <strong>Un FFP3 seul est INSUFFISANT pour Ebola.</strong> La contamination peut survenir par muqueuses oculaires et buccales.
+        </div>
+
+        <div class="epi4-grid">
+          <div class="epi4-card">
+            <h4>🔴 Équipement obligatoire (EPI-4)</h4>
+            <ul>
+              <li>Combinaison étanche imperméable (type DEMRON® ou équivalent UHSI)</li>
+              <li>Masque respiratoire à ventilation assistée (PAPR) <em>ou</em> SCBA — FFP3 insuffisant</li>
+              <li>Double gants nitrile (stériles intérieurs)</li>
+              <li>Tablier imperméable + manchettes étanches</li>
+              <li>Bottes imperméables + surbottes</li>
+              <li>Protection oculaire intégrale (écran facial étanche)</li>
+            </ul>
+          </div>
+
+          <div class="epi4-card">
+            <h4>🟡 Procédure habillage (UHSI)</h4>
+            <ol>
+              <li>Vérification visuelle matériel + 2ème soignant observateur</li>
+              <li>Hygiène mains SHA 30 sec</li>
+              <li>Combinaison + fermeture éclair hermétique</li>
+              <li>Capuche + masque PAPR/SCBA</li>
+              <li>Gants intérieurs fixés au poignet (adhésif)</li>
+              <li>Écran facial + tablier + gants extérieurs</li>
+              <li>Vérification double par observateur avant entrée zone</li>
+            </ol>
+          </div>
+
+          <div class="epi4-card">
+            <h4>🟢 Protocole déshabillage (ordre strict)</h4>
+            <ol>
+              <li>SHA mains gantées AVANT tout retrait</li>
+              <li>Retrait tablier + bottes (sans toucher la face)</li>
+              <li>SHA mains gantées</li>
+              <li>Retrait combinaison (retournement vers l'intérieur)</li>
+              <li>SHA mains gantées</li>
+              <li>Retrait masque (par l'arrière sans toucher l'avant)</li>
+              <li>SHA mains gantées + retrait gants intérieurs</li>
+              <li>SHA mains nues 60 sec</li>
+            </ol>
+          </div>
+
+          <div class="epi4-card epi4-card-red">
+            <h4>🚨 Conduite à tenir — exposition accidentelle</h4>
+            <ul>
+              <li><strong>Coupure/piqûre :</strong> laisser saigner 5 min, rincer eau savonneuse 15 min, antisepsie povidone iodée ou alcool 70°</li>
+              <li><strong>Projection muqueuse :</strong> rinçage sérum physio 15 min (yeux), eau 15 min (bouche)</li>
+              <li><strong>Contacter immédiatement :</strong> SAMU 15 + référent UHSI + InVS (0 800 13 00 00)</li>
+              <li><strong>Pas d'automédication, pas de traitement prophylactique sans avis UHSI</strong></li>
+              <li>Note : AUCUN vaccin homologué contre Ebola Bundibugyo (rVSV-ZEBOV = efficacité Zaïre uniquement)</li>
+            </ul>
+          </div>
+
+          <div class="epi4-card">
+            <h4>📋 Définition cas suspect (OMS 2026)</h4>
+            <p><strong>Fièvre ≥ 38,5°C</strong> + au moins un signe parmi :</p>
+            <ul>
+              <li>Céphalées intenses, myalgies, asthénie sévère</li>
+              <li>Vomissements / diarrhée inexpliqués</li>
+              <li>Saignements inexpliqués (tout site)</li>
+              <li>Contact avec cas confirmé ou décédé de FHV</li>
+            </ul>
+            <p style="margin-top:.5rem"><strong>ET</strong> voyage/résidence zone épidémique (RDC, Ouganda, Rwanda, Burundi) dans les 21 jours précédant les symptômes.</p>
+          </div>
+
+          <div class="epi4-card">
+            <h4>📌 Persistance virale post-guérison</h4>
+            <ul>
+              <li><strong>Sperme :</strong> jusqu'à 9 mois après guérison (Varkey, NEJM 2015)</li>
+              <li><strong>Liquide oculaire :</strong> documenté même après PCR sang négative</li>
+              <li><strong>Lait maternel :</strong> possible — allaitement à éviter</li>
+              <li>Les survivants doivent être suivis et informés du risque de transmission sexuelle</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="epi4-contacts">
+          <strong>📞 Contacts de référence :</strong>
+          <span>SAMU national : <strong>15</strong></span>
+          <span>InVS (urgence) : <strong>0 800 13 00 00</strong></span>
+          <span>UHSI Bichat (Paris) : <strong>01 40 25 85 85</strong></span>
+          <span>UHSI Lyon Croix-Rousse : <strong>04 26 10 93 30</strong></span>
+        </div>
+
+        <div class="epi4-refs">
+          Réf : OMS Protocole Ebola 2022 · Varkey JB et al. NEJM 2015 · Protocole UHSI France · WHO DON 2026-DON605
         </div>
       </div>
     </div>
@@ -2563,6 +2800,34 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
   }
   // Exposer pour appel depuis onglets
   window._loadBiqPro=loadBiqPro;
+})();
+</script>
+
+<script>
+// ── Écran épidémio pré-wizard ──────────────────────────────
+function showEpiAlert(type) {
+  const el = document.getElementById('epiResult' + type.charAt(0).toUpperCase() + type.slice(1));
+  if (el) { el.hidden = false; el.scrollIntoView({behavior:'smooth', block:'nearest'}); }
+}
+function hideEpiAlert(type) {
+  const el = document.getElementById('epiResult' + type.charAt(0).toUpperCase() + type.slice(1));
+  if (el) el.hidden = true;
+}
+
+// ── Overlay score non-respiratoire si PHEIC Ebola actif ───
+(function() {
+  function addEbolaPheicOverlay() {
+    const scoreCard = document.getElementById('dailyScore');
+    if (!scoreCard || scoreCard.querySelector('.ebola-pheic-overlay')) return;
+    const overlay = document.createElement('div');
+    overlay.className = 'ebola-pheic-overlay';
+    overlay.setAttribute('role', 'note');
+    overlay.innerHTML = `<strong>⚠️ Note — PHEIC Ebola active</strong><p>Le score affiché concerne la qualité de l'air et les virus respiratoires. <strong>Ebola n'est pas transmis par voie respiratoire</strong> et n'est pas pris en compte dans ce score. Consultez la section épidémio pour évaluer votre risque Ebola.</p><a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">Suis-je concerné(e) ? →</a>`;
+    scoreCard.insertAdjacentElement('afterbegin', overlay);
+  }
+  // Attendre que le DOM soit prêt
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addEbolaPheicOverlay);
+  else addEbolaPheicOverlay();
 })();
 </script>
 <script src="api-live.js?v=20260624a" defer></script>

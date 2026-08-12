@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-06-06T13:45:42.457Z",
+  "generatedAt": "2026-08-12T00:00:00.000Z",
   "version": "1.0",
   "pathogensCount": 19,
   "pathogens": [
@@ -169,7 +169,7 @@
     },
     {
       "id": "HANTA",
-      "nameFR": "Hantavirus Andes — Cluster paquebot",
+      "nameFR": "Hantavirus Andes — Syndrome cardiopulmonaire",
       "nameEN": "Andes Hantavirus — Cruise Ship Cluster",
       "pathogen": "Andes virus (ANDV) — transmission interhumaine prouvée",
       "category": "emerging",
@@ -193,11 +193,11 @@
       "maskNote": "ALERTE 2026 : transmission interhumaine Andes virus confirmée sur paquebot (NEJM 2026). FFP2 + gants + surblouse pour soignants en contact avec cas suspect. FFP3 pour tout AGP. Signaler tout cas suspect de retour d'Argentine/Chili ou ayant voyagé sur paquebot Ushuaia.",
       "reproductionNumber": "R0 ≈ 1.0 (Andes, seul Hantavirus avec transmission H-H prouvée)",
       "cfr": "38% (cluster paquebot 2026) ; 35–40% Sin Nombre ; 12% Andes endémique",
-      "incubation": "9–33 jours",
+      "incubation": "9–33 jours · Phase prodromique 3–5j (syndrome grippal) avant détresse respiratoire",
       "transmission_route": "Inhalation aérosols d'excrétas rongeurs (principal). Andes virus : transmission interhumaine par contact étroit prouvée. Cluster 2026 : probable aérosols cabines et espaces confinés.",
       "currentStatus": "outbreak",
       "outbreakStart": "2026-04 (paquebot MV Hondius, Ushuaia)",
-      "lastUpdate": "2026-05",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#B45309",
       "references": [
         "WHO DON 2026-DON600 — Hantavirus cluster cruise ship, Multi-country, mai 2026",
@@ -205,9 +205,10 @@
         "NEJM 2026 — Andes Hantavirus Outbreak on a Cruise Ship (NEJMc2606496)",
         "ECDC Threat Assessment Brief — Hantavirus cruise ship 2026",
         "CDC HAN 00528 — Multi-country Hantavirus cluster cruise ship, mai 2026",
-        "Ferres M et al. Emerg Infect Dis 2007 — Andes virus interhuman transmission"
+        "Ferres M et al. Emerg Infect Dis 2007 — Andes virus interhuman transmission",
+        "WHO DON 2026-DON600 — Hantavirus cluster cruise ship MV Hondius, mai 2026"
       ],
-      "descFR": "🚨 CLUSTER ACTIF (mai 2026) — 10 cas Hantavirus Andes confirmés sur paquebot MV Hondius (Ushuaia → Atlantique Sud). 3 décès (CFR 38%). Ex-passagers hospitalisés dans 12+ pays, 600+ contacts dans 32 pays. Publié au NEJM. Andes virus = seul Hantavirus avec transmission interhumaine prouvée. Si fièvre + détresse respiratoire après voyage Patagonie/croisière : isolement et FFP2 immédiat.",
+      "descFR": "🚨 CLUSTER ACTIF (mai 2026) — 10 cas Hantavirus Andes confirmés sur paquebot MV Hondius (Ushuaia → Atlantique Sud). 3 décès (CFR 38%). Ex-passagers dans 12+ pays, 600+ contacts dans 32 pays. Andes virus = seul hantavirus avec transmission interhumaine prouvée. Phase prodromique (J0–J5) : fièvre, myalgies, céphalées — INDISCERNABLE d'une grippe. Dégradation brutale à J5–J10 : détresse respiratoire, collapsus hémodynamique. Facteurs de risque : voyage Patagonie/Amérique du Sud + contact rongeurs/excrétas. Toute personne ayant voyagé en Amérique du Sud dans les 6 semaines avec ces symptômes doit contacter un médecin en mentionnant le voyage. Mortalité élevée si non pris en charge en réanimation.",
       "descEN": "🚨 ACTIVE CLUSTER (May 2026) — 10 confirmed Andes Hantavirus cases on cruise ship MV Hondius (Ushuaia → South Atlantic). 3 deaths (CFR 38%). Former passengers hospitalized in 12+ countries, 600+ contacts in 32 countries. Published in NEJM. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2."
     },
     {
@@ -224,7 +225,11 @@
         "Burundi",
         "Rwanda",
         "Ouganda",
-        "Kenya"
+        "Kenya",
+        "Europe (cas importés)",
+        "Royaume-Uni",
+        "Allemagne",
+        "Pays-Bas"
       ],
       "transmission": [
         "Contact direct lésions",
@@ -240,7 +245,7 @@
       "transmission_route": "Contact cutané lésions, sécrétions respiratoires, fomites, transmission sexuelle",
       "currentStatus": "active",
       "outbreakStart": "2023-09",
-      "lastUpdate": "2026-05",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#DC2626",
       "references": [
         "SPF — Bulletin surveillance IDF S18, 13 mai 2026 : Mpox en légère augmentation, comparable à 2025",
@@ -250,7 +255,7 @@
         "Kibungu EM et al. N Engl J Med 2024 — Clade Ib monkeypox outbreak",
         "ARS Île-de-France — Mpox recommandations professionnels de santé 2026"
       ],
-      "descFR": "📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025, nettement inférieure au pic 2022. Urgence de santé publique OMS (clade Ib) maintenue. Clade Ib plus transmissible que clade IIb (2022). Transmission contact cutané et gouttelettes en contact prolongé. FFP2 + EPI contact requis pour soignants.",
+      "descFR": "📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025. Clade Ib : plus transmissible que clade IIb (2022) — transmission contact cutané (lésions), gouttelettes en contact prolongé, et voie sexuelle. Cas importés en Europe documentés en 2026. Urgence de santé publique OMS (clade Ib) maintenue. FFP2 + EPI contact requis pour soignants. Différence critique avec clade IIb : CFR plus élevée (3–10% vs < 1%), transmission familiale et ménagère documentée, non limitée à la voie sexuelle.",
       "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers."
     },
     {
@@ -601,7 +606,7 @@
     },
     {
       "id": "EBOLA",
-      "nameFR": "Ebola Bundibugyo",
+      "nameFR": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
       "nameEN": "Ebola Virus Disease (Bundibugyo)",
       "pathogen": "Ebola virus — souche Bundibugyo (aucun vaccin, aucun traitement)",
       "category": "epidemic",
@@ -625,20 +630,32 @@
       "protectionLevel": 3,
       "maskNote": "WHO Ebola PPE 2026 : EPI niveau 4 obligatoire = FFP3/PAPR + combinaison imperméable + double gantage + visière intégrale + couvre-bottes. Transmission = contact direct fluides biologiques (non aéroportée en conditions naturelles). FFP3 obligatoire pour TOUS les AGPs (intubation, aspiration, réanimation). ATTENTION : vaccin rVSV-ZEBOV (Ervebo) NON efficace contre souche Bundibugyo (FDA 2026). Aucun vaccin ni traitement spécifique disponible.",
       "reproductionNumber": "R0 ≈ 1.5–2.5 (épidémie non contrôlée)",
-      "cfr": "25–50% (souche Bundibugyo)",
-      "incubation": "2–21 jours (médiane 9-11 jours, Bundibugyo)",
+      "cfr": "25–50% (souche Bundibugyo ; Zaïre 60–90%)",
+      "incubation": "2–21 jours (médiane 9–11 j, Bundibugyo) · Contagieux uniquement dès les symptômes",
       "transmission_route": "Contact avec sang, sécrétions, organes ou fluides de personnes/animaux infectés. Nosocomial via gestes aérosolisants. Pas de transmission aérienne avérée.",
       "currentStatus": "outbreak",
       "outbreakStart": "2026-04",
-      "lastUpdate": "2026-06-24",
+      "lastUpdate": "2026-08-12",
       "iconColor": "#7F1D1D",
       "clinicalPhases": [
         {
           "days": "J1–J3",
           "phaseFR": "Phase prodromique",
           "phaseEN": "Prodromal phase",
-          "symptomsFR": ["Fièvre brutale ≥ 38,5°C", "Céphalées intenses", "Myalgies et arthralgies", "Fatigue sévère", "Pharyngite"],
-          "symptomsEN": ["Sudden fever ≥ 38.5°C", "Severe headache", "Myalgias and arthralgias", "Severe fatigue", "Pharyngitis"],
+          "symptomsFR": [
+            "Fièvre brutale ≥ 38,5°C",
+            "Céphalées intenses",
+            "Myalgies et arthralgies",
+            "Fatigue sévère",
+            "Pharyngite"
+          ],
+          "symptomsEN": [
+            "Sudden fever ≥ 38.5°C",
+            "Severe headache",
+            "Myalgias and arthralgias",
+            "Severe fatigue",
+            "Pharyngitis"
+          ],
           "noteFR": "Phase non spécifique. Ressemble à paludisme ou grippe. Patient CONTAGIEUX dès que symptomatique.",
           "noteEN": "Non-specific phase. Resembles malaria or influenza. Patient is CONTAGIOUS as soon as symptomatic."
         },
@@ -646,8 +663,20 @@
           "days": "J4–J7",
           "phaseFR": "Phase gastro-intestinale",
           "phaseEN": "Gastrointestinal phase",
-          "symptomsFR": ["Nausées et vomissements profus", "Diarrhée aqueuse (10–20 selles/jour)", "Douleurs abdominales", "Déshydratation sévère", "Éruption maculo-papuleuse (tronc)"],
-          "symptomsEN": ["Profuse nausea and vomiting", "Watery diarrhea (10–20 stools/day)", "Abdominal pain", "Severe dehydration", "Maculopapular rash (trunk)"],
+          "symptomsFR": [
+            "Nausées et vomissements profus",
+            "Diarrhée aqueuse (10–20 selles/jour)",
+            "Douleurs abdominales",
+            "Déshydratation sévère",
+            "Éruption maculo-papuleuse (tronc)"
+          ],
+          "symptomsEN": [
+            "Profuse nausea and vomiting",
+            "Watery diarrhea (10–20 stools/day)",
+            "Abdominal pain",
+            "Severe dehydration",
+            "Maculopapular rash (trunk)"
+          ],
           "noteFR": "Risque de choc hypovolémique. Réhydratation IV urgente. Forte charge virale dans les selles.",
           "noteEN": "Risk of hypovolemic shock. Emergency IV rehydration. High viral load in stools."
         },
@@ -655,8 +684,20 @@
           "days": "J7–J14",
           "phaseFR": "Phase hémorragique (si évolution défavorable)",
           "phaseEN": "Hemorrhagic phase (unfavorable course)",
-          "symptomsFR": ["Saignements muqueuses (gencives, yeux, nez)", "Hématémèse et méléna", "Pétéchies et ecchymoses", "Défaillance multi-viscérale (foie, reins, coagulation)", "CIVD (coagulation intra-vasculaire disséminée)"],
-          "symptomsEN": ["Mucosal bleeding (gums, eyes, nose)", "Hematemesis and melena", "Petechiae and ecchymosis", "Multi-organ failure (liver, kidneys, coagulation)", "DIC (disseminated intravascular coagulation)"],
+          "symptomsFR": [
+            "Saignements muqueuses (gencives, yeux, nez)",
+            "Hématémèse et méléna",
+            "Pétéchies et ecchymoses",
+            "Défaillance multi-viscérale (foie, reins, coagulation)",
+            "CIVD (coagulation intra-vasculaire disséminée)"
+          ],
+          "symptomsEN": [
+            "Mucosal bleeding (gums, eyes, nose)",
+            "Hematemesis and melena",
+            "Petechiae and ecchymosis",
+            "Multi-organ failure (liver, kidneys, coagulation)",
+            "DIC (disseminated intravascular coagulation)"
+          ],
           "noteFR": "Présente dans 30–50% des cas seulement. La mort survient surtout par choc, pas exclusivement par saignement.",
           "noteEN": "Present in only 30-50% of cases. Death occurs mainly from shock, not exclusively from bleeding."
         },
@@ -664,8 +705,20 @@
           "days": "J8–J21",
           "phaseFR": "Phase de convalescence ou décès",
           "phaseEN": "Convalescence or death",
-          "symptomsFR": ["Survivants : fatigue persistante 2–3 mois", "Arthralgies résiduelles", "Troubles visuels (uvéite post-Ebola)", "Syndrome post-Ebola (psychologique, neurologique)", "Persistance virale sperme 6+ mois"],
-          "symptomsEN": ["Survivors: persistent fatigue 2-3 months", "Residual arthralgias", "Visual disturbances (post-Ebola uveitis)", "Post-Ebola syndrome (psychological, neurological)", "Viral persistence in semen 6+ months"],
+          "symptomsFR": [
+            "Survivants : fatigue persistante 2–3 mois",
+            "Arthralgies résiduelles",
+            "Troubles visuels (uvéite post-Ebola)",
+            "Syndrome post-Ebola (psychologique, neurologique)",
+            "Persistance virale sperme 6+ mois"
+          ],
+          "symptomsEN": [
+            "Survivors: persistent fatigue 2-3 months",
+            "Residual arthralgias",
+            "Visual disturbances (post-Ebola uveitis)",
+            "Post-Ebola syndrome (psychological, neurological)",
+            "Viral persistence in semen 6+ months"
+          ],
           "noteFR": "Survivants déclarés GUÉRIS uniquement après 2 tests PCR négatifs. Suivi post-guérison obligatoire.",
           "noteEN": "Survivors declared CURED only after 2 negative PCR tests. Mandatory post-recovery follow-up."
         }
@@ -674,14 +727,34 @@
         "sexualTransmission": {
           "durationFR": "Jusqu'à 500 jours après guérison clinique (sperme)",
           "durationEN": "Up to 500 days after clinical recovery (semen)",
-          "sourcesFR": ["Sperme (risque maximal, OMS recommande préservatif 12 mois)", "Lait maternel (contre-indication allaitement)", "Sécrétions vaginales (données limitées)"],
-          "sourcesEN": ["Semen (maximum risk, WHO recommends condom for 12 months)", "Breast milk (contraindication for breastfeeding)", "Vaginal secretions (limited data)"],
+          "sourcesFR": [
+            "Sperme (risque maximal, OMS recommande préservatif 12 mois)",
+            "Lait maternel (contre-indication allaitement)",
+            "Sécrétions vaginales (données limitées)"
+          ],
+          "sourcesEN": [
+            "Semen (maximum risk, WHO recommends condom for 12 months)",
+            "Breast milk (contraindication for breastfeeding)",
+            "Vaginal secretions (limited data)"
+          ],
           "guidelineFR": "OMS 2021 : abstinence ou préservatif pendant 12 mois après guérison pour les hommes. Tests PCR sperme recommandés.",
           "guidelineEN": "WHO 2021: abstinence or condom for 12 months after recovery for men. Semen PCR tests recommended."
         },
         "postEbolaSyndrome": {
-          "symptomsFR": ["Uvéite (inflammation oculaire, risque cécité)", "Arthralgie chronique", "Fatigue persistante", "Troubles cognitifs et mémoire", "Dépression et PTSD"],
-          "symptomsEN": ["Uveitis (ocular inflammation, blindness risk)", "Chronic arthralgia", "Persistent fatigue", "Cognitive and memory impairment", "Depression and PTSD"]
+          "symptomsFR": [
+            "Uvéite (inflammation oculaire, risque cécité)",
+            "Arthralgie chronique",
+            "Fatigue persistante",
+            "Troubles cognitifs et mémoire",
+            "Dépression et PTSD"
+          ],
+          "symptomsEN": [
+            "Uveitis (ocular inflammation, blindness risk)",
+            "Chronic arthralgia",
+            "Persistent fatigue",
+            "Cognitive and memory impairment",
+            "Depression and PTSD"
+          ]
         }
       },
       "strainComparison": [
@@ -733,18 +806,55 @@
         "suspicion": {
           "levelFR": "Cas suspect (fièvre + retour zone < 21j)",
           "levelEN": "Suspected case (fever + travel history < 21 days)",
-          "epiFR": ["Chambre individuelle + porte fermée", "FFP2 + gants + surblouse", "Appel SAMU 15 immédiat", "Signalement ARS dans l'heure"],
-          "epiEN": ["Single room + closed door", "FFP2 + gloves + gown", "Immediate emergency call", "Health authority notification within 1 hour"]
+          "epiFR": [
+            "Chambre individuelle + porte fermée",
+            "FFP2 + gants + surblouse",
+            "Appel SAMU 15 immédiat",
+            "Signalement ARS dans l'heure"
+          ],
+          "epiEN": [
+            "Single room + closed door",
+            "FFP2 + gloves + gown",
+            "Immediate emergency call",
+            "Health authority notification within 1 hour"
+          ]
         },
         "confirmed": {
           "levelFR": "Cas confirmé (PCR+)",
           "levelEN": "Confirmed case (PCR+)",
-          "epiFR": ["Unité d'isolement haute sécurité (type UHSI)", "FFP3/PAPR obligatoire", "Combinaison imperméable complète", "Double gantage + couvre-bottes + visière intégrale", "Pas d'AGP sans EPI niveau 4 complet", "Décontamination sas avant sortie"],
-          "epiEN": ["High-security isolation unit (UHSI type)", "FFP3/PAPR mandatory", "Full impermeable suit", "Double gloves + boot covers + full-face visor", "No AGP without complete level 4 PPE", "Decontamination airlock before exit"]
+          "epiFR": [
+            "Unité d'isolement haute sécurité (type UHSI)",
+            "FFP3/PAPR obligatoire",
+            "Combinaison imperméable complète",
+            "Double gantage + couvre-bottes + visière intégrale",
+            "Pas d'AGP sans EPI niveau 4 complet",
+            "Décontamination sas avant sortie"
+          ],
+          "epiEN": [
+            "High-security isolation unit (UHSI type)",
+            "FFP3/PAPR mandatory",
+            "Full impermeable suit",
+            "Double gloves + boot covers + full-face visor",
+            "No AGP without complete level 4 PPE",
+            "Decontamination airlock before exit"
+          ]
         },
         "notification": {
-          "chainFR": ["1. SAMU 15 — activation immédiate", "2. ARS régionale — dans l'heure", "3. Santé Publique France — déclaration obligatoire", "4. Cellule de crise établissement", "5. CORRUSS (si établissement de référence)", "6. DGS — Cellule de crise nationale Ebola activée"],
-          "chainEN": ["1. Emergency services — immediate activation", "2. Regional Health Agency — within 1 hour", "3. Public Health France — mandatory declaration", "4. Hospital crisis unit", "5. CORRUSS (if reference establishment)"]
+          "chainFR": [
+            "1. SAMU 15 — activation immédiate",
+            "2. ARS régionale — dans l'heure",
+            "3. Santé Publique France — déclaration obligatoire",
+            "4. Cellule de crise établissement",
+            "5. CORRUSS (si établissement de référence)",
+            "6. DGS — Cellule de crise nationale Ebola activée"
+          ],
+          "chainEN": [
+            "1. Emergency services — immediate activation",
+            "2. Regional Health Agency — within 1 hour",
+            "3. Public Health France — mandatory declaration",
+            "4. Hospital crisis unit",
+            "5. CORRUSS (if reference establishment)"
+          ]
         }
       },
       "references": [
@@ -758,10 +868,12 @@
         "ECDC — Ebola outbreak DRC & Uganda 2026",
         "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors",
         "Feldmann H, Geisbert TW. Lancet 2011 — Ebola haemorrhagic fever",
-        "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid"
+        "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid",
+        "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid during recovery",
+        "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors (semen persistence 9 months)"
       ],
-      "descFR": "🚨 PREMIER CAS D'EBOLA EN FRANCE (24/06/2026) · PHEIC OMS active. Cas importé isolé en UHSI. Souche Bundibugyo : AUCUN vaccin, AUCUN traitement. RDC : épidémie active en cours (Ituri, Nord-Kivu, Sud-Kivu). Si fièvre + retour Afrique centrale/est (21 derniers jours) : appelez le 15 SANS vous déplacer. Soignants : FFP3 + tenue BSL-4 complète obligatoire. Contact-tracing actif autour du cas français.",
-      "descEN": "🚨 FIRST EBOLA CASE IN FRANCE (June 24, 2026) · WHO PHEIC active. Imported case isolated in UHSI. Bundibugyo strain: NO vaccine, NO treatment. DRC: active outbreak ongoing (Ituri, North Kivu, South Kivu). If fever after Central/East Africa travel (last 21 days): CALL EMERGENCY SERVICES, DO NOT GO TO A CLINIC. Healthcare workers: FFP3 + full BSL-4 protective equipment mandatory. Active contact tracing around the French case."
+      "descFR": "🚨 PREMIER CAS EN FRANCE (24/06/2026) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en UHSI — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
+      "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in UHSI — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission."
     },
     {
       "id": "LASSA",
@@ -801,8 +913,20 @@
           "days": "J1–J3",
           "phaseFR": "Phase prodromique (80% des cas : forme légère)",
           "phaseEN": "Prodromal phase (80% of cases: mild form)",
-          "symptomsFR": ["Fièvre progressive (non brutale)", "Malaise général", "Céphalées", "Douleurs thoraciques", "Pharyngite avec douleur à la déglutition"],
-          "symptomsEN": ["Progressive fever (not sudden onset)", "General malaise", "Headache", "Chest pain", "Pharyngitis with pain on swallowing"],
+          "symptomsFR": [
+            "Fièvre progressive (non brutale)",
+            "Malaise général",
+            "Céphalées",
+            "Douleurs thoraciques",
+            "Pharyngite avec douleur à la déglutition"
+          ],
+          "symptomsEN": [
+            "Progressive fever (not sudden onset)",
+            "General malaise",
+            "Headache",
+            "Chest pain",
+            "Pharyngitis with pain on swallowing"
+          ],
           "noteFR": "80% des infections sont asymptomatiques ou légères. Signe distinctif : pharyngite douloureuse asymétrique.",
           "noteEN": "80% of infections are asymptomatic or mild. Distinctive sign: painful asymmetric pharyngitis."
         },
@@ -810,8 +934,20 @@
           "days": "J4–J7",
           "phaseFR": "Phase systémique (20% cas sévères)",
           "phaseEN": "Systemic phase (20% severe cases)",
-          "symptomsFR": ["Vomissements et diarrhée", "Œdème facial", "Hémorragies muqueuses (10–20% cas sévères)", "Surdité de perception (caractéristique !)", "Protéinurie, oligurie"],
-          "symptomsEN": ["Vomiting and diarrhea", "Facial edema", "Mucosal hemorrhages (10-20% severe cases)", "Sensorineural deafness (characteristic!)", "Proteinuria, oliguria"],
+          "symptomsFR": [
+            "Vomissements et diarrhée",
+            "Œdème facial",
+            "Hémorragies muqueuses (10–20% cas sévères)",
+            "Surdité de perception (caractéristique !)",
+            "Protéinurie, oligurie"
+          ],
+          "symptomsEN": [
+            "Vomiting and diarrhea",
+            "Facial edema",
+            "Mucosal hemorrhages (10-20% severe cases)",
+            "Sensorineural deafness (characteristic!)",
+            "Proteinuria, oliguria"
+          ],
           "noteFR": "SIGNE PATHOGNOMONIQUE : surdité de perception, présente dans 25–30% des cas. Peut être permanente (séquelles neurologiques).",
           "noteEN": "PATHOGNOMONIC SIGN: sensorineural deafness in 25-30% of cases. Can be permanent (neurological sequelae)."
         }
@@ -879,8 +1015,20 @@
           "days": "J1–J3",
           "phaseFR": "Phase pré-hémorragique",
           "phaseEN": "Pre-hemorrhagic phase",
-          "symptomsFR": ["Début brutal : fièvre, céphalées intenses, myalgies", "Vertiges, photophobie", "Douleurs lombaires et abdominales", "Nausées, vomissements, diarrhée", "Hyperhémie faciale (faciès rouge congestif)"],
-          "symptomsEN": ["Abrupt onset: fever, intense headache, myalgias", "Dizziness, photophobia", "Low back and abdominal pain", "Nausea, vomiting, diarrhea", "Facial flushing (congested red face)"],
+          "symptomsFR": [
+            "Début brutal : fièvre, céphalées intenses, myalgies",
+            "Vertiges, photophobie",
+            "Douleurs lombaires et abdominales",
+            "Nausées, vomissements, diarrhée",
+            "Hyperhémie faciale (faciès rouge congestif)"
+          ],
+          "symptomsEN": [
+            "Abrupt onset: fever, intense headache, myalgias",
+            "Dizziness, photophobia",
+            "Low back and abdominal pain",
+            "Nausea, vomiting, diarrhea",
+            "Facial flushing (congested red face)"
+          ],
           "noteFR": "Ressemble à Ebola mais début souvent plus brutal. Conjonctivite et pharyngite fréquentes.",
           "noteEN": "Resembles Ebola but often more abrupt onset. Conjunctivitis and pharyngitis are common."
         },
@@ -888,15 +1036,43 @@
           "days": "J4–J7",
           "phaseFR": "Phase hémorragique",
           "phaseEN": "Hemorrhagic phase",
-          "symptomsFR": ["Pétéchies (palais, conjonctives), ecchymoses", "Épistaxis, gingivorragie", "Hémorragies gastro-intestinales", "Hématurie", "CIVD — thrombopénie sévère < 20 G/L", "Hépatomégalie, transaminases très élevées"],
-          "symptomsEN": ["Petechiae (palate, conjunctivae), ecchymoses", "Epistaxis, gingival bleeding", "Gastrointestinal hemorrhages", "Hematuria", "DIC — severe thrombocytopenia < 20 G/L", "Hepatomegaly, very elevated transaminases"],
+          "symptomsFR": [
+            "Pétéchies (palais, conjonctives), ecchymoses",
+            "Épistaxis, gingivorragie",
+            "Hémorragies gastro-intestinales",
+            "Hématurie",
+            "CIVD — thrombopénie sévère < 20 G/L",
+            "Hépatomégalie, transaminases très élevées"
+          ],
+          "symptomsEN": [
+            "Petechiae (palate, conjunctivae), ecchymoses",
+            "Epistaxis, gingival bleeding",
+            "Gastrointestinal hemorrhages",
+            "Hematuria",
+            "DIC — severe thrombocytopenia < 20 G/L",
+            "Hepatomegaly, very elevated transaminases"
+          ],
           "noteFR": "SIGNE BIOLOGIQUE : thrombopénie franche + leucopénie + transaminases > 10N = tableau FHCC typique.",
           "noteEN": "BIOLOGICAL SIGN: frank thrombocytopenia + leukopenia + transaminases > 10N = typical CCHF picture."
         }
       ],
       "preventionTraveler": {
-        "tickPreventionFR": ["Porter des vêtements couvrants (manches longues, pantalons longs)", "Répulsifs DEET ou Icaridine ≥ 20% sur peau exposée", "Perméthrines sur vêtements", "Vérification systématique du corps après retour terrain/forêt (surtout Espagne, Balkans, Turquie)", "Retirer tique avec tire-tique dans les 24h (réduction transmission > 50%)", "NE PAS écraser la tique avec les doigts"],
-        "tickPreventionEN": ["Wear covering clothing (long sleeves, long trousers)", "DEET or Icaridin ≥ 20% repellents on exposed skin", "Permethrin on clothing", "Systematic full-body check after outdoor activities (especially Spain, Balkans, Turkey)", "Remove tick with tick remover within 24h (>50% transmission reduction)", "Do NOT crush tick with fingers"]
+        "tickPreventionFR": [
+          "Porter des vêtements couvrants (manches longues, pantalons longs)",
+          "Répulsifs DEET ou Icaridine ≥ 20% sur peau exposée",
+          "Perméthrines sur vêtements",
+          "Vérification systématique du corps après retour terrain/forêt (surtout Espagne, Balkans, Turquie)",
+          "Retirer tique avec tire-tique dans les 24h (réduction transmission > 50%)",
+          "NE PAS écraser la tique avec les doigts"
+        ],
+        "tickPreventionEN": [
+          "Wear covering clothing (long sleeves, long trousers)",
+          "DEET or Icaridin ≥ 20% repellents on exposed skin",
+          "Permethrin on clothing",
+          "Systematic full-body check after outdoor activities (especially Spain, Balkans, Turkey)",
+          "Remove tick with tick remover within 24h (>50% transmission reduction)",
+          "Do NOT crush tick with fingers"
+        ]
       },
       "europeanRisk": {
         "noteFR": "ALERTE EUROPE : premier cas FHCC en Europe Occidentale confirmé en Espagne (Estrémadure, 2022). Extension géographique de Hyalomma marginatum liée au réchauffement climatique. France : vigilance renforcée dans le Sud (tiques Hyalomma présentes en Corse et PACA).",
