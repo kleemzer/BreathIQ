@@ -5302,11 +5302,14 @@ function exportMyDeclarations() {
 }
 
 // ── PHEIC Alert — chargement dynamique depuis data/pheic-alerts.json ─────────
-async function loadPheicAlert() {
+async function loadPheicAlert({ force = false } = {}) {
   const banner = document.getElementById('epidemicAlertBanner');
   if (!banner) return;
+  // Skip fetch if data already in memory (e.g. lang switch re-render)
   try {
-    const data = await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 6000 });
+    const data = (force || !window._pheicData)
+      ? await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 6000 })
+      : window._pheicData;
     window._pheicData = data;
     const active = data?.alerts?.find(a => a.active);
     if (!active) {
