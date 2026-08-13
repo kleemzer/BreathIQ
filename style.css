@@ -1764,6 +1764,53 @@ body[data-mode="patient"] .expert-only { display: none !important; }
   background: var(--bg-card-2); border-radius: 8px; padding: .35rem .6rem;
   border-left: 3px solid var(--orient-color, var(--c-blue));
 }
+/* ── Blocs "Ce qu'il faut faire maintenant" ──────────────── */
+.diag-action-block,
+.diag-conduite-block,
+.diag-escalate-block {
+  padding: var(--s2) var(--s3);
+  border-top: 1px solid var(--border);
+}
+.diag-action-title {
+  font-size: .78rem; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .06em; color: var(--text-primary);
+  margin-bottom: .5rem;
+}
+.diag-conduite-text {
+  font-size: .85rem; color: var(--text-secondary); line-height: 1.55;
+  margin: 0;
+}
+.diag-action-list {
+  margin: 0; padding-left: 1.2rem;
+  display: flex; flex-direction: column; gap: .3rem;
+}
+.diag-action-list li {
+  font-size: .85rem; color: var(--text-secondary); line-height: 1.5;
+}
+.diag-escalate-list li { color: var(--c-red, #ef4444); font-weight: 600; }
+.diag-report-banner {
+  margin-top: .5rem; padding: .35rem .6rem;
+  background: rgba(245,158,11,.1); border-left: 3px solid #F59E0B;
+  border-radius: 0 6px 6px 0;
+  font-size: .78rem; color: #92400E; font-weight: 600;
+}
+.diag-phone-block {
+  padding: var(--s2) var(--s3);
+  border-top: 1px solid var(--border);
+  display: flex; flex-wrap: wrap; gap: .5rem; align-items: center;
+}
+.diag-phone-main {
+  font-size: .9rem; padding: .5rem 1.1rem;
+}
+.diag-phone-alt {
+  font-size: .82rem; padding: .4rem .9rem;
+  background: rgba(255,255,255,.08) !important; color: var(--text-primary) !important;
+  border: 1px solid var(--border);
+}
+.diag-phone-note {
+  font-size: .72rem; color: var(--text-muted); width: 100%; margin-top: -.2rem;
+}
+
 .diag-result-actions { padding: var(--s2) var(--s3); display: flex; gap: .75rem; flex-wrap: wrap; }
 .diag-disclaimer {
   font-size: .72rem; color: var(--text-muted);

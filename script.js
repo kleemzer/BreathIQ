@@ -2786,8 +2786,8 @@ var WIZ = {
       { v:'tachycardia',        icon:'💗', label:'Cœur qui bat très vite' },
     ],
     rash: [
-      { v:'rash_pustular',      icon:'⭕', label:'Boutons avec pus (pustules)' },
-      { v:'rash_maculopapular', icon:'🔴', label:'Taches / boutons rouges plats' },
+      { v:'rash_pustular',      icon:'⭕', label:'Pustules (vésicules avec pus)' },
+      { v:'rash_maculopapular', icon:'🔴', label:'Éruption maculopapuleuse (taches/papules)' },
       { v:'purpura',            icon:'🟣', label:'Taches violettes qui ne s\'effacent pas' },
       { v:'koplik_spots',       icon:'⬜', label:'Taches blanches dans la bouche' },
       { v:'lymph_nodes',        icon:'🔵', label:'Ganglions gonflés' },
