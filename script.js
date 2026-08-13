@@ -208,7 +208,7 @@ var I18N = {
     'live-sources-subtitle': '8 sources épidémiologiques et environnementales connectées en temps réel',
     'live-src-status': 'Statut des sources',
     'live-src-air': 'Qualité de l\'air locale',
-    'live-src-air-sub': 'WAQI · 11 polluants · Prévisions 7j',
+    'live-src-air-sub': 'CAMS Copernicus · 6 polluants · Modèle EU officiel',
     'live-src-pollen': 'Pollen local',
     'live-src-pollen-sub': 'Open-Meteo · Index européen pollen',
     'live-src-sumeau': 'COVID-19 — Eaux usées',
@@ -453,7 +453,7 @@ var I18N = {
     'live-sources-subtitle': '8 epidemiological and environmental sources connected in real time',
     'live-src-status': 'Source status',
     'live-src-air': 'Local air quality',
-    'live-src-air-sub': 'WAQI · 11 pollutants · 7-day forecast',
+    'live-src-air-sub': 'CAMS Copernicus · 6 pollutants · Official EU model',
     'live-src-pollen': 'Local pollen',
     'live-src-pollen-sub': 'Open-Meteo · European pollen index',
     'live-src-sumeau': 'COVID-19 — Wastewater surveillance',
@@ -1250,7 +1250,7 @@ function _eaqiToScore(eaqi) {
   return Math.min(100, Math.round(90 + (eaqi-100) * 0.5)); // 90-100
 }
 
-// Récupère l'AQI réel depuis Open-Meteo (gratuit, sans clé API)
+// Récupère l'AQI réel depuis Open-Meteo CAMS (Copernicus — référence scientifique EU, sans clé API)
 async function fetchLiveAqi(region) {
   if (!region.lat || !region.lon) return null;
   const cacheKey = `${region.id}`;
@@ -1259,7 +1259,8 @@ async function fetchLiveAqi(region) {
   if (cached && cached.ts && (Date.now() - cached.ts) < 30 * 60 * 1000) return cached.score;
 
   try {
-    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${region.lat}&longitude=${region.lon}&current=european_aqi,pm2_5,pm10&timezone=auto`;
+    // EAQI officiel EU + 6 polluants : PM2.5, PM10, NO2, O3, SO2, CO (CAMS Copernicus)
+    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${region.lat}&longitude=${region.lon}&current=european_aqi,pm2_5,pm10,nitrogen_dioxide,ozone,sulphur_dioxide,carbon_monoxide&timezone=auto`;
     const resp = await Promise.race([
       fetch(url),
       new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))
@@ -1269,9 +1270,17 @@ async function fetchLiveAqi(region) {
     const eaqi = data?.current?.european_aqi;
     if (typeof eaqi !== 'number') throw new Error('No AQI value');
     const score = _eaqiToScore(eaqi);
-    const pm25 = data?.current?.pm2_5 ?? null;
-    const pm10 = data?.current?.pm10 ?? null;
-    _liveAqiCache[cacheKey] = { score, eaqi, pm25, pm10, ts: Date.now() };
+    _liveAqiCache[cacheKey] = {
+      score, eaqi,
+      pm25:  data?.current?.pm2_5              ?? null,
+      pm10:  data?.current?.pm10               ?? null,
+      no2:   data?.current?.nitrogen_dioxide   ?? null,
+      o3:    data?.current?.ozone              ?? null,
+      so2:   data?.current?.sulphur_dioxide    ?? null,
+      co:    data?.current?.carbon_monoxide    ?? null,
+      source: 'CAMS Copernicus / Open-Meteo',
+      ts: Date.now()
+    };
     _saveLiveAqiCache();
     return score;
   } catch(e) {
@@ -5145,25 +5154,27 @@ async function searchCityAqi() {
   }
 }
 
-// Met à jour le badge LIVE/ESTIMÉ selon disponibilité AQI réel
+// Met à jour le badge selon disponibilité AQI réel (honnête : pas de "LIVE" trompeur)
 function _updateLiveBadgeAqi(isLive) {
   const badge = document.getElementById('liveBadge');
   const label = document.getElementById('liveLabelText');
   if (!badge) return;
+  const now = new Date();
+  const hhmm = now.toLocaleTimeString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
   if (isLive) {
     badge.classList.remove('live-off');
     badge.classList.add('live-partial');
-    if (label) label.textContent = 'LIVE';
-    const now = new Date();
-    const hhmm = now.toLocaleTimeString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { hour: '2-digit', minute: '2-digit' });
+    if (label) label.textContent = currentLang === 'fr' ? `Actualisé ${hhmm}` : `Updated ${hhmm}`;
     badge.title = currentLang === 'fr'
-      ? `AQI en temps réel (Open-Meteo) · mis à jour à ${hhmm}`
-      : `Real-time AQI (Open-Meteo) · updated at ${hhmm}`;
+      ? `AQI CAMS Copernicus (Open-Meteo) · modèle horaire européen · actualisé à ${hhmm}`
+      : `AQI CAMS Copernicus (Open-Meteo) · hourly EU model · updated at ${hhmm}`;
   } else {
     badge.classList.remove('live-partial');
     badge.classList.add('live-off');
-    if (label) label.textContent = 'DONNÉES PUBLIQUES';
-    badge.title = 'Données publiques OMS · ECDC · SPF · Open-Meteo — mises à jour quotidiennement';
+    if (label) label.textContent = currentLang === 'fr' ? 'Données publiques' : 'Public data';
+    badge.title = currentLang === 'fr'
+      ? 'Données publiques OMS · ECDC · SPF · CAMS Copernicus — actualisées quotidiennement'
+      : 'Public data WHO · ECDC · SPF · CAMS Copernicus — updated daily';
   }
 }
 
