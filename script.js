@@ -2786,8 +2786,8 @@ var WIZ = {
       { v:'tachycardia',        icon:'💗', label:'Cœur qui bat très vite' },
     ],
     rash: [
-      { v:'rash_pustular',      icon:'⭕', label:'Pustules (vésicules avec pus)' },
-      { v:'rash_maculopapular', icon:'🔴', label:'Éruption maculopapuleuse (taches/papules)' },
+      { v:'rash_pustular',      icon:'⭕', label:'Boutons avec pus (pustules)' },
+      { v:'rash_maculopapular', icon:'🔴', label:'Taches rouges plates (exanthème)' },
       { v:'purpura',            icon:'🟣', label:'Taches violettes qui ne s\'effacent pas' },
       { v:'koplik_spots',       icon:'⬜', label:'Taches blanches dans la bouche' },
       { v:'lymph_nodes',        icon:'🔵', label:'Ganglions gonflés' },
@@ -2996,7 +2996,7 @@ function wizAnalyze() {
 
   // P0 — Règle Ebola forcée : voyage Afrique centrale/Est + saignements → SAMU immédiat
   // (Ebola n'est pas respiratory → le moteur de score sous-estimerait le risque)
-  const hasEbolaContext = state.context.includes('travel_africa_high_risk') || state.context.includes('mv_hondius');
+  const hasEbolaContext = (state.ctx || state.context || []).includes('travel_africa_high_risk') || (state.ctx || state.context || []).includes('mv_hondius');
   const hasBleeding = state.alarm.includes('bleeding') || state.symptoms.includes('bleeding');
   const hasFever = state.alarm.includes('fever_high') || state.symptoms.includes('fever') || state.symptoms.includes('fever_high');
   if (hasEbolaContext && hasBleeding) {
