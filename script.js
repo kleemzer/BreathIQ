@@ -11,7 +11,7 @@
 // ISBN 978-92-4-003422-8
 // https://www.who.int/publications/i/item/9789240034228
 // REF-01
-const WHO_THRESHOLDS_2021 = {
+var WHO_THRESHOLDS_2021 = {
   PM25:  { annual: 5,  daily: 15, unit: 'µg/m³', source: 'WHO AQG 2021' },
   PM10:  { annual: 15, daily: 45, unit: 'µg/m³', source: 'WHO AQG 2021' },
   NO2:   { annual: 10, daily: 25, unit: 'µg/m³', source: 'WHO AQG 2021' },
@@ -20,7 +20,7 @@ const WHO_THRESHOLDS_2021 = {
 };
 
 // ── i18n ────────────────────────────────────────────────────
-const I18N = {
+var I18N = {
   fr: {
     'nav-symptoms': 'Que faire ?',
     'nav-score': 'Mon Score',
@@ -1107,7 +1107,7 @@ const I18N = {
 // ── DEMO DATA — 67 regions ───────────────────────────────────
 // Fields: id, nameFR, nameEN, iso, lat, lon, whoRegion,
 //   level, pop(M), stock(units), updated, status, trend, alertLevel
-const DEMO_DATA = [
+var DEMO_DATA = [
   // ── National ──────────────────────────────────────────────
   { id:1,  nameFR:'France',       nameEN:'France',       iso:'FR', lat:46.23, lon:2.21,   whoRegion:'EURO', level:'national', pop:68.0,  stock:42000000, updated:'2026-05-01', status:'moderate',  trend:'stable',   alertLevel:'moderate' },
   { id:2,  nameFR:'Allemagne',    nameEN:'Germany',      iso:'DE', lat:51.16, lon:10.45,  whoRegion:'EURO', level:'national', pop:84.4,  stock:120000000,updated:'2026-04-28', status:'sufficient',trend:'up',       alertLevel:'low' },
@@ -1187,7 +1187,7 @@ let OUTBREAK_DATA = []; // rempli par loadPathogensData()
 
 // ── Données symptomatologiques ────────────────────────────────
 // Sources : OMS, CDC, ECDC, UpToDate — à usage indicatif uniquement
-const SYMPTOMS_DATA = {
+var SYMPTOMS_DATA = {
   H5N1:       { fr: ['Fièvre brutale ≥ 38°C', 'Toux', 'Essoufflement', 'Douleurs musculaires intenses', 'Conjonctivite (yeux rouges)', 'Maux de tête'], en: ['Sudden fever ≥ 38°C', 'Cough', 'Shortness of breath', 'Severe muscle pain', 'Conjunctivitis (red eyes)', 'Headache'], alarmFR: ['Détresse respiratoire sévère', 'Cyanose (lèvres ou doigts bleus)', 'Aggravation rapide en 24–48h'], alarmEN: ['Severe respiratory distress', 'Cyanosis (blue lips or fingers)', 'Rapid deterioration within 24-48h'], isolationFR: 'Isolement 7 jours — déclaration obligatoire aux autorités sanitaires', isolationEN: 'Isolation 7 days — mandatory reporting to health authorities' },
   SARS2:      { fr: ['Fièvre ou frissons', 'Toux sèche', 'Fatigue', 'Perte d\'odorat ou de goût', 'Maux de gorge', 'Difficultés à respirer'], en: ['Fever or chills', 'Dry cough', 'Fatigue', 'Loss of smell or taste', 'Sore throat', 'Shortness of breath'], alarmFR: ['Essoufflement sévère au repos', 'Douleur thoracique persistante', 'Confusion mentale', 'Lèvres ou ongles bleutés'], alarmEN: ['Severe shortness of breath at rest', 'Persistent chest pain', 'Mental confusion', 'Bluish lips or nails'], isolationFR: 'Isolement 5 à 7 jours dès les symptômes ou test positif', isolationEN: 'Isolation 5 to 7 days from symptom onset or positive test' },
   TB:         { fr: ['Toux persistante > 3 semaines', 'Crachats pouvant contenir du sang', 'Sueurs nocturnes importantes', 'Perte de poids inexpliquée', 'Fièvre modérée le soir', 'Fatigue chronique'], en: ['Persistent cough > 3 weeks', 'Sputum possibly containing blood', 'Heavy night sweats', 'Unexplained weight loss', 'Mild evening fever', 'Chronic fatigue'], alarmFR: ['Crachats franchement sanglants (hémoptysie)', 'Essoufflement sévère au repos'], alarmEN: ['Frank bloody sputum (hemoptysis)', 'Severe shortness of breath at rest'], isolationFR: 'Isolement jusqu\'à 2 semaines de traitement efficace — déclaration obligatoire', isolationEN: 'Isolation until 2 weeks of confirmed effective treatment — mandatory reporting' },
@@ -1208,7 +1208,7 @@ const SYMPTOMS_DATA = {
 };
 
 // ── Mapping symptômes → pathogènes (pour le vérificateur) ─────
-const SYMPTOM_MAP = {
+var SYMPTOM_MAP = {
   fever:            ['H5N1','SARS2','TB','NIPAH','HANTA','MPOX','MERS','MARBURG','MEASLES','LEGIONELLA','INFLUENZA','RSYNCYTIAL','PERTUSSIS','COVID19VAR','EBOLA','RSVA_HMPV','CANDIDA'],
   dry_cough:        ['H5N1','SARS2','MERS','INFLUENZA','COVID19VAR','HANTA'],
   wet_cough:        ['TB','LEGIONELLA','CANDIDA','PERTUSSIS'],
@@ -1394,7 +1394,7 @@ let outbreakDataVersion = 0;
 let lastPathogensRenderSignature = '';
 let latestClinicalOrientation = null;
 
-const JSON_FETCH_DEFAULTS = {
+var JSON_FETCH_DEFAULTS = {
   timeout: 7000,
   cache: 'no-store',
 };
@@ -1470,15 +1470,15 @@ function formatFrenchDate(value, options = { day: 'numeric', month: 'long', year
 }
 
 // ── Language ─────────────────────────────────────────────────
-const LANG_CYCLE = ['fr', 'en', 'es', 'pt', 'ar', 'zh', 'hi', 'sw', 'ru'];
-const LANG_LABELS = { fr:'FR', en:'EN', es:'ES', pt:'PT', ar:'عر', zh:'中文', hi:'हि', sw:'SW', ru:'РУ' };
+var LANG_CYCLE = ['fr', 'en', 'es', 'pt', 'ar', 'zh', 'hi', 'sw', 'ru'];
+var LANG_LABELS = { fr:'FR', en:'EN', es:'ES', pt:'PT', ar:'عر', zh:'中文', hi:'हि', sw:'SW', ru:'РУ' };
 
 function t(key) {
-  return I18N[currentLang]?.[key] ?? I18N.en?.[key] ?? I18N.fr[key] ?? key;
+  return I18N[currentLang]?.[key] ?? I18N.en?.[key] ?? I18N.fr?.[key] ?? key;
 }
 
 // Clés dont la valeur contient du HTML (innerHTML au lieu de textContent)
-const I18N_HTML_KEYS = new Set(['ob-disclaimer']);
+var I18N_HTML_KEYS = new Set(['ob-disclaimer']);
 
 function applyI18n() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -1866,7 +1866,7 @@ function updateMapStats() {
 }
 
 // ── Pathogens grid ───────────────────────────────────────────
-const PATHOGEN_ICONS = {
+var PATHOGEN_ICONS = {
   H5N1:'🐔',        // grippe aviaire → volaille
   SARS2:'🦠',       // coronavirus
   TB:'🫁',          // tuberculose → poumons
@@ -2011,7 +2011,7 @@ function updateSPFLiveBadge(live) {
   badge.style.display = 'inline-flex';
 }
 
-const SPF_JUNK_RE = /en savoir plus|skip to|nos services|saisis des suggestions|facebook|twitter|linkedin|courriel|navigation|menu|recherche|fil d'ariane|cookie|abonnez-vous|newsletter|inscription|partager|imprimer|^Nous contacter|chargement en cours/i;
+var SPF_JUNK_RE = /en savoir plus|skip to|nos services|saisis des suggestions|facebook|twitter|linkedin|courriel|navigation|menu|recherche|fil d'ariane|cookie|abonnez-vous|newsletter|inscription|partager|imprimer|^Nous contacter|chargement en cours/i;
 
 function cleanSPFTitle(raw) {
   if (!raw) return 'Bulletin SPF';
@@ -2423,7 +2423,7 @@ function bindEvents() {
 // ── Smooth scroll for anchor links ───────────────────────────
 // ── Navigation — fonction globale appelable via onclick ───────
 // Définie ici (hors DOMContentLoaded) pour être disponible immédiatement
-const EXPERT_SECTIONS = new Set(['#score', '#map', '#protection', '#about']);
+var EXPERT_SECTIONS = new Set(['#score', '#map', '#protection', '#about']);
 
 function navTo(e, href) {
   if (e) e.preventDefault();
@@ -2505,7 +2505,7 @@ function updateModeToggleBtn() {
 }
 
 // ── Modal Espace Soignant ────────────────────────────────────────────────────
-const SOIGNANT_PASS = 'breathiq2026';
+var SOIGNANT_PASS = 'breathiq2026';
 
 // Country auto-detect from browser locale
 function _detectCountry() {
@@ -2543,7 +2543,7 @@ function validateSoignantPass() { saveProProfile(); }
 function _showProStep2() { /* no-op — single step now */ }
 
 // Identifiant professionnel adapté au pays
-const PRO_ID_CONFIG = {
+var PRO_ID_CONFIG = {
   FR: { label: 'N° RPPS (11 chiffres)', hint: 'Répertoire Partagé des Professionnels de Santé · optionnel · jamais transmis', maxlen: 11, numeric: true },
   BE: { label: 'N° INAMI / RIZIV (11 chiffres)', hint: 'Institut National d\'Assurance Maladie-Invalidité · optionnel', maxlen: 11, numeric: true },
   CH: { label: 'N° GLN / EAN (13 chiffres)', hint: 'Global Location Number · RCC Suisse · optionnel', maxlen: 13, numeric: true },
@@ -2722,7 +2722,7 @@ function _updateExpertStats() {
 // WIZARD SÉQUENTIEL — Vérificateur de symptômes v3
 // ════════════════════════════════════════════════════════════
 
-const WIZ = {
+var WIZ = {
   currentStep: 0,
   mainSymptom: null,
   vitals: { spo2: 'unknown', hr: 'unknown' },
@@ -3167,7 +3167,7 @@ function checkSymptoms() {
 }
 
 // ── Numéros d'urgence simples par langue (utilisé dans renderDiagnosticResult) ─
-const EMERGENCY_NUMBERS_SIMPLE = {
+var EMERGENCY_NUMBERS_SIMPLE = {
   fr: { main:'15', alt:'112', label:'SAMU', note:'Ou 112 partout en Europe' },
   en: { main:'999', alt:'112', label:'Emergency', note:'Or 112 in Europe / 911 in USA' },
   es: { main:'112', alt:'061', label:'Emergencias', note:'O 061 para urgencias médicas' },
@@ -3180,7 +3180,7 @@ const EMERGENCY_NUMBERS_SIMPLE = {
 };
 
 // ── Conseils "en attendant" par niveau ────────────────────────
-const WAITING_ADVICE = {
+var WAITING_ADVICE = {
   ROUGE: {
     fr: ['Ne vous déplacez PAS — attendez les secours', 'Restez allongé, ne mangez ni ne buvez rien', 'Gardez quelqu\'un à côté de vous', 'Desserrez les vêtements serrés', 'Si purpura : ne touchez pas les taches, allongez-vous'],
     en: ['Do NOT move — wait for emergency services', 'Stay lying down, do not eat or drink', 'Keep someone with you', 'Loosen tight clothing', 'If purpura: do not touch spots, lie flat'],
@@ -3204,7 +3204,7 @@ const WAITING_ADVICE = {
 };
 
 // ── Signes d'escalade (quand revenir d'urgence) ───────────────
-const ESCALATE_SIGNS = {
+var ESCALATE_SIGNS = {
   fr: ['Difficultés à respirer au repos', 'Lèvres ou ongles qui deviennent bleus', 'Confusion ou perte de connaissance', 'Convulsions', 'Taches violettes sur la peau (purpura)', 'Saignements inexpliqués', 'Aggravation très rapide'],
   en: ['Breathing difficulty at rest', 'Blue lips or fingernails', 'Confusion or loss of consciousness', 'Seizures', 'Purple skin spots (purpura)', 'Unexplained bleeding', 'Very rapid worsening'],
 };
@@ -3867,7 +3867,7 @@ function applyLiveData(parsed) {
 // ── Tracker multi-épidémies ──────────────────────────────────────
 // ── Niveaux de confiance des sources ─────────────────────────────────────────
 // R1 + R2 : indicateur ★ et délai publication (priorité médico-légale)
-const SOURCE_CONFIDENCE = {
+var SOURCE_CONFIDENCE = {
   // id pathogène → { stars, source, delayNote, trend }
   EBOLA:      { stars: 5, source: 'OMS DON · ECDC',     delay: 'Données J-0 (alerte active)', trend: '↗' },
   HANTA:      { stars: 5, source: 'OMS DON · NEJM',     delay: 'Données mai 2026',            trend: '↗' },
@@ -4304,7 +4304,7 @@ function renderEpiCurve(frFlu) {
 }
 
 // ── Déclarations syndromiques locales (localStorage) ──────────
-const DECL_KEY = 'biq-declarations';
+var DECL_KEY = 'biq-declarations';
 
 function getDeclarations() {
   try { return JSON.parse(localStorage.getItem(DECL_KEY) || '[]'); } catch { return []; }
@@ -4414,7 +4414,7 @@ function renderLocalDeclarations() {
 }
 
 // ── Pathologies surveillées ──────────────────────────────────────────────────
-const WATCHED_PATHOLOGIES = [
+var WATCHED_PATHOLOGIES = [
   { id: 'grippe',      label: '🤒 Grippe / ILI',           syndrome: 'grippal'      },
   { id: 'covid19',     label: '🦠 COVID-19 / SARS-CoV-2',  syndrome: 'respiratoire' },
   { id: 'rsv',         label: '🌬️ VRS (bronchiolite)',     syndrome: 'respiratoire' },
@@ -4435,7 +4435,7 @@ const WATCHED_PATHOLOGIES = [
 ];
 
 // ── ARS françaises par région ─────────────────────────────────────────────────
-const ARS_REGIONS = {
+var ARS_REGIONS = {
   IDF: { name: 'ARS Île-de-France',            portal: 'https://www.iledefrance.ars.sante.fr',           email: 'ars-idf-sg@ars.sante.fr' },
   ARA: { name: 'ARS Auvergne-Rhône-Alpes',     portal: 'https://www.auvergne-rhone-alpes.ars.sante.fr',  email: 'ars-ara-sg@ars.sante.fr' },
   BFC: { name: 'ARS Bourgogne-Franche-Comté',  portal: 'https://www.bourgogne-franche-comte.ars.sante.fr', email: 'ars-bfc-sg@ars.sante.fr' },
@@ -4457,7 +4457,7 @@ const ARS_REGIONS = {
 };
 
 // Maladies à Déclaration Obligatoire (DO) — liste officielle CSP Art. R3113-2
-const MALADIES_DO = ['meningo','ebola','h5n1','mers','cholera','typhus','anthrax','botulisme','rougeole','dengue','mpox','chikungunya'];
+var MALADIES_DO = ['meningo','ebola','h5n1','mers','cholera','typhus','anthrax','botulisme','rougeole','dengue','mpox','chikungunya'];
 
 // ── Détection de clusters multi-dimensionnels ─────────────────────────────────
 function detectAllClusters() {
@@ -4635,7 +4635,7 @@ function copyARSAlert() {
 }
 
 // ── Autorités sanitaires par pays ────────────────────────────────────────────
-const HEALTH_AUTHORITIES = {
+var HEALTH_AUTHORITIES = {
   FR: { name: 'Santé Publique France',         email: 'declaration@santepubliquefrance.fr', phone: '0800 130 000', declUrl: 'https://www.sentiweb.fr/france/fr/?page=declaration' },
   BE: { name: 'Sciensano (Belgique)',          email: 'surveillance@sciensano.be',          phone: null,           declUrl: 'https://www.sciensano.be/fr/maladies-infectieuses/maladies-a-declaration-obligatoire' },
   CH: { name: 'OFSP Suisse',                  email: 'infosantepublique@bag.admin.ch',     phone: null,           declUrl: 'https://www.bag.admin.ch/bag/fr/home/krankheiten/infektionskrankheiten-bekaempfen/meldepflicht.html' },
@@ -5188,7 +5188,7 @@ function updateLiveStatusBadge(detail) {
 
 // ── RGPD / Consentement ───────────────────────────────────────
 
-const CONSENT_KEY = 'biq-consent';
+var CONSENT_KEY = 'biq-consent';
 
 function getConsentStatus() {
   try { return localStorage.getItem(CONSENT_KEY); } catch { return null; }
@@ -5384,7 +5384,7 @@ async function loadPheicAlert() {
 }
 
 // ── Numéros d'urgence — localisation par langue/pays ─────────────────────────
-const EMERGENCY_NUMBERS = {
+var EMERGENCY_NUMBERS = {
   // [primary, secondary, description]
   fr: [{ num:'15', label:'SAMU', tel:'15' }, { num:'15', label:'SAMU', tel:'15' }, { num:'18', label:'Pompiers', tel:'18' }, { num:'112', label:'Urgences EU', tel:'112' }],
   'fr-BE': [{ num:'112', label:'Urgences', tel:'112' }, { num:'100', label:'Ambulance', tel:'100' }],
@@ -5411,6 +5411,7 @@ const EMERGENCY_NUMBERS = {
 };
 
 function getEmergencyNumbers() {
+  if (!EMERGENCY_NUMBERS) return [{ num:'15', label:'SAMU', tel:'15' }, { num:'18', label:'Pompiers', tel:'18' }, { num:'112', label:'Emergency EU', tel:'112' }];
   const lang = currentLang || 'fr';
   // Try lang-REGION variant first (e.g. navigator.language = 'pt-BR')
   const navLang = navigator.language || '';
@@ -5451,7 +5452,7 @@ function getFlagForNumber(num) {
 }
 
 // ── Onboarding first-visit ────────────────────────────────────────────────────
-const ONBOARDING_KEY = 'biq-onboarded';
+var ONBOARDING_KEY = 'biq-onboarded';
 
 function initOnboarding() {
   try {
