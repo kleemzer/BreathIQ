@@ -513,7 +513,9 @@
         "Martina BE et al. FEMS Microbiol Rev 2009 — Dengue virus pathogenesis"
       ],
       "descPatientES": "🟡 El dengue lo transmiten los mosquitos — no entre personas. Si viajó a países cálidos (Caribe, Asia, Reunión, América del Sur) y tiene fiebre + dolor en los ojos + dolores musculares intensos: consulte un médico e infórmele sobre su viaje. NO tome ibuprofeno ni aspirina — solo paracetamol.",
-      "descPatientAR": "🟡 حمى الضنك تنتقل عبر البعوض — وليس بين البشر. إذا سافرت إلى بلدان دافئة (الكاريبي، آسيا، أمريكا الجنوبية) ولديك حمى + ألم في العينين + آلام عضلية شديدة: زر الطبيب وأخبره عن رحلتك. لا تأخذ إيبوبروفين أو أسبرين — باراسيتامول فقط."
+      "descPatientAR": "🟡 حمى الضنك تنتقل عبر البعوض — وليس بين البشر. إذا سافرت إلى بلدان دافئة (الكاريبي، آسيا، أمريكا الجنوبية) ولديك حمى + ألم في العينين + آلام عضلية شديدة: زر الطبيب وأخبره عن رحلتك. لا تأخذ إيبوبروفين أو أسبرين — باراسيتامول فقط.",
+      "lat": 10.8,
+      "lon": 106.6
     },
     {
       "id": "PALUDISME",
@@ -547,7 +549,9 @@
         "Dondorp AM et al. Lancet 2005 — Artesunate vs quinine for severe malaria"
       ],
       "descPatientES": "🔴 Si tiene fiebre y viajó a África, Asia o América del Sur en los últimos 2 meses: vaya a urgencias o a su médico HOY — no espere. Infórmeles sobre su viaje. El paludismo puede volverse muy grave en pocas horas. No se contagia entre personas en Francia.",
-      "descPatientAR": "🔴 إذا كان لديك حمى وسافرت إلى أفريقيا أو آسيا أو أمريكا الجنوبية خلال الشهرين الماضيين: اذهب إلى الطوارئ أو طبيبك اليوم — لا تنتظر. أخبرهم عن رحلتك. الملاريا قد تصبح خطيرة جداً في ساعات. لا تنتقل بين البشر في فرنسا."
+      "descPatientAR": "🔴 إذا كان لديك حمى وسافرت إلى أفريقيا أو آسيا أو أمريكا الجنوبية خلال الشهرين الماضيين: اذهب إلى الطوارئ أو طبيبك اليوم — لا تنتظر. أخبرهم عن رحلتك. الملاريا قد تصبح خطيرة جداً في ساعات. لا تنتقل بين البشر في فرنسا.",
+      "lat": 5.3,
+      "lon": 20.0
     },
     {
       "id": "RSYNCYTIAL",
