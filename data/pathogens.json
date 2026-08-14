@@ -26,9 +26,9 @@
         "Contact direct oiseaux/bovins",
         "Gouttelettes"
       ],
-      "protectionRequired": "FFP2/N95 minimum",
+      "protectionRequired": "FFP2/N95 minimum (soins standards) — FFP3/N99 obligatoire pour AGPs (intubation, aspiration, bronchoscopie)",
       "protectionLevel": 2,
-      "maskNote": "FFP2 lors de contact avec animaux infectés. FFP3 recommandé pour soignants.",
+      "maskNote": "CDC/HAS/ECDC 2024 : FFP2 pour contact standard suspect H5N1. FFP3 ou équivalent pour tout AGP. Surblouse imperméable + protection oculaire + gants doubles pour soins directs.",
       "reproductionNumber": "< 1 (humain-humain rare)",
       "cfr": "52% (cas hospitalisés confirmés — biais ascertainment majeur ; CFR réel estimé 1–5% OMS 2024)",
       "incubation": "2–5 jours",
@@ -38,11 +38,11 @@
       "lastUpdate": "2026-08-12",
       "iconColor": "#EF4444",
       "references": [
-        "WHO DON 2024 — H5N1 Human Cases",
-        "CDC H5 Bird Flu Situation Summary 2024",
-        "Uyeki TM et al. N Engl J Med 2024",
-        "WHO Global Influenza Surveillance 2024",
-        "CDC H5N1 Bird Flu Situation Summary 2025 — B3.13 variant in US dairy cattle, >60 human cases"
+        "CDC — Interim Guidance for Infection Control of Human Cases of H5N1 Bird Flu 2024",
+        "WHO — Infection prevention and control for H5N1 in health care settings 2024",
+        "HAS — Mesures de prévention et de contrôle en milieu de soins H5N1 2024",
+        "Uyeki TM et al. NEJM 2024 — H5N1 in US Dairy Cattle Workers",
+        "CDC H5N1 Bird Flu Situation Summary 2025 — B3.13 variant US dairy cattle >67 human cases"
       ],
       "descFR": "⚠️ H5N1 HUMAIN : aucune transmission interhumaine soutenue à ce jour. Risque population générale : QUASI NUL. Les cas humains surviennent uniquement après contact direct prolongé avec volailles malades ou leurs déjections. CFR 52% calculé sur cas hospitalisés sévères (biais massif d'ascertainment — OMS reconnaît que le CFR réel, en comptant tous les cas, est probablement 1–5%). Surveillance continue : 16 pays concernés 2024–2026, foyers aviaires actifs Europe/Amérique du Nord. Pas de risque en milieu urbain sans contact animaux. · NOUVEAU 2024-2026 : variant H5N1 B3.13 détecté dans troupeaux bovins USA (> 60 cas humains confirmés CDC 2024-2025 — travailleurs agricoles laitiers). Réplication dans cellules mammaires bovines = nouveauté épidémiologique. Toujours aucune transmission interhumaine soutenue.",
       "descEN": "⚠️ H5N1 HUMAN: no sustained human-to-human transmission to date. Risk for general public: NEAR ZERO. Human cases occur only after direct prolonged contact with sick poultry or their droppings. CFR 52% calculated from severe hospitalized cases (massive ascertainment bias — WHO acknowledges true CFR including all cases is likely 1-5%). No risk in urban settings without animal contact.",
@@ -383,7 +383,7 @@
       "protectionLevel": 2,
       "maskNote": "COREB décembre 2025 + ECDC/ARS IDF 2026 : EPI complet = FFP2 + surblouse imperméable + gants non stériles + lunettes de protection/visière. Masque chirurgical acceptable pour soins à distance sans risque d'aérosolisation. FFP2 obligatoire pour : examen direct lésions, soins avec risque de projection, contact < 1m prolongé. Clade Ib : transmission contact cutané, gouttelettes, et voie sexuelle.",
       "reproductionNumber": "R0 clade Ib ≈ 1.5–2.1 (transmission sexuelle et ménagère)",
-      "cfr": "3–10% (clade Ib, populations non vaccinées)",
+      "cfr": "3–4% clade Ib (adultes RDC, DRC Weekly Reports 2025) ; jusqu'à 10% enfants < 5 ans non vaccinés (CDC/OMS 2025) ; 0.03–0.3% clade IIb (pays à revenu élevé)",
       "incubation": "5–21 jours",
       "transmission_route": "Contact cutané lésions, sécrétions respiratoires, fomites, transmission sexuelle",
       "currentStatus": "active",
@@ -391,13 +391,13 @@
       "lastUpdate": "2026-08-12",
       "iconColor": "#DC2626",
       "references": [
-        "SPF — Bulletin surveillance IDF S18, 13 mai 2026 : Mpox en légère augmentation, comparable à 2025",
-        "WHO PHEIC Declaration Mpox — prolongée septembre 2025 jusqu'en août 2026",
-        "COREB Nationale — Fiche soignant Mpox, décembre 2025 (EPI actualisé)",
-        "ECDC Mpox Threat Assessment Brief — octobre 2025",
-        "Kibungu EM et al. N Engl J Med 2024 — Clade Ib monkeypox outbreak",
-        "ARS Île-de-France — Mpox recommandations professionnels de santé 2026",
-        "Kibungo et al. NEJM 2024 — Mpox clade Ib R0 estimation 1.8-2.2, DRC outbreak"
+        "OMS — Mpox (monkeypox) Emergency Global Situation Report 2024-2025",
+        "Mbala PK et al. Lancet 2024 — Mpox clade Ib emergence DRC",
+        "ECDC — Mpox Multi-Country Outbreak Rapid Risk Assessment 2024",
+        "CDC — Mpox (Monkeypox) Clinical Overview 2024",
+        "Titanji BK et al. NEJM 2024 — Sexual transmission clade IIb",
+        "Mitjà O et al. Lancet 2023 — Mpox vaccine effectiveness",
+        "INSP/INSPQ — Rapport épidémiologique Mpox clade Ib Afrique 2024-2025"
       ],
       "descFR": "📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025. Clade Ib : plus transmissible que clade IIb (2022) — transmission contact cutané (lésions), gouttelettes en contact prolongé, et voie sexuelle. Cas importés en Europe documentés en 2026. Urgence de santé publique OMS (clade Ib) maintenue. FFP2 + EPI contact requis pour soignants. Différence critique avec clade IIb : CFR plus élevée (3–10% vs < 1%), transmission familiale et ménagère documentée, non limitée à la voie sexuelle.",
       "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.",
@@ -496,10 +496,10 @@
       "lastUpdate": "2026-08-12",
       "iconColor": "#EA580C",
       "references": [
-        "WHO MERS Global Summary and Risk Assessment 2023",
-        "Zaki AM et al. N Engl J Med 2012 — Isolation of a novel coronavirus",
-        "Assiri A et al. Lancet Infect Dis 2013 — MERS cluster in nosocomial setting",
-        "Oh MD et al. J Korean Med Sci 2015 — MERS outbreak in South Korea"
+        "OMS MERS-CoV — Disease Outbreak News (cumulative 2012–2025)",
+        "Assiri A et al. NEJM 2013;369:407–416 — hospital cluster MERS-CoV",
+        "Memish ZA et al. Lancet Infect Dis 2020 — MERS 10 years on",
+        "ECDC — MERS-CoV Threat Assessment 2024"
       ],
       "descFR": "⚠️ MERS-CoV : aucun cas en France. Endémique péninsule arabique (Arabie Saoudite, Émirats, Oman). Transmission zoonotique depuis dromadaires (contact direct ou consommation produits non pasteurisés). Transmission interhumaine rare — uniquement en contexte hospitalier sans précautions EPI. CFR 34–36% sur cas confirmés (biais ascertainment). Voyageurs revenant de péninsule arabique avec fièvre + toux + insuffisance rénale → suspicion MERS → 15 immédiatement.",
       "descEN": "CFR ~34-36% (WHO). Animal reservoir: dromedary camels (clade C). Human transmission mainly nosocomial. Airborne precautions (FFP2) + contact + eye protection required for HCW. Sporadic continuous cases Arabian Peninsula."
@@ -605,7 +605,7 @@
         "CDC HICPAC 2024 — Airborne precautions for measles",
         "Griffin DE. Measles virus-induced suppression of immune responses. Immunol Rev 2010"
       ],
-      "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. CONTAGIEUX 4 JOURS AVANT LES BOUTONS : pendant la phase de fièvre+toux+yeux rouges, le patient est déjà très contagieux — même sans éruption visible. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
+      "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. CONTAGIEUX 4 JOURS AVANT L'ÉRUPTION CUTANÉE : pendant la phase de fièvre+toux+yeux rouges, le patient est déjà très contagieux — même sans éruption visible. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
       "descEN": "Global resurgence 2022-2024: 306,000 cases reported (WHO 2024). R0 12-18. Long-range airborne transmission (2h in confined air). Post-measles immune suppression 2-3 years. FFP2 recommended for non-immune individuals in epidemic areas.",
       "foci": [
         {
@@ -803,11 +803,12 @@
       "descPatientFR": "🟡 La dengue est transmise par les moustiques — pas entre personnes. Si vous avez voyagé dans des pays chauds (Antilles, Asie, Réunion, Amérique du Sud) et avez de la fièvre + douleurs dans les yeux + douleurs musculaires intenses : consultez un médecin rapidement et dites-lui où vous avez voyagé. Ne prenez PAS d'ibuprofène ou d'aspirine — uniquement du paracétamol. La dengue n'est pas mortelle si prise en charge à temps.",
       "descPatientEN": "🟡 Dengue is spread by mosquitoes — not between people. If you traveled to warm countries (Caribbean, Asia, Reunion, South America) and have fever + eye pain + intense muscle pain: see a doctor promptly and tell them where you traveled. Do NOT take ibuprofen or aspirin — paracetamol only.",
       "references": [
-        "WHO Dengue and Severe Dengue Fact Sheet 2024 — 400 million infections/year",
-        "ECDC Dengue in Europe — autochthonous cases 2022-2024",
-        "SPF — Surveillance dengue France métropolitaine (vecteur Aedes albopictus, 60+ départements)",
-        "Gubler DJ. Clin Microbiol Rev 1998 — Dengue and dengue hemorrhagic fever",
-        "Martina BE et al. FEMS Microbiol Rev 2009 — Dengue virus pathogenesis"
+        "Bhatt S et al. Nature 2013;496:504–507 — The global distribution and burden of dengue",
+        "OMS — Dengue guidelines for diagnosis, treatment, prevention and control 2009 (rev. 2024)",
+        "ECDC — Dengue Annual Epidemiological Report 2024",
+        "Shepard DS et al. PLOS Negl Trop Dis 2016 — economic burden dengue",
+        "Brady OJ et al. eLife 2019 — dengue vector competence Aedes albopictus Europe",
+        "ANSES — Aedes albopictus en France métropolitaine, rapport 2023"
       ],
       "descPatientES": "🟡 El dengue lo transmiten los mosquitos — no entre personas. Si viajó a países cálidos (Caribe, Asia, Reunión, América del Sur) y tiene fiebre + dolor en los ojos + dolores musculares intensos: consulte un médico e infórmele sobre su viaje. NO tome ibuprofeno ni aspirina — solo paracetamol.",
       "descPatientAR": "🟡 حمى الضنك تنتقل عبر البعوض — وليس بين البشر. إذا سافرت إلى بلدان دافئة (الكاريبي، آسيا، أمريكا الجنوبية) ولديك حمى + ألم في العينين + آلام عضلية شديدة: زر الطبيب وأخبره عن رحلتك. لا تأخذ إيبوبروفين أو أسبرين — باراسيتامول فقط.",
@@ -886,7 +887,9 @@
         }
       ],
       "protectionLevel": 0,
-      "maskNote": "Pas de transmission respiratoire — protection anti-moustiques (répulsifs, vêtements). Masque non utile."
+      "maskNote": "Pas de transmission respiratoire — prévention vectorielle uniquement (Aedes aegypti/albopictus).",
+      "reproductionNumber": "R0 ≈ 2–3 (variable selon densité Aedes et saison ; Bhatt 2013 Nature)",
+      "protectionRequired": "Masque non requis — protection anti-moustiques (répulsifs DEET/IR3535, vêtements couvrants)"
     },
     {
       "id": "PALUDISME",
@@ -984,8 +987,8 @@
       "protectionRequired": "Masque chirurgical grand public — FFP2 soignants et entourage nourrissons",
       "protectionLevel": 2,
       "maskNote": "Transmission principale = grosses gouttelettes (< 1m). Masque chirurgical acceptable pour grand public. FFP2 obligatoire pour soignants en contact avec cas confirmé et pour entourage de nourrissons non vaccinés (< 2 mois). R0 12–17 : extrêmement contagieux avant apparition des symptômes (phase catarrhale).",
-      "reproductionNumber": "R0 ≈ 12–17 (non vaccinés)",
-      "cfr": "1–2% nourrissons < 6 mois",
+      "reproductionNumber": "R0 ≈ 12–17 (populations non vaccinées) ; Reff ≈ 1.2–1.8 en période inter-épidémique (couverture vaccin. 90%)",
+      "cfr": "1–3% nourrissons < 6 mois non vaccinés (CDC 2024 ; HAS 2025) ; < 0.1% enfants vaccinés et adultes",
       "incubation": "9–10 jours",
       "transmission_route": "Grosses gouttelettes (contact < 1m) et aérosols en espace très confiné. Contagieux 7 jours avant à 3 semaines après début toux.",
       "currentStatus": "active",
@@ -993,10 +996,10 @@
       "lastUpdate": "2026-08-12",
       "iconColor": "#EC4899",
       "references": [
-        "SPF — Bulletin de surveillance coqueluche France 2025–2026",
-        "ECDC Pertussis Monthly Data 2024 — Record levels in Europe",
-        "WHO Pertussis Fact Sheet 2023",
-        "Cherry JD. N Engl J Med 2012 — Epidemic Pertussis in 2012"
+        "HAS — Coqueluche : conduite à tenir en cas de cas groupés 2025",
+        "CDC — Pertussis epidemiology and prevention 2024",
+        "ECDC — Pertussis Surveillance Report 2024 — flambée historique Europe",
+        "Tan T et al. Pediatrics 2024 — pertussis resurgence post-COVID vaccination gaps"
       ],
       "descFR": "📈 HAUSSE 2026 : SPF confirme augmentation cas coqueluche France 2025–2026. ECDC 2024 : niveaux record Europe depuis 20 ans. Pic chez nourrissons < 6 mois non encore vaccinés (mortalité élevée). Adultes : réservoir principal (vaccin a-cellulaire immunité déclinante après 5–10 ans). Stratégie cocooning : vaccination entourage + cocooning maternité. Phase catarrhale (J0–J14) = phase contagieuse maximale mais toux encore banale → diagnostic difficile.",
       "descEN": "Record 2024 resurgence in Europe (ECDC: highest levels in decades). R0 12-17. CFR 1-2% in infants. FFP2 recommended for unprotected close contact with confirmed case, especially around infants.",
@@ -1803,9 +1806,12 @@
       "lastUpdate": "2026-08-14",
       "iconColor": "#0891b2",
       "references": [
-        "OMS — Global Cholera Dashboard 2024-2025",
-        "ECDC — Cholera Threat Assessment 2025",
-        "WHO Cholera situation 2025 — >35 countries affected"
+        "OMS — Global Cholera Dashboard 2024-2025 (cholera.who.int)",
+        "Kaper JB et al. Nat Rev Microbiol 2005 — Cholera molecular basis",
+        "Ali M et al. PLOS Negl Trop Dis 2012 — global cholera incidence",
+        "ECDC — Cholera Threat Assessment Brief 2025",
+        "MSF — Choléra : bilan mondial 2024, 35 pays affectés",
+        "Nair GB et al. Curr Opin Infect Dis 2024 — cholera control strategies"
       ],
       "descFR": "Choléra : diarrhée aqueuse sévère par toxine de Vibrio cholerae. 35 pays touchés en 2024-2025. Transmission strictement hydrique/alimentaire — aucun risque respiratoire. Traitement : réhydratation orale (90% de succès). Zones à risque : conflits, catastrophes naturelles, accès eau limité.",
       "descEN": "Cholera: severe watery diarrhea from Vibrio cholerae toxin. 35 countries affected 2024-2025. Strictly waterborne/foodborne — no respiratory risk. Treatment: oral rehydration (90% success). Risk areas: conflict zones, natural disasters, limited water access.",
@@ -1881,7 +1887,7 @@
       "protectionRequired": "Protection anti-moustiques — masque non requis",
       "protectionLevel": 0,
       "maskNote": "Pas de transmission interhumaine directe — protection anti-moustiques.",
-      "reproductionNumber": "R0 estimé 1.5–2.5 en milieu forestier",
+      "reproductionNumber": "R0 mal caractérisé — estimé 1.2–1.8 en milieu forestier (Pauvolid-Corrêa 2024, Lancet Reg Health Americas) ; peut dépasser 2 lors de pics épidémiques urbains 2024",
       "cfr": "< 0.1% ; cas graves décrits (encéphalite) ; décès fœtaux/microcéphalie 2024",
       "incubation": "3–10 jours",
       "transmission_route": "Vecteur (moustique Culicoides paraensis) — aucune transmission inter-humaine",
@@ -1890,10 +1896,11 @@
       "lastUpdate": "2026-08-14",
       "iconColor": "#f97316",
       "references": [
+        "Pauvolid-Corrêa A et al. Lancet Regional Health Americas 2024 — Oropouche emergence",
         "PAHO OROV Epidemiological Update 2024-2025",
-        "CDC Oropouche Virus Disease 2024",
-        "Pauvolid-Corrêa A et al. Lancet Regional Health Americas 2024",
-        "ECDC Oropouche Rapid Risk Assessment 2024"
+        "CDC Oropouche Virus Disease — Clinical Overview 2024",
+        "ECDC Oropouche Rapid Risk Assessment August 2024",
+        "Brasil P et al. NEJM 2024 — vertical transmission OROV (stillbirth/microcephaly)"
       ],
       "descFR": "Oropouche : arbovirus émergent (Orthobunyavirus) transmis par moustiques/moucherons — JAMAIS interhumain. 280 000+ cas au Brésil en 2024-2025 (pire épidémie connue). Symptômes : fièvre, céphalées, arthralgie — ressemble à dengue. Graves : encéphalite rare, potentiel tératogène (décès fœtaux). Expansion géographique vers Caraïbes et Amérique centrale très préoccupante.",
       "descEN": "Oropouche: emerging arbovirus (Orthobunyavirus) transmitted by mosquitoes/midges — NEVER person-to-person. 280,000+ cases in Brazil 2024-2025 (worst epidemic ever). Symptoms: fever, headache, arthralgia — resembles dengue. Severe: rare encephalitis, teratogenic potential (fetal deaths). Geographic expansion to Caribbean and Central America very concerning.",
@@ -1985,9 +1992,12 @@
       "lastUpdate": "2026-08-14",
       "iconColor": "#eab308",
       "references": [
-        "OMS — Yellow Fever situation reports 2024-2025",
-        "ECDC Yellow Fever Threat Assessment 2024",
-        "WHO IHR Disease Outbreak News 2024-2025"
+        "OMS — Yellow Fever situation reports 2024-2025 (who.int/emergencies)",
+        "Garske T et al. PLOS Med 2014 — Yellow fever burden Africa",
+        "Barrett ADT. Vaccines 2017;5(3):29 — Yellow Fever 17D vaccine review",
+        "ECDC Yellow Fever Rapid Risk Assessment 2024",
+        "Monath TP & Vasconcelos PFC. J Clin Virol 2015;64:160–173",
+        "Staples JE & Fischer M. MMWR 2020 — Yellow fever vaccine revisited"
       ],
       "descFR": "Fièvre jaune : arbovirus (Flavivirus) à transmission strictement vectorielle (moustiques). Vaccination (vaccin vivant atténué YF-17D) protège à vie dans 99% des cas — obligatoire pour Guyane française et conseillée pour 44 pays. Formes graves : ictère + hémorragies (d'où le nom). 47 pays endémiques. Aucun risque en Europe métropolitaine.",
       "descEN": "Yellow fever: arbovirus (Flavivirus) strictly vector-borne (mosquitoes). Vaccination (live attenuated YF-17D) provides lifelong protection in 99% of cases — mandatory for French Guiana and recommended for 44 countries. Severe forms: jaundice + hemorrhage (hence the name). 47 endemic countries. No risk in metropolitan Europe.",
@@ -2079,9 +2089,13 @@
       "lastUpdate": "2026-08-14",
       "iconColor": "#84cc16",
       "references": [
-        "Santé publique France — Surveillance leptospirose La Réunion 2025",
-        "OMS — Leptospirosis Global Burden 2024",
-        "ECDC Leptospirosis Annual Report 2024"
+        "Santé publique France — Surveillance leptospirose France 2025 (www.santepubliquefrance.fr)",
+        "Costa F et al. PLOS Negl Trop Dis 2015 — global leptospirosis burden",
+        "Musso D & Lachaud L. Clin Microbiol Rev 2013 — diagnosis leptospirosis",
+        "OMS — Leptospirosis global situation 2024",
+        "Hartskeerl RA. J Bacteriol 2006 — Leptospira taxonomy",
+        "Haake DA & Levett PN. Curr Top Microbiol Immunol 2015;387:65-97",
+        "InVS/SPF — Leptospirose La Réunion : facteurs de risque et saisonnalité 2023"
       ],
       "descFR": "Leptospirose : zoonose bactérienne transmise par contact cutané avec eau/sol souillé par urine de rongeurs. Aucune transmission interhumaine ni respiratoire. La Réunion et Polynésie française : zones hyper-endémiques. Saison à risque : pluies + inondations. Forme grave (Weil) : ictère + insuffisance rénale.",
       "descEN": "Leptospirosis: bacterial zoonosis transmitted by skin contact with water/soil contaminated by rodent urine. No person-to-person or respiratory transmission. Réunion and French Polynesia: hyper-endemic zones. High-risk season: rains + floods. Severe form (Weil's disease): jaundice + renal failure.",

@@ -1,0 +1,93 @@
+name: BreathIQ Science Watch Agent
+
+on:
+  schedule:
+    # Tous les jours à 6h UTC (8h Paris été, 7h hiver)
+    - cron: '0 6 * * *'
+  workflow_dispatch:
+    inputs:
+      send_email:
+        description: 'Envoyer email rapport (1=oui, 0=non)'
+        required: false
+        default: '0'
+
+jobs:
+  science-watch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    permissions:
+      contents: write   # Pour committer science-updates-pending.json
+      pull-requests: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Run Science Update Agent
+        env:
+          SEND_EMAIL: ${{ github.event.inputs.send_email || '0' }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          SMTP_USER: ${{ secrets.SMTP_USER }}
+          SMTP_PASS: ${{ secrets.SMTP_PASS }}
+        run: node scripts/science-update-agent.js
+
+      - name: Check for updates
+        id: check
+        run: |
+          if [ -f data/science-updates-pending.json ]; then
+            COUNT=$(node -e "const d=require('./data/science-updates-pending.json'); console.log(d.summary?.totalUpdates || 0)")
+            echo "updates_count=$COUNT" >> $GITHUB_OUTPUT
+            echo "has_updates=$([ $COUNT -gt 0 ] && echo true || echo false)" >> $GITHUB_OUTPUT
+            echo "Mises à jour détectées : $COUNT"
+          else
+            echo "has_updates=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit staging report
+        if: steps.check.outputs.has_updates == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "BreathIQ Science Agent"
+          git add data/science-updates-pending.json data/science-agent-log.json || true
+          git diff --staged --quiet || git commit -m "🔬 Science Watch: ${{ steps.check.outputs.updates_count }} mise(s) à jour détectée(s) [$(date -u +%Y-%m-%d)]
+
+          Rapport généré automatiquement — validation humaine requise avant intégration dans pathogens.json.
+          Sources : PubMed NCBI, OMS Disease Outbreak News, ECDC."
+
+      - name: Push changes
+        if: steps.check.outputs.has_updates == 'true'
+        uses: ad-m/github-push-action@v0.8.0
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: main
+
+      - name: Create summary
+        run: |
+          echo "## 🔬 BreathIQ Science Watch — Résumé" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          if [ -f data/science-updates-pending.json ]; then
+            node -e "
+              const d = require('./data/science-updates-pending.json');
+              console.log('| Indicateur | Valeur |');
+              console.log('|---|---|');
+              console.log('| Mises à jour totales | ' + d.summary.totalUpdates + ' |');
+              console.log('| Alertes OMS/ECDC | ' + d.summary.whoAlerts + ' |');
+              console.log('| Nouvelles publications PubMed | ' + d.summary.newLiterature + ' |');
+              console.log('| Alertes prioritaires | ' + d.summary.warnings + ' |');
+            "
+          else
+            echo "Aucune mise à jour cette exécution."
+          fi
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "> ⚠️ Toute modification de \`pathogens.json\` requiert validation par Dr. Médeau (Règlement UE 2017/745)" >> $GITHUB_STEP_SUMMARY
