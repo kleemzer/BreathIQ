@@ -112,26 +112,22 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "name": "BreathIQ",
-    "description": "Outil de surveillance épidémique et qualité de l'air pour soignants et patients. Données OMS, SPF, ECDC actualisées quotidiennement.",
+    "description": "Outil de surveillance épidémique, qualité de l'air et disponibilité des masques respiratoires. Données agrégées OMS, SPF, ECDC — à titre informatif uniquement.",
     "url": "https://breathiq.fr",
     "applicationCategory": "HealthApplication",
     "author": {
       "@type": "Person",
       "name": "Dr. Clément Médeau",
-      "jobTitle": "Médecin",
+      "jobTitle": "Médecin généraliste",
       "url": "https://breathiq.fr"
     },
     "about": {
-      "@type": "MedicalCondition",
-      "name": "Ebola Virus Disease",
-      "alternateName": ["Ebola", "FHV", "Fièvre hémorragique à virus Ebola"],
-      "relevantSpecialty": {
-        "@type": "MedicalSpecialty",
-        "name": "Infectious Diseases"
-      }
+      "@type": "MedicalWebPage",
+      "name": "Surveillance épidémique mondiale",
+      "description": "Score respiratoire, foyers épidémiques actifs, qualité de l'air et disponibilité des masques FFP2/N95/KN95 — données publiques OMS, ECDC, SPF."
     },
-    "dateModified": "2026-06-24",
-    "inLanguage": ["fr", "en", "es", "pt", "ar"],
+    "dateModified": "2026-08-14",
+    "inLanguage": ["fr", "en", "es", "pt", "ar", "zh", "hi", "sw", "ru"],
     "offers": {
       "@type": "Offer",
       "price": "0",
@@ -142,47 +138,13 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "NewsArticle",
-    "headline": "Premier cas d'Ebola confirmé en France — Protocoles soignants et risque pour la population",
-    "datePublished": "2026-06-24",
-    "dateModified": "2026-06-24",
-    "author": {
-      "@type": "Person",
-      "name": "Dr. Clément Médeau"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "BreathIQ",
-      "url": "https://breathiq.fr"
-    },
-    "description": "Analyse médicale du premier cas d'Ebola importé en France depuis la RDC. Protocoles EPI pour les soignants, conduite à tenir pour la population, données OMS/ECDC.",
-    "keywords": "ebola france, ebola 2026, premier cas ebola france, protocole ebola soignant, FFP3 ebola, risque ebola france, ebola RDC",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "https://breathiq.fr"
-    }
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
     "@type": "SpecialAnnouncement",
-    "name": "Premier cas d'Ebola confirmé en France — 24 juin 2026",
-    "text": "Un premier cas d'Ebola (souche Bundibugyo) a été confirmé en France le 24 juin 2026. Il s'agit d'un cas importé, isolé en Unité d'Isolement Haute Sécurité (UHSI). Le risque pour la population générale est faible si les mesures d'isolement sont maintenues. Si fièvre + retour d'Afrique centrale/est dans les 21 derniers jours : appelez le 15 SANS vous déplacer.",
-    "datePosted": "2026-06-24",
-    "expires": "2026-09-24",
+    "name": "Surveillance PHEIC OMS — Ebola Bundibugyo (RDC/Ouganda)",
+    "text": "Données de surveillance épidémiologique agrégées par BreathIQ — outil d'information à destination du grand public et des professionnels de santé. Ces informations sont issues de sources officielles (OMS, ECDC, SPF) et ne constituent pas un diagnostic médical individuel. Pour toute question médicale personnelle, consultez un professionnel de santé.",
+    "datePosted": "2026-08-14",
+    "expires": "2026-12-31",
     "category": "https://www.wikidata.org/wiki/Q16654806",
-    "diseaseSpreadStatistics": {
-      "@type": "Observation",
-      "name": "Cas Ebola France",
-      "value": 1,
-      "valueReference": "cas importé confirmé, isolement UHSI"
-    },
     "announcementLocation": {
-      "@type": "Country",
-      "name": "France"
-    },
-    "spatialCoverage": {
       "@type": "Country",
       "name": "France"
     },
@@ -194,7 +156,7 @@
     "author": {
       "@type": "Person",
       "name": "Dr. Clément Médeau",
-      "jobTitle": "Médecin"
+      "jobTitle": "Médecin généraliste"
     },
     "url": "https://breathiq.fr",
     "newsUpdatesAndGuidelines": {
@@ -1413,8 +1375,8 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
         </div>
       </div>
       <div class="epi-card-btns">
-        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('ebola')">Oui</button>
-        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('ebola')">Non</button>
+        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('ebola')" aria-label="Oui, j'ai voyagé en zone Ebola">Oui</button>
+        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('ebola')" aria-label="Non, pas de voyage en zone Ebola">Non</button>
       </div>
       <div class="epi-alert-result" id="epiResultEbola" hidden>
         <div class="epi-result-box epi-result-red">
@@ -1440,8 +1402,8 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
         </div>
       </div>
       <div class="epi-card-btns">
-        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('hanta')">Oui</button>
-        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('hanta')">Non</button>
+        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('hanta')" aria-label="Oui, j'ai voyagé en zone Hantavirus">Oui</button>
+        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('hanta')" aria-label="Non, pas de voyage en zone Hantavirus">Non</button>
       </div>
       <div class="epi-alert-result" id="epiResultHanta" hidden>
         <div class="epi-result-box epi-result-orange">
@@ -1561,26 +1523,26 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
         <h3 class="wiz-question">Quel est votre symptôme <strong>principal</strong> ?</h3>
         <p class="wiz-hint">Choisissez celui qui vous gêne le plus. Les autres seront proposés ensuite.</p>
         <div class="wiz-main-symptom-grid">
-          <button class="wiz-main-btn" onclick="wizSelectMain('fever')" data-main="fever">
-            <span class="wiz-main-icon">🌡️</span><span class="wiz-main-label">Fièvre / frissons</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('fever')" data-main="fever" aria-label="Mon symptôme principal : fièvre ou frissons">
+            <span class="wiz-main-icon" aria-hidden="true">🌡️</span><span class="wiz-main-label">Fièvre / frissons</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('cough')" data-main="cough">
-            <span class="wiz-main-icon">🫁</span><span class="wiz-main-label">Toux / essoufflement</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('cough')" data-main="cough" aria-label="Mon symptôme principal : toux ou essoufflement">
+            <span class="wiz-main-icon" aria-hidden="true">🫁</span><span class="wiz-main-label">Toux / essoufflement</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('headache')" data-main="headache">
-            <span class="wiz-main-icon">🤕</span><span class="wiz-main-label">Maux de tête</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('headache')" data-main="headache" aria-label="Mon symptôme principal : maux de tête">
+            <span class="wiz-main-icon" aria-hidden="true">🤕</span><span class="wiz-main-label">Maux de tête</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('rash')" data-main="rash">
-            <span class="wiz-main-icon">🔴</span><span class="wiz-main-label">Boutons / éruption cutanée</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('rash')" data-main="rash" aria-label="Mon symptôme principal : boutons ou éruption cutanée">
+            <span class="wiz-main-icon" aria-hidden="true">🔴</span><span class="wiz-main-label">Boutons / éruption cutanée</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('digestive')" data-main="digestive">
-            <span class="wiz-main-icon">🤢</span><span class="wiz-main-label">Douleurs ventre / diarrhée</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('digestive')" data-main="digestive" aria-label="Mon symptôme principal : douleurs ventre ou diarrhée">
+            <span class="wiz-main-icon" aria-hidden="true">🤢</span><span class="wiz-main-label">Douleurs ventre / diarrhée</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('pain')" data-main="pain">
-            <span class="wiz-main-icon">💪</span><span class="wiz-main-label">Douleurs musculaires / articulaires</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('pain')" data-main="pain" aria-label="Mon symptôme principal : douleurs musculaires ou articulaires">
+            <span class="wiz-main-icon" aria-hidden="true">💪</span><span class="wiz-main-label">Douleurs musculaires / articulaires</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('other')" data-main="other">
-            <span class="wiz-main-icon">🔍</span><span class="wiz-main-label">Autre symptôme</span>
+          <button class="wiz-main-btn" onclick="wizSelectMain('other')" data-main="other" aria-label="Mon symptôme principal : autre symptôme non listé">
+            <span class="wiz-main-icon" aria-hidden="true">🔍</span><span class="wiz-main-label">Autre symptôme</span>
           </button>
         </div>
         <div class="wiz-nav">

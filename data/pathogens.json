@@ -351,7 +351,8 @@
           "cases": 45,
           "note": "Endémique — zone rurale Pampa"
         }
-      ]
+      ],
+      "dataConfidenceNote": "Sources : OMS + CDC. Données MV Hondius mai 2026 — à confirmer par ECDC."
     },
     {
       "id": "MPOX",
@@ -530,9 +531,9 @@
       "cfr": "64% (Éthiopie 2025–2026) ; 24–90% selon souche",
       "incubation": "2–21 jours",
       "transmission_route": "Contact direct avec sang, sécrétions, organes ou fluides de personnes infectées. Réservoir : chauve-souris Rousettus aegyptiacus.",
-      "currentStatus": "sporadic",
+      "currentStatus": "monitoring",
       "outbreakStart": "2025-11 (Éthiopie — premier foyer jamais déclaré)",
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-08-14",
       "iconColor": "#7F1D1D",
       "references": [
         "WHO DON 2026-DON592 — Marburg virus disease, Ethiopia, jan 2026",
@@ -883,7 +884,9 @@
           "cases": 12,
           "note": "Cas autochtones Pyrénées-Atlantiques (Aedes albopictus)"
         }
-      ]
+      ],
+      "protectionLevel": 0,
+      "maskNote": "Pas de transmission respiratoire — protection anti-moustiques (répulsifs, vêtements). Masque non utile."
     },
     {
       "id": "PALUDISME",
@@ -919,7 +922,9 @@
       "descPatientES": "🔴 Si tiene fiebre y viajó a África, Asia o América del Sur en los últimos 2 meses: vaya a urgencias o a su médico HOY — no espere. Infórmeles sobre su viaje. El paludismo puede volverse muy grave en pocas horas. No se contagia entre personas en Francia.",
       "descPatientAR": "🔴 إذا كان لديك حمى وسافرت إلى أفريقيا أو آسيا أو أمريكا الجنوبية خلال الشهرين الماضيين: اذهب إلى الطوارئ أو طبيبك اليوم — لا تنتظر. أخبرهم عن رحلتك. الملاريا قد تصبح خطيرة جداً في ساعات. لا تنتقل بين البشر في فرنسا.",
       "lat": 5.3,
-      "lon": 20.0
+      "lon": 20.0,
+      "protectionLevel": 0,
+      "maskNote": "Pas de transmission respiratoire — prévention vectorielle (répulsifs, moustiquaires, chimioprophylaxie). Masque non utile."
     },
     {
       "id": "RSYNCYTIAL",
@@ -1497,7 +1502,8 @@
         "Asogun DA et al. PLoS Negl Trop Dis 2012 — Molecular diagnostics for lassa fever"
       ],
       "descFR": "Endémique Afrique de l'Ouest. 100 000–300 000 infections/an estimées, 5 000–10 000 décès (OMS). CFR 15–25% formes hospitalisées. TRAITEMENT DISPONIBLE : Ribavirine IV efficace si < 6 jours. Signe distinctif : surdité de perception (25–30% cas). Transmission : rongeur Mastomys → aliments contaminés. Risque importation France : voyageurs retour Sierra Leone, Guinée, Liberia, Nigeria avec fièvre.",
-      "descEN": "Endemic in West Africa. 100,000-300,000 infections/year estimated, 5,000-10,000 deaths (WHO). CFR 15-25% hospitalized forms. TREATMENT AVAILABLE: IV Ribavirin effective if <6 days. Distinctive sign: sensorineural deafness (25-30% cases). Transmission: Mastomys rodent → contaminated food. Import risk to France: travelers returning from Sierra Leone, Guinea, Liberia, Nigeria with fever."
+      "descEN": "Endemic in West Africa. 100,000-300,000 infections/year estimated, 5,000-10,000 deaths (WHO). CFR 15-25% hospitalized forms. TREATMENT AVAILABLE: IV Ribavirin effective if <6 days. Distinctive sign: sensorineural deafness (25-30% cases). Transmission: Mastomys rodent → contaminated food. Import risk to France: travelers returning from Sierra Leone, Guinea, Liberia, Nigeria with fever.",
+      "dataConfidenceNote": "Sources : CDC/Lassa fever — données épidémiques Nigeria actualisées mensuellement."
     },
     {
       "id": "CCHF",
@@ -1649,7 +1655,8 @@
           "cases": 75,
           "note": "Steppe russe — zone classique"
         }
-      ]
+      ],
+      "dataConfidenceNote": "Sources : ECDC CCHF Fact Sheet + OMS DON — données régionales agrégées."
     },
     {
       "id": "RSVA_HMPV",
@@ -1676,9 +1683,9 @@
       "cfr": "< 1% immunocompétents ; > 10% immunodéprimés",
       "incubation": "4–6 jours",
       "transmission_route": "Gouttelettes respiratoires et contact avec surfaces contaminées. Aérosols documentés.",
-      "currentStatus": "active",
+      "currentStatus": "seasonal",
       "outbreakStart": "2024-12 (résurgence Chine)",
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-08-14",
       "iconColor": "#7C3AED",
       "references": [
         "van den Hoogen BG et al. Nat Med 2001 — A newly discovered human pneumovirus",
@@ -1793,7 +1800,7 @@
       "transmission_route": "Fécale-orale — eau/aliments contaminés",
       "currentStatus": "active",
       "outbreakStart": "2023-01",
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-08-14",
       "iconColor": "#0891b2",
       "references": [
         "OMS — Global Cholera Dashboard 2024-2025",
@@ -1880,7 +1887,7 @@
       "transmission_route": "Vecteur (moustique Culicoides paraensis) — aucune transmission inter-humaine",
       "currentStatus": "active",
       "outbreakStart": "2024-01",
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-08-14",
       "iconColor": "#f97316",
       "references": [
         "PAHO OROV Epidemiological Update 2024-2025",
@@ -1975,7 +1982,7 @@
       "transmission_route": "Vectorielle stricte (moustique) — aucun risque interhumain",
       "currentStatus": "active",
       "outbreakStart": "2023-06",
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-08-14",
       "iconColor": "#eab308",
       "references": [
         "OMS — Yellow Fever situation reports 2024-2025",
@@ -2069,7 +2076,7 @@
       "transmission_route": "Transcutanée/muqueuse — contact eau/sol contaminé urine animaux",
       "currentStatus": "active",
       "outbreakStart": "2025-01",
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-08-14",
       "iconColor": "#84cc16",
       "references": [
         "Santé publique France — Surveillance leptospirose La Réunion 2025",

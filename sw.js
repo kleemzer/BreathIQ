@@ -6,20 +6,21 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v9';
+const CACHE_VERSION = 'biq-v10';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
 // Assets statiques : mis en cache à l'installation, servis offline
+// Les URLs versionnées (cache-busting) doivent correspondre à celles dans index.html
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/style.min.css',
-  '/script.min.js',
-  '/api-live.js',
-  '/js/clinical-orientation.min.js',
-  '/js/care-facilities.min.js',
-  '/js/symptom-guide.min.js',
+  '/style.min.css?v=20260814c',
+  '/script.min.js?v=20260814e',
+  '/api-live.js?v=20260624a',
+  '/js/clinical-orientation.min.js?v=20260620',
+  '/js/care-facilities.min.js?v=20260620',
+  '/js/symptom-guide.min.js?v=20260621',
   '/favicon.svg',
   '/manifest.json',
   '/assets/og-image.png',
