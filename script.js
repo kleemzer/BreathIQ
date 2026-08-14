@@ -1534,6 +1534,38 @@ function toggleTheme() {
   localStorage.setItem('biq-theme', darkMode ? 'dark' : 'light');
 }
 
+// ── Taille de texte cyclique (3 niveaux) ─────────────────────
+const _fontSizes = ['1rem', '1.1rem', '1.2rem'];
+let _fontSizeIdx = parseInt(localStorage.getItem('biq-font-size-idx') || '0', 10);
+(function _applyFontSize() {
+  document.documentElement.style.fontSize = _fontSizes[_fontSizeIdx] || '1rem';
+  const btn = document.getElementById('fontSizeBtn');
+  if (btn) btn.textContent = ['A', 'A+', 'A++'][_fontSizeIdx] || 'A';
+})();
+function cycleFontSize() {
+  _fontSizeIdx = (_fontSizeIdx + 1) % _fontSizes.length;
+  localStorage.setItem('biq-font-size-idx', _fontSizeIdx);
+  document.documentElement.style.fontSize = _fontSizes[_fontSizeIdx];
+  const btn = document.getElementById('fontSizeBtn');
+  if (btn) btn.textContent = ['A', 'A+', 'A++'][_fontSizeIdx];
+}
+
+// ── Partager le score du jour ─────────────────────────────────
+async function shareScore() {
+  const score = document.getElementById('gpScoreNum')?.textContent || '—';
+  const level = document.getElementById('gpScoreLevel')?.textContent || '';
+  const loc   = document.getElementById('gpScoreLocText')?.textContent || 'votre région';
+  const text  = `BreathIQ — Score respiratoire aujourd'hui à ${loc} : ${score}/100 (${level}). Qualité de l'air, virus et alertes épidémiques. Gratuit, sans inscription.`;
+  const url   = 'https://breathiq.fr';
+  if (navigator.share) {
+    try { await navigator.share({ title: 'BreathIQ — Est-ce dangereux dehors ?', text, url }); } catch(e) { /* annulé */ }
+  } else {
+    try { await navigator.clipboard.writeText(url + '\n' + text); } catch(e) {}
+    const btn = document.getElementById('gpShareBtn');
+    if (btn) { const orig = btn.innerHTML; btn.textContent = '✅ Lien copié !'; setTimeout(() => { btn.innerHTML = orig; }, 2200); }
+  }
+}
+
 // ── Region selector ──────────────────────────────────────────
 function buildRegionSelector() {
   const sel = document.getElementById('regionSelect');
