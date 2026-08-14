@@ -3360,6 +3360,67 @@ var ESCALATE_SIGNS = {
   en: ['Breathing difficulty at rest', 'Blue lips or fingernails', 'Confusion or loss of consciousness', 'Seizures', 'Purple skin spots (purpura)', 'Unexplained bleeding', 'Very rapid worsening'],
 };
 
+// Construit un résumé lisible de ce que le patient a décrit
+function buildSymptomRecap(state, fr) {
+  const { symptoms = [], alarm = [], ctx = [], onset, fever, age } = state;
+  const labels = {
+    // Symptômes associés
+    fever:'fièvre', fever_high:'fièvre élevée', fever_very_high:'fièvre très élevée',
+    dry_cough:'toux sèche', wet_cough:'toux avec crachats', cough_3w:'toux > 3 semaines',
+    hemoptysis:'crachats sanglants', dyspnea:'essoufflement', breathlessness:'essoufflement',
+    myalgias:'douleurs musculaires', arthralgia:'douleurs articulaires',
+    headache:'maux de tête', photophobia:'sensibilité à la lumière',
+    neck_stiffness:'raideur de la nuque', shivering:'frissons', sweating:'sueurs abondantes',
+    night_sweats:'sueurs nocturnes', fatigue_severe:'fatigue intense', fatigue_chronic:'fatigue prolongée',
+    vomiting:'vomissements', diarrhea:'diarrhée', diarrhea_profuse:'diarrhée profuse',
+    abdominal_pain:'douleurs abdominales', dehydration:'déshydratation',
+    rash:'éruption cutanée', rash_pustular:'boutons avec pus', rash_maculopapular:'taches rouges',
+    purpura:'purpura (taches violettes)', jaundice:'jaunisse', bleeding:'saignements',
+    confusion:'confusion', rapid_deterioration:'aggravation rapide',
+    smell_loss:'perte d\'odorat', taste_loss:'perte de goût', hearing_loss:'perte auditive',
+    weight_loss:'amaigrissement', retrobulbar_pain:'douleur derrière les yeux',
+    conjunctivitis:'yeux rouges', lymph_nodes:'ganglions gonflés',
+    chest_pain:'douleur poitrine', wheezing:'sifflements', tachypnea:'respiration rapide',
+    hematuria:'sang dans les urines', rose_spots:'taches rosées ventre',
+    relative_bradycardia:'pouls lent malgré fièvre', splenomegaly:'ventre gonflé (rate)',
+    hepatomegaly:'ventre gonflé (foie)', koplik_spots:'taches blanches bouche',
+    rhinorrhea:'nez qui coule', sore_throat:'maux de gorge',
+    // Contextes
+    travel_tropical:'voyage tropical récent', travel_africa:'voyage Afrique',
+    travel_africa_high_risk:'voyage zone Ebola', travel_balkans:'voyage Balkans',
+    travel_asia:'voyage Asie/Moyen-Orient',
+    contaminated_water:'eau non traitée', freshwater_exposure:'baignade eau douce',
+    contact_case:'contact avec cas similaire', unvaccinated:'non vacciné',
+    poultry_contact:'contact volailles', tick_bite:'morsure de tique',
+    water_exposure:'séjour hôtel/croisière/thermes', immunocompromised:'immunodéprimé',
+    pregnant:'grossesse', exposure_msm:'contact lésions cutanées',
+    rapid_deterioration:'aggravation rapide', hypotension:'tension basse', tachycardia:'cœur rapide',
+    mv_hondius:'bord MV Hondius',
+    // Alarmes
+    dyspnea_rest:'difficultés à respirer au repos', purpura:'purpura',
+    seizures:'convulsions', cyanosis:'lèvres bleutées', infant_fever_alarm:'nourrisson < 3 mois avec fièvre',
+    neck_stiffness_alarm:'nuque raide + céphalées',
+    // Signes vitaux
+    spo2_critical:'SpO2 < 94%', spo2_low:'SpO2 94-95%', hr_very_high:'FC > 130 bpm', hr_high:'FC 100-130 bpm',
+  };
+  const parts = [];
+  const all = [...new Set([...symptoms, ...alarm, ...ctx])];
+  for (const s of all) if (labels[s]) parts.push(labels[s]);
+
+  const onsetLabels = { sudden:'début < 24h', days_1_3:'depuis 1–3 jours', days_4_7:'depuis 4–7 jours', weeks:'depuis > 3 semaines' };
+  const feverLabels = { fever_low:'fièvre légère (37,5–38,5°C)', fever_high:'fièvre élevée (38,5–39,5°C)', fever_very_high:'fièvre très élevée (≥ 39,5°C)' };
+  const ageLabels   = { infant:'nourrisson < 2 ans', child:'enfant 2–15 ans', senior:'senior ≥ 65 ans' };
+  if (onsetLabels[onset]) parts.unshift(onsetLabels[onset]);
+  if (feverLabels[fever]) parts.unshift(feverLabels[fever]);
+  if (ageLabels[age]) parts.push(ageLabels[age]);
+
+  if (!parts.length) return '';
+  const list = parts.slice(0, 8).join(', ') + (parts.length > 8 ? `… (+${parts.length - 8})` : '');
+  return fr
+    ? `<div class="diag-symptom-recap"><span class="diag-recap-label">🔎 Vous avez décrit :</span> ${escapeHTML(list)}</div>`
+    : `<div class="diag-symptom-recap"><span class="diag-recap-label">🔎 You described:</span> ${escapeHTML(list)}</div>`;
+}
+
 function renderDiagnosticResult(result, state) {
   const { ranked, orientLevel, alarmReason, clinical } = result;
   const lang = currentLang;
@@ -3480,14 +3541,33 @@ function renderDiagnosticResult(result, state) {
       ${topPathogen.mandatoryReport ? `<div class="diag-report-banner">${fr ? '📋 Maladie à déclaration obligatoire — le médecin doit signaler à l\'ARS' : '📋 Mandatory reporting disease — doctor must notify health authorities'}</div>` : ''}
     </div>` : '';
 
+  // ── Récapitulatif symptômes ─────────────────────────────────
+  const recapBlock = buildSymptomRecap(state, fr);
+
+  // ── Délai de consultation explicite ────────────────────────
+  const orientObj = orientLevel ? BIQ_DIAG.ORIENTATION[orientLevel] : null;
+  const delayText = clinical
+    ? (clinical.level === 'emergency'           ? (fr ? 'Appelez le 15 maintenant — n\'attendez pas' : 'Call 15 now — do not wait')
+    : clinical.level === 'medical_regulation'   ? (fr ? 'Régulation médicale avant déplacement (15)' : 'Call 15 before going anywhere')
+    : clinical.level === 'same_day_doctor'      ? (fr ? 'Consultez un médecin aujourd\'hui' : 'See a doctor today')
+    : clinical.level === 'pharmacy'             ? (fr ? 'Pharmacien ou médecin si ça empire' : 'Pharmacist or doctor if it worsens')
+    :                                             (fr ? 'Surveillance à domicile' : 'Self-monitoring at home'))
+    : orientObj ? (fr ? orientObj.delayFR : orientObj.delayEN) : '';
+  const delayBlock = delayText
+    ? `<div class="diag-delay-badge">⏱ ${escapeHTML(delayText)}</div>`
+    : '';
+
   // ── Assemblage final ────────────────────────────────────────
   const html = `
   <div class="diag-result-card" style="--orient-color:${visual.color};--orient-bg:${visual.bg};--orient-border:${visual.border}">
+
+    ${recapBlock}
 
     <div class="diag-orient-header">
       <span class="diag-orient-icon">${visual.icon}</span>
       <div class="diag-orient-text">
         <div class="diag-orient-label">${escapeHTML(orientationLabel)}</div>
+        ${delayBlock}
         ${patientMessage ? `<div class="diag-patient-message">${escapeHTML(patientMessage)}</div>` : ''}
         ${alarmBlock}
       </div>

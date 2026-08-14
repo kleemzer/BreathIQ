@@ -396,13 +396,12 @@
       prior: 0.5,
       weights: {
         travel_africa:35, travel_tropical:30,
-        freshwater_exposure:45,       // baignade eau douce = critère essentiel
-        hematuria:40,                 // sang dans les urines = bilharziose urinaire
+        freshwater_exposure:45,
+        hematuria:40,
         abdominal_pain:20, diarrhea:18,
         hepatomegaly:25, splenomegaly:20,
         fever_low:15, urticaria:20,
         duration_weeks:25,
-        // négatifs
         neck_stiffness:-20, rash_pustular:-20,
         bleeding:-10, hearing_loss:-25,
       },
@@ -414,15 +413,99 @@
       conduiteEN:'Doctor within 48h — simple effective treatment',
       paysEndemiques:['TZ','UG','KE','MZ','ZW','ZM','MW','GH','SN','CI'],
     },
+
+    OROPOUCHE: {
+      nameFR: 'Oropouche (arbovirus émergent)', nameEN: 'Oropouche Virus Disease', icon: '🦟',
+      prior: 0.3,
+      weights: {
+        travel_tropical:40,           // Brésil, Pérou, Bolivie, Caraïbes — épidémie 2024-2025
+        fever_high:22, fever_very_high:18,
+        headache:20,                  // céphalées intenses frontales
+        retrobulbar_pain:22,          // douleur derrière les yeux = évocateur
+        myalgias:18, arthralgia:20,
+        rash_maculopapular:15,        // éruption chez 30-40% des cas
+        vomiting:12, diarrhea:10,
+        photophobia:15,
+        onset_sudden:15,
+        smell_loss:-15, cough_3w:-20, rash_pustular:-20,
+        neck_stiffness:-15,
+        // transmission vectorielle (Culicoides) — pas de respiratoire
+      },
+      alarmSigns:['confusion'],       // méningo-encéphalite décrite 2024 NEJM
+      emergencyLevel:'ORANGE',
+      protection:'Répulsifs anti-moustiques + vêtements couvrants (Culicoides)', mandatoryReport:true,
+      isolationFR:'Non contagieux inter-humain (vectoriel) — éviter moustiques/moucherons piqueurs — ⚠️ transmission verticale documentée (stillbirths, microcéphalie) NEJM Brasil 2024',
+      criterionFR:'Fièvre brutale + céphalées + arthralgies + retour Brésil/Pérou/Caraïbes = Oropouche — ⚠️ épidémie massive 2024-2025 en Amérique du Sud (>320 000 cas)',
+      conduiteFR:'Médecin aujourd\'hui si retour Amérique du Sud — signaler le voyage — test sérologique/PCR OROV disponible',
+      conduiteEN:'Doctor today if returning from South America — mention travel — OROV serology/PCR available',
+      paysEndemiques:['BR','PE','BO','EC','CO','PA','TT','CU'],
+    },
+
+    LEPTOSPIROSIS: {
+      nameFR: 'Leptospirose (Leptospira)', nameEN: 'Leptospirosis', icon: '🐀',
+      prior: 0.8,
+      weights: {
+        fever_high:25, fever_very_high:22,
+        myalgias:30,                  // douleurs mollets intenses = critère très évocateur
+        headache:18,
+        jaundice:35,                  // ictère = maladie de Weil (forme sévère)
+        conjunctivitis:22,            // injection conjonctivale (yeux rouges sans pus)
+        hematuria:20,                 // atteinte rénale
+        abdominal_pain:15, vomiting:12,
+        freshwater_exposure:35,       // bains en eau douce, boue, inondations
+        travel_tropical:25, travel_africa:20,
+        animal_contact:30,            // rats, chiens, bovins, porcs
+        shivering:15, onset_sudden:18,
+        // négatifs
+        smell_loss:-20, cough_3w:-20, rash_pustular:-20,
+        neck_stiffness:-15, bleeding:-5,
+      },
+      alarmSigns:['jaundice','hematuria'],  // maladie de Weil
+      emergencyLevel:'ORANGE',
+      protection:'Éviter eaux douces contaminées — EPI si travail à risque', mandatoryReport:true,
+      isolationFR:'Non contagieux inter-humain — Amoxicilline 500mg x3/j 7j (formes légères) ou Pénicilline G IV (maladie de Weil) — hémodialyse si IRA',
+      criterionFR:'Fièvre + douleurs mollets intenses + conjonctivite + contact eau douce/animaux = Leptospirose — sérologie MAT J5-J10',
+      conduiteFR:'Médecin aujourd\'hui (si fièvre + mollets + contexte eau douce) — Urgences si ictère ou oligurie',
+      conduiteEN:'Doctor today (fever + calf pain + freshwater context) — Emergency if jaundice or reduced urine output',
+      paysEndemiques:['BR','IN','TH','ID','PH','PE','SR','RE','NC','PF'],
+    },
+
+    YELLOW_FEVER: {
+      nameFR: 'Fièvre jaune (Flavivirus)', nameEN: 'Yellow Fever', icon: '🟡',
+      prior: 0.2,
+      weights: {
+        travel_tropical:45,           // Afrique sub-saharienne + Amérique du Sud tropicale
+        travel_africa:40,
+        fever_high:22, fever_very_high:20,
+        jaundice:45,                  // ictère = forme sévère ≤ 15% des cas
+        bleeding:35,                  // hémorragies = forme toxique (CFR 50%)
+        vomiting:20, abdominal_pain:18,
+        relative_bradycardia:30,      // signe de Faget : bradycardie malgré fièvre élevée
+        headache:15, myalgias:12,
+        unvaccinated:40,              // vaccin YF ≥ 99% efficace → non-vacciné = facteur majeur
+        onset_sudden:20,
+        // négatifs
+        smell_loss:-20, cough_3w:-25, rash_pustular:-20,
+        neck_stiffness:-20, hearing_loss:-25,
+      },
+      alarmSigns:['jaundice','bleeding'],
+      emergencyLevel:'ROUGE',
+      protection:'Vaccin antiamaril (obligatoire zones endémiques) + anti-moustiques (Aedes)', mandatoryReport:true,
+      isolationFR:'NON contagieux inter-humain — URGENCE si ictère : mortalité 50% forme toxique — Réhydratation + soins intensifs — AUCUN antiviral spécifique — VACCIN = seule prévention efficace',
+      criterionFR:'Fièvre + ictère + hémorragies + retour Afrique/Amérique du Sud + non-vacciné = fièvre jaune probable — bilan hépatique + sérologie YF en urgence',
+      conduiteFR:'Urgences immédiatement si ictère ou saignements — signaler voyage et statut vaccinal',
+      conduiteEN:'Emergency immediately if jaundice or bleeding — mention travel and vaccination status',
+      paysEndemiques:['NG','CD','CM','CI','GH','SN','ET','UG','SD','BO','BR','CO','PE','VE','EC'],
+    },
   };
 
   // ── Niveaux d'orientation ──────────────────────────────────
   const ORIENTATION = {
-    VERT:   { label:'Surveillance à domicile',      icon:'🟢', phone:'',        color:'#16a34a', bg:'#f0fdf4', border:'#86efac' },
-    BLEU:   { label:'Médecin traitant sous 48h',    icon:'🔵', phone:'',        color:'#2563eb', bg:'#eff6ff', border:'#93c5fd' },
-    JAUNE:  { label:'Médecin de garde aujourd\'hui', icon:'🟡', phone:'116 117', color:'#d97706', bg:'#fffbeb', border:'#fcd34d' },
-    ORANGE: { label:'Urgences médicales',            icon:'🟠', phone:'15',      color:'#ea580c', bg:'#fff7ed', border:'#fdba74' },
-    ROUGE:  { label:'SAMU — Urgence vitale',         icon:'🔴', phone:'15',      color:'#dc2626', bg:'#fef2f2', border:'#fca5a5' },
+    VERT:   { label:'Surveillance à domicile',       icon:'🟢', phone:'',        color:'#16a34a', bg:'#f0fdf4', border:'#86efac', delayFR:'Pas de consultation urgente nécessaire',       delayEN:'No urgent consultation needed' },
+    BLEU:   { label:'Médecin traitant sous 48h',     icon:'🔵', phone:'',        color:'#2563eb', bg:'#eff6ff', border:'#93c5fd', delayFR:'Consultez dans les 48 heures',                 delayEN:'Consult within 48 hours' },
+    JAUNE:  { label:'Médecin de garde aujourd\'hui', icon:'🟡', phone:'116 117', color:'#d97706', bg:'#fffbeb', border:'#fcd34d', delayFR:'Consultez dans la journée (médecin ou 116 117)',delayEN:'Consult today (doctor or 116 117)' },
+    ORANGE: { label:'Urgences médicales',             icon:'🟠', phone:'15',      color:'#ea580c', bg:'#fff7ed', border:'#fdba74', delayFR:'Rendez-vous aux urgences dans les 2 heures',   delayEN:'Go to emergency within 2 hours' },
+    ROUGE:  { label:'SAMU — Urgence vitale',          icon:'🔴', phone:'15',      color:'#dc2626', bg:'#fef2f2', border:'#fca5a5', delayFR:'Appelez le 15 maintenant — n\'attendez pas',   delayEN:'Call 15 now — do not wait' },
   };
 
   // ── Règles d'alarme (ordre : plus sévère en premier) ──────
@@ -515,6 +598,20 @@
         if (flags.has(flag)) score += weight;
       }
       scores[pid] = Math.max(0, score);
+    }
+
+    // Multiplicateurs de risque — groupes vulnérables (evidence-based)
+    // Immunodéprimé + fièvre → risque infection grave ×1.5 (IDSA guidelines 2024)
+    // Grossesse + fièvre → risque complications materno-fœtales ×1.5 (OMS)
+    // Senior + fièvre → présentation atypique, mortalité accrue ×1.3 (SFMU)
+    if (flags.has('immunocompromised') && (flags.has('fever_high') || flags.has('fever_very_high'))) {
+      for (const pid of Object.keys(scores)) scores[pid] = Math.round(scores[pid] * 1.5);
+    }
+    if (flags.has('pregnant') && (flags.has('fever_high') || flags.has('fever_very_high'))) {
+      for (const pid of Object.keys(scores)) scores[pid] = Math.round(scores[pid] * 1.5);
+    }
+    if (flags.has('age_senior') && (flags.has('fever_high') || flags.has('fever_very_high'))) {
+      for (const pid of Object.keys(scores)) scores[pid] = Math.round(scores[pid] * 1.3);
     }
 
     const total  = Object.values(scores).reduce((s,v) => s + v, 0) || 1;
