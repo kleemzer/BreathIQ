@@ -47,7 +47,51 @@
       "descFR": "⚠️ H5N1 HUMAIN : aucune transmission interhumaine soutenue à ce jour. Risque population générale : QUASI NUL. Les cas humains surviennent uniquement après contact direct prolongé avec volailles malades ou leurs déjections. CFR 52% calculé sur cas hospitalisés sévères (biais massif d'ascertainment — OMS reconnaît que le CFR réel, en comptant tous les cas, est probablement 1–5%). Surveillance continue : 16 pays concernés 2024–2026, foyers aviaires actifs Europe/Amérique du Nord. Pas de risque en milieu urbain sans contact animaux. · NOUVEAU 2024-2026 : variant H5N1 B3.13 détecté dans troupeaux bovins USA (> 60 cas humains confirmés CDC 2024-2025 — travailleurs agricoles laitiers). Réplication dans cellules mammaires bovines = nouveauté épidémiologique. Toujours aucune transmission interhumaine soutenue.",
       "descEN": "⚠️ H5N1 HUMAN: no sustained human-to-human transmission to date. Risk for general public: NEAR ZERO. Human cases occur only after direct prolonged contact with sick poultry or their droppings. CFR 52% calculated from severe hospitalized cases (massive ascertainment bias — WHO acknowledges true CFR including all cases is likely 1-5%). No risk in urban settings without animal contact.",
       "descPatientFR": "🟢 Grippe aviaire H5N1 : votre risque est quasi nul si vous vivez en ville et n'avez pas de contact avec des volailles. Cette maladie touche presque exclusivement des personnes en contact direct avec des poulets, dindes ou canards malades (éleveurs, marchés d'animaux vivants). Elle ne se transmet pas entre personnes. Si vous avez eu un contact avec des volailles malades + fièvre : consultez un médecin et signalez-le.",
-      "descPatientEN": "🟢 H5N1 bird flu: your risk is near zero if you live in a city and have no contact with poultry. This disease affects almost exclusively people in direct contact with sick chickens, turkeys or ducks (farmers, live animal markets). It does not spread between people. If you had contact with sick poultry + fever: see a doctor and report it."
+      "descPatientEN": "🟢 H5N1 bird flu: your risk is near zero if you live in a city and have no contact with poultry. This disease affects almost exclusively people in direct contact with sick chickens, turkeys or ducks (farmers, live animal markets). It does not spread between people. If you had contact with sick poultry + fever: see a doctor and report it.",
+      "foci": [
+        {
+          "lat": 37.0,
+          "lon": -96.0,
+          "country": "USA",
+          "cases": 67,
+          "note": "Travailleurs laitiers, variant B3.13"
+        },
+        {
+          "lat": 21.0,
+          "lon": 105.8,
+          "country": "Vietnam",
+          "cases": 5,
+          "note": "Volailles, Delta du Mékong"
+        },
+        {
+          "lat": 23.6,
+          "lon": 120.0,
+          "country": "Taïwan",
+          "cases": 1,
+          "note": "Cas sporadique volailles"
+        },
+        {
+          "lat": 30.1,
+          "lon": 31.2,
+          "country": "Égypte",
+          "cases": 4,
+          "note": "Contact volailles marché vivant"
+        },
+        {
+          "lat": 11.6,
+          "lon": 104.9,
+          "country": "Cambodge",
+          "cases": 6,
+          "note": "Zones rurales"
+        },
+        {
+          "lat": 35.9,
+          "lon": 104.2,
+          "country": "Chine",
+          "cases": 3,
+          "note": "Foyers aviaires Anhui/Fujian"
+        }
+      ]
     },
     {
       "id": "SARS2",
@@ -224,7 +268,23 @@
       "descPatientFR": "🟠 L'Hantavirus est rare mais grave. Il se transmet en respirant des poussières contenant les déjections de rongeurs infectés (souris, rats) — pas de personne à personne (sauf la souche des Andes). Risque si vous avez été en contact avec des rongeurs, des granges, ou des endroits poussiéreux en Amérique du Sud ou si vous étiez sur le paquebot MV Hondius en mai 2026. La maladie commence comme une grippe (J0–J5) puis peut devenir grave rapidement (difficultés à respirer).",
       "descPatientEN": "🟠 Hantavirus is rare but serious. It spreads by breathing dust containing infected rodent droppings (mice, rats) — not person to person (except Andes strain). Risk if you had contact with rodents, barns, or dusty places in South America or if you were on cruise ship MV Hondius in May 2026. Disease starts like flu (day 0-5) then can worsen rapidly (breathing difficulty).",
       "descPatientES": "🟠 El Hantavirus es raro pero grave. Se transmite respirando polvo con excrementos de roedores infectados. Riesgo si estuvo en contacto con roedores en América del Sur o si viajó en el crucero MV Hondius en mayo 2026. La enfermedad empieza como gripe (días 0-5) y puede empeorar rápidamente.",
-      "descPatientAR": "🟠 فيروس هانتا نادر لكن خطير. ينتقل عبر استنشاق غبار يحتوي على فضلات قوارض مصابة. الخطر إذا كنت في أمريكا الجنوبية أو على سفينة MV Hondius في مايو 2026. يبدأ كالإنفلونزا ثم قد يتدهور بسرعة."
+      "descPatientAR": "🟠 فيروس هانتا نادر لكن خطير. ينتقل عبر استنشاق غبار يحتوي على فضلات قوارض مصابة. الخطر إذا كنت في أمريكا الجنوبية أو على سفينة MV Hondius في مايو 2026. يبدأ كالإنفلونزا ثم قد يتدهور بسرعة.",
+      "foci": [
+        {
+          "lat": -54.8,
+          "lon": -68.3,
+          "country": "Patagonie",
+          "cases": 7,
+          "note": "Cluster MV Hondius mai 2026"
+        },
+        {
+          "lat": -32.9,
+          "lon": -60.7,
+          "country": "Argentine",
+          "cases": 45,
+          "note": "Endémique — zone rurale Pampa"
+        }
+      ]
     },
     {
       "id": "MPOX",
@@ -277,7 +337,65 @@
       "descPatientEN": "🟠 Mpox causes fever and skin blisters/vesicles. It spreads through direct skin contact with lesions of a sick person — not through the air in most cases. The new strain (clade Ib) can spread within a family through prolonged contact. If you have suspicious rash + fever: see a doctor, do not scratch lesions, cover them. Preventive vaccination is available.",
       "r0": "Clade Ib : 1,8–2,2 (NEJM 2024, cluster Kibungo) vs Clade IIb 2022 : 1,1–1,3 · C'est pourquoi le clade Ib justifie une PHEIC OMS et pas le clade IIb",
       "descPatientES": "🟠 El Mpox causa fiebre y ampollas/vesículas en la piel. Se transmite por contacto directo con las lesiones de una persona enferma. Si tiene sarpullido sospechoso + fiebre: consulte un médico, no se rasque las lesiones y cúbralas. Hay vacuna preventiva disponible.",
-      "descPatientAR": "🟠 جدري القردة يسبب حمى وبثوراً جلدية. ينتقل عن طريق الاتصال المباشر بجروح شخص مريض. إذا كان لديك طفح جلدي مشبوه + حمى: زر الطبيب، لا تحك الجروح وغطّها. يوجد تطعيم وقائي."
+      "descPatientAR": "🟠 جدري القردة يسبب حمى وبثوراً جلدية. ينتقل عن طريق الاتصال المباشر بجروح شخص مريض. إذا كان لديك طفح جلدي مشبوه + حمى: زر الطبيب، لا تحك الجروح وغطّها. يوجد تطعيم وقائي.",
+      "foci": [
+        {
+          "lat": -1.7,
+          "lon": 29.2,
+          "country": "RDC",
+          "cases": 52000,
+          "note": "Clade Ib — épicentre Kivu"
+        },
+        {
+          "lat": -2.5,
+          "lon": 28.8,
+          "country": "Burundi",
+          "cases": 3800,
+          "note": "Clade Ib transfrontalier"
+        },
+        {
+          "lat": -1.9,
+          "lon": 30.1,
+          "country": "Rwanda",
+          "cases": 1200,
+          "note": "Clade Ib importé"
+        },
+        {
+          "lat": 0.35,
+          "lon": 32.6,
+          "country": "Ouganda",
+          "cases": 980,
+          "note": "Clade Ib frontière RDC"
+        },
+        {
+          "lat": -6.3,
+          "lon": 34.9,
+          "country": "Tanzanie",
+          "cases": 280,
+          "note": "Clade Ib 2025"
+        },
+        {
+          "lat": 52.5,
+          "lon": 13.4,
+          "country": "Allemagne",
+          "cases": 45,
+          "note": "Clade IIb importé MSM"
+        },
+        {
+          "lat": 48.9,
+          "lon": 2.3,
+          "country": "France",
+          "cases": 38,
+          "note": "Clade IIb — vaccination recommandée"
+        },
+        {
+          "lat": 40.4,
+          "lon": -3.7,
+          "country": "Espagne",
+          "cases": 29,
+          "note": "Clade IIb"
+        }
+      ]
     },
     {
       "id": "MERS",
@@ -397,7 +515,51 @@
         "Griffin DE. Measles virus-induced suppression of immune responses. Immunol Rev 2010"
       ],
       "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. CONTAGIEUX 4 JOURS AVANT LES BOUTONS : pendant la phase de fièvre+toux+yeux rouges, le patient est déjà très contagieux — même sans éruption visible. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
-      "descEN": "Global resurgence 2022-2024: 306,000 cases reported (WHO 2024). R0 12-18. Long-range airborne transmission (2h in confined air). Post-measles immune suppression 2-3 years. FFP2 recommended for non-immune individuals in epidemic areas."
+      "descEN": "Global resurgence 2022-2024: 306,000 cases reported (WHO 2024). R0 12-18. Long-range airborne transmission (2h in confined air). Post-measles immune suppression 2-3 years. FFP2 recommended for non-immune individuals in epidemic areas.",
+      "foci": [
+        {
+          "lat": 55.7,
+          "lon": 37.6,
+          "country": "Russie",
+          "cases": 8900,
+          "note": "Couverture vaccinale insuffisante"
+        },
+        {
+          "lat": -4.3,
+          "lon": 15.3,
+          "country": "RDC",
+          "cases": 310000,
+          "note": "Endémique + flambée 2025"
+        },
+        {
+          "lat": 13.5,
+          "lon": 2.1,
+          "country": "Niger",
+          "cases": 18000,
+          "note": "Sous-vaccination zones rurales"
+        },
+        {
+          "lat": 33.9,
+          "lon": 9.6,
+          "country": "Tunisie",
+          "cases": 4200,
+          "note": "Flambée 2025 — lacune vaccinale"
+        },
+        {
+          "lat": 15.6,
+          "lon": 32.5,
+          "country": "Soudan",
+          "cases": 25000,
+          "note": "Conflit → accès vaccins interrompu"
+        },
+        {
+          "lat": 25.2,
+          "lon": 55.3,
+          "country": "ÉAU",
+          "cases": 620,
+          "note": "Importés + transmission locale"
+        }
+      ]
     },
     {
       "id": "LEGIONELLA",
@@ -515,7 +677,79 @@
       "descPatientES": "🟡 El dengue lo transmiten los mosquitos — no entre personas. Si viajó a países cálidos (Caribe, Asia, Reunión, América del Sur) y tiene fiebre + dolor en los ojos + dolores musculares intensos: consulte un médico e infórmele sobre su viaje. NO tome ibuprofeno ni aspirina — solo paracetamol.",
       "descPatientAR": "🟡 حمى الضنك تنتقل عبر البعوض — وليس بين البشر. إذا سافرت إلى بلدان دافئة (الكاريبي، آسيا، أمريكا الجنوبية) ولديك حمى + ألم في العينين + آلام عضلية شديدة: زر الطبيب وأخبره عن رحلتك. لا تأخذ إيبوبروفين أو أسبرين — باراسيتامول فقط.",
       "lat": 10.8,
-      "lon": 106.6
+      "lon": 106.6,
+      "foci": [
+        {
+          "lat": -15.8,
+          "lon": -47.9,
+          "country": "Brésil",
+          "cases": 3800000,
+          "note": "Pire épidémie historique 2024-2025"
+        },
+        {
+          "lat": 4.9,
+          "lon": 114.9,
+          "country": "Malaisie",
+          "cases": 135000,
+          "note": "Endémique + flambée 2025"
+        },
+        {
+          "lat": 14.6,
+          "lon": 121.0,
+          "country": "Philippines",
+          "cases": 95000,
+          "note": "Saison haute"
+        },
+        {
+          "lat": 10.8,
+          "lon": 106.6,
+          "country": "Vietnam",
+          "cases": 68000,
+          "note": "DENV-2 dominant"
+        },
+        {
+          "lat": 13.8,
+          "lon": 100.5,
+          "country": "Thaïlande",
+          "cases": 52000,
+          "note": "Saison sèche prolongée"
+        },
+        {
+          "lat": 17.4,
+          "lon": 78.5,
+          "country": "Inde",
+          "cases": 290000,
+          "note": "Saisons décalées"
+        },
+        {
+          "lat": -12.0,
+          "lon": -77.0,
+          "country": "Pérou",
+          "cases": 42000,
+          "note": "Flambée côtière"
+        },
+        {
+          "lat": 4.0,
+          "lon": 9.7,
+          "country": "Cameroun",
+          "cases": 15000,
+          "note": "Progression Afrique centrale"
+        },
+        {
+          "lat": 18.5,
+          "lon": -69.9,
+          "country": "RépubliqueDominicaine",
+          "cases": 22000,
+          "note": "Caraïbes 2025"
+        },
+        {
+          "lat": 43.3,
+          "lon": -1.9,
+          "country": "France",
+          "cases": 12,
+          "note": "Cas autochtones Pyrénées-Atlantiques (Aedes albopictus)"
+        }
+      ]
     },
     {
       "id": "PALUDISME",
@@ -626,7 +860,51 @@
         "Cherry JD. N Engl J Med 2012 — Epidemic Pertussis in 2012"
       ],
       "descFR": "📈 HAUSSE 2026 : SPF confirme augmentation cas coqueluche France 2025–2026. ECDC 2024 : niveaux record Europe depuis 20 ans. Pic chez nourrissons < 6 mois non encore vaccinés (mortalité élevée). Adultes : réservoir principal (vaccin a-cellulaire immunité déclinante après 5–10 ans). Stratégie cocooning : vaccination entourage + cocooning maternité. Phase catarrhale (J0–J14) = phase contagieuse maximale mais toux encore banale → diagnostic difficile.",
-      "descEN": "Record 2024 resurgence in Europe (ECDC: highest levels in decades). R0 12-17. CFR 1-2% in infants. FFP2 recommended for unprotected close contact with confirmed case, especially around infants."
+      "descEN": "Record 2024 resurgence in Europe (ECDC: highest levels in decades). R0 12-17. CFR 1-2% in infants. FFP2 recommended for unprotected close contact with confirmed case, especially around infants.",
+      "foci": [
+        {
+          "lat": 39.9,
+          "lon": 116.4,
+          "country": "Chine",
+          "cases": 320000,
+          "note": "Plus grande flambée mondiale 2024-2025"
+        },
+        {
+          "lat": 51.5,
+          "lon": -0.1,
+          "country": "Royaume-Uni",
+          "cases": 15000,
+          "note": "Flambée 2024 — meilleure depuis 50 ans"
+        },
+        {
+          "lat": 48.9,
+          "lon": 2.4,
+          "country": "France",
+          "cases": 9000,
+          "note": "Flambée 2024-2025 (SPF)"
+        },
+        {
+          "lat": 40.4,
+          "lon": -3.7,
+          "country": "Espagne",
+          "cases": 8200,
+          "note": "Flambée simultanée"
+        },
+        {
+          "lat": 52.5,
+          "lon": 13.4,
+          "country": "Allemagne",
+          "cases": 12000,
+          "note": "ECDC alerte 2024"
+        },
+        {
+          "lat": 37.1,
+          "lon": -95.7,
+          "country": "USA",
+          "cases": 18500,
+          "note": "Cycle épidémique 3-5 ans"
+        }
+      ]
     },
     {
       "id": "COVID19VAR",
@@ -975,7 +1253,16 @@
       "descPatientFR": "🟥 Ebola est une maladie très grave mais qui ne se transmet PAS dans l'air. On l'attrape uniquement en touchant le sang ou les liquides corporels d'une personne malade. Si vous n'avez pas voyagé en Afrique centrale/Est récemment et n'avez pas eu de contact avec un malade, votre risque est extrêmement faible — même avec l'alerte en France. Si vous avez de la fièvre ET avez voyagé dans ces pays dans les 21 derniers jours : appelez le 15 avant d'aller aux urgences.",
       "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room.",
       "descPatientES": "🟥 El Ébola es muy grave pero NO se transmite por el aire. Solo se contagia por contacto con sangre o fluidos de una persona enferma. Si no viajó a África central/oriental recientemente, su riesgo es extremadamente bajo. Si tiene fiebre Y viajó a esos países en los últimos 21 días: llame al 15 antes de ir a urgencias.",
-      "descPatientAR": "🟥 إيبولا مرض خطير جداً لكنه لا ينتقل عبر الهواء. لا يمكن الإصابة به إلا بلمس دم أو سوائل جسم شخص مريض. إذا لم تسافر مؤخراً إلى وسط أو شرق أفريقيا، فخطرك منخفض للغاية. إذا كان لديك حمى وسافرت إلى تلك المناطق خلال 21 يوماً: اتصل بـ 15 قبل الذهاب إلى المستشفى."
+      "descPatientAR": "🟥 إيبولا مرض خطير جداً لكنه لا ينتقل عبر الهواء. لا يمكن الإصابة به إلا بلمس دم أو سوائل جسم شخص مريض. إذا لم تسافر مؤخراً إلى وسط أو شرق أفريقيا، فخطرك منخفض للغاية. إذا كان لديك حمى وسافرت إلى تلك المناطق خلال 21 يوماً: اتصل بـ 15 قبل الذهاب إلى المستشفى.",
+      "foci": [
+        {
+          "lat": 1.65,
+          "lon": 29.3,
+          "country": "Ouganda/RDC",
+          "cases": 1,
+          "note": "Cas isolé — PHEIC actif OMS"
+        }
+      ]
     },
     {
       "id": "LASSA",
@@ -1191,7 +1478,44 @@
         "Anses 2015-2022 — Présence de tiques Hyalomma marginatum en France méridionale (Occitanie, PACA)"
       ],
       "descFR": "Endémique Asie centrale, Moyen-Orient, Afrique subsaharienne. Extension vers l'Europe du Sud (Espagne 2022 — premier cas Europe Occidentale). CFR 10–40%. Transmission : tique Hyalomma (zones rurales), abattoirs, nosocomial. Risque France : régions PACA/Corse (tiques Hyalomma présentes), voyageurs retour Balkans/Turquie/Espagne rurale. Traitement : ribavirine IV (OMS, hors AMM). · FRANCE : tiques Hyalomma marginatum établies en France du Sud (Occitanie, PACA) depuis 2015 (Anses). Plusieurs cas suspects investigués en France. Risque faible mais réel pour travailleurs agricoles, chasseurs et randonneurs dans ces régions.",
-      "descEN": "Endemic in Central Asia, Middle East, sub-Saharan Africa. Extension to Southern Europe (Spain 2022 — first Western Europe case). CFR 10-40%. Transmission: Hyalomma tick (rural areas), slaughterhouses, nosocomial. France risk: PACA/Corsica regions (Hyalomma ticks present), travelers returning from Balkans/Turkey/rural Spain. Treatment: IV ribavirin (WHO, off-label)."
+      "descEN": "Endemic in Central Asia, Middle East, sub-Saharan Africa. Extension to Southern Europe (Spain 2022 — first Western Europe case). CFR 10-40%. Transmission: Hyalomma tick (rural areas), slaughterhouses, nosocomial. France risk: PACA/Corsica regions (Hyalomma ticks present), travelers returning from Balkans/Turkey/rural Spain. Treatment: IV ribavirin (WHO, off-label).",
+      "foci": [
+        {
+          "lat": 41.0,
+          "lon": 29.0,
+          "country": "Turquie",
+          "cases": 380,
+          "note": "Zone endémique — tiques Hyalomma"
+        },
+        {
+          "lat": 34.5,
+          "lon": 69.2,
+          "country": "Afghanistan",
+          "cases": 210,
+          "note": "Pasteurs/éleveurs"
+        },
+        {
+          "lat": 31.5,
+          "lon": 34.8,
+          "country": "Israël",
+          "cases": 18,
+          "note": "Nouveau foyer 2024"
+        },
+        {
+          "lat": 40.4,
+          "lon": -3.7,
+          "country": "Espagne",
+          "cases": 9,
+          "note": "Tiques importées bétail"
+        },
+        {
+          "lat": 52.0,
+          "lon": 45.0,
+          "country": "Russie",
+          "cases": 75,
+          "note": "Steppe russe — zone classique"
+        }
+      ]
     },
     {
       "id": "RSVA_HMPV",
@@ -1230,6 +1554,398 @@
       ],
       "descFR": "📊 hMPV : résurgence France hiver 2025–2026 documentée (SPF), avec souches A1/B1 co-circulantes. Pathogène respiratoire majeur : 2e cause de bronchiolite après RSV chez le nourrisson. Touche aussi adultes âgés et immunodéprimés. Pas de vaccin homologué hMPV. Tableau clinique : bronchiolite/pneumonie indiscernable cliniquement d'un RSV. EPI soignants : FFP2 + contact en période épidémique (hivernale). Pas d'antiviral spécifique.",
       "descEN": "Major respiratory pathogen (2nd cause after RSV in infants). Winter resurgence China 2024-2025 with A1/B1 strains. FFP2 recommended for pediatric healthcare workers during epidemic peaks. No vaccine available."
+    },
+    {
+      "id": "CHOLERA",
+      "nameFR": "Choléra",
+      "nameEN": "Cholera",
+      "pathogen": "Vibrio cholerae O1/O139",
+      "category": "epidemic",
+      "riskLevel": "high",
+      "lat": 15.6,
+      "lon": 32.5,
+      "foci": [
+        {
+          "lat": 14.0,
+          "lon": 8.0,
+          "country": "Niger",
+          "cases": 4800,
+          "note": "Sécheresse + eau contaminée"
+        },
+        {
+          "lat": 15.6,
+          "lon": 32.5,
+          "country": "Soudan",
+          "cases": 12000,
+          "note": "Conflit — système eau effondré"
+        },
+        {
+          "lat": 23.7,
+          "lon": 90.4,
+          "country": "Bangladesh",
+          "cases": 15000,
+          "note": "Saison cyclonique 2025"
+        },
+        {
+          "lat": 7.4,
+          "lon": -2.0,
+          "country": "Ghana",
+          "cases": 3200,
+          "note": "Inondations nord Ghana"
+        },
+        {
+          "lat": 13.5,
+          "lon": 2.1,
+          "country": "Nigéria",
+          "cases": 8500,
+          "note": "Nord-Est — accès eau limité"
+        },
+        {
+          "lat": -17.7,
+          "lon": 168.3,
+          "country": "Vanuatu",
+          "cases": 1800,
+          "note": "Post-cyclone 2025"
+        },
+        {
+          "lat": 13.0,
+          "lon": 42.7,
+          "country": "Éthiopie",
+          "cases": 22000,
+          "note": "Plus grande épidémie 2025"
+        },
+        {
+          "lat": -18.9,
+          "lon": 47.5,
+          "country": "Madagascar",
+          "cases": 6400,
+          "note": "Saison des pluies 2025"
+        },
+        {
+          "lat": 24.5,
+          "lon": 54.4,
+          "country": "Yémen",
+          "cases": 35000,
+          "note": "Conflit chronique — 2024-2025"
+        },
+        {
+          "lat": 8.0,
+          "lon": 38.7,
+          "country": "Éthiopie-Sud",
+          "cases": 5000,
+          "note": "Somalie/Kenya frontalier"
+        }
+      ],
+      "activeRegions": [
+        "Soudan",
+        "Yémen",
+        "Éthiopie",
+        "Bangladesh",
+        "Niger",
+        "Nigeria",
+        "Madagascar"
+      ],
+      "transmission": [
+        "Eau contaminée",
+        "Aliments crus",
+        "Contact fécal-oral"
+      ],
+      "protectionRequired": "Masque non requis — hygiène des mains + eau potable",
+      "protectionLevel": 0,
+      "maskNote": "Pas de transmission respiratoire — hygiène mains et eau potable suffisent.",
+      "reproductionNumber": "2–4 (eau contaminée)",
+      "cfr": "< 1% si traitement disponible ; 25–50% sans réhydratation",
+      "incubation": "2h–5 jours",
+      "transmission_route": "Fécale-orale — eau/aliments contaminés",
+      "currentStatus": "active",
+      "outbreakStart": "2023-01",
+      "lastUpdate": "2026-08-12",
+      "iconColor": "#0891b2",
+      "references": [
+        "OMS — Global Cholera Dashboard 2024-2025",
+        "ECDC — Cholera Threat Assessment 2025",
+        "WHO Cholera situation 2025 — >35 countries affected"
+      ],
+      "descFR": "Choléra : diarrhée aqueuse sévère par toxine de Vibrio cholerae. 35 pays touchés en 2024-2025. Transmission strictement hydrique/alimentaire — aucun risque respiratoire. Traitement : réhydratation orale (90% de succès). Zones à risque : conflits, catastrophes naturelles, accès eau limité.",
+      "descEN": "Cholera: severe watery diarrhea from Vibrio cholerae toxin. 35 countries affected 2024-2025. Strictly waterborne/foodborne — no respiratory risk. Treatment: oral rehydration (90% success). Risk areas: conflict zones, natural disasters, limited water access.",
+      "descPatientFR": "💧 Choléra : aucun risque si vous avez accès à de l'eau potable. Cette maladie se transmet par l'eau ou les aliments contaminés, pas par l'air. En voyage dans les zones touchées : eau en bouteille, pas de crudités, hygiène des mains.",
+      "descPatientEN": "💧 Cholera: no risk if you have access to safe drinking water. This disease spreads through contaminated water or food, not through the air. When traveling to affected areas: bottled water, no raw vegetables, hand hygiene."
+    },
+    {
+      "id": "OROPOUCHE",
+      "nameFR": "Fièvre d'Oropouche",
+      "nameEN": "Oropouche Fever",
+      "pathogen": "Orthobunyavirus oropoucheense (OROV)",
+      "category": "epidemic",
+      "riskLevel": "moderate",
+      "lat": -14.2,
+      "lon": -51.9,
+      "foci": [
+        {
+          "lat": -3.1,
+          "lon": -60.0,
+          "country": "Brésil (Amazonas)",
+          "cases": 280000,
+          "note": "Pire épidémie historique 2024-2025 — PHEIC potentiel PAHO"
+        },
+        {
+          "lat": -12.0,
+          "lon": -77.0,
+          "country": "Pérou",
+          "cases": 15000,
+          "note": "Nouveaux foyers 2024-2025"
+        },
+        {
+          "lat": 4.7,
+          "lon": -74.1,
+          "country": "Colombie",
+          "cases": 8000,
+          "note": "Expansion nord 2024-2025"
+        },
+        {
+          "lat": 23.1,
+          "lon": -82.4,
+          "country": "Cuba",
+          "cases": 3500,
+          "note": "Premier foyer important Caraïbes 2024"
+        },
+        {
+          "lat": 14.1,
+          "lon": -87.2,
+          "country": "Honduras",
+          "cases": 1200,
+          "note": "Importation 2025"
+        },
+        {
+          "lat": 48.9,
+          "lon": 2.4,
+          "country": "France",
+          "cases": 8,
+          "note": "Cas importés voyageurs Amazonie"
+        }
+      ],
+      "activeRegions": [
+        "Brésil",
+        "Pérou",
+        "Colombie",
+        "Cuba",
+        "Bolivie",
+        "Équateur"
+      ],
+      "transmission": [
+        "Piqûres moustiques (Culicoides)",
+        "Moustique Culex",
+        "Probablement vertical (grossesse)"
+      ],
+      "protectionRequired": "Protection anti-moustiques — masque non requis",
+      "protectionLevel": 0,
+      "maskNote": "Pas de transmission interhumaine directe — protection anti-moustiques.",
+      "reproductionNumber": "R0 estimé 1.5–2.5 en milieu forestier",
+      "cfr": "< 0.1% ; cas graves décrits (encéphalite) ; décès fœtaux/microcéphalie 2024",
+      "incubation": "3–10 jours",
+      "transmission_route": "Vecteur (moustique Culicoides paraensis) — aucune transmission inter-humaine",
+      "currentStatus": "active",
+      "outbreakStart": "2024-01",
+      "lastUpdate": "2026-08-12",
+      "iconColor": "#f97316",
+      "references": [
+        "PAHO OROV Epidemiological Update 2024-2025",
+        "CDC Oropouche Virus Disease 2024",
+        "Pauvolid-Corrêa A et al. Lancet Regional Health Americas 2024",
+        "ECDC Oropouche Rapid Risk Assessment 2024"
+      ],
+      "descFR": "Oropouche : arbovirus émergent (Orthobunyavirus) transmis par moustiques/moucherons — JAMAIS interhumain. 280 000+ cas au Brésil en 2024-2025 (pire épidémie connue). Symptômes : fièvre, céphalées, arthralgie — ressemble à dengue. Graves : encéphalite rare, potentiel tératogène (décès fœtaux). Expansion géographique vers Caraïbes et Amérique centrale très préoccupante.",
+      "descEN": "Oropouche: emerging arbovirus (Orthobunyavirus) transmitted by mosquitoes/midges — NEVER person-to-person. 280,000+ cases in Brazil 2024-2025 (worst epidemic ever). Symptoms: fever, headache, arthralgia — resembles dengue. Severe: rare encephalitis, teratogenic potential (fetal deaths). Geographic expansion to Caribbean and Central America very concerning.",
+      "descPatientFR": "🦟 Fièvre d'Oropouche : maladie émergente transmise par des moucherons/moustiques en Amazonie et Caraïbes. Ne se transmet pas entre personnes. En voyage en zone touchée : utiliser répulsifs et vêtements couvrants. Actuellement absente de France métropolitaine.",
+      "descPatientEN": "🦟 Oropouche fever: emerging disease spread by midges/mosquitoes in Amazonia and the Caribbean. Not spread between people. When traveling to affected areas: use repellents and cover clothing. Currently absent from metropolitan France."
+    },
+    {
+      "id": "YELLOW_FEVER",
+      "nameFR": "Fièvre jaune",
+      "nameEN": "Yellow Fever",
+      "pathogen": "Yellow fever virus (Flavivirus)",
+      "category": "epidemic",
+      "riskLevel": "high",
+      "lat": -2.0,
+      "lon": 25.0,
+      "foci": [
+        {
+          "lat": -4.0,
+          "lon": 21.8,
+          "country": "RDC",
+          "cases": 4800,
+          "note": "Foyer chronique — vaccination insuffisante"
+        },
+        {
+          "lat": 6.4,
+          "lon": 12.4,
+          "country": "Cameroun",
+          "cases": 1200,
+          "note": "Flambée 2024-2025"
+        },
+        {
+          "lat": 9.1,
+          "lon": 8.7,
+          "country": "Nigeria",
+          "cases": 2600,
+          "note": "Zones rurales non vaccinées"
+        },
+        {
+          "lat": -14.2,
+          "lon": -51.9,
+          "country": "Brésil",
+          "cases": 580,
+          "note": "Zones rurales cerrado 2025"
+        },
+        {
+          "lat": -12.0,
+          "lon": -77.0,
+          "country": "Pérou",
+          "cases": 85,
+          "note": "Forêt amazonienne"
+        },
+        {
+          "lat": 9.1,
+          "lon": 40.5,
+          "country": "Éthiopie",
+          "cases": 420,
+          "note": "Foyer nouveau 2024 — frontière soudan"
+        },
+        {
+          "lat": 11.5,
+          "lon": -2.5,
+          "country": "Burkina Faso",
+          "cases": 310,
+          "note": "Expansion sahélienne"
+        }
+      ],
+      "activeRegions": [
+        "RDC",
+        "Nigeria",
+        "Cameroun",
+        "Brésil",
+        "Éthiopie",
+        "Burkina Faso",
+        "Pérou"
+      ],
+      "transmission": [
+        "Piqûres moustiques Aedes aegypti/Haemagogus",
+        "Réservoir primate non-humain"
+      ],
+      "protectionRequired": "Vaccination obligatoire zones endémiques — masque non requis",
+      "protectionLevel": 0,
+      "maskNote": "Pas de transmission respiratoire — vaccin vivant atténué (YF-17D) protège à vie dans 99% des cas.",
+      "reproductionNumber": "R0 5–7 (non immunisé, haute densité vectorielle)",
+      "cfr": "20–50% formes graves non traitées ; < 5% avec soins intensifs",
+      "incubation": "3–6 jours",
+      "transmission_route": "Vectorielle stricte (moustique) — aucun risque interhumain",
+      "currentStatus": "active",
+      "outbreakStart": "2023-06",
+      "lastUpdate": "2026-08-12",
+      "iconColor": "#eab308",
+      "references": [
+        "OMS — Yellow Fever situation reports 2024-2025",
+        "ECDC Yellow Fever Threat Assessment 2024",
+        "WHO IHR Disease Outbreak News 2024-2025"
+      ],
+      "descFR": "Fièvre jaune : arbovirus (Flavivirus) à transmission strictement vectorielle (moustiques). Vaccination (vaccin vivant atténué YF-17D) protège à vie dans 99% des cas — obligatoire pour Guyane française et conseillée pour 44 pays. Formes graves : ictère + hémorragies (d'où le nom). 47 pays endémiques. Aucun risque en Europe métropolitaine.",
+      "descEN": "Yellow fever: arbovirus (Flavivirus) strictly vector-borne (mosquitoes). Vaccination (live attenuated YF-17D) provides lifelong protection in 99% of cases — mandatory for French Guiana and recommended for 44 countries. Severe forms: jaundice + hemorrhage (hence the name). 47 endemic countries. No risk in metropolitan Europe.",
+      "descPatientFR": "💛 Fièvre jaune : si vous êtes vacciné, votre risque est quasi nul même en zone endémique. Vaccination obligatoire pour aller en Guyane française. Ne se transmet pas entre personnes — uniquement par les moustiques dans les zones tropicales.",
+      "descPatientEN": "💛 Yellow fever: if you are vaccinated, your risk is near zero even in endemic areas. Vaccination required for French Guiana. Not transmitted between people — only by mosquitoes in tropical areas."
+    },
+    {
+      "id": "LEPTOSPIROSIS",
+      "nameFR": "Leptospirose",
+      "nameEN": "Leptospirosis",
+      "pathogen": "Leptospira spp. (bactérie)",
+      "category": "epidemic",
+      "riskLevel": "moderate",
+      "lat": -21.1,
+      "lon": 55.5,
+      "foci": [
+        {
+          "lat": -21.1,
+          "lon": 55.5,
+          "country": "La Réunion",
+          "cases": 420,
+          "note": "Endémique — saison cyclonique 2025"
+        },
+        {
+          "lat": -17.7,
+          "lon": -149.4,
+          "country": "Polynésie française",
+          "cases": 280,
+          "note": "Inondations 2025"
+        },
+        {
+          "lat": -14.3,
+          "lon": -170.7,
+          "country": "Samoa américaines",
+          "cases": 95,
+          "note": "Post-cyclone"
+        },
+        {
+          "lat": -14.2,
+          "lon": -51.9,
+          "country": "Brésil",
+          "cases": 8500,
+          "note": "Inondations Rio Grande do Sul 2024"
+        },
+        {
+          "lat": 10.8,
+          "lon": 106.6,
+          "country": "Vietnam",
+          "cases": 4200,
+          "note": "Agriculteurs riziculteurs"
+        },
+        {
+          "lat": 13.8,
+          "lon": 100.5,
+          "country": "Thaïlande",
+          "cases": 3800,
+          "note": "Inondations saison mousson"
+        },
+        {
+          "lat": 28.6,
+          "lon": 77.2,
+          "country": "Inde",
+          "cases": 12000,
+          "note": "Post-mousson Maharashtra/Kerala"
+        }
+      ],
+      "activeRegions": [
+        "La Réunion",
+        "Brésil",
+        "Vietnam",
+        "Thaïlande",
+        "Inde",
+        "Polynésie française"
+      ],
+      "transmission": [
+        "Contact eau/sol contaminé (urine rongeurs)",
+        "Baignade eaux douces",
+        "Agriculteurs"
+      ],
+      "protectionRequired": "Masque non requis — protection cutanée (bottes, gants)",
+      "protectionLevel": 0,
+      "maskNote": "Pas de transmission respiratoire — contact cutané ou muqueux eau contaminée.",
+      "reproductionNumber": "Non applicable (zoonose sans transmission interhumaine)",
+      "cfr": "5–40% formes graves (Weil) ; < 1% formes légères",
+      "incubation": "2–30 jours (moy. 10 j)",
+      "transmission_route": "Transcutanée/muqueuse — contact eau/sol contaminé urine animaux",
+      "currentStatus": "active",
+      "outbreakStart": "2025-01",
+      "lastUpdate": "2026-08-12",
+      "iconColor": "#84cc16",
+      "references": [
+        "Santé publique France — Surveillance leptospirose La Réunion 2025",
+        "OMS — Leptospirosis Global Burden 2024",
+        "ECDC Leptospirosis Annual Report 2024"
+      ],
+      "descFR": "Leptospirose : zoonose bactérienne transmise par contact cutané avec eau/sol souillé par urine de rongeurs. Aucune transmission interhumaine ni respiratoire. La Réunion et Polynésie française : zones hyper-endémiques. Saison à risque : pluies + inondations. Forme grave (Weil) : ictère + insuffisance rénale.",
+      "descEN": "Leptospirosis: bacterial zoonosis transmitted by skin contact with water/soil contaminated by rodent urine. No person-to-person or respiratory transmission. Réunion and French Polynesia: hyper-endemic zones. High-risk season: rains + floods. Severe form (Weil's disease): jaundice + renal failure.",
+      "descPatientFR": "🐀 Leptospirose : pas de risque respiratoire. Contact avec eau douce ou boue en zone tropicale : évitez les plaies exposées, portez des bottes. À La Réunion : évitez baignades rivières après pluies. Antibiotiques efficaces si pris tôt.",
+      "descPatientEN": "🐀 Leptospirosis: no respiratory risk. Contact with freshwater or mud in tropical areas: avoid exposed wounds, wear boots. In Réunion: avoid river swimming after rain. Antibiotics are effective if taken early."
     }
   ]
 }

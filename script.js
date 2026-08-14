@@ -1179,6 +1179,26 @@ var DEMO_DATA = [
   { id:201,nameFR:'Afrique subsaharienne',nameEN:'Sub-Saharan Africa',iso:'ZZ',lat:-5.0,lon:25.0,whoRegion:'AFRO',level:'regional',pop:1150.0,stock:8000000,updated:'2026-03-01',status:'critical',trend:'down',alertLevel:'critical'},
   { id:202,nameFR:'Asie du Sud-Est',nameEN:'South-East Asia',iso:'ZZ',lat:12.0,lon:101.0,whoRegion:'SEARO',level:'regional',pop:2100.0,stock:90000000,updated:'2026-04-01',status:'low',trend:'down',alertLevel:'high'},
   { id:203,nameFR:'Pacifique Occidental',nameEN:'Western Pacific',iso:'ZZ',lat:15.0,lon:145.0,whoRegion:'WPRO',level:'regional',pop:1900.0,stock:2500000000,updated:'2026-04-15',status:'sufficient',trend:'stable',alertLevel:'low'},
+  // ── Afrique ───────────────────────────────────────────────
+  { id:26, nameFR:'Sénégal',        nameEN:'Senegal',      iso:'SN', lat:14.5, lon:-14.5, whoRegion:'AFRO', level:'national', pop:17.8,  stock:320000,   updated:'2026-03-15', status:'critical',  trend:'down',   alertLevel:'critical' },
+  { id:27, nameFR:'Ghana',          nameEN:'Ghana',        iso:'GH', lat:7.9,  lon:-1.0,  whoRegion:'AFRO', level:'national', pop:33.5,  stock:850000,   updated:'2026-03-20', status:'critical',  trend:'down',   alertLevel:'critical' },
+  { id:28, nameFR:'Kenya',          nameEN:'Kenya',        iso:'KE', lat:-0.5, lon:37.9,  whoRegion:'AFRO', level:'national', pop:55.0,  stock:1200000,  updated:'2026-03-25', status:'critical',  trend:'stable', alertLevel:'critical' },
+  { id:29, nameFR:'Afrique du Sud', nameEN:'South Africa', iso:'ZA', lat:-28.5,lon:24.7,  whoRegion:'AFRO', level:'national', pop:60.1,  stock:4500000,  updated:'2026-04-10', status:'low',       trend:'stable', alertLevel:'high' },
+  { id:30, nameFR:'Maroc',          nameEN:'Morocco',      iso:'MA', lat:31.8, lon:-7.1,  whoRegion:'EMRO', level:'national', pop:37.5,  stock:3200000,  updated:'2026-04-05', status:'low',       trend:'stable', alertLevel:'high' },
+  { id:31, nameFR:'Tunisie',        nameEN:'Tunisia',      iso:'TN', lat:33.9, lon:9.6,   whoRegion:'EMRO', level:'national', pop:12.0,  stock:980000,   updated:'2026-03-30', status:'low',       trend:'down',   alertLevel:'high' },
+  // ── Moyen-Orient ─────────────────────────────────────────
+  { id:32, nameFR:'Turquie',        nameEN:'Turkey',       iso:'TR', lat:38.9, lon:35.2,  whoRegion:'EURO', level:'national', pop:85.3,  stock:28000000, updated:'2026-04-20', status:'moderate',  trend:'stable', alertLevel:'moderate' },
+  { id:33, nameFR:'Iran',           nameEN:'Iran',         iso:'IR', lat:32.4, lon:53.7,  whoRegion:'EMRO', level:'national', pop:87.9,  stock:12000000, updated:'2026-04-15', status:'moderate',  trend:'down',   alertLevel:'moderate' },
+  { id:34, nameFR:'Arabie Saoudite',nameEN:'Saudi Arabia', iso:'SA', lat:23.9, lon:45.1,  whoRegion:'EMRO', level:'national', pop:36.9,  stock:22000000, updated:'2026-04-18', status:'moderate',  trend:'stable', alertLevel:'moderate' },
+  { id:35, nameFR:'Israël',         nameEN:'Israel',       iso:'IL', lat:31.0, lon:35.0,  whoRegion:'EURO', level:'national', pop:9.5,   stock:14000000, updated:'2026-05-01', status:'sufficient',trend:'up',     alertLevel:'low' },
+  // ── Amériques ────────────────────────────────────────────
+  { id:36, nameFR:'Argentine',      nameEN:'Argentina',    iso:'AR', lat:-38.4,lon:-63.6, whoRegion:'AMRO', level:'national', pop:45.8,  stock:8000000,  updated:'2026-04-20', status:'low',       trend:'down',   alertLevel:'high' },
+  { id:37, nameFR:'Colombie',       nameEN:'Colombia',     iso:'CO', lat:4.6,  lon:-74.3, whoRegion:'AMRO', level:'national', pop:52.2,  stock:6500000,  updated:'2026-04-15', status:'low',       trend:'down',   alertLevel:'high' },
+  { id:38, nameFR:'Chili',          nameEN:'Chile',        iso:'CL', lat:-35.7,lon:-71.5, whoRegion:'AMRO', level:'national', pop:19.5,  stock:9000000,  updated:'2026-04-22', status:'moderate',  trend:'stable', alertLevel:'moderate' },
+  // ── Europe est ───────────────────────────────────────────
+  { id:39, nameFR:'Pologne',        nameEN:'Poland',       iso:'PL', lat:51.9, lon:19.1,  whoRegion:'EURO', level:'national', pop:37.7,  stock:32000000, updated:'2026-04-25', status:'sufficient',trend:'up',     alertLevel:'low' },
+  { id:40, nameFR:'Roumanie',       nameEN:'Romania',      iso:'RO', lat:45.9, lon:24.9,  whoRegion:'EURO', level:'national', pop:18.9,  stock:7000000,  updated:'2026-04-20', status:'moderate',  trend:'down',   alertLevel:'moderate' },
+  { id:41, nameFR:'Ukraine',        nameEN:'Ukraine',      iso:'UA', lat:48.4, lon:31.2,  whoRegion:'EURO', level:'national', pop:41.2,  stock:2500000,  updated:'2026-04-10', status:'low',       trend:'down',   alertLevel:'high' },
 ];
 
 // ── OUTBREAK DATA — chargé depuis data/pathogens.json ──────
@@ -1837,25 +1857,28 @@ function renderMapLayers() {
   if (showOutbreaks) {
     const markers = [];
     OUTBREAK_DATA.filter(ob => ob.currentStatus !== 'monitoring').forEach(ob => {
-      const icon = L.divIcon({
-        html: outbreakMarkerHTML(ob),
-        className: 'biq-outbreak-marker',
-        iconSize: [20, 20],
-        iconAnchor: [10, 10]
-      });
-      const marker = L.marker([ob.lat, ob.lon], { icon })
-        .bindPopup(buildOutbreakPopup(ob));
-      markers.push(marker);
-
-      // Second location if available
-      if (ob.lat2 !== undefined) {
-        const icon2 = L.divIcon({
+      function makeIcon(size) {
+        return L.divIcon({
           html: outbreakMarkerHTML(ob),
           className: 'biq-outbreak-marker',
-          iconSize: [20, 20],
-          iconAnchor: [10, 10]
+          iconSize: [size, size],
+          iconAnchor: [size/2, size/2]
         });
-        markers.push(L.marker([ob.lat2, ob.lon2], { icon: icon2 }).bindPopup(buildOutbreakPopup(ob)));
+      }
+      // Foci multi-sites (prioritaire sur lat/lon simple)
+      if (ob.foci && ob.foci.length) {
+        ob.foci.forEach(f => {
+          markers.push(
+            L.marker([f.lat, f.lon], { icon: makeIcon(18) })
+              .bindPopup(buildFocusPopup(ob, f))
+          );
+        });
+      } else {
+        // Fallback : marqueur principal + éventuel lat2/lon2
+        markers.push(L.marker([ob.lat, ob.lon], { icon: makeIcon(20) }).bindPopup(buildOutbreakPopup(ob)));
+        if (ob.lat2 !== undefined) {
+          markers.push(L.marker([ob.lat2, ob.lon2], { icon: makeIcon(20) }).bindPopup(buildOutbreakPopup(ob)));
+        }
       }
     });
     outbreakLayer = L.layerGroup(markers).addTo(worldMap);
@@ -1878,13 +1901,30 @@ function buildStockPopup(r) {
 
 function buildOutbreakPopup(ob) {
   const name = currentLang === 'fr' ? ob.nameFR : ob.nameEN;
-  const desc = currentLang === 'fr' ? ob.descFR : ob.descEN;
+  const desc = currentLang === 'fr' ? ob.descPatientFR || ob.descFR : ob.descPatientEN || ob.descEN;
   return `<div class="map-popup outbreak-popup">
     <strong style="color:${ob.iconColor}">${name}</strong><br>
-    <em>${ob.pathogen}</em><br>
-    <strong>${ob.protectionRequired}</strong><br>
-    <small>${ob.activeRegions.join(', ')}</small><br>
-    <p style="margin-top:6px;font-size:11px;max-width:220px">${desc ? desc.substring(0,120)+'…' : ''}</p>
+    <em style="font-size:11px">${ob.pathogen}</em><br>
+    <span style="font-size:11px;color:#94a3b8">${ob.activeRegions.slice(0,4).join(' · ')}</span><br>
+    <strong style="font-size:12px">${ob.protectionRequired}</strong><br>
+    <p style="margin-top:6px;font-size:11px;max-width:220px;line-height:1.4">${desc ? desc.substring(0,130)+'…' : ''}</p>
+  </div>`;
+}
+
+function buildFocusPopup(ob, focus) {
+  const name = currentLang === 'fr' ? ob.nameFR : ob.nameEN;
+  const cases = focus.cases >= 1000
+    ? (focus.cases >= 1000000 ? (focus.cases/1000000).toFixed(1)+'M' : Math.round(focus.cases/1000)+'k')
+    : '~'+focus.cases;
+  const statusLabel = { active:'🔴 Actif', outbreak:'🟠 Flambée', sporadic:'🟡 Sporadique', endemic:'⚪ Endémique' }[ob.currentStatus] || ob.currentStatus;
+  return `<div class="map-popup outbreak-popup">
+    <strong style="color:${ob.iconColor}">${name}</strong>
+    <span style="float:right;font-size:10px;background:${ob.iconColor}22;color:${ob.iconColor};padding:1px 5px;border-radius:8px">${statusLabel}</span><br>
+    <strong style="font-size:12px">📍 ${focus.country}</strong><br>
+    ${focus.cases ? `<span style="font-size:12px">Cas estimés : <strong>${cases}</strong></span><br>` : ''}
+    ${focus.note ? `<span style="font-size:11px;color:#64748b">${focus.note}</span><br>` : ''}
+    <em style="font-size:10px;color:#94a3b8">${ob.pathogen}</em><br>
+    <strong style="font-size:11px;margin-top:4px;display:block">${ob.protectionRequired}</strong>
   </div>`;
 }
 
@@ -1895,8 +1935,8 @@ function updateMapStats() {
   const el = (id) => document.getElementById(id);
   if (el('mstatCritical'))  el('mstatCritical').textContent  = critical;
   if (el('mstatOutbreaks')) el('mstatOutbreaks').textContent = outbreaks;
-  if (el('mstatMonitored')) el('mstatMonitored').textContent = 7; // 7 sources officielles réelles
-  if (el('mstatLastUpdate'))el('mstatLastUpdate').textContent = '2026-05-19';
+  if (el('mstatMonitored')) el('mstatMonitored').textContent = 8;
+  if (el('mstatLastUpdate'))el('mstatLastUpdate').textContent = '2026-08-14';
 
   // Simple patient count
   const simpleCount = document.getElementById('simpleOutbreakCount');
