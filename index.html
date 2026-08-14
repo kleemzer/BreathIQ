@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta name="description" content="BreathIQ — Score respiratoire quotidien, surveillance épidémique et prévention respiratoire. Données OMS, SPF et ECDC actualisées quotidiennement. Outil d'information pour soignants et grand public. Créé par un médecin généraliste.">
-  <meta name="keywords" content="surveillance épidémique, score respiratoire, qualité air, prévention respiratoire, SPF OMS ECDC, soignants, protocole EPI, santé publique">
+  <meta name="description" content="Qualité de l'air, alertes virus et épidémies près de chez vous — en temps réel, gratuit, sans inscription. Créé par un médecin généraliste français. Données OMS, SPF et ECDC.">
+  <meta name="keywords" content="qualité air aujourd'hui, alerte virus, épidémie près de moi, symptômes que faire, score respiratoire, grippe, pollution air, santé publique France">
   <meta name="author" content="Dr. Clément MÉDEAU — BreathIQ">
   <meta name="copyright" content="© 2026 Clément MÉDEAU">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
-  <meta property="og:title" content="BreathIQ — Score respiratoire & surveillance épidémique | OMS · SPF · ECDC">
-  <meta property="og:description" content="BreathIQ croise qualité de l'air, virus saisonniers et données sanitaires publiques pour vous donner un score respiratoire chaque jour. Protocoles EPI, carte mondiale des foyers, alertes OMS. Gratuit, sans compte.">
+  <meta property="og:title" content="BreathIQ — Est-ce dangereux dehors aujourd'hui ?">
+  <meta property="og:description" content="Qualité de l'air, alertes virus et épidémies près de chez vous — en temps réel, gratuit, sans inscription. Créé par un médecin généraliste français.">
   <meta property="og:updated_time" content="2026-08-12T00:00:00+02:00">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://breathiq.fr">
@@ -23,11 +23,11 @@
   <meta property="og:image:alt" content="BreathIQ — Score respiratoire local · Données OMS/ECDC/SPF · Gratuit, sans compte">
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BreathIQ — Score respiratoire & surveillance épidémique">
-  <meta name="twitter:description" content="Score respiratoire quotidien, protocoles EPI soignants, carte mondiale des foyers, données OMS/SPF/ECDC actualisées quotidiennement. Gratuit, sans compte. breathiq.fr">
+  <meta name="twitter:title" content="BreathIQ — Est-ce dangereux dehors aujourd'hui ?">
+  <meta name="twitter:description" content="Qualité de l'air, alertes virus et épidémies près de chez vous — en temps réel, gratuit, sans inscription. Créé par un médecin généraliste français. Données OMS, SPF et ECDC.">
   <meta name="twitter:creator" content="@breathiq">
   <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
-  <meta name="twitter:image:alt" content="BreathIQ — Score respiratoire et prévention respiratoire quotidienne">
+  <meta name="twitter:image:alt" content="BreathIQ — Qualité air et alertes épidémies en temps réel">
   <!-- hreflang — indexation multilingue Google/Bing -->
   <link rel="alternate" hreflang="fr" href="https://breathiq.fr/?lang=fr">
   <link rel="alternate" hreflang="en" href="https://breathiq.fr/?lang=en">
@@ -203,7 +203,7 @@
     }
   }
   </script>
-  <title>BreathIQ — Score respiratoire & surveillance épidémique | OMS · SPF · ECDC</title>
+  <title>BreathIQ — Est-ce dangereux dehors aujourd'hui ? Air, virus, épidémies</title>
   <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -212,8 +212,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" crossorigin>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
-  <link rel="preload" as="style" href="style.min.css?v=20260813e">
-  <link rel="stylesheet" href="style.min.css?v=20260813e">
+  <link rel="preload" as="style" href="style.min.css?v=20260814a">
+  <link rel="stylesheet" href="style.min.css?v=20260814a">
   <!-- Umami Analytics — privacy-first, sans cookies, gratuit jusqu'à 10k vues/mois -->
   <!-- Remplacer YOUR_WEBSITE_ID par l'id obtenu sur https://cloud.umami.is après inscription -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
@@ -995,6 +995,12 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     </div>
 
     <p class="hero-disclaimer">Gratuit · Sans inscription · Aucune donnée personnelle collectée</p>
+    <div class="hero-trust-strip" role="list" aria-label="Garanties">
+      <span role="listitem">🚫 Zéro tracking</span>
+      <span role="listitem">🏛️ Données OMS officielles</span>
+      <span role="listitem">🩺 Créé par un médecin</span>
+      <span role="listitem">🔒 Rien de vendu</span>
+    </div>
   </div>
 </section>
 
@@ -1464,6 +1470,9 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
     <!-- ══════════════════════════════════════════════════════
          WIZARD SÉQUENTIEL — 4 étapes
     ══════════════════════════════════════════════════════ -->
+    <!-- Note de confidentialité avant le wizard -->
+    <p class="wizard-privacy-note" aria-label="Confidentialité">🔒 <strong>Aucune donnée n'est enregistrée.</strong> Vos réponses restent sur votre appareil — rien n'est transmis, ni vendu, ni partagé.</p>
+
     <div class="symptom-wizard" id="symptomWizard">
 
       <!-- Barre de progression -->
@@ -2968,7 +2977,7 @@ function hideEpiAlert(type) {
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260621" defer></script>
-<script src="script.min.js?v=20260813d" defer></script>
+<script src="script.min.js?v=20260814a" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

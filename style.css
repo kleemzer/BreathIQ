@@ -833,6 +833,10 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 }
 .hero-actions { display: flex; gap: var(--s2); flex-wrap: wrap; margin: var(--s4) 0 var(--s2); }
 .hero-disclaimer { font-size: .78rem; color: var(--text-on-dark-2); opacity: .7; }
+.hero-trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; margin: .75rem auto 0; padding: .5rem .75rem; background: rgba(255,255,255,.06); border-radius: 2rem; max-width: 480px; font-size: .75rem; color: var(--text-on-dark-2); }
+.hero-trust-strip span { display: flex; align-items: center; gap: .3rem; white-space: nowrap; }
+.wizard-privacy-note { font-size: .82rem; color: #6b7280; text-align: center; margin: 0 auto 1.25rem; max-width: 520px; padding: .5rem .75rem; background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2); border-radius: .75rem; }
+[data-theme="dark"] .wizard-privacy-note { color: #9ca3af; background: rgba(16,185,129,.1); }
 .breath-rings {
   position: relative; width: 200px; height: 200px;
   display: flex; align-items: center; justify-content: center;
