@@ -175,7 +175,51 @@
         "WHO — Treatment of drug-resistant tuberculosis, 2022 guidelines (bédaquiline/linézolide)"
       ],
       "descFR": "Première cause infectieuse de mortalité mondiale (OMS 2023 : 1,3M décès). 10,6M nouveaux cas/an. Transmission par droplet nuclei en suspension. FFP2/N95 indispensable contact avec cas actif. TB multirésistante (TB-MR) : FFP3 requis. · TB MULTI-RÉSISTANTE (TB-MR) : 5% des TB en France (SPF 2023). Traitement radicalement différent : bédaquiline + linézolide, 18–24 mois, center spécialisé. Isolement respiratoire prolongé jusqu'à négativation des cultures (peut prendre 2–4 mois). Ne pas interrompre le traitement — résistance secondaire si mauvaise observance.",
-      "descEN": "Leading infectious cause of death worldwide (WHO 2023: 1.3M deaths). 10.6M new cases/year. Transmission via airborne droplet nuclei. FFP2/N95 essential for contact with active case. MDR-TB: FFP3 required."
+      "descEN": "Leading infectious cause of death worldwide (WHO 2023: 1.3M deaths). 10.6M new cases/year. Transmission via airborne droplet nuclei. FFP2/N95 essential for contact with active case. MDR-TB: FFP3 required.",
+      "foci": [
+        {
+          "lat": 20.6,
+          "lon": 78.9,
+          "country": "Inde",
+          "cases": 2800000,
+          "note": "28% charge mondiale TB — OMS 2024"
+        },
+        {
+          "lat": 7.9,
+          "lon": 29.7,
+          "country": "Afrique subsaharienne",
+          "cases": 1100000,
+          "note": "TB-VIH co-infection — charge élevée"
+        },
+        {
+          "lat": 30.4,
+          "lon": 69.3,
+          "country": "Pakistan",
+          "cases": 570000,
+          "note": "TB multi-résistante (MDR-TB) en hausse"
+        },
+        {
+          "lat": -6.2,
+          "lon": 106.8,
+          "country": "Indonésie",
+          "cases": 1000000,
+          "note": "2e charge mondiale absolue OMS 2024"
+        },
+        {
+          "lat": 6.5,
+          "lon": 3.4,
+          "country": "Nigeria",
+          "cases": 470000,
+          "note": "3e charge africaine — diagnostic insuffisant"
+        },
+        {
+          "lat": 61.5,
+          "lon": 105.3,
+          "country": "Russie",
+          "cases": 80000,
+          "note": "TB-XDR (ultra-résistante) — vigilance Europe"
+        }
+      ]
     },
     {
       "id": "NIPAH",
@@ -218,7 +262,30 @@
         "IMB R&D Blueprint Priority Pathogens 2023"
       ],
       "descFR": "⚠️ Cas fatal confirmé Bangladesh (fév 2026, DON594) — femme 40–50 ans, Rajshahi Division. Cas annuels au Bangladesh depuis 2001 (4 cas fatals en 2025). Cas Inde liés signalés simultanément (DON593). CFR 40–75%. Aucun vaccin, aucun traitement approuvé. Pathogène R&D Blueprint OMS. Si syndrome encéphalitique + retour Asie du Sud : isolement BSL-4 immédiat.",
-      "descEN": "⚠️ Fatal case confirmed Bangladesh (Feb 2026, DON594) — female 40-50y, Rajshahi Division. Annual cases in Bangladesh since 2001 (4 fatal cases in 2025). India-linked cases simultaneously (DON593). CFR 40-75%. No approved vaccine or treatment. WHO R&D Blueprint pathogen. Encephalitic syndrome after South Asia travel: immediate BSL-4 isolation."
+      "descEN": "⚠️ Fatal case confirmed Bangladesh (Feb 2026, DON594) — female 40-50y, Rajshahi Division. Annual cases in Bangladesh since 2001 (4 fatal cases in 2025). India-linked cases simultaneously (DON593). CFR 40-75%. No approved vaccine or treatment. WHO R&D Blueprint pathogen. Encephalitic syndrome after South Asia travel: immediate BSL-4 isolation.",
+      "foci": [
+        {
+          "lat": 10.8,
+          "lon": 76.3,
+          "country": "Inde (Kerala)",
+          "cases": 14,
+          "note": "Cluster Kozhikode 2023-2024 — cycles récurrents"
+        },
+        {
+          "lat": 23.7,
+          "lon": 90.4,
+          "country": "Bangladesh",
+          "cases": 8,
+          "note": "Endémique — transmission salive chauve-souris/palmier"
+        },
+        {
+          "lat": 1.3,
+          "lon": 103.8,
+          "country": "Singapour",
+          "cases": 11,
+          "note": "Historique 1999 — contrôlé, vigilance porcs"
+        }
+      ]
     },
     {
       "id": "HANTA",
@@ -476,7 +543,30 @@
         "Towner JS et al. PLoS Pathog 2009 — Isolation of genetically diverse Marburg viruses"
       ],
       "descFR": "⚠️ MARBURG : épidémie Éthiopie terminée jan 2026 (42 jours sans cas). Rwanda 2024 terminée. Haute vigilance maintenue — réservoir naturel : chauves-souris frugivores (Rousettus aegyptiacus), mines et grottes d'Afrique sub-saharienne. CFR 64% Éthiopie 2025–2026 (souche Ravn). Transmission : contact sang/fluides. Aucun vaccin homologué. Traitement expérimental (MAb114 en évaluation).",
-      "descEN": "✅ Ethiopia outbreak ENDED (Jan 26, 2026) — first-ever Marburg outbreak in Ethiopia: 14 confirmed cases, 9 deaths (CFR 64%), 5 probable cases (all died). Rwanda 2024 outbreak also ended. Active surveillance maintained — Rousettus bat reservoir present across sub-Saharan Africa. BSL-4 required."
+      "descEN": "✅ Ethiopia outbreak ENDED (Jan 26, 2026) — first-ever Marburg outbreak in Ethiopia: 14 confirmed cases, 9 deaths (CFR 64%), 5 probable cases (all died). Rwanda 2024 outbreak also ended. Active surveillance maintained — Rousettus bat reservoir present across sub-Saharan Africa. BSL-4 required.",
+      "foci": [
+        {
+          "lat": -6.2,
+          "lon": 35.7,
+          "country": "Tanzanie",
+          "cases": 9,
+          "note": "Cluster Kagera 2025 — endiguement en cours"
+        },
+        {
+          "lat": -1.9,
+          "lon": 30.1,
+          "country": "Rwanda",
+          "cases": 66,
+          "note": "Flambée Kigali 2024 — personnel soignant touché"
+        },
+        {
+          "lat": -8.8,
+          "lon": 13.2,
+          "country": "Angola",
+          "cases": 374,
+          "note": "Référence historique : Uíge 2005 (CFR 90%)"
+        }
+      ]
     },
     {
       "id": "MEASLES",
@@ -640,7 +730,51 @@
       "descPatientFR": "🟡 La grippe est une infection respiratoire fréquente en hiver. Les symptômes arrivent d'un coup : fièvre élevée, gros mal de tête, douleurs dans tout le corps. C'est différent d'un rhume. En général, on guérit en 5 à 7 jours en restant au chaud. Si vous êtes âgé(e), enceinte, ou avez une maladie chronique → consultez un médecin rapidement. Appelez le 15 si vous avez du mal à respirer ou si vous ne vous levez plus.",
       "descPatientEN": "🟡 Flu is a common respiratory infection in winter. Symptoms start suddenly: high fever, severe headache, body aches. It's different from a cold. Usually you recover in 5-7 days by resting. If you are elderly, pregnant, or have a chronic condition → see a doctor quickly. Call 15 if you have difficulty breathing or cannot get up.",
       "descPatientES": "🟡 La gripe es una infección respiratoria común en invierno. Los síntomas aparecen de repente: fiebre alta, dolor de cabeza intenso, dolores musculares. Generalmente se cura en 5-7 días. Si es mayor, embarazada o tiene enfermedad crónica: consulte un médico pronto. Llame al 15 si tiene dificultad para respirar.",
-      "descPatientAR": "🟡 الإنفلونزا عدوى تنفسية شائعة في الشتاء. تبدأ الأعراض فجأة: حمى شديدة، صداع قوي، آلام عضلية. عادةً تتعافى في 5-7 أيام. إذا كنت كبيراً في السن أو حاملاً أو مريضاً مزمناً: استشر طبيباً بسرعة. اتصل بـ 15 إذا أصبح التنفس صعباً."
+      "descPatientAR": "🟡 الإنفلونزا عدوى تنفسية شائعة في الشتاء. تبدأ الأعراض فجأة: حمى شديدة، صداع قوي، آلام عضلية. عادةً تتعافى في 5-7 أيام. إذا كنت كبيراً في السن أو حاملاً أو مريضاً مزمناً: استشر طبيباً بسرعة. اتصل بـ 15 إذا أصبح التنفس صعباً.",
+      "foci": [
+        {
+          "lat": 35.9,
+          "lon": 104.2,
+          "country": "Chine",
+          "cases": 580000,
+          "note": "H3N2 dominant hiver 2025-2026 — surveillance GISAID"
+        },
+        {
+          "lat": 48.9,
+          "lon": 2.4,
+          "country": "France",
+          "cases": 3200000,
+          "note": "Grippe A/H1N1 saison 2025-2026 — pic jan/fév (SPF)"
+        },
+        {
+          "lat": 51.5,
+          "lon": -0.1,
+          "country": "Royaume-Uni",
+          "cases": 2800000,
+          "note": "Grippe A — impact hospitalier élevé hiver 2025"
+        },
+        {
+          "lat": 37.1,
+          "lon": -95.7,
+          "country": "USA",
+          "cases": 29000000,
+          "note": "Saison 2024-2025 : 29M cas estimés CDC — H3N2"
+        },
+        {
+          "lat": -33.9,
+          "lon": 151.2,
+          "country": "Australie",
+          "cases": 680000,
+          "note": "Saison antipodale juin-sept 2025 — H1N1 dominant"
+        },
+        {
+          "lat": -23.5,
+          "lon": -46.6,
+          "country": "Brésil",
+          "cases": 1400000,
+          "note": "Saison hiver austral juin-août 2025"
+        }
+      ]
     },
     {
       "id": "DENGUE",

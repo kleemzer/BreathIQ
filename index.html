@@ -212,8 +212,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" crossorigin>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
-  <link rel="preload" as="style" href="style.min.css?v=20260814b">
-  <link rel="stylesheet" href="style.min.css?v=20260814b">
+  <link rel="preload" as="style" href="style.min.css?v=20260814c">
+  <link rel="stylesheet" href="style.min.css?v=20260814c">
   <!-- Umami Analytics — privacy-first, sans cookies, gratuit jusqu'à 10k vues/mois -->
   <!-- Remplacer YOUR_WEBSITE_ID par l'id obtenu sur https://cloud.umami.is après inscription -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
@@ -1104,6 +1104,11 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           Comprendre la méthode
         </a>
+      </div>
+      <!-- Sparkline 7 jours -->
+      <div class="gp-sparkline-wrap" id="gpSparklineWrap" style="display:none">
+        <span class="gp-sparkline-label">7 derniers jours</span>
+        <canvas id="gpSparkline" width="160" height="36" aria-label="Tendance du score sur 7 jours" role="img"></canvas>
       </div>
       <p class="gp-score-update-date" id="gpScoreDate" style="font-size:.75rem;color:#94a3b8;text-align:center;margin-bottom:.5rem;font-style:italic"></p>
       <p class="gp-score-disclaimer">Ce score ne prédit pas votre risque individuel de maladie. Il vous aide à comprendre le contexte respiratoire autour de vous. Les conseils sont généraux et ne remplacent pas un avis médical.</p>
@@ -2982,7 +2987,7 @@ function hideEpiAlert(type) {
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260621" defer></script>
-<script src="script.min.js?v=20260814d" defer></script>
+<script src="script.min.js?v=20260814e" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

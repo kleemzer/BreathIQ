@@ -1396,10 +1396,18 @@ function stockMarkerHTML(status, level) {
   return `<div style="width:${size}px;height:${size}px;border-radius:50%;background:${color};border:2px solid rgba(255,255,255,0.7);box-shadow:0 0 0 3px ${color}40;"></div>`;
 }
 
+const PATHOGEN_EMOJI = {
+  H5N1:'🐦', MPOX:'🦠', DENGUE:'🦟', CHOLERA:'💧', MEASLES:'🔴',
+  PERTUSSIS:'😮‍💨', EBOLA:'🩸', HANTA:'🐀', CCHF:'🕷️', MARBURG:'🩸',
+  NIPAH:'🦇', TB:'🫁', INFLUENZA:'🤧', MERS:'🐪', LASSA:'🐭',
+  OROPOUCHE:'🦟', YELLOW_FEVER:'💛', LEPTOSPIROSIS:'🐀',
+  RSVA_HMPV:'🤒', PALUDISME:'🦟', CANDIDA_ASPERGILLUS:'🍄',
+};
 function outbreakMarkerHTML(ob) {
-  return `<div style="position:relative;width:20px;height:20px;">
-    <div style="position:absolute;inset:0;border-radius:50%;background:${ob.iconColor};opacity:0.2;animation:ob-pulse 1.8s ease-out infinite;"></div>
-    <div style="position:absolute;inset:4px;border-radius:50%;background:${ob.iconColor};"></div>
+  const emoji = PATHOGEN_EMOJI[ob.id] || '🦠';
+  return `<div style="position:relative;width:28px;height:28px;">
+    <div style="position:absolute;inset:0;border-radius:50%;background:${ob.iconColor};opacity:0.18;animation:ob-pulse 1.8s ease-out infinite;"></div>
+    <div style="position:absolute;inset:2px;border-radius:50%;background:${ob.iconColor}33;border:1.5px solid ${ob.iconColor};display:flex;align-items:center;justify-content:center;font-size:13px;line-height:1">${emoji}</div>
   </div>`;
 }
 
@@ -1579,6 +1587,57 @@ function cycleFontSize() {
 }
 
 // ── Partager le score du jour ─────────────────────────────────
+function _drawSparkline(history) {
+  const wrap = document.getElementById('gpSparklineWrap');
+  const canvas = document.getElementById('gpSparkline');
+  if (!wrap || !canvas) return;
+  const sorted = Object.keys(history).sort().slice(-7);
+  if (sorted.length < 2) { wrap.style.display = 'none'; return; }
+  wrap.style.display = 'flex';
+  const vals = sorted.map(k => history[k]);
+  const min = Math.max(0, Math.min(...vals) - 5);
+  const max = Math.min(100, Math.max(...vals) + 5);
+  const W = canvas.width, H = canvas.height;
+  const ctx = canvas.getContext('2d');
+  const dark = document.documentElement.getAttribute('data-theme') === 'dark'
+    || (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme:dark)').matches);
+  ctx.clearRect(0, 0, W, H);
+  const pad = 4;
+  const xs = vals.map((_, i) => pad + i * (W - 2*pad) / (vals.length - 1));
+  const ys = vals.map(v => H - pad - (v - min) / (max - min || 1) * (H - 2*pad));
+  // Remplissage gradient
+  const grad = ctx.createLinearGradient(0, 0, 0, H);
+  grad.addColorStop(0, 'rgba(37,99,235,0.35)');
+  grad.addColorStop(1, 'rgba(37,99,235,0)');
+  ctx.beginPath();
+  ctx.moveTo(xs[0], ys[0]);
+  for (let i = 1; i < xs.length; i++) ctx.lineTo(xs[i], ys[i]);
+  ctx.lineTo(xs[xs.length-1], H);
+  ctx.lineTo(xs[0], H);
+  ctx.closePath();
+  ctx.fillStyle = grad;
+  ctx.fill();
+  // Ligne
+  ctx.beginPath();
+  ctx.moveTo(xs[0], ys[0]);
+  for (let i = 1; i < xs.length; i++) ctx.lineTo(xs[i], ys[i]);
+  ctx.strokeStyle = '#2563eb';
+  ctx.lineWidth = 2;
+  ctx.lineJoin = 'round';
+  ctx.stroke();
+  // Point final (aujourd'hui)
+  const lx = xs[xs.length-1], ly = ys[ys.length-1];
+  ctx.beginPath();
+  ctx.arc(lx, ly, 3.5, 0, Math.PI*2);
+  ctx.fillStyle = '#2563eb';
+  ctx.fill();
+  ctx.beginPath();
+  ctx.arc(lx, ly, 3.5, 0, Math.PI*2);
+  ctx.strokeStyle = dark ? '#1e293b' : '#fff';
+  ctx.lineWidth = 1.5;
+  ctx.stroke();
+}
+
 async function shareScore() {
   const score = document.getElementById('gpScoreNum')?.textContent || '—';
   const level = document.getElementById('gpScoreLevel')?.textContent || '';
@@ -1737,6 +1796,9 @@ function updateScoreDisplay(regionId) {
   if (keys.length > 8) keys.slice(8).forEach(k => delete stored[k]);
   try { localStorage.setItem('biq_score_history', JSON.stringify(stored)); } catch(e) {}
 
+  // Sparkline 7 jours
+  _drawSparkline(stored);
+
   // Date de calcul sur le score card
   const dateEl = document.getElementById('gpScoreDate');
   if (dateEl) {
@@ -1869,15 +1931,15 @@ function renderMapLayers() {
       if (ob.foci && ob.foci.length) {
         ob.foci.forEach(f => {
           markers.push(
-            L.marker([f.lat, f.lon], { icon: makeIcon(18) })
+            L.marker([f.lat, f.lon], { icon: makeIcon(28) })
               .bindPopup(buildFocusPopup(ob, f))
           );
         });
       } else {
         // Fallback : marqueur principal + éventuel lat2/lon2
-        markers.push(L.marker([ob.lat, ob.lon], { icon: makeIcon(20) }).bindPopup(buildOutbreakPopup(ob)));
+        markers.push(L.marker([ob.lat, ob.lon], { icon: makeIcon(28) }).bindPopup(buildOutbreakPopup(ob)));
         if (ob.lat2 !== undefined) {
-          markers.push(L.marker([ob.lat2, ob.lon2], { icon: makeIcon(20) }).bindPopup(buildOutbreakPopup(ob)));
+          markers.push(L.marker([ob.lat2, ob.lon2], { icon: makeIcon(28) }).bindPopup(buildOutbreakPopup(ob)));
         }
       }
     });

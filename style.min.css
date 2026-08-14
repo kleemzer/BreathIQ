@@ -841,6 +841,9 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .hero-trust-strip span { display: flex; align-items: center; gap: .3rem; white-space: nowrap; }
 .wizard-privacy-note { font-size: .82rem; color: #6b7280; text-align: center; margin: 0 auto 1.25rem; max-width: 520px; padding: .5rem .75rem; background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2); border-radius: .75rem; }
 [data-theme="dark"] .wizard-privacy-note { color: #9ca3af; background: rgba(16,185,129,.1); }
+.gp-sparkline-wrap { display: flex; align-items: center; justify-content: center; gap: .6rem; margin: .4rem 0 .2rem; }
+.gp-sparkline-label { font-size: .7rem; color: #64748b; white-space: nowrap; }
+#gpSparkline { display: block; }
 .breath-rings {
   position: relative; width: 200px; height: 200px;
   display: flex; align-items: center; justify-content: center;
