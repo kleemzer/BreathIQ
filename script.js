@@ -1387,9 +1387,17 @@ function outbreakMarkerHTML(ob) {
 // Priorité : ?lang= URL param (hreflang SEO) > localStorage > 'fr'
 const _urlLang = new URLSearchParams(location.search).get('lang');
 const _validLangs = new Set(['fr','en','es','pt','ar','zh','hi','sw','ru']);
+function _detectBrowserLang() {
+  const langs = navigator.languages || [navigator.language || 'fr'];
+  for (const l of langs) {
+    const code = l.slice(0, 2).toLowerCase();
+    if (_validLangs.has(code)) return code;
+  }
+  return 'fr';
+}
 let currentLang = (_urlLang && _validLangs.has(_urlLang))
   ? _urlLang
-  : (localStorage.getItem('biq-lang') || 'fr');
+  : (localStorage.getItem('biq-lang') || _detectBrowserLang());
 let currentMode = localStorage.getItem('biq-mode') || 'patient';
 let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 let worldMap = null;
