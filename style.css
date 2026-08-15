@@ -3121,8 +3121,8 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 .soignant-modal-overlay[hidden] { display: none !important; }
 .soignant-modal-box {
   background: var(--bg-card); border: 1px solid var(--border);
-  border-radius: var(--r-xl); padding: var(--s6) var(--s5);
-  max-width: 440px; width: 100%;
+  border-radius: var(--r-xl); padding: var(--s5) var(--s4);
+  max-width: 480px; width: 100%; overflow: hidden;
   box-shadow: 0 20px 60px rgba(0,0,0,.3);
   text-align: center;
 }
@@ -3181,11 +3181,11 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 .pro-country-select { flex:1; background:transparent; border:none; font-size:.9rem; color:var(--text-primary); cursor:pointer; outline:none; }
 
 /* ── Pro modal — specialty grid ─────────────────────────── */
-.pro-specialty-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:.5rem; margin-bottom:var(--s3); }
+.pro-specialty-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:.5rem; margin-bottom:var(--s3); }
+@media (min-width:460px) { .pro-specialty-grid { grid-template-columns:repeat(3,1fr); } }
 .pro-spec-card { display:flex; flex-direction:column; align-items:center; gap:.3rem; background:var(--bg-card); border:1.5px solid var(--border); border-radius:12px; padding:.65rem .4rem; font-size:.72rem; font-weight:600; color:var(--text-secondary); cursor:pointer; transition:all .15s; }
 .pro-spec-card span { font-size:.7rem; }
-.pro-spec-card:first-child { font-size:1.4rem; }
-.pro-spec-card > :first-child { font-size:1.4rem; }
+.pro-spec-card .spec-icon { font-size:1.4rem; }
 .pro-spec-card:hover { border-color:var(--c-blue); color:var(--c-blue); }
 .pro-spec-card.selected { border-color:var(--c-blue); background:rgba(26,111,212,.08); color:var(--c-blue); }
 
