@@ -1097,9 +1097,9 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .pc-cat { background: var(--bg-card-2); color: var(--text-muted); }
 .pc-status { background: rgba(107,114,128,.12); color: var(--text-secondary); }
 .status-active { background: rgba(239,68,68,.12); color: #EF4444; }
-.prot-ffp2 { background: rgba(217,119,6,.12); color: var(--c-amber); }
-.prot-ffp3 { background: rgba(192,57,43,.12); color: var(--c-red); }
-.prot-surg { background: rgba(14,140,122,.12); color: var(--c-teal); }
+.prot-ffp2 { background: rgba(217,119,6,.12); color: var(--c-amber); white-space: normal; max-width: 100%; }
+.prot-ffp3 { background: rgba(192,57,43,.12); color: var(--c-red); white-space: normal; max-width: 100%; }
+.prot-surg { background: rgba(14,140,122,.12); color: var(--c-teal); white-space: normal; max-width: 100%; }
 .pc-desc { font-size: .83rem; color: var(--text-secondary); line-height: 1.55; }
 .pc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: .6rem; }
 .pc-meta-item { }
