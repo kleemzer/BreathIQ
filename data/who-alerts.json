@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-08-14T08:07:07.301Z",
-  "fetchDate": "2026-08-14",
+  "generatedAt": "2026-08-15T07:22:05.825Z",
+  "fetchDate": "2026-08-15",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON615",
+      "donId": "2026-DON615",
+      "pubDate": "2026-08",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON614",
@@ -154,14 +162,6 @@
       "donId": "2026-DON596",
       "pubDate": "2026-03",
       "riskLevel": "low",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Mpox: recombinant virus with genomic elements of clades Ib and IIb – Global situation",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON595",
-      "donId": "2026-DON595",
-      "pubDate": "2026-02",
-      "riskLevel": "moderate",
       "source": "WHO OData API"
     }
   ]
