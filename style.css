@@ -1070,7 +1070,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .spf-actions { margin-top: var(--s2); font-size: .78rem; color: var(--text-secondary); }
 .spf-actions strong { color: var(--text-primary); }
 .pathogens-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(340px, 100%), 1fr));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(280px, 100%), 1fr));
   gap: var(--s3); margin-top: var(--s4);
 }
 .pathogen-card {
@@ -1379,7 +1379,7 @@ body[data-mode="patient"] .expert-only { display: none !important; }
   font-size: .95rem; font-weight: 700; color: var(--text-primary);
 }
 .epidemic-date {
-  font-size: .75rem; color: var(--text-secondary); white-space: nowrap;
+  font-size: .75rem; color: var(--text-secondary); white-space: normal; overflow-wrap: break-word;
 }
 .epidemic-msg, .epidemic-mask {
   width: 100%; font-size: .82rem; color: var(--text-primary); margin: 0; line-height: 1.4;
