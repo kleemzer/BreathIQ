@@ -38,6 +38,13 @@
   ],
   "screenshots": [
     {
+      "src": "/assets/screenshot-mobile.png",
+      "sizes": "390x844",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "BreathIQ — Indice respiratoire du jour sur mobile"
+    },
+    {
       "src": "/assets/og-image.png",
       "sizes": "1200x630",
       "type": "image/png",

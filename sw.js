@@ -31,6 +31,7 @@ const STATIC_ASSETS = [
   '/assets/dr-medeau.jpg',
   '/assets/inter-variable.woff2',
   '/404.html',
+  '/offline.html',
 ];
 
 // Données épidémiques : mises en cache mais réseau prioritaire
