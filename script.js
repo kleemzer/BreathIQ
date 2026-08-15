@@ -3822,6 +3822,81 @@ function renderCareFacilities(payload, need) {
 }
 
 // ── Localisateur de soins ─────────────────────────────────────
+// Requête Overpass API (OSM) directe — fonctionne depuis un site statique (CORS libre)
+async function _queryOverpass(lat, lon, radiusM) {
+  const r = radiusM || 5000;
+  const q = `[out:json][timeout:25];(node["amenity"~"^(hospital|pharmacy|doctors|clinic)$"](around:${r},${lat},${lon});way["amenity"~"^(hospital|pharmacy|doctors|clinic)$"](around:${r},${lat},${lon});node["healthcare"~"^(hospital|pharmacy|doctor|clinic|centre)$"](around:${r},${lat},${lon});way["healthcare"~"^(hospital|pharmacy|doctor|clinic|centre)$"](around:${r},${lat},${lon}););out body center 40;`;
+  const resp = await fetch('https://overpass-api.de/api/interpreter', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: 'data=' + encodeURIComponent(q),
+    signal: AbortSignal.timeout(28000),
+  });
+  if (!resp.ok) throw new Error('Overpass ' + resp.status);
+  return resp.json();
+}
+
+// Rendu des résultats Overpass normalisés via BIQ_CARE
+function _renderOverpassResults(elements, lat, lon, careNeed) {
+  const resultsEl = document.getElementById('careResults');
+  if (!resultsEl) return;
+  if (!elements || elements.length === 0) {
+    resultsEl.innerHTML = `<p class="care-no-results">${currentLang === 'fr' ? 'Aucun établissement trouvé dans un rayon de 5 km. Essayez un autre code postal.' : 'No facility found within 5 km. Try another location.'}</p>`;
+    return;
+  }
+  const normalized = elements
+    .filter(e => e.tags?.name)
+    .map(e => {
+      const elLat = e.lat ?? e.center?.lat;
+      const elLon = e.lon ?? e.center?.lon;
+      if (!elLat || !elLon) return null;
+      return window.BIQ_CARE
+        ? window.BIQ_CARE.normalizeCareFacility(e, 'OSM', { lat, lon })
+        : {
+            name: e.tags.name,
+            type: e.tags.amenity || e.tags.healthcare || 'unknown',
+            lat: elLat, lon: elLon,
+            address: [e.tags['addr:housenumber'], e.tags['addr:street'], e.tags['addr:postcode'], e.tags['addr:city']].filter(Boolean).join(' '),
+            phone: e.tags.phone || e.tags['contact:phone'] || '',
+            distance_km: null,
+          };
+    })
+    .filter(Boolean);
+
+  const ranked = window.BIQ_CARE
+    ? window.BIQ_CARE.rankCareFacilities(normalized, { need: careNeed || 'doctor', lat, lon, radiusKm: 5 })
+    : normalized;
+
+  const fr = currentLang === 'fr';
+  const typeIcon = t => t === 'hospital' ? '🏥' : t === 'pharmacy' ? '💊' : t === 'emergency' ? '🚨' : '🩺';
+  const typeLabel = t => ({
+    hospital: fr ? 'Hôpital' : 'Hospital',
+    pharmacy: fr ? 'Pharmacie' : 'Pharmacy',
+    emergency: fr ? 'Urgences' : 'Emergency',
+    doctor: fr ? 'Médecin' : 'Doctor',
+    clinic: fr ? 'Clinique' : 'Clinic',
+  })[t] || (fr ? 'Santé' : 'Healthcare');
+
+  resultsEl.innerHTML = `
+    <p class="care-count">${fr ? `${ranked.length} établissement(s) trouvé(s)` : `${ranked.length} facility/facilities found`}</p>
+    ${ranked.slice(0, 10).map(r => `
+    <div class="care-result-item">
+      <span class="care-result-icon">${typeIcon(r.type)}</span>
+      <div class="care-result-body">
+        <strong class="care-result-name">${escapeHTML(r.name || typeLabel(r.type))}</strong>
+        <span class="care-result-type">${typeLabel(r.type)}</span>
+        ${r.distance_km !== null ? `<span class="care-result-dist">${r.distance_km} km</span>` : ''}
+        ${r.address ? `<span class="care-result-addr">${escapeHTML(r.address)}</span>` : ''}
+        ${r.opening_hours ? `<span class="care-result-hours">🕐 ${escapeHTML(r.opening_hours)}</span>` : ''}
+      </div>
+      <div class="care-result-actions">
+        ${r.phone ? `<a href="tel:${escapeHTML(r.phone.replace(/\s/g,''))}" class="care-result-call">📞</a>` : ''}
+        <a href="https://www.openstreetmap.org/?mlat=${r.lat}&mlon=${r.lon}#map=17/${r.lat}/${r.lon}" target="_blank" rel="noopener" class="care-result-map" aria-label="${fr ? 'Voir sur la carte' : 'View on map'}">📍</a>
+      </div>
+    </div>`).join('')}
+    <p class="care-source-note">© <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a> contributors — ODbL</p>`;
+}
+
 async function findNearbyCare(needOverride) {
   const btn = document.getElementById('findCareBtn');
   const results = document.getElementById('careResults');
@@ -3832,9 +3907,6 @@ async function findNearbyCare(needOverride) {
     return;
   }
 
-  // Appel direct à getCurrentPosition — Chrome affiche son prompt natif si besoin.
-  // Pas de pré-vérification navigator.permissions ni de modal custom :
-  // ceux-ci créaient des conditions de course avec l'état mémorisé par Chrome.
   btn.disabled = true;
   btn.textContent = t('care-searching') || 'Recherche en cours…';
   results.innerHTML = `<p class="care-loading">${t('care-searching') || 'Recherche en cours…'}</p>`;
@@ -3843,12 +3915,8 @@ async function findNearbyCare(needOverride) {
     async ({ coords: { latitude: lat, longitude: lon } }) => {
       try {
         const careNeed = needOverride || latestClinicalOrientation?.careNeed || 'doctor';
-        const url = `/api/care-nearby?lat=${encodeURIComponent(lat)}&lon=${encodeURIComponent(lon)}&need=${encodeURIComponent(careNeed)}&radiusKm=10`;
-        const payload = await fetchJsonWithTimeout(url, {
-          timeout: 22000,
-          validate: data => data && Array.isArray(data.results),
-        });
-        results.innerHTML = renderCareFacilities(payload, careNeed);
+        const data = await _queryOverpass(lat, lon, 5000);
+        _renderOverpassResults(data.elements, lat, lon, careNeed);
         btn.textContent = t('care-btn-refresh') || '🔄 Actualiser';
       } catch (error) {
         logDataWarning('Recherche de soins indisponible', error);
@@ -3861,9 +3929,9 @@ async function findNearbyCare(needOverride) {
     (err) => {
       btn.disabled = false;
       btn.textContent = t('care-btn');
-      if (err.code === 1 /* PERMISSION_DENIED */) {
+      if (err.code === 1) {
         results.innerHTML = renderGeoDeniedHelp();
-      } else if (err.code === 3 /* TIMEOUT */) {
+      } else if (err.code === 3) {
         results.innerHTML = `<p class="care-error">${currentLang === 'fr' ? 'Délai dépassé — réessayez.' : 'Request timed out — please try again.'}</p>`;
       } else {
         results.innerHTML = `<p class="care-error">${t('care-error') || 'Position indisponible.'}</p>`;
@@ -5795,20 +5863,14 @@ async function searchCareByCity() {
   }
 }
 
-// Wrapper: expose findNearbyCare to work with explicit coords too
+// Wrapper: recherche par coordonnées — appel Overpass direct
 async function findNearbyCareAtCoords(lat, lon) {
-  // Delegate to the existing care-facilities module if available
-  if (typeof window.BIQ_CARE !== 'undefined' && typeof window.BIQ_CARE.findAtCoords === 'function') {
-    return window.BIQ_CARE.findAtCoords(lat, lon);
-  }
-  // Fallback: call the API directly
-  const apiUrl = `/api/care-nearby?lat=${lat}&lon=${lon}&lang=${currentLang || 'fr'}`;
   const resultsEl = document.getElementById('careResults');
+  if (resultsEl) resultsEl.innerHTML = `<p class="care-loading">${t('care-searching') || 'Recherche en cours…'}</p>`;
   try {
-    const resp = await fetch(apiUrl);
-    if (!resp.ok) throw new Error('API error');
-    const data = await resp.json();
-    renderCareResults(data, resultsEl);
+    const careNeed = latestClinicalOrientation?.careNeed || 'doctor';
+    const data = await _queryOverpass(lat, lon, 5000);
+    _renderOverpassResults(data.elements, lat, lon, careNeed);
   } catch {
     if (resultsEl) resultsEl.innerHTML = `<p class="care-error">${t('care-error')}</p>`;
   }
