@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Espace Presse — BreathIQ</title>
+  <meta name="description" content="Kit presse BreathIQ : informations, visuels et contacts pour journalistes et médias. Outil d'information épidémique créé par Dr Clément Médeau, médecin généraliste.">
+  <link rel="canonical" href="https://breathiq.fr/presse.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="Espace Presse — BreathIQ">
+  <meta property="og:description" content="Kit presse et contacts médias pour BreathIQ.">
+  <meta property="og:image" content="https://breathiq.fr/assets/og-image.png">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0F2A45; --bg2: #1A3C5E; --card: rgba(255,255,255,0.05);
+      --border: rgba(255,255,255,0.09); --text: #E8F0F7; --muted: #A0B4C8;
+      --teal: #0E8C7A; --blue: #2A7FD4; --amber: #F59E0B;
+      --font: 'Inter', system-ui, -apple-system, sans-serif;
+    }
+    body {
+      font-family: var(--font); background: linear-gradient(145deg, var(--bg) 0%, var(--bg2) 100%);
+      color: var(--text); min-height: 100vh; line-height: 1.6;
+    }
+    a { color: var(--teal); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* Nav */
+    .nav { display: flex; align-items: center; gap: 1rem; padding: 1rem 2rem; border-bottom: 1px solid var(--border); }
+    .nav-brand { display: flex; align-items: center; gap: .5rem; font-weight: 800; font-size: 1.1rem; color: var(--text); }
+    .nav-back { font-size: .85rem; color: var(--muted); margin-left: auto; }
+
+    /* Layout */
+    .container { max-width: 860px; margin: 0 auto; padding: 3rem 1.5rem 5rem; }
+
+    /* Hero */
+    .press-hero { text-align: center; padding: 3rem 0 2.5rem; }
+    .press-tag { display: inline-block; font-size: .72rem; font-weight: 800; letter-spacing: 2px; color: var(--amber); background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.25); border-radius: 999px; padding: .3rem .9rem; margin-bottom: 1.25rem; }
+    .press-hero h1 { font-size: 2.4rem; font-weight: 800; line-height: 1.15; margin-bottom: 1rem; }
+    .press-hero p { font-size: 1.05rem; color: var(--muted); max-width: 560px; margin: 0 auto 2rem; }
+
+    /* Angle card */
+    .angle-card { background: rgba(42,127,212,.08); border: 1px solid rgba(42,127,212,.2); border-radius: 1rem; padding: 1.5rem 2rem; margin-bottom: 2.5rem; }
+    .angle-card h2 { font-size: 1rem; font-weight: 700; color: var(--blue); margin-bottom: .75rem; letter-spacing: .5px; }
+    .angle-card p { font-size: .95rem; color: var(--muted); }
+    .angle-card strong { color: var(--text); }
+
+    /* Section */
+    section { margin-bottom: 3rem; }
+    h2.section-title { font-size: 1.15rem; font-weight: 700; color: var(--text); margin-bottom: 1.25rem; padding-bottom: .6rem; border-bottom: 1px solid var(--border); }
+
+    /* Fact list */
+    .facts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(240px,100%), 1fr)); gap: 1rem; }
+    .fact { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.1rem 1.25rem; }
+    .fact-val { font-size: 1.8rem; font-weight: 800; color: var(--text); line-height: 1; margin-bottom: .25rem; }
+    .fact-val span { font-size: 1rem; font-weight: 600; color: var(--blue); }
+    .fact-label { font-size: .8rem; color: var(--muted); }
+
+    /* Author */
+    .author-block { display: flex; align-items: flex-start; gap: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 1rem; padding: 1.5rem; }
+    .author-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 2px solid var(--border); }
+    .author-name { font-size: 1.1rem; font-weight: 700; margin-bottom: .2rem; }
+    .author-role { font-size: .88rem; color: var(--teal); font-weight: 600; margin-bottom: .5rem; }
+    .author-bio { font-size: .88rem; color: var(--muted); line-height: 1.6; }
+    .author-links { display: flex; gap: .75rem; flex-wrap: wrap; margin-top: .75rem; }
+    .author-links a { font-size: .8rem; font-weight: 600; color: var(--blue); background: rgba(42,127,212,.1); border: 1px solid rgba(42,127,212,.2); border-radius: 999px; padding: .25rem .7rem; }
+
+    /* Download grid */
+    .dl-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(200px,100%), 1fr)); gap: .75rem; }
+    .dl-card { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1rem 1.25rem; display: flex; align-items: center; gap: .75rem; transition: border-color .15s; }
+    .dl-card:hover { border-color: var(--blue); text-decoration: none; }
+    .dl-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .dl-name { font-size: .85rem; font-weight: 600; color: var(--text); }
+    .dl-meta { font-size: .73rem; color: var(--muted); }
+
+    /* Quotes */
+    .quote-block { border-left: 3px solid var(--teal); padding: .75rem 1.25rem; margin: 1rem 0; background: rgba(14,140,122,.06); border-radius: 0 .5rem .5rem 0; }
+    .quote-text { font-size: .95rem; font-style: italic; color: var(--text); line-height: 1.7; }
+    .quote-attr { font-size: .78rem; color: var(--muted); margin-top: .4rem; }
+
+    /* Contact */
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr)); gap: 1rem; }
+    .contact-card { background: var(--card); border: 1px solid var(--border); border-radius: .75rem; padding: 1.25rem; }
+    .contact-label { font-size: .75rem; font-weight: 700; color: var(--muted); letter-spacing: 1px; margin-bottom: .5rem; }
+    .contact-val { font-size: .95rem; font-weight: 600; color: var(--text); }
+    .contact-val a { color: var(--teal); }
+
+    /* Disclaimer */
+    .disclaimer { font-size: .78rem; color: #4A6880; text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); line-height: 1.6; }
+
+    @media (max-width: 600px) {
+      .press-hero h1 { font-size: 1.8rem; }
+      .author-block { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">
+    <svg width="24" height="24" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect width="32" height="32" rx="8" fill="#1A3C5E"/>
+      <circle cx="16" cy="16" r="12" stroke="#2A7FD4" stroke-width="1.2" opacity="0.4"/>
+      <circle cx="16" cy="16" r="8" stroke="#0E8C7A" stroke-width="1.2" opacity="0.7"/>
+      <circle cx="16" cy="16" r="4" fill="#0E8C7A"/>
+    </svg>
+    Breath<span style="color:#2A7FD4">IQ</span>
+  </a>
+  <a href="/" class="nav-back">← Retour au site</a>
+</nav>
+
+<div class="container">
+
+  <div class="press-hero">
+    <div class="press-tag">ESPACE PRESSE</div>
+    <h1>Un médecin crée l'outil<br>épidémique qu'il n'existait pas</h1>
+    <p>Données OMS, ECDC et SPF agrégées en temps réel — gratuites, sans publicité, dans 9 langues. Créé par un médecin généraliste de La Rochelle.</p>
+  </div>
+
+  <div class="angle-card">
+    <h2>ANGLE ÉDITORIAL RECOMMANDÉ</h2>
+    <p>
+      <strong>Dr Clément Médeau</strong>, médecin généraliste à La Rochelle, a créé BreathIQ après avoir constaté pendant la pandémie COVID-19 que <strong>ni ses patients ni ses confrères n'avaient accès à une synthèse claire des données épidémiques officielles</strong>. L'outil agrège OMS, ECDC et Santé Publique France en un score respiratoire quotidien, disponible gratuitement dans 9 langues, sans compte, sans publicité, sans collecte de données.
+    </p>
+  </div>
+
+  <!-- Chiffres clés -->
+  <section>
+    <h2 class="section-title">Chiffres clés</h2>
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-val">9 <span>langues</span></div>
+        <div class="fact-label">FR, EN, ES, PT, AR, ZH, HI, SW, RU</div>
+      </div>
+      <div class="fact">
+        <div class="fact-val">25 <span>pathogènes</span></div>
+        <div class="fact-label">Suivis en temps réel — OMS, ECDC, CDC</div>
+      </div>
+      <div class="fact">
+        <div class="fact-val">0 <span>€</span></div>
+        <div class="fact-label">Gratuit, sans publicité, sans compte</div>
+      </div>
+      <div class="fact">
+        <div class="fact-val">100% <span>open</span></div>
+        <div class="fact-label">Sources publiques vérifiables</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sources de données -->
+  <section>
+    <h2 class="section-title">Sources de données</h2>
+    <p style="font-size:.9rem;color:var(--muted);margin-bottom:1rem;">BreathIQ ne produit aucune donnée propre. Il agrège uniquement des sources institutionnelles officielles :</p>
+    <ul style="display:grid;gap:.5rem;padding-left:1.25rem;font-size:.9rem;color:var(--muted);">
+      <li><strong style="color:var(--text)">OMS / WHO</strong> — Disease Outbreak News, alertes PHEIC</li>
+      <li><strong style="color:var(--text)">ECDC</strong> — Surveillance épidémiologique européenne, Z-scores hebdomadaires</li>
+      <li><strong style="color:var(--text)">Santé Publique France</strong> — Bulletin épidémiologique hebdomadaire, IéPG grippal</li>
+      <li><strong style="color:var(--text)">OpenAQ / Open-Meteo</strong> — Qualité de l'air en temps réel</li>
+    </ul>
+  </section>
+
+  <!-- Auteur -->
+  <section>
+    <h2 class="section-title">L'auteur</h2>
+    <div class="author-block">
+      <picture>
+        <source type="image/webp" srcset="assets/dr-medeau-64.webp">
+        <img src="assets/dr-medeau.jpg" alt="Dr Clément Médeau" class="author-photo" width="80" height="80" loading="lazy">
+      </picture>
+      <div>
+        <div class="author-name">Dr Clément Médeau</div>
+        <div class="author-role">Médecin généraliste — La Rochelle (17), France</div>
+        <div class="author-bio">
+          Docteur en médecine, praticien en Charente-Maritime. Intérêt pour la santé publique, l'épidémiologie et l'accès à l'information médicale pour tous. BreathIQ est un projet personnel, indépendant, sans financement externe.
+        </div>
+        <div class="author-links">
+          <a href="about.html">À propos</a>
+          <a href="https://www.conseil-national.medecin.fr/annuaire" target="_blank" rel="noopener">Vérifier CNOM</a>
+          <a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Citations -->
+  <section>
+    <h2 class="section-title">Citations disponibles</h2>
+    <div class="quote-block">
+      <div class="quote-text">« Pendant COVID, mes patients me demandaient chaque matin si c'était dangereux de sortir. Il n'existait aucun outil simple qui croise qualité de l'air, circulation virale et alertes OMS. J'ai décidé de le créer. »</div>
+      <div class="quote-attr">— Dr Clément Médeau, fondateur de BreathIQ</div>
+    </div>
+    <div class="quote-block">
+      <div class="quote-text">« Les données épidémiques existent. Elles sont publiques, gratuites et fiables. Le problème, c'est qu'elles sont éparpillées sur dix sites différents dans un format inaccessible au grand public. BreathIQ ne fait que les rassembler. »</div>
+      <div class="quote-attr">— Dr Clément Médeau</div>
+    </div>
+  </section>
+
+  <!-- Ressources téléchargeables -->
+  <section>
+    <h2 class="section-title">Ressources</h2>
+    <div class="dl-grid">
+      <a href="assets/og-image.png" download class="dl-card">
+        <div class="dl-icon">🖼️</div>
+        <div>
+          <div class="dl-name">Visuel presse</div>
+          <div class="dl-meta">PNG 1200×630 · 43 KB</div>
+        </div>
+      </a>
+      <a href="favicon.svg" download class="dl-card">
+        <div class="dl-icon">🔵</div>
+        <div>
+          <div class="dl-name">Logo BreathIQ</div>
+          <div class="dl-meta">SVG vectoriel</div>
+        </div>
+      </a>
+      <a href="assets/screenshot-mobile.png" download class="dl-card">
+        <div class="dl-icon">📱</div>
+        <div>
+          <div class="dl-name">Capture mobile</div>
+          <div class="dl-meta">PNG 390×844</div>
+        </div>
+      </a>
+      <a href="methodologie.html" class="dl-card">
+        <div class="dl-icon">📄</div>
+        <div>
+          <div class="dl-name">Méthodologie</div>
+          <div class="dl-meta">Sources & calculs détaillés</div>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section>
+    <h2 class="section-title">Contact presse</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="contact-label">EMAIL</div>
+        <div class="contact-val"><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">DÉLAI DE RÉPONSE</div>
+        <div class="contact-val">48h ouvrées</div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">SITE</div>
+        <div class="contact-val"><a href="https://breathiq.fr">breathiq.fr</a></div>
+      </div>
+      <div class="contact-card">
+        <div class="contact-label">CODE SOURCE</div>
+        <div class="contact-val"><a href="https://github.com/kleemzer/BreathIQ" target="_blank" rel="noopener">github.com/kleemzer/BreathIQ</a></div>
+      </div>
+    </div>
+  </section>
+
+  <p class="disclaimer">
+    BreathIQ est un outil d'information et de prévention — non dispositif médical (Règlement UE 2017/745).<br>
+    Aucun financement externe · Aucune publicité · Données personnelles non collectées · <a href="privacy.html" style="color:inherit">Politique de confidentialité</a>
+  </p>
+
+</div>
+</body>
+</html>
