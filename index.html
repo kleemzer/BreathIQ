@@ -1472,8 +1472,16 @@
       <!-- Confirmation + widget signal -->
       <div class="decl-confirm hidden" id="declConfirm">
         <div class="decl-confirm-icon">✅</div>
-        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Déclaration enregistrée localement</p>
+        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Signal enregistré localement</p>
         <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Signal intégré à l'analyse locale en temps réel.</p>
+
+        <!-- Rappel DO officielle — critique légalement -->
+        <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.35);border-radius:.75rem;padding:.85rem 1rem;margin:.75rem 0;text-align:left;font-size:.82rem;line-height:1.6;color:#FCD34D;">
+          <strong>⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
+          Ce signal est uniquement local. Il <strong>ne remplace pas</strong> la déclaration officielle à l'ARS via
+          <a href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
+          ou par fiche cerfa, obligatoire pour les maladies à DO.
+        </div>
 
         <!-- Widget signal épidémique injecté ici après déclaration -->
         <div id="epiSignalResult" class="epi-signal-result-wrap"></div>
