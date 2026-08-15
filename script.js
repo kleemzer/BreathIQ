@@ -3998,11 +3998,26 @@ domReady(() => {
   updateScoreDisplay(DEMO_DATA[0].id);
   fetchLiveAqiAndRefresh(DEMO_DATA[0].id);
 
-  // Pathogens — charger JSON pathogènes + SPF en parallèle, puis rendre
-  Promise.all([
-    loadPathogensData(),
-    loadSPFLiveData(),
-  ]).finally(() => renderPathogens());
+  // SPF — charger immédiatement (patches sur OUTBREAK_DATA et stats hero)
+  loadSPFLiveData();
+
+  // Pathogens — lazy: fetch déclenché quand la section approche du viewport
+  // Fallback après 4s pour les stats hero (utilisateurs qui ne scrollent pas)
+  let pathogensLoaded = false;
+  async function triggerPathogensLoad() {
+    if (pathogensLoaded) return;
+    pathogensLoaded = true;
+    await loadPathogensData();
+    renderPathogens();
+  }
+  const pathSection = document.getElementById('pathogensGrid') || document.getElementById('pathogens');
+  if (pathSection && 'IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { obs.disconnect(); triggerPathogensLoad(); }
+    }, { rootMargin: '400px' });
+    obs.observe(pathSection);
+  }
+  setTimeout(triggerPathogensLoad, 4000);
 
   // Map — init direct + lazy fallback
   setTimeout(() => initMapWhenReady(), 400);
