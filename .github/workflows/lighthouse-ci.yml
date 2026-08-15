@@ -1,0 +1,73 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '*.css'
+      - '*.js'
+      - 'style.min.css'
+      - 'script.min.js'
+  workflow_dispatch:
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.14.x
+
+      - name: Run Lighthouse CI
+        run: |
+          lhci autorun \
+            --collect.url=https://breathiq.fr \
+            --collect.numberOfRuns=1 \
+            --assert.assertions.performance=warn:0.75 \
+            --assert.assertions.accessibility=error:0.90 \
+            --assert.assertions.best-practices=warn:0.85 \
+            --assert.assertions.seo=warn:0.90 \
+            --upload.target=temporary-public-storage \
+            2>&1 | tee /tmp/lhci-output.txt || true
+
+      - name: Parse scores
+        run: |
+          # Extraire les scores du rapport
+          node - << 'EOF'
+          const fs = require('fs');
+          const output = fs.readFileSync('/tmp/lhci-output.txt', 'utf8');
+
+          const scoreMatch = s => {
+            const m = output.match(new RegExp(s + '.*?(\\d+\\.?\\d*)'));
+            return m ? parseFloat(m[1]) : null;
+          };
+
+          const perf = scoreMatch('performance');
+          const a11y = scoreMatch('accessibility');
+          const bp   = scoreMatch('best-practices');
+          const seo  = scoreMatch('seo');
+
+          let md = '## 🔦 Lighthouse CI — breathiq.fr\n\n';
+          md += '| Catégorie | Score |\n|---|---|\n';
+
+          const fmt = (label, score) => {
+            if (!score) return `| ${label} | N/A |\n`;
+            const emoji = score >= 0.9 ? '🟢' : score >= 0.75 ? '🟡' : '🔴';
+            return `| ${label} | ${emoji} ${Math.round(score * 100)}/100 |\n`;
+          };
+
+          md += fmt('⚡ Performance', perf);
+          md += fmt('♿ Accessibilité', a11y);
+          md += fmt('✅ Best Practices', bp);
+          md += fmt('🔍 SEO', seo);
+
+          fs.appendFileSync(process.env.GITHUB_STEP_SUMMARY || '/dev/null', md);
+          console.log(md);
+          EOF

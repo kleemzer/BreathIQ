@@ -4,6 +4,15 @@
    © 2026 Clément MÉDEAU — Tous droits réservés
    ================================================================ */
 
+/* ── Inter variable font — auto-hébergée (zéro dépendance Google) ── */
+@font-face {
+  font-family: 'Inter';
+  src: url('/assets/inter-variable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* ── Google Fonts : chargé via <link> dans le HTML (pas de double @import) ── */
 
 /* ── Variables — Thème Clair ─────────────────────────────────── */

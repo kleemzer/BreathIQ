@@ -166,16 +166,12 @@
   }
   </script>
   <title>BreathIQ — Est-ce dangereux dehors aujourd'hui ? Air, virus, épidémies</title>
-  <!-- Inter font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Preload police critique — évite le FOUT (Flash of Unstyled Text) -->
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" crossorigin>
+  <!-- Inter font — auto-hébergée, zéro round-trip Google (LCP -200ms) -->
+  <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
-  <link rel="preload" as="style" href="style.min.css?v=20260815a">
-  <link rel="stylesheet" href="style.min.css?v=20260815a">
+  <link rel="preload" as="style" href="style.min.css?v=20260815b">
+  <link rel="stylesheet" href="style.min.css?v=20260815b">
   <!-- Umami Analytics — privacy-first, sans cookies, gratuit jusqu'à 10k vues/mois -->
   <!-- Remplacer YOUR_WEBSITE_ID par l'id obtenu sur https://cloud.umami.is après inscription -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
