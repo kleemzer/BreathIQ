@@ -1,0 +1,91 @@
+name: BreathIQ Claude Patch Agent
+
+on:
+  # Se déclenche après science-watch quand des alertes prioritaires existent
+  workflow_run:
+    workflows: ["BreathIQ Science Watch Agent"]
+    types: [completed]
+  # Déclenchement manuel
+  workflow_dispatch:
+
+jobs:
+  claude-patch:
+    runs-on: ubuntu-latest
+    # Ne s'exécute que si science-watch a réussi
+    if: ${{ github.event.workflow_run.conclusion == 'success' || github.event_name == 'workflow_dispatch' }}
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          # Récupérer les derniers commits (science-watch a pu pousser des données)
+          ref: main
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Check for pending science updates
+        id: check
+        run: |
+          if [ -f data/science-updates-pending.json ]; then
+            COUNT=$(node -e "
+              const d = JSON.parse(require('fs').readFileSync('data/science-updates-pending.json','utf8'));
+              const warnings = (d.updates || []).filter(u => u.severity === 'warning' || u.type === 'who_alert');
+              console.log(warnings.length);
+            " 2>/dev/null || echo 0)
+            echo "warning_count=$COUNT" >> $GITHUB_OUTPUT
+            echo "has_warnings=$([ $COUNT -gt 0 ] && echo true || echo false)" >> $GITHUB_OUTPUT
+            echo "Alertes prioritaires : $COUNT"
+          else
+            echo "has_warnings=false" >> $GITHUB_OUTPUT
+            echo "Aucun fichier pending trouvé"
+          fi
+
+      - name: Run Claude Patch Agent
+        if: steps.check.outputs.has_warnings == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: node scripts/claude-patch-agent.mjs
+
+      - name: Commit patch suggestion if generated
+        if: steps.check.outputs.has_warnings == 'true'
+        run: |
+          git config user.name "Claude-Agent-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/claude-patch-suggestion.json || true
+          if git diff --staged --quiet; then
+            echo "Aucune suggestion générée"
+          else
+            SUGGESTIONS=$(node -e "
+              try {
+                const d = JSON.parse(require('fs').readFileSync('data/claude-patch-suggestion.json','utf8'));
+                console.log(d.suggestions?.length || 0);
+              } catch { console.log(0); }
+            " 2>/dev/null || echo 0)
+            git commit -m "🤖 Claude Agent: ${SUGGESTIONS} suggestion(s) de patch — validation Dr. Médeau requise ($(date +%Y-%m-%d))"
+            git pull --rebase origin main || true
+            git push origin main || { echo "⚠️ Push échoué"; exit 0; }
+          fi
+
+      - name: Summary
+        run: |
+          echo "## 🤖 Claude Patch Agent — Résumé" >> $GITHUB_STEP_SUMMARY
+          if [ -f data/claude-patch-suggestion.json ]; then
+            node -e "
+              const d = JSON.parse(require('fs').readFileSync('data/claude-patch-suggestion.json','utf8'));
+              console.log('| Indicateur | Valeur |');
+              console.log('|---|---|');
+              console.log('| Suggestions | ' + (d.suggestions?.length || 0) + ' |');
+              console.log('| Modèle Claude | ' + (d.claudeModel || 'N/A') + ' |');
+              console.log('| Statut | ' + d.status + ' |');
+            " 2>/dev/null || echo "Aucune suggestion"
+          else
+            echo "Aucune alerte prioritaire — Claude non sollicité."
+          fi
+          echo ""
+          echo "> ⚠️ Ces suggestions nécessitent validation par Dr. Médeau avant toute intégration (Règlement UE 2017/745)"

@@ -1,0 +1,131 @@
+name: BreathIQ Daily Digest
+
+on:
+  schedule:
+    # Tous les jours à 08:30 UTC (10h30 Paris été) — après WHO (07h) et science-watch (06h)
+    - cron: '30 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  daily-digest:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Generate and send daily digest
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node - << 'NODEJS_EOF'
+          const fs = require('fs');
+
+          // Charger toutes les sources
+          function loadJSON(path) {
+            try { return JSON.parse(fs.readFileSync(path, 'utf8')); } catch { return null; }
+          }
+
+          const whoAlerts  = loadJSON('data/who-alerts.json');
+          const pheic      = loadJSON('data/pheic-alerts.json');
+          const ecdc       = loadJSON('data/ecdc-surveillance.json');
+          const spf        = loadJSON('data/spf-live.json');
+          const science    = loadJSON('data/science-updates-pending.json');
+          const claudePatch= loadJSON('data/claude-patch-suggestion.json');
+
+          const today = new Date().toLocaleDateString('fr-FR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+          // Résumé console (visible dans les logs GitHub Actions)
+          console.log('\n═══════════════════════════════════════════════════');
+          console.log(`🫁 BREATHIQ — DIGEST QUOTIDIEN — ${today.toUpperCase()}`);
+          console.log('═══════════════════════════════════════════════════\n');
+
+          // WHO
+          const whoCount = whoAlerts?.alertCount || 0;
+          const criticalWHO = (whoAlerts?.alerts || []).filter(a => a.riskLevel === 'critical').length;
+          console.log(`🌍 WHO Disease Outbreak News`);
+          console.log(`   ${whoCount} alertes actives dont ${criticalWHO} critiques`);
+          if (criticalWHO > 0) {
+            (whoAlerts?.alerts || []).filter(a => a.riskLevel === 'critical').slice(0, 3).forEach(a => {
+              console.log(`   ⚠️  ${a.title} (${a.pubDate})`);
+            });
+          }
+
+          // PHEIC
+          const pheicActive = (pheic?.alerts || []).filter(a => a.active).length;
+          console.log(`\n🚨 PHEIC OMS actives : ${pheicActive}`);
+
+          // ECDC
+          const ecdcPathogens = ecdc?.pathogens?.length || 0;
+          const ecdcHigh = (ecdc?.pathogens || []).filter(p => p.zscore > 1.5).length;
+          console.log(`\n🇪🇺 ECDC Surveillance : ${ecdcPathogens} pathogènes, ${ecdcHigh} en Z-score élevé`);
+
+          // SPF
+          console.log(`\n🏥 SPF — Bulletin du ${spf?.bulletinDate || 'N/A'}`);
+          if (spf?.iepg !== undefined) console.log(`   IéPG grippal : ${spf.iepg}`);
+
+          // Science watch
+          const scienceCount = science?.summary?.totalUpdates || 0;
+          const scienceWarnings = science?.summary?.warnings || 0;
+          console.log(`\n🔬 Veille scientifique : ${scienceCount} mises à jour, ${scienceWarnings} alertes prioritaires`);
+
+          // Claude suggestions
+          if (claudePatch?.suggestions?.length) {
+            console.log(`\n🤖 Claude Agent : ${claudePatch.suggestions.length} suggestion(s) en attente de validation`);
+            claudePatch.suggestions.forEach(s => {
+              console.log(`   → ${s.pathogenId} [${s.action}] — confiance: ${s.confidence}`);
+            });
+            console.log('   ⚠️  Validation Dr. Médeau requise avant intégration');
+          }
+
+          console.log('\n───────────────────────────────────────────────────');
+          console.log('🌐 Site : https://breathiq.fr');
+          console.log('📁 Repo : https://github.com/kleemzer/BreathIQ');
+          console.log('───────────────────────────────────────────────────\n');
+
+          // Écrire un résumé machine-readable pour le step summary
+          const summary = {
+            date: new Date().toISOString(),
+            whoAlerts: whoCount,
+            criticalWHO,
+            pheicActive,
+            ecdcHighZscore: ecdcHigh,
+            scienceUpdates: scienceCount,
+            claudeSuggestions: claudePatch?.suggestions?.length || 0,
+          };
+          fs.writeFileSync('/tmp/digest-summary.json', JSON.stringify(summary, null, 2));
+          NODEJS_EOF
+
+      - name: GitHub Step Summary
+        run: |
+          node - << 'NODEJS_EOF'
+          const fs = require('fs');
+          const s = JSON.parse(fs.readFileSync('/tmp/digest-summary.json','utf8'));
+          const today = new Date(s.date).toLocaleDateString('fr-FR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
+
+          let md = `## 🫁 BreathIQ — Digest ${today}\n\n`;
+          md += `| Source | Indicateur | Valeur |\n|---|---|---|\n`;
+          md += `| 🌍 WHO | Alertes actives | **${s.whoAlerts}** |\n`;
+          md += `| 🌍 WHO | Critiques | ${s.criticalWHO > 0 ? '🔴 **' + s.criticalWHO + '**' : '✅ 0'} |\n`;
+          md += `| 🚨 PHEIC | Urgences mondiales | ${s.pheicActive > 0 ? '🔴 **' + s.pheicActive + '**' : '✅ 0'} |\n`;
+          md += `| 🇪🇺 ECDC | Z-score élevé | ${s.ecdcHighZscore} pathogènes |\n`;
+          md += `| 🔬 Science | Mises à jour | ${s.scienceUpdates} |\n`;
+          md += `| 🤖 Claude | Suggestions | ${s.claudeSuggestions > 0 ? '⏳ **' + s.claudeSuggestions + ' en attente**' : '✅ 0'} |\n\n`;
+
+          if (s.criticalWHO > 0 || s.pheicActive > 0) {
+            md += `> 🚨 **Alertes critiques détectées** — vérifier [data/who-alerts.json](https://github.com/kleemzer/BreathIQ/blob/main/data/who-alerts.json)\n\n`;
+          }
+          if (s.claudeSuggestions > 0) {
+            md += `> ⚠️ Suggestions Claude en attente : [data/claude-patch-suggestion.json](https://github.com/kleemzer/BreathIQ/blob/main/data/claude-patch-suggestion.json)\n`;
+          }
+          require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY, md);
+          NODEJS_EOF
