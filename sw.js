@@ -6,21 +6,21 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v13';
+const CACHE_VERSION = 'biq-v14';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
-// Assets statiques : mis en cache à l'installation, servis offline
-// Les URLs versionnées (cache-busting) doivent correspondre à celles dans index.html
+// Assets statiques : chemins sans ?v= — le SW normalise les URLs
+// Les ?v= dans index.html servent uniquement au cache HTTP natif (sans SW)
 const STATIC_ASSETS = [
   '/',
   '/index.html',
-  '/style.min.css?v=20260815a',
-  '/script.min.js?v=20260814g',
-  '/api-live.js?v=20260624a',
-  '/js/clinical-orientation.min.js?v=20260620',
-  '/js/care-facilities.min.js?v=20260620',
-  '/js/symptom-guide.min.js?v=20260814f',
+  '/style.min.css',
+  '/script.min.js',
+  '/api-live.js',
+  '/js/clinical-orientation.min.js',
+  '/js/care-facilities.min.js',
+  '/js/symptom-guide.min.js',
   '/favicon.svg',
   '/manifest.json',
   '/assets/og-image.png',
@@ -29,6 +29,7 @@ const STATIC_ASSETS = [
   '/assets/dr-medeau-64.webp',
   '/assets/dr-medeau.webp',
   '/assets/dr-medeau.jpg',
+  '/assets/inter-variable.woff2',
   '/404.html',
 ];
 
@@ -63,6 +64,16 @@ self.addEventListener('activate', event => {
   );
 });
 
+// Normalise une URL en retirant les ?v= de cache-busting pour la clé de cache SW
+function normalizeRequest(request) {
+  const url = new URL(request.url);
+  if (url.search && (url.searchParams.has('v') || url.searchParams.has('_'))) {
+    url.search = '';
+    return new Request(url.toString(), { mode: request.mode, credentials: request.credentials });
+  }
+  return request;
+}
+
 // ── Fetch — stratégie par type de ressource ──────────────────
 self.addEventListener('fetch', event => {
   const { request } = event;
@@ -77,23 +88,24 @@ self.addEventListener('fetch', event => {
 
   if (!isOwnOrigin && !isCDN) return;
 
-  // Données épidémiques : Network-first, fallback cache
+  // Données épidémiques : Network-first, fallback cache (clé normalisée sans ?_=)
   if (isOwnOrigin && url.pathname.startsWith('/data/')) {
-    event.respondWith(networkFirstWithCache(request, CACHE_DATA));
+    event.respondWith(networkFirstWithCache(normalizeRequest(request), CACHE_DATA));
     return;
   }
 
-  // Assets statiques propres : Cache-first
+  // Assets statiques propres : Cache-first avec URL normalisée (sans ?v=)
   if (isOwnOrigin && (
     url.pathname.endsWith('.css') ||
     url.pathname.endsWith('.js')  ||
+    url.pathname.endsWith('.woff2') ||
     url.pathname.endsWith('.svg') ||
     url.pathname.endsWith('.png') ||
     url.pathname.endsWith('.jpg') ||
     url.pathname.endsWith('.webp')||
     url.pathname === '/manifest.json'
   )) {
-    event.respondWith(cacheFirstWithNetworkFallback(request, CACHE_STATIC));
+    event.respondWith(cacheFirstWithNetworkFallback(normalizeRequest(request), CACHE_STATIC));
     return;
   }
 
@@ -106,7 +118,7 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // CDN (Leaflet, Fonts) : Cache-first
+  // CDN (Leaflet) : Cache-first
   if (isCDN) {
     event.respondWith(cacheFirstWithNetworkFallback(request, CACHE_STATIC));
     return;
