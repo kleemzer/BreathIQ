@@ -25,7 +25,7 @@ jobs:
 
       - name: Generate and send daily digest
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           node - << 'NODEJS_EOF'
           const fs = require('fs');
@@ -40,7 +40,7 @@ jobs:
           const ecdc       = loadJSON('data/ecdc-surveillance.json');
           const spf        = loadJSON('data/spf-live.json');
           const science    = loadJSON('data/science-updates-pending.json');
-          const claudePatch= loadJSON('data/claude-patch-suggestion.json');
+          const claudePatch= loadJSON('data/ai-patch-suggestion.json');
 
           const today = new Date().toLocaleDateString('fr-FR', { weekday:'long', year:'numeric', month:'long', day:'numeric' });
 
@@ -125,7 +125,7 @@ jobs:
             md += `> 🚨 **Alertes critiques détectées** — vérifier [data/who-alerts.json](https://github.com/kleemzer/BreathIQ/blob/main/data/who-alerts.json)\n\n`;
           }
           if (s.claudeSuggestions > 0) {
-            md += `> ⚠️ Suggestions Claude en attente : [data/claude-patch-suggestion.json](https://github.com/kleemzer/BreathIQ/blob/main/data/claude-patch-suggestion.json)\n`;
+            md += `> ⚠️ Suggestions Claude en attente : [data/ai-patch-suggestion.json](https://github.com/kleemzer/BreathIQ/blob/main/data/ai-patch-suggestion.json)\n`;
           }
           require('fs').appendFileSync(process.env.GITHUB_STEP_SUMMARY, md);
           NODEJS_EOF

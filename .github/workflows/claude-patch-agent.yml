@@ -1,4 +1,4 @@
-name: BreathIQ Claude Patch Agent
+name: BreathIQ AI Patch Agent (Groq)
 
 on:
   # Se déclenche après science-watch quand des alertes prioritaires existent
@@ -49,25 +49,25 @@ jobs:
       - name: Run Claude Patch Agent
         if: steps.check.outputs.has_warnings == 'true'
         env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: node scripts/claude-patch-agent.mjs
 
       - name: Commit patch suggestion if generated
         if: steps.check.outputs.has_warnings == 'true'
         run: |
-          git config user.name "Claude-Agent-Bot"
+          git config user.name "Groq-AI-Bot"
           git config user.email "bot@breathiq.fr"
-          git add data/claude-patch-suggestion.json || true
+          git add data/ai-patch-suggestion.json || true
           if git diff --staged --quiet; then
             echo "Aucune suggestion générée"
           else
             SUGGESTIONS=$(node -e "
               try {
-                const d = JSON.parse(require('fs').readFileSync('data/claude-patch-suggestion.json','utf8'));
+                const d = JSON.parse(require('fs').readFileSync('data/ai-patch-suggestion.json','utf8'));
                 console.log(d.suggestions?.length || 0);
               } catch { console.log(0); }
             " 2>/dev/null || echo 0)
-            git commit -m "🤖 Claude Agent: ${SUGGESTIONS} suggestion(s) de patch — validation Dr. Médeau requise ($(date +%Y-%m-%d))"
+            git commit -m "🤖 Groq Agent: ${SUGGESTIONS} suggestion(s) de patch — validation Dr. Médeau requise ($(date +%Y-%m-%d))"
             git pull --rebase origin main || true
             git push origin main || { echo "⚠️ Push échoué"; exit 0; }
           fi
@@ -75,9 +75,9 @@ jobs:
       - name: Summary
         run: |
           echo "## 🤖 Claude Patch Agent — Résumé" >> $GITHUB_STEP_SUMMARY
-          if [ -f data/claude-patch-suggestion.json ]; then
+          if [ -f data/ai-patch-suggestion.json ]; then
             node -e "
-              const d = JSON.parse(require('fs').readFileSync('data/claude-patch-suggestion.json','utf8'));
+              const d = JSON.parse(require('fs').readFileSync('data/ai-patch-suggestion.json','utf8'));
               console.log('| Indicateur | Valeur |');
               console.log('|---|---|');
               console.log('| Suggestions | ' + (d.suggestions?.length || 0) + ' |');
