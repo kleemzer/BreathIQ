@@ -24,8 +24,6 @@ jobs:
           node-version: '20'
 
       - name: Generate and send daily digest
-        env:
-          GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
         run: |
           node - << 'NODEJS_EOF'
           const fs = require('fs');

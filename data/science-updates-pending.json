@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-08-15T09:32:39.284Z",
+  "agentVersion": "1.0.0",
+  "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
+  "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
+  "summary": {
+    "totalUpdates": 5,
+    "warnings": 0,
+    "newLiterature": 5,
+    "whoAlerts": 0
+  },
+  "updates": [
+    {
+      "type": "new_literature",
+      "pathogenId": "MPOX",
+      "pathogenName": "Mpox (clade I)",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MPOX",
+      "articles": [
+        {
+          "pmid": "41005545",
+          "title": "Mpox (monkeypox).",
+          "authors": "Heskin J, Chan I, Bunker CB",
+          "year": "2026",
+          "journal": "Clin Dermatol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41005545/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-15",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "EBOLA",
+      "pathogenName": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
+      "severity": "info",
+      "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
+      "articles": [
+        {
+          "pmid": "41576953",
+          "title": "Molecular characterization of Ebola virus glycoprotein V75A substitution in the 2018-2020 epidemic.",
+          "authors": "Fan L, Wang Y, Wang Y",
+          "year": "2026",
+          "journal": "Cell",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41576953/"
+        },
+        {
+          "pmid": "42234553",
+          "title": "What Is Ebola?",
+          "authors": "Zhou S, Malani P",
+          "year": "2026",
+          "journal": "JAMA",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-15",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "MARBURG",
+      "pathogenName": "Virus Marburg",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
+      "articles": [
+        {
+          "pmid": "41225006",
+          "title": "Potent neutralization of Marburg virus by a vaccine-elicited antibody.",
+          "authors": "Addetia A, Perruzza L, Sprouse K",
+          "year": "2026",
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41225006/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-15",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "CCHF",
+      "pathogenName": "Fièvre hémorragique Criméo-Congo (FHCC)",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour CCHF",
+      "articles": [
+        {
+          "pmid": "42028727",
+          "title": "Modified mRNA Encoding the Crimean-Congo Hemorrhagic Fever Virus Nucleocapsid Protein Confers Robust Protection Against Lethal Challenge in Mice.",
+          "authors": "Keskin S, Pavel STI, Sak R",
+          "year": "2026",
+          "journal": "J Med Virol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42028727/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-15",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "LEPTOSPIROSIS",
+      "pathogenName": "Leptospirose",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
+      "articles": [
+        {
+          "pmid": "42156054",
+          "title": "[Leptospirosis (Weil's Disease)].",
+          "authors": "Tokashiki T",
+          "year": "2026",
+          "journal": "Brain Nerve",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42156054/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-15",
+      "humanValidationRequired": true
+    }
+  ]
+}
