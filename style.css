@@ -798,7 +798,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .brand-icon { display: flex; align-items: center; }
 .brand-text { font-weight: 400; }
 .brand-text strong { font-weight: 800; color: var(--c-blue); }
-.nav-actions { display: flex; align-items: center; gap: var(--s1); margin-left: auto; }
+.nav-actions { display: flex; align-items: center; gap: var(--s1); margin-left: auto; flex-shrink: 0; }
 .lang-toggle, .theme-toggle {
   width: 38px; height: 38px; border-radius: var(--r-full);
   display: flex; align-items: center; justify-content: center;
