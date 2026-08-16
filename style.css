@@ -4006,8 +4006,12 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .gp-score-dial{width:90px;height:90px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;position:relative}
 .gp-score-dial::before{content:'';position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--score-color,#2563eb) var(--score-pct,55%),rgba(255,255,255,.08) 0%);padding:4px}
 .gp-score-dial-inner{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;width:74px;height:74px;border-radius:50%;background:#0f172a}
-.gp-score-num{font-size:1.6rem;font-weight:800;color:#f1f5f9;line-height:1}
-.gp-score-total{font-size:.65rem;color:#94a3b8;line-height:1;margin-top:.1rem}
+.gp-score-num{font-size:1.1rem;font-weight:700;color:#94a3b8;line-height:1}
+.gp-score-total{font-size:.65rem;color:#64748b;line-height:1;margin-top:.1rem}
+/* Mode patient : niveau verbal = élément principal, chiffre en secondaire discret */
+[data-mode="patient"] .gp-score-num{font-size:.85rem;font-weight:500;color:#64748b}
+[data-mode="patient"] .gp-score-total{display:none}
+[data-mode="patient"] .gp-score-level{font-size:1.35rem;font-weight:800}
 .gp-score-info{flex:1;min-width:0}
 .gp-score-level{font-size:1rem;font-weight:700;color:#f1f5f9;margin:0 0 .3rem}
 .gp-score-loc{font-size:.82rem;color:#94a3b8;margin:0 0 .5rem;display:flex;align-items:center;gap:.3rem}

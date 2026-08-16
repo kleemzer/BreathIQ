@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="index, follow">
+  <title>Bilan épidémique — Août 2026 · BreathIQ</title>
+  <meta name="description" content="Bilan épidémique mensuel France et monde — août 2026. Grippe, COVID-19, Mpox, qualité de l'air. Sources OMS, ECDC, Santé Publique France. Données publiques, analyses vérifiables.">
+  <link rel="canonical" href="https://breathiq.fr/bilan-epidemique.html">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <meta property="og:title" content="Bilan épidémique août 2026 — BreathIQ">
+  <meta property="og:description" content="Quels virus circulaient en France et dans le monde en août 2026 ? Bilan mensuel sourcé OMS · ECDC · SPF.">
+  <meta property="og:image" content="https://breathiq.fr/assets/og-image.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Bilan épidémique — Août 2026",
+    "datePublished": "2026-08-01",
+    "dateModified": "2026-08-16",
+    "author": { "@type": "Person", "name": "Dr Clément Médeau", "url": "https://breathiq.fr/about.html" },
+    "publisher": { "@type": "Organization", "name": "BreathIQ", "url": "https://breathiq.fr" },
+    "description": "Bilan épidémique mensuel France et monde — août 2026. Sources officielles OMS, ECDC, Santé Publique France.",
+    "mainEntityOfPage": "https://breathiq.fr/bilan-epidemique.html"
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --navy:#1A3C5E; --blue:#2A7FD4; --teal:#0E8C7A; --amber:#D97706;
+      --green:#10B981; --orange:#F97316; --red:#EF4444;
+      --bg:#F5F7FA; --text:#1A2B3C; --muted:#4A5568; --border:rgba(26,60,94,.12);
+      --font:'Inter',system-ui,sans-serif;
+    }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); line-height: 1.7; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    a { color: var(--blue); }
+    .page-header { background: linear-gradient(145deg, #0F2A45 0%, #1A3C5E 100%); padding: 2.5rem 1.5rem 2rem; color: #fff; text-align: center; }
+    .page-header .brand { font-size: 1rem; color: rgba(255,255,255,.55); margin-bottom: .5rem; }
+    .page-header .brand strong { color: #2A7FD4; font-weight: 800; }
+    .page-header h1 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 800; letter-spacing: -.03em; }
+    .page-header .meta { margin-top: .6rem; font-size: .82rem; color: rgba(255,255,255,.45); }
+    .main { max-width: 860px; margin: 0 auto; padding: 2.5rem 1.5rem 5rem; }
+    .alert-banner { display: flex; gap: .9rem; align-items: flex-start; padding: 1rem 1.2rem; border-radius: 10px; margin-bottom: 2rem; background: #FEF2F2; border: 1px solid #FECACA; border-left: 4px solid var(--red); }
+    .alert-banner p { font-size: .85rem; color: #374151; margin: 0; }
+    section { margin-bottom: 3rem; }
+    h2 { font-size: 1.2rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; padding-bottom: .4rem; border-bottom: 2px solid var(--border); display: flex; align-items: center; gap: .5rem; }
+    h3 { font-size: .98rem; font-weight: 700; color: var(--navy); margin: 1.2rem 0 .4rem; }
+    p { font-size: .92rem; color: #374151; margin-bottom: .75rem; }
+    .pathogen-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(260px,100%), 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .pathogen-card { background: #fff; border: 1px solid var(--border); border-radius: .85rem; padding: 1.1rem 1.25rem; }
+    .pathogen-card-head { display: flex; align-items: center; gap: .6rem; margin-bottom: .5rem; }
+    .pathogen-icon { font-size: 1.4rem; }
+    .pathogen-name { font-size: .9rem; font-weight: 700; color: var(--navy); }
+    .pathogen-status { display: inline-block; font-size: .7rem; font-weight: 700; padding: .15rem .55rem; border-radius: 999px; margin-left: auto; }
+    .status-low { background: rgba(16,185,129,.12); color: #059669; }
+    .status-mod { background: rgba(245,158,11,.12); color: #D97706; }
+    .status-high { background: rgba(239,68,68,.12); color: #DC2626; }
+    .status-alert { background: rgba(239,68,68,.18); color: #DC2626; border: 1px solid rgba(239,68,68,.3); }
+    .pathogen-desc { font-size: .82rem; color: var(--muted); line-height: 1.55; }
+    .pathogen-source { font-size: .72rem; color: #94a3b8; margin-top: .4rem; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem; }
+    .stat-box { background: #fff; border: 1px solid var(--border); border-radius: .75rem; padding: 1rem 1.25rem; min-width: 140px; flex: 1; }
+    .stat-val { font-size: 1.6rem; font-weight: 800; color: var(--navy); }
+    .stat-label { font-size: .78rem; color: var(--muted); margin-top: .1rem; }
+    .source-list { list-style: none; padding: 0; display: grid; gap: .4rem; }
+    .source-list li { font-size: .85rem; color: var(--muted); display: flex; gap: .5rem; align-items: baseline; }
+    .source-list li::before { content: '→'; color: var(--blue); flex-shrink: 0; font-weight: 600; }
+    .disclaimer { font-size: .78rem; color: #64748b; text-align: center; margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid var(--border); line-height: 1.6; }
+    .nav { display: flex; align-items: center; gap: 1rem; padding: .85rem 1.5rem; border-bottom: 1px solid var(--border); background: #fff; }
+    .nav-brand { font-weight: 800; font-size: 1rem; color: var(--navy); text-decoration: none; }
+    .nav-brand span { color: var(--blue); }
+    .nav-back { font-size: .82rem; color: var(--muted); margin-left: auto; }
+    .archive-links { display: flex; gap: .5rem; flex-wrap: wrap; margin-top: 1rem; }
+    .archive-links a { font-size: .8rem; color: var(--blue); background: rgba(42,127,212,.07); border: 1px solid rgba(42,127,212,.15); border-radius: 999px; padding: .2rem .65rem; text-decoration: none; }
+    .archive-links a:hover { background: rgba(42,127,212,.14); }
+    @media (max-width: 600px) { .stat-row { flex-direction: column; } }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">Breath<span>IQ</span></a>
+  <a href="/" class="nav-back">← Retour au tableau de bord</a>
+</nav>
+
+<header class="page-header">
+  <div class="brand">Breath<strong>IQ</strong> · Veille épidémique</div>
+  <h1>Bilan épidémique — Août 2026</h1>
+  <p class="meta">Publié le 1er août 2026 · Mis à jour le 16 août 2026 · Sources : OMS, ECDC, SPF</p>
+</header>
+
+<main class="main">
+
+  <div class="alert-banner" role="alert">
+    <span style="font-size:1.2rem;flex-shrink:0">🩸</span>
+    <p><strong>Alerte en cours — PHEIC OMS :</strong> Épidémie Ebola Bundibugyo active en RDC et Ouganda. Un cas importé a été signalé en France en juin 2026 — résolu, aucune transmission communautaire. Risque pour la population générale française : extrêmement faible. <a href="ebola.html">En savoir plus →</a></p>
+  </div>
+
+  <!-- Chiffres clés du mois -->
+  <section>
+    <h2>📊 Chiffres clés du mois</h2>
+    <div class="stat-row">
+      <div class="stat-box">
+        <div class="stat-val">25</div>
+        <div class="stat-label">Pathogènes surveillés</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">3</div>
+        <div class="stat-label">Alertes OMS actives</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">9</div>
+        <div class="stat-label">Langues couvertes</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-val">+10 j</div>
+        <div class="stat-label">Délai données SPF</div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#64748b">Ces chiffres sont extraits des bulletins officiels OMS, ECDC et Santé Publique France. Les données SPF sont publiées avec un délai de 7 à 10 jours — voir <a href="methodologie.html">méthodologie complète</a>.</p>
+  </section>
+
+  <!-- Situation France -->
+  <section>
+    <h2>🇫🇷 Situation épidémique en France</h2>
+
+    <h3>Grippe et syndromes grippaux (ILI)</h3>
+    <p>Période inter-épidémique. L'incidence nationale des syndromes grippaux reste en deçà du seuil épidémique défini par Santé Publique France (51 cas pour 100 000 habitants). Surveillance maintenue via les réseaux Sentinelles.</p>
+
+    <h3>COVID-19 / SARS-CoV-2</h3>
+    <p>Circulation à bas bruit. La sous-variante XEC est détectée dans plusieurs pays européens. Aucune augmentation significative des hospitalisations en France. Les populations à risque (65+, immunodéprimés) sont invitées à se rapprocher de leur médecin pour la mise à jour vaccinale.</p>
+
+    <h3>Qualité de l'air</h3>
+    <p>Épisode de pollution aux particules fines (PM2.5) signalé en région parisienne et en vallée du Rhône mi-août. Indice AQI dépassant 75 plusieurs jours consécutifs. Les personnes asthmatiques ou souffrant de BPCO sont invitées à limiter les efforts en extérieur entre 12h et 18h.</p>
+
+    <h3>Mpox (variole du singe)</h3>
+    <p>Quelques cas sporadiques sur le territoire national, tous liés à des voyages. Aucun cluster communautaire identifié. PHEIC OMS maintenue pour le clade Ib en Afrique centrale.</p>
+  </section>
+
+  <!-- Situation mondiale -->
+  <section>
+    <h2>🌍 Alertes mondiales actives</h2>
+    <div class="pathogen-grid">
+
+      <div class="pathogen-card">
+        <div class="pathogen-card-head">
+          <span class="pathogen-icon">🩸</span>
+          <span class="pathogen-name">Ebola Bundibugyo</span>
+          <span class="pathogen-status status-alert">PHEIC OMS</span>
+        </div>
+        <p class="pathogen-desc">Épidémie active en RDC et Ouganda. Souche Bundibugyo (BDBV) — aucun vaccin agréé, aucun traitement spécifique. Transmission par contact direct avec sang/liquides biologiques. Risque importation Europe : faible mais surveillé.</p>
+        <p class="pathogen-source">Source : OMS Disease Outbreak News · Mise à jour hebdomadaire</p>
+      </div>
+
+      <div class="pathogen-card">
+        <div class="pathogen-card-head">
+          <span class="pathogen-icon">🔴</span>
+          <span class="pathogen-name">Mpox clade Ib</span>
+          <span class="pathogen-status status-alert">PHEIC OMS</span>
+        </div>
+        <p class="pathogen-desc">Circulation active au Congo (RDC), Rwanda, Burundi. Clade Ib plus transmissible que le clade IIb. Vaccination disponible (MVA-BN/Imvanex) pour les cas contacts et les voyageurs vers zones à risque élevé.</p>
+        <p class="pathogen-source">Source : ECDC · OMS · Mise à jour hebdomadaire</p>
+      </div>
+
+      <div class="pathogen-card">
+        <div class="pathogen-card-head">
+          <span class="pathogen-icon">🐦</span>
+          <span class="pathogen-name">H5N1 / Grippe aviaire</span>
+          <span class="pathogen-status status-mod">Surveillé</span>
+        </div>
+        <p class="pathogen-desc">Cas humains sporadiques aux États-Unis (contacts bovins) et en Asie du Sud-Est. Aucune transmission interhumaine soutenue confirmée. Surveillance renforcée dans les élevages avicoles européens.</p>
+        <p class="pathogen-source">Source : OMS · CDC USA · EFSA · Mise à jour hebdomadaire</p>
+      </div>
+
+      <div class="pathogen-card">
+        <div class="pathogen-card-head">
+          <span class="pathogen-icon">🦟</span>
+          <span class="pathogen-name">Dengue</span>
+          <span class="pathogen-status status-high">Épidémique</span>
+        </div>
+        <p class="pathogen-desc">Saison dengue active en Amérique du Sud (Brésil, Colombie, Argentine) et en Asie du Sud-Est. Risque pour voyageurs. Aedes albopictus (moustique tigre) présent dans le Sud de la France — signalement SRLF recommandé si dengue autochtone suspectée.</p>
+        <p class="pathogen-source">Source : PAHO · OMS · Mise à jour hebdomadaire</p>
+      </div>
+
+      <div class="pathogen-card">
+        <div class="pathogen-card-head">
+          <span class="pathogen-icon">🦠</span>
+          <span class="pathogen-name">COVID-19 (XEC)</span>
+          <span class="pathogen-status status-low">Bas bruit</span>
+        </div>
+        <p class="pathogen-desc">Circulation mondiale maintenue, sans vague estivale majeure en Europe. La sous-variante XEC gagne des parts en Europe de l'Ouest. Aucun signal d'échappement immunitaire significatif aux vaccins 2025-2026.</p>
+        <p class="pathogen-source">Source : ECDC · OMS · Nextstrain · Mise à jour hebdomadaire</p>
+      </div>
+
+      <div class="pathogen-card">
+        <div class="pathogen-card-head">
+          <span class="pathogen-icon">💧</span>
+          <span class="pathogen-name">Choléra</span>
+          <span class="pathogen-status status-high">Actif</span>
+        </div>
+        <p class="pathogen-desc">Épidémie persistante au Yémen, Soudan, Haïti et zones de conflit. Aucun cas autochtone en France. Risque pour voyageurs en zone sans accès à l'eau potable. Vaccin oral (Dukoral) recommandé avant voyage.</p>
+        <p class="pathogen-source">Source : OMS · Mise à jour hebdomadaire</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Conseil pratique du mois -->
+  <section>
+    <h2>💡 Conseil pratique — Août 2026</h2>
+    <p><strong>Voyageurs :</strong> Si vous revenez d'Afrique centrale ou de l'Est (RDC, Ouganda, Rwanda, Burundi) et développez une fièvre dans les 21 jours suivant votre retour, appelez le 15 sans vous déplacer. Mentionnez votre destination et vos contacts éventuels avec des personnes malades.</p>
+    <p><strong>Personnes fragiles en France :</strong> La chaleur estivale combinée aux épisodes de pollution aux PM2.5 augmente la charge respiratoire. Hydratez-vous, évitez les sorties aux heures chaudes, et consultez rapidement si dyspnée ou fièvre persistante.</p>
+    <p><strong>Parents :</strong> La rentrée scolaire de septembre coïncide habituellement avec la remontée des syndromes grippaux et des bronchiolites (VRS). La vaccination grippe est recommandée dès octobre pour les enfants à risque et leur entourage.</p>
+  </section>
+
+  <!-- Sources -->
+  <section>
+    <h2>📚 Sources de ce bilan</h2>
+    <ul class="source-list">
+      <li><a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">OMS — Disease Outbreak News</a> : alertes épidémiques mondiales officielles</li>
+      <li><a href="https://www.ecdc.europa.eu/en/threats-and-outbreaks" target="_blank" rel="noopener">ECDC — Threats and Outbreaks</a> : surveillance épidémiologique européenne</li>
+      <li><a href="https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/grippe/articles/bulletin-epidemiologique-grippe-semaine" target="_blank" rel="noopener">Santé Publique France — Bulletin épidémiologique hebdomadaire</a></li>
+      <li><a href="https://openaq.org" target="_blank" rel="noopener">OpenAQ / Open-Meteo</a> : qualité de l'air en temps réel (PM2.5, PM10, AQI)</li>
+      <li><a href="https://nextstrain.org" target="_blank" rel="noopener">Nextstrain</a> : phylogénie virale SARS-CoV-2, grippe, Mpox</li>
+    </ul>
+    <p style="font-size:.8rem;color:#64748b;margin-top:.75rem">BreathIQ n'est pas producteur de données. Ce bilan agrège et synthétise exclusivement des sources institutionnelles publiques et vérifiables. <a href="methodologie.html">Voir la méthodologie complète →</a></p>
+  </section>
+
+  <!-- Archives -->
+  <section>
+    <h2>🗂 Bilans précédents</h2>
+    <div class="archive-links">
+      <a href="#">Juillet 2026</a>
+      <a href="#">Juin 2026</a>
+      <a href="#">Mai 2026</a>
+      <a href="#">Avril 2026</a>
+      <a href="#">Mars 2026</a>
+    </div>
+    <p style="font-size:.8rem;color:#94a3b8;margin-top:.75rem">Les bilans mensuels sont publiés le premier de chaque mois. Les données sont mises à jour en cours de mois au fil des nouvelles alertes OMS/ECDC.</p>
+  </section>
+
+  <p class="disclaimer">
+    BreathIQ est un outil d'information et de prévention — non dispositif médical (Règlement UE 2017/745).<br>
+    Ce bilan est informatif et ne constitue pas un avis médical. En cas de symptômes, consultez un professionnel de santé.<br>
+    <a href="mentions-legales.html" style="color:inherit">Mentions légales</a> · <a href="methodologie.html" style="color:inherit">Méthodologie</a> · <a href="presse.html" style="color:inherit">Espace presse</a>
+  </p>
+
+</main>
+</body>
+</html>

@@ -170,8 +170,8 @@
   <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
-  <link rel="preload" as="style" href="style.min.css?v=20260816a">
-  <link rel="stylesheet" href="style.min.css?v=20260816a">
+  <link rel="preload" as="style" href="style.min.css?v=20260816c">
+  <link rel="stylesheet" href="style.min.css?v=20260816c">
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect pour API live -->
@@ -219,6 +219,7 @@
       <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
       <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
       <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
+      <li><a href="bilan-epidemique.html">Bilan mensuel</a></li>
       <li><a href="about.html" data-i18n="nav-about">À propos</a></li>
     </ul>
 
@@ -386,8 +387,8 @@
       <div class="gp-score-main">
         <div class="gp-score-dial" style="--score-color:#2563eb;--score-pct:55%">
           <div class="gp-score-dial-inner">
-            <span class="gp-score-num" id="gpScoreNum">55</span>
-            <span class="gp-score-total">/100</span>
+            <span class="gp-score-num" id="gpScoreNum" aria-hidden="true">55</span>
+            <span class="gp-score-total" aria-hidden="true">/100</span>
           </div>
         </div>
         <div class="gp-score-info">
@@ -530,6 +531,41 @@
         <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous citons tout</strong>
         <p class="gp-explainer-text">OMS, ECDC, Santé Publique France. Chaque donnée est sourcée et vérifiable publiquement.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== USE CASES FAMILLE (Mode Patient) ===== -->
+<section class="patient-only" id="usecasesFamily" aria-label="Questions pratiques du quotidien" style="background:#0A1F35;padding:2rem 0">
+  <div class="container">
+    <p class="gp-section-label" style="text-align:center">Questions du quotidien</p>
+    <h2 class="gp-section-title" style="text-align:center;max-width:520px;margin-inline:auto;margin-bottom:1.5rem">Ce que vous vérifiez en 10 secondes</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:1rem">
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.25rem 1.4rem">
+        <div style="font-size:1.6rem;margin-bottom:.5rem">🎒</div>
+        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon enfant peut-il aller à l'école ?</strong>
+        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Consultez l'indice respiratoire et le niveau de circulation virale du moment. Score Bon ou Excellent → aucune contre-indication liée à l'environnement.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.25rem 1.4rem">
+        <div style="font-size:1.6rem;margin-bottom:.5rem">🏃</div>
+        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Puis-je sortir faire du sport dehors ?</strong>
+        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">L'indice AQI (qualité de l'air) est mis à jour toutes les heures. Score Modéré ou plus : privilégiez les heures matinales ou les activités en intérieur.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.25rem 1.4rem">
+        <div style="font-size:1.6rem;margin-bottom:.5rem">🧓</div>
+        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon parent âgé est-il exposé ce week-end ?</strong>
+        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Les personnes de 65+ ans et immunodéprimées sont plus sensibles. En période d'indice Élevé ou Critique, un masque chirurgical suffit pour les visites.</p>
+      </div>
+
+      <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:1rem;padding:1.25rem 1.4rem">
+        <div style="font-size:1.6rem;margin-bottom:.5rem">✈️</div>
+        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Y a-t-il une alerte sanitaire dans ma destination ?</strong>
+        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">La carte mondiale et les alertes OMS (PHEIC) sont visibles en temps réel. Vérifiez avant chaque départ international.</p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1267,9 +1303,17 @@
 <!-- ===== SURVEILLANCE SYNDROMIQUE ===== -->
 <section class="syndromic-section expert-only" id="syndromic" aria-labelledby="syndromic-title">
   <div class="container">
-    <div class="section-header">
-      <h2 id="syndromic-title" data-i18n="syn-title">Surveillance épidémique mondiale</h2>
-      <p class="section-subtitle">Suivi en temps réel des épidémies actives · Algorithme Z-score OMS 7-1-7 · Données SPF, OMS, ECDC</p>
+    <div class="section-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
+      <div>
+        <h2 id="syndromic-title" data-i18n="syn-title">Surveillance épidémique mondiale</h2>
+        <p class="section-subtitle">Suivi en temps réel des épidémies actives · Algorithme Z-score OMS 7-1-7 · Données SPF, OMS, ECDC</p>
+      </div>
+      <button onclick="shareBreathIQ()" id="shareColleagueBtn" aria-label="Partager à un collègue"
+        style="display:flex;align-items:center;gap:.45rem;padding:.5rem 1rem;font-size:.8rem;font-weight:700;color:#fff;background:rgba(42,127,212,.25);border:1px solid rgba(42,127,212,.45);border-radius:999px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s"
+        onmouseover="this.style.background='rgba(42,127,212,.4)'" onmouseout="this.style.background='rgba(42,127,212,.25)'">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
+        Partager à un collègue
+      </button>
     </div>
 
     <!-- Bannière clusters épidémiques locaux (injectée dynamiquement) -->
@@ -1316,6 +1360,14 @@
         <h3 class="decl-form-title" data-i18n="decl-title">📋 Déclarer des cas suspects</h3>
         <p class="decl-form-sub" data-i18n="decl-subtitle">Formulaire ultra-rapide · &lt; 30 secondes · 100% anonyme · RGPD</p>
         <div class="decl-pilot-badge" data-i18n="decl-pilot">⚗️ MODE PILOTE — données stockées localement · Pas de transmission serveur</div>
+
+        <!-- ⚠️ Rappel DO — affiché AVANT saisie (obligation légale) -->
+        <div style="background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.30);border-radius:.65rem;padding:.75rem 1rem;margin:.85rem 0 0;text-align:left;font-size:.80rem;line-height:1.6;color:#FCD34D;">
+          <strong>⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
+          Ce formulaire est un outil de <strong>surveillance locale</strong>. Il <strong>ne remplace pas</strong> la déclaration officielle à l'ARS via
+          <a href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
+          ou cerfa, obligatoire pour les maladies à DO (Art. L3113-1 CSP).
+        </div>
       </div>
 
       <form class="decl-form" id="declForm" onsubmit="submitDeclaration(event)" autocomplete="off" novalidate>
@@ -1325,23 +1377,28 @@
           <label class="decl-label">🔬 Pathologie suspecte *</label>
           <select class="decl-select decl-select-pathologie" name="pathologie" required id="declPathologie">
             <option value="">— Sélectionner la pathologie —</option>
-            <option value="grippe">🤒 Grippe / Syndrome grippal (ILI)</option>
-            <option value="covid19">🦠 COVID-19 / SARS-CoV-2</option>
-            <option value="rsv">🌬️ VRS / Bronchiolite</option>
-            <option value="mpox">🔴 Mpox (variole du singe)</option>
-            <option value="dengue">🦟 Dengue</option>
-            <option value="cholera">💧 Choléra</option>
-            <option value="ebola">🩸 Ebola / Marburg / Hémorragique viral</option>
-            <option value="h5n1">🐦 H5N1 / Grippe aviaire</option>
-            <option value="mers">🐪 MERS-CoV</option>
-            <option value="rougeole">🔴 Rougeole</option>
-            <option value="meningo">🧠 Méningite bactérienne</option>
-            <option value="enceph">🧠 Encéphalite virale</option>
-            <option value="chikungunya">🦟 Chikungunya / Zika</option>
-            <option value="typhus">🦠 Typhus / Fièvre typhoïde</option>
-            <option value="anthrax">☣️ Charbon (anthrax)</option>
-            <option value="botulisme">⚠️ Botulisme</option>
-            <option value="autre">🏥 Autre syndrome à déclarer</option>
+            <optgroup label="Pathogènes courants">
+              <option value="grippe">🤒 Grippe / Syndrome grippal (ILI)</option>
+              <option value="covid19">🦠 COVID-19 / SARS-CoV-2</option>
+              <option value="rsv">🌬️ VRS / Bronchiolite</option>
+              <option value="mpox">🔴 Mpox (variole du singe)</option>
+              <option value="dengue">🦟 Dengue</option>
+              <option value="cholera">💧 Choléra</option>
+              <option value="rougeole">🔴 Rougeole</option>
+              <option value="meningo">🧠 Méningite bactérienne</option>
+              <option value="enceph">🧠 Encéphalite virale</option>
+              <option value="chikungunya">🦟 Chikungunya / Zika</option>
+              <option value="typhus">🦠 Typhus / Fièvre typhoïde</option>
+              <option value="autre">🏥 Autre syndrome à déclarer</option>
+            </optgroup>
+            <!-- Pathogènes à risque élevé — mode soignant uniquement -->
+            <optgroup label="⚕️ Pathogènes à haut risque [Mode Soignant]" id="declExoticGroup" style="display:none">
+              <option value="ebola">🩸 Ebola / Marburg / Hémorragique viral</option>
+              <option value="h5n1">🐦 H5N1 / Grippe aviaire</option>
+              <option value="mers">🐪 MERS-CoV</option>
+              <option value="anthrax">☣️ Charbon (anthrax)</option>
+              <option value="botulisme">⚠️ Botulisme</option>
+            </optgroup>
           </select>
         </div>
 
@@ -2097,7 +2154,8 @@
     </div>
 
     <nav class="footer-links" aria-label="Liens légaux et ressources">
-      <a href="methodologie.html" style="font-weight:600">📐 Méthodologie</a>
+      <a href="bilan-epidemique.html" style="font-weight:600">📋 Bilan épidémique</a>
+      <a href="methodologie.html">📐 Méthodologie</a>
       <a href="bibliography.html">Bibliographie scientifique</a>
       <a href="stocks.html">Masques &amp; Stocks FFP2</a>
       <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>
@@ -2342,7 +2400,7 @@ function hideEpiAlert(type) {
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260814f" defer></script>
-<script src="script.min.js?v=20260816b" defer></script>
+<script src="script.min.js?v=20260816c" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

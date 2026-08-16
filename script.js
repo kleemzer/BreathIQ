@@ -1564,6 +1564,29 @@ function applyTheme() {
   document.documentElement.setAttribute('data-theme', darkMode ? 'dark' : 'light');
 }
 
+async function shareBreathIQ() {
+  const url = 'https://breathiq.fr';
+  const text = 'BreathIQ — tableau de bord épidémique mondial, gratuit, 9 langues. Données OMS/ECDC/SPF en temps réel. Utile pour la veille clinique et la surveillance locale.';
+  const btn = document.getElementById('shareColleagueBtn');
+  if (navigator.share) {
+    try {
+      await navigator.share({ title: 'BreathIQ — Surveillance épidémique', text, url });
+      return;
+    } catch (_) {}
+  }
+  // Fallback : copier le lien + message dans le presse-papier
+  try {
+    await navigator.clipboard.writeText(`${text}\n${url}`);
+    if (btn) {
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Lien copié !';
+      setTimeout(() => { btn.innerHTML = orig; }, 2500);
+    }
+  } catch (_) {
+    window.prompt('Copiez ce lien pour le partager :', `${url}`);
+  }
+}
+
 function toggleTheme() {
   darkMode = !darkMode;
   applyTheme();
@@ -2636,6 +2659,7 @@ function toggleMode() {
     sessionStorage.removeItem('biq-soignant-auth');
     document.body.dataset.mode = 'patient';
     updateModeToggleBtn();
+    updateExoticPathogens();
     updateEpidemicBannerMode(false);
     renderPathogens();
   }
@@ -2760,11 +2784,17 @@ function _renderProBadge(profile) {
   btn.innerHTML = `👤 Mode Patient <span class="pro-profile-badge">${label}${rppsTag}</span>`;
 }
 
+function updateExoticPathogens() {
+  const g = document.getElementById('declExoticGroup');
+  if (g) g.style.display = currentMode === 'expert' ? '' : 'none';
+}
+
 function activateExpertMode() {
   currentMode = 'expert';
   localStorage.setItem('biq-mode', 'expert');
   document.body.dataset.mode = 'expert';
   updateModeToggleBtn();
+  updateExoticPathogens();
   updateEpidemicBannerMode(true);
   // Restore pro badge if profile exists
   try {

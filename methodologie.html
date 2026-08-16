@@ -196,6 +196,19 @@
     <h3>Pondération</h3>
     <div class="formula-block">Score = 0.40 × AQI + 0.30 × circulation_virale + 0.20 × pollen + 0.10 × météo</div>
 
+    <h3>Niveaux verbaux (affichés en mode grand public)</h3>
+    <table class="methodo-table">
+      <thead><tr><th>Score</th><th>Niveau affiché</th><th>Signification pratique</th></tr></thead>
+      <tbody>
+        <tr><td>0 – 25</td><td><strong style="color:#10B981">Excellent</strong></td><td>Aucune précaution particulière</td></tr>
+        <tr><td>26 – 45</td><td><strong style="color:#84CC16">Bon</strong></td><td>Contexte favorable, traitement habituel si terrain</td></tr>
+        <tr><td>46 – 60</td><td><strong style="color:#F59E0B">Modéré</strong></td><td>Surveiller si asthmatique / fragile</td></tr>
+        <tr><td>61 – 75</td><td><strong style="color:#F97316">Élevé</strong></td><td>Limiter les sorties prolongées, porter un masque si fragile</td></tr>
+        <tr><td>76 – 100</td><td><strong style="color:#EF4444">Critique</strong></td><td>Précautions recommandées pour tous</td></tr>
+      </tbody>
+    </table>
+    <p style="font-size:.8rem;color:var(--text-secondary);margin-top:.5rem">Le chiffre précis (/100) est disponible en mode soignant. En mode grand public, seul le niveau verbal est affiché pour éviter une fausse précision.</p>
+
     <table class="methodo-table">
       <thead><tr><th>Composante</th><th>Poids</th><th>Source</th><th>Statut</th></tr></thead>
       <tbody>

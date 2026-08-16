@@ -32,6 +32,7 @@ const STATIC_ASSETS = [
   '/assets/inter-variable.woff2',
   '/404.html',
   '/offline.html',
+  '/bilan-epidemique.html',
 ];
 
 // Données épidémiques : mises en cache mais réseau prioritaire
