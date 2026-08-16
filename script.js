@@ -4653,6 +4653,38 @@ function submitDeclaration(e) {
 
   const pathologie = data.get('pathologie') || null;
 
+  const consent = data.get('consent');
+
+  // Feedback visuel sur les champs manquants
+  const missing = { syndrome, count, age, severity, onset_date: onsetDate, consent };
+  let hasError = false;
+  form.querySelectorAll('[required]').forEach(el => {
+    const name = el.name;
+    const empty = el.type === 'radio'
+      ? !data.get(name)
+      : (el.type === 'checkbox' ? !el.checked : !data.get(name));
+    if (empty) {
+      el.closest('.decl-field, .decl-consent') ?.classList.add('decl-error');
+      hasError = true;
+    } else {
+      el.closest('.decl-field, .decl-consent') ?.classList.remove('decl-error');
+    }
+  });
+
+  // Message d'erreur global
+  let errMsg = form.querySelector('.decl-global-error');
+  if (hasError) {
+    if (!errMsg) {
+      errMsg = document.createElement('p');
+      errMsg.className = 'decl-global-error';
+      errMsg.style.cssText = 'color:#F87171;font-size:.83rem;margin:.5rem 0 0;font-weight:600;';
+      form.querySelector('.decl-submit-btn').before(errMsg);
+    }
+    errMsg.textContent = '⚠️ Veuillez remplir tous les champs obligatoires (*) et cocher la case de consentement.';
+    return;
+  }
+  if (errMsg) errMsg.remove();
+
   if (!syndrome || !count || !age || !severity || !onsetDate) return;
 
   const region_code = data.get('region_code') || null;
