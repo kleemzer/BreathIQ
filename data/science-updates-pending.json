@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-15T09:42:53.884Z",
+  "generatedAt": "2026-08-16T06:52:24.589Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 5,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 5,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-15",
+      "detectedAt": "2026-08-16",
       "humanValidationRequired": true
     },
     {
@@ -38,12 +38,12 @@
       "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "41576953",
-          "title": "Molecular characterization of Ebola virus glycoprotein V75A substitution in the 2018-2020 epidemic.",
-          "authors": "Fan L, Wang Y, Wang Y",
+          "pmid": "42269652",
+          "title": "Ebola outbreak: why haematology matters.",
+          "authors": "The Lancet Haematology",
           "year": "2026",
-          "journal": "Cell",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41576953/"
+          "journal": "Lancet Haematol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42269652/"
         },
         {
           "pmid": "42234553",
@@ -55,7 +55,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-15",
+      "detectedAt": "2026-08-16",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +75,47 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-15",
+      "detectedAt": "2026-08-16",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "YELLOW_FEVER",
+      "pathogenName": "Fièvre jaune",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour YELLOW_FEVER",
+      "articles": [
+        {
+          "pmid": "41991420",
+          "title": "Yellow fever vaccine.",
+          "authors": "Everson KA, Decker CF",
+          "year": "2026",
+          "journal": "Dis Mon",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41991420/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-16",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "MERS",
+      "pathogenName": "MERS-CoV",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
+      "articles": [
+        {
+          "pmid": "41644950",
+          "title": "A stabilized MERS-CoV spike ferritin nanoparticle vaccine elicits robust and protective neutralizing antibody responses.",
+          "authors": "Powell AE, Caruso H, Park S",
+          "year": "2026",
+          "journal": "Nat Commun",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41644950/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-08-16",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-15",
+      "detectedAt": "2026-08-16",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +155,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-15",
+      "detectedAt": "2026-08-16",
       "humanValidationRequired": true
     }
   ]
