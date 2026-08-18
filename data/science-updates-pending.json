@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-17T07:09:01.580Z",
+  "generatedAt": "2026-08-18T06:55:41.448Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     },
     {
@@ -143,8 +143,16 @@
       "pathogenId": "LEPTOSPIROSIS",
       "pathogenName": "Leptospirose",
       "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
+      "message": "2 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
       "articles": [
+        {
+          "pmid": "42009020",
+          "title": "Leptospirosis-clinical review and updates on therapeutics.",
+          "authors": "Lee N, Tanaka T, Koizumi N",
+          "year": "2026",
+          "journal": "Lancet Infect Dis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42009020/"
+        },
         {
           "pmid": "42156054",
           "title": "[Leptospirosis (Weil's Disease)].",
@@ -155,7 +163,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-17",
+      "detectedAt": "2026-08-18",
       "humanValidationRequired": true
     }
   ]
