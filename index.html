@@ -11,7 +11,7 @@
   <!-- Open Graph -->
   <meta property="og:title" content="BreathIQ — Est-ce dangereux dehors aujourd'hui ?">
   <meta property="og:description" content="Qualité de l'air, alertes virus et épidémies près de chez vous — en temps réel, gratuit, sans inscription. Créé par un médecin généraliste français.">
-  <meta property="og:updated_time" content="2026-08-12T00:00:00+02:00">
+  <meta property="og:updated_time" content="2026-08-27T00:00:00+02:00">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://breathiq.fr">
   <meta property="og:site_name" content="BreathIQ">
@@ -72,7 +72,7 @@
         "name": "BreathIQ — score respiratoire et prévention respiratoire quotidienne",
         "url": "https://breathiq.fr/",
         "description": "BreathIQ croise qualité de l'air, virus saisonniers et données sanitaires publiques pour vous donner un score respiratoire simple chaque jour. Outil d'information et de prévention — ne remplace pas un avis médical.",
-        "dateModified": "2026-06-20",
+        "dateModified": "2026-08-27",
         "medicalAudience": ["Patient", "Clinician"],
         "about": [
           { "@type": "MedicalCondition", "name": "Infections respiratoires" },
@@ -126,7 +126,7 @@
       "name": "Surveillance épidémique mondiale",
       "description": "Score respiratoire, foyers épidémiques actifs, qualité de l'air et disponibilité des masques FFP2/N95/KN95 — données publiques OMS, ECDC, SPF."
     },
-    "dateModified": "2026-08-14",
+    "dateModified": "2026-08-27",
     "inLanguage": ["fr", "en", "es", "pt", "ar", "zh", "hi", "sw", "ru"],
     "offers": {
       "@type": "Offer",
@@ -170,11 +170,15 @@
   <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles — preload pour éliminer le render-blocking -->
-  <link rel="preload" as="style" href="style.min.css?v=20260827a">
-  <link rel="stylesheet" href="style.min.css?v=20260827a">
+  <link rel="preload" as="style" href="style.min.css?v=20260827b">
+  <link rel="stylesheet" href="style.min.css?v=20260827b">
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
-  <!-- Preconnect pour API live -->
+  <!-- Preconnect pour API live et CDN carte -->
+  <link rel="preconnect" href="https://unpkg.com" crossorigin>
+  <link rel="preconnect" href="https://cloud.umami.is" crossorigin>
+  <link rel="preconnect" href="https://tiles.stadiamaps.com" crossorigin>
+  <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
   <link rel="preconnect" href="https://api.openaq.org">
   <link rel="preconnect" href="https://data.santepubliquefrance.fr">
   <link rel="preconnect" href="https://eutils.ncbi.nlm.nih.gov">
@@ -1501,6 +1505,10 @@
           <span>Secret professionnel : ne saisir aucune information permettant d'identifier un patient (nom, DDN, n° sécu). Seules des données agrégées sont traitées, conformément au CSP Art. L1110-4.</span>
         </div>
 
+        <!-- Notice géolocalisation silencieuse — Art. 13 RGPD -->
+        <p style="font-size:.75rem;color:#94a3b8;line-height:1.5;margin-bottom:.5rem;padding:.5rem .75rem;background:rgba(255,255,255,.04);border-radius:.35rem;border:1px solid rgba(255,255,255,.07)">
+          📍 Si vous avez déjà autorisé l'accès à votre position dans ce navigateur, votre localisation approximative (arrondie à 0,5° — précision ~55 km) sera incluse anonymement dans la déclaration. Aucune position précise n'est stockée.
+        </p>
         <!-- Consentement RGPD Art. 6 -->
         <div class="decl-consent">
           <label class="decl-consent-label">
@@ -2400,7 +2408,7 @@ function hideEpiAlert(type) {
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260814f" defer></script>
-<script src="script.min.js?v=20260827a" defer></script>
+<script src="script.min.js?v=20260827b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
