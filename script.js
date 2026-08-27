@@ -3236,6 +3236,11 @@ function wizAnalyze() {
     return;
   }
 
+  if (!window.BIQ_DIAG) {
+    // Module pas encore chargé — attendre puis réessayer
+    Promise.all([_diagReady, _clinicReady].map(p => p.catch(() => {}))).then(() => wizAnalyze());
+    return;
+  }
   const result = BIQ_DIAG.runDiagnosticEngine(state);
   const clinicalInput = buildClinicalOrientationInput(state);
   result.clinical = window.BIQ_CLINICAL?.evaluateClinicalOrientation
@@ -4016,6 +4021,20 @@ if ('serviceWorker' in navigator) {
   });
 }
 
+// ── Chargeur de modules dynamiques ───────────────────────────
+function _loadScript(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) { resolve(); return; }
+    const s = Object.assign(document.createElement('script'), { src, onload: resolve, onerror: reject });
+    document.head.appendChild(s);
+  });
+}
+// Pré-chargement des modules non critiques au premier rendu
+// Chargés en parallèle dès que le script principal s'exécute, disponibles avant les idle tasks
+const _diagReady    = _loadScript('/js/symptom-guide.min.js?v=20260814f');
+const _clinicReady  = _loadScript('/js/clinical-orientation.min.js?v=20260620');
+const _careReady    = _loadScript('/js/care-facilities.min.js?v=20260620');
+
 // ── Init ─────────────────────────────────────────────────────
 // Wrapper robuste : fonctionne même si DOMContentLoaded est déjà passé
 function domReady(cb) {
@@ -4092,8 +4111,9 @@ domReady(() => {
     initMapObserver();
   }, { timeout: 1800 });
 
-  _idle(() => {
-    // Surveillance multi-pathogènes
+  _idle(async () => {
+    // Surveillance multi-pathogènes — attend BIQ_DIAG (utilisé par detectEpiSignal)
+    await _diagReady.catch(() => {});
     loadSurveillanceData();
   }, { timeout: 2000 });
 
