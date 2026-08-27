@@ -1894,10 +1894,10 @@ function initMap() {
     attributionControl: true
   });
 
-  // CartoCDN dark tiles — sans rate-limit, thème sombre, déjà en CSP
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
-    subdomains: 'abcd',
+  // OpenStreetMap tiles — gratuit, sans clé API
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+    subdomains: 'abc',
     maxZoom: 19
   }).addTo(worldMap);
 
