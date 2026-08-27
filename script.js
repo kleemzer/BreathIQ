@@ -2643,6 +2643,15 @@ function initMode() {
   document.body.dataset.mode = currentMode;
   updateModeToggleBtn();
   updatePatientRiskBanner();
+  // Si le mode expert était actif lors de la session précédente, le restaurer silencieusement
+  if (currentMode === 'expert' && localStorage.getItem('biq-pro-profile')) {
+    updateExoticPathogens();
+    updateEpidemicBannerMode(true);
+    try {
+      const p = JSON.parse(localStorage.getItem('biq-pro-profile') || 'null');
+      if (p) _renderProBadge(p);
+    } catch(_) {}
+  }
 }
 
 function toggleMode() {
@@ -3644,8 +3653,12 @@ function renderDiagnosticResult(result, state) {
 }
 
 function toggleContextPill(el, group) {
-  document.querySelectorAll(`.ctx-pill[data-group="${group}"]`).forEach(b => b.classList.remove('selected'));
+  document.querySelectorAll(`.ctx-pill[data-group="${group}"]`).forEach(b => {
+    b.classList.remove('selected');
+    b.setAttribute('aria-pressed', 'false');
+  });
   el.classList.add('selected');
+  el.setAttribute('aria-pressed', 'true');
   const anyChecked = document.querySelectorAll('.symptom-check input:checked, .alarm-sign-check input:checked').length > 0;
   const btn = document.getElementById('checkerBtn');
   if (btn) btn.disabled = !anyChecked;
