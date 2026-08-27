@@ -3191,7 +3191,7 @@ function wizAnalyze() {
         careNeed: 'emergency_department',
         redFlags: ['travel_africa_high_risk_bleeding'],
         reasons: [
-          'Voyage Afrique centrale/Est ou MV Hondius + saignements inexpliqués = combinaison nécessitant une évaluation médicale urgente pour éliminer une fièvre hémorragique virale (Ebola, Marburg, Lassa, CCHF).',
+          'Voyage Afrique centrale/Est ou Patagonie/Amérique du Sud + saignements inexpliqués = combinaison nécessitant une évaluation médicale urgente pour éliminer une fièvre hémorragique virale (Ebola, Marburg, Lassa, CCHF, Hantavirus).',
           'Ces pathogènes ne sont PAS pris en compte dans le score respiratoire — seule une évaluation médicale directe est adaptée.'
         ],
         patientMessageFR: '🚨 Votre voyage récent en zone épidémique combiné à des saignements inexpliqués nécessite une évaluation médicale immédiate. Appelez le 15 maintenant et mentionnez votre voyage. N\'allez pas aux urgences seul(e) sans avoir appelé avant — le personnel doit être prévenu pour organiser votre accueil en sécurité.',
@@ -3434,7 +3434,7 @@ function buildSymptomRecap(state, fr) {
     water_exposure:'séjour hôtel/croisière/thermes', immunocompromised:'immunodéprimé',
     pregnant:'grossesse', exposure_msm:'contact lésions cutanées',
     rapid_deterioration:'aggravation rapide', hypotension:'tension basse', tachycardia:'cœur rapide',
-    mv_hondius:'bord MV Hondius',
+    mv_hondius:'voyage Patagonie/Amér.Sud',
     // Alarmes
     dyspnea_rest:'difficultés à respirer au repos', purpura:'purpura',
     seizures:'convulsions', cyanosis:'lèvres bleutées', infant_fever_alarm:'nourrisson < 3 mois avec fièvre',
