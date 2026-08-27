@@ -4062,29 +4062,35 @@ domReady(() => {
   }
   setTimeout(triggerPathogensLoad, 4000);
 
-  // Map — init direct + lazy fallback
-  setTimeout(() => initMapWhenReady(), 400);
-  initMapObserver();
-
-  // Map stats (even before map loads)
-  updateMapStats();
-
-  // UI
+  // UI immédiate — interactions critiques
   bindEvents();
   initNavScroll();
-  initSmoothScroll();
-
-  // RGPD consent + mes données
   initConsent();
-  renderMyDataSection();
-
-  // PHEIC alert — chargement dynamique
-  loadPheicAlert();
 
   // Tâches non critiques au premier rendu — différées pour libérer le thread principal
   const _idle = typeof requestIdleCallback === 'function'
     ? (fn, opts) => requestIdleCallback(fn, opts)
     : (fn) => setTimeout(fn, 0);
+
+  _idle(() => {
+    // Smooth scroll non-critique au premier rendu
+    initSmoothScroll();
+    // Map stats (section sous la ligne de flottaison)
+    updateMapStats();
+  }, { timeout: 1000 });
+
+  _idle(() => {
+    // RGPD "mes données" — section dans le footer
+    renderMyDataSection();
+    // PHEIC alert — fetch réseau non bloquant
+    loadPheicAlert();
+  }, { timeout: 1500 });
+
+  _idle(() => {
+    // Map — init après libération du thread
+    setTimeout(() => initMapWhenReady(), 200);
+    initMapObserver();
+  }, { timeout: 1800 });
 
   _idle(() => {
     // Surveillance multi-pathogènes
