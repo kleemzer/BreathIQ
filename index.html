@@ -168,10 +168,21 @@
   <title>BreathIQ — Est-ce dangereux dehors aujourd'hui ? Air, virus, épidémies</title>
   <!-- Inter font — auto-hébergée, zéro round-trip Google (LCP -200ms) -->
   <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
+  <!-- CSS critique inline — évite le FOUC et améliore FCP/LCP -->
+  <style>
+    @font-face{font-family:Inter;src:url('/assets/inter-variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+    *,::before,::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Inter',system-ui,sans-serif;background:#F5F7FA;color:#1A2B3C;overflow-x:hidden}
+    .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
+    .skip-link:focus{position:fixed;top:0;left:0;width:auto;height:auto;padding:.5rem 1rem;background:#1A3C5E;color:#fff;z-index:9999}
+    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+    .patient-hero-section{background:linear-gradient(160deg,#0a1628 0%,#0d1f3c 50%,#0a1e38 100%);min-height:100vh}
+    [data-theme=dark] body{background:#0F1923;color:#E8F0F7}
+  </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
-  <!-- BreathIQ styles — async CSS pour ne pas bloquer le rendu initial -->
-  <link rel="preload" as="style" href="style.min.css?v=20260827g" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20260827g"></noscript>
+  <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
+  <link rel="stylesheet" href="style.min.css?v=20260827h" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20260827h"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -2409,7 +2420,7 @@ function hideEpiAlert(type) {
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260814f" defer></script>
-<script src="script.min.js?v=20260827g" defer></script>
+<script src="script.min.js?v=20260827h" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
