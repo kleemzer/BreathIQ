@@ -170,7 +170,7 @@
   <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
   <!-- CSS critique inline — évite le FOUC et améliore FCP/LCP -->
   <style>
-    @font-face{font-family:Inter;src:url('/assets/inter-variable.woff2') format('woff2');font-weight:100 900;font-display:swap}
+    @font-face{font-family:Inter;src:url('/assets/inter-variable.woff2') format('woff2');font-weight:100 900;font-display:optional}
     *,::before,::after{box-sizing:border-box;margin:0;padding:0}
     body{font-family:'Inter',system-ui,sans-serif;background:#F5F7FA;color:#1A2B3C;overflow-x:hidden}
     .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
@@ -181,8 +181,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20260827h" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20260827h"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20260827i" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20260827i"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -710,10 +710,10 @@
         <span>Vous n'arrivez plus à respirer · Lèvres, ongles ou langue qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
       </div>
       <div class="triage-alarm-nums" role="group" aria-label="Numéros d'urgence">
-        <a href="tel:15"  class="triage-alarm-tel">🇫🇷&nbsp;15</a>
-        <a href="tel:112" class="triage-alarm-tel">🌍&nbsp;112</a>
-        <a href="tel:999" class="triage-alarm-tel">🇬🇧&nbsp;999</a>
-        <a href="tel:911" class="triage-alarm-tel">🇺🇸&nbsp;911</a>
+        <a href="tel:15"  class="triage-alarm-tel" aria-label="Appeler le 15 (SAMU France)">🇫🇷&nbsp;15</a>
+        <a href="tel:112" class="triage-alarm-tel" aria-label="Appeler le 112 (Urgences Europe)">🌍&nbsp;112</a>
+        <a href="tel:999" class="triage-alarm-tel" aria-label="Appeler le 999 (Urgences UK)">🇬🇧&nbsp;999</a>
+        <a href="tel:911" class="triage-alarm-tel" aria-label="Appeler le 911 (Urgences USA)">🇺🇸&nbsp;911</a>
       </div>
     </div>
 
@@ -768,10 +768,10 @@
           <li><span class="triage-dot" aria-hidden="true">●</span>Vous perdez connaissance ou êtes sur le point de tomber</li>
         </ul>
         <div class="triage-severe-nums" aria-label="Numéros d'urgence">
-          <a href="tel:15"  class="triage-num-btn">🇫🇷 15</a>
-          <a href="tel:112" class="triage-num-btn">🌍 112</a>
-          <a href="tel:999" class="triage-num-btn">🇬🇧 999</a>
-          <a href="tel:911" class="triage-num-btn">🇺🇸 911</a>
+          <a href="tel:15"  class="triage-num-btn" aria-label="Appeler le 15 (SAMU France)">🇫🇷 15</a>
+          <a href="tel:112" class="triage-num-btn" aria-label="Appeler le 112 (Urgences Europe)">🌍 112</a>
+          <a href="tel:999" class="triage-num-btn" aria-label="Appeler le 999 (Urgences UK)">🇬🇧 999</a>
+          <a href="tel:911" class="triage-num-btn" aria-label="Appeler le 911 (Urgences USA)">🇺🇸 911</a>
         </div>
         <div class="triage-escalate triage-escalate-severe">Appelez quelqu'un pour rester avec vous — ne vous déplacez pas seul</div>
       </div>
@@ -902,9 +902,9 @@
       <!-- ── ÉTAPE 0 : Signes d'alarme immédiats ─────────── -->
       <div class="wizard-panel active" id="wiz-step-0">
         <div class="wiz-step-label">Étape 1 sur 4</div>
-        <h3 class="wiz-question">🚨 Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
+        <h3 class="wiz-question" id="wiz-alarm-question">🚨 Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
         <p class="wiz-hint">Si oui, cochez et nous vous orientons immédiatement.</p>
-        <div class="alarm-grid wiz-alarm-grid" role="group">
+        <div class="alarm-grid wiz-alarm-grid" role="group" aria-labelledby="wiz-alarm-question">
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="dyspnea_rest">
             <span class="alarm-icon">😮‍💨</span>
@@ -2420,7 +2420,7 @@ function hideEpiAlert(type) {
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260814f" defer></script>
-<script src="script.min.js?v=20260827h" defer></script>
+<script src="script.min.js?v=20260827i" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
