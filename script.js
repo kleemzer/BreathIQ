@@ -3938,7 +3938,7 @@ function _renderOverpassResults(elements, lat, lon, careNeed) {
         ${r.opening_hours ? `<span class="care-result-hours">🕐 ${escapeHTML(r.opening_hours)}</span>` : ''}
       </div>
       <div class="care-result-actions">
-        ${r.phone ? `<a href="tel:${escapeHTML(r.phone.replace(/\s/g,''))}" class="care-result-call">📞</a>` : ''}
+        ${r.phone ? `<a href="tel:${escapeHTML(r.phone.replace(/\s/g,''))}" class="care-result-call" aria-label="${fr ? 'Appeler' : 'Call'} ${escapeHTML(r.phone)}">📞</a>` : ''}
         <a href="https://www.openstreetmap.org/?mlat=${r.lat}&mlon=${r.lon}#map=17/${r.lat}/${r.lon}" target="_blank" rel="noopener" class="care-result-map" aria-label="${fr ? 'Voir sur la carte' : 'View on map'}">📍</a>
       </div>
     </div>`).join('')}
@@ -4426,7 +4426,7 @@ function renderSurveillanceModule(activePathogens) {
     const levelColors = { normal: '#10B981', jaune: '#F59E0B', orange: '#F97316', rouge: '#EF4444' };
     const col = levelColors[p.alertLevel] || '#10B981';
     const active = p.id === _activeSurveillancePathogen ? 'surv-tab-active' : '';
-    return `<button class="surv-tab ${active}" onclick="selectSurveillancePathogen('${p.id}')" data-pathogen="${p.id}">
+    return `<button class="surv-tab ${active}" role="tab" aria-selected="${p.id === _activeSurveillancePathogen}" onclick="selectSurveillancePathogen('${p.id}')" data-pathogen="${p.id}">
       <span class="surv-tab-dot" style="background:${col}"></span>
       <span class="surv-tab-name">${p.nameFR}</span>
       ${p.zscore != null ? `<span class="surv-tab-z" style="color:${col}">z${p.zscore >= 0 ? '+' : ''}${p.zscore}σ</span>` : ''}
@@ -5165,9 +5165,9 @@ function openAuthorityAlert(pathologyId, level, zscore, count, baseline) {
   const el = document.createElement('div');
   el.id = 'authAlertModal';
   el.className = 'auth-alert-overlay';
-  el.innerHTML = `<div class="auth-alert-box" role="dialog" aria-modal="true">
+  el.innerHTML = `<div class="auth-alert-box" role="dialog" aria-modal="true" aria-labelledby="authAlertTitle">
     <button class="auth-alert-close" onclick="document.getElementById('authAlertModal').remove()" aria-label="Fermer">✕</button>
-    <h3 class="auth-alert-title">📧 ${auth.name}</h3>
+    <h3 class="auth-alert-title" id="authAlertTitle">📧 ${auth.name}</h3>
     <p class="auth-alert-sub">Signal <strong>${level}</strong> · ${path} · ${week}</p>
     <textarea class="auth-alert-text" id="authAlertTextarea" readonly rows="11">${body}</textarea>
     <div class="auth-alert-actions">
@@ -6017,7 +6017,7 @@ function renderCareResults(data, container) {
         <span class="care-result-dist">${r.distance ? Math.round(r.distance) + ' m' : ''}</span>
         ${r.address ? `<span class="care-result-addr">${escapeHTML(r.address)}</span>` : ''}
       </div>
-      ${r.phone ? `<a href="tel:${escapeHTML(r.phone)}" class="care-result-call">📞</a>` : ''}
+      ${r.phone ? `<a href="tel:${escapeHTML(r.phone)}" class="care-result-call" aria-label="${currentLang === 'fr' ? 'Appeler' : 'Call'} ${escapeHTML(r.phone)}">📞</a>` : ''}
     </div>`).join('');
 }
 
