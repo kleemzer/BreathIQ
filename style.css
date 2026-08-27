@@ -853,10 +853,10 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .hero-disclaimer { font-size: .78rem; color: var(--text-on-dark-2); opacity: .7; }
 .hero-trust-strip { display: flex; flex-wrap: wrap; justify-content: center; gap: .5rem 1rem; margin: .75rem auto 0; padding: .5rem .75rem; background: rgba(255,255,255,.06); border-radius: 2rem; max-width: 480px; font-size: .75rem; color: var(--text-on-dark-2); }
 .hero-trust-strip span { display: flex; align-items: center; gap: .3rem; white-space: nowrap; }
-.wizard-privacy-note { font-size: .82rem; color: #6b7280; text-align: center; margin: 0 auto 1.25rem; max-width: 520px; padding: .5rem .75rem; background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2); border-radius: .75rem; }
+.wizard-privacy-note { font-size: .82rem; color: #4b5563; text-align: center; margin: 0 auto 1.25rem; max-width: 520px; padding: .5rem .75rem; background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2); border-radius: .75rem; }
 [data-theme="dark"] .wizard-privacy-note { color: #9ca3af; background: rgba(16,185,129,.1); }
 .gp-sparkline-wrap { display: flex; align-items: center; justify-content: center; gap: .6rem; margin: .4rem 0 .2rem; }
-.gp-sparkline-label { font-size: .7rem; color: #64748b; white-space: nowrap; }
+.gp-sparkline-label { font-size: .7rem; color: #596577; white-space: nowrap; }
 #gpSparkline { display: block; }
 .breath-rings {
   position: relative; width: 200px; height: 200px;
@@ -3920,7 +3920,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 [data-theme="dark"] .diag-report-banner{background:rgba(254,243,199,.12);color:#fcd34d;border-color:rgba(252,211,77,.25)}
 .diag-phone-main{background:#dc2626!important;font-size:1rem!important;padding:.6rem 1.2rem!important}
 .diag-phone-alt{background:#7f1d1d!important;font-size:.9rem!important}
-.diag-phone-note{font-size:.75rem;color:#94a3b8;width:100%}
+.diag-phone-note{font-size:.75rem;color:#596577;width:100%}
 /* Wizard CSS — injected inline to bypass style.min.css parse truncation */
 .symptom-wizard{max-width:760px;margin:0 auto}
 .wizard-progress{display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:2rem}
@@ -3932,7 +3932,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .wizard-panel{display:none!important;animation:wizFadeIn .25s ease}
 .wizard-panel.active{display:block!important}
 @keyframes wizFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
-.wiz-step-label{font-size:.78rem;color:#64748b;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem}
+.wiz-step-label{font-size:.78rem;color:#596577;font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.4rem}
 .wiz-epid-check{font-size:.85rem;color:#cbd5e1}
 .wiz-vitals-title{color:#e2e8f0}
 .wiz-question{font-size:1.2rem;font-weight:700;color:#f1f5f9;margin:0 0 .35rem}
@@ -4081,7 +4081,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 /* Liste pathogènes — vue expandable */
 .biq-search-wrap{position:relative;margin-bottom:.75rem}
 .biq-search-input{width:100%;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:.5rem;padding:.5rem .75rem .5rem 2rem;font-size:.85rem;color:#e2e8f0;outline:none;transition:border-color .2s;box-sizing:border-box}
-.biq-search-input::placeholder{color:#64748b}
+.biq-search-input::placeholder{color:#596577}
 .biq-search-input:focus{border-color:#3b82f6;background:rgba(59,130,246,.07)}
 .biq-search-icon{position:absolute;left:.65rem;top:50%;transform:translateY(-50%);color:#64748b;font-size:.85rem;pointer-events:none;line-height:1}
 .biq-patho-list{display:flex;flex-direction:column;gap:.35rem}
