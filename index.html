@@ -176,13 +176,17 @@
     .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{position:fixed;top:0;left:0;width:auto;height:auto;padding:.5rem 1rem;background:#1A3C5E;color:#fff;z-index:9999}
     .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
-    .patient-hero-section{background:linear-gradient(160deg,#0a1628 0%,#0d1f3c 50%,#0a1e38 100%);min-height:100vh}
+    .patient-hero-section{background:linear-gradient(160deg,#0a1628 0%,#0d1f3c 50%,#0a1e38 100%);min-height:100vh;padding-top:64px;color:#E8F0F7}
+    .gp-hero-title{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:800;line-height:1.2;color:#fff;margin:0}
+    .gp-hero-sub{font-size:1rem;color:rgba(232,240,247,.75);margin-top:.75rem}
+    .hero-section{background:linear-gradient(145deg,#0F2A45 0%,#1A3C5E 50%,#0E4D6E 100%);min-height:100vh;padding-top:64px;color:#E8F0F7}
+    .hero-title{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;line-height:1.2;color:#fff;margin:0}
     [data-theme=dark] body{background:#0F1923;color:#E8F0F7}
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20260827i" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20260827i"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20260827j" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20260827j"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -2416,11 +2420,11 @@ function hideEpiAlert(type) {
   else addEbolaPheicOverlay();
 })();
 </script>
-<script src="api-live.js?v=20260624a" defer></script>
+<script src="api-live.min.js?v=20260827j" defer></script>
 <script src="js/clinical-orientation.min.js?v=20260620" defer></script>
 <script src="js/care-facilities.min.js?v=20260620" defer></script>
 <script src="js/symptom-guide.min.js?v=20260814f" defer></script>
-<script src="script.min.js?v=20260827i" defer></script>
+<script src="script.min.js?v=20260827j" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

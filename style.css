@@ -1502,10 +1502,15 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .risk-banner.risk-low      { background: rgba(16,185,129,.15);  border-color: rgba(16,185,129,.4); }
 .risk-banner.risk-moderate { background: rgba(245,158,11,.15);  border-color: rgba(245,158,11,.4); }
 .risk-banner.risk-high     { background: rgba(239,68,68,.15);   border-color: rgba(239,68,68,.4); }
-.risk-banner.risk-critical { background: rgba(127,29,29,.35);   border-color: #EF4444; animation: pulse-border 2s ease-in-out infinite; }
+.risk-banner.risk-critical { background: rgba(127,29,29,.35); border-color: #EF4444; position: relative; }
+.risk-banner.risk-critical::after {
+  content: ''; position: absolute; inset: -3px; border-radius: inherit;
+  border: 2px solid #EF4444; pointer-events: none;
+  animation: pulse-border 2s ease-in-out infinite;
+}
 @keyframes pulse-border {
-  0%,100% { border-color: #EF4444; box-shadow: 0 0 0 0 rgba(239,68,68,.4); }
-  50%      { border-color: #FCA5A5; box-shadow: 0 0 0 8px rgba(239,68,68,.0); }
+  0%,100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0; transform: scale(1.03); }
 }
 .risk-level-icon { font-size: 3rem; line-height: 1; }
 .risk-level-icon.pulse { animation: icon-pulse 1.5s ease-in-out infinite; }
@@ -2654,8 +2659,13 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 .al-normal.active { border-color: #10B98140; background: #10B98110; }
 .al-jaune.active  { border-color: #F59E0B40; background: #F59E0B10; }
 .al-orange.active { border-color: #F9731640; background: #F9731610; }
-.al-rouge.active  { border-color: #EF444440; background: #EF444410; animation: pulseRed 2s infinite; }
-@keyframes pulseRed { 0%,100% { box-shadow: 0 0 0 0 #EF444430 } 50% { box-shadow: 0 0 0 6px transparent } }
+.al-rouge.active  { border-color: #EF444440; background: #EF444410; position: relative; }
+.al-rouge.active::after {
+  content: ''; position: absolute; inset: -2px; border-radius: inherit;
+  border: 1px solid rgba(239,68,68,.4); pointer-events: none;
+  animation: pulseRed 2s infinite;
+}
+@keyframes pulseRed { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0; transform: scale(1.04); } }
 .al-label { font-size: .78rem; font-weight: 800; letter-spacing: .04em; color: var(--text-primary); flex-shrink: 0; }
 .al-desc  { font-size: .72rem; color: var(--text-muted); line-height: 1.4; }
 
@@ -4238,8 +4248,8 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .gp-score-card{opacity:0;transition:opacity .3s}
 .gp-score-card.js-ready{opacity:1}
 /* Wizard urgence immédiate */
-#wiz-emergency-banner{display:none;background:#dc2626;color:#fff;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:1rem;text-align:center;animation:pulse-red 1s infinite alternate}
-@keyframes pulse-red{from{box-shadow:0 0 0 0 rgba(220,38,38,.4)}to{box-shadow:0 0 0 8px rgba(220,38,38,0)}}
+#wiz-emergency-banner{display:none;background:#dc2626;color:#fff;border-radius:.75rem;padding:1rem 1.25rem;margin-bottom:1rem;text-align:center;animation:pulse-red 1.5s ease-in-out infinite}
+@keyframes pulse-red{0%,100%{opacity:1}50%{opacity:.75}}
 #wiz-emergency-banner.visible{display:block}
 #wiz-emergency-banner a{color:#fff;font-weight:700;font-size:1.1rem;text-decoration:none}
 /* Recherche ville AQI dans la carte de score */
