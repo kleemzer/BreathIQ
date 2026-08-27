@@ -981,7 +981,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .layer-btn {
   display: inline-flex; align-items: center; gap: .45rem;
   padding: .45rem 1rem; border-radius: var(--r-full);
-  font-size: .8rem; font-weight: 600;
+  font-size: .8rem; font-weight: 600; min-height: 44px;
   background: var(--bg-card); border: 1px solid var(--border);
   color: var(--text-secondary); cursor: pointer; transition: var(--t-fast);
 }
@@ -1023,7 +1023,7 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .pathogens-filters { display: flex; flex-wrap: wrap; gap: var(--s1); margin-bottom: var(--s4); }
 .filter-btn {
   padding: .35rem .9rem; border-radius: var(--r-full);
-  font-size: .8rem; font-weight: 600;
+  font-size: .8rem; font-weight: 600; min-height: 44px;
   background: var(--bg-card); border: 1px solid var(--border);
   color: var(--text-secondary); cursor: pointer; transition: var(--t-fast);
 }
@@ -4297,7 +4297,7 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .epi-card-text strong{font-size:1rem;line-height:1.45}
 .epi-card-hint{margin-top:.35rem;font-size:.85rem;color:#94a3b8}
 .epi-card-btns{display:flex;gap:.75rem;margin-bottom:.5rem}
-.epi-btn{padding:.55rem 1.5rem;border-radius:.5rem;border:none;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .15s}
+.epi-btn{padding:.55rem 1.5rem;border-radius:.5rem;border:none;font-size:.9rem;font-weight:600;cursor:pointer;transition:all .15s;min-height:44px}
 .epi-btn-yes{background:#dc2626;color:#fff}
 .epi-btn-yes:hover{background:#b91c1c}
 .epi-btn-no{background:rgba(255,255,255,.1);color:#e8f0f7}

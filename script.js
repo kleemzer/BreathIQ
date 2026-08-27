@@ -4081,14 +4081,22 @@ domReady(() => {
   // PHEIC alert — chargement dynamique
   loadPheicAlert();
 
-  // Surveillance multi-pathogènes
-  loadSurveillanceData();
+  // Tâches non critiques au premier rendu — différées pour libérer le thread principal
+  const _idle = typeof requestIdleCallback === 'function'
+    ? (fn, opts) => requestIdleCallback(fn, opts)
+    : (fn) => setTimeout(fn, 0);
 
-  // Numéros d'urgence localisés
-  renderEmergencyNumbers();
+  _idle(() => {
+    // Surveillance multi-pathogènes
+    loadSurveillanceData();
+  }, { timeout: 2000 });
 
-  // #3 — Fraîcheur des données dans le hero
-  initDataFreshness();
+  _idle(() => {
+    // Numéros d'urgence localisés
+    renderEmergencyNumbers();
+    // #3 — Fraîcheur des données dans le hero
+    initDataFreshness();
+  }, { timeout: 2500 });
 
   // #6 — Deep link #pro : activer mode soignant si URL contient #pro
   if (window.location.hash === '#pro') {
@@ -4099,24 +4107,27 @@ domReady(() => {
     }, 600);
   }
 
-  // #9 — PWA install prompt après complétion wizard
-  initPwaInstallPrompt();
+  _idle(() => {
+    // #9 — PWA install prompt après complétion wizard
+    initPwaInstallPrompt();
+    // Onboarding première visite
+    initOnboarding();
+  }, { timeout: 3000 });
 
-  // Onboarding première visite
-  initOnboarding();
-
-  // Compteur de visites — proposition notification PWA à la 3ème
-  try {
-    if (!sessionStorage.getItem('biq_visit_counted')) {
-      sessionStorage.setItem('biq_visit_counted', '1');
-      const visits = parseInt(localStorage.getItem('biq_visits') || '0', 10) + 1;
-      localStorage.setItem('biq_visits', String(visits));
-      if (visits === 3 && 'Notification' in window && Notification.permission === 'default'
-          && !localStorage.getItem('biq_notif_declined')) {
-        setTimeout(promptPwaNotification, 4000);
+  _idle(() => {
+    // Compteur de visites — proposition notification PWA à la 3ème
+    try {
+      if (!sessionStorage.getItem('biq_visit_counted')) {
+        sessionStorage.setItem('biq_visit_counted', '1');
+        const visits = parseInt(localStorage.getItem('biq_visits') || '0', 10) + 1;
+        localStorage.setItem('biq_visits', String(visits));
+        if (visits === 3 && 'Notification' in window && Notification.permission === 'default'
+            && !localStorage.getItem('biq_notif_declined')) {
+          setTimeout(promptPwaNotification, 4000);
+        }
       }
-    }
-  } catch(e) {}
+    } catch(e) {}
+  }, { timeout: 3500 });
 
   // Proactive geolocation permission state → update care-finder button label
   if (navigator.permissions) {
