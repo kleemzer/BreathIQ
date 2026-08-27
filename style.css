@@ -3257,6 +3257,44 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
 .who-alert-title { font-size:.78rem; color:var(--text-secondary); line-height:1.35; }
 .who-alert-date  { font-size:.68rem; color:var(--text-muted); white-space:nowrap; }
 
+/* ── WHO DON live badge ──────────────────────────────────── */
+.who-alerts-live-badge {
+  display:inline-flex; align-items:center; gap:.25rem;
+  font-size:.62rem; font-weight:700; padding:.1rem .4rem;
+  border-radius:5px; background:#10B98118; color:#10B981;
+  border:1px solid #10B98140; margin-left:.5rem; vertical-align:middle;
+}
+.who-alerts-live-badge.who-alerts-cached { background:#6B728018; color:#6B7280; border-color:#6B728040; }
+
+/* ── ECDC Maladies à prévention vaccinale ─────────────────── */
+.ecdc-vacc-section {
+  background:var(--bg-card); border:1.5px solid rgba(239,68,68,.2);
+  border-radius:14px; padding:var(--s3); margin-bottom:var(--s4);
+}
+.ecdc-vacc-header-bar {
+  display:flex; justify-content:space-between; align-items:center;
+  flex-wrap:wrap; gap:.4rem; margin-bottom:.75rem;
+}
+.ecdc-vacc-title { font-size:.85rem; font-weight:700; color:var(--text-primary); }
+.ecdc-vacc-src   { font-size:.7rem; color:var(--text-muted); }
+.ecdc-vacc-cards { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:.75rem; }
+.ecdc-vacc-card {
+  border:1.5px solid; border-radius:10px; padding:.75rem;
+  background:rgba(255,255,255,.025);
+}
+.ecdc-vacc-header { display:flex; align-items:flex-start; gap:.6rem; margin-bottom:.5rem; }
+.ecdc-vacc-icon   { font-size:1.4rem; flex-shrink:0; }
+.ecdc-vacc-name   { font-size:.85rem; font-weight:700; color:var(--text-primary); }
+.ecdc-vacc-region { font-size:.68rem; color:var(--text-muted); margin-top:.1rem; }
+.ecdc-vacc-badge  {
+  margin-left:auto; font-size:.68rem; font-weight:700; padding:.2rem .55rem;
+  border-radius:6px; border:1px solid; white-space:nowrap; flex-shrink:0;
+}
+.ecdc-vacc-trend  { display:flex; align-items:center; gap:.75rem; margin-bottom:.5rem; font-size:.78rem; }
+.ecdc-vacc-avg    { color:var(--text-muted); font-size:.72rem; }
+.ecdc-spark       { display:block; overflow:visible; flex-shrink:0; }
+.ecdc-vacc-note   { font-size:.72rem; color:var(--text-muted); border-top:1px solid rgba(255,255,255,.07); padding-top:.45rem; }
+
 /* ── Champ pathologie dans le formulaire ────────────────── */
 .decl-field-pathologie { margin-bottom: var(--s3); }
 .decl-select-pathologie {

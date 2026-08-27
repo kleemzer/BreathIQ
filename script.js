@@ -1279,8 +1279,8 @@ async function fetchLiveAqi(region) {
   if (cached && cached.ts && (Date.now() - cached.ts) < 30 * 60 * 1000) return cached.score;
 
   try {
-    // EAQI officiel EU + 6 polluants : PM2.5, PM10, NO2, O3, SO2, CO (CAMS Copernicus)
-    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${region.lat}&longitude=${region.lon}&current=european_aqi,pm2_5,pm10,nitrogen_dioxide,ozone,sulphur_dioxide,carbon_monoxide&timezone=auto`;
+    // EAQI + polluants + pollen (CAMS Copernicus — sans clé API)
+    const url = `https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${region.lat}&longitude=${region.lon}&current=european_aqi,pm2_5,pm10,nitrogen_dioxide,ozone,sulphur_dioxide,carbon_monoxide&hourly=alder_pollen,birch_pollen,grass_pollen,mugwort_pollen,olive_pollen,ragweed_pollen&forecast_days=1&timezone=auto`;
     const resp = await Promise.race([
       fetch(url),
       new Promise((_, reject) => setTimeout(() => reject(new Error('timeout')), 5000))
@@ -1290,6 +1290,24 @@ async function fetchLiveAqi(region) {
     const eaqi = data?.current?.european_aqi;
     if (typeof eaqi !== 'number') throw new Error('No AQI value');
     const score = _eaqiToScore(eaqi);
+
+    // Extraire la valeur pollen courante (dernière heure non-null)
+    const pollenLast = key => {
+      const arr = (data?.hourly?.[key] || []).filter(v => v != null);
+      return arr.length ? arr[arr.length - 1] : null;
+    };
+    const pollen = {
+      alder:   pollenLast('alder_pollen'),
+      birch:   pollenLast('birch_pollen'),
+      grass:   pollenLast('grass_pollen'),
+      mugwort: pollenLast('mugwort_pollen'),
+      olive:   pollenLast('olive_pollen'),
+      ragweed: pollenLast('ragweed_pollen'),
+    };
+    const pollenVals = Object.values(pollen).filter(v => v != null);
+    const maxPollen  = pollenVals.length ? Math.max(...pollenVals) : null;
+    const pollenScore = maxPollen != null ? Math.min(100, Math.round(maxPollen * 10)) : null;
+
     _liveAqiCache[cacheKey] = {
       score, eaqi,
       pm25:  data?.current?.pm2_5              ?? null,
@@ -1298,6 +1316,8 @@ async function fetchLiveAqi(region) {
       o3:    data?.current?.ozone              ?? null,
       so2:   data?.current?.sulphur_dioxide    ?? null,
       co:    data?.current?.carbon_monoxide    ?? null,
+      pollen,
+      pollenScore,
       source: 'CAMS Copernicus / Open-Meteo',
       ts: Date.now()
     };
@@ -1321,7 +1341,9 @@ function generateScoreForRegion(region) {
   const cachedAqi = _liveAqiCache[cacheKey];
   const aqi    = cachedAqi ? cachedAqi.score : Math.round(statusBase + (noise(seed * 1.1) - 0.5) * 20);
   const viral  = Math.round(statusBase + (noise(seed * 2.3) - 0.5) * 25);
-  const pollen = Math.round(30 + noise(seed * 3.7) * 40);
+  // Pollen : utiliser la donnée Open-Meteo réelle si disponible, sinon estimation
+  const pollenLive = cachedAqi?.pollenScore;
+  const pollen = pollenLive != null ? pollenLive : Math.round(30 + noise(seed * 3.7) * 40);
   const weather= Math.round(20 + noise(seed * 4.1) * 30);
 
   const sr = Math.round(0.40 * aqi + 0.30 * viral + 0.20 * pollen + 0.10 * weather);
@@ -1332,7 +1354,9 @@ function generateScoreForRegion(region) {
     viral: Math.min(100, Math.max(0, viral)),
     pollen: Math.min(100, Math.max(0, pollen)),
     weather: Math.min(100, Math.max(0, weather)),
-    aqiIsLive: !!cachedAqi
+    aqiIsLive: !!cachedAqi,
+    pollenIsLive: pollenLive != null,
+    pollenData: cachedAqi?.pollen || null,
   };
 }
 
@@ -2075,45 +2099,83 @@ async function loadPathogensData() {
   }
 }
 
-// ── WHO Disease Outbreak News (daily pipeline) ──────────────────────────────
+// ── WHO Disease Outbreak News ─────────────────────────────────────────────────
 async function loadWHOAlerts() {
+  const whoSection = document.getElementById('whoAlertsSection');
+  if (!whoSection) return;
+
+  const riskColor = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
+  const riskLbl   = { critical:'🔴 CRITIQUE', high:'🟠 ÉLEVÉ', moderate:'🟡 MODÉRÉ', low:'🟢 NORMAL' };
+
+  const renderAlerts = (alerts, dateLabel, isLive) => {
+    const tag = isLive
+      ? `<span class="who-alerts-live-badge">⚡ LIVE</span>`
+      : `<span class="who-alerts-live-badge who-alerts-cached">📋 Statique</span>`;
+    const items = alerts.slice(0, 8).map(a => {
+      const color = riskColor[a.riskLevel] || '#6B7280';
+      const date  = a.pubDate || a.date || '';
+      return `
+      <a href="${escapeHTML(a.url || 'https://www.who.int/emergencies/disease-outbreak-news')}" target="_blank" rel="noopener noreferrer" class="who-alert-item">
+        <span class="who-alert-badge" style="background:${color}22;color:${color};border-color:${color}44">${riskLbl[a.riskLevel] || '⚪'}</span>
+        <span class="who-alert-title">${escapeHTML(a.title)}</span>
+        <span class="who-alert-date">${date ? formatFrenchDate(date, {day:'numeric',month:'short'}) : ''}</span>
+      </a>`;
+    }).join('');
+    whoSection.innerHTML = `
+      <div class="who-alerts-header">
+        <span class="who-alerts-title">📡 OMS — Disease Outbreak News ${tag}</span>
+        <span class="who-alerts-meta">Mis à jour le ${dateLabel} · <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">who.int →</a></span>
+      </div>
+      <div class="who-alerts-list">${items}</div>`;
+    whoSection.hidden = false;
+  };
+
+  // Tenter l'API live WHO DON (via BIQ_LIVE qui la fetch en parallèle)
+  // On attend 3s max que BIQ_LIVE ait complété, sinon fallback statique
+  try {
+    const liveDon = await new Promise((resolve) => {
+      const check = () => {
+        const don = typeof BIQ_LIVE !== 'undefined' && BIQ_LIVE.getParsed()?.whoDon;
+        if (don?.alerts?.length) return resolve(don);
+      };
+      check();
+      window.addEventListener('biq-update', (e) => {
+        const don = e.detail?.parsed?.whoDon;
+        if (don?.alerts?.length) resolve(don);
+      }, { once: true });
+      setTimeout(() => resolve(null), 3000);
+    });
+
+    if (liveDon?.alerts?.length) {
+      const dateLabel = formatFrenchDate(liveDon.fetchedAt || new Date().toISOString(), { day:'numeric', month:'long' });
+      renderAlerts(liveDon.alerts, dateLabel, true);
+      if (isDebugMode()) console.log(`[BreathIQ] WHO DON LIVE (${liveDon.alerts.length} alertes)`);
+      return;
+    }
+  } catch { /* fallback */ }
+
+  // Fallback : fichier statique who-alerts.json
   try {
     const data = await fetchJsonWithTimeout('data/who-alerts.json?_=' + Date.now(), {
       timeout: 6000,
       validate: payload => Array.isArray(payload.alerts) && typeof payload.generatedAt === 'string',
     });
     if (!data?.alerts?.length || !data.generatedAt) return;
-
-    // Inject WHO alerts into the epi tracker section
-    const whoSection = document.getElementById('whoAlertsSection');
-    if (!whoSection) return;
-
-    const dateLabel = formatFrenchDate(data.generatedAt, { day: 'numeric', month: 'long' });
-
-    const riskColor = { critical:'#EF4444', high:'#F59E0B', moderate:'#6366F1', low:'#10B981' };
-    const riskLabel = { critical:'🔴 CRITIQUE', high:'🟠 ÉLEVÉ', moderate:'🟡 MODÉRÉ', low:'🟢 NORMAL' };
-
-    const items = data.alerts.slice(0, 6).map(a => {
-      const color = riskColor[a.riskLevel] || '#6B7280';
-      return `
-      <a href="${escapeHTML(a.url || '#')}" target="_blank" rel="noopener noreferrer" class="who-alert-item">
-        <span class="who-alert-badge" style="background:${color}22;color:${color};border-color:${color}44">${riskLabel[a.riskLevel] || '⚪'}</span>
-        <span class="who-alert-title">${escapeHTML(a.title)}</span>
-        <span class="who-alert-date">${a.pubDate ? formatFrenchDate(a.pubDate, {day:'numeric',month:'short'}) : ''}</span>
-      </a>`;
-    }).join('');
-
-    whoSection.innerHTML = `
-      <div class="who-alerts-header">
-        <span class="who-alerts-title">📡 OMS — Disease Outbreak News</span>
-        <span class="who-alerts-meta">Mis à jour le ${dateLabel} · <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">who.int →</a></span>
-      </div>
-      <div class="who-alerts-list">${items}</div>`;
-    whoSection.hidden = false;
-    if (isDebugMode()) console.log(`[BreathIQ] WHO DON chargé (${data.alerts.length} alertes)`);
+    const dateLabel = formatFrenchDate(data.generatedAt, { day:'numeric', month:'long' });
+    renderAlerts(data.alerts, dateLabel, false);
+    if (isDebugMode()) console.log(`[BreathIQ] WHO DON statique (${data.alerts.length} alertes)`);
   } catch (e) {
     logDataWarning('WHO DON non disponible', e);
   }
+}
+
+// ── WHO DON live (appelé depuis applyLiveData quand BIQ_LIVE a les données) ──
+function renderWHODonLive(donData) {
+  const whoSection = document.getElementById('whoAlertsSection');
+  if (!whoSection || !donData?.alerts?.length) return;
+  // Ne re-rendre que si pas déjà live (évite les flashs répétés)
+  if (whoSection.querySelector('.who-alerts-live-badge:not(.who-alerts-cached)')) return;
+  loadWHOAlerts(); // re-trigger pour mettre à jour avec les données live
 }
 
 function isLegacySPFLiveData(live) {
@@ -4203,7 +4265,8 @@ function applyLiveData(parsed) {
     const viralBadge = document.getElementById('viralEstBadge');
     if (viralBadge) viralBadge.style.display = 'none';
   }
-  // Pollen local (Open-Meteo)
+  // Pollen : géoloc (Open-Meteo géolocalisé) > région (Open-Meteo régional)
+  const pollenSource = parsed.localAqi?.pollen ? parsed.localAqi : (score.pollenData ? { pollen: score.pollenData, pollenScore: score.pollen } : null);
   if (parsed.localAqi?.pollenScore != null) {
     score.pollen = parsed.localAqi.pollenScore;
     score.sr     = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
@@ -4250,12 +4313,19 @@ function applyLiveData(parsed) {
   renderSumEauWidget(parsed.sumeau);
   // Widget WAQI détaillé
   renderWaqiWidget(parsed.waqiLocal || parsed.localAqi);
-  // Pollen
-  renderPollenWidget(parsed.localAqi);
+  // Pollen : géoloc prioritaire, sinon données régionales Open-Meteo
+  const pollenData = parsed.localAqi?.pollen
+    ? parsed.localAqi
+    : (score.pollenData ? { pollen: score.pollenData, pollenScore: score.pollen } : null);
+  renderPollenWidget(pollenData);
   // Widget COVID-19 courbe épidémique (disease.sh)
   renderCovidCurveWidget(parsed.covidFr);
   // Widget vaccination grippe (data.gouv.fr SPF)
   renderVaccGrippeWidget(parsed.fluVaccFr || parsed.fluVaccMeta);
+  // WHO DON live feed
+  if (parsed.whoDon?.alerts?.length) renderWHODonLive(parsed.whoDon);
+  // ECDC pertussis + rougeole
+  if (parsed.ecdcPertussis || parsed.ecdcMeasles) renderECDCVaccPreventable(parsed);
 }
 
 // ── Tracker multi-épidémies ──────────────────────────────────────
@@ -4269,8 +4339,8 @@ var SOURCE_CONFIDENCE = {
   INFLUENZA:  { stars: 4, source: 'SPF data.gouv',       delay: 'Délai publication : ~7 jours', trend: '↘' },
   COVID19VAR: { stars: 4, source: 'SPF SUM\'EAU',        delay: 'Délai publication : ~7 jours', trend: '↘' },
   H5N1:       { stars: 4, source: 'OMS · CDC',           delay: 'Données avril 2026',          trend: '→' },
-  MEASLES:    { stars: 4, source: 'ECDC · OMS',          delay: 'Données mars 2026',           trend: '↗' },
-  PERTUSSIS:  { stars: 3, source: 'ECDC · SPF',          delay: 'Données mars 2026',           trend: '→' },
+  MEASLES:    { stars: 5, source: 'ECDC opendata live',   delay: 'Données hebdomadaires live',  trend: '↗' },
+  PERTUSSIS:  { stars: 5, source: 'ECDC opendata live',   delay: 'Données hebdomadaires live',  trend: '↗' },
   MARBURG:    { stars: 5, source: 'OMS AFRO',            delay: 'Foyer terminé jan 2026',      trend: '✅' },
   NIPAH:      { stars: 5, source: 'OMS DON594',          delay: 'Données fév 2026',            trend: '→' },
 };
@@ -5215,7 +5285,10 @@ function renderLiveSourcesPanel(parsed) {
     { key:'sumeau',       icon:'💧', label: fr ? 'SUM\'EAU — COVID eaux usées'      : 'SUM\'EAU — COVID wastewater',         value: parsed.sumeau      ? `${parsed.sumeau.intensity} (${parsed.sumeau.week})` : '—' },
     { key:'covidFr',      icon:'🦠', label: fr ? 'disease.sh — COVID-19 France 30j' : 'disease.sh — COVID-19 France 30d',     value: parsed.covidFr     ? `${parsed.covidFr.casesAvg7d?.toLocaleString()} cas/j · ${parsed.covidFr.trendDir === 'up' ? '↗' : parsed.covidFr.trendDir === 'down' ? '↘' : '→'}` : '—' },
     { key:'fluVaccFr',    icon:'💉', label: fr ? 'SPF — Vaccination grippe France'   : 'SPF — Flu vaccination France',         value: parsed.fluVaccFr   ? `${parsed.fluVaccFr.nationalRate?.toFixed(1)}%${parsed.fluVaccFr._isStatic ? ' (statique)' : ''} / cible ${parsed.fluVaccFr.target}%` : '—' },
-    { key:'fluNetFr',     icon:'🌡️', label: fr ? 'WHO FluNet — Grippe France'        : 'WHO FluNet — Flu France',              value: parsed.frFlu       ? `${parsed.frFlu.rate} cas sem. ${parsed.frFlu.week} (${parsed.frFlu.source || 'FluNet'})` : '—' },
+    { key:'fluNetFr',     icon:'🌡️', label: fr ? `WHO FluNet — Grippe ${parsed.fluNetCountry || 'FR'}` : `WHO FluNet — Flu ${parsed.fluNetCountry || 'FR'}`, value: parsed.frFlu ? `${parsed.frFlu.rate} cas sem. ${parsed.frFlu.week} (${parsed.frFlu.source || 'FluNet'})` : '—' },
+    { key:'whoDon',       icon:'📡', label: fr ? 'WHO DON — Alertes en direct'        : 'WHO DON — Live alerts',                value: parsed.whoDon      ? `${parsed.whoDon.alerts.length} alertes · ${parsed.whoDon.source === 'WHO DON API' ? '⚡ live' : '📋 statique'}` : '—' },
+    { key:'ecdcPertussis',icon:'🫁', label: fr ? 'ECDC — Coqueluche Europe'           : 'ECDC — Pertussis Europe',              value: parsed.ecdcPertussis ? `${parsed.ecdcPertussis.latestCases} cas/sem · ${parsed.ecdcPertussis.trendDir === 'up' ? '↗' : parsed.ecdcPertussis.trendDir === 'down' ? '↘' : '→'}` : '—' },
+    { key:'ecdcMeasles',  icon:'🔴', label: fr ? 'ECDC — Rougeole Europe'             : 'ECDC — Measles Europe',                value: parsed.ecdcMeasles   ? `${parsed.ecdcMeasles.latestCases} cas/sem · ${parsed.ecdcMeasles.trendDir === 'up' ? '↗' : parsed.ecdcMeasles.trendDir === 'down' ? '↘' : '→'}` : '—' },
   ];
 
   const statusLabel = fr
@@ -5478,6 +5551,70 @@ function renderVaccGrippeWidget(data) {
       ? `⚠️ Couverture insuffisante (${rate.toFixed(0)}% < ${target}%) — risque épidémique accru`
       : `⚠️ Insufficient coverage (${rate.toFixed(0)}% < ${target}%) — increased epidemic risk`}</div>` : ''}
   `;
+}
+
+// ── ECDC — Coqueluche & Rougeole (maladies à prévention vaccinale) ───────────
+function renderECDCVaccPreventable(parsed) {
+  const el = document.getElementById('ecdcVaccSection');
+  if (!el) return;
+
+  const fr = currentLang === 'fr';
+  const diseases = [
+    { key: 'ecdcPertussis', icon: '🫁', nameFR: 'Coqueluche', nameEN: 'Pertussis', color: '#F59E0B', vaccNote: fr ? 'Vaccin DTCaP recommandé (rappel adulte)' : 'DTaP vaccine recommended (adult booster)' },
+    { key: 'ecdcMeasles',   icon: '🔴', nameFR: 'Rougeole',   nameEN: 'Measles',   color: '#EF4444', vaccNote: fr ? 'Vaccin ROR — 2 doses obligatoires' : 'MMR vaccine — 2 mandatory doses' },
+  ].filter(d => parsed[d.key]);
+
+  if (!diseases.length) return;
+
+  const trendIcon = dir => dir === 'up' ? '↗' : dir === 'down' ? '↘' : '→';
+  const trendColor = dir => dir === 'up' ? '#EF4444' : dir === 'down' ? '#10B981' : '#F59E0B';
+  const levelColor = lv => lv === 'rouge' ? '#EF4444' : lv === 'orange' ? '#F97316' : '#F59E0B';
+
+  const cards = diseases.map(({ key, icon, nameFR, nameEN, color, vaccNote }) => {
+    const d = parsed[key];
+    if (!d) return '';
+    const name = fr ? nameFR : nameEN;
+    const lvColor = levelColor(d.alertLevel);
+
+    // Mini spark SVG
+    const vals = d.series.map(s => s.cases);
+    const maxV = Math.max(...vals, 1);
+    const W = 140, H = 32;
+    const pts = vals.map((v, i) => {
+      const x = Math.round((i / Math.max(vals.length - 1, 1)) * W);
+      const y = Math.round(H - (v / maxV) * H);
+      return `${x},${y}`;
+    }).join(' ');
+
+    return `<div class="ecdc-vacc-card" style="border-color:${lvColor}30">
+      <div class="ecdc-vacc-header">
+        <span class="ecdc-vacc-icon">${icon}</span>
+        <div>
+          <div class="ecdc-vacc-name">${name}</div>
+          <div class="ecdc-vacc-region">Europe (ECDC) · ${d.lastWeek}</div>
+        </div>
+        <span class="ecdc-vacc-badge" style="background:${lvColor}18;color:${lvColor};border-color:${lvColor}40">
+          ${d.alertLevel === 'rouge' ? '🔴' : d.alertLevel === 'orange' ? '🟠' : '⚠️'} ${d.latestCases} ${fr ? 'cas/sem' : 'cases/wk'}
+        </span>
+      </div>
+      <div class="ecdc-vacc-trend">
+        <span style="color:${trendColor(d.trendDir)}">${trendIcon(d.trendDir)} ${d.trend > 0 ? '+' : ''}${d.trend}%</span>
+        <span class="ecdc-vacc-avg">${fr ? 'moy.' : 'avg'} ${d.avgCases} ${fr ? 'cas/sem' : 'cases/wk'}</span>
+        <svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" class="ecdc-spark" aria-hidden="true">
+          <polyline fill="none" stroke="${lvColor}" stroke-width="1.5" stroke-linejoin="round" points="${pts}"/>
+        </svg>
+      </div>
+      <div class="ecdc-vacc-note">💉 ${vaccNote}</div>
+    </div>`;
+  }).join('');
+
+  el.innerHTML = `
+    <div class="ecdc-vacc-header-bar">
+      <span class="ecdc-vacc-title">${fr ? '🇪🇺 Surveillance ECDC — Maladies à prévention vaccinale' : '🇪🇺 ECDC Surveillance — Vaccine-preventable diseases'}</span>
+      <span class="ecdc-vacc-src">ECDC opendata · ${fr ? 'Mise à jour hebdomadaire' : 'Weekly update'}</span>
+    </div>
+    <div class="ecdc-vacc-cards">${cards}</div>`;
+  el.hidden = false;
 }
 
 // Lance une récupération AQI réelle en arrière-plan et rafraîchit le score si disponible

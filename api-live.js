@@ -21,8 +21,32 @@ const BIQ_LIVE = (() => {
     flu:         60 * 60 * 1000,   // 1 h    — SPF, CDC
     outbreaks:   6  * 60 * 60 * 1000, // 6 h — ECDC, SUM'EAU
     covid:       6  * 60 * 60 * 1000, // 6 h — disease.sh
+    don:         2  * 60 * 60 * 1000, // 2 h  — WHO DON
     stocks:      24 * 60 * 60 * 1000, // 24 h
   };
+
+  // ── Détection pays utilisateur (pour FluMart mondial) ─────────
+  function _detectFluNetCountry() {
+    const lang = (navigator.language || navigator.languages?.[0] || 'fr-FR');
+    const [langCode, cc] = lang.split(/[-_]/);
+    const iso2to3 = {
+      FR:'FRA',US:'USA',GB:'GBR',DE:'DEU',ES:'ESP',IT:'ITA',PT:'PRT',
+      NL:'NLD',PL:'POL',SE:'SWE',NO:'NOR',DK:'DNK',FI:'FIN',BE:'BEL',
+      CH:'CHE',AT:'AUT',CZ:'CZE',HU:'HUN',RO:'ROU',GR:'GRC',TR:'TUR',
+      JP:'JPN',CN:'CHN',AU:'AUS',CA:'CAN',BR:'BRA',MX:'MEX',AR:'ARG',
+      ZA:'ZAF',IN:'IND',KR:'KOR',SG:'SGP',TH:'THA',ID:'IDN',PH:'PHL',
+      VN:'VNM',EG:'EGY',MA:'MAR',SA:'SAU',AE:'ARE',RU:'RUS',UA:'UKR',
+      IL:'ISR',NG:'NGA',KE:'KEN',CO:'COL',CL:'CHL',PE:'PER',
+    };
+    // Southern hemisphere countries
+    const shCountries = new Set(['AUS','NZL','ZAF','BRA','ARG','CHL','PER','BOL','PRY','URY','ECU','COL','VEN','IDN','PHL','VNM']);
+    const iso3 = iso2to3[cc?.toUpperCase()] || (cc ? 'FRA' : (() => {
+      const m = { fr:'FRA',de:'DEU',es:'ESP',it:'ITA',pt:'PRT',nl:'NLD',pl:'POL',sv:'SWE',da:'DNK',fi:'FIN',ja:'JPN',zh:'CHN',ko:'KOR',ar:'SAU',ru:'RUS' };
+      return m[langCode?.toLowerCase()] || 'FRA';
+    })());
+    const hemisphere = shCountries.has(iso3) ? 'SH' : 'NH';
+    return { iso3, hemisphere };
+  }
 
   // Couverture vaccinale grippe France — données statiques SPF (fallback si API indisponible)
   const VACC_GRIPPE_STATIC = {
@@ -72,13 +96,18 @@ const BIQ_LIVE = (() => {
       ttl: 'outbreaks',
       region: 'FR',
     },
-    // WHO FluNet — Grippe France (VIW_FNT)
-    who_flunet_fr: {
-      label: 'WHO FluNet — Grippe France (VIW_FNT)',
-      url: 'https://xmart-api-public.who.int/FLUMART/VIW_FNT?%24format=json&%24filter=COUNTRY_CODE%20eq%20%27FRA%27%20and%20HEMISPHERE%20eq%20%27NH%27&%24orderby=ISO_WEEK_START%20desc&%24top=12',
-      ttl: 'flu',
-      region: 'FR',
-    },
+    // WHO FluNet — Grippe pays utilisateur (VIW_FNT) — URL construite dynamiquement
+    who_flunet_fr: (() => {
+      const { iso3, hemisphere } = _detectFluNetCountry();
+      return {
+        label: `WHO FluNet — Grippe ${iso3} (VIW_FNT)`,
+        url: `https://xmart-api-public.who.int/FLUMART/VIW_FNT?%24format=json&%24filter=COUNTRY_CODE%20eq%20%27${iso3}%27%20and%20HEMISPHERE%20eq%20%27${hemisphere}%27&%24orderby=ISO_WEEK_START%20desc&%24top=12`,
+        ttl: 'flu',
+        region: iso3,
+        _detectedCountry: iso3,
+        _hemisphere: hemisphere,
+      };
+    })(),
     // disease.sh — COVID-19 France (séries 30j)
     disease_sh_covid: {
       label: 'disease.sh — COVID-19 France (30j)',
@@ -93,6 +122,27 @@ const BIQ_LIVE = (() => {
       ttl: 'outbreaks',
       region: 'FR',
       _metaFetch: true,
+    },
+    // WHO Disease Outbreak News — flux en direct (OData, CORS *)
+    who_don: {
+      label: 'WHO — Disease Outbreak News (live)',
+      url: 'https://www.who.int/api/news/emergencies/disease-outbreak-news?sf_culture=en&$orderby=PublicationDateAndTime%20desc&$top=12',
+      ttl: 'don',
+      region: 'GLOBAL',
+    },
+    // ECDC — Surveillance coqueluche Europe
+    ecdc_pertussis: {
+      label: 'ECDC — Coqueluche Europe',
+      url: 'https://opendata.ecdc.europa.eu/pertussis/casedistribution/json',
+      ttl: 'outbreaks',
+      region: 'EU',
+    },
+    // ECDC — Surveillance rougeole Europe
+    ecdc_measles: {
+      label: 'ECDC — Rougeole Europe',
+      url: 'https://opendata.ecdc.europa.eu/measles/casedistribution/json',
+      ttl: 'outbreaks',
+      region: 'EU',
     },
   };
   // Note : OpenAQ v2 est déprécié (CORS bloqué). Qualité de l'air assurée par WAQI + Open-Meteo (géolocalisés).
@@ -522,8 +572,9 @@ const BIQ_LIVE = (() => {
     const totalCases = series.reduce((s, r) => s + r.cases, 0);
     const avgCases = Math.round(totalCases / series.length);
     const latestCases = series[series.length - 1]?.cases || 0;
+    const countryCode = valid[0]?.COUNTRY_CODE || EP.who_flunet_fr?._detectedCountry || 'FRA';
 
-    // Score viral : normalisé (FluNet donne des cas/semaine, seuil épidémique ~500 cas/sem pour la France)
+    // Score viral normalisé (seuil épidémique adapté selon population relative)
     const viralScore = Math.min(100, Math.round((latestCases / 800) * 100));
 
     // Tendance (comparer dernière semaine vs moyenne)
@@ -531,9 +582,10 @@ const BIQ_LIVE = (() => {
     const alertLevel = viralScore >= 70 ? 'rouge' : viralScore >= 45 ? 'orange' : viralScore >= 25 ? 'jaune' : 'normal';
 
     return {
-      rate: latestCases, // nombre absolu (FluNet est différent de SPF /100k)
+      rate: latestCases,
       week: latest.ISO_WEEK || '',
-      label: `Grippe France ${latestCases} cas sem. ${latest.ISO_WEEK || ''} (WHO FluNet)`,
+      country: countryCode,
+      label: `Grippe ${countryCode} ${latestCases} cas sem. ${latest.ISO_WEEK || ''} (WHO FluNet)`,
       viralScore,
       series,
       infA: parseInt(latest.INF_A || 0),
@@ -544,6 +596,90 @@ const BIQ_LIVE = (() => {
     };
   } catch { return null; }
 }
+
+  // ── WHO DON — Disease Outbreak News ──────────────────────────
+  function parseWHODON(raw) {
+    try {
+      // Format OData WHO : { value: [{Title, Url, PublicationDateAndTime, ...}] }
+      // ou format alternatif : { data: { Records: [...] } }
+      const records = raw?.value || raw?.data?.Records || raw?.items || [];
+      if (!Array.isArray(records) || !records.length) return null;
+
+      const riskKeywords = {
+        critical: /ebola|mpox|monkeypox|marburg|plague|cholera|avian.flu|H5N1|pandemic|PHEIC/i,
+        high:     /outbreak|epidemic|measles|rougeole|pertussis|coqueluche|yellow.fever|dengue|nipah/i,
+        moderate: /influenza|flu|COVID|SARS|MERS|zika|chikungunya|leptospirosis/i,
+      };
+
+      const alerts = records.slice(0, 12).map(r => {
+        const title   = r.Title || r.title || r.name || '';
+        const url     = r.Url  || r.url  || r.link || '';
+        const pubDate = r.PublicationDateAndTime || r.publicationDate || r.date || '';
+        let riskLevel = 'low';
+        if (riskKeywords.critical.test(title)) riskLevel = 'critical';
+        else if (riskKeywords.high.test(title))     riskLevel = 'high';
+        else if (riskKeywords.moderate.test(title)) riskLevel = 'moderate';
+        return { title, url, pubDate, riskLevel };
+      });
+
+      return { alerts, fetchedAt: new Date().toISOString(), source: 'WHO DON API' };
+    } catch { return null; }
+  }
+
+  // ── ECDC — Pertussis / Rougeole Europe ───────────────────────
+  function parseECDCDisease(raw, diseaseName) {
+    try {
+      const records = raw?.data || raw?.records || (Array.isArray(raw) ? raw : null);
+      if (!records?.length) return null;
+
+      // Filtrer les 12 dernières semaines, agréger EU total
+      const sorted = [...records]
+        .filter(r => r.YearWeek || r.year_week || r.Week)
+        .sort((a, b) => {
+          const wa = a.YearWeek || a.year_week || a.Week || '';
+          const wb = b.YearWeek || b.year_week || b.Week || '';
+          return wb.localeCompare(wa);
+        });
+
+      if (!sorted.length) return null;
+
+      // Agréger par semaine (toutes les régions EU)
+      const byWeek = new Map();
+      sorted.forEach(r => {
+        const wk = r.YearWeek || r.year_week || r.Week || '';
+        const cases = parseInt(r.NumberOfCases || r.cases || r.count || 0);
+        if (!wk) return;
+        byWeek.set(wk, (byWeek.get(wk) || 0) + cases);
+      });
+
+      const weeks = [...byWeek.entries()]
+        .sort(([a],[b]) => b.localeCompare(a))
+        .slice(0, 12)
+        .reverse();
+
+      if (!weeks.length) return null;
+
+      const latestCases = weeks[weeks.length - 1][1];
+      const avgCases = Math.round(weeks.reduce((s,[,v]) => s + v, 0) / weeks.length);
+      const prevCases = weeks.length >= 2 ? weeks[weeks.length - 2][1] : avgCases;
+      const trend = prevCases > 0 ? Math.round(((latestCases - prevCases) / prevCases) * 100) : 0;
+      const trendDir = trend > 15 ? 'up' : trend < -15 ? 'down' : 'stable';
+      const alertLevel = latestCases > avgCases * 2 ? 'rouge' : latestCases > avgCases * 1.3 ? 'orange' : 'jaune';
+
+      return {
+        disease: diseaseName,
+        latestCases,
+        avgCases,
+        trend,
+        trendDir,
+        alertLevel,
+        lastWeek: weeks[weeks.length - 1][0],
+        series: weeks.map(([week, cases]) => ({ week, cases })),
+        label: `${diseaseName} EU — ${latestCases} cas sem. ${weeks[weeks.length - 1][0]}`,
+        source: 'ECDC opendata',
+      };
+    } catch { return null; }
+  }
 
   // ── Open-Meteo avec pollen ─────────────────────────────────────
   function fetchOpenMeteoForLocation(lat, lon) {
@@ -715,6 +851,12 @@ const BIQ_LIVE = (() => {
     if (state.data.flu_vacc_data?._direct) { out.fluVaccFr  = state.data.flu_vacc_data.data;                    out.sources.fluVaccFr      = state.data.flu_vacc_data.source; }
     else if (state.data.flu_vacc_fr?.data) { out.fluVaccMeta = parseFluVaccFr(state.data.flu_vacc_fr.data);     out.sources.fluVaccFr      = state.data.flu_vacc_fr.source; }
     if (!out.fluVaccFr && !out.fluVaccMeta) out.fluVaccFr = VACC_GRIPPE_STATIC;
+
+    // Nouvelles sources live
+    if (state.data.who_don?.data)       { out.whoDon      = parseWHODON(state.data.who_don.data);                      out.sources.whoDon       = state.data.who_don.source; }
+    if (state.data.ecdc_pertussis?.data){ out.ecdcPertussis= parseECDCDisease(state.data.ecdc_pertussis.data, 'Coqueluche'); out.sources.ecdcPertussis= state.data.ecdc_pertussis.source; }
+    if (state.data.ecdc_measles?.data)  { out.ecdcMeasles  = parseECDCDisease(state.data.ecdc_measles.data, 'Rougeole');    out.sources.ecdcMeasles  = state.data.ecdc_measles.source; }
+    out.fluNetCountry = EP.who_flunet_fr?._detectedCountry || 'FRA';
 
     // Qualité d'air locale : WAQI (géolocalisé) > Open-Meteo (géolocalisé)
     out.bestLocalAqi = out.waqiLocal || out.localAqi || null;

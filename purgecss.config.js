@@ -34,6 +34,12 @@ module.exports = {
     /^care-tab/,
     // Mode expert
     'expert-mode', 'mode-expert', 'mode-patient',
+    // ECDC maladies à prévention vaccinale
+    /^ecdc-vacc/,
+    /^ecdc-spark/,
+    // WHO DON live badge
+    /^who-alerts-live/,
+    /^who-alerts-cached/,
   ],
   output: 'purged.css',
 };
