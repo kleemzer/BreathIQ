@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-26T07:00:25.956Z",
+  "generatedAt": "2026-08-27T17:33:49.411Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     },
     {
@@ -38,24 +38,24 @@
       "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42599697",
-          "title": "Ebola Outbreak Intensifies.",
-          "authors": "Anderer S",
-          "year": "2026",
-          "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42599697/"
-        },
-        {
           "pmid": "42269652",
           "title": "Ebola outbreak: why haematology matters.",
           "authors": "The Lancet Haematology",
           "year": "2026",
           "journal": "Lancet Haematol",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42269652/"
+        },
+        {
+          "pmid": "42234553",
+          "title": "What Is Ebola?",
+          "authors": "Zhou S, Malani P",
+          "year": "2026",
+          "journal": "JAMA",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     },
     {
@@ -154,16 +154,16 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/42009020/"
         },
         {
-          "pmid": "42156054",
-          "title": "[Leptospirosis (Weil's Disease)].",
-          "authors": "Tokashiki T",
+          "pmid": "41489657",
+          "title": "Leptospira and Leptospirosis: A Review of Species Classifications, Genomes, Morphological Structures, Antimicrobial Resistances, Transmissions, and Clinical Manifestations.",
+          "authors": "Bilung LM, Tahar AS, Pui CF",
           "year": "2026",
-          "journal": "Brain Nerve",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42156054/"
+          "journal": "Curr Microbiol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41489657/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-26",
+      "detectedAt": "2026-08-27",
       "humanValidationRequired": true
     }
   ]
