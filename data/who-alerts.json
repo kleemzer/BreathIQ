@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-08-27T17:58:48.335Z",
-  "fetchDate": "2026-08-27",
+  "generatedAt": "2026-08-28T19:09:07.315Z",
+  "fetchDate": "2026-08-28",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON616",
+      "donId": "2026-DON616",
+      "pubDate": "2026-08",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON615",
@@ -154,14 +162,6 @@
       "donId": "2026-DON597",
       "pubDate": "2026-04",
       "riskLevel": "high",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "International food safety event: Infant formula and products containing arachidonic acid oil contaminated with cereulide toxin - Multi-country",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON596",
-      "donId": "2026-DON596",
-      "pubDate": "2026-03",
-      "riskLevel": "low",
       "source": "WHO OData API"
     }
   ]
