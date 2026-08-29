@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-28T18:30:49.419Z",
+  "generatedAt": "2026-08-29T12:36:09.150Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 8,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 8,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,27 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "CHOLERA",
-      "pathogenName": "Choléra",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
-      "articles": [
-        {
-          "pmid": "41414904",
-          "title": "Attenuating ETEC virulence using a heat-labile enterotoxin-blocking binding protein.",
-          "authors": "Petersson M, Pettersen JS, Henriksen HB",
-          "year": "2026",
-          "journal": "Gut Microbes",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41414904/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     },
     {
@@ -66,16 +46,16 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/42269652/"
         },
         {
-          "pmid": "42303088",
-          "title": "The 2026 Ebola Outbreak and Mass Gathering Risk.",
-          "authors": "Al-Tawfiq JA, Ebrahim SH, Memish ZA",
+          "pmid": "42166572",
+          "title": "Scientists play catch-up to startling Ebola outbreak.",
+          "authors": "Kupferschmidt K",
           "year": "2026",
-          "journal": "Int J Infect Dis",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42303088/"
+          "journal": "Science",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42166572/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     },
     {
@@ -155,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     },
     {
@@ -183,7 +163,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-28",
+      "detectedAt": "2026-08-29",
       "humanValidationRequired": true
     }
   ]
