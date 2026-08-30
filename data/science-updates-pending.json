@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T12:36:09.150Z",
+  "generatedAt": "2026-08-30T11:45:19.240Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     },
     {
@@ -46,16 +46,16 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/42269652/"
         },
         {
-          "pmid": "42166572",
-          "title": "Scientists play catch-up to startling Ebola outbreak.",
-          "authors": "Kupferschmidt K",
+          "pmid": "42456691",
+          "title": "Bundibugyo ebolavirus from the 2026 Ebola outbreak in Uganda and DR Congo: a new variant.",
+          "authors": "Ayitewala A, Amuri-Aziza A, Nsawotebba A",
           "year": "2026",
-          "journal": "Science",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42166572/"
+          "journal": "Lancet",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42456691/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     },
     {
@@ -163,7 +163,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-29",
+      "detectedAt": "2026-08-30",
       "humanValidationRequired": true
     }
   ]
