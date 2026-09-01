@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-08-31T13:25:44.265Z",
+  "generatedAt": "2026-09-01T11:31:17.886Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 6,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 6,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-31",
+      "detectedAt": "2026-09-01",
       "humanValidationRequired": true
     },
     {
@@ -55,7 +55,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-31",
+      "detectedAt": "2026-09-01",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-31",
+      "detectedAt": "2026-09-01",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +95,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-31",
+      "detectedAt": "2026-09-01",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "MERS",
+      "pathogenName": "MERS-CoV",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
+      "articles": [
+        {
+          "pmid": "41644950",
+          "title": "A stabilized MERS-CoV spike ferritin nanoparticle vaccine elicits robust and protective neutralizing antibody responses.",
+          "authors": "Powell AE, Caruso H, Park S",
+          "year": "2026",
+          "journal": "Nat Commun",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41644950/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-09-01",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-31",
+      "detectedAt": "2026-09-01",
       "humanValidationRequired": true
     },
     {
@@ -143,7 +163,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-08-31",
+      "detectedAt": "2026-09-01",
       "humanValidationRequired": true
     }
   ]
