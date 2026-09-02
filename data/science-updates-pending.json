@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-01T11:31:17.886Z",
+  "generatedAt": "2026-09-02T11:06:09.293Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     },
     {
@@ -38,24 +38,24 @@
       "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
+          "pmid": "42599697",
+          "title": "Ebola Outbreak Intensifies.",
+          "authors": "Anderer S",
+          "year": "2026",
+          "journal": "JAMA",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42599697/"
+        },
+        {
           "pmid": "42269652",
           "title": "Ebola outbreak: why haematology matters.",
           "authors": "The Lancet Haematology",
           "year": "2026",
           "journal": "Lancet Haematol",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42269652/"
-        },
-        {
-          "pmid": "42166572",
-          "title": "Scientists play catch-up to startling Ebola outbreak.",
-          "authors": "Kupferschmidt K",
-          "year": "2026",
-          "journal": "Science",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42166572/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     },
     {
@@ -163,7 +163,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-01",
+      "detectedAt": "2026-09-02",
       "humanValidationRequired": true
     }
   ]
