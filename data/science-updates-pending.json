@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-03T11:03:08.274Z",
+  "generatedAt": "2026-09-04T11:11:10.536Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 7,
+    "totalUpdates": 9,
     "warnings": 0,
-    "newLiterature": 7,
+    "newLiterature": 9,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "CHOLERA",
+      "pathogenName": "Choléra",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
+      "articles": [
+        {
+          "pmid": "41554737",
+          "title": "Vibrio cholerae serotype impacts pathogenicity.",
+          "authors": "Zingl FG, Leitner DR, Fakoya B",
+          "year": "2026",
+          "journal": "Nat Commun",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41554737/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     },
     {
@@ -35,27 +55,19 @@
       "pathogenId": "EBOLA",
       "pathogenName": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42599697",
-          "title": "Ebola Outbreak Intensifies.",
-          "authors": "Anderer S",
+          "pmid": "42234553",
+          "title": "What Is Ebola?",
+          "authors": "Zhou S, Malani P",
           "year": "2026",
           "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42599697/"
-        },
-        {
-          "pmid": "42269652",
-          "title": "Ebola outbreak: why haematology matters.",
-          "authors": "The Lancet Haematology",
-          "year": "2026",
-          "journal": "Lancet Haematol",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42269652/"
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     },
     {
@@ -66,16 +78,36 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
       "articles": [
         {
-          "pmid": "41225006",
-          "title": "Potent neutralization of Marburg virus by a vaccine-elicited antibody.",
-          "authors": "Addetia A, Perruzza L, Sprouse K",
+          "pmid": "35201704",
+          "title": "Marburg Virus Disease.",
+          "authors": "Soni S, Rathish B",
           "year": "2026",
-          "journal": "Nature",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41225006/"
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35201704/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "PERTUSSIS",
+      "pathogenName": "Coqueluche",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour PERTUSSIS",
+      "articles": [
+        {
+          "pmid": "30085550",
+          "title": "Pertussis.",
+          "authors": "Vijayan V, Daley SF",
+          "year": "2026",
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30085550/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     },
     {
@@ -86,16 +118,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour YELLOW_FEVER",
       "articles": [
         {
-          "pmid": "41991420",
-          "title": "Yellow fever vaccine.",
-          "authors": "Everson KA, Decker CF",
+          "pmid": "29262028",
+          "title": "Yellow Fever.",
+          "authors": "Simon LV, Hashmi MF, Torp KD",
           "year": "2026",
-          "journal": "Dis Mon",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41991420/"
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/29262028/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +167,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     },
     {
@@ -143,7 +175,7 @@
       "pathogenId": "LEPTOSPIROSIS",
       "pathogenName": "Leptospirose",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
       "articles": [
         {
           "pmid": "42009020",
@@ -152,18 +184,10 @@
           "year": "2026",
           "journal": "Lancet Infect Dis",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42009020/"
-        },
-        {
-          "pmid": "41489657",
-          "title": "Leptospira and Leptospirosis: A Review of Species Classifications, Genomes, Morphological Structures, Antimicrobial Resistances, Transmissions, and Clinical Manifestations.",
-          "authors": "Bilung LM, Tahar AS, Pui CF",
-          "year": "2026",
-          "journal": "Curr Microbiol",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41489657/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-03",
+      "detectedAt": "2026-09-04",
       "humanValidationRequired": true
     }
   ]
