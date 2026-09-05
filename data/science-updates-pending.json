@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-04T11:11:10.536Z",
+  "generatedAt": "2026-09-05T10:25:58.985Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -167,7 +167,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     },
     {
@@ -175,7 +175,7 @@
       "pathogenId": "LEPTOSPIROSIS",
       "pathogenName": "Leptospirose",
       "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
+      "message": "2 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
       "articles": [
         {
           "pmid": "42009020",
@@ -184,10 +184,18 @@
           "year": "2026",
           "journal": "Lancet Infect Dis",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42009020/"
+        },
+        {
+          "pmid": "41489657",
+          "title": "Leptospira and Leptospirosis: A Review of Species Classifications, Genomes, Morphological Structures, Antimicrobial Resistances, Transmissions, and Clinical Manifestations.",
+          "authors": "Bilung LM, Tahar AS, Pui CF",
+          "year": "2026",
+          "journal": "Curr Microbiol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41489657/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-04",
+      "detectedAt": "2026-09-05",
       "humanValidationRequired": true
     }
   ]
