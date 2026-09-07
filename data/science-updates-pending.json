@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-06T10:44:50.083Z",
+  "generatedAt": "2026-09-07T12:14:30.601Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -55,27 +55,19 @@
       "pathogenId": "EBOLA",
       "pathogenName": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42234553",
-          "title": "What Is Ebola?",
-          "authors": "Zhou S, Malani P",
+          "pmid": "42249100",
+          "title": "Bundibugyo virus-perspectives for the current outbreak.",
+          "authors": "Hoenen T",
           "year": "2026",
-          "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
-        },
-        {
-          "pmid": "42599697",
-          "title": "Ebola Outbreak Intensifies.",
-          "authors": "Anderer S",
-          "year": "2026",
-          "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42599697/"
+          "journal": "Npj Viruses",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42249100/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -155,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -175,7 +167,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     },
     {
@@ -203,7 +195,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-06",
+      "detectedAt": "2026-09-07",
       "humanValidationRequired": true
     }
   ]
