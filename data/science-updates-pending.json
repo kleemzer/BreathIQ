@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-07T12:14:30.601Z",
+  "generatedAt": "2026-09-08T11:04:07.157Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 9,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 9,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,27 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "CHOLERA",
-      "pathogenName": "Choléra",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
-      "articles": [
-        {
-          "pmid": "41554737",
-          "title": "Vibrio cholerae serotype impacts pathogenicity.",
-          "authors": "Zingl FG, Leitner DR, Fakoya B",
-          "year": "2026",
-          "journal": "Nat Commun",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41554737/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     },
     {
@@ -58,36 +38,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42249100",
-          "title": "Bundibugyo virus-perspectives for the current outbreak.",
-          "authors": "Hoenen T",
+          "pmid": "42234553",
+          "title": "What Is Ebola?",
+          "authors": "Zhou S, Malani P",
           "year": "2026",
-          "journal": "Npj Viruses",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42249100/"
+          "journal": "JAMA",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "MARBURG",
-      "pathogenName": "Virus Marburg",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
-      "articles": [
-        {
-          "pmid": "35201704",
-          "title": "Marburg Virus Disease.",
-          "authors": "Soni S, Rathish B",
-          "year": "2026",
-          "journal": "",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/35201704/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     },
     {
@@ -167,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     },
     {
@@ -195,7 +155,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-07",
+      "detectedAt": "2026-09-08",
       "humanValidationRequired": true
     }
   ]
