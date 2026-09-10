@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-09T11:08:50.217Z",
+  "generatedAt": "2026-09-10T11:05:36.788Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -167,7 +167,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     },
     {
@@ -195,7 +195,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-09",
+      "detectedAt": "2026-09-10",
       "humanValidationRequired": true
     }
   ]
