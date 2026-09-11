@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-10T11:05:36.788Z",
+  "generatedAt": "2026-09-11T11:04:09.090Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 9,
+    "totalUpdates": 10,
     "warnings": 0,
-    "newLiterature": 9,
+    "newLiterature": 10,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "DENGUE",
+      "pathogenName": "Dengue (arbovirose)",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour DENGUE",
+      "articles": [
+        {
+          "pmid": "40845862",
+          "title": "Effectiveness of the TAK-003 dengue vaccine in adolescents during the 2024 outbreak in São Paulo, Brazil: a test-negative, case-control study.",
+          "authors": "Ranzani OT, Lazar Neto F, Mareto LK",
+          "year": "2026",
+          "journal": "Lancet Infect Dis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40845862/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -138,16 +158,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
       "articles": [
         {
-          "pmid": "41644950",
-          "title": "A stabilized MERS-CoV spike ferritin nanoparticle vaccine elicits robust and protective neutralizing antibody responses.",
-          "authors": "Powell AE, Caruso H, Park S",
+          "pmid": "41831387",
+          "title": "Middle east respiratory syndrome coronavirus (MERS-CoV): An underestimated betacoronavirus with pandemic potential.",
+          "authors": "Asokan S, Isiaka ID, Jacob T",
           "year": "2026",
-          "journal": "Nat Commun",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41644950/"
+          "journal": "Diagn Microbiol Infect Dis",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41831387/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -167,7 +187,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     },
     {
@@ -195,7 +215,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-10",
+      "detectedAt": "2026-09-11",
       "humanValidationRequired": true
     }
   ]
