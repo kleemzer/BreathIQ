@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-13T11:36:05.670Z",
+  "generatedAt": "2026-09-14T12:30:02.575Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 9,
+    "totalUpdates": 8,
     "warnings": 0,
-    "newLiterature": 9,
+    "newLiterature": 8,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -78,36 +78,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
       "articles": [
         {
-          "pmid": "35201704",
-          "title": "Marburg Virus Disease.",
-          "authors": "Soni S, Rathish B",
+          "pmid": "42245043",
+          "title": "Cross-reactive Bundibugyo antibody responses after licensed Ebola vaccines.",
+          "authors": "Lhomme E, Wiedemann A, Ayouba A",
           "year": "2026",
-          "journal": "",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/35201704/"
+          "journal": "medRxiv",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42245043/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "PERTUSSIS",
-      "pathogenName": "Coqueluche",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour PERTUSSIS",
-      "articles": [
-        {
-          "pmid": "30085550",
-          "title": "Pertussis.",
-          "authors": "Vijayan V, Daley SF",
-          "year": "2026",
-          "journal": "",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/30085550/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -167,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     },
     {
@@ -195,7 +175,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-13",
+      "detectedAt": "2026-09-14",
       "humanValidationRequired": true
     }
   ]
