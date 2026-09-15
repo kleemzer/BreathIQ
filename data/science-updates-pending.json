@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-14T12:30:02.575Z",
+  "generatedAt": "2026-09-15T11:33:40.764Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 8,
+    "totalUpdates": 9,
     "warnings": 0,
-    "newLiterature": 8,
+    "newLiterature": 9,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -58,16 +58,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42234553",
-          "title": "What Is Ebola?",
-          "authors": "Zhou S, Malani P",
+          "pmid": "42245043",
+          "title": "Cross-reactive Bundibugyo antibody responses after licensed Ebola vaccines.",
+          "authors": "Lhomme E, Wiedemann A, Ayouba A",
           "year": "2026",
-          "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
+          "journal": "medRxiv",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42245043/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +87,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "PERTUSSIS",
+      "pathogenName": "Coqueluche",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour PERTUSSIS",
+      "articles": [
+        {
+          "pmid": "30085550",
+          "title": "Pertussis.",
+          "authors": "Vijayan V, Daley SF",
+          "year": "2026",
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30085550/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +167,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     },
     {
@@ -175,7 +195,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-14",
+      "detectedAt": "2026-09-15",
       "humanValidationRequired": true
     }
   ]
