@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-15T11:33:40.764Z",
+  "generatedAt": "2026-09-16T11:19:58.035Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -58,16 +58,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42245043",
-          "title": "Cross-reactive Bundibugyo antibody responses after licensed Ebola vaccines.",
-          "authors": "Lhomme E, Wiedemann A, Ayouba A",
+          "pmid": "42234553",
+          "title": "What Is Ebola?",
+          "authors": "Zhou S, Malani P",
           "year": "2026",
-          "journal": "medRxiv",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42245043/"
+          "journal": "JAMA",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -78,16 +78,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
       "articles": [
         {
-          "pmid": "42245043",
-          "title": "Cross-reactive Bundibugyo antibody responses after licensed Ebola vaccines.",
-          "authors": "Lhomme E, Wiedemann A, Ayouba A",
+          "pmid": "35201704",
+          "title": "Marburg Virus Disease.",
+          "authors": "Soni S, Rathish B",
           "year": "2026",
-          "journal": "medRxiv",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42245043/"
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/35201704/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +147,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -167,7 +167,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     },
     {
@@ -195,7 +195,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-15",
+      "detectedAt": "2026-09-16",
       "humanValidationRequired": true
     }
   ]
