@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-19T10:44:38.992Z",
+  "generatedAt": "2026-09-20T11:07:38.653Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 8,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 8,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
@@ -15,16 +15,8 @@
       "pathogenId": "MPOX",
       "pathogenName": "Mpox (clade I)",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour MPOX",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MPOX",
       "articles": [
-        {
-          "pmid": "41359963",
-          "title": "The Incubation Periods of Mpox Virus Clade Ib.",
-          "authors": "Perez-Saez J, Bugeme PM, O'Driscoll M",
-          "year": "2026",
-          "journal": "Ann Intern Med",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41359963/"
-        },
         {
           "pmid": "41005545",
           "title": "Mpox (monkeypox).",
@@ -35,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     },
     {
@@ -55,27 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "EBOLA",
-      "pathogenName": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
-      "articles": [
-        {
-          "pmid": "42599697",
-          "title": "Ebola Outbreak Intensifies.",
-          "authors": "Anderer S",
-          "year": "2026",
-          "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42599697/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     },
     {
@@ -155,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     },
     {
@@ -183,7 +155,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-19",
+      "detectedAt": "2026-09-20",
       "humanValidationRequired": true
     }
   ]
