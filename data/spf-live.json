@@ -1,5 +1,5 @@
 {
-  "run_date": "2026-09-14",
+  "run_date": "2026-09-21",
   "overall_summary": "Les bulletins SPF rapportent plusieurs signaux sous surveillance, sans alerte majeure consolidee.",
   "sources": [
     {
@@ -27,8 +27,8 @@
       ],
       "risk_level": "low",
       "key_points": [
-        "Maladies citees: tuberculose",
-        "Chiffres reperes: 21, 2026, 17, 2023, 2024",
+        "Maladies citees: grippe, tuberculose",
+        "Chiffres reperes: 15, 2026, 18, 2019, 2007",
         "La sante mentale des jeunes exiles : vulnerabilite sociale et troubles psychiques chez les patients suivis au Comede entre 2015 et 2025."
       ]
     },
