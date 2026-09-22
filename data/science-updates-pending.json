@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-21T12:36:34.214Z",
+  "generatedAt": "2026-09-22T11:23:35.776Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 8,
+    "totalUpdates": 6,
     "warnings": 0,
-    "newLiterature": 8,
+    "newLiterature": 6,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,27 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "CHOLERA",
-      "pathogenName": "Choléra",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
-      "articles": [
-        {
-          "pmid": "41554737",
-          "title": "Vibrio cholerae serotype impacts pathogenicity.",
-          "authors": "Zingl FG, Leitner DR, Fakoya B",
-          "year": "2026",
-          "journal": "Nat Commun",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41554737/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
+      "detectedAt": "2026-09-22",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
+      "detectedAt": "2026-09-22",
       "humanValidationRequired": true
     },
     {
@@ -87,27 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "YELLOW_FEVER",
-      "pathogenName": "Fièvre jaune",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour YELLOW_FEVER",
-      "articles": [
-        {
-          "pmid": "29262028",
-          "title": "Yellow Fever.",
-          "authors": "Simon LV, Hashmi MF, Torp KD",
-          "year": "2026",
-          "journal": "",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/29262028/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
+      "detectedAt": "2026-09-22",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
+      "detectedAt": "2026-09-22",
       "humanValidationRequired": true
     },
     {
@@ -147,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
+      "detectedAt": "2026-09-22",
       "humanValidationRequired": true
     },
     {
@@ -175,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-21",
+      "detectedAt": "2026-09-22",
       "humanValidationRequired": true
     }
   ]
