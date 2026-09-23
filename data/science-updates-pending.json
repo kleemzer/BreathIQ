@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-22T11:23:35.776Z",
+  "generatedAt": "2026-09-23T11:19:51.409Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 6,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 6,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-22",
+      "detectedAt": "2026-09-23",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "CHOLERA",
+      "pathogenName": "Choléra",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
+      "articles": [
+        {
+          "pmid": "41554737",
+          "title": "Vibrio cholerae serotype impacts pathogenicity.",
+          "authors": "Zingl FG, Leitner DR, Fakoya B",
+          "year": "2026",
+          "journal": "Nat Commun",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41554737/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-09-23",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-22",
+      "detectedAt": "2026-09-23",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-22",
+      "detectedAt": "2026-09-23",
       "humanValidationRequired": true
     },
     {
@@ -78,16 +98,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
       "articles": [
         {
-          "pmid": "41644950",
-          "title": "A stabilized MERS-CoV spike ferritin nanoparticle vaccine elicits robust and protective neutralizing antibody responses.",
-          "authors": "Powell AE, Caruso H, Park S",
+          "pmid": "42097153",
+          "title": "Respiratory infections due to human common cold coronaviruses, SARS-CoV, MERS-CoV, and SARS-CoV-2: epidemiology, pathogenesis, clinical features, diagnostics, therapeutics, and vaccine landscapes.",
+          "authors": "Zumla A, Hui DS, Peiris M",
           "year": "2026",
-          "journal": "Nat Commun",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41644950/"
+          "journal": "Lancet Respir Med",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42097153/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-22",
+      "detectedAt": "2026-09-23",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-22",
+      "detectedAt": "2026-09-23",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +155,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-22",
+      "detectedAt": "2026-09-23",
       "humanValidationRequired": true
     }
   ]
