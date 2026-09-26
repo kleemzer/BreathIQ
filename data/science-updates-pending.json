@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-09-25T11:39:11.248Z",
+  "generatedAt": "2026-09-26T11:13:11.649Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     },
     {
@@ -127,7 +127,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     },
     {
@@ -155,7 +155,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-25",
+      "detectedAt": "2026-09-26",
       "humanValidationRequired": true
     }
   ]
