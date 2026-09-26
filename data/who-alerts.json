@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-09-25T12:25:35.362Z",
-  "fetchDate": "2026-09-25",
+  "generatedAt": "2026-09-26T11:58:03.525Z",
+  "fetchDate": "2026-09-26",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618",
+      "donId": "2026-DON618",
+      "pubDate": "2026-09",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON617",
@@ -154,14 +162,6 @@
       "donId": "2026-DON599",
       "pubDate": "2026-05",
       "riskLevel": "high",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Measles - Bangladesh",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON598",
-      "donId": "2026-DON598",
-      "pubDate": "2026-04",
-      "riskLevel": "low",
       "source": "WHO OData API"
     }
   ]
