@@ -1,35 +1,15 @@
 {
-  "generatedAt": "2026-09-30T12:22:31.626Z",
+  "generatedAt": "2026-10-01T12:57:42.717Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 7,
+    "totalUpdates": 6,
     "warnings": 0,
-    "newLiterature": 7,
+    "newLiterature": 6,
     "whoAlerts": 0
   },
   "updates": [
-    {
-      "type": "new_literature",
-      "pathogenId": "CHOLERA",
-      "pathogenName": "Choléra",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
-      "articles": [
-        {
-          "pmid": "41823138",
-          "title": "Mucosal-Penetrating Nanovaccine Enhances Mucosal and Systemic Immunity against Respiratory Syncytial Virus Infection.",
-          "authors": "Zhang Z, Chen H, Xu B",
-          "year": "2026",
-          "journal": "ACS Nano",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41823138/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
-      "humanValidationRequired": true
-    },
     {
       "type": "new_literature",
       "pathogenId": "EBOLA",
@@ -55,7 +35,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
+      "detectedAt": "2026-10-01",
       "humanValidationRequired": true
     },
     {
@@ -66,16 +46,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
       "articles": [
         {
-          "pmid": "41225006",
-          "title": "Potent neutralization of Marburg virus by a vaccine-elicited antibody.",
-          "authors": "Addetia A, Perruzza L, Sprouse K",
+          "pmid": "42245043",
+          "title": "Cross-reactive Bundibugyo antibody responses after licensed Ebola vaccines.",
+          "authors": "Lhomme E, Wiedemann A, Ayouba A",
           "year": "2026",
-          "journal": "Nature",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41225006/"
+          "journal": "medRxiv",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42245043/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
+      "detectedAt": "2026-10-01",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +75,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
+      "detectedAt": "2026-10-01",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
+      "detectedAt": "2026-10-01",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
+      "detectedAt": "2026-10-01",
       "humanValidationRequired": true
     },
     {
@@ -163,7 +143,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-09-30",
+      "detectedAt": "2026-10-01",
       "humanValidationRequired": true
     }
   ]
