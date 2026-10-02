@@ -1,15 +1,35 @@
 {
-  "generatedAt": "2026-10-01T12:57:42.717Z",
+  "generatedAt": "2026-10-02T12:20:09.619Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 6,
+    "totalUpdates": 7,
     "warnings": 0,
-    "newLiterature": 6,
+    "newLiterature": 7,
     "whoAlerts": 0
   },
   "updates": [
+    {
+      "type": "new_literature",
+      "pathogenId": "CHOLERA",
+      "pathogenName": "Choléra",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
+      "articles": [
+        {
+          "pmid": "41969207",
+          "title": "Underlying MASLD-induced gut microbiome dysbiosis and intestinal inflammation are key to poor outcomes in vibriosis infections in a preclinical model.",
+          "authors": "Saha P, Roy S, More M",
+          "year": "2026",
+          "journal": "Gut Microbes",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41969207/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-10-02",
+      "humanValidationRequired": true
+    },
     {
       "type": "new_literature",
       "pathogenId": "EBOLA",
@@ -35,7 +55,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-01",
+      "detectedAt": "2026-10-02",
       "humanValidationRequired": true
     },
     {
@@ -46,16 +66,16 @@
       "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
       "articles": [
         {
-          "pmid": "42245043",
-          "title": "Cross-reactive Bundibugyo antibody responses after licensed Ebola vaccines.",
-          "authors": "Lhomme E, Wiedemann A, Ayouba A",
+          "pmid": "41225006",
+          "title": "Potent neutralization of Marburg virus by a vaccine-elicited antibody.",
+          "authors": "Addetia A, Perruzza L, Sprouse K",
           "year": "2026",
-          "journal": "medRxiv",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42245043/"
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41225006/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-01",
+      "detectedAt": "2026-10-02",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +95,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-01",
+      "detectedAt": "2026-10-02",
       "humanValidationRequired": true
     },
     {
@@ -95,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-01",
+      "detectedAt": "2026-10-02",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-01",
+      "detectedAt": "2026-10-02",
       "humanValidationRequired": true
     },
     {
@@ -143,7 +163,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-01",
+      "detectedAt": "2026-10-02",
       "humanValidationRequired": true
     }
   ]
