@@ -1,33 +1,33 @@
 {
-  "generatedAt": "2026-10-02T12:20:09.619Z",
+  "generatedAt": "2026-10-03T11:30:08.295Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 7,
+    "totalUpdates": 5,
     "warnings": 0,
-    "newLiterature": 7,
+    "newLiterature": 5,
     "whoAlerts": 0
   },
   "updates": [
     {
       "type": "new_literature",
-      "pathogenId": "CHOLERA",
-      "pathogenName": "Choléra",
+      "pathogenId": "MPOX",
+      "pathogenName": "Mpox (clade I)",
       "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour CHOLERA",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MPOX",
       "articles": [
         {
-          "pmid": "41969207",
-          "title": "Underlying MASLD-induced gut microbiome dysbiosis and intestinal inflammation are key to poor outcomes in vibriosis infections in a preclinical model.",
-          "authors": "Saha P, Roy S, More M",
+          "pmid": "41005545",
+          "title": "Mpox (monkeypox).",
+          "authors": "Heskin J, Chan I, Bunker CB",
           "year": "2026",
-          "journal": "Gut Microbes",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41969207/"
+          "journal": "Clin Dermatol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41005545/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
+      "detectedAt": "2026-10-03",
       "humanValidationRequired": true
     },
     {
@@ -35,27 +35,19 @@
       "pathogenId": "EBOLA",
       "pathogenName": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour EBOLA",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
       "articles": [
         {
-          "pmid": "42234553",
-          "title": "What Is Ebola?",
-          "authors": "Zhou S, Malani P",
+          "pmid": "42341299",
+          "title": "Bundibugyo Virus Disease in 2026 - Clinical and Public Health Responses.",
+          "authors": "Sullivan NJ",
           "year": "2026",
-          "journal": "JAMA",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42234553/"
-        },
-        {
-          "pmid": "42249100",
-          "title": "Bundibugyo virus-perspectives for the current outbreak.",
-          "authors": "Hoenen T",
-          "year": "2026",
-          "journal": "Npj Viruses",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42249100/"
+          "journal": "N Engl J Med",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42341299/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
+      "detectedAt": "2026-10-03",
       "humanValidationRequired": true
     },
     {
@@ -75,47 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "NIPAH",
-      "pathogenName": "Virus Nipah",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour NIPAH",
-      "articles": [
-        {
-          "pmid": "34033338",
-          "title": "Nipah Virus.",
-          "authors": "Rathish B, Nguyen AD",
-          "year": "2026",
-          "journal": "",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/34033338/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "PERTUSSIS",
-      "pathogenName": "Coqueluche",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour PERTUSSIS",
-      "articles": [
-        {
-          "pmid": "30085550",
-          "title": "Pertussis.",
-          "authors": "Vijayan V, Daley SF",
-          "year": "2026",
-          "journal": "",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/30085550/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
+      "detectedAt": "2026-10-03",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
+      "detectedAt": "2026-10-03",
       "humanValidationRequired": true
     },
     {
@@ -163,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-02",
+      "detectedAt": "2026-10-03",
       "humanValidationRequired": true
     }
   ]
