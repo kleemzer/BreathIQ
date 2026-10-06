@@ -4536,3 +4536,41 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .epidemic-alert-banner.expanded .epidemic-date{display:block}
 .epidemic-toggle{background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:2px 8px;font-size:.8rem;color:inherit;cursor:pointer;margin-right:.4rem}
 .epidemic-toggle:hover{background:rgba(255,255,255,.1)}
+
+/* ── Hero : CTA secondaire symptômes ──────────────────────────── */
+.hero-secondary-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  margin-top: .6rem;
+  padding: .55rem 1.25rem;
+  background: transparent;
+  color: rgba(255,255,255,.7);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 2rem;
+  font-size: .92rem;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color .15s, border-color .15s, background .15s;
+}
+.hero-secondary-cta:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,.5);
+  background: rgba(255,255,255,.07);
+  text-decoration: none;
+}
+
+/* ── CTA principal — alerte épidémique (bleu-violet) ─────────── */
+.hero-symptom-cta {
+  background: linear-gradient(135deg, #2563eb, #7c3aed) !important;
+  box-shadow: 0 4px 20px rgba(99,102,241,.4), 0 2px 8px rgba(99,102,241,.2) !important;
+}
+.hero-symptom-cta:hover {
+  background: linear-gradient(135deg, #1d4ed8, #6d28d9) !important;
+  box-shadow: 0 8px 28px rgba(99,102,241,.5), 0 3px 10px rgba(99,102,241,.3) !important;
+}
+
+/* ── Carte épidémique — couleur violette ──────────────────────── */
+.path-epi { border-color: rgba(124,58,237,.35); }
+.path-epi:hover { border-color: rgba(124,58,237,.7); background: rgba(124,58,237,.12); box-shadow: 0 8px 32px rgba(124,58,237,.2); }
+.path-epi::before { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,.15), transparent 70%); }

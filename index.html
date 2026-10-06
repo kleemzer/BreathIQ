@@ -185,8 +185,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007d" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007d"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007e" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007e"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -319,16 +319,20 @@
 <section class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
   <div class="patient-hero-inner">
 
-    <!-- H1 grand public — réponse immédiate, pas explication -->
+    <!-- H1 — positionnement épidémiologique -->
     <div class="gp-hero-intro">
       <p class="hero-author-chip">🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle · <span style="font-weight:400;opacity:.75">Outil d'information — non dispositif médical</span></p>
-      <h1 class="gp-hero-title" id="patient-hero-title">Est-ce que je peux sortir aujourd'hui ?</h1>
-      <p class="gp-hero-subtitle">Air, virus saisonniers, alertes épidémiques — BreathIQ croise chaque jour les données officielles (OMS · ECDC · SPF) pour vous donner un score respiratoire simple. <strong style="color:#93c5fd;font-weight:600">Gratuit, sans compte, zéro tracking.</strong></p>
-      <!-- #1 CTA symptômes above the fold — visible mobile + desktop -->
-      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-symptom-cta" aria-label="Démarrer le questionnaire de symptômes">
-        🤒 J'ai des symptômes — que faire ? <span class="hero-cta-arrow" aria-hidden="true">→</span>
+      <h1 class="gp-hero-title" id="patient-hero-title">Quels virus circulent en France en ce moment ?</h1>
+      <p class="gp-hero-subtitle">BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF). <strong style="color:#93c5fd;font-weight:600">Gratuit, sans compte, zéro tracking.</strong></p>
+      <!-- CTA principal — alertes épidémiques -->
+      <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" class="hero-symptom-cta" aria-label="Voir les alertes épidémiques en cours">
+        🦠 Voir les alertes épidémiques <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
-      <!-- #3 Fraîcheur des données -->
+      <!-- CTA secondaire — symptômes -->
+      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-secondary-cta" aria-label="J'ai des symptômes">
+        🤒 J'ai des symptômes — que faire ?
+      </a>
+      <!-- Fraîcheur des données -->
       <div class="hero-freshness" id="heroFreshness" aria-live="polite"></div>
     </div>
 
@@ -343,28 +347,28 @@
       </div>
     </div>
 
-    <!-- Trois chemins d'action clairs -->
+    <!-- Quatre parcours — épidémio en premier -->
     <div class="hero-paths" role="navigation" aria-label="Que souhaitez-vous faire ?">
-      <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
+      <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" class="path-card path-epi">
         <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
+        <span class="path-icon">🦠</span>
+        <span class="path-title">Alertes épidémiques</span>
+        <span class="path-sub">OMS · ECDC · Foyers actifs</span>
+      </a>
+      <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="path-card path-score">
+        <span class="path-icon">🔬</span>
+        <span class="path-title">Virus en circulation</span>
+        <span class="path-sub">Grippe · COVID · RSV · 26 pathogènes</span>
+      </a>
+      <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
         <span class="path-icon">🤒</span>
         <span class="path-title">J'ai des symptômes</span>
         <span class="path-sub">Que faire maintenant ?</span>
       </a>
-      <a href="#dailyScore" class="path-card path-score" onclick="return navTo(event,'#dailyScore')">
-        <span class="path-icon">📊</span>
-        <span class="path-title">Score respiratoire du jour</span>
-        <span class="path-sub">Air · Virus · Pollens</span>
-      </a>
-      <a href="#careFinder" class="path-card path-doctor" onclick="return navTo(event,'#careFinder')">
-        <span class="path-icon">📍</span>
-        <span class="path-title">Trouver un soignant</span>
-        <span class="path-sub">Médecin · Urgences · Pharmacie</span>
-      </a>
       <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
         <span class="path-icon" aria-hidden="true">🩺</span>
         <span class="path-title">Espace soignant</span>
-        <span class="path-sub">Outils cliniques · Pathogènes</span>
+        <span class="path-sub">Outils cliniques · Déclaration</span>
       </button>
     </div>
 
@@ -2454,8 +2458,8 @@ function hideEpiAlert(type) {
   else addEbolaPheicOverlay();
 })();
 </script>
-<script src="api-live.min.js?v=20261007d" defer></script>
-<script src="script.min.js?v=20261007d" defer></script>
+<script src="api-live.min.js?v=20261007e" defer></script>
+<script src="script.min.js?v=20261007e" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
