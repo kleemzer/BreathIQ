@@ -193,8 +193,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007i" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007i"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007j" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007j"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -420,7 +420,7 @@
     <div class="gp-score-card" id="gpScoreCard">
       <div class="gp-score-label">📊 Indice respiratoire du jour</div>
       <div style="text-align:center;margin-bottom:.5rem">
-        <span class="gp-score-estimate-badge" title="Score calculé à partir de données publiques nationales agrégées — non géolocalisé">📊 Estimation régionale · Sources OMS · ECDC · SPF</span>
+        <span class="gp-score-estimate-badge" title="Score calculé à partir de données de surveillance épidémique réelles SPF · ECDC · OMS. L'AQI en temps réel nécessite votre ville.">📡 Surveillance SPF · ECDC · OMS — entrez votre ville pour l'AQI</span>
       </div>
       <div class="gp-score-main">
         <div class="gp-score-dial" style="--score-color:#4B5563;--score-pct:0%" id="gpScoreDial">
@@ -465,9 +465,9 @@
           <span class="gp-factor-val" id="gpFactorPollen">Élevés</span>
         </div>
         <div class="gp-factor">
-          <span class="gp-factor-icon">🌡️</span>
-          <span class="gp-factor-name">Météo</span>
-          <span class="gp-factor-val" id="gpFactorWeather">Favorable</span>
+          <span class="gp-factor-icon">📡</span>
+          <span class="gp-factor-name">Source</span>
+          <span class="gp-factor-val" id="gpFactorWeather" style="font-size:.72rem;color:rgba(232,240,247,.6)">SPF · ECDC</span>
         </div>
       </div>
       <!-- CTA contextuel dynamique selon le niveau de risque -->
@@ -2437,7 +2437,7 @@ function hideEpiAlert(type) {
 })();
 </script>
 <script src="api-live.min.js?v=20261007e" defer></script>
-<script src="script.min.js?v=20261007i" defer></script>
+<script src="script.min.js?v=20261007j" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

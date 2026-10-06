@@ -1327,12 +1327,8 @@ function computeViralScore(region) {
     }
   }
 
-  // ── Fallback synthétique ──────────────────────────────────────
-  return {
-    score: Math.round(statusBase + (noise(seed * 2.3) - 0.5) * 25),
-    isLive: false,
-    source: 'estimation régionale',
-  };
+  // Pas de données réelles disponibles pour cette région
+  return { score: null, isLive: false, source: null };
 }
 
 // Cache AQI réels par région — persisté en sessionStorage pour éviter trop d'appels API
@@ -1414,32 +1410,32 @@ async function fetchLiveAqi(region) {
 }
 
 function generateScoreForRegion(region) {
-  const seed = region.id * 137 + 42;
-  const noise = (n) => ((Math.sin(n) * 43758.5453123) % 1 + 1) % 1;
-
-  const statusBase = {
-    critical: 75, low: 60, moderate: 45, sufficient: 25
-  }[region.status] || 40;
-
-  // AQI : si ville personnalisée active, utiliser son cache ; sinon cache régional
+  // Uniquement des données réelles — aucune valeur synthétique
   const cacheKey = _customCity ? 'custom' : String(region.id);
   const cachedAqi = _liveAqiCache[cacheKey];
-  const aqi    = cachedAqi ? cachedAqi.score : Math.round(statusBase + (noise(seed * 1.1) - 0.5) * 20);
-  const viralResult = computeViralScore(region);
-  const viral  = viralResult.score;
-  // Pollen : utiliser la donnée Open-Meteo réelle si disponible, sinon estimation
-  const pollenLive = cachedAqi?.pollenScore;
-  const pollen = pollenLive != null ? pollenLive : Math.round(30 + noise(seed * 3.7) * 40);
-  const weather= Math.round(20 + noise(seed * 4.1) * 30);
 
-  const sr = Math.round(0.40 * aqi + 0.30 * viral + 0.20 * pollen + 0.10 * weather);
+  const viralResult = computeViralScore(region);
+  const viral = viralResult.score; // peut être null si pas de données
+
+  const aqiLive = cachedAqi ? cachedAqi.score : null;
+  const pollenLive = cachedAqi?.pollenScore ?? null;
+
+  // Score composite uniquement avec les composantes réelles disponibles
+  let sr, weights = 0;
+  let srNum = 0;
+  if (aqiLive != null)   { srNum += 0.45 * aqiLive;   weights += 0.45; }
+  if (viral != null)     { srNum += 0.40 * viral;      weights += 0.40; }
+  if (pollenLive != null){ srNum += 0.15 * pollenLive; weights += 0.15; }
+
+  // Score final normalisé par les poids réels disponibles
+  sr = weights > 0 ? Math.round(srNum / weights) : null;
 
   return {
-    sr: Math.min(100, Math.max(0, sr)),
-    aqi: Math.min(100, Math.max(0, aqi)),
-    viral: Math.min(100, Math.max(0, viral)),
-    pollen: Math.min(100, Math.max(0, pollen)),
-    weather: Math.min(100, Math.max(0, weather)),
+    sr: sr != null ? Math.min(100, Math.max(0, sr)) : null,
+    aqi: aqiLive != null ? Math.min(100, Math.max(0, aqiLive)) : null,
+    viral: viral != null ? Math.min(100, Math.max(0, viral)) : null,
+    pollen: pollenLive != null ? Math.min(100, Math.max(0, pollenLive)) : null,
+    weather: null, // supprimé — était toujours synthétique
     aqiIsLive: !!cachedAqi,
     viralIsLive: viralResult.isLive,
     viralSource: viralResult.source,
@@ -1465,6 +1461,7 @@ function scoreGradeEN(sr) {
 }
 
 function aiMessageForRegion(region, score, lang) {
+  if (score.sr == null) return '';
   const g = scoreGrade(score.sr);
   const name = lang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR);
 
@@ -1819,11 +1816,13 @@ function updateScoreDisplay(regionId) {
   selectedRegionId = parseInt(regionId, 10);
   const region = DEMO_DATA.find(r => r.id === selectedRegionId) || DEMO_DATA[0];
   const score = generateScoreForRegion(region);
-  const grade = scoreGrade(score.sr);
+  // sr peut être null si aucune donnée réelle disponible
+  const srVal = score.sr;
+  const grade = srVal != null ? scoreGrade(srVal) : { grade: '—', color: '#6B7280' };
 
   // Dial arc
   const circumference = 515.22;
-  const offset = circumference * (1 - score.sr / 100);
+  const offset = srVal != null ? circumference * (1 - srVal / 100) : circumference;
   const arc = document.getElementById('scoreArc');
   if (arc) {
     arc.style.strokeDashoffset = offset;
@@ -1831,35 +1830,35 @@ function updateScoreDisplay(regionId) {
   }
 
   const valEl = document.getElementById('scoreValue');
-  if (valEl) valEl.textContent = score.sr;
+  if (valEl) valEl.textContent = srVal ?? '—';
 
   const gradeEl = document.getElementById('scoreGrade');
   if (gradeEl) {
-    gradeEl.textContent = currentLang === 'fr' ? grade.grade : scoreGradeEN(score.sr);
+    gradeEl.textContent = srVal != null ? (currentLang === 'fr' ? grade.grade : scoreGradeEN(srVal)) : '—';
     gradeEl.style.color = grade.color;
   }
 
   // Hero score
   const heroScoreEl = document.getElementById('heroScore');
-  if (heroScoreEl) heroScoreEl.textContent = score.sr;
+  if (heroScoreEl) heroScoreEl.textContent = srVal ?? '—';
   const heroStatus = document.getElementById('heroScoreStatus');
   if (heroStatus) {
-    heroStatus.textContent = currentLang === 'fr' ? grade.grade : scoreGradeEN(score.sr);
+    heroStatus.textContent = srVal != null ? (currentLang === 'fr' ? grade.grade : scoreGradeEN(srVal)) : '—';
     heroStatus.style.color = grade.color;
   }
 
-  // Components
+  // Components — afficher uniquement les composantes disponibles (pas de valeur nulle)
   const components = [
     { fillId:'aqiFill',     valId:'aqiVal',     val:score.aqi,    color:'#3B82F6' },
     { fillId:'viralFill',   valId:'viralVal',   val:score.viral,  color:'#EF4444' },
     { fillId:'pollenFill',  valId:'pollenVal',  val:score.pollen, color:'#84CC16' },
-    { fillId:'weatherFill', valId:'weatherVal', val:score.weather,color:'#0EA5E9' }
+    { fillId:'weatherFill', valId:'weatherVal', val:null,         color:'#0EA5E9' }
   ];
   components.forEach(c => {
     const fill = document.getElementById(c.fillId);
     const val  = document.getElementById(c.valId);
-    if (fill) { fill.style.width = `${c.val}%`; fill.style.background = c.color; }
-    if (val)  val.textContent = c.val;
+    if (fill) { fill.style.width = c.val != null ? `${c.val}%` : '0%'; fill.style.background = c.color; }
+    if (val)  val.textContent = c.val ?? '—';
   });
 
   // Badge viral : live ou estimation
@@ -1883,10 +1882,14 @@ function updateScoreDisplay(regionId) {
   // AI recommendation
   const recoEl = document.getElementById('aiReco');
   if (recoEl) {
-    const protLevel = score.sr > 60 ? 'FFP2/N95' : score.sr > 45 ? 'Chirurgical' : '—';
-    recoEl.innerHTML = score.sr > 45
-      ? `<span class="reco-badge">${currentLang==='fr'?'Protection recommandée':'Recommended protection'} : ${protLevel}</span>`
-      : '';
+    if (srVal != null) {
+      const protLevel = srVal > 60 ? 'FFP2/N95' : srVal > 45 ? 'Chirurgical' : '—';
+      recoEl.innerHTML = srVal > 45
+        ? `<span class="reco-badge">${currentLang==='fr'?'Protection recommandée':'Recommended protection'} : ${protLevel}</span>`
+        : '';
+    } else {
+      recoEl.innerHTML = '';
+    }
   }
 
   // Region selector sync
@@ -1901,12 +1904,15 @@ function updateScoreDisplay(regionId) {
   const gpDial  = document.querySelector('.gp-score-dial');
   const gpInner = document.querySelector('.gp-score-dial-inner');
 
-  if (gpNum)   gpNum.textContent = score.sr;
-  if (gpLevel) { gpLevel.textContent = currentLang === 'fr' ? grade.grade : scoreGradeEN(score.sr); gpLevel.style.color = grade.color; }
+  if (gpNum)   gpNum.textContent = srVal ?? '—';
+  if (gpLevel) {
+    if (srVal != null) { gpLevel.textContent = currentLang === 'fr' ? grade.grade : scoreGradeEN(srVal); gpLevel.style.color = grade.color; }
+    else { gpLevel.textContent = 'Entrez votre ville ↓'; gpLevel.style.color = '#9CA3AF'; }
+  }
   if (gpLoc)   gpLoc.textContent = _customCity ? '📍 ' + _customCity.name : (currentLang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR));
-  if (gpAdv)   gpAdv.textContent = aiMessageForRegion(region, score, currentLang);
+  if (gpAdv)   gpAdv.textContent = srVal != null ? aiMessageForRegion(region, score, currentLang) : '';
   if (gpDial)  gpDial.style.setProperty('--score-color', grade.color);
-  if (gpInner) gpInner.style.setProperty('--score-pct', score.sr + '%');
+  if (gpInner) gpInner.style.setProperty('--score-pct', (srVal ?? 0) + '%');
 
   // Factor values — qualitative labels (not raw numbers) for grand public
   function factorLabel(val, lang) {
@@ -1915,10 +1921,10 @@ function updateScoreDisplay(regionId) {
     return lang === 'fr' ? fr : en;
   }
   const gpFactorMap = {
-    gpFactorAqi:     factorLabel(score.aqi,     currentLang),
-    gpFactorViral:   factorLabel(score.viral,   currentLang),
-    gpFactorPollen:  factorLabel(score.pollen,  currentLang),
-    gpFactorWeather: factorLabel(score.weather, currentLang)
+    gpFactorAqi:     score.aqi     != null ? factorLabel(score.aqi,     currentLang) : '—',
+    gpFactorViral:   score.viral   != null ? factorLabel(score.viral,   currentLang) : '—',
+    gpFactorPollen:  score.pollen  != null ? factorLabel(score.pollen,  currentLang) : '—',
+    gpFactorWeather: '—'
   };
   Object.entries(gpFactorMap).forEach(([id, val]) => {
     const el = document.getElementById(id);
@@ -1931,8 +1937,8 @@ function updateScoreDisplay(regionId) {
   const yesterday = Object.keys(stored).sort().reverse().find(d => d < TODAY);
   const deltaEl = document.getElementById('gpScoreDelta');
   if (deltaEl) {
-    if (yesterday && stored[yesterday] !== undefined) {
-      const diff = score.sr - stored[yesterday];
+    if (srVal != null && yesterday && stored[yesterday] !== undefined) {
+      const diff = srVal - stored[yesterday];
       const sign = diff > 0 ? '+' : '';
       deltaEl.textContent = `${sign}${diff} vs hier`;
       deltaEl.style.color = diff > 0 ? '#EF4444' : diff < 0 ? '#10B981' : '#9CA3AF';
@@ -1941,8 +1947,8 @@ function updateScoreDisplay(regionId) {
       deltaEl.style.display = 'none';
     }
   }
-  // Save today's score
-  stored[TODAY] = score.sr;
+  // Save today's score (uniquement si score réel)
+  if (srVal != null) stored[TODAY] = srVal;
   // Keep only last 8 days
   const keys = Object.keys(stored).sort().reverse();
   if (keys.length > 8) keys.slice(8).forEach(k => delete stored[k]);
