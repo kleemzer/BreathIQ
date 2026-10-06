@@ -75,12 +75,13 @@ const BIQ_LIVE = (() => {
       region: 'FR',
       disabled: true, // endpoint instable — remplacé par Open-Meteo + WAQI
     },
-    // CDC — grippe USA (endpoint v2 actif)
+    // CDC — grippe USA (endpoint 400 depuis oct.2026 — dataset ID changé)
     cdc_flu: {
       label: 'CDC — Grippe USA (ILI)',
       url: 'https://data.cdc.gov/resource/ks3g-spdg.json?$limit=5&$order=week_start+DESC',
       ttl: 'flu',
       region: 'US',
+      disabled: true,
     },
     // ECDC — Mpox Europe
     ecdc_mpox: {
@@ -99,9 +100,11 @@ const BIQ_LIVE = (() => {
     // WHO FluNet — Grippe pays utilisateur (VIW_FNT) — URL construite dynamiquement
     who_flunet_fr: (() => {
       const { iso3, hemisphere } = _detectFluNetCountry();
+      // OData : $ doit être littéral (non encodé %24) pour être reconnu comme opérateur système
+      const filter = `COUNTRY_CODE eq '${iso3}' and HEMISPHERE eq '${hemisphere}'`;
       return {
         label: `WHO FluNet — Grippe ${iso3} (VIW_FNT)`,
-        url: `https://xmart-api-public.who.int/FLUMART/VIW_FNT?%24format=json&%24filter=COUNTRY_CODE%20eq%20%27${iso3}%27%20and%20HEMISPHERE%20eq%20%27${hemisphere}%27&%24orderby=ISO_WEEK_START%20desc&%24top=12`,
+        url: `https://xmart-api-public.who.int/FLUMART/VIW_FNT?$format=json&$filter=${encodeURIComponent(filter)}&$orderby=ISO_WEEK_START%20desc&$top=12`,
         ttl: 'flu',
         region: iso3,
         _detectedCountry: iso3,
@@ -131,19 +134,17 @@ const BIQ_LIVE = (() => {
       ttl: 'don',
       region: 'GLOBAL',
     },
-    // ECDC — Surveillance coqueluche Europe
+    // ECDC — Coqueluche/Rougeole : URLs supprimées (404 depuis réorg. portail ECDC 2026)
+    // Les données ECDC sont maintenant dans data/ecdc-surveillance.json via GitHub Actions
     ecdc_pertussis: {
       label: 'ECDC — Coqueluche Europe',
       url: 'https://opendata.ecdc.europa.eu/pertussis/casedistribution/json',
-      ttl: 'outbreaks',
-      region: 'EU',
+      ttl: 'outbreaks', region: 'EU', disabled: true,
     },
-    // ECDC — Surveillance rougeole Europe
     ecdc_measles: {
       label: 'ECDC — Rougeole Europe',
       url: 'https://opendata.ecdc.europa.eu/measles/casedistribution/json',
-      ttl: 'outbreaks',
-      region: 'EU',
+      ttl: 'outbreaks', region: 'EU', disabled: true,
     },
   };
   // Note : OpenAQ v2 est déprécié (CORS bloqué). Qualité de l'air assurée par WAQI + Open-Meteo (géolocalisés).
