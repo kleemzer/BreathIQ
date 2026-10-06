@@ -1,0 +1,85 @@
+name: Audit Médico-Légal Automatique
+
+on:
+  schedule:
+    # Chaque lundi à 07:00 UTC — avant la semaine de travail
+    - cron: '0 7 * * 1'
+  workflow_dispatch:
+    inputs:
+      create_issue:
+        description: 'Créer une issue si alerte détectée ?'
+        type: boolean
+        default: true
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      - name: Lancer l'audit médico-légal
+        id: audit
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          node scripts/medico-legal-audit.mjs
+        continue-on-error: true
+
+      - name: Créer une GitHub Issue si alerte détectée
+        if: steps.audit.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            let body = '## ⚠️ Audit médico-légal — contradiction détectée\n\nLe rapport détaillé est disponible dans les logs du workflow.\n\n[Voir le run](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})';
+            try {
+              body = fs.readFileSync('/tmp/audit-report.md', 'utf8');
+            } catch {}
+
+            // Vérifier si une issue ouverte identique existe déjà
+            const issues = await github.rest.issues.listForRepo({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              state: 'open',
+              labels: 'medico-legal',
+            });
+
+            if (issues.data.length > 0) {
+              // Mettre à jour l'issue existante plutôt qu'en créer une nouvelle
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: issues.data[0].number,
+                body: `### Mise à jour — ${new Date().toISOString().split('T')[0]}\n\n${body}`,
+              });
+              console.log(`Issue #${issues.data[0].number} mise à jour`);
+            } else {
+              const issue = await github.rest.issues.create({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                title: `⚠️ Audit médico-légal — contradiction détectée (${new Date().toISOString().split('T')[0]})`,
+                body,
+                labels: ['medico-legal'],
+              });
+              console.log(`Issue #${issue.data.number} créée`);
+            }
+
+      - name: Résumé final
+        if: always()
+        run: |
+          if [ "${{ steps.audit.outcome }}" = "success" ]; then
+            echo "✅ Aucune contradiction médico-légale détectée"
+          else
+            echo "⚠️ Contradictions détectées — voir l'issue GitHub"
+            exit 1
+          fi
