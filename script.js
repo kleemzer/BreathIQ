@@ -2023,11 +2023,11 @@ function initMap() {
     attributionControl: true
   });
 
-  // Stadia Maps Alidade Smooth Dark — thème sombre, gratuit sans clé jusqu'à 2500 tiles/j
-  L.tileLayer('https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png', {
-    attribution: '&copy; <a href="https://stadiamaps.com/" target="_blank" rel="noopener">Stadia Maps</a> &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-    maxZoom: 20,
-    referrerPolicy: 'no-referrer-when-downgrade'
+  // CartoDB DarkMatter — thème sombre, gratuit sans clé, via HTTPS
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+    subdomains: 'abcd',
+    maxZoom: 20
   }).addTo(worldMap);
 
   renderMapLayers();
