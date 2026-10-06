@@ -185,8 +185,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007a" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007a"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007b" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007b"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -317,10 +317,10 @@
     <div class="gp-hero-intro">
       <p class="hero-author-chip">🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle · <span style="font-weight:400;opacity:.75">Outil d'information — non dispositif médical</span></p>
       <h1 class="gp-hero-title" id="patient-hero-title">Est-ce que je peux sortir aujourd'hui ?</h1>
-      <p class="gp-hero-subtitle">BreathIQ surveille chaque jour la qualité de l'air, les virus saisonniers et les alertes sanitaires — pour vous donner une réponse simple sur votre environnement. Gratuit, sans inscription.</p>
+      <p class="gp-hero-subtitle">Air, virus saisonniers, alertes épidémiques — BreathIQ croise chaque jour les données officielles (OMS · ECDC · SPF) pour vous donner un score respiratoire simple. <strong style="color:#93c5fd;font-weight:600">Gratuit, sans compte, zéro tracking.</strong></p>
       <!-- #1 CTA symptômes above the fold — visible mobile + desktop -->
       <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-symptom-cta" aria-label="Démarrer le questionnaire de symptômes">
-        🤒 J'ai des symptômes — que faire ? <span class="hero-cta-arrow">→</span>
+        🤒 J'ai des symptômes — que faire ? <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
       <!-- #3 Fraîcheur des données -->
       <div class="hero-freshness" id="heroFreshness" aria-live="polite"></div>
@@ -343,22 +343,22 @@
         <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
         <span class="path-icon">🤒</span>
         <span class="path-title">J'ai des symptômes</span>
-        <span class="path-sub">Savoir quoi faire maintenant</span>
+        <span class="path-sub">Que faire maintenant ?</span>
       </a>
       <a href="#dailyScore" class="path-card path-score" onclick="return navTo(event,'#dailyScore')">
         <span class="path-icon">📊</span>
-        <span class="path-title">L'air est-il bon aujourd'hui ?</span>
-        <span class="path-sub">Air · Virus · Pollens · Conseils</span>
+        <span class="path-title">Score respiratoire du jour</span>
+        <span class="path-sub">Air · Virus · Pollens</span>
       </a>
       <a href="#careFinder" class="path-card path-doctor" onclick="return navTo(event,'#careFinder')">
         <span class="path-icon">📍</span>
-        <span class="path-title">Trouver un médecin</span>
-        <span class="path-sub">Hôpital · Clinique · Pharmacie</span>
+        <span class="path-title">Trouver un soignant</span>
+        <span class="path-sub">Médecin · Urgences · Pharmacie</span>
       </a>
       <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
         <span class="path-icon" aria-hidden="true">🩺</span>
-        <span class="path-title">Je suis soignant</span>
-        <span class="path-sub">Outils cliniques · Référentiel pathogènes</span>
+        <span class="path-title">Espace soignant</span>
+        <span class="path-sub">Outils cliniques · Pathogènes</span>
       </button>
     </div>
 
@@ -400,7 +400,7 @@
 <section class="gp-score-section patient-only" id="dailyScore" aria-labelledby="dailyScoreTitle">
   <div class="container" style="max-width:720px">
     <div class="gp-score-card" id="gpScoreCard">
-      <div class="gp-score-label">Votre point respiratoire du jour</div>
+      <div class="gp-score-label">📊 Indice respiratoire du jour</div>
       <div style="text-align:center;margin-bottom:.5rem">
         <span class="gp-score-estimate-badge" title="Score calculé à partir de données publiques nationales agrégées — non géolocalisé">📊 Estimation régionale · Sources OMS · ECDC · SPF</span>
       </div>
@@ -478,7 +478,7 @@
         <canvas id="gpSparkline" width="160" height="36" aria-label="Tendance du score sur 7 jours" role="img"></canvas>
       </div>
       <p class="gp-score-update-date" id="gpScoreDate" style="font-size:.75rem;color:#94a3b8;text-align:center;margin-bottom:.5rem;font-style:italic"></p>
-      <p class="gp-score-disclaimer">Ce score ne prédit pas votre risque individuel de maladie. Il vous aide à comprendre le contexte respiratoire autour de vous. Les conseils sont généraux et ne remplacent pas un avis médical.</p>
+      <p class="gp-score-disclaimer">⚠️ Ce score décrit le <strong>contexte environnemental général</strong> — il ne constitue pas un diagnostic médical et ne prédit pas votre risque individuel. En cas de symptômes persistants, consultez un professionnel de santé.</p>
     </div>
   </div>
 </section>
@@ -486,15 +486,15 @@
 <!-- ===== QUE FAIRE AUJOURD'HUI (Mode Patient) ===== -->
 <section class="gp-daily-section patient-only" id="dailyActions" aria-labelledby="dailyActionsTitle" style="background:linear-gradient(180deg,#0F2A45 0%,#1A3C5E 100%);color:#e8f0f7">
   <div class="container">
-    <p class="gp-section-label">Conseils du jour</p>
-    <h2 class="gp-section-title" id="dailyActionsTitle">Que faire aujourd'hui ?</h2>
-    <p class="gp-section-sub">Des gestes simples, fondés sur les données du jour. Sans alarmisme.</p>
+    <p class="gp-section-label">Contexte du jour</p>
+    <h2 class="gp-section-title" id="dailyActionsTitle">Informations pratiques du moment</h2>
+    <p class="gp-section-sub">Des repères fondés sur les données du jour. À titre informatif, sans alarmisme.</p>
     <div class="gp-daily-grid">
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">🪟</span>
-        <span class="gp-daily-title">Aérez votre logement</span>
-        <span class="gp-daily-desc">10 minutes le matin, même en hiver. Renouveler l'air réduit la concentration en virus.</span>
-        <span class="gp-daily-tag tag-green">Toujours bénéfique</span>
+        <span class="gp-daily-title">Ventilation intérieure</span>
+        <span class="gp-daily-desc">Renouveler l'air 10 min le matin réduit la concentration en virus et CO₂. Bénéfique même en hiver.</span>
+        <span class="gp-daily-tag tag-green">Bénéfique toute l'année</span>
       </div>
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">😷</span>
@@ -533,23 +533,23 @@
     <div class="gp-explainer-grid" role="list">
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">1</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous observons</strong>
-        <p class="gp-explainer-text">Qualité de l'air, signaux viraux, pollens et données sanitaires publiques — en continu.</p>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Données officielles</strong>
+        <p class="gp-explainer-text">Qualité de l'air, signaux viraux, pollens — agrégés depuis OMS, ECDC et Santé Publique France.</p>
       </div>
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">2</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous transformons</strong>
-        <p class="gp-explainer-text">Ces données complexes deviennent un score simple 0–100, lisible en un coup d'œil.</p>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Score lisible</strong>
+        <p class="gp-explainer-text">Ces données complexes deviennent un score 0–100, compréhensible en un coup d'œil.</p>
       </div>
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">3</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous suggérons</strong>
-        <p class="gp-explainer-text">Des conseils généraux adaptés au contexte du jour. Sans diagnostic, sans alarmisme.</p>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Contexte quotidien</strong>
+        <p class="gp-explainer-text">Des informations générales adaptées au contexte du jour. Sans diagnostic, sans alarmisme.</p>
       </div>
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">4</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Nous citons tout</strong>
-        <p class="gp-explainer-text">OMS, ECDC, Santé Publique France. Chaque donnée est sourcée et vérifiable publiquement.</p>
+        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Tout est cité</strong>
+        <p class="gp-explainer-text">OMS, ECDC, SPF — chaque donnée est sourcée, vérifiable et mise à jour quotidiennement.</p>
       </div>
     </div>
   </div>
