@@ -2460,7 +2460,7 @@ function renderPathogens() {
         <span class="pc-badge pc-cat">${catLabel}</span>
         <span class="pc-badge pc-status${isOutbreak ? ' status-active' : ''}">${statLabel}</span>
         <span class="pc-badge ${protBadgeClass}">${ob.protectionRequired}</span>
-        ${ob.lastUpdate ? `<span class="pc-badge pc-update">🗓 ${lbl?'Màj':'Upd'} ${ob.lastUpdate}</span>` : ''}
+        ${(ob.verifiedAt || ob.lastUpdate) ? `<span class="pc-badge pc-update" title="${lbl?'Données vérifiées par BreathIQ':'Data verified by BreathIQ'}">✓ ${lbl?'Vérifié':'Verified'} ${ob.verifiedAt || ob.lastUpdate}</span>` : ''}
       </div>
 
       <!-- ③ Régions actives -->
@@ -2768,13 +2768,11 @@ function openSoignantModal() {
   if (!modal) return;
   modal.hidden = false;
   modal.removeAttribute('hidden');
-  // Pre-select detected country and reset specialty
   const sel = document.getElementById('proCountrySelect');
-  if (sel) {
-    sel.value = _detectCountry();
-    _onCountryChange();
-  }
+  if (sel) { sel.value = _detectCountry(); _onCountryChange(); }
   document.querySelectorAll('.pro-spec-card').forEach(c => c.classList.remove('selected'));
+  const chk = document.getElementById('proDeclarationChk');
+  if (chk) chk.checked = false;
   const btn = document.getElementById('proStep2Btn');
   if (btn) btn.disabled = true;
 }
@@ -2825,7 +2823,16 @@ function _onCountryChange() {
 function selectSpecialty(btn) {
   document.querySelectorAll('.pro-spec-card').forEach(c => c.classList.remove('selected'));
   btn.classList.add('selected');
-  document.getElementById('proStep2Btn').disabled = false;
+  _updateProAccessBtn();
+}
+
+function _onProDeclarationChange() { _updateProAccessBtn(); }
+
+function _updateProAccessBtn() {
+  const specSelected = !!document.querySelector('.pro-spec-card.selected');
+  const chkChecked   = document.getElementById('proDeclarationChk')?.checked ?? false;
+  const btn = document.getElementById('proStep2Btn');
+  if (btn) btn.disabled = !(specSelected && chkChecked);
 }
 
 function saveProProfile() {
@@ -5919,6 +5926,15 @@ async function loadPheicAlert({ force = false } = {}) {
     // Update expert stats bar
     const esbPheic = document.getElementById('esbPheic');
     if (esbPheic) esbPheic.textContent = data.alerts.filter(a => a.active).length;
+
+    // Mise à jour date patient GP banner (dynamique — évite la date codée en dur)
+    const gpDateEl = document.getElementById('epidemicGpDate');
+    if (gpDateEl && active.lastUpdate) {
+      const d = new Date(active.lastUpdate);
+      const formatted = d.toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { day:'numeric', month:'short', year:'numeric' });
+      const verifiedLabel = { fr:'Vérifiées le', en:'Verified', es:'Verificadas el', pt:'Verificadas em', ru:'Проверено', ar:'تم التحقق في', zh:'验证日期', hi:'सत्यापित', sw:'Imethibitishwa' }[currentLang] || 'Verified';
+      gpDateEl.textContent = `${verifiedLabel} ${formatted}`;
+    }
 
     // Freshness warning : si données > 7 jours, ajouter un avertissement visible
     if (active.lastUpdate) {

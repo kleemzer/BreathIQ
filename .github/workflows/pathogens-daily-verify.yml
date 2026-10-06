@@ -1,0 +1,44 @@
+name: Pathogens Daily Verification
+
+on:
+  schedule:
+    # Tous les jours à 08:00 UTC (10h Paris été) — après le fetch WHO (07h)
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+
+      - name: Mettre à jour verifiedAt
+        run: node scripts/verify-pathogens.mjs
+
+      - name: Commit si changement
+        run: |
+          git config user.name "BreathIQ-VerifyBot"
+          git config user.email "bot@breathiq.fr"
+          git add data/pathogens.json data/pheic-alerts.json
+          if git diff --staged --quiet; then
+            echo "✅ Aucun changement"
+          else
+            git commit -m "data: vérification quotidienne pathogens + PHEIC ($(date +%Y-%m-%d))"
+            git pull --rebase origin main || true
+            git push origin main || {
+              echo "⚠️  Push échoué — sera retenté demain"
+              exit 0
+            }
+            echo "✅ Données vérifiées et mises à jour"
+          fi

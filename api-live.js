@@ -123,10 +123,11 @@ const BIQ_LIVE = (() => {
       region: 'FR',
       _metaFetch: true,
     },
-    // WHO Disease Outbreak News — flux en direct (OData, CORS *)
+    // WHO Disease Outbreak News — fichier local mis à jour quotidiennement par GitHub Actions
+    // (L'API OData WHO retourne 401 depuis sept. 2026 — workflow who-don-daily.yml prend le relais)
     who_don: {
-      label: 'WHO — Disease Outbreak News (live)',
-      url: 'https://www.who.int/api/news/emergencies/disease-outbreak-news?sf_culture=en&$orderby=PublicationDateAndTime%20desc&$top=12',
+      label: 'WHO — Disease Outbreak News (cache quotidien)',
+      url: '/data/who-alerts.json',
       ttl: 'don',
       region: 'GLOBAL',
     },

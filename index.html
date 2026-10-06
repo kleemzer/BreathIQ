@@ -185,8 +185,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261006a" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261006a"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261006b" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261006b"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -289,14 +289,14 @@
       <span class="epidemic-level rouge" aria-hidden="true">🔴</span>
       <span class="epidemic-gp-text">
         <strong>Ebola Bundibugyo — PHEIC OMS active (RDC · Ouganda) · 🇫🇷 Cas France (juin 2026) : résolu.</strong>
-        Si fièvre + retour d'Afrique centrale/est dans les 21 derniers jours : <strong>appelez le 15 SANS vous déplacer</strong>. <span style="font-size:.8em;opacity:.7">Données au 12/08/2026</span>
+        Si fièvre + retour d'Afrique centrale/est dans les 21 derniers jours : <strong>appelez le 15 SANS vous déplacer</strong>. <span id="epidemicGpDate" style="font-size:.8em;opacity:.85"></span>
       </span>
       <a href="ebola.html" class="epidemic-link">En savoir plus →</a>
     </div>
     <!-- Message soignants — complet, technique, affiché uniquement en mode expert -->
     <div class="epidemic-alert-body expert-only" id="epidemicExpertMsg" style="display:none">
       <strong class="epidemic-disease">Ebola Bundibugyo · RDC + Ouganda — PHEIC OMS active · 🇫🇷 Cas France (juin 2026) : résolu</strong>
-      <span class="epidemic-date">PHEIC déclarée le 17 mai 2026 · ✅ Cas France résolu (aucun nouveau cas) · Données au 12 août 2026 — <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Source OMS ↗</a></span>
+      <span class="epidemic-date" id="epidemicExpertDate">PHEIC déclarée le 17 mai 2026 · ✅ Cas France résolu (aucun nouveau cas) · <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Source OMS ↗</a></span>
       <p class="epidemic-msg">Épidémie Ebola Bundibugyo active en RDC et Ouganda (PHEIC OMS). Le cas importé en France (juin 2026) est résolu — aucune transmission communautaire confirmée. Souche Bundibugyo (BDBV) : <strong>aucun vaccin agréé, aucun traitement spécifique</strong>. Si fièvre + retour Afrique centrale/est (21j) : <strong>appelez le 15 SANS vous déplacer</strong>.</p>
       <p class="epidemic-mask">🩺 <strong>Soignants :</strong> FFP3 + tenue BSL-4 complète obligatoire · SAMU 15 + ARS dans l'heure · DGS cellule de crise activée</p>
     </div>
@@ -2302,7 +2302,10 @@
         <p class="pro-rpps-hint" id="proRppsHint">Identifiant national · non obligatoire · jamais transmis</p>
       </div>
 
-      <p class="pro-declaration-note">En accédant à cet espace, je déclare exercer ou me former dans le domaine de la santé</p>
+      <label class="pro-declaration-checkbox" style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--text-secondary);margin-top:.75rem;cursor:pointer">
+        <input type="checkbox" id="proDeclarationChk" onchange="_onProDeclarationChange()" style="margin-top:.15rem;flex-shrink:0;accent-color:var(--c-teal)">
+        <span>Je déclare exercer ou me former dans le domaine de la santé. J'ai compris que les informations cliniques de cet espace sont destinées aux professionnels et ne remplacent pas un protocole institutionnel validé.</span>
+      </label>
       <div class="soignant-modal-actions" style="margin-top:.75rem">
         <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
         <button class="soignant-btn-validate" id="proStep2Btn" onclick="saveProProfile()" disabled>Accéder →</button>
@@ -2423,8 +2426,8 @@ function hideEpiAlert(type) {
   else addEbolaPheicOverlay();
 })();
 </script>
-<script src="api-live.min.js?v=20261006a" defer></script>
-<script src="script.min.js?v=20261006a" defer></script>
+<script src="api-live.min.js?v=20261006b" defer></script>
+<script src="script.min.js?v=20261006b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
