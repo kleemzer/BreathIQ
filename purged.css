@@ -792,11 +792,12 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
   display: flex; align-items: center; gap: .6rem;
   font-weight: 800; font-size: 1.3rem; letter-spacing: -.02em;
   color: #fff; text-decoration: none; flex-shrink: 0;
+  transition: opacity var(--t-fast);
 }
+.nav-brand:hover { text-decoration: none; opacity: .85; }
 [data-theme="light"] .nav-brand { color: var(--c-navy); }
-.nav-brand:hover { text-decoration: none; }
 .brand-icon { display: flex; align-items: center; }
-.brand-text { font-weight: 400; }
+.brand-text { font-weight: 400; letter-spacing: -.01em; }
 .brand-text strong { font-weight: 800; color: var(--c-blue); }
 .nav-actions { display: flex; align-items: center; gap: var(--s1); margin-left: auto; flex-shrink: 0; }
 .lang-toggle, .theme-toggle {
@@ -3478,17 +3479,29 @@ details[open] .collapsible-chevron { transform: rotate(180deg); }
   margin: .15rem 0 .3rem; line-height: 1.4;
 }
 .om-features {
-  list-style: none; margin: .2rem 0 .4rem;
-  display: flex; flex-direction: column; gap: .2rem;
+  list-style: none; margin: .2rem 0 .5rem;
+  display: flex; flex-direction: column; gap: .28rem;
 }
 .om-features li {
   font-size: .8rem; color: var(--text-secondary);
+  padding-left: 1.1em;
+  position: relative;
+}
+.om-features li::before {
+  content: '✓';
+  position: absolute; left: 0;
+  color: var(--c-teal); font-weight: 700; font-size: .75rem;
 }
 .om-cta {
-  font-size: .82rem; font-weight: 700; color: var(--c-blue);
-  margin-top: auto;
+  display: inline-block;
+  font-size: .84rem; font-weight: 700; color: var(--c-blue);
+  margin-top: .5rem; padding: .45rem .9rem;
+  background: rgba(42,127,212,.1); border-radius: 20px;
+  transition: background var(--t-fast);
 }
-.om-cta-expert { color: var(--c-teal); }
+.onboarding-mode-patient:hover .om-cta { background: rgba(42,127,212,.2); }
+.om-cta-expert { color: var(--c-teal); background: rgba(14,140,122,.1); }
+.onboarding-mode-expert:hover .om-cta-expert { background: rgba(14,140,122,.2); }
 
 .onboarding-disclaimer {
   font-size: .75rem; color: var(--text-muted); margin-bottom: var(--s2);
