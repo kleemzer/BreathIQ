@@ -4584,3 +4584,37 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .path-epi { border-color: rgba(124,58,237,.35); }
 .path-epi:hover { border-color: rgba(124,58,237,.7); background: rgba(124,58,237,.12); box-shadow: 0 8px 32px rgba(124,58,237,.2); }
 .path-epi::before { background: radial-gradient(circle at 50% 0%, rgba(124,58,237,.15), transparent 70%); }
+
+/* ===== EPI CONTEXT NOTE ===== */
+.epi-context-note {
+  display:flex; gap:.75rem; align-items:flex-start;
+  background:rgba(59,130,246,.1); border:1px solid rgba(59,130,246,.3);
+  border-radius:12px; padding:.875rem 1rem; margin-bottom:1rem;
+  font-size:.875rem; color:rgba(232,240,247,.9);
+}
+.epi-context-note span { font-size:1.2rem; flex-shrink:0; }
+.epi-context-note p { margin:0; line-height:1.5; }
+
+/* ===== VIRUS SAISONNIERS ===== */
+.virus-saison-section {
+  background: #0A1E35; padding: 2rem 0; color: #E8F0F7;
+}
+.virus-saison-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: .75rem; margin: 1.25rem 0;
+}
+.virus-card {
+  background: rgba(255,255,255,.05); border-radius: 12px;
+  padding: .875rem 1rem; border: 1px solid rgba(255,255,255,.08);
+  display: flex; flex-direction: column; gap: .35rem;
+}
+.virus-card-name { font-weight: 700; font-size: .9rem; }
+.virus-card-level { font-size: .78rem; padding: 2px 8px; border-radius: 20px; width: fit-content; }
+.virus-level-green { background: rgba(16,185,129,.2); color: #6EE7B7; }
+.virus-level-yellow { background: rgba(245,158,11,.2); color: #FCD34D; }
+.virus-level-orange { background: rgba(249,115,22,.2); color: #FDBA74; }
+.virus-level-red { background: rgba(239,68,68,.2); color: #FCA5A5; }
+.virus-card-note { font-size: .75rem; color: rgba(232,240,247,.55); line-height: 1.4; }
+.virus-saison-cta { text-align: center; margin-top: 1rem; }
+.virus-saison-cta a { color: #93C5FD; text-decoration: none; font-size: .875rem; border-bottom: 1px solid rgba(147,197,253,.3); padding-bottom: 1px; }
+.virus-saison-source { font-size: .72rem; color: rgba(232,240,247,.4); text-align: center; margin-top: .5rem; }

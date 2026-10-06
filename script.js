@@ -3105,6 +3105,11 @@ function _updateExpertStats() {
   el('esbPheic', pheicCount);
   el('esbOutbreaks', outbreakCount);
   el('esbPathogens', OUTBREAK_DATA.length);
+  // Mettre à jour les cas PHEIC depuis _pheicData si disponible
+  if (window._pheicData) {
+    const totalDeaths = window._pheicData.alerts.filter(a => a.active).reduce((sum, a) => sum + (a.deaths || 0), 0);
+    el('esbEbolaCases', totalDeaths);
+  }
 }
 
 // ── Quick symptom selection from chips ──────────────────────────
@@ -4258,6 +4263,13 @@ domReady(() => {
 
   // Score for first region — immédiat avec données estimées, puis maj AQI réel
   updateScoreDisplay(DEMO_DATA[0].id);
+  // Failsafe : si après 3s le score est encore à "—", forcer le calcul
+  setTimeout(() => {
+    const gpNum = document.getElementById('gpScoreNum');
+    if (gpNum && gpNum.textContent === '—') {
+      updateScoreDisplay(DEMO_DATA[0].id);
+    }
+  }, 3000);
   fetchLiveAqiAndRefresh(DEMO_DATA[0].id);
 
   // SPF — charger immédiatement (patches sur OUTBREAK_DATA et stats hero)
@@ -6071,6 +6083,23 @@ async function loadPheicAlert({ force = false } = {}) {
       gpLinkEl.href = `${active.pathogen_id}.html`;
       gpLinkEl.textContent = lang === 'fr' ? 'En savoir plus →' : 'Learn more →';
     }
+
+    // Mettre à jour les nouveaux IDs du bandeau épidémique
+    const gpTitle = document.getElementById('epidemicGpTitle');
+    if (gpTitle) gpTitle.textContent = `${active.disease} — ${L(active.levelLabel)}`;
+    const gpInstr = document.getElementById('epidemicGpInstruction');
+    if (gpInstr) gpInstr.innerHTML = L(active.message) || '';
+    const gpLink = document.getElementById('epidemicGpLink');
+    if (gpLink && active.pathogen_id) {
+      gpLink.href = `${active.pathogen_id.toLowerCase()}.html`;
+      gpLink.textContent = lang === 'fr' ? 'En savoir plus →' : 'Learn more →';
+    }
+    const gpDis = document.getElementById('epidemicExpertDisease');
+    if (gpDis) gpDis.textContent = `${active.disease} — ${L(active.levelLabel)}`;
+    const gpMsgEl = document.getElementById('epidemicMsg');
+    if (gpMsgEl) gpMsgEl.innerHTML = L(active.message) || '';
+    const gpMaskEl = document.getElementById('epidemicMask');
+    if (gpMaskEl && active.hcwGuidance) gpMaskEl.innerHTML = `🩺 <strong>Soignants :</strong> ${L(active.hcwGuidance)}`;
 
     // Render PHEIC strip in patient hero
     const strip = document.getElementById('riskPheicStrip');

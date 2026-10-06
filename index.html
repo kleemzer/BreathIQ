@@ -182,11 +182,15 @@
     .hero-section{background:linear-gradient(145deg,#0F2A45 0%,#1A3C5E 50%,#0E4D6E 100%);min-height:100vh;padding-top:64px;color:#E8F0F7}
     .hero-title{font-size:clamp(1.6rem,4vw,2.5rem);font-weight:800;line-height:1.2;color:#fff;margin:0}
     [data-theme=dark] body{background:#0F1923;color:#E8F0F7}
+    @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+    .risk-skeleton{display:inline-block;border-radius:6px;background:linear-gradient(90deg,rgba(255,255,255,.08) 25%,rgba(255,255,255,.18) 50%,rgba(255,255,255,.08) 75%);background-size:400px 100%;animation:shimmer 1.4s infinite linear}
+    .risk-skeleton-title{width:240px;height:1.2em;margin:.3rem 0}
+    .risk-skeleton-desc{width:180px;height:.9em;margin:.2rem 0}
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007f" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007f"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007g" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007g"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -292,17 +296,17 @@
     <div class="epidemic-alert-gp patient-only" id="epidemicGpMsg">
       <span class="epidemic-level rouge" aria-hidden="true">🔴</span>
       <span class="epidemic-gp-text">
-        <strong>Ebola Bundibugyo — PHEIC OMS active (RDC · Ouganda) · 🇫🇷 Cas France (juin 2026) : résolu.</strong>
-        Si fièvre + retour d'Afrique centrale/est dans les 21 derniers jours : <strong>appelez le 15 SANS vous déplacer</strong>. <span id="epidemicGpDate" style="font-size:.8em;opacity:.85"></span>
+        <strong id="epidemicGpTitle">Alerte internationale active</strong>
+        <span id="epidemicGpInstruction"></span> <span id="epidemicGpDate" style="font-size:.8em;opacity:.85"></span>
       </span>
-      <a href="ebola.html" class="epidemic-link">En savoir plus →</a>
+      <a href="#" class="epidemic-link" id="epidemicGpLink">En savoir plus →</a>
     </div>
     <!-- Message soignants — complet, technique, affiché uniquement en mode expert -->
     <div class="epidemic-alert-body expert-only" id="epidemicExpertMsg" style="display:none">
-      <strong class="epidemic-disease">Ebola Bundibugyo · RDC + Ouganda — PHEIC OMS active · 🇫🇷 Cas France (juin 2026) : résolu</strong>
-      <span class="epidemic-date" id="epidemicExpertDate">PHEIC déclarée le 17 mai 2026 · ✅ Cas France résolu (aucun nouveau cas) · <a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Source OMS ↗</a></span>
-      <p class="epidemic-msg">Épidémie Ebola Bundibugyo active en RDC et Ouganda (PHEIC OMS). Le cas importé en France (juin 2026) est résolu — aucune transmission communautaire confirmée. Souche Bundibugyo (BDBV) : <strong>aucun vaccin agréé, aucun traitement spécifique</strong>. Si fièvre + retour Afrique centrale/est (21j) : <strong>appelez le 15 SANS vous déplacer</strong>.</p>
-      <p class="epidemic-mask">🩺 <strong>Soignants :</strong> FFP3 + tenue BSL-4 complète obligatoire · SAMU 15 + ARS dans l'heure · DGS cellule de crise activée</p>
+      <strong class="epidemic-disease" id="epidemicExpertDisease">Chargement…</strong>
+      <span class="epidemic-date" id="epidemicExpertDate"></span>
+      <p class="epidemic-msg" id="epidemicMsg"></p>
+      <p class="epidemic-mask" id="epidemicMask"></p>
     </div>
     <div class="epidemic-alert-actions">
       <a href="ebola.html" class="epidemic-link expert-only" style="display:none">Guide clinique complet →</a>
@@ -490,12 +494,53 @@
   </div>
 </section>
 
+<!-- ===== VIRUS SAISONNIERS (Mode Patient) ===== -->
+<section class="virus-saison-section patient-only" id="virusSaison" aria-labelledby="virusSaisonTitle">
+  <div class="container">
+    <h2 id="virusSaisonTitle">🔬 Virus en circulation en France</h2>
+    <div class="virus-saison-grid">
+      <div class="virus-card">
+        <span style="font-size:1.4rem">🤧</span>
+        <div class="virus-card-name">Grippe A/B</div>
+        <span class="virus-card-level virus-level-green">Pré-épidémique</span>
+        <div class="virus-card-note">Surveillance SPF — seuil épidémique non atteint</div>
+      </div>
+      <div class="virus-card">
+        <span style="font-size:1.4rem">🦠</span>
+        <div class="virus-card-name">SARS-CoV-2</div>
+        <span class="virus-card-level virus-level-green">Faible circulation</span>
+        <div class="virus-card-note">Réseau Sentinelles — activité basse</div>
+      </div>
+      <div class="virus-card">
+        <span style="font-size:1.4rem">👶</span>
+        <div class="virus-card-name">VRS (RSV)</div>
+        <span class="virus-card-level virus-level-yellow">Début de circulation</span>
+        <div class="virus-card-note">Surveillance pédiatrique — saison débutante</div>
+      </div>
+      <div class="virus-card">
+        <span style="font-size:1.4rem">🌡️</span>
+        <div class="virus-card-name">Rhinovirus</div>
+        <span class="virus-card-level virus-level-orange">Circulation active</span>
+        <div class="virus-card-note">Principal virus du rhume — automne en cours</div>
+      </div>
+    </div>
+    <div class="virus-saison-cta">
+      <a href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les 26 pathogènes →</a>
+    </div>
+    <p class="virus-saison-source">Ces données proviennent des réseaux de surveillance SPF · ECDC — mis à jour chaque semaine.</p>
+  </div>
+</section>
+
 <!-- ===== ALERTES ÉPIDÉMIQUES (Mode Patient) — ancre principale ===== -->
 <section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
   <div class="container">
     <div class="epidemio-alert-header">
       <h2 id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
       <p class="epidemio-alert-sub" id="epidemioAlertSub">Chargement des alertes OMS…</p>
+    </div>
+    <div class="epi-context-note" id="epiContextNote">
+      <span>ℹ️</span>
+      <p>Ces alertes concernent des personnes ayant voyagé dans des zones épidémiques spécifiques. <strong>Si vous n'avez pas voyagé dans ces régions, ces alertes ne vous concernent pas directement.</strong> Continuez vers le questionnaire de symptômes si vous avez des doutes.</p>
     </div>
     <!-- Contenu dynamique injecté par loadPheicAlert() -->
     <div id="epidemioAlertCards"></div>
@@ -2404,7 +2449,7 @@ function hideEpiAlert(type) {
 })();
 </script>
 <script src="api-live.min.js?v=20261007e" defer></script>
-<script src="script.min.js?v=20261007f" defer></script>
+<script src="script.min.js?v=20261007g" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
