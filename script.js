@@ -2006,6 +2006,18 @@ function toggleEpidemicBanner() {
   if (btn) btn.textContent = banner.classList.contains('expanded') ? 'Réduire ▴' : 'Détails ▾';
 }
 
+function toggleMobileNav() {
+  const links = document.getElementById('mainNavLinks');
+  const btn = document.getElementById('navToggleBtn');
+  if (!links || !btn) return;
+  const isOpen = links.classList.toggle('is-open');
+  btn.setAttribute('aria-expanded', String(isOpen));
+  btn.innerHTML = isOpen
+    ? '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+    : '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  document.body.style.overflow = isOpen ? 'hidden' : '';
+}
+
 function toggleNavMore(e) {
   e.stopPropagation();
   const item = e.currentTarget.closest('.nav-more-item');
