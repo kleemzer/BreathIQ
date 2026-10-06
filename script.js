@@ -1970,7 +1970,7 @@ function updateScoreDisplay(regionId) {
   if (ctaDiv && ctaBtn && ctaIcon && ctaTxt) {
     ctaDiv.style.display = 'block';
     if (score.sr <= 35) {
-      ctaIcon.textContent = '✅'; ctaTxt.textContent = currentLang === 'fr' ? 'Vous pouvez sortir — conseils du jour' : 'You can go out — daily tips';
+      ctaIcon.textContent = '✅'; ctaTxt.textContent = currentLang === 'fr' ? 'Contexte favorable — informations du jour' : 'Favourable context — today\'s information';
       ctaBtn.style.background = '#16a34a';
     } else if (score.sr <= 55) {
       ctaIcon.textContent = '💡'; ctaTxt.textContent = currentLang === 'fr' ? 'Quelques précautions utiles' : 'A few useful precautions';
@@ -3052,20 +3052,20 @@ function updatePatientRiskBanner() {
     banner.classList.add('risk-low');
     if (icon)  { icon.textContent = '🟢'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'ENVIRONNEMENT FAVORABLE' : 'FAVOURABLE CONDITIONS';
-    if (title) title.textContent = lang === 'fr' ? 'Oui, vous pouvez sortir normalement aujourd\'hui' : 'Yes, you can go out normally today';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'L\'air, les virus et les pollens sont à des niveaux acceptables dans votre région' : 'Air quality, viruses and pollen are at acceptable levels in your area';
+    if (title) title.textContent = lang === 'fr' ? 'Contexte respiratoire favorable aujourd\'hui' : 'Favourable respiratory context today';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'L\'air, la circulation virale et les pollens sont à des niveaux dans les normes habituelles.' : 'Air quality, viral circulation and pollen are within normal ranges.';
   } else if (score.sr <= 65) {
     banner.classList.add('risk-moderate');
     if (icon)  { icon.textContent = '🟡'; icon.classList.remove('pulse'); }
-    if (label) label.textContent = lang === 'fr' ? 'QUELQUES PRÉCAUTIONS' : 'SOME PRECAUTIONS';
-    if (title) title.textContent = lang === 'fr' ? 'Vous pouvez sortir — quelques précautions si vous êtes fragile' : 'You can go out — some precautions if you are vulnerable';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'Lavez-vous les mains régulièrement. Si vous êtes asthmatique ou allergique, surveillez vos symptômes.' : 'Wash your hands regularly. If you have asthma or allergies, monitor your symptoms.';
+    if (label) label.textContent = lang === 'fr' ? 'QUELQUES FACTEURS À SURVEILLER' : 'SOME FACTORS TO MONITOR';
+    if (title) title.textContent = lang === 'fr' ? 'Contexte respiratoire modéré' : 'Moderate respiratory context';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'Quelques facteurs environnementaux ou épidémiologiques à surveiller dans votre région.' : 'Some environmental or epidemiological factors to monitor in your area.';
   } else {
     banner.classList.add('risk-high');
     if (icon)  { icon.textContent = '🔴'; icon.classList.remove('pulse'); }
-    if (label) label.textContent = lang === 'fr' ? 'PRUDENCE RECOMMANDÉE' : 'CAUTION RECOMMENDED';
-    if (title) title.textContent = lang === 'fr' ? 'Contexte respiratoire chargé — limitez vos sorties si vous êtes fragile' : 'Heavy respiratory context — limit outings if you are vulnerable';
-    if (desc)  desc.textContent  = lang === 'fr' ? 'Portez un masque dans les transports et espaces bondés. Lavez-vous les mains souvent.' : 'Wear a mask on public transport and in crowded spaces. Wash your hands frequently.';
+    if (label) label.textContent = lang === 'fr' ? 'CONTEXTE CHARGÉ' : 'HIGH RESPIRATORY CONTEXT';
+    if (title) title.textContent = lang === 'fr' ? 'Contexte respiratoire dégradé' : 'Degraded respiratory context';
+    if (desc)  desc.textContent  = lang === 'fr' ? 'Cumul de facteurs défavorables détecté. Les personnes présentant une pathologie respiratoire chronique sont encouragées à contacter leur médecin.' : 'Unfavourable combination of factors detected. People with chronic respiratory conditions are encouraged to contact their doctor.';
   }
 
   // Update expert stats bar
