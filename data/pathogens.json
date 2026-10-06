@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-08-12T15:00:00.000Z",
+  "generatedAt": "2026-10-06T12:00:00.000Z",
   "version": "1.0",
-  "pathogensCount": 19,
+  "pathogensCount": 26,
   "pathogens": [
     {
       "id": "H5N1",
@@ -2101,6 +2101,97 @@
       "descEN": "Leptospirosis: bacterial zoonosis transmitted by skin contact with water/soil contaminated by rodent urine. No person-to-person or respiratory transmission. Réunion and French Polynesia: hyper-endemic zones. High-risk season: rains + floods. Severe form (Weil's disease): jaundice + renal failure.",
       "descPatientFR": "🐀 Leptospirose : pas de risque respiratoire. Contact avec eau douce ou boue en zone tropicale : évitez les plaies exposées, portez des bottes. À La Réunion : évitez baignades rivières après pluies. Antibiotiques efficaces si pris tôt.",
       "descPatientEN": "🐀 Leptospirosis: no respiratory risk. Contact with freshwater or mud in tropical areas: avoid exposed wounds, wear boots. In Réunion: avoid river swimming after rain. Antibiotics are effective if taken early."
+    },
+    {
+      "id": "PLAGUE",
+      "nameFR": "Peste (Yersinia pestis)",
+      "nameEN": "Plague (Yersinia pestis)",
+      "pathogen": "Yersinia pestis (bactérie)",
+      "category": "epidemic",
+      "riskLevel": "high",
+      "lat": 51.7,
+      "lon": 85.0,
+      "activeRegions": [
+        "Russie (Altaï, Touva)",
+        "Kazakhstan (frontalier)"
+      ],
+      "transmission": "Contact avec rongeurs infectés / piqûres de puces / gouttelettes (forme pulmonaire)",
+      "protectionRequired": "FFP2 (pulmonaire)",
+      "protectionLevel": "high",
+      "maskNote": {
+        "fr": "FFP2 obligatoire forme pulmonaire — transmission aérienne possible",
+        "en": "FFP2 mandatory for pneumonic form — airborne transmission possible"
+      },
+      "reproductionNumber": {
+        "bubonique": 0.0,
+        "pulmonaire": 2.5,
+        "note": "Non-airborne sauf forme pulmonaire"
+      },
+      "cfr": {
+        "untreated": "30-100%",
+        "treated": "1-15%",
+        "note": "Antibiotiques efficaces (doxycycline, fluoroquinolones)"
+      },
+      "incubation": {
+        "min": 1,
+        "max": 7,
+        "unit": "jours",
+        "note": "2-6j bubonique, 1-3j pulmonaire"
+      },
+      "transmission_route": [
+        "Piqûres de puces (Xenopsylla cheopis)",
+        "Contact direct rongeurs",
+        "Gouttelettes respiratoires (forme pulmonaire uniquement)",
+        "Manipulation cadavres animaux infectés"
+      ],
+      "currentStatus": {
+        "fr": "Cluster confirmé Altaï-Touva (Russie), octobre 2026 — Investigation OMS en cours. Forme bubonique majoritaire. Cas humains sporadiques signalés.",
+        "en": "Confirmed cluster in Altai-Tuva (Russia), October 2026 — WHO investigation ongoing. Predominantly bubonic form. Sporadic human cases reported."
+      },
+      "outbreakStart": "2026-09-20",
+      "lastUpdate": "2026-10-06",
+      "iconColor": "#7B2D8B",
+      "references": [
+        {
+          "label": "WHO DON Plague Russia 2026",
+          "url": "https://www.who.int/emergencies/disease-outbreak-news/"
+        },
+        {
+          "label": "Rospotrebnadzor (autorité sanitaire russe)",
+          "url": "https://rospotrebnadzor.ru/"
+        },
+        {
+          "label": "ECDC Plague factsheet",
+          "url": "https://www.ecdc.europa.eu/en/plague"
+        }
+      ],
+      "descFR": "La peste est une maladie bactérienne grave causée par Yersinia pestis, transmise principalement par les puces des rongeurs. Il existe 3 formes : bubonique (ganglions douloureux), septicémique (sepsis) et pulmonaire (pneumonie — contagieuse de personne à personne). Les antibiotiques (doxycycline, streptomycine, fluoroquinolones) sont efficaces si débutés précocement. Un cluster actif est signalé en Russie (Altaï-Touva) depuis fin septembre 2026.",
+      "descEN": "Plague is a serious bacterial disease caused by Yersinia pestis, transmitted primarily by rodent fleas. Three forms exist: bubonic (painful lymph nodes), septicemic (bloodstream infection), and pneumonic (pneumonia — person-to-person contagious). Antibiotics (doxycycline, streptomycin, fluoroquinolones) are effective if started early. An active cluster has been reported in Russia (Altai-Tuva) since late September 2026.",
+      "descPatientFR": "La peste est une infection bactérienne grave transmise par les puces des rats. Elle se soigne très bien avec des antibiotiques si prise en charge tôt. Le risque pour la France est actuellement très faible. Si vous avez voyagé en Asie centrale (Russie, Kazakhstan) et avez de la fièvre + ganglions gonflés : consultez rapidement.",
+      "descPatientEN": "Plague is a serious bacterial infection transmitted by rat fleas. It responds well to antibiotics if treated early. The risk for Western Europe is currently very low. If you have traveled to Central Asia (Russia, Kazakhstan) and have fever + swollen lymph nodes: seek medical care promptly.",
+      "foci": [
+        {
+          "lat": 51.7,
+          "lon": 85.0,
+          "country": "Russie — Altaï",
+          "cases": 12,
+          "note": "Cluster confirmé — investigation en cours"
+        },
+        {
+          "lat": 51.2,
+          "lon": 94.3,
+          "country": "Russie — Touva (Tyva)",
+          "cases": 8,
+          "note": "Cas sporadiques — réservoirs rongeurs actifs"
+        },
+        {
+          "lat": 48.0,
+          "lon": 68.0,
+          "country": "Kazakhstan (frontalier Russie)",
+          "cases": 0,
+          "note": "Surveillance renforcée — aucun cas humain confirmé"
+        }
+      ]
     }
   ]
 }
