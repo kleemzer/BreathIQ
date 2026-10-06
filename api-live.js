@@ -767,16 +767,6 @@ const BIQ_LIVE = (() => {
           }
         }
 
-        // WAQI : AQI + 11 polluants + prévisions
-        const waqiResult = await fetchWAQIForLocation(lat, lon);
-        if (waqiResult.data) {
-          const parsed = parseWAQI(waqiResult.data);
-          if (parsed) {
-            state.data.waqi_local = { data: waqiResult.data, source: waqiResult.source, ep: { ttl: 'airQuality', region: 'LOCAL' } };
-            if (waqiResult.source === 'api') state.liveCount++;
-          }
-        }
-
         dispatch('update', { state, parsed: buildParsedData() });
       },
       () => { /* géolocalisation refusée — silencieux */ },
@@ -846,7 +836,7 @@ const BIQ_LIVE = (() => {
     if (state.data.ecdc_mpox?.data)        { out.ecMpox     = parseECDCMpox(state.data.ecdc_mpox.data);          out.sources.ecdcMpox       = state.data.ecdc_mpox.source; }
     if (state.data.sumeau?.data)           { out.sumeau     = parseSumEau(state.data.sumeau.data);                out.sources.sumeau         = state.data.sumeau.source; }
     if (state.data.openmeteo_local?.data)  { out.localAqi   = parseOpenMeteo(state.data.openmeteo_local.data);   out.sources.openMeteoLocal = state.data.openmeteo_local.source; }
-    if (state.data.waqi_local?.data)       { out.waqiLocal  = parseWAQI(state.data.waqi_local.data);             out.sources.waqiLocal      = state.data.waqi_local.source; }
+
     if (state.data.disease_sh_covid?.data) { out.covidFr    = parseDiseaseShCovid(state.data.disease_sh_covid.data); out.sources.covidFr   = state.data.disease_sh_covid.source; }
     if (state.data.who_flunet_fr?.data) { out.frFlu = out.frFlu || parseFluNet(state.data.who_flunet_fr.data); out.sources.fluNetFr = state.data.who_flunet_fr.source; }
     if (state.data.flu_vacc_data?._direct) { out.fluVaccFr  = state.data.flu_vacc_data.data;                    out.sources.fluVaccFr      = state.data.flu_vacc_data.source; }
@@ -860,7 +850,7 @@ const BIQ_LIVE = (() => {
     out.fluNetCountry = EP.who_flunet_fr?._detectedCountry || 'FRA';
 
     // Qualité d'air locale : WAQI (géolocalisé) > Open-Meteo (géolocalisé)
-    out.bestLocalAqi = out.waqiLocal || out.localAqi || null;
+    out.bestLocalAqi = out.localAqi || null;
 
     out.lastUpdate = new Date().toISOString();
     return out;

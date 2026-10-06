@@ -6,7 +6,7 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v29';
+const CACHE_VERSION = 'biq-v30';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -17,7 +17,7 @@ const STATIC_ASSETS = [
   '/index.html',
   '/style.min.css',
   '/script.min.js',
-  '/api-live.js',
+  '/api-live.min.js',
   '/js/clinical-orientation.min.js',
   '/js/care-facilities.min.js',
   '/js/symptom-guide.min.js',
