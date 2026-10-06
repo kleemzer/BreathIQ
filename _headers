@@ -8,6 +8,10 @@
   Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
   Cross-Origin-Opener-Policy: same-origin-allow-popups
 
+# Service Worker — ne jamais mettre en cache (doit toujours être fraîchement téléchargé)
+/sw.js
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /data/*.json
   Cache-Control: no-store, must-revalidate
 
