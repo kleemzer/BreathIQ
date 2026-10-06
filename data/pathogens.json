@@ -2152,18 +2152,9 @@
       "lastUpdate": "2026-10-06",
       "iconColor": "#7B2D8B",
       "references": [
-        {
-          "label": "WHO DON Plague Russia 2026",
-          "url": "https://www.who.int/emergencies/disease-outbreak-news/"
-        },
-        {
-          "label": "Rospotrebnadzor (autorité sanitaire russe)",
-          "url": "https://rospotrebnadzor.ru/"
-        },
-        {
-          "label": "ECDC Plague factsheet",
-          "url": "https://www.ecdc.europa.eu/en/plague"
-        }
+        "WHO DON Plague Russia 2026",
+        "Rospotrebnadzor (autorité sanitaire russe)",
+        "ECDC Plague factsheet"
       ],
       "descFR": "La peste est une maladie bactérienne grave causée par Yersinia pestis, transmise principalement par les puces des rongeurs. Il existe 3 formes : bubonique (ganglions douloureux), septicémique (sepsis) et pulmonaire (pneumonie — contagieuse de personne à personne). Les antibiotiques (doxycycline, streptomycine, fluoroquinolones) sont efficaces si débutés précocement. Un cluster actif est signalé en Russie (Altaï-Touva) depuis fin septembre 2026.",
       "descEN": "Plague is a serious bacterial disease caused by Yersinia pestis, transmitted primarily by rodent fleas. Three forms exist: bubonic (painful lymph nodes), septicemic (bloodstream infection), and pneumonic (pneumonia — person-to-person contagious). Antibiotics (doxycycline, streptomycin, fluoroquinolones) are effective if started early. An active cluster has been reported in Russia (Altai-Tuva) since late September 2026.",
