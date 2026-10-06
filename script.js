@@ -1470,18 +1470,18 @@ function aiMessageForRegion(region, score, lang) {
 
   const messages = {
     fr: {
-      excellent: `Très bonne journée à ${name} — vous pouvez sortir et vaquer normalement à vos activités. Aucune précaution particulière recommandée.`,
-      good: `Bonne journée à ${name}. L'environnement est favorable. Si vous souffrez d'asthme ou d'allergies, votre traitement habituel suffit.`,
-      moderate: `Journée correcte à ${name}, avec quelques facteurs à surveiller. Les personnes asthmatiques ou allergiques peuvent préférer limiter les sorties prolongées.`,
-      high: `Contexte respiratoire chargé à ${name}. Les personnes fragiles (asthme, allergie, personnes âgées) sont invitées à limiter les sorties et à porter un masque dans les transports.`,
-      critical: `Situation préoccupante à ${name}. Limitez vos sorties si vous êtes fragile. Portez un masque de protection si vous devez sortir. Aérez votre logement tôt le matin.`
+      excellent: `Contexte respiratoire favorable à ${name}. Aucun facteur particulier détecté aujourd'hui.`,
+      good: `Contexte respiratoire satisfaisant à ${name}. Les indicateurs de qualité de l'air et de circulation virale sont dans les normes habituelles.`,
+      moderate: `Contexte respiratoire modéré à ${name}. Quelques facteurs environnementaux ou épidémiologiques à surveiller — les personnes à risque respiratoire peuvent consulter leur médecin pour adapter leur suivi.`,
+      high: `Contexte respiratoire chargé à ${name}. Cumul de facteurs défavorables (qualité de l'air, circulation virale ou pollens). Les personnes présentant une pathologie respiratoire chronique sont encouragées à contacter leur médecin traitant.`,
+      critical: `Contexte respiratoire dégradé à ${name}. Situation multi-factorielle défavorable. Toute personne présentant des symptômes respiratoires est invitée à contacter un professionnel de santé.`
     },
     en: {
-      excellent: `Great day in ${name} — you can go out and carry on normally. No precautions needed.`,
-      good: `Good day in ${name}. The environment is favourable. If you have asthma or allergies, your usual treatment is sufficient.`,
-      moderate: `Moderate conditions in ${name}. People with asthma or allergies may prefer to limit extended outdoor time.`,
-      high: `Heavy respiratory context in ${name}. Vulnerable people (asthma, allergies, elderly) are advised to limit outings and wear a mask on public transport.`,
-      critical: `Concerning situation in ${name}. Limit your outings if you are vulnerable. Wear a mask if you must go out. Ventilate your home early in the morning.`
+      excellent: `Favourable respiratory context in ${name}. No particular factor detected today.`,
+      good: `Satisfactory respiratory context in ${name}. Air quality and viral circulation indicators are within normal ranges.`,
+      moderate: `Moderate respiratory context in ${name}. Some environmental or epidemiological factors to monitor — people with respiratory conditions may wish to consult their doctor.`,
+      high: `High respiratory context in ${name}. Unfavourable combination of factors (air quality, viral circulation or pollen). People with chronic respiratory conditions are encouraged to contact their GP.`,
+      critical: `Degraded respiratory context in ${name}. Multifactorial unfavourable situation. Anyone experiencing respiratory symptoms is encouraged to contact a healthcare professional.`
     }
   };
 
