@@ -4511,3 +4511,28 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .ebola-pheic-overlay strong{display:block;margin-bottom:.4rem;font-size:.9rem}
 .ebola-pheic-overlay p{color:#e8f0f7;margin:0 0 .5rem}
 .ebola-pheic-overlay a{color:#fca5a5;font-weight:600}
+
+/* ── Nav dropdown "Plus" (FIX 2) ── */
+.nav-more-item{position:relative}
+.nav-more-btn{background:transparent;border:none;color:inherit;font:inherit;font-size:.88rem;cursor:pointer;padding:.3rem .5rem;opacity:.85;transition:opacity .2s}
+.nav-more-btn:hover{opacity:1}
+.nav-more-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#0d2035;border:1px solid rgba(255,255,255,.15);border-radius:8px;z-index:200;min-width:160px;list-style:none;margin:0;padding:.4rem 0;box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.nav-more-dropdown li a{display:block;padding:.5rem 1rem;font-size:.86rem;color:rgba(255,255,255,.85);text-decoration:none;white-space:nowrap}
+.nav-more-dropdown li a:hover{background:rgba(255,255,255,.07);color:#fff}
+.nav-more-item.open .nav-more-dropdown{display:block}
+
+/* ── Footer colonnes (FIX 3) ── */
+.footer-cols{display:flex;gap:2rem;flex-wrap:wrap;margin:.75rem 0}
+.footer-col{display:flex;flex-direction:column;gap:.35rem;min-width:130px}
+.footer-col-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;opacity:.5;margin:0 0 .5rem;font-weight:600}
+.footer-col a{font-size:.82rem;color:rgba(255,255,255,.7);text-decoration:none;transition:color .15s}
+.footer-col a:hover{color:#fff}
+
+/* ── Bannière épidémique collapsible (FIX 4) ── */
+.epidemic-alert-body,.epidemic-msg,.epidemic-mask,.epidemic-date{display:none}
+.epidemic-alert-banner.expanded .epidemic-alert-body,
+.epidemic-alert-banner.expanded .epidemic-msg,
+.epidemic-alert-banner.expanded .epidemic-mask,
+.epidemic-alert-banner.expanded .epidemic-date{display:block}
+.epidemic-toggle{background:transparent;border:1px solid rgba(255,255,255,.3);border-radius:4px;padding:2px 8px;font-size:.8rem;color:inherit;cursor:pointer;margin-right:.4rem}
+.epidemic-toggle:hover{background:rgba(255,255,255,.1)}

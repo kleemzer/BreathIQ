@@ -185,8 +185,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007c" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007c"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007d" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007d"></noscript>
   <!-- Umami Analytics — privacy-first, sans cookies -->
   <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
@@ -232,15 +232,20 @@
     </a>
 
     <ul class="nav-links" role="list">
-      <li class="patient-only"><a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" data-i18n="nav-symptoms">Symptômes</a></li>
+      <li class="patient-only"><a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" data-i18n="nav-symptoms">Que faire ?</a></li>
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
-      <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte mondiale</a></li>
-      <li><a href="stocks.html" data-i18n="nav-stocks">Masques & Stocks</a></li>
-      <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
-      <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
-      <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
+      <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
+      <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
       <li><a href="bilan-epidemique.html">Bilan mensuel</a></li>
-      <li><a href="about.html" data-i18n="nav-about">À propos</a></li>
+      <li class="nav-more-item">
+        <button class="nav-more-btn" onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
+        <ul class="nav-more-dropdown" role="menu">
+          <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
+          <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
+          <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
+          <li><a href="about.html" data-i18n="nav-about">À propos</a></li>
+        </ul>
+      </li>
     </ul>
 
     <div class="nav-actions">
@@ -302,7 +307,8 @@
     </div>
     <div class="epidemic-alert-actions">
       <a href="ebola.html" class="epidemic-link expert-only" style="display:none">Guide clinique complet →</a>
-      <button class="epidemic-close" onclick="closePheicBanner()" aria-label="Fermer l'alerte épidémique">✕</button>
+      <button class="epidemic-toggle" onclick="toggleEpidemicBanner()" aria-label="Voir les détails de l'alerte">Détails ▾</button>
+      <button class="epidemic-close" onclick="closePheicBanner()" aria-label="Fermer l'alerte">✕</button>
     </div>
   </div>
 </div>
@@ -2190,19 +2196,29 @@
       <p class="footer-tagline" data-i18n="footer-tagline">Prévention respiratoire · Données publiques</p>
     </div>
 
-    <nav class="footer-links" aria-label="Liens légaux et ressources">
-      <a href="bilan-epidemique.html" style="font-weight:600">📋 Bilan épidémique</a>
-      <a href="methodologie.html">📐 Méthodologie</a>
-      <a href="bibliography.html">Bibliographie scientifique</a>
-      <a href="stocks.html">Masques &amp; Stocks FFP2</a>
-      <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>
-      <a href="conditions-utilisation.html" data-i18n="footer-cgu">CGU</a>
-      <a href="privacy.html" data-i18n="footer-privacy">Confidentialité</a>
-      <a href="privacy.html#mydata" data-i18n="nav-mydata">Mes données</a>
-      <a href="legal-notice.html" data-i18n="footer-legal-en">Legal Notice (EN)</a>
-      <a href="about.html" data-i18n="footer-about">À propos</a>
-      <a href="presse.html">Espace Presse</a>
-    </nav>
+    <div class="footer-cols">
+      <div class="footer-col">
+        <p class="footer-col-title">Ressources</p>
+        <a href="bilan-epidemique.html">📋 Bilan épidémique</a>
+        <a href="methodologie.html">📐 Méthodologie</a>
+        <a href="bibliography.html">Bibliographie scientifique</a>
+        <a href="stocks.html">Masques &amp; Stocks FFP2</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">Légal</p>
+        <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>
+        <a href="conditions-utilisation.html" data-i18n="footer-cgu">CGU</a>
+        <a href="privacy.html" data-i18n="footer-privacy">Confidentialité</a>
+        <a href="privacy.html#mydata" data-i18n="nav-mydata">Mes données</a>
+        <a href="legal-notice.html" data-i18n="footer-legal-en">Legal Notice (EN)</a>
+      </div>
+      <div class="footer-col">
+        <p class="footer-col-title">À propos</p>
+        <a href="about.html" data-i18n="footer-about">À propos</a>
+        <a href="presse.html">Espace Presse</a>
+        <a href="about.html">Dr Clément Médeau</a>
+      </div>
+    </div>
 
     <div class="footer-copy">
       <p class="footer-author">
@@ -2438,8 +2454,8 @@ function hideEpiAlert(type) {
   else addEbolaPheicOverlay();
 })();
 </script>
-<script src="api-live.min.js?v=20261007c" defer></script>
-<script src="script.min.js?v=20261007c" defer></script>
+<script src="api-live.min.js?v=20261007d" defer></script>
+<script src="script.min.js?v=20261007d" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

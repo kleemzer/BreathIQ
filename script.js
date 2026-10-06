@@ -1998,6 +1998,33 @@ function closePheicBanner() {
   }
 }
 
+function toggleEpidemicBanner() {
+  const banner = document.getElementById('epidemicAlertBanner');
+  if (!banner) return;
+  banner.classList.toggle('expanded');
+  const btn = banner.querySelector('.epidemic-toggle');
+  if (btn) btn.textContent = banner.classList.contains('expanded') ? 'Réduire ▴' : 'Détails ▾';
+}
+
+function toggleNavMore(e) {
+  e.stopPropagation();
+  const item = e.currentTarget.closest('.nav-more-item');
+  if (!item) return;
+  const isOpen = item.classList.contains('open');
+  document.querySelectorAll('.nav-more-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+  const btn = item.querySelector('.nav-more-btn');
+  if (btn) btn.setAttribute('aria-expanded', String(!isOpen));
+}
+
+document.addEventListener('click', function() {
+  document.querySelectorAll('.nav-more-item.open').forEach(el => {
+    el.classList.remove('open');
+    const btn = el.querySelector('.nav-more-btn');
+    if (btn) btn.setAttribute('aria-expanded', 'false');
+  });
+});
+
 function updateEpidemicBannerMode(isExpert) {
   const gpMsg = document.getElementById('epidemicGpMsg');
   const expertMsg = document.getElementById('epidemicExpertMsg');
@@ -6021,6 +6048,21 @@ async function loadPheicAlert({ force = false } = {}) {
     if (linkEl && active.pathogen_id) {
       const seeLabel = { fr:'Fiche →', en:'Factsheet →', es:'Ficha →', pt:'Ficha →', ar:'الملف ←', zh:'详情 →', hi:'विवरण →', sw:'Faili →', ru:'Подробнее →' }[lang] || 'Info →';
       linkEl.textContent = `${active.disease} — ${seeLabel}`;
+    }
+
+    // Mise à jour du message patient GP
+    const gpTextEl = banner.querySelector('.epidemic-gp-text strong');
+    if (gpTextEl) {
+      const gpMsg = {
+        fr: `${active.disease} — ${L(active.levelLabel)} · ${L(active.subtitle)}`,
+        en: `${active.disease} — ${L(active.levelLabel)} · ${L(active.subtitle)}`,
+      };
+      gpTextEl.textContent = gpMsg[lang] || gpMsg.fr;
+    }
+    const gpLinkEl = banner.querySelector('.epidemic-alert-gp .epidemic-link');
+    if (gpLinkEl && active.pathogen_id) {
+      gpLinkEl.href = `${active.pathogen_id}.html`;
+      gpLinkEl.textContent = lang === 'fr' ? 'En savoir plus →' : 'Learn more →';
     }
 
     // Render PHEIC strip in patient hero
