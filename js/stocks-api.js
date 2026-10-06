@@ -199,32 +199,77 @@ function formatStockUnits(units) {
   return units.toString();
 }
 
-/**
- * Données démonstratives — structure normalisée
- * Remplacer par un appel API réel en production
- */
+// Derniers chiffres officiels connus — aucune API temps réel n'existe pour les stocks stratégiques
 const STOCKS_DEMO_DATA = [
-  { id:'FR', name:'France',         continent:'Europe',  daysSupply:180, ffp2:42e6, confidence:72, sourceKey:'data_gouv',    lastUpdated:'2026-05-01', dataType:'estimate' },
-  { id:'DE', name:'Allemagne',      continent:'Europe',  daysSupply:320, ffp2:120e6,confidence:85, sourceKey:'eu_open_data', lastUpdated:'2026-04-28', dataType:'estimate' },
-  { id:'US', name:'États-Unis',     continent:'Amériques',daysSupply:400,ffp2:500e6,confidence:90, sourceKey:'cdc_open_data',lastUpdated:'2026-05-05', dataType:'official' },
-  { id:'CN', name:'Chine',          continent:'Asie',    daysSupply:500, ffp2:2e9,  confidence:60, sourceKey:'voluntary_reporting',lastUpdated:'2026-05-01',dataType:'estimate'},
-  { id:'JP', name:'Japon',          continent:'Asie',    daysSupply:360, ffp2:180e6,confidence:88, sourceKey:'eu_open_data', lastUpdated:'2026-05-03', dataType:'estimate' },
-  { id:'IN', name:'Inde',           continent:'Asie',    daysSupply:25,  ffp2:120e6,confidence:55, sourceKey:'voluntary_reporting',lastUpdated:'2026-04-25',dataType:'estimate'},
-  { id:'BR', name:'Brésil',         continent:'Amériques',daysSupply:22, ffp2:45e6, confidence:62, sourceKey:'voluntary_reporting',lastUpdated:'2026-04-28',dataType:'estimate'},
-  { id:'NG', name:'Nigeria',        continent:'Afrique', daysSupply:4,   ffp2:3e6,  confidence:40, sourceKey:'voluntary_reporting',lastUpdated:'2026-03-28',dataType:'declarative'},
-  { id:'ET', name:'Éthiopie',       continent:'Afrique', daysSupply:3,   ffp2:0.8e6,confidence:35, sourceKey:'voluntary_reporting',lastUpdated:'2026-03-20',dataType:'declarative'},
-  { id:'GB', name:'Royaume-Uni',    continent:'Europe',  daysSupply:220, ffp2:55e6, confidence:82, sourceKey:'eu_open_data', lastUpdated:'2026-05-02', dataType:'estimate' },
-  { id:'AU', name:'Australie',      continent:'Océanie', daysSupply:260, ffp2:40e6, confidence:80, sourceKey:'voluntary_reporting',lastUpdated:'2026-05-01',dataType:'estimate'},
-  { id:'ID', name:'Indonésie',      continent:'Asie',    daysSupply:5,   ffp2:15e6, confidence:42, sourceKey:'voluntary_reporting',lastUpdated:'2026-04-18',dataType:'declarative'},
-  { id:'PK', name:'Pakistan',       continent:'Asie',    daysSupply:3,   ffp2:4e6,  confidence:38, sourceKey:'voluntary_reporting',lastUpdated:'2026-04-05',dataType:'declarative'},
-  { id:'CD', name:'RD Congo',       continent:'Afrique', daysSupply:2,   ffp2:0.5e6,confidence:30, sourceKey:'voluntary_reporting',lastUpdated:'2026-03-15',dataType:'declarative'},
-  { id:'MX', name:'Mexique',        continent:'Amériques',daysSupply:18, ffp2:18e6, confidence:55, sourceKey:'voluntary_reporting',lastUpdated:'2026-04-20',dataType:'estimate'},
-  { id:'KR', name:'Corée du Sud',   continent:'Asie',    daysSupply:350, ffp2:95e6, confidence:87, sourceKey:'eu_open_data', lastUpdated:'2026-05-02', dataType:'estimate' },
-  { id:'RU', name:'Russie',         continent:'Europe',  daysSupply:150, ffp2:80e6, confidence:50, sourceKey:'voluntary_reporting',lastUpdated:'2026-04-20',dataType:'estimate'},
-  { id:'CA', name:'Canada',         continent:'Amériques',daysSupply:240, ffp2:60e6,confidence:83, sourceKey:'cdc_open_data', lastUpdated:'2026-04-30',dataType:'estimate'},
+  { id:'FR', name:'France',       continent:'Europe',   daysSupply:null, ffp2:680e6, confidence:55, lastUpdated:'2024-01-15', dataType:'official',
+    sourceName:'Cour des Comptes — Rapport gestion COVID', sourceUrl:'https://www.ccomptes.fr/fr/publications/la-gestion-de-la-crise-covid-19',
+    note:'680 millions FFP2 en janv. 2024. Stock réel actuel incertain (péremptions 2024-2026).' },
+  { id:'DE', name:'Allemagne',    continent:'Europe',   daysSupply:null, ffp2:312e6, confidence:75, lastUpdated:'2024-01-10', dataType:'official',
+    sourceName:'Bundestag — Question parlementaire jan. 2024', sourceUrl:'https://www.bundestag.de/presse/hib/kurzmeldungen-984912',
+    note:'312 millions FFP2 en réserve fédérale (Bundesreserve), janvier 2024.' },
+  { id:'BE', name:'Belgique',     continent:'Europe',   daysSupply:null, ffp2:5.7e6, kn95:45e6, confidence:60, lastUpdated:'2024-06-01', dataType:'official',
+    sourceName:'Parlement belge — SPF Santé publique', sourceUrl:'https://www.health.belgium.be',
+    note:'5,7 millions FFP2 + 45 millions KN95 en stock stratégique fédéral.' },
+  { id:'GB', name:'Royaume-Uni',  continent:'Europe',   daysSupply:84,   ffp2:null,  confidence:80, lastUpdated:'2025-01-01', dataType:'official',
+    sourceName:'Gov.Wales — PPE Stockpile Volumes WHC2025/023', sourceUrl:'https://www.gov.wales/ppe-stockpile-volumes-wales-whc2025023-html',
+    note:'Pays de Galles : cible 12 semaines de stock FFP2. Données UK globales non publiées.' },
+  { id:'US', name:'États-Unis',   continent:'Amériques',daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'HHS — Strategic National Stockpile', sourceUrl:'https://aspr.hhs.gov/SNS/Pages/default.aspx',
+    note:'Stock classifié pour raisons de sécurité nationale. Aucune donnée publique.' },
+  { id:'CA', name:'Canada',       continent:'Amériques',daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'ASPC — Agence de santé publique du Canada', sourceUrl:'https://www.canada.ca/fr/sante-publique.html',
+    note:'Réserves stratégiques non publiées.' },
+  { id:'AU', name:'Australie',    continent:'Océanie',  daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'Dept. of Health — National Medical Stockpile', sourceUrl:'https://www.health.gov.au',
+    note:'National Medical Stockpile non divulgué.' },
+  { id:'JP', name:'Japon',        continent:'Asie',     daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'MHLW — Ministry of Health, Labour and Welfare', sourceUrl:'https://www.mhlw.go.jp',
+    note:'Aucune donnée publique disponible.' },
+  { id:'KR', name:'Corée du Sud', continent:'Asie',     daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'KDCA — Korea Disease Control and Prevention Agency', sourceUrl:'https://www.kdca.go.kr',
+    note:'Stocks stratégiques non publiés.' },
+  { id:'CN', name:'Chine',        continent:'Asie',     daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:"MIIT — Ministère de l'Industrie", sourceUrl:'https://www.miit.gov.cn',
+    note:'Premier producteur mondial. Capacité production publiée, pas les réserves stratégiques.' },
+  { id:'IN', name:'Inde',         continent:'Asie',     daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'MoHFW — Ministry of Health and Family Welfare', sourceUrl:'https://mohfw.gov.in',
+    note:'Aucune donnée publique disponible.' },
+  { id:'BR', name:'Brésil',       continent:'Amériques',daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'ANVISA — Brésil', sourceUrl:'https://www.gov.br/anvisa',
+    note:'Aucune donnée publique sur les réserves stratégiques.' },
+  { id:'RU', name:'Russie',       continent:'Europe',   daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'Minzdrav — Ministère de la Santé', sourceUrl:'https://minzdrav.gov.ru',
+    note:'Données non disponibles publiquement.' },
+  { id:'NG', name:'Nigéria',      continent:'Afrique',  daysSupply:null, ffp2:null,  confidence:0,  lastUpdated:null,         dataType:'unknown',
+    sourceName:'UNICEF / OMS', sourceUrl:'https://www.unicef.org/supply',
+    note:'Aucune donnée nationale disponible.' },
 ];
+
+// Chargement async depuis data/stocks.json
+let _stocksJsonCache = null;
+
+async function loadStocksFromJson() {
+  if (_stocksJsonCache) return _stocksJsonCache;
+  try {
+    const r = await fetch('/data/stocks.json?_=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const json = await r.json();
+    _stocksJsonCache = (json.regions || []).map(e => ({
+      ...e,
+      alertLevel: computeAlertLevel(e.daysSupply),
+    }));
+    return _stocksJsonCache;
+  } catch {
+    return STOCKS_DEMO_DATA.map(e => ({ ...e, alertLevel: computeAlertLevel(e.daysSupply) }));
+  }
+}
 
 // Export pour usage dans stocks.html
 if (typeof module !== 'undefined') {
-  module.exports = { STOCK_SOURCES, STOCKS_DEMO_DATA, ALERT_COLORS, computeAlertLevel, computeConfidence, formatStockUnits };
+  module.exports = { STOCK_SOURCES, STOCKS_DEMO_DATA, ALERT_COLORS, computeAlertLevel, computeConfidence, formatStockUnits, loadStocksFromJson };
+}
+
+// Exposition globale pour stocks.html
+if (typeof window !== 'undefined') {
+  window.StocksAPI = { ALERT_COLORS, STOCKS_DEMO_DATA, computeAlertLevel, formatStockUnits, loadStocksFromJson };
 }

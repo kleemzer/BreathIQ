@@ -349,14 +349,13 @@
 <header class="stocks-hero">
   <div class="container">
     <h1>Stocks mondiaux d'équipements de protection respiratoire</h1>
-    <p>Données déclaratives et officielles — indicateurs de disponibilité par territoire.</p>
+    <p>Derniers chiffres officiellement publiés par les gouvernements — rapports parlementaires, audits nationaux.</p>
 
     <div class="data-notice" role="status" style="margin-top:var(--s4)" aria-live="polite">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       <span>
-        <strong>Données indicatives.</strong> Ces données combinent sources officielles et estimations.
-        Elles ne reflètent pas nécessairement les stocks stratégiques confidentiels des États.
-        Dernière mise à jour : <time datetime="2026-05-19">19 mai 2026</time>.
+        <strong>Pas de données en temps réel.</strong> Les stocks stratégiques de masques sont classifiés ou non publiés dans la majorité des pays.
+        Cette page affiche uniquement les <strong>derniers chiffres officiels connus</strong> issus de rapports gouvernementaux publics, avec leur date de publication.
         <a href="bibliography.html#data-sources">Voir les sources →</a>
       </span>
     </div>
@@ -529,7 +528,6 @@
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" crossorigin=""></script>
 <script src="js/stocks-api.min.js"></script>
-<script src="stocks-live.js"></script>
 <script>
 'use strict';
 
@@ -558,7 +556,7 @@ let _enrichedData = null;
 let _layerPharmaciesActive = false;
 let _layerAqiActive = false;
 
-function getStocksData() { return _enrichedData || STOCKS_DEMO_DATA; }
+function getStocksData() { return _enrichedData || (window.StocksAPI ? window.StocksAPI.STOCKS_DEMO_DATA : []); }
 
 // ── Carte ──────────────────────────────────────────────────────────────────
 function initStocksMap() {
@@ -712,7 +710,7 @@ function renderStocksMarkers() {
     if (!coord) return;
     const alert = computeAlertLevel(d.daysSupply);
     const colors = getAlertColor(alert);
-    const radius = Math.min(30, Math.max(8, Math.log10(d.ffp2 + 1) * 4));
+    const radius = d.ffp2 ? Math.min(30, Math.max(8, Math.log10(d.ffp2 + 1) * 4)) : 6;
 
     const circle = L.circleMarker([coord[1], coord[0]], {
       radius,
@@ -732,9 +730,9 @@ function renderStocksMarkers() {
         </span>
         <dl style="margin:0;display:grid;grid-template-columns:auto 1fr;gap:.2rem .5rem;font-size:.78rem">
           <dt style="color:#718096">Autonomie</dt>
-          <dd style="margin:0;font-weight:600">${d.daysSupply} jours</dd>
-          <dt style="color:#718096">Stock FFP2 est.</dt>
-          <dd style="margin:0">${formatStockUnits(d.ffp2)} unités</dd>
+          <dd style="margin:0;font-weight:600">${d.daysSupply != null ? d.daysSupply + ' jours' : '—'}</dd>
+          <dt style="color:#718096">Stock FFP2</dt>
+          <dd style="margin:0">${formatStockUnits(d.ffp2)}</dd>
           <dt style="color:#718096">Confiance</dt>
           <dd style="margin:0">
             <div class="confidence-bar-wrap" role="progressbar" aria-valuenow="${confidenceWidth}" aria-valuemin="0" aria-valuemax="100">
@@ -794,9 +792,15 @@ function renderTable() {
   tbody.innerHTML = data.map(d => {
     const alert = computeAlertLevel(d.daysSupply);
     const colors = getAlertColor(alert);
-    const sourceObj = STOCK_SOURCES[d.sourceKey] || { name: d.sourceKey, url: '#' };
+    const sourceName = d.sourceName || (STOCK_SOURCES[d.sourceKey] || {}).name || d.sourceKey || '—';
+    const sourceUrl  = d.sourceUrl  || (STOCK_SOURCES[d.sourceKey] || {}).url  || '#';
     const dataTypeClass = `data-type-${d.dataType}`;
-    const dataTypeLabel = { official: 'Officielle', estimate: 'Estimation', declarative: 'Déclaratif' }[d.dataType] || d.dataType;
+    const dataTypeLabel = { official: 'Officielle', estimate: 'Estimation', declarative: 'Déclaratif', unknown: 'Non disponible' }[d.dataType] || d.dataType;
+    const daysDisplay = d.daysSupply != null ? `<strong>${d.daysSupply}</strong> j` : '<span style="color:var(--text-muted)">—</span>';
+    const lastUpdDisplay = d.lastUpdated ? `<time datetime="${d.lastUpdated}">${d.lastUpdated}</time>` : '<span style="color:var(--text-muted)">—</span>';
+    const confDisplay = d.confidence > 0
+      ? `<div style="display:flex;align-items:center;gap:.4rem"><div class="confidence-bar-wrap" style="width:60px;flex-shrink:0"><div class="confidence-bar-fill" style="width:${d.confidence}%"></div></div><span style="font-size:.78rem">${d.confidence}%</span></div>`
+      : '<span style="color:var(--text-muted);font-size:.78rem">—</span>';
 
     return `<tr>
       <td><strong>${d.name}</strong></td>
@@ -806,22 +810,15 @@ function renderTable() {
           ${colors.label}
         </span>
       </td>
-      <td><strong>${d.daysSupply}</strong> j</td>
+      <td>${daysDisplay}</td>
       <td>${formatStockUnits(d.ffp2)}</td>
-      <td>
-        <div style="display:flex;align-items:center;gap:.4rem">
-          <div class="confidence-bar-wrap" style="width:60px;flex-shrink:0" role="progressbar" aria-valuenow="${d.confidence}" aria-valuemin="0" aria-valuemax="100">
-            <div class="confidence-bar-fill" style="width:${d.confidence}%"></div>
-          </div>
-          <span style="font-size:.78rem">${d.confidence}%</span>
-        </div>
-      </td>
-      <td><time datetime="${d.lastUpdated}">${d.lastUpdated}</time></td>
+      <td>${confDisplay}</td>
+      <td>${lastUpdDisplay}</td>
       <td><span class="data-type-badge ${dataTypeClass}">${dataTypeLabel}</span></td>
       <td>
-        ${sourceObj.url && sourceObj.url !== '#'
-          ? `<a href="${sourceObj.url}" rel="noopener noreferrer" style="font-size:.78rem">${sourceObj.name}</a>`
-          : `<span style="font-size:.78rem">${sourceObj.name}</span>`
+        ${sourceUrl && sourceUrl !== '#'
+          ? `<a href="${sourceUrl}" rel="noopener noreferrer" style="font-size:.78rem">${sourceName}</a>`
+          : `<span style="font-size:.78rem">${sourceName}</span>`
         }
       </td>
     </tr>`;
@@ -835,7 +832,7 @@ function exportCsv() {
   const rows = data.map(d => [
     d.name, d.continent, computeAlertLevel(d.daysSupply), d.daysSupply,
     d.ffp2, d.confidence, d.lastUpdated, d.dataType,
-    (STOCK_SOURCES[d.sourceKey] || {}).name || d.sourceKey
+    d.sourceName || (STOCK_SOURCES[d.sourceKey] || {}).name || d.sourceKey || '—'
   ].join(';'));
   const csv = [headers.join(';'), ...rows].join('\n');
   const blob = new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8;' });
@@ -968,14 +965,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // ── Bouton force refresh ─────────────────────────────────────────────────
   document.getElementById('forceRefreshBtn')?.addEventListener('click', async () => {
-    if (!window.StocksLive) return;
-    // Vider les clés de cache live
-    Object.keys(localStorage)
-      .filter(k => k.startsWith('biq-live-'))
-      .forEach(k => localStorage.removeItem(k));
-    localStorage.removeItem('biq-stocks-last-refresh');
     await runEnrichment();
-    StocksLive.scheduleAutoRefresh(runEnrichment);
   });
 
   // Init
@@ -991,33 +981,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 200);
   }
 
-  // ── Enrichissement asynchrone en arrière-plan ────────────────────────────
+  // ── Chargement des données depuis data/stocks.json ────────────────────────
   async function runEnrichment() {
-    if (!window.StocksLive) return;
     try {
-      const enriched = await StocksLive.enrichStocksData();
-      if (enriched && enriched.length > 0) {
-        _enrichedData = enriched;
+      const loaded = window.StocksAPI
+        ? await window.StocksAPI.loadStocksFromJson()
+        : null;
+      if (loaded && loaded.length > 0) {
+        _enrichedData = loaded;
         renderTable();
         renderStocksMarkers();
       }
     } catch (err) {
-      console.warn('[stocks] Enrichment error:', err);
+      console.warn('[stocks] Chargement données stocks:', err);
     }
   }
 
-  if (window.StocksLive) {
-    runEnrichment();
-    StocksLive.scheduleAutoRefresh(runEnrichment);
-  } else {
-    // stocks-live.js pas encore chargé, retry
-    window.addEventListener('load', () => {
-      if (window.StocksLive) {
-        runEnrichment();
-        StocksLive.scheduleAutoRefresh(runEnrichment);
-      }
-    });
-  }
+  runEnrichment();
 });
 </script>
 </body>

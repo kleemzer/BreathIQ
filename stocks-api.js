@@ -2,8 +2,9 @@
 
 /**
  * BreathIQ — stocks-api.js
- * Données indicatives des stocks FFP2/N95 mondiaux
- * Sources : OMS, UNICEF, OCDE, rapports nationaux, estimations
+ * Stocks FFP2/N95/KN95 — derniers chiffres officiels connus par pays
+ * Sources : rapports parlementaires, audits gouvernementaux, communications officielles
+ * IMPORTANT : aucune API temps réel n'existe pour les stocks stratégiques (données classifiées)
  */
 
 // ── Couleurs par niveau d'alerte ──────────────────────────────────────────────
@@ -33,141 +34,183 @@ function formatStockUnits(n) {
   return n.toString();
 }
 
-// ── Sources ───────────────────────────────────────────────────────────────────
-const STOCK_SOURCES = {
-  who:       { name: 'OMS — Rapport EPI mondial',       url: 'https://www.who.int/emergencies/diseases/novel-coronavirus-2019/technical-guidance/infection-prevention-and-control/mask-use',        coverage: 'Mondial',   frequency: 'Annuelle',    reliability: 72, license: 'CC BY-NC-SA 3.0 IGO' },
-  unicef:    { name: 'UNICEF Supply Division',          url: 'https://supply.unicef.org/all-materials/respiratory-protection.html',                                                               coverage: 'Mondial',   frequency: 'Mensuelle',   reliability: 80, license: 'Données publiques' },
-  ecdc:      { name: 'ECDC — Capacités EU',             url: 'https://www.ecdc.europa.eu/en/publications-data/technical-guidance-healthcare-workers',                                            coverage: 'Europe',    frequency: 'Trimestrielle',reliability: 85, license: 'CC BY 4.0' },
-  sns_fr:    { name: 'SNS France — EPRUS/ANS',          url: 'https://www.anrs.fr/',                                                                                                             coverage: 'France',    frequency: 'Confidentielle', reliability: 90, note: 'Stock stratégique — données partielles publiques' },
-  fda:       { name: 'FDA / ASPR — Strategic Stockpile', url: 'https://medicalcountermeasures.gov/barda/diagnostics-ppe/',                                                                       coverage: 'États-Unis',frequency: 'Annuelle',    reliability: 82 },
-  nhs:       { name: 'NHS — UK PPE Stockpile Report',   url: 'https://www.gov.uk/government/collections/coronavirus-covid-19-ppe',                                                              coverage: 'Royaume-Uni',frequency: 'Trimestrielle',reliability: 88 },
-  estim:     { name: 'Estimation BreathIQ',             url: '#',                                                                                                                                coverage: 'Varies',    frequency: 'Calculée',    reliability: 45, note: 'Basée sur capacité de production × 3 mois + importations déclarées' },
-  rivm:      { name: 'RIVM — Pays-Bas',                 url: 'https://www.rivm.nl/',                                                                                                             coverage: 'Pays-Bas',  frequency: 'Mensuelle',   reliability: 87 },
-  phac:      { name: 'ASPC — Canada',                   url: 'https://www.canada.ca/en/public-health.html',                                                                                     coverage: 'Canada',    frequency: 'Trimestrielle',reliability: 84 },
-  kirby:     { name: 'Kirby Institute — Australie',     url: 'https://www.kirby.unsw.edu.au/',                                                                                                  coverage: 'Australie', frequency: 'Annuelle',    reliability: 79 },
-};
-
-// ── Données stocks (indicatives) ─────────────────────────────────────────────
+// ── Données de fallback (si data/stocks.json indisponible) ────────────────────
+// Seules les données officiellement publiées sont incluses.
 const STOCKS_DEMO_DATA = [
   {
     id: 'FR', name: 'France', continent: 'Europe',
-    daysSupply: 68, ffp2: 285_000_000,
-    confidence: 62, lastUpdated: '2026-03-15',
-    dataType: 'official', sourceKey: 'sns_fr',
-    note: 'Stock SNS + stocks hospitaliers déclarés. Stock stratégique non communiqué.',
+    daysSupply: null, ffp2: 680_000_000,
+    confidence: 55, lastUpdated: '2024-01-15',
+    dataType: 'official',
+    sourceName: 'Cour des Comptes — Rapport gestion COVID',
+    sourceUrl: 'https://www.ccomptes.fr/fr/publications/la-gestion-de-la-crise-covid-19',
+    note: '680 millions FFP2 en janvier 2024. Stock réel actuel incertain (péremptions 2024-2026).',
   },
   {
     id: 'DE', name: 'Allemagne', continent: 'Europe',
-    daysSupply: 95, ffp2: 520_000_000,
-    confidence: 74, lastUpdated: '2026-02-28',
-    dataType: 'official', sourceKey: 'ecdc',
-    note: 'Bundesreserve + Länder. Reconstitution post-COVID complète.',
+    daysSupply: null, ffp2: 312_000_000,
+    confidence: 75, lastUpdated: '2024-01-10',
+    dataType: 'official',
+    sourceName: 'Bundestag — Question parlementaire jan. 2024',
+    sourceUrl: 'https://www.bundestag.de/presse/hib/kurzmeldungen-984912',
+    note: '312 millions FFP2 en réserve fédérale (Bundesreserve), janvier 2024.',
+  },
+  {
+    id: 'BE', name: 'Belgique', continent: 'Europe',
+    daysSupply: null, ffp2: 5_700_000, kn95: 45_000_000,
+    confidence: 60, lastUpdated: '2024-06-01',
+    dataType: 'official',
+    sourceName: 'Parlement belge — SPF Santé publique',
+    sourceUrl: 'https://www.health.belgium.be',
+    note: '5,7 millions FFP2 + 45 millions KN95 en stock stratégique fédéral.',
   },
   {
     id: 'GB', name: 'Royaume-Uni', continent: 'Europe',
-    daysSupply: 112, ffp2: 680_000_000,
-    confidence: 88, lastUpdated: '2026-04-01',
-    dataType: 'official', sourceKey: 'nhs',
-    note: 'NHS PPE Stockpile Report Q1-2026. Stock central + NHS trusts.',
+    daysSupply: 84, ffp2: null,
+    confidence: 80, lastUpdated: '2025-01-01',
+    dataType: 'official',
+    sourceName: 'Gov.Wales — PPE Stockpile Volumes WHC2025/023',
+    sourceUrl: 'https://www.gov.wales/ppe-stockpile-volumes-wales-whc2025023-html',
+    note: 'Pays de Galles : 12 semaines de stock FFP2 (cible). Données UK globales non publiées.',
   },
   {
     id: 'US', name: 'États-Unis', continent: 'Amériques',
-    daysSupply: 142, ffp2: 3_200_000_000,
-    confidence: 76, lastUpdated: '2026-01-20',
-    dataType: 'official', sourceKey: 'fda',
-    note: 'Strategic National Stockpile + production domestique 3M, Honeywell.',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'HHS — Strategic National Stockpile',
+    sourceUrl: 'https://aspr.hhs.gov/SNS/Pages/default.aspx',
+    note: 'Stock classifié pour des raisons de sécurité nationale. Aucune donnée publique.',
   },
   {
     id: 'CA', name: 'Canada', continent: 'Amériques',
-    daysSupply: 88, ffp2: 420_000_000,
-    confidence: 78, lastUpdated: '2026-02-14',
-    dataType: 'official', sourceKey: 'phac',
-  },
-  {
-    id: 'BR', name: 'Brésil', continent: 'Amériques',
-    daysSupply: 22, ffp2: 95_000_000,
-    confidence: 42, lastUpdated: '2026-01-10',
-    dataType: 'estimate', sourceKey: 'estim',
-    note: 'Estimé — production nationale + importations déclarées à l\'ANVISA.',
-  },
-  {
-    id: 'MX', name: 'Mexique', continent: 'Amériques',
-    daysSupply: 14, ffp2: 48_000_000,
-    confidence: 35, lastUpdated: '2025-11-30',
-    dataType: 'estimate', sourceKey: 'estim',
-  },
-  {
-    id: 'CN', name: 'Chine', continent: 'Asie',
-    daysSupply: 180, ffp2: 12_000_000_000,
-    confidence: 55, lastUpdated: '2026-03-01',
-    dataType: 'declarative', sourceKey: 'who',
-    note: 'Premier producteur mondial. Chiffres déclaratifs MIIT. Données partielles.',
-  },
-  {
-    id: 'JP', name: 'Japon', continent: 'Asie',
-    daysSupply: 105, ffp2: 890_000_000,
-    confidence: 82, lastUpdated: '2026-02-20',
-    dataType: 'official', sourceKey: 'who',
-    note: 'Ministry of Health, Labour and Welfare. Reconstitution complète.',
-  },
-  {
-    id: 'KR', name: 'Corée du Sud', continent: 'Asie',
-    daysSupply: 130, ffp2: 740_000_000,
-    confidence: 85, lastUpdated: '2026-03-10',
-    dataType: 'official', sourceKey: 'who',
-    note: 'KDCA + production nationale (fabricant KF94). Système de distribution centralisé.',
-  },
-  {
-    id: 'IN', name: 'Inde', continent: 'Asie',
-    daysSupply: 18, ffp2: 320_000_000,
-    confidence: 38, lastUpdated: '2025-12-15',
-    dataType: 'estimate', sourceKey: 'estim',
-    note: 'Estimé — rapport CPCB + MoHFW. Forte disparité régionale.',
-  },
-  {
-    id: 'ID', name: 'Indonésie', continent: 'Asie',
-    daysSupply: 9, ffp2: 62_000_000,
-    confidence: 30, lastUpdated: '2025-10-01',
-    dataType: 'estimate', sourceKey: 'estim',
-  },
-  {
-    id: 'PK', name: 'Pakistan', continent: 'Asie',
-    daysSupply: 5, ffp2: 18_000_000,
-    confidence: 25, lastUpdated: '2025-09-01',
-    dataType: 'estimate', sourceKey: 'estim',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'ASPC — Agence de santé publique du Canada',
+    sourceUrl: 'https://www.canada.ca/fr/sante-publique.html',
+    note: 'Réserves stratégiques non publiées.',
   },
   {
     id: 'AU', name: 'Australie', continent: 'Océanie',
-    daysSupply: 97, ffp2: 310_000_000,
-    confidence: 79, lastUpdated: '2026-02-01',
-    dataType: 'official', sourceKey: 'kirby',
-    note: 'National Medical Stockpile + état-fédéral. Post-COVID stockpile reform.',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'Dept. of Health — National Medical Stockpile',
+    sourceUrl: 'https://www.health.gov.au',
+    note: 'National Medical Stockpile non divulgué.',
   },
   {
-    id: 'NG', name: 'Nigéria', continent: 'Afrique',
-    daysSupply: 6, ffp2: 14_000_000,
-    confidence: 28, lastUpdated: '2025-08-15',
-    dataType: 'estimate', sourceKey: 'unicef',
-    note: 'Estimé via UNICEF/OMS. Forte dépendance aux importations.',
+    id: 'JP', name: 'Japon', continent: 'Asie',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'MHLW — Ministry of Health, Labour and Welfare',
+    sourceUrl: 'https://www.mhlw.go.jp',
+    note: 'Aucune donnée publique disponible.',
   },
   {
-    id: 'ET', name: 'Éthiopie', continent: 'Afrique',
-    daysSupply: 4, ffp2: 8_000_000,
-    confidence: 22, lastUpdated: '2025-07-01',
-    dataType: 'estimate', sourceKey: 'unicef',
+    id: 'KR', name: 'Corée du Sud', continent: 'Asie',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'KDCA — Korea Disease Control and Prevention Agency',
+    sourceUrl: 'https://www.kdca.go.kr',
+    note: 'Stocks stratégiques non publiés.',
   },
   {
-    id: 'CD', name: 'RD Congo', continent: 'Afrique',
-    daysSupply: 3, ffp2: 4_500_000,
-    confidence: 20, lastUpdated: '2025-06-01',
-    dataType: 'estimate', sourceKey: 'unicef',
-    note: 'Données OMS/UNICEF. Contexte de fragilité sanitaire.',
+    id: 'CN', name: 'Chine', continent: 'Asie',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'MIIT — Ministère de l\'Industrie et des Technologies',
+    sourceUrl: 'https://www.miit.gov.cn',
+    note: 'Premier producteur mondial. Capacité production publiée, pas les réserves stratégiques.',
+  },
+  {
+    id: 'IN', name: 'Inde', continent: 'Asie',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'MoHFW — Ministry of Health and Family Welfare',
+    sourceUrl: 'https://mohfw.gov.in',
+    note: 'Aucune donnée publique disponible.',
+  },
+  {
+    id: 'BR', name: 'Brésil', continent: 'Amériques',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'ANVISA — Brésil',
+    sourceUrl: 'https://www.gov.br/anvisa',
+    note: 'Aucune donnée publique sur les réserves stratégiques.',
   },
   {
     id: 'RU', name: 'Russie', continent: 'Europe',
-    daysSupply: 45, ffp2: 380_000_000,
-    confidence: 32, lastUpdated: '2025-11-01',
-    dataType: 'declarative', sourceKey: 'estim',
-    note: 'Données incomplètes depuis 2022. Estimation conservative.',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'Minzdrav — Ministère de la Santé russe',
+    sourceUrl: 'https://minzdrav.gov.ru',
+    note: 'Données non disponibles publiquement.',
+  },
+  {
+    id: 'NG', name: 'Nigéria', continent: 'Afrique',
+    daysSupply: null, ffp2: null,
+    confidence: 0, lastUpdated: null,
+    dataType: 'unknown',
+    sourceName: 'UNICEF / OMS',
+    sourceUrl: 'https://www.unicef.org/supply',
+    note: 'Aucune donnée nationale disponible.',
   },
 ];
+
+// ── Chargement depuis data/stocks.json ────────────────────────────────────────
+let _stocksJsonData = null;
+let _stocksJsonLoading = false;
+const _stocksCallbacks = [];
+
+async function loadStocksJson() {
+  if (_stocksJsonData) return _stocksJsonData;
+  if (_stocksJsonLoading) {
+    return new Promise(resolve => _stocksCallbacks.push(resolve));
+  }
+  _stocksJsonLoading = true;
+  try {
+    const r = await fetch('/data/stocks.json?_=' + Date.now());
+    if (!r.ok) throw new Error('HTTP ' + r.status);
+    const json = await r.json();
+    _stocksJsonData = (json.regions || []).map(r => ({
+      ...r,
+      alertLevel: computeAlertLevel(r.daysSupply),
+    }));
+    _stocksCallbacks.forEach(cb => cb(_stocksJsonData));
+    return _stocksJsonData;
+  } catch (err) {
+    console.warn('[stocks] Impossible de charger data/stocks.json, fallback local', err);
+    _stocksJsonData = STOCKS_DEMO_DATA.map(r => ({
+      ...r,
+      alertLevel: computeAlertLevel(r.daysSupply),
+    }));
+    _stocksCallbacks.forEach(cb => cb(_stocksJsonData));
+    return _stocksJsonData;
+  } finally {
+    _stocksJsonLoading = false;
+  }
+}
+
+// ── API publique exposée à stocks.html ────────────────────────────────────────
+window.StocksAPI = {
+  ALERT_COLORS,
+  computeAlertLevel,
+  formatStockUnits,
+
+  // Retourne une promesse résolue avec les données stocks
+  getStocksData: () => loadStocksJson(),
+
+  // Données synchrones (fallback si JSON pas encore chargé)
+  getFallbackData: () => STOCKS_DEMO_DATA.map(r => ({
+    ...r,
+    alertLevel: computeAlertLevel(r.daysSupply),
+  })),
+};
