@@ -2115,7 +2115,11 @@
         "Russie (Altaï, Touva)",
         "Kazakhstan (frontalier)"
       ],
-      "transmission": "Contact avec rongeurs infectés / piqûres de puces / gouttelettes (forme pulmonaire)",
+      "transmission": [
+        "Contact avec rongeurs infectés",
+        "piqûres de puces",
+        "gouttelettes (forme pulmonaire)"
+      ],
       "protectionRequired": "FFP2 (pulmonaire)",
       "protectionLevel": "high",
       "maskNote": {
