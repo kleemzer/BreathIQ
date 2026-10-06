@@ -4273,16 +4273,9 @@ domReady(() => {
   // Region selector
   buildRegionSelector();
 
-  // Score for first region — immédiat avec données estimées, puis maj AQI réel
-  updateScoreDisplay(DEMO_DATA[0].id);
-  // Failsafe : si après 3s le score est encore à "—", forcer le calcul
-  setTimeout(() => {
-    const gpNum = document.getElementById('gpScoreNum');
-    if (gpNum && gpNum.textContent === '—') {
-      updateScoreDisplay(DEMO_DATA[0].id);
-    }
-  }, 3000);
-  fetchLiveAqiAndRefresh(DEMO_DATA[0].id);
+  // Score : on attend la sélection de région par l'utilisateur (ou géolocalisation)
+  // Pas de calcul automatique sur une région par défaut arbitraire
+  fetchLiveAqiAndRefresh(null);
 
   // SPF — charger immédiatement (patches sur OUTBREAK_DATA et stats hero)
   loadSPFLiveData();
@@ -4595,12 +4588,69 @@ async function loadSurveillanceData() {
     ]);
     _spfSurveillance = spf;
     _ecdcSurveillance = ecdc;
+    renderVirusSaison();
     const active = getActivePathogens();
     if (active.length) {
       _activeSurveillancePathogen = active[0].id;
       renderSurveillanceModule(active);
     }
   } catch(e) { /* silencieux */ }
+}
+
+function renderVirusSaison() {
+  const grid = document.getElementById('virusSaisonGrid');
+  const sourceEl = document.getElementById('virusSaisonSource');
+  if (!grid) return;
+
+  const ICONS = { flu:'🤧', bronchiolite:'👶', gastro:'🤮', legionella:'💧', hantavirus:'🐀', westnile:'🦟', mpox:'🐒', dengue:'🦟' };
+  const LEVEL_MAP = {
+    normal:  { cls:'virus-level-green',  label:'Activité normale' },
+    jaune:   { cls:'virus-level-yellow', label:'Surveillance renforcée' },
+    orange:  { cls:'virus-level-orange', label:'Circulation active' },
+    rouge:   { cls:'virus-level-red',    label:'Alerte épidémique' },
+  };
+
+  const spfPathogens  = (_spfSurveillance?.pathogens  || []).map(p => ({ ...p, _src: 'SPF' }));
+  const ecdcPathogens = (_ecdcSurveillance?.pathogens || []).map(p => ({ ...p, _src: 'ECDC' }));
+  const all = [...spfPathogens, ...ecdcPathogens];
+
+  if (!all.length) {
+    grid.innerHTML = '<p style="color:rgba(232,240,247,.5);font-size:.85rem">Données de surveillance indisponibles.</p>';
+    return;
+  }
+
+  // trier : alertLevel desc (rouge > orange > jaune > normal), puis zscore desc
+  const order = { rouge:4, orange:3, jaune:2, normal:1 };
+  all.sort((a, b) => {
+    const oa = order[a.alertLevel] || 0, ob = order[b.alertLevel] || 0;
+    if (ob !== oa) return ob - oa;
+    return (b.zscore || 0) - (a.zscore || 0);
+  });
+
+  // Afficher max 6 pathogènes pour ne pas surcharger
+  const shown = all.slice(0, 6);
+
+  grid.innerHTML = shown.map(p => {
+    const lv = LEVEL_MAP[p.alertLevel] || LEVEL_MAP.normal;
+    const icon = ICONS[p.id] || '🦠';
+    const week = p.week ? `S${p.week.split('-S')[1]} · ` : '';
+    const rate  = p.rate != null ? `${p.rate} ${p.unit || ''}` : '';
+    const note  = rate ? `${week}${rate} · ${p._src}` : `${p._src} · ${p.week || ''}`;
+    return `<div class="virus-card">
+      <span style="font-size:1.4rem">${icon}</span>
+      <div class="virus-card-name">${p.nameFR || p.nameEN || p.id}</div>
+      <span class="virus-card-level ${lv.cls}">${lv.label}</span>
+      <div class="virus-card-note">${note}</div>
+    </div>`;
+  }).join('');
+
+  // Mise à jour de la source avec la date de vérification
+  const verifiedAt = _spfSurveillance?.sourceVerifiedAt || _ecdcSurveillance?.sourceVerifiedAt;
+  if (sourceEl && verifiedAt) {
+    const d = new Date(verifiedAt);
+    const label = d.toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
+    sourceEl.textContent = `Données SPF · ECDC vérifiées le ${label} — semaine épidémiologique ${all[0]?.week || ''}`;
+  }
 }
 
 /**

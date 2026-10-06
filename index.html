@@ -193,8 +193,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007h" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007h"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007i" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007i"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -430,7 +430,7 @@
           </div>
         </div>
         <div class="gp-score-info">
-          <p class="gp-score-level" id="gpScoreLevel">Chargement…</p>
+          <p class="gp-score-level" id="gpScoreLevel">Entrez votre ville ↓</p>
           <span id="gpScoreDelta" role="status" style="display:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:4px" aria-live="polite" aria-label="Évolution par rapport à hier"></span>
           <p class="gp-score-loc" id="gpScoreLoc">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -505,36 +505,17 @@
 <section class="virus-saison-section patient-only" id="virusSaison" aria-labelledby="virusSaisonTitle">
   <div class="container">
     <h2 id="virusSaisonTitle">🔬 Virus en circulation en France</h2>
-    <div class="virus-saison-grid">
-      <div class="virus-card">
-        <span style="font-size:1.4rem">🤧</span>
-        <div class="virus-card-name">Grippe A/B</div>
-        <span class="virus-card-level virus-level-green">Pré-épidémique</span>
-        <div class="virus-card-note">Surveillance SPF — seuil épidémique non atteint</div>
-      </div>
-      <div class="virus-card">
-        <span style="font-size:1.4rem">🦠</span>
-        <div class="virus-card-name">SARS-CoV-2</div>
-        <span class="virus-card-level virus-level-green">Faible circulation</span>
-        <div class="virus-card-note">Réseau Sentinelles — activité basse</div>
-      </div>
-      <div class="virus-card">
-        <span style="font-size:1.4rem">👶</span>
-        <div class="virus-card-name">VRS (RSV)</div>
-        <span class="virus-card-level virus-level-yellow">Début de circulation</span>
-        <div class="virus-card-note">Surveillance pédiatrique — saison débutante</div>
-      </div>
-      <div class="virus-card">
-        <span style="font-size:1.4rem">🌡️</span>
-        <div class="virus-card-name">Rhinovirus</div>
-        <span class="virus-card-level virus-level-orange">Circulation active</span>
-        <div class="virus-card-note">Principal virus du rhume — automne en cours</div>
-      </div>
+    <div class="virus-saison-grid" id="virusSaisonGrid">
+      <!-- Skeletons pendant le chargement -->
+      <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:120px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:90px;height:.8em;margin-top:.4rem"></div></div>
+      <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:100px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:80px;height:.8em;margin-top:.4rem"></div></div>
+      <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:110px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:85px;height:.8em;margin-top:.4rem"></div></div>
+      <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:95px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:75px;height:.8em;margin-top:.4rem"></div></div>
     </div>
     <div class="virus-saison-cta">
-      <a href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les 26 pathogènes →</a>
+      <a href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les pathogènes →</a>
     </div>
-    <p class="virus-saison-source">Ces données proviennent des réseaux de surveillance SPF · ECDC — mis à jour chaque semaine.</p>
+    <p class="virus-saison-source" id="virusSaisonSource">Données SPF · ECDC — chargement…</p>
   </div>
 </section>
 
@@ -2456,7 +2437,7 @@ function hideEpiAlert(type) {
 })();
 </script>
 <script src="api-live.min.js?v=20261007e" defer></script>
-<script src="script.min.js?v=20261007h" defer></script>
+<script src="script.min.js?v=20261007i" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
