@@ -1250,6 +1250,91 @@ var SYMPTOM_MAP = {
 // Components: 0–100 scale (100 = worst)
 // AQI réel via Open-Meteo Air Quality API quand disponible, sinon estimation
 
+// ── Cache données épidémio statiques ─────────────────────────
+// Chargés une fois au démarrage depuis /data/*.json (mis à jour hebdomadairement par GitHub Actions)
+let _spfLiveCache   = null;  // data/spf-live.json  — SPF BEH
+let _ecdcCache      = null;  // data/ecdc-surveillance.json — Z-scores ECDC
+let _whoAlertsCache = null;  // data/who-alerts.json — alertes WHO DON
+
+async function loadStaticEpiData() {
+  try {
+    const [spfResp, ecdcResp, whoResp] = await Promise.allSettled([
+      fetch('/data/spf-live.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/ecdc-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/who-alerts.json').then(r => r.ok ? r.json() : null).catch(() => null),
+    ]);
+    if (spfResp.status === 'fulfilled' && spfResp.value) _spfLiveCache   = spfResp.value;
+    if (ecdcResp.status === 'fulfilled' && ecdcResp.value) _ecdcCache     = ecdcResp.value;
+    if (whoResp.status === 'fulfilled' && whoResp.value) _whoAlertsCache  = whoResp.value;
+    if (typeof refreshScoreDisplay === 'function') refreshScoreDisplay();
+  } catch(e) { /* silent */ }
+}
+
+// Calcule le score viral (0–100) pour une région à partir des données épidémio réelles.
+// Retourne { score: number, isLive: boolean, source: string }
+function computeViralScore(region) {
+  const seed = region.id * 137 + 42;
+  const noise = (n) => ((Math.sin(n) * 43758.5453123) % 1 + 1) % 1;
+  const statusBase = { critical: 75, low: 60, moderate: 45, sufficient: 25 }[region.status] || 40;
+  const alertLevelBase = { critical: 80, high: 65, moderate: 45, low: 25 }[region.alertLevel] || statusBase;
+
+  // ── France : données SPF BEH ─────────────────────────────────
+  if (region.iso === 'FR' && _spfLiveCache?.sources?.length) {
+    const regionNameLow = (region.nameFR || '').toLowerCase();
+    let matched = _spfLiveCache.sources.find(s => {
+      const sr = (s.region || '').toLowerCase();
+      return regionNameLow.includes(sr) || sr.includes(regionNameLow.split(' ')[0]);
+    });
+    if (!matched) matched = _spfLiveCache.sources.find(s => (s.region || '') === 'France');
+    if (matched) {
+      const score = { low: 25, medium: 55, high: 75 }[matched.risk_level] ?? alertLevelBase;
+      const week  = _spfLiveCache.run_date || '';
+      return { score: Math.round(score), isLive: true, source: `SPF BEH${week ? ' — ' + week : ''}` };
+    }
+  }
+
+  // ── Europe (hors France) : Z-scores ECDC ─────────────────────
+  if (region.whoRegion === 'EURO' && _ecdcCache?.pathogens?.length) {
+    const zscores = _ecdcCache.pathogens
+      .map(p => p.zscore)
+      .filter(z => typeof z === 'number' && z > 0);
+    if (zscores.length) {
+      const meanZ = zscores.reduce((a, b) => a + b, 0) / zscores.length;
+      // z=0 → ~35 (baseline), z=1 → 50, z=2 → 65, z=3+ → 80+
+      const score = Math.min(100, Math.round(35 + meanZ * 15));
+      const date  = (_ecdcCache.sourceVerifiedAt || _ecdcCache.generatedAt || '').slice(0, 10);
+      return { score, isLive: true, source: `ECDC Z-score${date ? ' (' + date + ')' : ''}` };
+    }
+  }
+
+  // ── Monde : alertes WHO DON ───────────────────────────────────
+  if (_whoAlertsCache?.alerts?.length) {
+    const nameLC = (region.nameEN || region.nameFR || '').toLowerCase();
+    const whoReg = region.whoRegion || '';
+    const regionAlerts = _whoAlertsCache.alerts.filter(a => {
+      const t = (a.title || '').toLowerCase();
+      return t.includes(nameLC) ||
+        (whoReg === 'AFRO'  && (t.includes('congo') || t.includes('africa') || t.includes('uganda'))) ||
+        (whoReg === 'SEARO' && (t.includes('india') || t.includes('bangladesh')));
+    });
+    if (regionAlerts.length) {
+      const critCount = regionAlerts.filter(a => a.riskLevel === 'critical').length;
+      const highCount = regionAlerts.filter(a => a.riskLevel === 'high').length;
+      const boost = Math.min(20, critCount * 10 + highCount * 5);
+      const score = Math.min(100, alertLevelBase + boost);
+      const date  = _whoAlertsCache.fetchDate || '';
+      return { score, isLive: true, source: `WHO DON${date ? ' ' + date : ''}` };
+    }
+  }
+
+  // ── Fallback synthétique ──────────────────────────────────────
+  return {
+    score: Math.round(statusBase + (noise(seed * 2.3) - 0.5) * 25),
+    isLive: false,
+    source: 'estimation régionale',
+  };
+}
+
 // Cache AQI réels par région — persisté en sessionStorage pour éviter trop d'appels API
 const _liveAqiCache = (() => {
   try { return JSON.parse(sessionStorage.getItem('biq_live_aqi') || '{}'); } catch(e) { return {}; }
@@ -1340,7 +1425,8 @@ function generateScoreForRegion(region) {
   const cacheKey = _customCity ? 'custom' : String(region.id);
   const cachedAqi = _liveAqiCache[cacheKey];
   const aqi    = cachedAqi ? cachedAqi.score : Math.round(statusBase + (noise(seed * 1.1) - 0.5) * 20);
-  const viral  = Math.round(statusBase + (noise(seed * 2.3) - 0.5) * 25);
+  const viralResult = computeViralScore(region);
+  const viral  = viralResult.score;
   // Pollen : utiliser la donnée Open-Meteo réelle si disponible, sinon estimation
   const pollenLive = cachedAqi?.pollenScore;
   const pollen = pollenLive != null ? pollenLive : Math.round(30 + noise(seed * 3.7) * 40);
@@ -1355,6 +1441,8 @@ function generateScoreForRegion(region) {
     pollen: Math.min(100, Math.max(0, pollen)),
     weather: Math.min(100, Math.max(0, weather)),
     aqiIsLive: !!cachedAqi,
+    viralIsLive: viralResult.isLive,
+    viralSource: viralResult.source,
     pollenIsLive: pollenLive != null,
     pollenData: cachedAqi?.pollen || null,
   };
@@ -1723,6 +1811,10 @@ function buildRegionSelector() {
 }
 
 // ── Score display ────────────────────────────────────────────
+function refreshScoreDisplay() {
+  updateScoreDisplay(selectedRegionId || (DEMO_DATA[0] && DEMO_DATA[0].id));
+}
+
 function updateScoreDisplay(regionId) {
   selectedRegionId = parseInt(regionId, 10);
   const region = DEMO_DATA.find(r => r.id === selectedRegionId) || DEMO_DATA[0];
@@ -1769,6 +1861,19 @@ function updateScoreDisplay(regionId) {
     if (fill) { fill.style.width = `${c.val}%`; fill.style.background = c.color; }
     if (val)  val.textContent = c.val;
   });
+
+  // Badge viral : live ou estimation
+  const viralEstBadge  = document.getElementById('viralEstBadge');
+  const viralLiveBadge = document.getElementById('viralLiveBadge');
+  const viralLiveSrc   = document.getElementById('viralLiveSource');
+  if (score.viralIsLive) {
+    if (viralEstBadge)  viralEstBadge.style.display  = 'none';
+    if (viralLiveSrc)   viralLiveSrc.textContent      = score.viralSource || '';
+    if (viralLiveBadge) viralLiveBadge.style.display  = 'block';
+  } else {
+    if (viralEstBadge)  viralEstBadge.style.display  = '';
+    if (viralLiveBadge) viralLiveBadge.style.display  = 'none';
+  }
 
   // AI message
   const msg = aiMessageForRegion(region, score, currentLang);
@@ -4244,6 +4349,9 @@ domReady(() => {
       });
     }).catch(() => {});
   }
+
+  // Données épidémio statiques (SPF, ECDC, WHO — fichiers hebdomadaires)
+  loadStaticEpiData();
 
   // Données live
   if (typeof BIQ_LIVE !== 'undefined') {
