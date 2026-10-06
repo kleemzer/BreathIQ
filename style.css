@@ -1520,6 +1520,16 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 }
 
 /* ── Risk banner ─────────────────────────────────────────────── */
+/* Skeleton loading pour le risk banner avant que JS s'exécute */
+@keyframes shimmer { 0%{background-position:-400px 0} 100%{background-position:400px 0} }
+.risk-skeleton {
+  display: inline-block; border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,.08) 25%, rgba(255,255,255,.18) 50%, rgba(255,255,255,.08) 75%);
+  background-size: 400px 100%; animation: shimmer 1.4s infinite linear;
+}
+.risk-skeleton-title { width: 280px; height: 1.4em; margin: .3rem 0; }
+.risk-skeleton-desc  { width: 220px; height: 1em; margin: .2rem 0; }
+
 .risk-banner {
   width: 100%; display: flex; flex-direction: column; align-items: center; gap: var(--s2);
   padding: var(--s4) var(--s4); border-radius: 20px;

@@ -60,7 +60,7 @@
         "@type": "WebSite",
         "@id": "https://breathiq.fr/#website",
         "name": "BreathIQ",
-        "alternateName": "BreathIQ — Votre score respiratoire du jour",
+        "alternateName": "BreathIQ — Surveillance épidémiologique et alertes OMS",
         "url": "https://breathiq.fr",
         "inLanguage": ["fr", "en", "es", "pt", "ar", "zh", "hi", "sw", "ru"],
         "publisher": { "@id": "https://breathiq.fr/#publisher" },
@@ -69,10 +69,10 @@
       {
         "@type": "MedicalWebPage",
         "@id": "https://breathiq.fr/#medicalwebpage",
-        "name": "BreathIQ — score respiratoire et prévention respiratoire quotidienne",
+        "name": "BreathIQ — Surveillance épidémiologique et virus en circulation en France",
         "url": "https://breathiq.fr/",
-        "description": "BreathIQ croise qualité de l'air, virus saisonniers et données sanitaires publiques pour vous donner un score respiratoire simple chaque jour. Outil d'information et de prévention — ne remplace pas un avis médical.",
-        "dateModified": "2026-08-27",
+        "description": "BreathIQ surveille en temps réel les épidémies, alertes OMS et virus respiratoires saisonniers (26 pathogènes) à partir de données publiques officielles. Outil d'information épidémiologique — ne remplace pas un avis médical.",
+        "dateModified": "2026-10-06",
         "medicalAudience": ["Patient", "Clinician"],
         "about": [
           { "@type": "MedicalCondition", "name": "Infections respiratoires" },
@@ -165,7 +165,7 @@
     }
   }
   </script>
-  <title>BreathIQ — Est-ce dangereux dehors aujourd'hui ? Air, virus, épidémies</title>
+  <title>BreathIQ — Surveillance épidémiologique · Virus en circulation · Alertes OMS</title>
   <!-- Inter font — auto-hébergée, zéro round-trip Google (LCP -200ms) -->
   <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
   <!-- CSS critique inline — évite le FOUC et améliore FCP/LCP -->
@@ -175,7 +175,7 @@
     body{font-family:'Inter',system-ui,sans-serif;background:#F5F7FA;color:#1A2B3C;overflow-x:hidden}
     .skip-link{position:absolute;left:-9999px;top:auto;width:1px;height:1px;overflow:hidden}
     .skip-link:focus{position:fixed;top:0;left:0;width:auto;height:auto;padding:.5rem 1rem;background:#1A3C5E;color:#fff;z-index:9999}
-    .site-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
+    .biq-nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,22,40,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.07)}
     .patient-hero-section{background:linear-gradient(160deg,#0a1628 0%,#0d1f3c 50%,#0a1e38 100%);min-height:100vh;padding-top:64px;color:#E8F0F7}
     .gp-hero-title{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:800;line-height:1.2;color:#fff;margin:0}
     .gp-hero-sub{font-size:1rem;color:rgba(232,240,247,.75);margin-top:.75rem}
@@ -185,10 +185,9 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007e" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007e"></noscript>
-  <!-- Umami Analytics — privacy-first, sans cookies -->
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <link rel="stylesheet" href="style.min.css?v=20261007f" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007f"></noscript>
+  <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preconnect" href="https://tiles.stadiamaps.com" crossorigin>
@@ -220,7 +219,7 @@
 <!-- ===== NAVIGATION ===== -->
 <nav class="biq-nav" id="mainNav" role="navigation" aria-label="Navigation principale">
   <div class="nav-inner">
-    <a class="nav-brand" href="#hero" aria-label="BreathIQ — Accueil">
+    <a class="nav-brand" href="#patientHero" aria-label="BreathIQ — Accueil" onclick="return navTo(event,'#patientHero')">
       <span class="brand-icon" aria-hidden="true">
         <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
           <circle cx="14" cy="14" r="13" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.4"/>
@@ -340,11 +339,9 @@
     <div class="risk-banner risk-low" id="patientRiskBanner" role="status" aria-live="polite">
       <div class="risk-level-icon" id="patientRiskIcon" aria-hidden="true">🟢</div>
       <span class="risk-level-label" id="patientRiskLabel">Risque faible</span>
-      <h2 id="patientRiskTitle">L'air est sain dans votre région aujourd'hui</h2>
-      <p id="patientRiskDesc">Aucune alerte active — continuez vos activités normalement</p>
-      <div class="risk-pheic-strip" id="riskPheicStrip">
-        🚨 <strong>Alerte OMS active (Ebola)</strong> — 1 cas isolé en France (24/06/2026) · <strong>Risque population générale : extrêmement faible</strong> · Aucune transmission communautaire · <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" style="color:#FCA5A5">Suis-je concerné(e) ? →</a>
-      </div>
+      <h2 id="patientRiskTitle"><span class="risk-skeleton risk-skeleton-title" aria-hidden="true"></span><span id="patientRiskTitleText" hidden>Chargement…</span></h2>
+      <p id="patientRiskDesc"><span class="risk-skeleton risk-skeleton-desc" aria-hidden="true"></span></p>
+      <div class="risk-pheic-strip" id="riskPheicStrip" hidden></div>
     </div>
 
     <!-- Quatre parcours — épidémio en premier -->
@@ -388,7 +385,7 @@
     <div class="gp-trust-items">
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        21 pathogènes · OMS · ECDC · SPF · mis à jour quotidiennement
+        26 pathogènes · OMS · ECDC · SPF · mis à jour quotidiennement
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
@@ -400,7 +397,7 @@
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-        <a href="#trustSection" onclick="return navTo(event,'#trustSection')" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)">Dr. Clément MÉDEAU · Médecin</a>
+        <a href="#about" onclick="return navTo(event,'#about')" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)">Dr. Clément MÉDEAU · Médecin</a>
       </span>
     </div>
   </div>
@@ -415,14 +412,14 @@
         <span class="gp-score-estimate-badge" title="Score calculé à partir de données publiques nationales agrégées — non géolocalisé">📊 Estimation régionale · Sources OMS · ECDC · SPF</span>
       </div>
       <div class="gp-score-main">
-        <div class="gp-score-dial" style="--score-color:#2563eb;--score-pct:55%">
+        <div class="gp-score-dial" style="--score-color:#4B5563;--score-pct:0%" id="gpScoreDial">
           <div class="gp-score-dial-inner">
-            <span class="gp-score-num" id="gpScoreNum" aria-hidden="true">55</span>
+            <span class="gp-score-num" id="gpScoreNum" aria-hidden="true">—</span>
             <span class="gp-score-total" aria-hidden="true">/100</span>
           </div>
         </div>
         <div class="gp-score-info">
-          <p class="gp-score-level" id="gpScoreLevel">Modéré</p>
+          <p class="gp-score-level" id="gpScoreLevel">Chargement…</p>
           <span id="gpScoreDelta" role="status" style="display:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:4px" aria-live="polite" aria-label="Évolution par rapport à hier"></span>
           <p class="gp-score-loc" id="gpScoreLoc">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
@@ -489,6 +486,22 @@
       </div>
       <p class="gp-score-update-date" id="gpScoreDate" style="font-size:.75rem;color:#94a3b8;text-align:center;margin-bottom:.5rem;font-style:italic"></p>
       <p class="gp-score-disclaimer">⚠️ Ce score décrit le <strong>contexte environnemental général</strong> — il ne constitue pas un diagnostic médical et ne prédit pas votre risque individuel. En cas de symptômes persistants, consultez un professionnel de santé.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ALERTES ÉPIDÉMIQUES (Mode Patient) — ancre principale ===== -->
+<section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
+  <div class="container">
+    <div class="epidemio-alert-header">
+      <h2 id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
+      <p class="epidemio-alert-sub" id="epidemioAlertSub">Chargement des alertes OMS…</p>
+    </div>
+    <!-- Contenu dynamique injecté par loadPheicAlert() -->
+    <div id="epidemioAlertCards"></div>
+    <div class="epi-cta-continue">
+      <p>Aucune de ces situations ne vous concerne ?</p>
+      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
     </div>
   </div>
 </section>
@@ -605,12 +618,12 @@
   <div class="hero-content">
     <div class="hero-badge">Tableau de bord épidémique · Professionnels de santé</div>
     <h2 class="hero-title" id="hero-title">
-      Détectez les épidémies<br>
-      <span class="gradient-text">avant le laboratoire.</span>
+      Surveillance épidémique<br>
+      <span class="gradient-text">en temps réel.</span>
     </h2>
     <p class="hero-subtitle">
       Déclarez des cas, surveillez les foyers locaux et alertez les autorités sanitaires —
-      7 à 14 jours avant la confirmation biologique.
+      données OMS · ECDC · SPF agrégées quotidiennement.
     </p>
 
     <div class="hero-actions">
@@ -635,11 +648,11 @@
         <span class="esb-label">Foyers actifs</span>
       </div>
       <div class="esb-item">
-        <span class="esb-num critical" id="esbEbolaCases">344</span>
-        <span class="esb-label">Cas Ebola confirmés</span>
+        <span class="esb-num critical" id="esbEbolaCases">—</span>
+        <span class="esb-label" id="esbEbolaCasesLabel">Cas actifs PHEIC</span>
       </div>
       <div class="esb-item">
-        <span class="esb-num ok" id="esbPathogens">21</span>
+        <span class="esb-num ok" id="esbPathogens">26</span>
         <span class="esb-label">Pathogènes suivis</span>
       </div>
     </div>
@@ -806,75 +819,7 @@
 </section>
 
 <!-- ===== VÉRIFICATEUR DE SYMPTÔMES (Mode Patient) ===== -->
-<!-- ===== ÉCRAN CONTEXTE ÉPIDÉMIQUE ACTIF — ancre pour PHEIC strip ===== -->
-<!-- #2 : section réduite à son ancre + résultats conditionnels (les cartes complètes sont dans le wizard step 3) -->
-<section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
-  <div class="container">
-    <div class="epidemio-alert-header">
-      <h2 id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
-      <p class="epidemio-alert-sub">Deux questions pour savoir si vous êtes concerné(e)</p>
-    </div>
 
-    <!-- Question 1 : Ebola -->
-    <div class="epidemio-card" id="epiCardEbola">
-      <div class="epi-card-question">
-        <div class="epi-card-icon">🟥</div>
-        <div class="epi-card-text">
-          <strong>Avez-vous voyagé en RD Congo, Ouganda, Rwanda ou Burundi dans les 21 derniers jours ?</strong>
-          <p class="epi-card-hint">Ou avez-vous eu un contact rapproché avec quelqu'un qui revenait de ces pays ?</p>
-        </div>
-      </div>
-      <div class="epi-card-btns">
-        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('ebola')" aria-label="Oui, j'ai voyagé en zone Ebola">Oui</button>
-        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('ebola')" aria-label="Non, pas de voyage en zone Ebola">Non</button>
-      </div>
-      <div class="epi-alert-result" id="epiResultEbola" hidden>
-        <div class="epi-result-box epi-result-red">
-          <div class="epi-result-icon">🚨</div>
-          <div class="epi-result-content">
-            <strong>Contactez immédiatement le SAMU (15)</strong>
-            <p>Mentionnez votre voyage et vos symptômes. <strong>N'allez pas aux urgences seul(e) sans avoir appelé avant.</strong></p>
-            <p style="margin-top:.5rem;font-size:.85rem;opacity:.85">Pourquoi ? Ebola se transmet par contact avec le sang ou les liquides d'une personne malade. Un médecin doit être prévenu pour organiser votre accueil en sécurité.</p>
-            <a href="tel:15" class="epi-call-btn">📞 Appeler le 15 maintenant</a>
-          </div>
-        </div>
-        <p class="epi-reassure">Si vous n'avez <em>aucun symptôme</em> (pas de fièvre, pas de fatigue intense) et que vous revenez depuis plus de 21 jours : votre risque est très faible. Restez vigilant(e) pendant 21 jours après votre retour.</p>
-      </div>
-    </div>
-
-    <!-- Question 2 : Hantavirus / voyage Patagonie -->
-    <div class="epidemio-card" id="epiCardHanta">
-      <div class="epi-card-question">
-        <div class="epi-card-icon">🐭</div>
-        <div class="epi-card-text">
-          <strong>Avez-vous voyagé en Patagonie ou en Amérique du Sud dans les 6 dernières semaines ?</strong>
-          <p class="epi-card-hint">Randonnée, camping, zones rurales ou contact avec des rongeurs sauvages.</p>
-        </div>
-      </div>
-      <div class="epi-card-btns">
-        <button class="epi-btn epi-btn-yes" onclick="showEpiAlert('hanta')" aria-label="Oui, j'ai voyagé en zone Hantavirus">Oui</button>
-        <button class="epi-btn epi-btn-no" onclick="hideEpiAlert('hanta')" aria-label="Non, pas de voyage en zone Hantavirus">Non</button>
-      </div>
-      <div class="epi-alert-result" id="epiResultHanta" hidden>
-        <div class="epi-result-box epi-result-orange">
-          <div class="epi-result-icon">⚠️</div>
-          <div class="epi-result-content">
-            <strong>Consultez un médecin aujourd'hui — mentionnez votre voyage</strong>
-            <p>Si vous avez de la fièvre, des douleurs musculaires ou une fatigue intense : ne tardez pas. <strong>L'Hantavirus peut s'aggraver très vite</strong> (en 5 à 10 jours).</p>
-            <p style="margin-top:.5rem;font-size:.85rem;opacity:.85">Surveillance recommandée : 33 jours après votre dernier contact à risque. En cas de difficultés à respirer ou de baisse de tension : appelez le 15.</p>
-            <a href="tel:15" class="epi-call-btn epi-call-btn-orange">📞 Appeler le 15 si difficultés à respirer</a>
-          </div>
-        </div>
-        <p class="epi-reassure">La plupart des personnes ayant voyagé en Patagonie sans contact avec des rongeurs ou leurs déjections n'ont aucun risque. La surveillance est une précaution, pas une certitude de maladie.</p>
-      </div>
-    </div>
-
-    <div class="epi-cta-continue">
-      <p>Aucune de ces situations ne vous concerne ?</p>
-      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
-    </div>
-  </div>
-</section>
 
 <section class="symptom-checker-section patient-only" id="symptomChecker" aria-labelledby="checker-title">
   <div class="container">
@@ -2459,7 +2404,7 @@ function hideEpiAlert(type) {
 })();
 </script>
 <script src="api-live.min.js?v=20261007e" defer></script>
-<script src="script.min.js?v=20261007e" defer></script>
+<script src="script.min.js?v=20261007f" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

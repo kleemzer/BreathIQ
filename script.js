@@ -5915,6 +5915,14 @@ function acceptConsent() {
   setConsentStatus('accepted');
   const banner = document.getElementById('consentBanner');
   if (banner) banner.setAttribute('hidden', '');
+  // Charger Umami uniquement après consentement
+  if (!document.querySelector('script[src*="umami"]')) {
+    const s = document.createElement('script');
+    s.defer = true;
+    s.src = 'https://cloud.umami.is/script.js';
+    s.setAttribute('data-website-id', '6ddfd578-3f85-41a4-a987-8768ada1d2aa');
+    document.head.appendChild(s);
+  }
 }
 
 function declineConsent() {
@@ -6068,8 +6076,49 @@ async function loadPheicAlert({ force = false } = {}) {
     const strip = document.getElementById('riskPheicStrip');
     if (strip) {
       const see = { fr:'Voir la fiche →', en:'See factsheet →', es:'Ver ficha →', pt:'Ver ficha →', ar:'انظر الملف ←', zh:'查看详情 →', hi:'विवरण देखें →', sw:'Tazama faili →', ru:'Подробнее →' }[lang] || '→';
-      strip.innerHTML = `🚨 <strong>PHEIC OMS</strong> — ${active.disease} · ${L(active.subtitle)} · <a href="#pathogens" onclick="return navTo(event,'#pathogens')" style="color:#FCA5A5">${see}</a>`;
-      strip.style.display = '';
+      strip.innerHTML = `🚨 <strong>PHEIC OMS</strong> — ${active.disease} · ${L(active.subtitle)} · <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" style="color:#FCA5A5">${see}</a>`;
+      strip.removeAttribute('hidden');
+    }
+
+    // Remplir la section #epidemioAlert avec les cartes dynamiques (toutes alertes actives)
+    const alertCards = document.getElementById('epidemioAlertCards');
+    const alertSub = document.getElementById('epidemioAlertSub');
+    if (alertCards) {
+      const activeAlerts = data.alerts.filter(a => a.active);
+      alertCards.innerHTML = activeAlerts.map((al, idx) => {
+        const La = (obj) => (obj && (obj[lang] || obj['fr'])) || '';
+        const colorClass = al.level === 'rouge' ? 'red' : al.level === 'orange' ? 'orange' : 'yellow';
+        const icon = al.level === 'rouge' ? '🟥' : al.level === 'orange' ? '🟧' : '⚠️';
+        const regionSummary = al.regions ? al.regions.map(r => r.country).join(' · ') : '';
+        return `
+        <div class="epidemio-card">
+          <div class="epi-card-question">
+            <div class="epi-card-icon">${icon}</div>
+            <div class="epi-card-text">
+              <strong>${lang === 'fr' ? 'Avez-vous voyagé dans les zones concernées ?' : 'Did you travel to affected areas?'}</strong>
+              <p class="epi-card-hint"><strong>${al.disease}</strong> — ${regionSummary}</p>
+              <p class="epi-card-hint" style="margin-top:.25rem;opacity:.85;font-size:.82rem">${La(al.subtitle)}</p>
+            </div>
+          </div>
+          <div class="epi-card-btns">
+            <button class="epi-btn epi-btn-yes" onclick="document.getElementById('epiResult_${idx}').removeAttribute('hidden')" aria-label="${lang==='fr'?'Oui':'Yes'}">${lang === 'fr' ? 'Oui' : 'Yes'}</button>
+            <button class="epi-btn epi-btn-no" onclick="document.getElementById('epiResult_${idx}').setAttribute('hidden','')" aria-label="${lang==='fr'?'Non':'No'}">${lang === 'fr' ? 'Non' : 'No'}</button>
+          </div>
+          <div class="epi-alert-result" id="epiResult_${idx}" hidden>
+            <div class="epi-result-box epi-result-${colorClass}">
+              <div class="epi-result-icon">🚨</div>
+              <div class="epi-result-content">
+                <p>${La(al.message)}</p>
+                <p class="epi-reassure" style="margin-top:.5rem;font-size:.82rem">${La(al.franceStatus)}</p>
+                <a href="tel:15" class="epi-call-btn">📞 ${lang === 'fr' ? 'Appeler le 15 si symptômes' : 'Call emergency services if symptomatic'}</a>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      }).join('');
+      if (alertSub) alertSub.textContent = lang === 'fr'
+        ? `${activeAlerts.length} alerte(s) internationale(s) active(s) · Vérifiez votre exposition`
+        : `${activeAlerts.length} active international alert(s) · Check your exposure`;
     }
 
     // Update expert stats bar
