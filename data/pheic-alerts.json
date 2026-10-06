@@ -71,15 +71,15 @@
         "ru": "Кластер бубонной чумы подтверждён в России (Алтай-Тыва) с конца сентября 2026 года. Завозных случаев в Европе нет. При лихорадке + болезненных лимфатических узлах + возвращении из Центральной Азии (< 7 дней): <strong>сообщите врачу и в скорую помощь</strong>."
       },
       "hcwNote": {
-        "fr": "Forme pulmonaire — transmission aérienne possible : FFP2 + précautions contact strict · Notification immédiate ARS · Antibiothérapie précoce : doxycycline 200 mg/j ou ciprofloxacine 400 mg × 2/j IV pendant 10-14 jours",
-        "en": "Pneumonic form — possible airborne transmission: FFP2 + strict contact precautions · Immediate notification to health authorities · Early antibiotics: doxycycline 200 mg/day or ciprofloxacin 400 mg × 2/day IV for 10-14 days",
-        "es": "Forma pulmonar — transmisión aérea posible: FFP2 + precauciones estrictas · Notificación inmediata · Doxiciclina 200 mg/d o ciprofloxacina 400 mg × 2/d IV",
-        "pt": "Forma pulmonar — transmissão aérea possível: FFP2 + precauções rigorosas · Notificação imediata · Doxiciclina 200 mg/d ou ciprofloxacina 400 mg × 2/d IV",
-        "ar": "الشكل الرئوي — احتمال الانتقال الهوائي: FFP2 + احتياطات تلامس صارمة · إشعار فوري · مضادات حيوية مبكرة: دوكسيسيكلين 200 ملغ/يوم أو سيبروفلوكساسين 400 ملغ × 2/يوم وريدياً",
-        "zh": "肺型鼠疫 — 可能空气传播：FFP2 + 严格接触防护 · 立即向当局报告 · 早期抗生素：多西环素200mg/d或环丙沙星400mg×2/d静脉注射",
-        "hi": "न्यूमोनिक रूप — हवाई संचरण संभव: FFP2 + सख्त संपर्क सावधानियां · तत्काल अधिसूचना · डॉक्सीसाइक्लिन 200 मिग्रा/दिन या सिप्रोफ्लोक्सासिन 400 मिग्रा × 2/दिन IV",
-        "sw": "Aina ya mapafu — upitishaji wa hewa inawezekana: FFP2 + tahadhari kali za mawasiliano · Taarifa ya haraka · Antibiotiki mapema: doxycycline 200 mg/siku au ciprofloxacin 400 mg × 2/siku IV",
-        "ru": "Лёгочная форма — возможна воздушно-капельная передача: FFP2 + строгие контактные меры · Немедленное уведомление · Ранняя антибиотикотерапия: доксициклин 200 мг/сут или ципрофлоксацин 400 мг × 2/сут в/в 10-14 дней"
+        "fr": "Forme bubonique majoritaire (piqûre puce) — antibiothérapie : doxycycline 200 mg/j ou ciprofloxacine 400 mg×2/j IV, 10-14 j · Si suspicion forme pulmonaire (toux + fièvre + contact cas) : FFP2 + précautions gouttelettes strictes · Notification ARS immédiate obligatoire",
+        "en": "Predominantly bubonic form (flea bite) — antibiotics: doxycycline 200 mg/day or ciprofloxacin 400 mg×2/day IV, 10-14 days · If pneumonic form suspected (cough + fever + case contact): FFP2 + strict droplet precautions · Immediate mandatory public health notification",
+        "es": "Forma bubónica predominante — antibióticos: doxiciclina 200 mg/d o ciprofloxacina 400 mg×2/d IV · Si forma pulmonar sospechada: FFP2 + precauciones estrictas · Notificación obligatoria inmediata",
+        "pt": "Forma bubónica predominante — antibióticos: doxiciclina 200 mg/d ou ciprofloxacina 400 mg×2/d IV · Se forma pulmonar suspeita: FFP2 + precauções rigorosas · Notificação obrigatória imediata",
+        "ar": "الشكل الدبلي السائد — مضادات حيوية: دوكسيسيكلين 200 ملغ/يوم أو سيبروفلوكساسين 400 ملغ×2/يوم وريدياً · إذا اشتُبه بالشكل الرئوي: FFP2 + احتياطات صارمة · إشعار فوري إلزامي",
+        "zh": "以腺鼠疫为主（跳蚤叮咬）— 抗生素：多西环素200mg/d或环丙沙星400mg×2/d静脉注射10-14天 · 如怀疑肺型（咳嗽+发热+接触史）：FFP2 + 严格飞沫防护 · 立即强制公卫报告",
+        "hi": "मुख्यतः बुबोनिक रूप (पिस्सू का काटना) — एंटीबायोटिक: डॉक्सीसाइक्लिन 200 मिग्रा/दिन या सिप्रोफ्लोक्सासिन 400 मिग्रा×2/दिन IV · यदि न्यूमोनिक रूप संदिग्ध: FFP2 + सख्त बूंद सावधानियां · तत्काल अनिवार्य सूचना",
+        "sw": "Aina ya bubonic zaidi (kuumwa kwa kiroboto) — antibiotiki: doxycycline 200 mg/siku au ciprofloxacin 400 mg×2/siku IV · Kama aina ya mapafu inashukiwa: FFP2 + tahadhari za matone · Taarifa ya haraka lazima",
+        "ru": "Преимущественно бубонная форма (укус блохи) — антибиотики: доксициклин 200 мг/сут или ципрофлоксацин 400 мг×2/сут в/в 10-14 дней · При подозрении на лёгочную форму (кашель + лихорадка + контакт): FFP2 + строгие капельные меры · Немедленное обязательное уведомление"
       },
       "pathogens_anchor": "pathogens",
       "pathogen_id": "PLAGUE"
@@ -113,7 +113,7 @@
       },
       "pheicDate": "2026-05-17",
       "deaths": 60,
-      "lastUpdate": "2026-08-12",
+      "lastUpdate": "2026-10-06",
       "regions": [
         {
           "country": "RDC",
@@ -163,7 +163,11 @@
         "ru": "FFP3 + полный костюм BSL-4 обязателен для любого подозрительного случая"
       },
       "pathogens_anchor": "pathogens",
-      "pathogen_id": "EBOLA"
+      "pathogen_id": "EBOLA",
+      "dataNote": {
+        "fr": "Données OMS/ECDC vérifiées le 06/10/2026 — décès confirmés biologiquement (non comptabilisés suspectés)",
+        "en": "WHO/ECDC data verified on 06/10/2026 — confirmed biological deaths only (suspected not counted)"
+      }
     }
   ]
 }
