@@ -951,7 +951,9 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .score-layout {
   display: grid; grid-template-columns: 280px 1fr 340px;
   gap: var(--s4); align-items: start; margin-top: var(--s5);
+  overflow: hidden;
 }
+.score-layout > * { min-width: 0; }
 .score-dial-wrap { display: flex; flex-direction: column; align-items: center; gap: var(--s2); }
 .score-dial {
   position: relative; width: 200px; height: 200px;
