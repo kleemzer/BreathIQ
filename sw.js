@@ -6,7 +6,7 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v32';
+const CACHE_VERSION = 'biq-v33';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -68,7 +68,7 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys =>
       Promise.all(
         keys
-          .filter(k => k.startsWith('biq-') && k !== CACHE_STATIC && k !== CACHE_DATA)
+          .filter(k => k !== CACHE_STATIC && k !== CACHE_DATA)
           .map(k => caches.delete(k))
       )
     ).then(() => self.clients.claim())
