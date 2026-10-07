@@ -31,6 +31,7 @@ var I18N = {
     'nav-about': 'À propos',
     'nav-tool-font': 'Aa · Taille du texte',
     'nav-tool-theme': '☀️ / 🌙 Thème',
+    'gp-score-estimate-note': 'Score composite estimatif, non validé cliniquement — <a href="methodologie.html">voir la méthodologie</a>',
     'meta-description': 'Qualité de l\'air, alertes virus et épidémies près de chez vous — mis à jour quotidiennement (délai des sources indiqué), gratuit, sans inscription. Créé par un médecin généraliste français. Données OMS, SPF et ECDC.',
     'meta-og-title': 'BreathIQ — Surveillance air & épidémies · Données OMS/ECDC/SPF mises à jour quotidiennement',
     'meta-og-description': 'Outil de veille épidémiologique et de qualité de l\'air — données OMS, ECDC et Santé Publique France mises à jour quotidiennement, délai des sources indiqué. Créé par Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription.',
@@ -39,7 +40,7 @@ var I18N = {
     'x-dr-clement-medeau-medecin-c07e': '🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle ·',
     'x-breathiq-surveille-chaque-jour-1771': 'BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF).',
     'x-voir-les-alertes-epidemiques-b615': '🦠 Voir les alertes épidémiques',
-    'x-26-pathogenes-oms-ecdc-3f7b': '26 pathogènes · OMS · ECDC · SPF · mis à jour quotidiennement',
+    'x-26-pathogenes-oms-ecdc-3f7b': 'Pathogènes suivis · OMS · ECDC · SPF · mis à jour quotidiennement',
     'x-sans-compte-sans-publicite-ac10': 'Sans compte · Sans publicité',
     'x-aucune-donnee-de-sante-7621': 'Aucune donnée de santé collectée',
     'x-voir-le-score-complet-28fa': 'Voir le score complet',
@@ -158,7 +159,7 @@ var I18N = {
     'x-alertes-epidemiques-3a8f': 'Alertes épidémiques',
     'x-oms-ecdc-foyers-actifs-5a76': 'OMS · ECDC · Foyers actifs',
     'x-virus-en-circulation-c09c': 'Virus en circulation',
-    'x-grippe-covid-rsv-26-91a7': 'Grippe · COVID · RSV · 26 pathogènes',
+    'x-grippe-covid-rsv-26-91a7': 'Grippe · COVID · RSV · tous les pathogènes suivis',
     'x-j-ai-des-symptomes-1ddb': 'J\'ai des symptômes',
     'x-que-faire-maintenant-c42b': 'Que faire maintenant ?',
     'x-espace-soignant-8efa': 'Espace soignant',
@@ -415,7 +416,7 @@ var I18N = {
     'x-donnees-de-stocks-6f65': 'Données de stocks :',
     'x-voir-les-sources-4694': 'Voir les sources →',
     'x-sources-officielles-a0d2': 'sources officielles',
-    'x-21-virus-et-infections-9a27': '21 virus et infections suivis · données actualisées quotidiennement',
+    'x-21-virus-et-infections-9a27': 'Virus et infections suivis · données actualisées quotidiennement',
     'x-ou-rechercher-par-ville-ca77': 'ou rechercher par ville',
     'x-recherche-via-openstreetmap-fonctionne-7506': 'Recherche via OpenStreetMap — fonctionne dans le monde entier.',
     'x-referentiel-pathogenes-soignant-4c35': '🦠 Référentiel Pathogènes Soignant',
@@ -793,6 +794,7 @@ var I18N = {
     'nav-about': 'About',
     'nav-tool-font': 'Aa · Text size',
     'nav-tool-theme': '☀️ / 🌙 Theme',
+    'gp-score-estimate-note': 'Estimated composite score, not clinically validated — <a href="methodologie.html">see the methodology</a>',
     'meta-description': 'Air quality, virus and epidemic alerts near you — updated daily (source delay shown), free, no sign-up. Created by a French general practitioner. WHO, SPF and ECDC data.',
     'meta-og-title': 'BreathIQ — Air & epidemic surveillance · WHO/ECDC/SPF data updated daily',
     'meta-og-description': 'Epidemiological and air-quality monitoring tool — WHO, ECDC and Santé publique France data updated daily, source delay shown. Created by Dr Clément MÉDEAU, general practitioner. Free, no sign-up.',
@@ -801,7 +803,7 @@ var I18N = {
     'x-dr-clement-medeau-medecin-c07e': '🩺 Dr Clément Médeau · General practitioner · La Rochelle ·',
     'x-breathiq-surveille-chaque-jour-1771': 'BreathIQ monitors epidemics, WHO alerts and seasonal respiratory viruses every day, from official data (WHO · ECDC · SPF).',
     'x-voir-les-alertes-epidemiques-b615': '🦠 See epidemic alerts',
-    'x-26-pathogenes-oms-ecdc-3f7b': '26 pathogens · WHO · ECDC · SPF · updated daily',
+    'x-26-pathogenes-oms-ecdc-3f7b': 'Tracked pathogens · WHO · ECDC · SPF · updated daily',
     'x-sans-compte-sans-publicite-ac10': 'No account · No advertising',
     'x-aucune-donnee-de-sante-7621': 'No health data collected',
     'x-voir-le-score-complet-28fa': 'See the full score',
@@ -920,7 +922,7 @@ var I18N = {
     'x-alertes-epidemiques-3a8f': 'Epidemic alerts',
     'x-oms-ecdc-foyers-actifs-5a76': 'WHO · ECDC · Active outbreaks',
     'x-virus-en-circulation-c09c': 'Circulating viruses',
-    'x-grippe-covid-rsv-26-91a7': 'Flu · COVID · RSV · 26 pathogens',
+    'x-grippe-covid-rsv-26-91a7': 'Flu · COVID · RSV · all tracked pathogens',
     'x-j-ai-des-symptomes-1ddb': 'I have symptoms',
     'x-que-faire-maintenant-c42b': 'What should I do now?',
     'x-espace-soignant-8efa': 'Clinician area',
@@ -2247,6 +2249,61 @@ let _pathogensGeneratedAt = null; // horodatage réel du fichier pathogens.json
 // ── Données symptomatologiques ────────────────────────────────
 // Sources : OMS, CDC, ECDC, UpToDate — à usage indicatif uniquement
 var SYMPTOMS_DATA = {
+  // ── Fiches complétées le 2026-10-07 depuis les fiches OMS (src) — À VALIDER par le Dr Médeau ──
+  DENGUE: { src: 'https://www.who.int/news-room/fact-sheets/detail/dengue-and-severe-dengue',
+    fr: ['Fièvre élevée (40 °C)', 'Maux de tête intenses', 'Douleur derrière les yeux', 'Douleurs musculaires et articulaires', 'Nausées, vomissements', 'Éruption cutanée'],
+    en: ['High fever (40 °C)', 'Severe headache', 'Pain behind the eyes', 'Muscle and joint pain', 'Nausea, vomiting', 'Skin rash'],
+    alarmFR: ['Douleurs abdominales intenses', 'Vomissements persistants', 'Saignements des gencives ou du nez', 'Fatigue extrême, agitation', 'Sang dans les vomissements ou les selles'],
+    alarmEN: ['Severe abdominal pain', 'Persistent vomiting', 'Bleeding gums or nose', 'Extreme fatigue, restlessness', 'Blood in vomit or stool'],
+    isolationFR: 'Pas de transmission interhumaine directe — protéger le malade des piqûres (moustiquaire) pour éviter la transmission par les moustiques', isolationEN: 'No direct person-to-person transmission — protect the patient from bites (bed net) to prevent mosquito transmission' },
+  PALUDISME: { src: 'https://www.who.int/news-room/fact-sheets/detail/malaria',
+    fr: ['Fièvre', 'Frissons', 'Maux de tête', 'Fatigue', 'Nausées, vomissements', 'Douleurs musculaires'],
+    en: ['Fever', 'Chills', 'Headache', 'Fatigue', 'Nausea, vomiting', 'Muscle pain'],
+    alarmFR: ['Confusion, convulsions', 'Difficultés à respirer', 'Urines foncées ou rares', 'Jaunisse', 'Fatigue extrême'],
+    alarmEN: ['Confusion, seizures', 'Difficulty breathing', 'Dark or scanty urine', 'Jaundice', 'Extreme fatigue'],
+    isolationFR: 'Pas de transmission interhumaine — toute fièvre au retour d\'une zone d\'endémie est une urgence diagnostique', isolationEN: 'No person-to-person transmission — any fever after returning from an endemic area is a diagnostic emergency' },
+  LASSA: { src: 'https://www.who.int/news-room/fact-sheets/detail/lassa-fever',
+    fr: ['Fièvre progressive', 'Fatigue, faiblesse', 'Maux de tête', 'Maux de gorge', 'Douleurs musculaires', 'Nausées, vomissements, diarrhée'],
+    en: ['Gradual fever', 'Fatigue, weakness', 'Headache', 'Sore throat', 'Muscle pain', 'Nausea, vomiting, diarrhoea'],
+    alarmFR: ['Saignements (gencives, nez, yeux)', 'Gonflement du visage', 'Difficultés à respirer', 'Convulsions, confusion', 'Chute de tension'],
+    alarmEN: ['Bleeding (gums, nose, eyes)', 'Facial swelling', 'Difficulty breathing', 'Seizures, confusion', 'Low blood pressure'],
+    isolationFR: 'Isolement strict et EPI — signalement immédiat à l\'ARS et au SAMU', isolationEN: 'Strict isolation and PPE — immediate notification to public-health authorities' },
+  CCHF: { src: 'https://www.who.int/news-room/fact-sheets/detail/crimean-congo-haemorrhagic-fever',
+    fr: ['Fièvre brutale', 'Douleurs musculaires', 'Vertiges, raideur de la nuque', 'Maux de tête, yeux sensibles à la lumière', 'Nausées, vomissements, diarrhée', 'Maux de gorge'],
+    en: ['Sudden fever', 'Muscle pain', 'Dizziness, neck stiffness', 'Headache, light-sensitive eyes', 'Nausea, vomiting, diarrhoea', 'Sore throat'],
+    alarmFR: ['Saignements (nez, gencives, injections)', 'Taches rouges ou violettes sur la peau', 'Confusion, agitation', 'Jaunisse'],
+    alarmEN: ['Bleeding (nose, gums, injection sites)', 'Red or purple skin spots', 'Confusion, agitation', 'Jaundice'],
+    isolationFR: 'Isolement strict et EPI — transmission possible par le sang et les fluides', isolationEN: 'Strict isolation and PPE — transmission possible through blood and body fluids' },
+  CHOLERA: { src: 'https://www.who.int/news-room/fact-sheets/detail/cholera',
+    fr: ['Diarrhée aqueuse abondante (eau de riz)', 'Vomissements', 'Crampes dans les jambes', 'Soif intense'],
+    en: ['Profuse watery diarrhoea (rice-water)', 'Vomiting', 'Leg cramps', 'Intense thirst'],
+    alarmFR: ['Déshydratation sévère (yeux creux, peau qui garde le pli)', 'Urines très rares', 'Faiblesse extrême, somnolence', 'Pouls rapide et faible'],
+    alarmEN: ['Severe dehydration (sunken eyes, skin fold persists)', 'Very little urine', 'Extreme weakness, drowsiness', 'Rapid weak pulse'],
+    isolationFR: 'Transmission par l\'eau et les aliments contaminés — hygiène des mains et des selles ; réhydratation urgente', isolationEN: 'Transmission through contaminated water and food — hand and stool hygiene; urgent rehydration' },
+  OROPOUCHE: { src: 'https://www.who.int/emergencies/disease-outbreak-news/item/2024-DON545',
+    fr: ['Fièvre brutale', 'Maux de tête intenses', 'Douleurs musculaires et articulaires', 'Frissons', 'Nausées, vomissements', 'Sensibilité à la lumière'],
+    en: ['Sudden fever', 'Severe headache', 'Muscle and joint pain', 'Chills', 'Nausea, vomiting', 'Light sensitivity'],
+    alarmFR: ['Raideur de la nuque, confusion (méningite)', 'Saignements', 'Fièvre persistante chez la femme enceinte'],
+    alarmEN: ['Neck stiffness, confusion (meningitis)', 'Bleeding', 'Persistent fever in pregnancy'],
+    isolationFR: 'Pas de transmission interhumaine directe — protection contre les piqûres de moucherons et moustiques', isolationEN: 'No direct person-to-person transmission — protection against midge and mosquito bites' },
+  YELLOW_FEVER: { src: 'https://www.who.int/news-room/fact-sheets/detail/yellow-fever',
+    fr: ['Fièvre', 'Douleurs musculaires (dos)', 'Maux de tête', 'Perte d\'appétit', 'Nausées, vomissements', 'Frissons'],
+    en: ['Fever', 'Muscle pain (back)', 'Headache', 'Loss of appetite', 'Nausea, vomiting', 'Chills'],
+    alarmFR: ['Jaunisse (yeux et peau jaunes)', 'Urines foncées', 'Saignements (bouche, nez, yeux, estomac)', 'Douleurs abdominales, vomissements'],
+    alarmEN: ['Jaundice (yellow eyes and skin)', 'Dark urine', 'Bleeding (mouth, nose, eyes, stomach)', 'Abdominal pain, vomiting'],
+    isolationFR: 'Pas de transmission interhumaine directe — vaccination avant voyage en zone à risque', isolationEN: 'No direct person-to-person transmission — vaccination before travel to at-risk areas' },
+  LEPTOSPIROSIS: { src: 'https://www.who.int/health-topics/leptospirosis',
+    fr: ['Fièvre élevée', 'Maux de tête', 'Douleurs musculaires (mollets)', 'Frissons', 'Yeux rouges', 'Nausées, vomissements'],
+    en: ['High fever', 'Headache', 'Muscle pain (calves)', 'Chills', 'Red eyes', 'Nausea, vomiting'],
+    alarmFR: ['Jaunisse', 'Urines rares ou foncées (atteinte rénale)', 'Difficultés à respirer, crachats sanglants', 'Confusion'],
+    alarmEN: ['Jaundice', 'Scanty or dark urine (kidney involvement)', 'Difficulty breathing, bloody sputum', 'Confusion'],
+    isolationFR: 'Pas de transmission interhumaine habituelle — signaler l\'exposition à l\'eau douce ou aux rongeurs', isolationEN: 'No usual person-to-person transmission — report exposure to fresh water or rodents' },
+  PLAGUE: { src: 'https://www.who.int/news-room/fact-sheets/detail/plague',
+    fr: ['Fièvre brutale, frissons', 'Maux de tête', 'Douleurs généralisées', 'Faiblesse', 'Nausées, vomissements', 'Ganglion très douloureux (bubon)'],
+    en: ['Sudden fever, chills', 'Headache', 'Body aches', 'Weakness', 'Nausea, vomiting', 'Very painful swollen lymph node (bubo)'],
+    alarmFR: ['Toux avec crachats sanglants, difficultés à respirer (forme pulmonaire)', 'Confusion, chute de tension', 'Taches noires sur la peau'],
+    alarmEN: ['Cough with bloody sputum, difficulty breathing (pneumonic form)', 'Confusion, low blood pressure', 'Black skin patches'],
+    isolationFR: 'Forme pulmonaire contagieuse par gouttelettes — isolement et masque ; antibiotiques urgents', isolationEN: 'Pneumonic form is contagious through droplets — isolation and mask; urgent antibiotics' },
   H5N1:       { fr: ['Fièvre brutale ≥ 38°C', 'Toux', 'Essoufflement', 'Douleurs musculaires intenses', 'Conjonctivite (yeux rouges)', 'Maux de tête'], en: ['Sudden fever ≥ 38°C', 'Cough', 'Shortness of breath', 'Severe muscle pain', 'Conjunctivitis (red eyes)', 'Headache'], alarmFR: ['Détresse respiratoire sévère', 'Cyanose (lèvres ou doigts bleus)', 'Aggravation rapide en 24–48h'], alarmEN: ['Severe respiratory distress', 'Cyanosis (blue lips or fingers)', 'Rapid deterioration within 24-48h'], isolationFR: 'Isolement 7 jours — déclaration obligatoire aux autorités sanitaires', isolationEN: 'Isolation 7 days — mandatory reporting to health authorities' },
   SARS2:      { fr: ['Fièvre ou frissons', 'Toux sèche', 'Fatigue', 'Perte d\'odorat ou de goût', 'Maux de gorge', 'Difficultés à respirer'], en: ['Fever or chills', 'Dry cough', 'Fatigue', 'Loss of smell or taste', 'Sore throat', 'Shortness of breath'], alarmFR: ['Essoufflement sévère au repos', 'Douleur thoracique persistante', 'Confusion mentale', 'Lèvres ou ongles bleutés'], alarmEN: ['Severe shortness of breath at rest', 'Persistent chest pain', 'Mental confusion', 'Bluish lips or nails'], isolationFR: 'Isolement 5 à 7 jours dès les symptômes ou test positif', isolationEN: 'Isolation 5 to 7 days from symptom onset or positive test' },
   TB:         { fr: ['Toux persistante > 3 semaines', 'Crachats pouvant contenir du sang', 'Sueurs nocturnes importantes', 'Perte de poids inexpliquée', 'Fièvre modérée le soir', 'Fatigue chronique'], en: ['Persistent cough > 3 weeks', 'Sputum possibly containing blood', 'Heavy night sweats', 'Unexplained weight loss', 'Mild evening fever', 'Chronic fatigue'], alarmFR: ['Crachats franchement sanglants (hémoptysie)', 'Essoufflement sévère au repos'], alarmEN: ['Frank bloody sputum (hemoptysis)', 'Severe shortness of breath at rest'], isolationFR: 'Isolement jusqu\'à 2 semaines de traitement efficace — déclaration obligatoire', isolationEN: 'Isolation until 2 weeks of confirmed effective treatment — mandatory reporting' },
@@ -2261,7 +2318,7 @@ var SYMPTOMS_DATA = {
   RSYNCYTIAL: { fr: ['Nez qui coule (rhinorrhée)', 'Toux', 'Fièvre légère à modérée', 'Sifflements respiratoires (sibilants)', 'Difficultés à s\'alimenter (nourrissons)', 'Irritabilité (nourrissons)'], en: ['Runny nose', 'Cough', 'Mild to moderate fever', 'Wheezing', 'Feeding difficulties (infants)', 'Irritability (infants)'], alarmFR: ['Difficultés respiratoires sévères (nourrissons)', 'Tirage intercostal visible', 'Lèvres bleues (cyanose)', 'Pauses respiratoires (apnées)'], alarmEN: ['Severe breathing difficulty (infants)', 'Visible chest retractions', 'Blue lips (cyanosis)', 'Breathing pauses (apnea)'], isolationFR: 'Isolement 7 jours — particulièrement important autour des prématurés et nouveau-nés', isolationEN: 'Isolation 7 days — especially important around premature babies and newborns' },
   PERTUSSIS:  { fr: ['Phase 1 (10–14 j) : rhume banal avec légère toux', 'Phase 2 : quintes de toux violentes ("chant du coq")', 'Toux nocturne intense', 'Vomissements après les quintes', 'Visage rouge ou bleuté pendant les quintes'], en: ['Phase 1 (10-14 days): common cold with mild cough', 'Phase 2: violent coughing fits ("whooping")', 'Intense night cough', 'Vomiting after coughing fits', 'Red or bluish face during fits'], alarmFR: ['Pauses respiratoires (apnées) — nourrissons', 'Cyanose (lèvres bleues)', 'Pneumonie secondaire (aggravation brusque)'], alarmEN: ['Breathing pauses (apnea) — infants', 'Cyanosis (blue lips)', 'Secondary pneumonia (sudden worsening)'], isolationFR: 'Isolement 21 jours ou 5 jours d\'antibiothérapie efficace — déclaration obligatoire', isolationEN: 'Isolation 21 days or 5 days of effective antibiotic treatment — mandatory reporting' },
   COVID19VAR: { fr: ['Fièvre ou frissons', 'Toux sèche', 'Fatigue', 'Perte d\'odorat ou de goût', 'Maux de gorge', 'Difficultés à respirer', 'Maux de tête'], en: ['Fever or chills', 'Dry cough', 'Fatigue', 'Loss of smell or taste', 'Sore throat', 'Shortness of breath', 'Headache'], alarmFR: ['Essoufflement sévère au repos', 'Douleur thoracique', 'Confusion mentale', 'Lèvres bleutées'], alarmEN: ['Severe shortness of breath at rest', 'Chest pain', 'Mental confusion', 'Bluish lips'], isolationFR: 'Isolement 5 à 7 jours dès les symptômes', isolationEN: 'Isolation 5 to 7 days from symptom onset' },
-  CANDIDA:    { fr: ['Fièvre résistante aux antibiotiques', 'Toux (avec ou sans expectorations)', 'Douleurs thoraciques', 'Difficultés à respirer', 'Crachats avec sang possible', 'Maux de tête (atteinte sinusienne)'], en: ['Fever resistant to antibiotics', 'Cough (with or without sputum)', 'Chest pain', 'Shortness of breath', 'Possibly bloody sputum', 'Headache (sinus involvement)'], alarmFR: ['Hémoptysie (crachats abondamment sanglants)', 'Extension cérébrale (confusion, céphalées intenses)'], alarmEN: ['Hemoptysis (heavy bloody cough)', 'Cerebral spread (confusion, severe headaches)'], isolationFR: 'Non transmissible entre personnes — protéger les immunodéprimés', isolationEN: 'Not transmissible between people — protect immunocompromised individuals' },
+  CANDIDA_ASPERGILLUS: { fr: ['Fièvre résistante aux antibiotiques', 'Toux (avec ou sans expectorations)', 'Douleurs thoraciques', 'Difficultés à respirer', 'Crachats avec sang possible', 'Maux de tête (atteinte sinusienne)'], en: ['Fever resistant to antibiotics', 'Cough (with or without sputum)', 'Chest pain', 'Shortness of breath', 'Possibly bloody sputum', 'Headache (sinus involvement)'], alarmFR: ['Hémoptysie (crachats abondamment sanglants)', 'Extension cérébrale (confusion, céphalées intenses)'], alarmEN: ['Hemoptysis (heavy bloody cough)', 'Cerebral spread (confusion, severe headaches)'], isolationFR: 'Non transmissible entre personnes — protéger les immunodéprimés', isolationEN: 'Not transmissible between people — protect immunocompromised individuals' },
   EBOLA:      { fr: ['Fièvre brutale', 'Maux de tête intenses', 'Douleurs musculaires', 'Fatigue extrême', 'Maux de gorge', 'Vomissements et diarrhée', 'Éruption cutanée', 'Saignements (phase tardive)'], en: ['Sudden fever', 'Severe headache', 'Muscle pain', 'Extreme fatigue', 'Sore throat', 'Vomiting and diarrhea', 'Skin rash', 'Bleeding (late stage)'], alarmFR: ['Saignements multiples (nez, gencives, selles noires)', 'Choc hémorragique', 'Confusion ou perte de conscience'], alarmEN: ['Multiple bleedings (nose, gums, black stools)', 'Hemorrhagic shock', 'Confusion or loss of consciousness'], isolationFR: 'URGENCE NATIONALE — isolement BSL-4 — appelez le 15 immédiatement', isolationEN: 'NATIONAL EMERGENCY — BSL-4 isolation — call emergency services immediately' },
   RSVA_HMPV:  { fr: ['Toux', 'Nez qui coule', 'Fièvre', 'Difficultés à respirer', 'Sifflements respiratoires', 'Maux de gorge'], en: ['Cough', 'Runny nose', 'Fever', 'Shortness of breath', 'Wheezing', 'Sore throat'], alarmFR: ['Détresse respiratoire (nourrissons, personnes âgées, immunodéprimés)', 'Lèvres bleues (cyanose)'], alarmEN: ['Respiratory distress (infants, elderly, immunocompromised)', 'Blue lips (cyanosis)'], isolationFR: 'Isolement 7 jours — précautions contact et gouttelettes', isolationEN: 'Isolation 7 days — contact and droplet precautions' },
 };
@@ -2683,7 +2740,7 @@ function t(key) {
 }
 
 // Clés dont la valeur contient du HTML (innerHTML au lieu de textContent)
-var I18N_HTML_KEYS = new Set(['ob-disclaimer']);
+var I18N_HTML_KEYS = new Set(['ob-disclaimer', 'gp-score-estimate-note']);
 
 function applyI18n() {
   document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -3289,6 +3346,84 @@ function updateMapStats() {
 }
 
 // ── Pathogens grid ───────────────────────────────────────────
+// ── Icône de symptôme par TYPE (jamais par position dans la liste) ──
+var SYMPTOM_ICON_RULES = [
+  [/fi[èe]vre|fever|frisson|chill|temp[ée]rature/i, '🌡️'],
+  [/toux|cough|essoufflement|dyspn|breath|respirat|crachat|sputum|wheez|sifflement/i, '😮‍💨'],
+  [/t[êe]te|headache|c[ée]phal/i, '🤕'],
+  [/naus|vomi|diarrh|ventre|abdom|stomach|selles|stool/i, '🤢'],
+  [/saign|bleed|h[ée]morrag|purpura|p[ée]t[ée]chi/i, '🩸'],
+  [/[ée]ruption|rash|bouton|l[ée]sion|v[ée]sicul|pustul|cutan|skin/i, '🔴'],
+  [/ganglion|lymph|ad[ée]nopath|bubon/i, '🫧'],
+  [/muscul|myalg|muscle|articul|joint|courbature|arthralg/i, '💪'],
+  [/conjonctiv|yeux|oeil|œil|eye|ocul/i, '👁️'],
+  [/nez|rhinorrh|runny|congestion|[ée]ternu|sneez|nasal/i, '👃'],
+  [/gorge|throat|pharyng|angine/i, '🗣️'],
+  [/fatigue|asth[ée]ni|tired|weak|faiblesse|malaise/i, '😴'],
+  [/confus|convuls|seizure|coma|neuro|m[ée]ning|nuque|neck stiff|paraly/i, '🧠'],
+  [/jaun|ict[èe]r|jaundice/i, '🟡'],
+  [/sueur|sweat|transpir/i, '💦'],
+  [/d[ée]shydrat|dehydrat|soif|thirst/i, '🥤'],
+];
+function symptomIcon(label) {
+  const hit = SYMPTOM_ICON_RULES.find(([re]) => re.test(label || ''));
+  return hit ? hit[1] : '•';
+}
+
+// ── Mesure de protection principale selon le mode de transmission ──
+// Sources : fiches OMS (who.int/news-room/fact-sheets) et ECDC. À valider par le Dr Médeau.
+var PROTECTION_OVERRIDES = {
+  TB:          { fr: '😷 Masque chirurgical pour le patient · FFP2 pour l\'entourage exposé et les soignants', en: '😷 Surgical mask for the patient · FFP2 for exposed contacts and healthcare workers', src: 'https://www.who.int/news-room/fact-sheets/detail/tuberculosis' },
+  MPOX:        { fr: '🧤 Éviter tout contact rapproché avec les lésions · masque chirurgical pour le malade, FFP2 pour les soignants', en: '🧤 Avoid close contact with lesions · surgical mask for the patient, FFP2 for healthcare workers', src: 'https://www.who.int/news-room/fact-sheets/detail/mpox' },
+  LEGIONELLA:  { fr: '💧 Aucune transmission interhumaine — le masque est sans objet ; entretien des réseaux d\'eau chaude et des tours aéroréfrigérantes', en: '💧 No person-to-person transmission — masks are not relevant; maintenance of hot-water systems and cooling towers', src: 'https://www.who.int/news-room/fact-sheets/detail/legionellosis' },
+  EBOLA:       { fr: '🧤 Éviter tout contact avec le sang et les fluides d\'un malade · EPI complet pour les soignants', en: '🧤 Avoid any contact with a patient\'s blood or body fluids · full PPE for healthcare workers', src: 'https://www.who.int/news-room/fact-sheets/detail/ebola-virus-disease' },
+  MARBURG:     { fr: '🧤 Éviter tout contact avec le sang et les fluides d\'un malade · EPI complet pour les soignants', en: '🧤 Avoid any contact with a patient\'s blood or body fluids · full PPE for healthcare workers', src: 'https://www.who.int/news-room/fact-sheets/detail/marburg-virus-disease' },
+  LASSA:       { fr: '🐀 Hygiène alimentaire et lutte contre les rongeurs · éviter le contact avec les fluides d\'un malade', en: '🐀 Food hygiene and rodent control · avoid contact with a patient\'s body fluids', src: 'https://www.who.int/news-room/fact-sheets/detail/lassa-fever' },
+  CCHF:        { fr: '🕷️ Protection contre les tiques (vêtements couvrants, répulsifs) · éviter le contact avec le sang d\'animaux ou de malades', en: '🕷️ Tick protection (covering clothing, repellents) · avoid contact with the blood of animals or patients', src: 'https://www.who.int/news-room/fact-sheets/detail/crimean-congo-haemorrhagic-fever' },
+  HANTA:       { fr: '🐀 Éviter l\'exposition aux rongeurs et à leurs déjections (aération, nettoyage humide)', en: '🐀 Avoid exposure to rodents and their droppings (ventilate, wet cleaning)', src: 'https://www.who.int/news-room/fact-sheets/detail/hantavirus-disease' },
+  PLAGUE:      { fr: '🐀 Éviter les rongeurs et leurs puces · masque chirurgical uniquement en cas de forme pulmonaire', en: '🐀 Avoid rodents and their fleas · surgical mask only for the pneumonic form', src: 'https://www.who.int/news-room/fact-sheets/detail/plague' },
+  LEPTOSPIROSIS:{ fr: '🥾 Éviter l\'eau douce stagnante et la boue avec une plaie · bottes et gants', en: '🥾 Avoid stagnant fresh water and mud with an open wound · boots and gloves', src: 'https://www.who.int/health-topics/leptospirosis' },
+  CHOLERA:     { fr: '💧 Eau sûre, aliments cuits, lavage des mains — le masque est sans objet', en: '💧 Safe water, cooked food, hand washing — masks are not relevant', src: 'https://www.who.int/news-room/fact-sheets/detail/cholera' },
+  H5N1:        { fr: '🐔 Éviter le contact avec les volailles malades ou mortes · FFP2 pour les personnes exposées professionnellement', en: '🐔 Avoid contact with sick or dead poultry · FFP2 for occupationally exposed people', src: 'https://www.who.int/news-room/fact-sheets/detail/influenza-(avian-and-other-zoonotic)' },
+  MERS:        { fr: '🐪 Éviter le contact avec les dromadaires et le lait cru · FFP2 pour les soignants', en: '🐪 Avoid contact with dromedary camels and raw milk · FFP2 for healthcare workers', src: 'https://www.who.int/news-room/fact-sheets/detail/middle-east-respiratory-syndrome-coronavirus-(mers-cov)' },
+  NIPAH:       { fr: '🦇 Éviter la sève de palmier crue et les fruits mordus par des chauves-souris · éviter le contact avec les fluides d\'un malade', en: '🦇 Avoid raw date-palm sap and bat-bitten fruit · avoid contact with a patient\'s body fluids', src: 'https://www.who.int/news-room/fact-sheets/detail/nipah-virus' },
+  CANDIDA_ASPERGILLUS: { fr: '🧼 Hygiène des mains et des surfaces en milieu de soins — pas de transmission respiratoire interhumaine', en: '🧼 Hand and surface hygiene in healthcare settings — no person-to-person respiratory transmission', src: 'https://www.who.int/publications/i/item/9789240060241' },
+};
+function protectionMain(ob, lang) {
+  const fr = lang === 'fr';
+  const o = PROTECTION_OVERRIDES[ob.id];
+  if (o) return fr ? o.fr : o.en;
+  const tx = [...(ob.transmission || []), ...(Array.isArray(ob.transmission_route) ? ob.transmission_route : [ob.transmission_route || ''])].join(' ').toLowerCase();
+  if (/moustique|mosquito|vecteur|vector|aedes|anophel|tique|tick/.test(tx)) return fr ? '🦟 Moustiquaire, répulsifs, vêtements couvrants — le masque est sans objet' : '🦟 Bed nets, repellents, covering clothing — masks are not relevant';
+  if (/eau|water|aliment|food|f[ée]cal|oral/.test(tx) && !/a[ée]ro|goutte|droplet|respir/.test(tx)) return fr ? '💧 Eau sûre, aliments cuits, lavage des mains — le masque est sans objet' : '💧 Safe water, cooked food, hand washing — masks are not relevant';
+  if (/a[ée]rosol|airborne|a[ée]rien/.test(tx) || ob.protectionLevel >= 3) return fr ? '😷 Masque FFP2 en lieu clos ou bondé, surtout pour les personnes fragiles' : '😷 FFP2 mask in enclosed or crowded places, especially for vulnerable people';
+  if (/goutte|droplet|respir|toux|cough|contact/.test(tx) || ob.protectionLevel === 2) return fr ? '😷 Masque (FFP2 ou chirurgical) et lavage des mains en période de circulation' : '😷 Mask (FFP2 or surgical) and hand washing during circulation periods';
+  return fr ? 'ℹ️ Mesure de protection : voir la fiche détaillée' : 'ℹ️ Protective measure: see the detailed sheet';
+}
+
+// ── Deux axes distincts : gravité clinique et exposition (France par défaut) ──
+var GRAVITY_LABELS = {
+  fr: { critical: 'Gravité clinique : très élevée', high: 'Gravité clinique : élevée', moderate: 'Gravité clinique : modérée', low: 'Gravité clinique : faible' },
+  en: { critical: 'Clinical severity: very high', high: 'Clinical severity: high', moderate: 'Clinical severity: moderate', low: 'Clinical severity: low' }
+};
+function exposureLevel(ob) {
+  const txt = JSON.stringify([ob.activeRegions, (ob.foci || []).map(f => f.country)]).toLowerCase();
+  if (/france|réunion|reunion|guadeloupe|martinique|guyane|mayotte|mondial|global|worldwide/.test(txt) && ['active', 'seasonal', 'endemic', 'outbreak'].includes(ob.currentStatus)) return 'present';
+  if (ob.currentStatus === 'outbreak' || ob.currentStatus === 'active') return 'travel';
+  return 'low';
+}
+function riskBadges(ob, lang, cls) {
+  const fr = lang === 'fr';
+  const g = (GRAVITY_LABELS[lang] || GRAVITY_LABELS.en)[ob.riskLevel] || (fr ? 'Gravité clinique : non classée' : 'Clinical severity: unclassified');
+  const gTip = fr ? 'Gravité clinique : sévérité potentielle de la maladie chez une personne atteinte (létalité, complications), indépendamment de votre probabilité de la contracter.' : 'Clinical severity: how serious the disease can be for an infected person (fatality, complications), regardless of your likelihood of catching it.';
+  const e = exposureLevel(ob);
+  const eLabel = fr ? { present: 'Exposition en France : présente', travel: 'Exposition en France : très faible (voyage)', low: 'Exposition en France : très faible' }[e]
+                    : { present: 'Exposure in France: present', travel: 'Exposure in France: very low (travel-related)', low: 'Exposure in France: very low' }[e];
+  const eTip = fr ? 'Exposition : probabilité de rencontrer ce pathogène en France aujourd\'hui, d\'après les zones de circulation connues. « Voyage » = risque lié à un séjour en zone touchée.' : 'Exposure: likelihood of encountering this pathogen in France today, based on known circulation areas. "Travel-related" = risk linked to a stay in an affected area.';
+  const eColor = e === 'present' ? '#F59E0B' : '#10B981';
+  return `<span class="${cls} ${cls}-gravity" title="${gTip}" aria-label="${gTip}">${g}</span><span class="${cls} ${cls}-exposure" style="color:${eColor};border-color:${eColor}40;background:${eColor}10" title="${eTip}" aria-label="${eTip}">${eLabel}</span>`;
+}
+
 var PATHOGEN_ICONS = {
   H5N1:'🐔',        // grippe aviaire → volaille
   SARS2:'🦠',       // coronavirus
@@ -3640,12 +3775,7 @@ function renderPathogens() {
 
     // ── Mode PATIENT : carte simple, visuelle, universelle ──
     if (currentMode === 'patient') {
-      const sympEmojis = ['🌡️','😮‍💨','💪','🤕','🤢','👃','💦','🔴','🔵','🌀'];
-      const maskSimple = ob.protectionLevel >= 3
-        ? (currentLang === 'fr' ? '😷 Masque FFP3 requis' : '😷 FFP3 mask required')
-        : ob.protectionLevel === 2
-        ? (currentLang === 'fr' ? '😷 Masque FFP2 recommandé' : '😷 FFP2 mask recommended')
-        : (currentLang === 'fr' ? '😷 Masque chirurgical suffisant' : '😷 Surgical mask sufficient');
+      const maskSimple = protectionMain(ob, currentLang);
       const ctaLabel = currentLang === 'fr' ? 'J\'ai ces symptômes →' : 'I have these symptoms →';
       const sympTitle = currentLang === 'fr' ? 'Symptômes' : 'Symptoms';
       const alarmTitle = currentLang === 'fr' ? '🚨 Signe grave — appelez le médecin immédiatement' : '🚨 Serious sign — call a doctor immediately';
@@ -3654,14 +3784,12 @@ function renderPathogens() {
         <div class="pcp-icon-wrap" style="border-color:${riskColor}40">
           <span class="pcp-icon">${pathIcon}</span>
         </div>
-        <div class="pcp-risk-pill" style="background:${riskColor}15;color:${riskColor};border:1.5px solid ${riskColor}40">
-          ${riskLabel}
-        </div>
+        <div class="pcp-risk-pills">${riskBadges(ob, currentLang, 'pcp-risk-pill')}</div>
         <h3 class="pcp-name">${name}</h3>
         ${sympList.length ? `<div class="pcp-symptoms">
           <div class="pcp-sym-title">${sympTitle}</div>
           <div class="pcp-sym-tags">
-            ${sympList.slice(0,5).map((s,i) => `<span class="pcp-sym-tag">${sympEmojis[i]||'•'} ${s}</span>`).join('')}
+            ${sympList.slice(0,5).map(s => `<span class="pcp-sym-tag">${symptomIcon(s)} ${s}</span>`).join('')}
           </div>
         </div>` : ''}
         ${alarmList.length ? `<div class="pcp-alarm">
@@ -3690,7 +3818,7 @@ function renderPathogens() {
           <h3 class="pc-name">${name}</h3>
           <span class="pc-pathogen">${ob.pathogen || ''}</span>
         </div>
-        <span class="pc-risk" style="color:${riskColor};border-color:${riskColor}40;background:${riskColor}10">${riskLabel}</span>
+        <span class="pc-risk-pills">${riskBadges(ob, currentLang, 'pc-risk')}</span>
       </div>
 
       <!-- ② Badges statut + EPI -->
@@ -7439,9 +7567,12 @@ function getEmergencyNumbers() {
 function renderEmergencyNumbers() {
   const containers = document.querySelectorAll('.triage-severe-nums, .triage-alarm-nums');
   const numbers = getEmergencyNumbers();
-  // Always include 112 if not already present
-  const has112 = numbers.some(n => n.num === '112');
-  const display = has112 ? numbers : [...numbers, { num:'112', label:'International', tel:'112' }];
+  // Toujours 112 ; hors français, 112 en premier (numéro européen) + mention du numéro local
+  const intl = { num:'112', label:'International', tel:'112' };
+  let display = numbers.some(n => n.num === '112') ? numbers : [...numbers, intl];
+  if (currentLang !== 'fr') display = [intl, ...display.filter(n => n.num !== '112')];
+  display = display.filter((n, i, arr) => arr.findIndex(o => o.num === n.num) === i); // jamais deux fois le même numéro
+  const localHint = currentLang === 'fr' ? '' : `<span class="triage-num-hint">or your local emergency number</span>`;
 
   containers.forEach(container => {
     const isAlarm = container.classList.contains('triage-alarm-nums');
@@ -7452,7 +7583,7 @@ function renderEmergencyNumbers() {
     } else {
       container.innerHTML = display.slice(0, 4).map(n =>
         `<a href="tel:${n.tel}" class="triage-num-btn" aria-label="${n.label}">${getFlagForNumber(n.num)} ${n.num}</a>`
-      ).join('');
+      ).join('') + localHint;
     }
   });
 }

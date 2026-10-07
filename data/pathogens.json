@@ -126,7 +126,12 @@
         "WHO COVID-19 Weekly Epidemiological Updates 2024–2026",
         "Morawska L, Milton DK. Clin Infect Dis 2020",
         "Greenhalgh T et al. Lancet 2021 — Ten scientific reasons in support of airborne transmission",
-        "ECDC COVID-19 Situation Updates 2024"
+        "ECDC COVID-19 Situation Updates 2024",
+        "SPF — Bulletin IDF semaine 18, 13 mai 2026 : SARS-CoV-2 eaux usées en baisse, faible intensité",
+        "SPF — Bilan saison IRA 2025-2026 : faible recours aux soins COVID-19",
+        "WHO Tracking SARS-CoV-2 Variants 2024–2026",
+        "GISAID Variant Tracker 2026",
+        "ECDC SARS-CoV-2 Variants of Concern/Interest — Monthly Report"
       ],
       "descFR": "Circulation endémique mondiale. Variants KP.2/KP.1.1/JN.1. Transmission aérienne par aérosols démontrée (Morawska & Milton 2020, Lancet 2021). FFP2 recommandé dans espaces bondés, milieux médicaux, immunodéprimés.",
       "descEN": "Endemic global circulation. KP.2/JN.1 variants. Airborne aerosol transmission demonstrated. FFP2 recommended in crowded spaces, healthcare settings, immunocompromised individuals.",
@@ -134,7 +139,9 @@
       "descPatientEN": "🟢 COVID-19 in France (August 2026): low circulation, no significant peak. Most people recover at home within a few days. Consult if you are short of breath at rest, very tired for more than 5 days, or have a serious illness. Rapid antigen tests remain available at pharmacies. Vaccination is still recommended for vulnerable people.",
       "descPatientES": "🟢 COVID-19 en Francia (agosto 2026): circulación baja. La mayoría se recupera en casa en pocos días. Consulte si tiene dificultad para respirar en reposo o fatiga intensa por más de 5 días. Los tests rápidos siguen disponibles en farmacias.",
       "descPatientAR": "🟢 كوفيد-19 في فرنسا (أغسطس 2026): تداول منخفض. معظم الناس يتعافون في المنزل خلال أيام. استشر طبيباً إذا أصبح التنفس صعباً أو كنت متعباً جداً لأكثر من 5 أيام. الاختبارات السريعة متوفرة في الصيدليات.",
-      "verifiedAt": "2026-10-07"
+      "verifiedAt": "2026-10-07",
+      "surveillanceNoteFR": "📊 SPF mai 2026 : circulation SARS-CoV-2 basse (eaux usées S18 en déclin). Faible recours aux soins sur l'ensemble de la saison 2025-2026. Circulation continue dans la population générale sans pic significatif. Surveillance génomique active pour nouveaux variants (XEC, KP.3.1.1 dominants 2025). FFP2 recommandé milieux à risque.",
+      "surveillanceNoteEN": "📊 SPF May 2026: low SARS-CoV-2 circulation (wastewater week 18 declining). Low healthcare utilization throughout 2025-2026 season. Continuous background circulation without significant peak. Active genomic surveillance for new variants (XEC, KP.3.1.1 dominant 2025). FFP2 recommended in high-risk settings."
     },
     {
       "id": "TB",
@@ -1068,44 +1075,6 @@
           "note": "Cycle épidémique 3-5 ans"
         }
       ],
-      "verifiedAt": "2026-10-07"
-    },
-    {
-      "id": "COVID19VAR",
-      "nameFR": "Nouveaux variants émergents",
-      "nameEN": "Novel emerging variants",
-      "pathogen": "SARS-CoV-2 nouveaux variants (XEC, KP.3.1.1)",
-      "category": "emerging",
-      "riskLevel": "moderate",
-      "lat": 35,
-      "lon": 125,
-      "activeRegions": [
-        "Mondial — surveillance continue"
-      ],
-      "transmission": [
-        "Aérosols",
-        "Gouttelettes"
-      ],
-      "protectionRequired": "FFP2/N95",
-      "protectionLevel": 2,
-      "maskNote": "FFP2 recommandé milieux à risque jusqu'à caractérisation épidémiologique complète du nouveau variant.",
-      "reproductionNumber": "À déterminer",
-      "cfr": "< 0,1% (variants XEC/KP.2/JN.1 en population vaccinée, ECDC/SPF 2026)",
-      "incubation": "2–7 jours (estimé)",
-      "transmission_route": "Aéroporté présumé (analogue Omicron)",
-      "currentStatus": "monitoring",
-      "outbreakStart": "Surveillance continue 2026",
-      "lastUpdate": "2026-05",
-      "iconColor": "#6366F1",
-      "references": [
-        "SPF — Bulletin IDF semaine 18, 13 mai 2026 : SARS-CoV-2 eaux usées en baisse, faible intensité",
-        "SPF — Bilan saison IRA 2025-2026 : faible recours aux soins COVID-19",
-        "WHO Tracking SARS-CoV-2 Variants 2024–2026",
-        "GISAID Variant Tracker 2026",
-        "ECDC SARS-CoV-2 Variants of Concern/Interest — Monthly Report"
-      ],
-      "descFR": "📊 SPF mai 2026 : circulation SARS-CoV-2 basse (eaux usées S18 en déclin). Faible recours aux soins sur l'ensemble de la saison 2025-2026. Circulation continue dans la population générale sans pic significatif. Surveillance génomique active pour nouveaux variants (XEC, KP.3.1.1 dominants 2025). FFP2 recommandé milieux à risque.",
-      "descEN": "📊 SPF May 2026: low SARS-CoV-2 circulation (wastewater week 18 declining). Low healthcare utilization throughout 2025-2026 season. Continuous background circulation without significant peak. Active genomic surveillance for new variants (XEC, KP.3.1.1 dominant 2025). FFP2 recommended in high-risk settings.",
       "verifiedAt": "2026-10-07"
     },
     {
