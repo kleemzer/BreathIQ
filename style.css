@@ -4567,9 +4567,10 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .ebola-pheic-overlay a{color:#fca5a5;font-weight:600}
 
 /* ── Nav dropdown "Plus" (FIX 2) ── */
-.nav-more-item{position:relative}
-.nav-more-btn{background:transparent;border:none;color:inherit;font:inherit;font-size:.88rem;cursor:pointer;padding:.3rem .5rem;opacity:.85;transition:opacity .2s}
-.nav-more-btn:hover{opacity:1}
+.nav-more-item{position:relative;flex-shrink:0}
+/* Même métrique que .nav-links a ; nowrap évite « Plus » et « ▾ » sur deux lignes quand la nav se resserre */
+.nav-more-btn{display:inline-flex;align-items:center;gap:.3rem;white-space:nowrap;background:transparent;border:none;color:var(--text-on-dark-2);font:inherit;font-size:.82rem;font-weight:500;line-height:1.2;cursor:pointer;padding:.4rem .65rem;border-radius:var(--r-full);transition:var(--t-fast)}
+.nav-more-btn:hover{color:#fff;background:rgba(255,255,255,.07)}
 .nav-more-dropdown{display:none;position:absolute;top:calc(100% + 8px);right:0;background:#0d2035;border:1px solid rgba(255,255,255,.15);border-radius:8px;z-index:200;min-width:160px;list-style:none;margin:0;padding:.4rem 0;box-shadow:0 8px 24px rgba(0,0,0,.4)}
 .nav-more-dropdown li a{display:block;padding:.5rem 1rem;font-size:.86rem;color:rgba(255,255,255,.85);text-decoration:none;white-space:nowrap}
 .nav-more-dropdown li a:hover{background:rgba(255,255,255,.07);color:#fff}
