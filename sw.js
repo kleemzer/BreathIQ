@@ -6,10 +6,10 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v38';
+const CACHE_VERSION = 'biq-v39';
 // Doit suivre le ?v= de index.html : les URLs .min.* sans ?v= sont figées un an par le CDN (immutable),
 // le SW ne doit donc jamais les demander au réseau sans version.
-const ASSET_VERSION = '20261007r';
+const ASSET_VERSION = '20261007s';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -52,21 +52,45 @@ function isVersionedAsset(pathname) {
   return pathname.endsWith('.js') || pathname.endsWith('.css') || pathname.endsWith('.woff2');
 }
 
+// Assets dont l'absence rend le site inutilisable : leur échec fait échouer l'installation
+const CRITICAL_ASSETS = new Set(['/', '/index.html', '/style.min.css', '/script.min.js', '/api-live.min.js']);
+
 async function precacheAll(cache, urls) {
-  await Promise.all(urls.map(url => {
+  // 1) Garde-fou de propagation : Cloudflare Pages ne bascule pas tous les fichiers au même instant
+  //    sur chaque PoP. index.html n'est jamais mis en cache au CDN : s'il ne référence pas encore
+  //    ASSET_VERSION, ce PoP sert encore l'ancien déploiement — on n'y télécharge SURTOUT pas les
+  //    assets versionnés (ils seraient figés un an sous la nouvelle URL). L'install échoue, le
+  //    navigateur réessaiera à la prochaine navigation.
+  const indexResp = await fetch(new Request('/index.html', { cache: 'reload' }));
+  if (!indexResp.ok) throw new Error(`[SW] index.html HTTP ${indexResp.status}`);
+  const indexHtml = await indexResp.clone().text();
+  if (!indexHtml.includes(`script.min.js?v=${ASSET_VERSION}`)) {
+    throw new Error(`[SW] déploiement non propagé : index.html ne référence pas ${ASSET_VERSION}`);
+  }
+  await cache.put('/index.html', indexResp.clone());
+  await cache.put('/', indexResp);
+
+  // 2) Précache du reste : URL versionnée + cache:'reload' (contourne CDN immutable et HTTP cache),
+  //    clé de cache = URL nue (le fetch handler normalise les ?v=)
+  await Promise.all(urls.filter(u => u !== '/' && u !== '/index.html').map(async url => {
     const versioned = isVersionedAsset(url);
-    // cache:'reload' pour tout le précache (HTML compris) : le HTTP cache ne doit jamais alimenter une nouvelle version
     const req = new Request(versioned ? `${url}?v=${ASSET_VERSION}` : url, { cache: 'reload' });
-    return fetch(req).then(r => r.ok ? cache.put(url, r) : null).catch(() => null);
+    try {
+      const r = await fetch(req);
+      if (!r.ok) throw new Error(`HTTP ${r.status}`);
+      await cache.put(url, r);
+    } catch (e) {
+      if (CRITICAL_ASSETS.has(url)) throw new Error(`[SW] précache critique échoué ${url}: ${e.message}`);
+    }
   }));
 }
 
 self.addEventListener('install', event => {
+  // Pas de catch : une installation incomplète ne doit jamais être promue
   event.waitUntil(
     caches.open(CACHE_STATIC)
       .then(cache => precacheAll(cache, STATIC_ASSETS))
       .then(() => self.skipWaiting())
-      .catch(err => console.warn('[SW] Install partial fail:', err))
   );
 });
 
