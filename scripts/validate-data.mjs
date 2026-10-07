@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from 'fs';
 import { join } from 'path';
+import { computeStale, isExpired } from './lib/freshness.mjs';
 
 const root = new URL('..', import.meta.url).pathname;
 const dataDir = join(root, 'data');
@@ -67,11 +68,22 @@ const validators = {
   'pheic-alerts.json': validatePheicAlerts,
 };
 
+// Fraîcheur : tout fichier portant nextUpdateExpected est périmé au-delà de 48 h (affiché comme tel)
+// et fait échouer la CI au-delà de 14 jours — une donnée de surveillance figée n'est plus une donnée.
+function validateFreshness(file, data) {
+  if (!data || typeof data !== 'object' || !('nextUpdateExpected' in data)) return;
+  const stale = computeStale(data.nextUpdateExpected);
+  if (stale) console.warn(`⚠️  ${file}: périmé (nextUpdateExpected=${data.nextUpdateExpected}) — doit être affiché « source en attente de mise à jour »`);
+  assert(!isExpired(data.nextUpdateExpected),
+    `${file}: source non mise à jour depuis plus de 14 jours après nextUpdateExpected=${data.nextUpdateExpected} — relancer la collecte`);
+}
+
 let checked = 0;
 for (const file of readdirSync(dataDir).filter(name => name.endsWith('.json'))) {
   const path = join(dataDir, file);
   const data = readJson(path);
   validators[file]?.(data);
+  validateFreshness(file, data);
   checked += 1;
 }
 

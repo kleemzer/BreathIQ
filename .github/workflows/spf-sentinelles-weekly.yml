@@ -1,0 +1,35 @@
+name: SPF Sentinelles Weekly Update
+
+# Le Réseau Sentinelles publie ses incidences hebdomadaires le mercredi.
+on:
+  schedule:
+    - cron: '0 13 * * 3'
+  workflow_dispatch:
+
+jobs:
+  update-sentinelles:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Collecte Sentinelles → data/spf-surveillance.json
+        run: node scripts/spf-sentinelles-fetch.mjs
+      - name: Validation des données
+        run: node scripts/validate-data.mjs
+      - name: Commit si changement
+        run: |
+          git config user.name "Sentinelles-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/spf-surveillance.json
+          if git diff --staged --quiet; then
+            echo "Aucune modification"
+          else
+            WEEK=$(node -e "console.log(require('./data/spf-surveillance.json').pathogens[0]?.week || '')")
+            git commit -m "data: Sentinelles ${WEEK} ($(date +%Y-%m-%d))"
+            git pull --rebase origin main || true
+            git push origin main || { echo "Push échoué — retenté au prochain run"; exit 0; }
+          fi

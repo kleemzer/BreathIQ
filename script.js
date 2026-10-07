@@ -4710,7 +4710,13 @@ function renderVirusSaison() {
   if (sourceEl && verifiedAt) {
     const d = new Date(verifiedAt);
     const label = d.toLocaleDateString('fr-FR', { day:'numeric', month:'long', year:'numeric' });
-    sourceEl.textContent = `Données SPF · ECDC vérifiées le ${label} — semaine épidémiologique ${all[0]?.week || ''}`;
+    const week = all[0]?.week || '';
+    // stale = now > nextUpdateExpected + 48 h (même règle que scripts/lib/freshness.mjs)
+    const isStale = src => src?.nextUpdateExpected ? Date.now() > new Date(src.nextUpdateExpected).getTime() + 48 * 3600 * 1000 : false;
+    const stale = isStale(_spfSurveillance) || isStale(_ecdcSurveillance);
+    sourceEl.textContent = stale
+      ? `Données de la semaine ${week} — source en attente de mise à jour (dernière donnée du ${label})`
+      : `Données Sentinelles · ECDC du ${label} — semaine épidémiologique ${week}`;
   }
 }
 
