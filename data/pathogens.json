@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-06T12:00:00.000Z",
+  "generatedAt": "2026-10-07T14:47:31.924Z",
   "version": "1.0",
   "pathogensCount": 26,
   "pathogens": [
@@ -50,14 +50,14 @@
       "descPatientEN": "🟢 H5N1 bird flu: your risk is near zero if you live in a city and have no contact with poultry. This disease affects almost exclusively people in direct contact with sick chickens, turkeys or ducks (farmers, live animal markets). It does not spread between people. If you had contact with sick poultry + fever: see a doctor and report it.",
       "foci": [
         {
-          "lat": 37.0,
-          "lon": -96.0,
+          "lat": 37,
+          "lon": -96,
           "country": "USA",
           "cases": 67,
           "note": "Travailleurs laitiers, variant B3.13"
         },
         {
-          "lat": 21.0,
+          "lat": 21,
           "lon": 105.8,
           "country": "Vietnam",
           "cases": 5,
@@ -65,7 +65,7 @@
         },
         {
           "lat": 23.6,
-          "lon": 120.0,
+          "lon": 120,
           "country": "Taïwan",
           "cases": 1,
           "note": "Cas sporadique volailles"
@@ -91,7 +91,8 @@
           "cases": 3,
           "note": "Foyers aviaires Anhui/Fujian"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "SARS2",
@@ -132,7 +133,8 @@
       "descPatientFR": "🟢 COVID-19 en France (août 2026) : circulation basse, sans pic notable. La plupart des gens guérissent à la maison en quelques jours. Consultez si vous êtes essoufflé(e) au repos, très fatigué(e) depuis plus de 5 jours, ou si vous avez une maladie grave. Les tests rapides antigéniques restent disponibles en pharmacie. La vaccination reste recommandée pour les personnes vulnérables.",
       "descPatientEN": "🟢 COVID-19 in France (August 2026): low circulation, no significant peak. Most people recover at home within a few days. Consult if you are short of breath at rest, very tired for more than 5 days, or have a serious illness. Rapid antigen tests remain available at pharmacies. Vaccination is still recommended for vulnerable people.",
       "descPatientES": "🟢 COVID-19 en Francia (agosto 2026): circulación baja. La mayoría se recupera en casa en pocos días. Consulte si tiene dificultad para respirar en reposo o fatiga intensa por más de 5 días. Los tests rápidos siguen disponibles en farmacias.",
-      "descPatientAR": "🟢 كوفيد-19 في فرنسا (أغسطس 2026): تداول منخفض. معظم الناس يتعافون في المنزل خلال أيام. استشر طبيباً إذا أصبح التنفس صعباً أو كنت متعباً جداً لأكثر من 5 أيام. الاختبارات السريعة متوفرة في الصيدليات."
+      "descPatientAR": "🟢 كوفيد-19 في فرنسا (أغسطس 2026): تداول منخفض. معظم الناس يتعافون في المنزل خلال أيام. استشر طبيباً إذا أصبح التنفس صعباً أو كنت متعباً جداً لأكثر من 5 أيام. الاختبارات السريعة متوفرة في الصيدليات.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "TB",
@@ -219,7 +221,8 @@
           "cases": 80000,
           "note": "TB-XDR (ultra-résistante) — vigilance Europe"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "NIPAH",
@@ -285,7 +288,8 @@
           "cases": 11,
           "note": "Historique 1999 — contrôlé, vigilance porcs"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "HANTA",
@@ -352,7 +356,8 @@
           "note": "Endémique — zone rurale Pampa"
         }
       ],
-      "dataConfidenceNote": "Sources : OMS + CDC. Données MV Hondius mai 2026 — à confirmer par ECDC."
+      "dataConfidenceNote": "Sources : OMS + CDC. Données MV Hondius mai 2026 — à confirmer par ECDC.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "MPOX",
@@ -463,7 +468,8 @@
           "cases": 29,
           "note": "Clade IIb"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "MERS",
@@ -502,7 +508,8 @@
         "ECDC — MERS-CoV Threat Assessment 2024"
       ],
       "descFR": "⚠️ MERS-CoV : aucun cas en France. Endémique péninsule arabique (Arabie Saoudite, Émirats, Oman). Transmission zoonotique depuis dromadaires (contact direct ou consommation produits non pasteurisés). Transmission interhumaine rare — uniquement en contexte hospitalier sans précautions EPI. CFR 34–36% sur cas confirmés (biais ascertainment). Voyageurs revenant de péninsule arabique avec fièvre + toux + insuffisance rénale → suspicion MERS → 15 immédiatement.",
-      "descEN": "CFR ~34-36% (WHO). Animal reservoir: dromedary camels (clade C). Human transmission mainly nosocomial. Airborne precautions (FFP2) + contact + eye protection required for HCW. Sporadic continuous cases Arabian Peninsula."
+      "descEN": "CFR ~34-36% (WHO). Animal reservoir: dromedary camels (clade C). Human transmission mainly nosocomial. Airborne precautions (FFP2) + contact + eye protection required for HCW. Sporadic continuous cases Arabian Peninsula.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "MARBURG",
@@ -567,7 +574,8 @@
           "cases": 374,
           "note": "Référence historique : Uíge 2005 (CFR 90%)"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "MEASLES",
@@ -650,7 +658,8 @@
           "cases": 620,
           "note": "Importés + transmission locale"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "LEGIONELLA",
@@ -687,7 +696,8 @@
         "Santé Publique France — Légionellose : données de surveillance 2023"
       ],
       "descFR": "3 167 cas Europe 2022 (ECDC). Réservoirs : circuits d'eau chaude anthropiques. CFR 5–15% formes sévères. FFP2 lors d'interventions sur circuits eau (tours de refroidissement, plomberie). Non transmissible de personne à personne.",
-      "descEN": "3,167 cases Europe 2022 (ECDC). Reservoirs: anthropogenic hot water systems. CFR 5-15% severe forms. FFP2 during water system interventions (cooling towers, plumbing). Not person-to-person transmissible."
+      "descEN": "3,167 cases Europe 2022 (ECDC). Reservoirs: anthropogenic hot water systems. CFR 5-15% severe forms. FFP2 during water system interventions (cooling towers, plumbing). Not person-to-person transmissible.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "INFLUENZA",
@@ -775,7 +785,8 @@
           "cases": 1400000,
           "note": "Saison hiver austral juin-août 2025"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "DENGUE",
@@ -831,7 +842,7 @@
         },
         {
           "lat": 14.6,
-          "lon": 121.0,
+          "lon": 121,
           "country": "Philippines",
           "cases": 95000,
           "note": "Saison haute"
@@ -858,14 +869,14 @@
           "note": "Saisons décalées"
         },
         {
-          "lat": -12.0,
-          "lon": -77.0,
+          "lat": -12,
+          "lon": -77,
           "country": "Pérou",
           "cases": 42000,
           "note": "Flambée côtière"
         },
         {
-          "lat": 4.0,
+          "lat": 4,
           "lon": 9.7,
           "country": "Cameroun",
           "cases": 15000,
@@ -889,7 +900,8 @@
       "protectionLevel": 0,
       "maskNote": "Pas de transmission respiratoire — prévention vectorielle uniquement (Aedes aegypti/albopictus).",
       "reproductionNumber": "R0 ≈ 2–3 (variable selon densité Aedes et saison ; Bhatt 2013 Nature)",
-      "protectionRequired": "Masque non requis — protection anti-moustiques (répulsifs DEET/IR3535, vêtements couvrants)"
+      "protectionRequired": "Masque non requis — protection anti-moustiques (répulsifs DEET/IR3535, vêtements couvrants)",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "PALUDISME",
@@ -925,9 +937,10 @@
       "descPatientES": "🔴 Si tiene fiebre y viajó a África, Asia o América del Sur en los últimos 2 meses: vaya a urgencias o a su médico HOY — no espere. Infórmeles sobre su viaje. El paludismo puede volverse muy grave en pocas horas. No se contagia entre personas en Francia.",
       "descPatientAR": "🔴 إذا كان لديك حمى وسافرت إلى أفريقيا أو آسيا أو أمريكا الجنوبية خلال الشهرين الماضيين: اذهب إلى الطوارئ أو طبيبك اليوم — لا تنتظر. أخبرهم عن رحلتك. الملاريا قد تصبح خطيرة جداً في ساعات. لا تنتقل بين البشر في فرنسا.",
       "lat": 5.3,
-      "lon": 20.0,
+      "lon": 20,
       "protectionLevel": 0,
-      "maskNote": "Pas de transmission respiratoire — prévention vectorielle (répulsifs, moustiquaires, chimioprophylaxie). Masque non utile."
+      "maskNote": "Pas de transmission respiratoire — prévention vectorielle (répulsifs, moustiquaires, chimioprophylaxie). Masque non utile.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "RSYNCYTIAL",
@@ -963,7 +976,8 @@
         "Hall CB et al. N Engl J Med 2009 — Community RSV circulation"
       ],
       "descFR": "64 000 décès/an enfants < 5 ans (Lancet 2017). Principal pathogène respiratoire nourrisson. Transmission gouttelettes larges + contact. FFP2 recommandé pédiatrie/néonatologie lors pics hivernaux.",
-      "descEN": "64,000 deaths/year in children <5 (Lancet 2017). Leading respiratory pathogen in infants. FFP2 recommended in pediatrics/neonatology during winter peaks."
+      "descEN": "64,000 deaths/year in children <5 (Lancet 2017). Leading respiratory pathogen in infants. FFP2 recommended in pediatrics/neonatology during winter peaks.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "PERTUSSIS",
@@ -1046,7 +1060,8 @@
           "cases": 18500,
           "note": "Cycle épidémique 3-5 ans"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "COVID19VAR",
@@ -1083,7 +1098,8 @@
         "ECDC SARS-CoV-2 Variants of Concern/Interest — Monthly Report"
       ],
       "descFR": "📊 SPF mai 2026 : circulation SARS-CoV-2 basse (eaux usées S18 en déclin). Faible recours aux soins sur l'ensemble de la saison 2025-2026. Circulation continue dans la population générale sans pic significatif. Surveillance génomique active pour nouveaux variants (XEC, KP.3.1.1 dominants 2025). FFP2 recommandé milieux à risque.",
-      "descEN": "📊 SPF May 2026: low SARS-CoV-2 circulation (wastewater week 18 declining). Low healthcare utilization throughout 2025-2026 season. Continuous background circulation without significant peak. Active genomic surveillance for new variants (XEC, KP.3.1.1 dominant 2025). FFP2 recommended in high-risk settings."
+      "descEN": "📊 SPF May 2026: low SARS-CoV-2 circulation (wastewater week 18 declining). Low healthcare utilization throughout 2025-2026 season. Continuous background circulation without significant peak. Active genomic surveillance for new variants (XEC, KP.3.1.1 dominant 2025). FFP2 recommended in high-risk settings.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "CANDIDA_ASPERGILLUS",
@@ -1120,7 +1136,8 @@
         "Galgiani JN et al. Clin Infect Dis 2016 — Coccidioidomycosis"
       ],
       "descFR": "⚠️ DEUX PATHOGÈNES DISTINCTS : (1) Candida auris — levure nosocomiale, résistante aux antifongiques (polyresistance documentée), transmission par contact (mains, surfaces), epidémies dans services de réanimation. Aucun port de masque utile. Hygiène des mains +++. (2) Aspergillus fumigatus — champignon filamenteux, spores AÉRIENNES omniprésentes dans environnement. Aspergillose invasive uniquement chez immunodéprimés sévères (greffe, chimio, corticoïdes hautes doses). FFP2/FFP3 lors travaux de terrassement, jardinage intensif chez immunodéprimé. Risque population générale saine : NÈGLIGEABLE.",
-      "descEN": "⚠️ TWO DISTINCT PATHOGENS: (1) Candida auris — nosocomial yeast, antifungal resistant (polyresistance documented), contact transmission (hands, surfaces), ICU outbreaks. No mask benefit. Hand hygiene +++. (2) Aspergillus fumigatus — filamentous fungus, AIRBORNE spores ubiquitous in environment. Invasive aspergillosis only in severely immunocompromised (transplant, chemo, high-dose corticosteroids). FFP2/FFP3 during construction/earthworks for immunocompromised. Risk for healthy general population: NEGLIGIBLE."
+      "descEN": "⚠️ TWO DISTINCT PATHOGENS: (1) Candida auris — nosocomial yeast, antifungal resistant (polyresistance documented), contact transmission (hands, surfaces), ICU outbreaks. No mask benefit. Hand hygiene +++. (2) Aspergillus fumigatus — filamentous fungus, AIRBORNE spores ubiquitous in environment. Invasive aspergillosis only in severely immunocompromised (transplant, chemo, high-dose corticosteroids). FFP2/FFP3 during construction/earthworks for immunocompromised. Risk for healthy general population: NEGLIGIBLE.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "EBOLA",
@@ -1404,7 +1421,8 @@
           "cases": 1,
           "note": "Cas isolé — PHEIC actif OMS"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "LASSA",
@@ -1506,7 +1524,8 @@
       ],
       "descFR": "Endémique Afrique de l'Ouest. 100 000–300 000 infections/an estimées, 5 000–10 000 décès (OMS). CFR 15–25% formes hospitalisées. TRAITEMENT DISPONIBLE : Ribavirine IV efficace si < 6 jours. Signe distinctif : surdité de perception (25–30% cas). Transmission : rongeur Mastomys → aliments contaminés. Risque importation France : voyageurs retour Sierra Leone, Guinée, Liberia, Nigeria avec fièvre.",
       "descEN": "Endemic in West Africa. 100,000-300,000 infections/year estimated, 5,000-10,000 deaths (WHO). CFR 15-25% hospitalized forms. TREATMENT AVAILABLE: IV Ribavirin effective if <6 days. Distinctive sign: sensorineural deafness (25-30% cases). Transmission: Mastomys rodent → contaminated food. Import risk to France: travelers returning from Sierra Leone, Guinea, Liberia, Nigeria with fever.",
-      "dataConfidenceNote": "Sources : CDC/Lassa fever — données épidémiques Nigeria actualisées mensuellement."
+      "dataConfidenceNote": "Sources : CDC/Lassa fever — données épidémiques Nigeria actualisées mensuellement.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "CCHF",
@@ -1515,8 +1534,8 @@
       "pathogen": "Crimean-Congo hemorrhagic fever orthonairovirus (CCHFV)",
       "category": "emerging",
       "riskLevel": "high",
-      "lat": 41.0,
-      "lon": 29.0,
+      "lat": 41,
+      "lon": 29,
       "activeRegions": [
         "Turquie (endémique, foyers récurrents)",
         "Kosovo, Albanie, Grèce (Europe du Sud — résurgence 2022–2026)",
@@ -1624,8 +1643,8 @@
       "descEN": "Endemic in Central Asia, Middle East, sub-Saharan Africa. Extension to Southern Europe (Spain 2022 — first Western Europe case). CFR 10-40%. Transmission: Hyalomma tick (rural areas), slaughterhouses, nosocomial. France risk: PACA/Corsica regions (Hyalomma ticks present), travelers returning from Balkans/Turkey/rural Spain. Treatment: IV ribavirin (WHO, off-label).",
       "foci": [
         {
-          "lat": 41.0,
-          "lon": 29.0,
+          "lat": 41,
+          "lon": 29,
           "country": "Turquie",
           "cases": 380,
           "note": "Zone endémique — tiques Hyalomma"
@@ -1652,14 +1671,15 @@
           "note": "Tiques importées bétail"
         },
         {
-          "lat": 52.0,
-          "lon": 45.0,
+          "lat": 52,
+          "lon": 45,
           "country": "Russie",
           "cases": 75,
           "note": "Steppe russe — zone classique"
         }
       ],
-      "dataConfidenceNote": "Sources : ECDC CCHF Fact Sheet + OMS DON — données régionales agrégées."
+      "dataConfidenceNote": "Sources : ECDC CCHF Fact Sheet + OMS DON — données régionales agrégées.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "RSVA_HMPV",
@@ -1697,7 +1717,8 @@
         "WHO hMPV Monitoring 2026 — seasonal patterns NH/SH"
       ],
       "descFR": "📊 hMPV : résurgence France hiver 2025–2026 documentée (SPF), avec souches A1/B1 co-circulantes. Pathogène respiratoire majeur : 2e cause de bronchiolite après RSV chez le nourrisson. Touche aussi adultes âgés et immunodéprimés. Pas de vaccin homologué hMPV. Tableau clinique : bronchiolite/pneumonie indiscernable cliniquement d'un RSV. EPI soignants : FFP2 + contact en période épidémique (hivernale). Pas d'antiviral spécifique.",
-      "descEN": "Major respiratory pathogen (2nd cause after RSV in infants). Winter resurgence China 2024-2025 with A1/B1 strains. FFP2 recommended for pediatric healthcare workers during epidemic peaks. No vaccine available."
+      "descEN": "Major respiratory pathogen (2nd cause after RSV in infants). Winter resurgence China 2024-2025 with A1/B1 strains. FFP2 recommended for pediatric healthcare workers during epidemic peaks. No vaccine available.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "CHOLERA",
@@ -1710,8 +1731,8 @@
       "lon": 32.5,
       "foci": [
         {
-          "lat": 14.0,
-          "lon": 8.0,
+          "lat": 14,
+          "lon": 8,
           "country": "Niger",
           "cases": 4800,
           "note": "Sécheresse + eau contaminée"
@@ -1732,7 +1753,7 @@
         },
         {
           "lat": 7.4,
-          "lon": -2.0,
+          "lon": -2,
           "country": "Ghana",
           "cases": 3200,
           "note": "Inondations nord Ghana"
@@ -1752,7 +1773,7 @@
           "note": "Post-cyclone 2025"
         },
         {
-          "lat": 13.0,
+          "lat": 13,
           "lon": 42.7,
           "country": "Éthiopie",
           "cases": 22000,
@@ -1773,7 +1794,7 @@
           "note": "Conflit chronique — 2024-2025"
         },
         {
-          "lat": 8.0,
+          "lat": 8,
           "lon": 38.7,
           "country": "Éthiopie-Sud",
           "cases": 5000,
@@ -1816,7 +1837,8 @@
       "descFR": "Choléra : diarrhée aqueuse sévère par toxine de Vibrio cholerae. 35 pays touchés en 2024-2025. Transmission strictement hydrique/alimentaire — aucun risque respiratoire. Traitement : réhydratation orale (90% de succès). Zones à risque : conflits, catastrophes naturelles, accès eau limité.",
       "descEN": "Cholera: severe watery diarrhea from Vibrio cholerae toxin. 35 countries affected 2024-2025. Strictly waterborne/foodborne — no respiratory risk. Treatment: oral rehydration (90% success). Risk areas: conflict zones, natural disasters, limited water access.",
       "descPatientFR": "💧 Choléra : aucun risque si vous avez accès à de l'eau potable. Cette maladie se transmet par l'eau ou les aliments contaminés, pas par l'air. En voyage dans les zones touchées : eau en bouteille, pas de crudités, hygiène des mains.",
-      "descPatientEN": "💧 Cholera: no risk if you have access to safe drinking water. This disease spreads through contaminated water or food, not through the air. When traveling to affected areas: bottled water, no raw vegetables, hand hygiene."
+      "descPatientEN": "💧 Cholera: no risk if you have access to safe drinking water. This disease spreads through contaminated water or food, not through the air. When traveling to affected areas: bottled water, no raw vegetables, hand hygiene.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "OROPOUCHE",
@@ -1830,14 +1852,14 @@
       "foci": [
         {
           "lat": -3.1,
-          "lon": -60.0,
+          "lon": -60,
           "country": "Brésil (Amazonas)",
           "cases": 280000,
           "note": "Pire épidémie historique 2024-2025 — PHEIC potentiel PAHO"
         },
         {
-          "lat": -12.0,
-          "lon": -77.0,
+          "lat": -12,
+          "lon": -77,
           "country": "Pérou",
           "cases": 15000,
           "note": "Nouveaux foyers 2024-2025"
@@ -1905,7 +1927,8 @@
       "descFR": "Oropouche : arbovirus émergent (Orthobunyavirus) transmis par moustiques/moucherons — JAMAIS interhumain. 280 000+ cas au Brésil en 2024-2025 (pire épidémie connue). Symptômes : fièvre, céphalées, arthralgie — ressemble à dengue. Graves : encéphalite rare, potentiel tératogène (décès fœtaux). Expansion géographique vers Caraïbes et Amérique centrale très préoccupante.",
       "descEN": "Oropouche: emerging arbovirus (Orthobunyavirus) transmitted by mosquitoes/midges — NEVER person-to-person. 280,000+ cases in Brazil 2024-2025 (worst epidemic ever). Symptoms: fever, headache, arthralgia — resembles dengue. Severe: rare encephalitis, teratogenic potential (fetal deaths). Geographic expansion to Caribbean and Central America very concerning.",
       "descPatientFR": "🦟 Fièvre d'Oropouche : maladie émergente transmise par des moucherons/moustiques en Amazonie et Caraïbes. Ne se transmet pas entre personnes. En voyage en zone touchée : utiliser répulsifs et vêtements couvrants. Actuellement absente de France métropolitaine.",
-      "descPatientEN": "🦟 Oropouche fever: emerging disease spread by midges/mosquitoes in Amazonia and the Caribbean. Not spread between people. When traveling to affected areas: use repellents and cover clothing. Currently absent from metropolitan France."
+      "descPatientEN": "🦟 Oropouche fever: emerging disease spread by midges/mosquitoes in Amazonia and the Caribbean. Not spread between people. When traveling to affected areas: use repellents and cover clothing. Currently absent from metropolitan France.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "YELLOW_FEVER",
@@ -1914,11 +1937,11 @@
       "pathogen": "Yellow fever virus (Flavivirus)",
       "category": "epidemic",
       "riskLevel": "high",
-      "lat": -2.0,
-      "lon": 25.0,
+      "lat": -2,
+      "lon": 25,
       "foci": [
         {
-          "lat": -4.0,
+          "lat": -4,
           "lon": 21.8,
           "country": "RDC",
           "cases": 4800,
@@ -1946,8 +1969,8 @@
           "note": "Zones rurales cerrado 2025"
         },
         {
-          "lat": -12.0,
-          "lon": -77.0,
+          "lat": -12,
+          "lon": -77,
           "country": "Pérou",
           "cases": 85,
           "note": "Forêt amazonienne"
@@ -2002,7 +2025,8 @@
       "descFR": "Fièvre jaune : arbovirus (Flavivirus) à transmission strictement vectorielle (moustiques). Vaccination (vaccin vivant atténué YF-17D) protège à vie dans 99% des cas — obligatoire pour Guyane française et conseillée pour 44 pays. Formes graves : ictère + hémorragies (d'où le nom). 47 pays endémiques. Aucun risque en Europe métropolitaine.",
       "descEN": "Yellow fever: arbovirus (Flavivirus) strictly vector-borne (mosquitoes). Vaccination (live attenuated YF-17D) provides lifelong protection in 99% of cases — mandatory for French Guiana and recommended for 44 countries. Severe forms: jaundice + hemorrhage (hence the name). 47 endemic countries. No risk in metropolitan Europe.",
       "descPatientFR": "💛 Fièvre jaune : si vous êtes vacciné, votre risque est quasi nul même en zone endémique. Vaccination obligatoire pour aller en Guyane française. Ne se transmet pas entre personnes — uniquement par les moustiques dans les zones tropicales.",
-      "descPatientEN": "💛 Yellow fever: if you are vaccinated, your risk is near zero even in endemic areas. Vaccination required for French Guiana. Not transmitted between people — only by mosquitoes in tropical areas."
+      "descPatientEN": "💛 Yellow fever: if you are vaccinated, your risk is near zero even in endemic areas. Vaccination required for French Guiana. Not transmitted between people — only by mosquitoes in tropical areas.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "LEPTOSPIROSIS",
@@ -2100,7 +2124,8 @@
       "descFR": "Leptospirose : zoonose bactérienne transmise par contact cutané avec eau/sol souillé par urine de rongeurs. Aucune transmission interhumaine ni respiratoire. La Réunion et Polynésie française : zones hyper-endémiques. Saison à risque : pluies + inondations. Forme grave (Weil) : ictère + insuffisance rénale.",
       "descEN": "Leptospirosis: bacterial zoonosis transmitted by skin contact with water/soil contaminated by rodent urine. No person-to-person or respiratory transmission. Réunion and French Polynesia: hyper-endemic zones. High-risk season: rains + floods. Severe form (Weil's disease): jaundice + renal failure.",
       "descPatientFR": "🐀 Leptospirose : pas de risque respiratoire. Contact avec eau douce ou boue en zone tropicale : évitez les plaies exposées, portez des bottes. À La Réunion : évitez baignades rivières après pluies. Antibiotiques efficaces si pris tôt.",
-      "descPatientEN": "🐀 Leptospirosis: no respiratory risk. Contact with freshwater or mud in tropical areas: avoid exposed wounds, wear boots. In Réunion: avoid river swimming after rain. Antibiotics are effective if taken early."
+      "descPatientEN": "🐀 Leptospirosis: no respiratory risk. Contact with freshwater or mud in tropical areas: avoid exposed wounds, wear boots. In Réunion: avoid river swimming after rain. Antibiotics are effective if taken early.",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "PLAGUE",
@@ -2110,7 +2135,7 @@
       "category": "epidemic",
       "riskLevel": "high",
       "lat": 51.7,
-      "lon": 85.0,
+      "lon": 85,
       "activeRegions": [
         "Russie (Altaï, Touva)",
         "Kazakhstan (frontalier)"
@@ -2127,7 +2152,7 @@
         "en": "FFP2 mandatory for pneumonic form — airborne transmission possible"
       },
       "reproductionNumber": {
-        "bubonique": 0.0,
+        "bubonique": 0,
         "pulmonaire": 2.5,
         "note": "Non-airborne sauf forme pulmonaire"
       },
@@ -2167,7 +2192,7 @@
       "foci": [
         {
           "lat": 51.7,
-          "lon": 85.0,
+          "lon": 85,
           "country": "Russie — Altaï",
           "cases": 12,
           "note": "Cluster confirmé — investigation en cours"
@@ -2180,13 +2205,15 @@
           "note": "Cas sporadiques — réservoirs rongeurs actifs"
         },
         {
-          "lat": 48.0,
-          "lon": 68.0,
+          "lat": 48,
+          "lon": 68,
           "country": "Kazakhstan (frontalier Russie)",
           "cases": 0,
           "note": "Surveillance renforcée — aucun cas humain confirmé"
         }
-      ]
+      ],
+      "verifiedAt": "2026-10-07"
     }
-  ]
+  ],
+  "verifiedAt": "2026-10-07"
 }

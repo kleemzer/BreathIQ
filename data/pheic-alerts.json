@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-06T12:00:00.000Z",
-  "fetchDate": "2026-10-06",
+  "generatedAt": "2026-10-07T14:47:31.941Z",
+  "fetchDate": "2026-10-07",
   "lastVerifiedBy": "WHO DON + Rospotrebnadzor (oct. 2026)",
   "alerts": [
     {
@@ -82,7 +82,8 @@
         "ru": "Преимущественно бубонная форма (укус блохи) — антибиотики: доксициклин 200 мг/сут или ципрофлоксацин 400 мг×2/сут в/в 10-14 дней · При подозрении на лёгочную форму (кашель + лихорадка + контакт): FFP2 + строгие капельные меры · Немедленное обязательное уведомление"
       },
       "pathogens_anchor": "pathogens",
-      "pathogen_id": "PLAGUE"
+      "pathogen_id": "PLAGUE",
+      "verifiedAt": "2026-10-07"
     },
     {
       "id": "EBOLA-BUNDIBUGYO-2026",
@@ -167,7 +168,9 @@
       "dataNote": {
         "fr": "Données OMS/ECDC vérifiées le 06/10/2026 — décès confirmés biologiquement (non comptabilisés suspectés)",
         "en": "WHO/ECDC data verified on 06/10/2026 — confirmed biological deaths only (suspected not counted)"
-      }
+      },
+      "verifiedAt": "2026-10-07"
     }
-  ]
+  ],
+  "verifiedAt": "2026-10-07"
 }
