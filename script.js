@@ -2572,7 +2572,9 @@ function renderPathogens() {
     // Champ absent → libellé explicite, jamais « undefined »
     const riskLabel = (riskLabels[currentLang] || riskLabels.en || riskLabels.fr)[ob.riskLevel] || ob.riskLevel || (currentLang === 'fr' ? 'Non classé' : 'Unclassified');
     const catLabel  = (categoryLabels[currentLang] || categoryLabels.en || categoryLabels.fr)[ob.category] || ob.category || (currentLang === 'fr' ? 'Non catégorisé' : 'Uncategorised');
-    const statLabel = (statusLabels[currentLang] || statusLabels.en || statusLabels.fr)[ob.currentStatus] || ob.currentStatus;
+    const statLabel = (statusLabels[currentLang] || statusLabels.en || statusLabels.fr)[ob.currentStatus]
+      || (typeof ob.currentStatus === 'object' && ob.currentStatus ? (ob.currentStatus[currentLang] || ob.currentStatus.fr) : ob.currentStatus)
+      || '—';
     const protBadgeClass = ob.protectionLevel >= 3 ? 'prot-ffp3' : ob.protectionLevel === 2 ? 'prot-ffp2' : 'prot-surg';
     const refList = ob.references ? ob.references.map(r => `<li>${makeRefLink(r)}</li>`).join('') : '';
     const pathIcon = PATHOGEN_ICONS[ob.id] || PATHOGEN_ICONS.DEFAULT;
@@ -2685,7 +2687,7 @@ function renderPathogens() {
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           ${lbl?'Protection EPI requise':'Required PPE'}
         </div>
-        <p class="pc-epi-block-body">${ob.maskNote}</p>
+        <p class="pc-epi-block-body">${typeof ob.maskNote === 'object' ? (ob.maskNote[currentLang] || ob.maskNote.fr || '') : ob.maskNote}</p>
       </div>` : ''}
 
       <!-- ⑧ Tableau clinique & Conduite à tenir -->
@@ -6294,9 +6296,18 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
             sw: `⚠️ Data ina siku ${daysSince} — angalia chanzo cha WHO`,
             ru: `⚠️ Данным ${daysSince} дней — проверьте источник ВОЗ`
           }[currentLang] || `⚠️ Data ${daysSince} days old — check WHO source`;
+          dateEl2.querySelector('.epidemic-stale')?.remove(); // pas de doublon au re-rendu
           const staleSpan = document.createElement('span');
+          staleSpan.className = 'epidemic-stale';
           staleSpan.style.cssText = 'display:block;font-size:0.78em;color:#FCA5A5;margin-top:3px;font-style:italic';
-          staleSpan.textContent = staleMsg;
+          if (active.sourceUrl) {
+            const link = document.createElement('a');
+            link.href = active.sourceUrl; link.target = '_blank'; link.rel = 'noopener';
+            link.style.color = 'inherit'; link.textContent = staleMsg;
+            staleSpan.appendChild(link);
+          } else {
+            staleSpan.textContent = staleMsg;
+          }
           dateEl2.appendChild(staleSpan);
         }
       }

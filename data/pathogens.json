@@ -2153,10 +2153,7 @@
       ],
       "protectionRequired": "FFP2 (pulmonaire)",
       "protectionLevel": "high",
-      "maskNote": {
-        "fr": "FFP2 obligatoire forme pulmonaire — transmission aérienne possible",
-        "en": "FFP2 mandatory for pneumonic form — airborne transmission possible"
-      },
+      "maskNote": "FFP2 obligatoire en cas de forme pulmonaire (transmission par gouttelettes) · Formes bubonique et septicémique : précautions standard et contact",
       "reproductionNumber": {
         "bubonique": 0,
         "pulmonaire": 2.5,
@@ -2179,10 +2176,7 @@
         "Gouttelettes respiratoires (forme pulmonaire uniquement)",
         "Manipulation cadavres animaux infectés"
       ],
-      "currentStatus": {
-        "fr": "Surveillance enzootique permanente. Cas humains sporadiques annuels (Madagascar, RDC, Kirghizstan). Aucun cluster majeur confirmé par l'OMS en Europe ou Russie en 2026.",
-        "en": "Permanent enzootic surveillance. Annual sporadic human cases (Madagascar, DRC, Kyrgyzstan). No major cluster confirmed by WHO in Europe or Russia in 2026."
-      },
+      "currentStatus": "endemic",
       "outbreakStart": null,
       "lastUpdate": "2026-10-07",
       "iconColor": "#7B2D8B",
