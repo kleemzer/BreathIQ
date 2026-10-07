@@ -78,12 +78,13 @@
 
   <!-- 2. Algorithme Z-score -->
   <section class="methodo-section">
-    <h2>📊 2. Algorithme de détection — Z-score (OMS 7-1-7)</h2>
+    <h2>📊 2. Seuils statistiques internes (Z-score)</h2>
+    <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--s2)"><strong>Précision :</strong> ces seuils sont une convention interne à BreathIQ. Ils ne doivent pas être confondus avec la cible OMS « 7-1-7 », qui est un objectif de <em>délais</em> (détecter une flambée en 7 jours, la notifier en 1 jour, engager la riposte en 7 jours) et non un algorithme de seuils statistiques.</p>
     <p style="font-size:.85rem;color:var(--text-secondary);margin-bottom:var(--s3)">Le score Z mesure l'écart d'une valeur hebdomadaire par rapport à la norme historique des 52 semaines précédentes.</p>
 
     <div class="formula-block">Z = (valeur_semaine_N − μ₅₂) / σ₅₂</div>
 
-    <h3>Seuils d'alerte — Algorithme OMS 7-1-7</h3>
+    <h3>Seuils d'alerte internes (Z-score sur 52 semaines)</h3>
     <table class="methodo-table">
       <thead><tr><th>Niveau</th><th>Seuil Z</th><th>p-value</th><th>Signification clinique</th></tr></thead>
       <tbody>
