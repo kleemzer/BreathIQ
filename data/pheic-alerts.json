@@ -12,6 +12,7 @@
         "en": "PUBLIC HEALTH EMERGENCY OF INTERNATIONAL CONCERN — WHO PHEIC"
       },
       "disease": "Ebola — virus Bundibugyo (BDBV)",
+      "shortName": { "fr": "Ebola (RDC)", "en": "Ebola (DRC)" },
       "subtitle": {
         "fr": "RDC · PHEIC OMS depuis le 17 mai 2026, maintenue le 18 août · 63 zones de santé, 7 provinces — OMS DON618 (25 sept. 2026)",
         "en": "DRC · WHO PHEIC since 17 May 2026, maintained on 18 August · 63 health zones, 7 provinces — WHO DON618 (25 Sept 2026)"

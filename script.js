@@ -3157,11 +3157,23 @@ function _updateExpertStats() {
   el('esbPheic', pheicCount);
   el('esbOutbreaks', outbreakCount);
   el('esbPathogens', OUTBREAK_DATA.length);
-  // Cas confirmés PHEIC : uniquement depuis une alerte sourcée (sinon « — », jamais un 0 trompeur)
+  // Cas confirmés : lisible uniquement pour UNE alerte sourcée (maladie + lieu + date) ;
+  // additionner les cas de plusieurs PHEIC n'aurait aucun sens → « — »
+  const fr = currentLang === 'fr';
   const sourcedActive = (window._pheicData?.alerts || []).filter(a => a.active && typeof a.casesConfirmed === 'number');
-  el('esbEbolaCases', sourcedActive.length
-    ? sourcedActive.reduce((sum, a) => sum + a.casesConfirmed, 0).toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-GB')
-    : '—');
+  if (sourcedActive.length === 1) {
+    const a = sourcedActive[0];
+    const short = a.shortName ? (a.shortName[currentLang] || a.shortName.fr) : a.disease;
+    const asOf = a.asOf ? new Date(a.asOf).toLocaleDateString(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : '';
+    const don = (a.sourceUrl || '').match(/\d{4}-DON\d+/)?.[0] || '';
+    el('esbEbolaCases', a.casesConfirmed.toLocaleString(fr ? 'fr-FR' : 'en-GB'));
+    el('esbEbolaCasesLabel', `${fr ? 'Cas confirmés' : 'Confirmed cases'} · ${short}`);
+    el('esbEbolaCasesSub', [asOf ? (fr ? `au ${asOf}` : `as of ${asOf}`) : '', don ? `${fr ? 'OMS' : 'WHO'} ${don}` : ''].filter(Boolean).join(' · '));
+  } else {
+    el('esbEbolaCases', '—');
+    el('esbEbolaCasesLabel', fr ? 'Cas confirmés · PHEIC' : 'Confirmed cases · PHEIC');
+    el('esbEbolaCasesSub', sourcedActive.length > 1 ? (fr ? 'Plusieurs alertes — voir détail' : 'Several alerts — see details') : '');
+  }
 }
 
 // ── Quick symptom selection from chips ──────────────────────────

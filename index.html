@@ -193,8 +193,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007u" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007u"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007v" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007v"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -681,7 +681,8 @@
       </div>
       <div class="esb-item">
         <span class="esb-num critical" id="esbEbolaCases">—</span>
-        <span class="esb-label" id="esbEbolaCasesLabel">Cas confirmés PHEIC</span>
+        <span class="esb-label" id="esbEbolaCasesLabel">Cas confirmés · PHEIC</span>
+        <span class="esb-sub" id="esbEbolaCasesSub"></span>
       </div>
       <div class="esb-item">
         <span class="esb-num ok" id="esbPathogens">26</span>
@@ -2436,7 +2437,7 @@ function hideEpiAlert(type) {
 })();
 </script>
 <script src="api-live.min.js?v=20261007k" defer></script>
-<script src="script.min.js?v=20261007u" defer></script>
+<script src="script.min.js?v=20261007v" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

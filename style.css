@@ -1639,6 +1639,8 @@ body[data-mode="patient"] .expert-only { display: none !important; }
 .esb-num.warning  { color: #FBBF24; }
 .esb-num.ok       { color: #34D399; }
 .esb-label { font-size: .65rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: .05em; }
+.esb-sub { display: block; font-size: .6rem; color: var(--text-muted); opacity: .8; margin-top: 2px; }
+.esb-sub:empty { display: none; }
 
 /* ── Path cards improvements ────────────────────────────────── */
 .path-card { position: relative; overflow: hidden; }
