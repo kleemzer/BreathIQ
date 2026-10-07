@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5">
-  <meta name="description" content="Qualité de l'air, alertes virus et épidémies près de chez vous — en temps réel, gratuit, sans inscription. Créé par un médecin généraliste français. Données OMS, SPF et ECDC.">
+  <meta name="description" data-i18n-content="meta-description" content="Qualité de l'air, alertes virus et épidémies près de chez vous — mis à jour quotidiennement (délai des sources indiqué), gratuit, sans inscription. Créé par un médecin généraliste français. Données OMS, SPF et ECDC.">
   <meta name="keywords" content="qualité air aujourd'hui, alerte virus, épidémie près de moi, symptômes que faire, score respiratoire, grippe, pollution air, santé publique France">
   <meta name="author" content="Dr. Clément MÉDEAU — BreathIQ">
   <meta name="copyright" content="© 2026 Clément MÉDEAU">
   <meta name="robots" content="index, follow">
   <!-- Open Graph -->
-  <meta property="og:title" content="BreathIQ — Surveillance air & épidémies · Données OMS/ECDC/SPF en direct">
-  <meta property="og:description" content="Outil de veille épidémiologique et de qualité de l'air — données OMS, ECDC et Santé Publique France en temps réel. Créé par Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription, 9 langues.">
+  <meta property="og:title" data-i18n-content="meta-og-title" content="BreathIQ — Surveillance air & épidémies · Données OMS/ECDC/SPF mises à jour quotidiennement">
+  <meta property="og:description" data-i18n-content="meta-og-description" content="Outil de veille épidémiologique et de qualité de l'air — données OMS, ECDC et Santé Publique France mises à jour quotidiennement, délai des sources indiqué. Créé par Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription.">
   <meta property="og:updated_time" content="2026-10-06T12:00:00+02:00">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://breathiq.fr">
@@ -23,11 +23,11 @@
   <meta property="og:image:alt" content="BreathIQ — Score respiratoire local · Données OMS/ECDC/SPF · Gratuit, sans compte">
   <!-- Twitter / X Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="BreathIQ — Surveillance air & épidémies · Données OMS/ECDC en direct">
-  <meta name="twitter:description" content="Outil de veille épidémiologique et qualité de l'air — OMS, ECDC, Santé Publique France en temps réel. Dr. Clément MÉDEAU, médecin généraliste. Gratuit, 9 langues, sans inscription.">
+  <meta name="twitter:title" data-i18n-content="meta-og-title" content="BreathIQ — Surveillance air & épidémies · Données OMS/ECDC/SPF mises à jour quotidiennement">
+  <meta name="twitter:description" data-i18n-content="meta-og-description" content="Outil de veille épidémiologique et qualité de l'air — OMS, ECDC, Santé Publique France, mises à jour quotidiennes, délai des sources indiqué. Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription.">
   <meta name="twitter:creator" content="@breathiq">
   <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
-  <meta name="twitter:image:alt" content="BreathIQ — Qualité air et alertes épidémies en temps réel">
+  <meta name="twitter:image:alt" data-i18n-content="meta-image-alt" content="BreathIQ — Qualité de l'air et alertes épidémies, mises à jour quotidiennement">
   <!-- hreflang — indexation multilingue Google/Bing -->
   <link rel="alternate" hreflang="fr" href="https://breathiq.fr/?lang=fr">
   <link rel="alternate" hreflang="en" href="https://breathiq.fr/?lang=en">
@@ -71,7 +71,7 @@
         "@id": "https://breathiq.fr/#medicalwebpage",
         "name": "BreathIQ — Surveillance épidémiologique et virus en circulation en France",
         "url": "https://breathiq.fr/",
-        "description": "BreathIQ surveille en temps réel les épidémies, alertes OMS et virus respiratoires saisonniers (26 pathogènes) à partir de données publiques officielles. Outil d'information épidémiologique — ne remplace pas un avis médical.",
+        "description": "BreathIQ surveille chaque jour les épidémies, alertes OMS et virus respiratoires saisonniers (26 pathogènes) à partir de données publiques officielles. Outil d'information épidémiologique — ne remplace pas un avis médical.",
         "dateModified": "2026-10-06",
         "medicalAudience": ["Patient", "Clinician"],
         "about": [
@@ -165,7 +165,7 @@
     }
   }
   </script>
-  <title>BreathIQ — Surveillance épidémiologique · Virus en circulation · Alertes OMS</title>
+  <title data-i18n="x-breathiq-surveillance-epidemiologique-virus-227d">BreathIQ — Surveillance épidémiologique · Virus en circulation · Alertes OMS</title>
   <!-- Inter font — auto-hébergée, zéro round-trip Google (LCP -200ms) -->
   <link rel="preload" as="font" href="/assets/inter-variable.woff2" type="font/woff2" crossorigin>
   <!-- CSS critique inline — évite le FOUC et améliore FCP/LCP -->
@@ -193,8 +193,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261007v" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261007v"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261007w" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261007w"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
@@ -213,7 +213,7 @@
 <div id="consentBanner" class="consent-banner" role="dialog" aria-labelledby="consentBannerTitle" aria-live="polite" hidden>
   <div class="consent-banner-inner">
     <div class="consent-banner-text">
-      <strong id="consentBannerTitle">🔒 Confidentialité — <span style="font-weight:400;font-size:.85em">Aucune donnée personnelle collectée. Données publiques OMS/ECDC uniquement.</span></strong>
+      <strong id="consentBannerTitle"><span data-i18n="x-confidentialite-cc14">🔒 Confidentialité —</span> <span data-i18n="x-aucune-donnee-personnelle-collectee-9f92" style="font-weight:400;font-size:.85em">Aucune donnée personnelle collectée. Données publiques OMS/ECDC uniquement.</span></strong>
     </div>
     <div class="consent-banner-actions">
       <button class="consent-btn-decline" onclick="declineConsent()" data-i18n="consent-decline">Continuer sans accepter</button>
@@ -234,7 +234,7 @@
           <circle cx="14" cy="14" r="5" fill="var(--c-teal)" opacity="0.9"/>
         </svg>
       </span>
-      <span class="brand-text">Breath<strong>IQ</strong></span>
+      <span translate="no" class="brand-text">Breath<strong>IQ</strong></span>
     </a>
 
     <ul class="nav-links" role="list" id="mainNavLinks">
@@ -242,9 +242,9 @@
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
-      <li><a href="bilan-epidemique.html">Bilan mensuel</a></li>
+      <li><a data-i18n="x-bilan-mensuel-aabb" href="bilan-epidemique.html">Bilan mensuel</a></li>
       <li class="nav-more-item">
-        <button class="nav-more-btn" onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
+        <button data-i18n="x-plus-6cea" class="nav-more-btn" onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
         <ul class="nav-more-dropdown" role="menu">
           <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
           <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
@@ -252,23 +252,22 @@
           <li><a href="about.html" data-i18n="nav-about">À propos</a></li>
         </ul>
       </li>
+      <li class="nav-mobile-tools" aria-label="Affichage">
+        <button type="button" class="nav-tool-btn" onclick="cycleFontSize()" data-i18n="nav-tool-font">Aa · Taille du texte</button>
+        <button type="button" class="nav-tool-btn" onclick="document.getElementById('themeToggle')?.click()" data-i18n="nav-tool-theme">☀️ / 🌙 Thème</button>
+      </li>
     </ul>
 
     <div class="nav-actions">
       <span class="live-badge live-off" id="liveBadge" role="status" title="Données publiques OMS · ECDC · SPF · Open-Meteo — mises à jour quotidiennement." aria-label="Statut des données">
-        <span class="live-dot"></span><span class="live-label" id="liveLabelText">DONNÉES PUBLIQUES</span>
+        <span class="live-dot"></span><span class="live-label" id="liveLabelText" translate="no">DONNÉES PUBLIQUES</span>
       </span>
-      <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé"><span aria-hidden="true">👨‍⚕️</span><span class="mode-btn-text"> Espace Soignant</span></button>
+      <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé"><span aria-hidden="true">👨‍⚕️</span><span data-i18n="x-espace-soignant-8155" class="mode-btn-text"> Espace Soignant</span></button>
       <select class="lang-select" id="langSelect" aria-label="Changer de langue" onchange="setLang(this.value)">
         <option value="fr">🇫🇷 Français</option>
         <option value="en">🇬🇧 English</option>
-        <option value="es">🇪🇸 Español</option>
-        <option value="pt">🇧🇷 Português</option>
-        <option value="ar">🇸🇦 العربية</option>
-        <option value="zh">🇨🇳 中文</option>
-        <option value="hi">🇮🇳 हिन्दी</option>
-        <option value="sw">🌍 Swahili</option>
-        <option value="ru">🇷🇺 Русский</option>
+        <!-- es, pt, ar, zh, hi, sw, ru : ~110 clés sur 170 manquantes (scripts/check-i18n.mjs) — retirées
+             du sélecteur tant qu'elles ne sont pas complètes (traductions conservées dans I18N). -->
       </select>
       <button class="font-size-btn" id="fontSizeBtn" onclick="cycleFontSize()" aria-label="Taille du texte" title="Agrandir / réduire le texte" style="font-weight:700">A</button>
       <button class="nav-toggle" id="navToggleBtn" onclick="toggleMobileNav()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavLinks">
@@ -302,21 +301,21 @@
     <div class="epidemic-alert-gp patient-only" id="epidemicGpMsg">
       <span class="epidemic-level rouge" aria-hidden="true">🔴</span>
       <span class="epidemic-gp-text">
-        <strong id="epidemicGpTitle">Alerte internationale active</strong>
+        <strong id="epidemicGpTitle" translate="no">Alerte internationale active</strong>
         <span id="epidemicGpInstruction"></span> <span id="epidemicGpDate" style="font-size:.8em;opacity:.85"></span>
       </span>
-      <a href="#" class="epidemic-link" id="epidemicGpLink">En savoir plus →</a>
+      <a href="#" class="epidemic-link" id="epidemicGpLink" translate="no">En savoir plus →</a>
     </div>
     <!-- Message soignants — complet, technique, affiché uniquement en mode expert -->
     <div class="epidemic-alert-body expert-only" id="epidemicExpertMsg" style="display:none">
-      <strong class="epidemic-disease" id="epidemicExpertDisease">Chargement…</strong>
+      <strong translate="no" class="epidemic-disease" id="epidemicExpertDisease">Chargement…</strong>
       <span class="epidemic-date" id="epidemicExpertDate"></span>
       <p class="epidemic-msg" id="epidemicMsg"></p>
       <p class="epidemic-mask" id="epidemicMask"></p>
     </div>
     <div class="epidemic-alert-actions">
-      <a href="ebola.html" class="epidemic-link expert-only" style="display:none">Guide clinique complet →</a>
-      <button class="epidemic-toggle" onclick="toggleEpidemicBanner()" aria-label="Voir les détails de l'alerte">Détails ▾</button>
+      <a data-i18n="x-guide-clinique-complet-7633" href="ebola.html" class="epidemic-link expert-only" style="display:none">Guide clinique complet →</a>
+      <button data-i18n="x-details-ba92" class="epidemic-toggle" onclick="toggleEpidemicBanner()" aria-label="Voir les détails de l'alerte">Détails ▾</button>
       <button class="epidemic-close" onclick="closePheicBanner()" aria-label="Fermer l'alerte">✕</button>
     </div>
   </div>
@@ -330,15 +329,15 @@
 
     <!-- H1 — positionnement épidémiologique -->
     <div class="gp-hero-intro">
-      <p class="hero-author-chip">🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle · <span style="font-weight:400;opacity:.75">Outil d'information — non dispositif médical</span></p>
-      <h1 class="gp-hero-title" id="patient-hero-title">Quels virus circulent en France en ce moment ?</h1>
-      <p class="gp-hero-subtitle">BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF). <strong style="color:#93c5fd;font-weight:600">Gratuit, sans compte, zéro tracking.</strong></p>
+      <p class="hero-author-chip"><span data-i18n="x-dr-clement-medeau-medecin-c07e">🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle ·</span> <span data-i18n="x-outil-d-information-non-540b" style="font-weight:400;opacity:.75">Outil d'information — non dispositif médical</span></p>
+      <h1 data-i18n="x-quels-virus-circulent-en-be32" class="gp-hero-title" id="patient-hero-title">Quels virus circulent en France en ce moment ?</h1>
+      <p class="gp-hero-subtitle"><span data-i18n="x-breathiq-surveille-chaque-jour-1771">BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF).</span> <strong data-i18n="x-gratuit-sans-compte-zero-f8ab" style="color:#93c5fd;font-weight:600">Gratuit, sans compte, zéro tracking.</strong></p>
       <!-- CTA principal — alertes épidémiques -->
       <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" class="hero-symptom-cta" aria-label="Voir les alertes épidémiques en cours">
-        🦠 Voir les alertes épidémiques <span class="hero-cta-arrow" aria-hidden="true">→</span>
+        <span data-i18n="x-voir-les-alertes-epidemiques-b615">🦠 Voir les alertes épidémiques</span> <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
       <!-- CTA secondaire — symptômes -->
-      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-secondary-cta" aria-label="J'ai des symptômes">
+      <a data-i18n="x-j-ai-des-symptomes-e5be" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-secondary-cta" aria-label="J'ai des symptômes">
         🤒 J'ai des symptômes — que faire ?
       </a>
       <!-- Fraîcheur des données -->
@@ -348,8 +347,8 @@
     <!-- Indicateur de risque — universel, visuel, immédiat -->
     <div class="risk-banner risk-low" id="patientRiskBanner" role="status" aria-live="polite">
       <div class="risk-level-icon" id="patientRiskIcon" aria-hidden="true">🟢</div>
-      <span class="risk-level-label" id="patientRiskLabel">Risque faible</span>
-      <h2 id="patientRiskTitle"><span class="risk-skeleton risk-skeleton-title" aria-hidden="true"></span><span id="patientRiskTitleText" hidden>Chargement…</span></h2>
+      <span class="risk-level-label" id="patientRiskLabel" translate="no">Risque faible</span>
+      <h2 id="patientRiskTitle"><span class="risk-skeleton risk-skeleton-title" aria-hidden="true"></span><span translate="no" id="patientRiskTitleText" hidden>Chargement…</span></h2>
       <p id="patientRiskDesc"><span class="risk-skeleton risk-skeleton-desc" aria-hidden="true"></span></p>
       <div class="risk-pheic-strip" id="riskPheicStrip" hidden></div>
     </div>
@@ -359,32 +358,32 @@
       <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" class="path-card path-epi">
         <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
         <span class="path-icon">🦠</span>
-        <span class="path-title">Alertes épidémiques</span>
-        <span class="path-sub">OMS · ECDC · Foyers actifs</span>
+        <span data-i18n="x-alertes-epidemiques-3a8f" class="path-title">Alertes épidémiques</span>
+        <span data-i18n="x-oms-ecdc-foyers-actifs-5a76" class="path-sub">OMS · ECDC · Foyers actifs</span>
       </a>
       <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="path-card path-score">
         <span class="path-icon">🔬</span>
-        <span class="path-title">Virus en circulation</span>
-        <span class="path-sub">Grippe · COVID · RSV · 26 pathogènes</span>
+        <span data-i18n="x-virus-en-circulation-c09c" class="path-title">Virus en circulation</span>
+        <span data-i18n="x-grippe-covid-rsv-26-91a7" class="path-sub">Grippe · COVID · RSV · 26 pathogènes</span>
       </a>
       <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
         <span class="path-icon">🤒</span>
-        <span class="path-title">J'ai des symptômes</span>
-        <span class="path-sub">Que faire maintenant ?</span>
+        <span data-i18n="x-j-ai-des-symptomes-1ddb" class="path-title">J'ai des symptômes</span>
+        <span data-i18n="x-que-faire-maintenant-c42b" class="path-sub">Que faire maintenant ?</span>
       </a>
       <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
         <span class="path-icon" aria-hidden="true">🩺</span>
-        <span class="path-title">Espace soignant</span>
-        <span class="path-sub">Outils cliniques · Déclaration</span>
+        <span data-i18n="x-espace-soignant-8efa" class="path-title">Espace soignant</span>
+        <span data-i18n="x-outils-cliniques-declaration-1fde" class="path-sub">Outils cliniques · Déclaration</span>
       </button>
     </div>
 
-    <p class="hero-disclaimer">Gratuit · Sans inscription · Aucune donnée personnelle collectée</p>
+    <p data-i18n="x-gratuit-sans-inscription-aucune-6739" class="hero-disclaimer">Gratuit · Sans inscription · Aucune donnée personnelle collectée</p>
     <div class="hero-trust-strip" role="list" aria-label="Garanties">
-      <span role="listitem">🚫 Zéro tracking</span>
-      <span role="listitem">🏛️ Données OMS officielles</span>
-      <span role="listitem">🩺 Créé par un médecin</span>
-      <span role="listitem">🔒 Rien de vendu</span>
+      <span data-i18n="x-zero-tracking-d2db" role="listitem">🚫 Zéro tracking</span>
+      <span data-i18n="x-donnees-oms-officielles-9d8e" role="listitem">🏛️ Données OMS officielles</span>
+      <span data-i18n="x-cree-par-un-medecin-658b" role="listitem">🩺 Créé par un médecin</span>
+      <span data-i18n="x-rien-de-vendu-00dc" role="listitem">🔒 Rien de vendu</span>
     </div>
   </div>
 </section>
@@ -395,19 +394,19 @@
     <div class="gp-trust-items">
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        26 pathogènes · OMS · ECDC · SPF · mis à jour quotidiennement
+        <span data-i18n="x-26-pathogenes-oms-ecdc-3f7b">26 pathogènes · OMS · ECDC · SPF · mis à jour quotidiennement</span>
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
-        Sans compte · Sans publicité
+        <span data-i18n="x-sans-compte-sans-publicite-ac10">Sans compte · Sans publicité</span>
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg>
-        Aucune donnée de santé collectée
+        <span data-i18n="x-aucune-donnee-de-sante-7621">Aucune donnée de santé collectée</span>
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-        <a href="#about" onclick="return navTo(event,'#about')" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)">Dr. Clément MÉDEAU · Médecin</a>
+        <a translate="no" href="#about" onclick="return navTo(event,'#about')" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)">Dr. Clément MÉDEAU · Médecin</a>
       </span>
     </div>
   </div>
@@ -417,9 +416,9 @@
 <section class="gp-score-section patient-only" id="dailyScore" aria-labelledby="dailyScoreTitle">
   <div class="container" style="max-width:720px">
     <div class="gp-score-card" id="gpScoreCard">
-      <div class="gp-score-label">📊 Indice respiratoire du jour</div>
+      <div data-i18n="x-indice-respiratoire-du-jour-1362" class="gp-score-label">📊 Indice respiratoire du jour</div>
       <div style="text-align:center;margin-bottom:.5rem">
-        <span class="gp-score-estimate-badge" title="Score calculé à partir de données de surveillance épidémique réelles SPF · ECDC · OMS. L'AQI en temps réel nécessite votre ville.">📡 Surveillance SPF · ECDC · OMS — entrez votre ville pour l'AQI</span>
+        <span data-i18n="x-surveillance-spf-ecdc-oms-816b" class="gp-score-estimate-badge" title="Score calculé à partir de données de surveillance épidémique réelles SPF · ECDC · OMS. L'AQI local (actualisé toutes les heures) nécessite votre ville.">📡 Surveillance SPF · ECDC · OMS — entrez votre ville pour l'AQI</span>
       </div>
       <div class="gp-score-main">
         <div class="gp-score-dial" style="--score-color:#4B5563;--score-pct:0%" id="gpScoreDial">
@@ -429,73 +428,73 @@
           </div>
         </div>
         <div class="gp-score-info">
-          <p class="gp-score-level" id="gpScoreLevel">Entrez votre ville ↓</p>
+          <p class="gp-score-level" id="gpScoreLevel" translate="no">Entrez votre ville ↓</p>
           <span id="gpScoreDelta" role="status" style="display:none;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:4px" aria-live="polite" aria-label="Évolution par rapport à hier"></span>
           <p class="gp-score-loc" id="gpScoreLoc">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span id="gpScoreLocText">Votre région</span>
+            <span id="gpScoreLocText" translate="no">Votre région</span>
           </p>
           <!-- Recherche ville pour AQI précis par commune -->
           <div class="gp-city-search" id="gpCitySearch" role="search" aria-label="Affiner par ville">
             <button class="gp-geo-btn" id="gpGeoBtn" onclick="activateGeolocationAqi()" title="Utiliser ma position GPS" aria-label="Utiliser ma position">📍</button>
             <input type="text" id="gpCityInput" class="gp-city-input" placeholder="Votre ville…" maxlength="60"
-              aria-label="Ville pour l'AQI en direct" autocomplete="address-level2"
+              aria-label="Ville pour l'AQI local" autocomplete="address-level2"
               onkeydown="if(event.key==='Enter'){event.preventDefault();searchCityAqi()}">
             <button class="gp-city-btn" id="gpCityBtn" onclick="searchCityAqi()" aria-label="Rechercher">→</button>
           </div>
           <div id="gpCityHint" class="gp-city-hint" aria-live="polite"></div>
-          <p class="gp-score-advice" id="gpScoreAdvice">Contexte respiratoire modéré. Pas de précaution particulière pour la majorité. Si vous êtes asthmatique ou fragile, limitez l'exposition prolongée.</p>
+          <p class="gp-score-advice" id="gpScoreAdvice" translate="no">Contexte respiratoire modéré. Pas de précaution particulière pour la majorité. Si vous êtes asthmatique ou fragile, limitez l'exposition prolongée.</p>
         </div>
       </div>
       <div class="gp-factors">
         <div class="gp-factor">
           <span class="gp-factor-icon">🌬️</span>
-          <span class="gp-factor-name">Qualité de l'air</span>
-          <span class="gp-factor-val" id="gpFactorAqi">Bonne</span>
+          <span data-i18n="x-qualite-de-l-air-22fe" class="gp-factor-name">Qualité de l'air</span>
+          <span data-i18n="x-bonne-840f" class="gp-factor-val" id="gpFactorAqi">Bonne</span>
         </div>
         <div class="gp-factor">
           <span class="gp-factor-icon">🦠</span>
-          <span class="gp-factor-name">Circulation virale</span>
-          <span class="gp-factor-val" id="gpFactorViral">Modérée</span>
+          <span data-i18n="x-circulation-virale-2312" class="gp-factor-name">Circulation virale</span>
+          <span data-i18n="x-moderee-36b5" class="gp-factor-val" id="gpFactorViral">Modérée</span>
         </div>
         <div class="gp-factor">
           <span class="gp-factor-icon">🌿</span>
-          <span class="gp-factor-name">Pollens</span>
-          <span class="gp-factor-val" id="gpFactorPollen">Élevés</span>
+          <span data-i18n="x-pollens-37ee" class="gp-factor-name">Pollens</span>
+          <span data-i18n="x-eleves-cf9c" class="gp-factor-val" id="gpFactorPollen">Élevés</span>
         </div>
         <div class="gp-factor">
           <span class="gp-factor-icon">📡</span>
-          <span class="gp-factor-name">Source</span>
-          <span class="gp-factor-val" id="gpFactorWeather" style="font-size:.72rem;color:rgba(232,240,247,.6)">SPF · ECDC</span>
+          <span data-i18n="x-source-f31b" class="gp-factor-name">Source</span>
+          <span translate="no" class="gp-factor-val" id="gpFactorWeather" style="font-size:.72rem;color:rgba(232,240,247,.6)">SPF · ECDC</span>
         </div>
       </div>
       <!-- CTA contextuel dynamique selon le niveau de risque -->
       <div id="gpScoreCta" style="margin:.75rem 0;text-align:center;display:none">
         <a id="gpScoreCtaBtn" href="#dailyActions" onclick="return navTo(event,'#dailyActions')" style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;padding:.65rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background .2s">
-          <span id="gpScoreCtaIcon">💡</span><span id="gpScoreCtaText">Voir les conseils du jour</span>
+          <span id="gpScoreCtaIcon">💡</span><span id="gpScoreCtaText" translate="no">Voir les conseils du jour</span>
         </a>
       </div>
       <div class="gp-score-actions">
         <a href="#score" onclick="return navTo(event,'#score')" class="gp-btn-primary" aria-label="Voir le score détaillé et les composantes">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-          Voir le score complet
+          <span data-i18n="x-voir-le-score-complet-28fa">Voir le score complet</span>
         </a>
         <button class="gp-btn-ghost" id="gpShareBtn" onclick="shareScore()" aria-label="Partager ce score à un proche">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-          Partager à un proche
+          <span data-i18n="x-partager-a-un-proche-913b">Partager à un proche</span>
         </button>
         <a href="methodologie.html" class="gp-btn-ghost">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
-          Comprendre la méthode
+          <span data-i18n="x-comprendre-la-methode-2cb5">Comprendre la méthode</span>
         </a>
       </div>
       <!-- Sparkline 7 jours -->
       <div class="gp-sparkline-wrap" id="gpSparklineWrap" style="display:none">
-        <span class="gp-sparkline-label">7 derniers jours</span>
+        <span data-i18n="x-7-derniers-jours-1727" class="gp-sparkline-label">7 derniers jours</span>
         <canvas id="gpSparkline" width="160" height="36" aria-label="Tendance du score sur 7 jours" role="img"></canvas>
       </div>
       <p class="gp-score-update-date" id="gpScoreDate" style="font-size:.75rem;color:#94a3b8;text-align:center;margin-bottom:.5rem;font-style:italic"></p>
-      <p class="gp-score-disclaimer">⚠️ Ce score décrit le <strong>contexte environnemental général</strong> — il ne constitue pas un diagnostic médical et ne prédit pas votre risque individuel. En cas de symptômes persistants, consultez un professionnel de santé.</p>
+      <p class="gp-score-disclaimer"><span data-i18n="x-ce-score-decrit-le-cac1">⚠️ Ce score décrit le</span> <strong data-i18n="x-contexte-environnemental-general-dfe0">contexte environnemental général</strong> <span data-i18n="x-il-ne-constitue-pas-1843">— il ne constitue pas un diagnostic médical et ne prédit pas votre risque individuel. En cas de symptômes persistants, consultez un professionnel de santé.</span></p>
     </div>
   </div>
 </section>
@@ -503,7 +502,7 @@
 <!-- ===== VIRUS SAISONNIERS (Mode Patient) ===== -->
 <section class="virus-saison-section patient-only" id="virusSaison" aria-labelledby="virusSaisonTitle">
   <div class="container">
-    <h2 id="virusSaisonTitle">🔬 Virus en circulation en France</h2>
+    <h2 data-i18n="x-virus-en-circulation-en-9770" id="virusSaisonTitle">🔬 Virus en circulation en France</h2>
     <div class="virus-saison-grid" id="virusSaisonGrid">
       <!-- Skeletons pendant le chargement -->
       <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:120px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:90px;height:.8em;margin-top:.4rem"></div></div>
@@ -512,9 +511,9 @@
       <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:95px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:75px;height:.8em;margin-top:.4rem"></div></div>
     </div>
     <div class="virus-saison-cta">
-      <a href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les pathogènes →</a>
+      <a data-i18n="x-voir-tous-les-pathogenes-9fe3" href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les pathogènes →</a>
     </div>
-    <p class="virus-saison-source" id="virusSaisonSource">Données SPF · ECDC — chargement…</p>
+    <p class="virus-saison-source" id="virusSaisonSource" translate="no">Données SPF · ECDC — chargement…</p>
   </div>
 </section>
 
@@ -522,18 +521,18 @@
 <section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
   <div class="container">
     <div class="epidemio-alert-header">
-      <h2 id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
-      <p class="epidemio-alert-sub" id="epidemioAlertSub">Chargement des alertes OMS…</p>
+      <h2 data-i18n="x-alertes-epidemiques-en-cours-5487" id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
+      <p class="epidemio-alert-sub" id="epidemioAlertSub" translate="no">Chargement des alertes OMS…</p>
     </div>
     <div class="epi-context-note" id="epiContextNote">
       <span>ℹ️</span>
-      <p>Ces alertes concernent des personnes ayant voyagé dans des zones épidémiques spécifiques. <strong>Si vous n'avez pas voyagé dans ces régions, ces alertes ne vous concernent pas directement.</strong> Continuez vers le questionnaire de symptômes si vous avez des doutes.</p>
+      <p><span data-i18n="x-ces-alertes-concernent-des-4b3d">Ces alertes concernent des personnes ayant voyagé dans des zones épidémiques spécifiques.</span> <strong data-i18n="x-si-vous-n-avez-dc65">Si vous n'avez pas voyagé dans ces régions, ces alertes ne vous concernent pas directement.</strong> <span data-i18n="x-continuez-vers-le-questionnaire-6617">Continuez vers le questionnaire de symptômes si vous avez des doutes.</span></p>
     </div>
     <!-- Contenu dynamique injecté par loadPheicAlert() -->
     <div id="epidemioAlertCards"></div>
     <div class="epi-cta-continue">
-      <p>Aucune de ces situations ne vous concerne ?</p>
-      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
+      <p data-i18n="x-aucune-de-ces-situations-ebf4">Aucune de ces situations ne vous concerne ?</p>
+      <a data-i18n="x-continuer-vers-le-questionnaire-9959" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
     </div>
   </div>
 </section>
@@ -541,70 +540,70 @@
 <!-- ===== QUE FAIRE AUJOURD'HUI (Mode Patient) ===== -->
 <section class="gp-daily-section patient-only" id="dailyActions" aria-labelledby="dailyActionsTitle" style="background:linear-gradient(180deg,#0F2A45 0%,#1A3C5E 100%);color:#e8f0f7">
   <div class="container">
-    <p class="gp-section-label">Contexte du jour</p>
-    <h2 class="gp-section-title" id="dailyActionsTitle">Informations pratiques du moment</h2>
-    <p class="gp-section-sub">Des repères fondés sur les données du jour. À titre informatif, sans alarmisme.</p>
+    <p data-i18n="x-contexte-du-jour-34be" class="gp-section-label">Contexte du jour</p>
+    <h2 data-i18n="x-informations-pratiques-du-moment-103a" class="gp-section-title" id="dailyActionsTitle">Informations pratiques du moment</h2>
+    <p data-i18n="x-des-reperes-fondes-sur-634c" class="gp-section-sub">Des repères fondés sur les données du jour. À titre informatif, sans alarmisme.</p>
     <div class="gp-daily-grid">
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">🪟</span>
-        <span class="gp-daily-title">Ventilation intérieure</span>
-        <span class="gp-daily-desc">Renouveler l'air 10 min le matin réduit la concentration en virus et CO₂. Bénéfique même en hiver.</span>
-        <span class="gp-daily-tag tag-green">Bénéfique toute l'année</span>
+        <span data-i18n="x-ventilation-interieure-05ae" class="gp-daily-title">Ventilation intérieure</span>
+        <span data-i18n="x-renouveler-l-air-10-d080" class="gp-daily-desc">Renouveler l'air 10 min le matin réduit la concentration en virus et CO₂. Bénéfique même en hiver.</span>
+        <span data-i18n="x-benefique-toute-l-annee-7b64" class="gp-daily-tag tag-green">Bénéfique toute l'année</span>
       </div>
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">😷</span>
-        <span class="gp-daily-title">Masque FFP2 si fragile</span>
-        <span class="gp-daily-desc">En transports bondés ou espaces clos si vous êtes à risque ou si la circulation virale est élevée.</span>
-        <span class="gp-daily-tag tag-orange">Selon profil</span>
+        <span data-i18n="x-masque-ffp2-si-fragile-eb0a" class="gp-daily-title">Masque FFP2 si fragile</span>
+        <span data-i18n="x-en-transports-bondes-ou-8722" class="gp-daily-desc">En transports bondés ou espaces clos si vous êtes à risque ou si la circulation virale est élevée.</span>
+        <span data-i18n="x-selon-profil-51cb" class="gp-daily-tag tag-orange">Selon profil</span>
       </div>
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">🏃</span>
-        <span class="gp-daily-title">Sport en extérieur</span>
-        <span class="gp-daily-desc">L'air extérieur reste généralement préférable. Vérifiez l'indice AQI local si vous êtes asthmatique.</span>
-        <span class="gp-daily-tag">Voir score air</span>
+        <span data-i18n="x-sport-en-exterieur-fb90" class="gp-daily-title">Sport en extérieur</span>
+        <span data-i18n="x-l-air-exterieur-reste-ef27" class="gp-daily-desc">L'air extérieur reste généralement préférable. Vérifiez l'indice AQI local si vous êtes asthmatique.</span>
+        <span data-i18n="x-voir-score-air-32dd" class="gp-daily-tag">Voir score air</span>
       </div>
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">👴</span>
-        <span class="gp-daily-title">Visites aux personnes âgées</span>
-        <span class="gp-daily-desc">Si vous êtes enrhumé ou si la circulation virale est forte, portez un masque ou reportez.</span>
-        <span class="gp-daily-tag tag-orange">Précaution</span>
+        <span data-i18n="x-visites-aux-personnes-agees-6901" class="gp-daily-title">Visites aux personnes âgées</span>
+        <span data-i18n="x-si-vous-etes-enrhume-7afb" class="gp-daily-desc">Si vous êtes enrhumé ou si la circulation virale est forte, portez un masque ou reportez.</span>
+        <span data-i18n="x-precaution-c3ed" class="gp-daily-tag tag-orange">Précaution</span>
       </div>
       <div class="gp-daily-card">
         <span class="gp-daily-icon" aria-hidden="true">🏥</span>
-        <span class="gp-daily-title">Symptômes persistants ?</span>
-        <span class="gp-daily-desc">Fièvre, toux ou difficultés à respirer depuis plus de 3 jours : consultez un médecin.</span>
-        <span class="gp-daily-tag">Consulter →</span>
+        <span data-i18n="x-symptomes-persistants-3925" class="gp-daily-title">Symptômes persistants ?</span>
+        <span data-i18n="x-fievre-toux-ou-difficultes-ade6" class="gp-daily-desc">Fièvre, toux ou difficultés à respirer depuis plus de 3 jours : consultez un médecin.</span>
+        <span data-i18n="x-consulter-1213" class="gp-daily-tag">Consulter →</span>
       </div>
     </div>
-    <p style="font-size:.75rem;color:#94a3b8;margin-top:1.25rem;text-align:center">BreathIQ est un outil d'information et de prévention. Il ne remplace pas un avis médical. <a href="methodologie.html" style="color:#60a5fa">Méthodologie →</a></p>
+    <p style="font-size:.75rem;color:#94a3b8;margin-top:1.25rem;text-align:center"><span data-i18n="x-breathiq-est-un-outil-17d4">BreathIQ est un outil d'information et de prévention. Il ne remplace pas un avis médical.</span> <a data-i18n="x-methodologie-dcb6" href="methodologie.html" style="color:#60a5fa">Méthodologie →</a></p>
   </div>
 </section>
 
 <!-- ===== EN 30 SECONDES — EXPLAINER (Mode Patient) ===== -->
 <section class="gp-explainer patient-only" aria-label="Comment fonctionne BreathIQ ?" style="background:#0F1F35;color:#e8f0f7">
   <div class="container">
-    <p class="gp-section-label" style="text-align:center">Comment ça marche ?</p>
-    <h2 class="gp-section-title" style="text-align:center;max-width:480px;margin-inline:auto" id="explainerTitle">BreathIQ en 30 secondes</h2>
+    <p data-i18n="x-comment-ca-marche-a74d" class="gp-section-label" style="text-align:center">Comment ça marche ?</p>
+    <h2 data-i18n="x-breathiq-en-30-secondes-4ff8" class="gp-section-title" style="text-align:center;max-width:480px;margin-inline:auto" id="explainerTitle">BreathIQ en 30 secondes</h2>
     <div class="gp-explainer-grid" role="list">
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">1</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Données officielles</strong>
-        <p class="gp-explainer-text">Qualité de l'air, signaux viraux, pollens — agrégés depuis OMS, ECDC et Santé Publique France.</p>
+        <strong data-i18n="x-donnees-officielles-fbea" style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Données officielles</strong>
+        <p data-i18n="x-qualite-de-l-air-9899" class="gp-explainer-text">Qualité de l'air, signaux viraux, pollens — agrégés depuis OMS, ECDC et Santé Publique France.</p>
       </div>
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">2</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Score lisible</strong>
-        <p class="gp-explainer-text">Ces données complexes deviennent un score 0–100, compréhensible en un coup d'œil.</p>
+        <strong data-i18n="x-score-lisible-7a63" style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Score lisible</strong>
+        <p data-i18n="x-ces-donnees-complexes-deviennent-22ed" class="gp-explainer-text">Ces données complexes deviennent un score 0–100, compréhensible en un coup d'œil.</p>
       </div>
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">3</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Contexte quotidien</strong>
-        <p class="gp-explainer-text">Des informations générales adaptées au contexte du jour. Sans diagnostic, sans alarmisme.</p>
+        <strong data-i18n="x-contexte-quotidien-fbf6" style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Contexte quotidien</strong>
+        <p data-i18n="x-des-informations-generales-adaptees-7881" class="gp-explainer-text">Des informations générales adaptées au contexte du jour. Sans diagnostic, sans alarmisme.</p>
       </div>
       <div class="gp-explainer-step" role="listitem">
         <div class="gp-explainer-num" aria-hidden="true">4</div>
-        <strong style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Tout est cité</strong>
-        <p class="gp-explainer-text">OMS, ECDC, SPF — chaque donnée est sourcée, vérifiable et mise à jour quotidiennement.</p>
+        <strong data-i18n="x-tout-est-cite-7aa7" style="display:block;font-size:.85rem;color:#e2e8f0;margin-bottom:.3rem">Tout est cité</strong>
+        <p data-i18n="x-oms-ecdc-spf-chaque-0cc7" class="gp-explainer-text">OMS, ECDC, SPF — chaque donnée est sourcée, vérifiable et mise à jour quotidiennement.</p>
       </div>
     </div>
   </div>
@@ -613,32 +612,32 @@
 <!-- ===== USE CASES FAMILLE (Mode Patient) ===== -->
 <section class="patient-only" id="usecasesFamily" aria-label="Questions pratiques du quotidien" style="background:#0A1F35;padding:2rem 0">
   <div class="container">
-    <p class="gp-section-label" style="text-align:center">Utilisation au quotidien</p>
-    <h2 class="gp-section-title" style="text-align:center;max-width:520px;margin-inline:auto;margin-bottom:1.5rem">Vérifiable en 10 secondes, chaque jour</h2>
+    <p data-i18n="x-utilisation-au-quotidien-463c" class="gp-section-label" style="text-align:center">Utilisation au quotidien</p>
+    <h2 data-i18n="x-verifiable-en-10-secondes-3c42" class="gp-section-title" style="text-align:center;max-width:520px;margin-inline:auto;margin-bottom:1.5rem">Vérifiable en 10 secondes, chaque jour</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:1rem">
 
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
         <div style="font-size:1.6rem;margin-bottom:.5rem">🎒</div>
-        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon enfant peut-il aller à l'école ?</strong>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Consultez l'indice respiratoire et le niveau de circulation virale. Score Bon ou Excellent — aucun signal environnemental défavorable.</p>
+        <strong data-i18n="x-mon-enfant-peut-il-e95b" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon enfant peut-il aller à l'école ?</strong>
+        <p data-i18n="x-consultez-l-indice-respiratoire-f5ad" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Consultez l'indice respiratoire et le niveau de circulation virale. Score Bon ou Excellent — aucun signal environnemental défavorable.</p>
       </div>
 
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
         <div style="font-size:1.6rem;margin-bottom:.5rem">🏃</div>
-        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Sport en extérieur — l'air est-il sain ?</strong>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">L'indice AQI (qualité de l'air) est mis à jour en continu. En cas d'indice Modéré ou plus, les heures matinales sont généralement préférables.</p>
+        <strong data-i18n="x-sport-en-exterieur-l-50fb" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Sport en extérieur — l'air est-il sain ?</strong>
+        <p data-i18n="x-l-indice-aqi-qualite-158b" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">L'indice AQI (qualité de l'air) est mis à jour toutes les heures. En cas d'indice Modéré ou plus, les heures matinales sont généralement préférables.</p>
       </div>
 
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
         <div style="font-size:1.6rem;margin-bottom:.5rem">🧓</div>
-        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon parent âgé est-il dans un contexte exposé ?</strong>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Les personnes de 65+ ans et immunodéprimées sont plus sensibles aux infections respiratoires. Le score du jour intègre ce contexte.</p>
+        <strong data-i18n="x-mon-parent-age-est-efca" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon parent âgé est-il dans un contexte exposé ?</strong>
+        <p data-i18n="x-les-personnes-de-65-12bb" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Les personnes de 65+ ans et immunodéprimées sont plus sensibles aux infections respiratoires. Le score du jour intègre ce contexte.</p>
       </div>
 
       <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
         <div style="font-size:1.6rem;margin-bottom:.5rem">✈️</div>
-        <strong style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Alerte sanitaire dans ma destination de voyage ?</strong>
-        <p style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">La carte mondiale et les alertes OMS (PHEIC) sont affichées en temps réel — une lecture utile avant chaque départ international.</p>
+        <strong data-i18n="x-alerte-sanitaire-dans-ma-9f64" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Alerte sanitaire dans ma destination de voyage ?</strong>
+        <p data-i18n="x-la-carte-mondiale-et-7ccf" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">La carte mondiale et les alertes OMS (PHEIC) sont mises à jour quotidiennement — une lecture utile avant chaque départ international.</p>
       </div>
 
     </div>
@@ -648,24 +647,23 @@
 <!-- ===== HERO EXPERT ===== -->
 <section class="hero-section expert-only" id="hero" aria-labelledby="hero-title">
   <div class="hero-content">
-    <div class="hero-badge">Tableau de bord épidémique · Professionnels de santé</div>
+    <div data-i18n="x-tableau-de-bord-epidemique-460e" class="hero-badge">Tableau de bord épidémique · Professionnels de santé</div>
     <h2 class="hero-title" id="hero-title">
-      Surveillance épidémique<br>
-      <span class="gradient-text">en temps réel.</span>
+      <span data-i18n="x-surveillance-epidemique-c502">Surveillance épidémique</span><br>
+      <span data-i18n="x-en-temps-reel-f23d" class="gradient-text">mise à jour quotidienne.</span>
     </h2>
-    <p class="hero-subtitle">
-      Déclarez des cas, surveillez les foyers locaux et alertez les autorités sanitaires —
-      données OMS · ECDC · SPF agrégées quotidiennement.
+    <p data-i18n="x-declarez-des-cas-surveillez-6500" class="hero-subtitle">
+      Déclarez des cas, surveillez les foyers locaux et alertez les autorités sanitaires — données OMS · ECDC · SPF agrégées quotidiennement.
     </p>
 
     <div class="hero-actions">
       <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="btn btn-primary">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Déclarer des cas
+        <span data-i18n="x-declarer-des-cas-b143">Déclarer des cas</span>
       </a>
       <a href="#score" onclick="return navTo(event,'#score')" class="btn btn-ghost">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        Indice de risque
+        <span data-i18n="x-indice-de-risque-e79a">Indice de risque</span>
       </a>
     </div>
 
@@ -673,48 +671,48 @@
     <div class="expert-stats-bar" id="expertStatsBar">
       <div class="esb-item">
         <span class="esb-num critical" id="esbPheic">1</span>
-        <span class="esb-label">PHEIC OMS</span>
+        <span data-i18n="x-pheic-oms-af05" class="esb-label">PHEIC OMS</span>
       </div>
       <div class="esb-item">
         <span class="esb-num warning" id="esbOutbreaks">3</span>
-        <span class="esb-label">Foyers actifs</span>
+        <span data-i18n="x-foyers-actifs-b6b4" class="esb-label">Foyers actifs</span>
       </div>
       <div class="esb-item">
         <span class="esb-num critical" id="esbEbolaCases">—</span>
-        <span class="esb-label" id="esbEbolaCasesLabel">Cas confirmés · PHEIC</span>
+        <span data-i18n="x-cas-confirmes-pheic-d208" class="esb-label" id="esbEbolaCasesLabel">Cas confirmés · PHEIC</span>
         <span class="esb-sub" id="esbEbolaCasesSub"></span>
       </div>
       <div class="esb-item">
         <span class="esb-num ok" id="esbPathogens">26</span>
-        <span class="esb-label">Pathogènes suivis</span>
+        <span data-i18n="x-pathogenes-suivis-204b" class="esb-label">Pathogènes suivis</span>
       </div>
     </div>
 
-    <p class="hero-disclaimer">
-      Données OMS · ECDC · SPF · Algorithme 7-1-7 · Accès libre
+    <p data-i18n="x-donnees-oms-ecdc-spf-4f45" class="hero-disclaimer">
+      Données OMS · ECDC · SPF · Seuils statistiques internes (Z-score) · Accès libre
     </p>
 
     <!-- Soignant quick-nav (visible uniquement en mode expert) -->
     <nav class="soignant-quicknav" aria-label="Navigation rapide soignant">
       <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="sqn-btn sqn-primary">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
-        Déclarer des cas
+        <span data-i18n="x-declarer-des-cas-b143">Déclarer des cas</span>
       </a>
       <a href="#map" onclick="return navTo(event,'#map')" class="sqn-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
-        Carte
+        <span data-i18n="x-carte-a2ce">Carte</span>
       </a>
       <a href="#score" onclick="return navTo(event,'#score')" class="sqn-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        Indice
+        <span data-i18n="x-indice-c1be">Indice</span>
       </a>
       <a href="stocks.html" class="sqn-btn">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
-        Masques FFP2
+        <span data-i18n="x-masques-ffp2-3858">Masques FFP2</span>
       </a>
       <a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" class="sqn-btn sqn-pathogens">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
-        Pathogènes
+        <span data-i18n="x-pathogenes-6350">Pathogènes</span>
       </a>
     </nav>
   </div>
@@ -738,19 +736,19 @@
         <span class="hsc-label" data-i18n="hsc-label">Indice respiratoire</span>
         <span class="hsc-value" id="heroScore"><span class="skeleton" aria-hidden="true">00</span></span>
         <span class="hsc-unit">/100</span>
-        <span class="hsc-status" id="heroScoreStatus"><span class="skeleton" aria-hidden="true">Calcul…</span></span>
+        <span class="hsc-status" id="heroScoreStatus"><span translate="no" class="skeleton" aria-hidden="true">Calcul…</span></span>
       </div>
       <div class="hero-stat-card">
-        <span class="hsc-label">Sources officielles</span>
+        <span data-i18n="x-sources-officielles-9cc9" class="hsc-label">Sources officielles</span>
         <span class="hsc-value">7</span>
-        <span class="hsc-unit">flux temps réel</span>
-        <span class="hsc-status hsc-ok">SPF · ECDC · OMS · OSM</span>
+        <span data-i18n="x-flux-temps-reel-8266" class="hsc-unit">flux de données</span>
+        <span translate="no" class="hsc-status hsc-ok">SPF · ECDC · OMS · OSM</span>
       </div>
       <div class="hero-stat-card">
         <span class="hsc-label" data-i18n="hsc-pathogens">Pathogènes suivis</span>
         <span class="hsc-value" id="heroPathCount">21</span>
         <span class="hsc-unit" data-i18n="hsc-pathogens-unit">pathogènes</span>
-        <span class="hsc-status hsc-alert" id="heroOutbreakCount"><span class="skeleton" aria-hidden="true">0 foyers</span></span>
+        <span class="hsc-status hsc-alert" id="heroOutbreakCount"><span data-i18n="x-0-foyers-07e6" class="skeleton" aria-hidden="true">0 foyers</span></span>
       </div>
     </div>
   </div>
@@ -766,8 +764,8 @@
     <div class="triage-alarm-strip" role="alert" aria-live="assertive">
       <span class="triage-alarm-icon" aria-hidden="true">🚨</span>
       <div class="triage-alarm-body">
-        <strong>Appelez les secours MAINTENANT si vous avez l'un de ces signes :</strong>
-        <span>Vous n'arrivez plus à respirer · Lèvres, ongles ou langue qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
+        <strong data-i18n="x-appelez-les-secours-maintenant-8b63">Appelez les secours MAINTENANT si vous avez l'un de ces signes :</strong>
+        <span data-i18n="x-vous-n-arrivez-plus-2b53">Vous n'arrivez plus à respirer · Lèvres, ongles ou langue qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous</span>
       </div>
       <div class="triage-alarm-nums" role="group" aria-label="Numéros d'urgence">
         <a href="tel:15"  class="triage-alarm-tel" aria-label="Appeler le 15 (SAMU France)">🇫🇷&nbsp;15</a>
@@ -783,49 +781,49 @@
       <!-- NIVEAU 1 — BÉNIN -->
       <div class="triage-card triage-mild">
         <div class="triage-card-head">
-          <span class="triage-badge triage-badge-mild">Légèrement malade</span>
-          <h3 class="triage-card-title">🏠 Restez chez vous</h3>
-          <p class="triage-when">Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours</p>
+          <span data-i18n="x-legerement-malade-8d19" class="triage-badge triage-badge-mild">Légèrement malade</span>
+          <h3 data-i18n="x-restez-chez-vous-03f7" class="triage-card-title">🏠 Restez chez vous</h3>
+          <p data-i18n="x-vous-pouvez-marcher-et-dc04" class="triage-when">Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours</p>
         </div>
         <ul class="triage-checklist">
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez (masque FFP2 ou chirurgical de préférence)</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Restez dans une pièce à part, loin des autres</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Ouvrez les fenêtres pour aérer la pièce</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Buvez beaucoup d'eau — reposez-vous</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Tenez-vous loin des personnes âgées, des bébés et des personnes malades</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-couvrez-vous-la-bouche-11f5">Couvrez-vous la bouche et le nez (masque FFP2 ou chirurgical de préférence)</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-restez-dans-une-piece-df62">Restez dans une pièce à part, loin des autres</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-ouvrez-les-fenetres-pour-8297">Ouvrez les fenêtres pour aérer la pièce</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-buvez-beaucoup-d-eau-89cf">Buvez beaucoup d'eau — reposez-vous</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-tenez-vous-loin-des-270a">Tenez-vous loin des personnes âgées, des bébés et des personnes malades</span></li>
         </ul>
-        <div class="triage-escalate">⬆ Si vous ne vous améliorez pas après 3 jours, ou si ça empire, allez consulter un médecin</div>
+        <div data-i18n="x-si-vous-ne-vous-decc" class="triage-escalate">⬆ Si vous ne vous améliorez pas après 3 jours, ou si ça empire, allez consulter un médecin</div>
       </div>
 
       <!-- NIVEAU 2 — MODÉRÉ -->
       <div class="triage-card triage-moderate">
         <div class="triage-card-head">
-          <span class="triage-badge triage-badge-moderate">Assez malade</span>
-          <h3 class="triage-card-title">🩺 Allez au centre de santé</h3>
-          <p class="triage-when">Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, immunodéprimé ou diabétique</p>
+          <span data-i18n="x-assez-malade-a799" class="triage-badge triage-badge-moderate">Assez malade</span>
+          <h3 data-i18n="x-allez-au-centre-de-7896" class="triage-card-title">🩺 Allez au centre de santé</h3>
+          <p data-i18n="x-forte-fievre-depuis-plus-642c" class="triage-when">Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, immunodéprimé ou diabétique</p>
         </div>
         <ul class="triage-checklist">
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Allez voir un médecin, un infirmier ou un centre de santé</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Couvrez-vous la bouche et le nez en chemin</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Si possible, appelez avant de vous déplacer</li>
-          <li><span class="triage-ck" aria-hidden="true">✓</span>Ne tardez pas si votre état empire rapidement</li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-allez-voir-un-medecin-5b67">Allez voir un médecin, un infirmier ou un centre de santé</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-couvrez-vous-la-bouche-4b2e">Couvrez-vous la bouche et le nez en chemin</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-si-possible-appelez-avant-fb7f">Si possible, appelez avant de vous déplacer</span></li>
+          <li><span class="triage-ck" aria-hidden="true">✓</span><span data-i18n="x-ne-tardez-pas-si-4bc5">Ne tardez pas si votre état empire rapidement</span></li>
         </ul>
-        <div class="triage-escalate">⬆ Si ça empire d'un coup — appelez les secours, n'attendez pas</div>
+        <div data-i18n="x-si-ca-empire-d-93ec" class="triage-escalate">⬆ Si ça empire d'un coup — appelez les secours, n'attendez pas</div>
       </div>
 
       <!-- NIVEAU 3 — GRAVE -->
       <div class="triage-card triage-severe">
         <div class="triage-card-head">
-          <span class="triage-badge triage-badge-severe">Urgence</span>
-          <h3 class="triage-card-title">🚨 Appelez les secours</h3>
-          <p class="triage-when">Ces signes sont dangereux — n'attendez pas, ne restez pas seul</p>
+          <span data-i18n="x-urgence-a020" class="triage-badge triage-badge-severe">Urgence</span>
+          <h3 data-i18n="x-appelez-les-secours-1802" class="triage-card-title">🚨 Appelez les secours</h3>
+          <p data-i18n="x-ces-signes-sont-dangereux-29e6" class="triage-when">Ces signes sont dangereux — n'attendez pas, ne restez pas seul</p>
         </div>
         <ul class="triage-checklist triage-alarms">
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vous n'arrivez presque plus à respirer</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vos lèvres, vos ongles ou votre langue deviennent bleus</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vous êtes confus, vous ne reconnaissez plus les gens</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Douleur très forte dans la poitrine</li>
-          <li><span class="triage-dot" aria-hidden="true">●</span>Vous perdez connaissance ou êtes sur le point de tomber</li>
+          <li><span class="triage-dot" aria-hidden="true">●</span><span data-i18n="x-vous-n-arrivez-presque-30b7">Vous n'arrivez presque plus à respirer</span></li>
+          <li><span class="triage-dot" aria-hidden="true">●</span><span data-i18n="x-vos-levres-vos-ongles-0cf5">Vos lèvres, vos ongles ou votre langue deviennent bleus</span></li>
+          <li><span class="triage-dot" aria-hidden="true">●</span><span data-i18n="x-vous-etes-confus-vous-feae">Vous êtes confus, vous ne reconnaissez plus les gens</span></li>
+          <li><span class="triage-dot" aria-hidden="true">●</span><span data-i18n="x-douleur-tres-forte-dans-1be4">Douleur très forte dans la poitrine</span></li>
+          <li><span class="triage-dot" aria-hidden="true">●</span><span data-i18n="x-vous-perdez-connaissance-ou-4e92">Vous perdez connaissance ou êtes sur le point de tomber</span></li>
         </ul>
         <div class="triage-severe-nums" aria-label="Numéros d'urgence">
           <a href="tel:15"  class="triage-num-btn" aria-label="Appeler le 15 (SAMU France)">🇫🇷 15</a>
@@ -833,20 +831,20 @@
           <a href="tel:999" class="triage-num-btn" aria-label="Appeler le 999 (Urgences UK)">🇬🇧 999</a>
           <a href="tel:911" class="triage-num-btn" aria-label="Appeler le 911 (Urgences USA)">🇺🇸 911</a>
         </div>
-        <div class="triage-escalate triage-escalate-severe">Appelez quelqu'un pour rester avec vous — ne vous déplacez pas seul</div>
+        <div data-i18n="x-appelez-quelqu-un-pour-8205" class="triage-escalate triage-escalate-severe">Appelez quelqu'un pour rester avec vous — ne vous déplacez pas seul</div>
       </div>
 
     </div>
 
     <!-- Note accès aux soins mondial -->
     <p class="triage-global-note">
-      📞 <strong>Numéro d'urgence introuvable ?</strong> Demandez à quelqu'un près de vous ou rendez-vous directement à l'hôpital ou au centre de santé le plus proche.
+      📞 <strong data-i18n="x-numero-d-urgence-introuvable-b2a3">Numéro d'urgence introuvable ?</strong> <span data-i18n="x-demandez-a-quelqu-un-5d57">Demandez à quelqu'un près de vous ou rendez-vous directement à l'hôpital ou au centre de santé le plus proche.</span>
     </p>
 
     <!-- Pont vers le vérificateur de symptômes -->
     <div class="triage-to-checker">
-      <span>Vous n'êtes pas sûr de votre situation ?</span>
-      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="triage-checker-link">Analysez vos symptômes en détail →</a>
+      <span data-i18n="x-vous-n-etes-pas-2c63">Vous n'êtes pas sûr de votre situation ?</span>
+      <a data-i18n="x-analysez-vos-symptomes-en-a414" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="triage-checker-link">Analysez vos symptômes en détail →</a>
     </div>
   </div>
 </section>
@@ -864,14 +862,14 @@
 
     <div class="checker-legal-banner" role="note" aria-label="Avertissement médical">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      <span><strong>Ce site vous aide à savoir quoi faire — il ne remplace pas votre médecin.</strong> Les résultats sont des orientations, pas un diagnostic. <strong>En cas de difficultés à respirer, appelez le 15 ou le 112 immédiatement.</strong> <em style="font-size:.78em;opacity:.7">(Outil d'information et d'orientation — non dispositif médical, Règl. UE 2017/745)</em></span>
+      <span><strong data-i18n="x-ce-site-vous-aide-8387">Ce site vous aide à savoir quoi faire — il ne remplace pas votre médecin.</strong> <span data-i18n="x-les-resultats-sont-des-43c0">Les résultats sont des orientations, pas un diagnostic.</span> <strong data-i18n="x-en-cas-de-difficultes-5b2e">En cas de difficultés à respirer, appelez le 15 ou le 112 immédiatement.</strong> <em data-i18n="x-outil-d-information-et-dc26" style="font-size:.78em;opacity:.7">(Outil d'information et d'orientation — non dispositif médical, Règl. UE 2017/745)</em></span>
     </div>
 
     <!-- ══════════════════════════════════════════════════════
          WIZARD SÉQUENTIEL — 4 étapes
     ══════════════════════════════════════════════════════ -->
     <!-- Note de confidentialité avant le wizard -->
-    <p class="wizard-privacy-note">🔒 <strong>Aucune donnée n'est enregistrée.</strong> Vos réponses restent sur votre appareil — rien n'est transmis, ni vendu, ni partagé.</p>
+    <p class="wizard-privacy-note">🔒 <strong data-i18n="x-aucune-donnee-n-est-fb95">Aucune donnée n'est enregistrée.</strong> <span data-i18n="x-vos-reponses-restent-sur-4087">Vos réponses restent sur votre appareil — rien n'est transmis, ni vendu, ni partagé.</span></p>
 
     <div class="symptom-wizard" id="symptomWizard">
 
@@ -888,58 +886,58 @@
 
       <!-- Bandeau urgence immédiate — s'affiche dès qu'un signe d'alarme est coché -->
       <div id="wiz-emergency-banner" role="alert" aria-live="assertive">
-        🚨 <strong>Signes d'urgence détectés</strong> — <a href="tel:15">Appelez le 15 (SAMU) maintenant</a> · Ne vous déplacez pas seul
+        🚨 <strong data-i18n="x-signes-d-urgence-detectes-63ad">Signes d'urgence détectés</strong> — <a data-i18n="x-appelez-le-15-samu-f912" href="tel:15">Appelez le 15 (SAMU) maintenant</a> <span data-i18n="x-ne-vous-deplacez-pas-a229">· Ne vous déplacez pas seul</span>
       </div>
 
       <!-- ── ÉTAPE 0 : Signes d'alarme immédiats ─────────── -->
       <div class="wizard-panel active" id="wiz-step-0">
-        <div class="wiz-step-label">Étape 1 sur 4</div>
-        <h3 class="wiz-question" id="wiz-alarm-question">🚨 Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
-        <p class="wiz-hint">Si oui, cochez et nous vous orientons immédiatement.</p>
+        <div data-i18n="x-etape-1-sur-4-8079" class="wiz-step-label">Étape 1 sur 4</div>
+        <h3 data-i18n="x-avez-vous-l-un-7bad" class="wiz-question" id="wiz-alarm-question">🚨 Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
+        <p data-i18n="x-si-oui-cochez-et-62b5" class="wiz-hint">Si oui, cochez et nous vous orientons immédiatement.</p>
         <div class="alarm-grid wiz-alarm-grid" role="group" aria-labelledby="wiz-alarm-question">
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="dyspnea_rest">
             <span class="alarm-icon">😮‍💨</span>
-            <span class="alarm-text"><strong>Difficultés à respirer au repos</strong><br><small>Pas d'essoufflement en marchant — au repos</small></span>
+            <span class="alarm-text"><strong data-i18n="x-difficultes-a-respirer-au-3ee5">Difficultés à respirer au repos</strong><br><small data-i18n="x-pas-d-essoufflement-en-6930">Pas d'essoufflement en marchant — au repos</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="confusion">
             <span class="alarm-icon">🌀</span>
-            <span class="alarm-text"><strong>Confusion ou désorientation</strong><br><small>Ne sait plus où il est, répond à côté</small></span>
+            <span class="alarm-text"><strong data-i18n="x-confusion-ou-desorientation-0047">Confusion ou désorientation</strong><br><small data-i18n="x-ne-sait-plus-ou-0f68">Ne sait plus où il est, répond à côté</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="purpura">
             <span class="alarm-icon">🟣</span>
-            <span class="alarm-text"><strong>Taches rouges / violettes qui ne s'effacent pas</strong><br><small>Petits points (pétéchies) ou grandes taches (purpura) — appuyez un verre dessus : elles restent visibles</small></span>
+            <span class="alarm-text"><strong data-i18n="x-taches-rouges-violettes-qui-4ac0">Taches rouges / violettes qui ne s'effacent pas</strong><br><small data-i18n="x-petits-points-petechies-ou-1769">Petits points (pétéchies) ou grandes taches (purpura) — appuyez un verre dessus : elles restent visibles</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="bleeding">
             <span class="alarm-icon">🩸</span>
-            <span class="alarm-text"><strong>Saignements inexpliqués</strong><br><small>Nez, gencives, sang dans selles/urines</small></span>
+            <span class="alarm-text"><strong data-i18n="x-saignements-inexpliques-1d07">Saignements inexpliqués</strong><br><small data-i18n="x-nez-gencives-sang-dans-daa2">Nez, gencives, sang dans selles/urines</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="cyanosis">
             <span class="alarm-icon">🫦</span>
-            <span class="alarm-text"><strong>Lèvres ou ongles bleutés</strong><br><small>Signe de manque d'oxygène</small></span>
+            <span class="alarm-text"><strong data-i18n="x-levres-ou-ongles-bleutes-19b3">Lèvres ou ongles bleutés</strong><br><small data-i18n="x-signe-de-manque-d-72e9">Signe de manque d'oxygène</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="seizures">
             <span class="alarm-icon">⚡</span>
-            <span class="alarm-text"><strong>Convulsions / perte de connaissance</strong><br><small>Mouvements incontrôlés du corps</small></span>
+            <span class="alarm-text"><strong data-i18n="x-convulsions-perte-de-connaissance-20c2">Convulsions / perte de connaissance</strong><br><small data-i18n="x-mouvements-incontroles-du-corps-d876">Mouvements incontrôlés du corps</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="neck_stiffness_alarm">
             <span class="alarm-icon">🔒</span>
-            <span class="alarm-text"><strong>Nuque raide + fièvre + maux de tête violents</strong><br><small>Impossible de toucher le menton à la poitrine</small></span>
+            <span class="alarm-text"><strong data-i18n="x-nuque-raide-fievre-maux-549b">Nuque raide + fièvre + maux de tête violents</strong><br><small data-i18n="x-impossible-de-toucher-le-2de1">Impossible de toucher le menton à la poitrine</small></span>
           </label>
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="infant_fever_alarm">
             <span class="alarm-icon">👶</span>
-            <span class="alarm-text"><strong>Nourrisson &lt; 3 mois avec fièvre ≥ 38°C</strong><br><small>Tout nourrisson de moins de 3 mois avec température ≥ 38°C doit aller aux urgences sans délai (HAS/SFMU)</small></span>
+            <span class="alarm-text"><strong data-i18n="x-nourrisson-lt-3-mois-d974">Nourrisson &lt; 3 mois avec fièvre ≥ 38°C</strong><br><small data-i18n="x-tout-nourrisson-de-moins-ca05">Tout nourrisson de moins de 3 mois avec température ≥ 38°C doit aller aux urgences sans délai (HAS/SFMU)</small></span>
           </label>
         </div>
         <div class="wiz-nav">
-          <button class="wiz-btn-secondary" onclick="wizNext(0)" id="wiz-no-alarm-btn">
+          <button data-i18n="x-aucun-de-ces-signes-2607" class="wiz-btn-secondary" onclick="wizNext(0)" id="wiz-no-alarm-btn">
             Aucun de ces signes — Continuer →
           </button>
         </div>
@@ -947,70 +945,70 @@
 
       <!-- ── ÉTAPE 1 : Symptôme principal ────────────────── -->
       <div class="wizard-panel" id="wiz-step-1">
-        <div class="wiz-step-label">Étape 2 sur 4</div>
-        <h3 class="wiz-question">Quel est votre symptôme <strong>principal</strong> ?</h3>
-        <p class="wiz-hint">Choisissez celui qui vous gêne le plus. Les autres seront proposés ensuite.</p>
+        <div data-i18n="x-etape-2-sur-4-ffa2" class="wiz-step-label">Étape 2 sur 4</div>
+        <h3 class="wiz-question"><span data-i18n="x-quel-est-votre-symptome-4dca">Quel est votre symptôme</span> <strong data-i18n="x-principal-e7d7">principal</strong> ?</h3>
+        <p data-i18n="x-choisissez-celui-qui-vous-d214" class="wiz-hint">Choisissez celui qui vous gêne le plus. Les autres seront proposés ensuite.</p>
         <div class="wiz-main-symptom-grid">
           <button class="wiz-main-btn" onclick="wizSelectMain('fever')" data-main="fever" aria-label="Mon symptôme principal : fièvre ou frissons">
-            <span class="wiz-main-icon" aria-hidden="true">🌡️</span><span class="wiz-main-label">Fièvre / frissons</span>
+            <span class="wiz-main-icon" aria-hidden="true">🌡️</span><span data-i18n="x-fievre-frissons-b9fc" class="wiz-main-label">Fièvre / frissons</span>
           </button>
           <button class="wiz-main-btn" onclick="wizSelectMain('cough')" data-main="cough" aria-label="Mon symptôme principal : toux ou essoufflement">
-            <span class="wiz-main-icon" aria-hidden="true">🫁</span><span class="wiz-main-label">Toux / essoufflement</span>
+            <span class="wiz-main-icon" aria-hidden="true">🫁</span><span data-i18n="x-toux-essoufflement-8888" class="wiz-main-label">Toux / essoufflement</span>
           </button>
           <button class="wiz-main-btn" onclick="wizSelectMain('headache')" data-main="headache" aria-label="Mon symptôme principal : maux de tête">
-            <span class="wiz-main-icon" aria-hidden="true">🤕</span><span class="wiz-main-label">Maux de tête</span>
+            <span class="wiz-main-icon" aria-hidden="true">🤕</span><span data-i18n="x-maux-de-tete-05ff" class="wiz-main-label">Maux de tête</span>
           </button>
           <button class="wiz-main-btn" onclick="wizSelectMain('rash')" data-main="rash" aria-label="Mon symptôme principal : boutons ou éruption cutanée">
-            <span class="wiz-main-icon" aria-hidden="true">🔴</span><span class="wiz-main-label">Boutons / éruption cutanée</span>
+            <span class="wiz-main-icon" aria-hidden="true">🔴</span><span data-i18n="x-boutons-eruption-cutanee-5bdb" class="wiz-main-label">Boutons / éruption cutanée</span>
           </button>
           <button class="wiz-main-btn" onclick="wizSelectMain('digestive')" data-main="digestive" aria-label="Mon symptôme principal : douleurs ventre ou diarrhée">
-            <span class="wiz-main-icon" aria-hidden="true">🤢</span><span class="wiz-main-label">Douleurs ventre / diarrhée</span>
+            <span class="wiz-main-icon" aria-hidden="true">🤢</span><span data-i18n="x-douleurs-ventre-diarrhee-df6c" class="wiz-main-label">Douleurs ventre / diarrhée</span>
           </button>
           <button class="wiz-main-btn" onclick="wizSelectMain('pain')" data-main="pain" aria-label="Mon symptôme principal : douleurs musculaires ou articulaires">
-            <span class="wiz-main-icon" aria-hidden="true">💪</span><span class="wiz-main-label">Douleurs musculaires / articulaires</span>
+            <span class="wiz-main-icon" aria-hidden="true">💪</span><span data-i18n="x-douleurs-musculaires-articulaires-3a1f" class="wiz-main-label">Douleurs musculaires / articulaires</span>
           </button>
           <button class="wiz-main-btn" onclick="wizSelectMain('other')" data-main="other" aria-label="Mon symptôme principal : autre symptôme non listé">
-            <span class="wiz-main-icon" aria-hidden="true">🔍</span><span class="wiz-main-label">Autre symptôme</span>
+            <span class="wiz-main-icon" aria-hidden="true">🔍</span><span data-i18n="x-autre-symptome-8a0c" class="wiz-main-label">Autre symptôme</span>
           </button>
         </div>
         <div class="wiz-nav">
-          <button class="wiz-btn-back" onclick="wizBack(1)">← Retour</button>
+          <button data-i18n="x-retour-e637" class="wiz-btn-back" onclick="wizBack(1)">← Retour</button>
         </div>
       </div>
 
       <!-- ── ÉTAPE 2 : Symptômes associés (dynamique) ─────── -->
       <div class="wizard-panel" id="wiz-step-2">
-        <div class="wiz-step-label">Étape 3 sur 4</div>
-        <h3 class="wiz-question" id="wiz2-title">Symptômes associés</h3>
-        <p class="wiz-hint">Cochez tout ce que vous ressentez <strong>en plus</strong>.</p>
+        <div data-i18n="x-etape-3-sur-4-3c67" class="wiz-step-label">Étape 3 sur 4</div>
+        <h3 class="wiz-question" id="wiz2-title" translate="no">Symptômes associés</h3>
+        <p class="wiz-hint"><span data-i18n="x-cochez-tout-ce-que-60b1">Cochez tout ce que vous ressentez</span> <strong data-i18n="x-en-plus-c477">en plus</strong>.</p>
 
         <!-- Contexte durée + fièvre + âge -->
         <div class="wiz-ctx-bar">
           <div class="wiz-ctx-group">
-            <span class="wiz-ctx-label">📅 Depuis quand ?</span>
+            <span data-i18n="x-depuis-quand-db96" class="wiz-ctx-label">📅 Depuis quand ?</span>
             <div class="ctx-pills-row">
-              <button class="ctx-pill selected" data-group="onset" data-value="sudden" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : moins de 24 heures" aria-pressed="true">Moins de 24h</button>
-              <button class="ctx-pill" data-group="onset" data-value="days_1_3" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 1 à 3 jours" aria-pressed="false">1–3 jours</button>
-              <button class="ctx-pill" data-group="onset" data-value="days_4_7" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 4 à 7 jours" aria-pressed="false">4–7 jours</button>
-              <button class="ctx-pill" data-group="onset" data-value="weeks" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : plus de 3 semaines" aria-pressed="false">Plus de 3 semaines</button>
+              <button data-i18n="x-moins-de-24h-55ba" class="ctx-pill selected" data-group="onset" data-value="sudden" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : moins de 24 heures" aria-pressed="true">Moins de 24h</button>
+              <button data-i18n="x-1-3-jours-e199" class="ctx-pill" data-group="onset" data-value="days_1_3" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 1 à 3 jours" aria-pressed="false">1–3 jours</button>
+              <button data-i18n="x-4-7-jours-3c7b" class="ctx-pill" data-group="onset" data-value="days_4_7" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 4 à 7 jours" aria-pressed="false">4–7 jours</button>
+              <button data-i18n="x-plus-de-3-semaines-ce47" class="ctx-pill" data-group="onset" data-value="weeks" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : plus de 3 semaines" aria-pressed="false">Plus de 3 semaines</button>
             </div>
           </div>
           <div class="wiz-ctx-group">
-            <span class="wiz-ctx-label">🌡️ Température ?</span>
+            <span data-i18n="x-temperature-b0e7" class="wiz-ctx-label">🌡️ Température ?</span>
             <div class="ctx-pills-row">
-              <button class="ctx-pill selected" data-group="fever" data-value="no_fever" onclick="toggleContextPill(this,'fever')" aria-label="Température : pas de fièvre" aria-pressed="true">Pas de fièvre</button>
+              <button data-i18n="x-pas-de-fievre-db03" class="ctx-pill selected" data-group="fever" data-value="no_fever" onclick="toggleContextPill(this,'fever')" aria-label="Température : pas de fièvre" aria-pressed="true">Pas de fièvre</button>
               <button class="ctx-pill" data-group="fever" data-value="fever_low" onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre modérée 37,5 à 38,5 degrés" aria-pressed="false">37,5–38,5°C</button>
               <button class="ctx-pill" data-group="fever" data-value="fever_high" onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre élevée 38,5 à 39,5 degrés" aria-pressed="false">38,5–39,5°C</button>
               <button class="ctx-pill ctx-pill-alert" data-group="fever" data-value="fever_very_high" onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre très élevée 39,5 degrés ou plus — alerte" aria-pressed="false">≥ 39,5°C</button>
             </div>
           </div>
           <div class="wiz-ctx-group">
-            <span class="wiz-ctx-label">👤 Qui est concerné ?</span>
+            <span data-i18n="x-qui-est-concerne-cfdd" class="wiz-ctx-label">👤 Qui est concerné ?</span>
             <div class="ctx-pills-row">
-              <button class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')" aria-label="Profil : nourrisson moins de 2 ans" aria-pressed="false">Nourrisson &lt;2 ans</button>
-              <button class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de 2 à 15 ans" aria-pressed="false">Enfant 2–15 ans</button>
-              <button class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')" aria-label="Profil : adulte" aria-pressed="true">Adulte</button>
-              <button class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')" aria-label="Profil : senior 65 ans ou plus" aria-pressed="false">Senior ≥ 65 ans</button>
+              <button data-i18n="x-nourrisson-lt-2-ans-27de" class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')" aria-label="Profil : nourrisson moins de 2 ans" aria-pressed="false">Nourrisson &lt;2 ans</button>
+              <button data-i18n="x-enfant-2-15-ans-e003" class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de 2 à 15 ans" aria-pressed="false">Enfant 2–15 ans</button>
+              <button data-i18n="x-adulte-04e6" class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')" aria-label="Profil : adulte" aria-pressed="true">Adulte</button>
+              <button data-i18n="x-senior-65-ans-5312" class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')" aria-label="Profil : senior 65 ans ou plus" aria-pressed="false">Senior ≥ 65 ans</button>
             </div>
           </div>
         </div>
@@ -1019,37 +1017,37 @@
         <div class="wiz-assoc-grid" id="wizAssocGrid"></div>
 
         <div class="wiz-nav">
-          <button class="wiz-btn-back" onclick="wizBack(2)">← Retour</button>
-          <button class="wiz-btn-next" onclick="wizNext(2)">Étape suivante →</button>
+          <button data-i18n="x-retour-e637" class="wiz-btn-back" onclick="wizBack(2)">← Retour</button>
+          <button data-i18n="x-etape-suivante-3faf" class="wiz-btn-next" onclick="wizNext(2)">Étape suivante →</button>
         </div>
       </div>
 
       <!-- ── ÉTAPE 3 : Signes vitaux + contexte épidémio ─── -->
       <div class="wizard-panel" id="wiz-step-3">
-        <div class="wiz-step-label">Étape 4 sur 4</div>
-        <h3 class="wiz-question">Signes vitaux &amp; contexte de vie</h3>
-        <p class="wiz-hint">Ces informations permettent d'affiner l'orientation. Répondez si vous les connaissez.</p>
+        <div data-i18n="x-etape-4-sur-4-e301" class="wiz-step-label">Étape 4 sur 4</div>
+        <h3 data-i18n="x-signes-vitaux-amp-contexte-3f46" class="wiz-question">Signes vitaux &amp; contexte de vie</h3>
+        <p data-i18n="x-ces-informations-permettent-d-5c7b" class="wiz-hint">Ces informations permettent d'affiner l'orientation. Répondez si vous les connaissez.</p>
 
         <!-- Signes vitaux -->
         <div class="wiz-vitals-block">
-          <div class="wiz-vitals-title">📊 Signes vitaux (si disponibles)</div>
+          <div data-i18n="x-signes-vitaux-si-disponibles-a649" class="wiz-vitals-title">📊 Signes vitaux (si disponibles)</div>
           <div class="wiz-vitals-grid">
             <div class="wiz-vital-card">
-              <div class="wiz-vital-label">💧 SpO2 (saturomètre)</div>
+              <div data-i18n="x-spo2-saturometre-7995" class="wiz-vital-label">💧 SpO2 (saturomètre)</div>
               <div class="wiz-vital-options">
-                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="unknown" checked onchange="wizUpdateVital('spo2',this.value)"> Je n'ai pas d'oxymètre</label>
-                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="normal" onchange="wizUpdateVital('spo2',this.value)"> ≥ 96% <span class="vital-badge vital-ok">Normal</span></label>
-                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="low" onchange="wizUpdateVital('spo2',this.value)"> 94–95% <span class="vital-badge vital-warn">Bas</span></label>
-                <label class="wiz-vital-opt alert-opt"><input type="radio" name="spo2" value="critical" onchange="wizUpdateVital('spo2',this.value)"> &lt; 94% <span class="vital-badge vital-crit">Critique</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="unknown" checked onchange="wizUpdateVital('spo2',this.value)"> <span data-i18n="x-je-n-ai-pas-f74e">Je n'ai pas d'oxymètre</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="normal" onchange="wizUpdateVital('spo2',this.value)"> ≥ 96% <span data-i18n="x-normal-960b" class="vital-badge vital-ok">Normal</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="low" onchange="wizUpdateVital('spo2',this.value)"> 94–95% <span data-i18n="x-bas-e92c" class="vital-badge vital-warn">Bas</span></label>
+                <label class="wiz-vital-opt alert-opt"><input type="radio" name="spo2" value="critical" onchange="wizUpdateVital('spo2',this.value)"> &lt; 94% <span data-i18n="x-critique-0085" class="vital-badge vital-crit">Critique</span></label>
               </div>
             </div>
             <div class="wiz-vital-card">
-              <div class="wiz-vital-label">❤️ Fréquence cardiaque</div>
+              <div data-i18n="x-frequence-cardiaque-91ac" class="wiz-vital-label">❤️ Fréquence cardiaque</div>
               <div class="wiz-vital-options">
-                <label class="wiz-vital-opt"><input type="radio" name="hr" value="unknown" checked onchange="wizUpdateVital('hr',this.value)"> Je ne sais pas</label>
-                <label class="wiz-vital-opt"><input type="radio" name="hr" value="normal" onchange="wizUpdateVital('hr',this.value)"> &lt; 100 bpm <span class="vital-badge vital-ok">Normal</span></label>
-                <label class="wiz-vital-opt"><input type="radio" name="hr" value="high" onchange="wizUpdateVital('hr',this.value)"> 100–130 bpm <span class="vital-badge vital-warn">Élevée</span></label>
-                <label class="wiz-vital-opt alert-opt"><input type="radio" name="hr" value="very_high" onchange="wizUpdateVital('hr',this.value)"> &gt; 130 bpm <span class="vital-badge vital-crit">Très élevée</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="unknown" checked onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-je-ne-sais-pas-e1e7">Je ne sais pas</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="normal" onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-100-bpm-b690">&lt; 100 bpm</span> <span data-i18n="x-normal-960b" class="vital-badge vital-ok">Normal</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="high" onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-100-130-bpm-1c0e">100–130 bpm</span> <span data-i18n="x-elevee-92e2" class="vital-badge vital-warn">Élevée</span></label>
+                <label class="wiz-vital-opt alert-opt"><input type="radio" name="hr" value="very_high" onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-130-bpm-10b7">&gt; 130 bpm</span> <span data-i18n="x-tres-elevee-c778" class="vital-badge vital-crit">Très élevée</span></label>
               </div>
             </div>
           </div>
@@ -1057,68 +1055,68 @@
 
         <!-- Contexte épidémiologique -->
         <div class="wiz-epid-block">
-          <div class="wiz-vitals-title">✈️ Contexte de vie &amp; expositions</div>
+          <div data-i18n="x-contexte-de-vie-amp-29c7" class="wiz-vitals-title">✈️ Contexte de vie &amp; expositions</div>
           <div class="wiz-epid-grid" id="wizEpidGrid">
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span>Voyage tropical récent (&lt; 21 jours)</span>
+              <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span data-i18n="x-voyage-tropical-recent-lt-b01a">Voyage tropical récent (&lt; 21 jours)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span>Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) &lt; 21j <span class="ctx-alert-badge">⚠️ Ebola PHEIC</span></span>
+              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span><span data-i18n="x-voyage-afrique-centrale-est-2c82">Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) &lt; 21j</span> <span data-i18n="x-ebola-pheic-eabc" class="ctx-alert-badge">⚠️ Ebola PHEIC</span></span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="mv_hondius"><span class="sym-icon">🐭</span><span>Voyage Patagonie / Amérique du Sud rurale &lt; 6 sem. <span class="ctx-alert-badge ctx-alert-orange">⚠️ Hantavirus</span></span>
+              <input type="checkbox" value="mv_hondius"><span class="sym-icon">🐭</span><span><span data-i18n="x-voyage-patagonie-amerique-du-5b18">Voyage Patagonie / Amérique du Sud rurale &lt; 6 sem.</span> <span data-i18n="x-hantavirus-7ddd" class="ctx-alert-badge ctx-alert-orange">⚠️ Hantavirus</span></span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="travel_balkans"><span class="sym-icon">🌍</span><span>Voyage Balkans / Turquie / Espagne rurale</span>
+              <input type="checkbox" value="travel_balkans"><span class="sym-icon">🌍</span><span data-i18n="x-voyage-balkans-turquie-espagne-286b">Voyage Balkans / Turquie / Espagne rurale</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span>Voyage Asie du Sud-Est / Moyen-Orient</span>
+              <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span data-i18n="x-voyage-asie-du-sud-2c70">Voyage Asie du Sud-Est / Moyen-Orient</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="contaminated_water"><span class="sym-icon">🚰</span><span>Eau non traitée / puits / rivière bue récemment</span>
+              <input type="checkbox" value="contaminated_water"><span class="sym-icon">🚰</span><span data-i18n="x-eau-non-traitee-puits-42c9">Eau non traitée / puits / rivière bue récemment</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="freshwater_exposure"><span class="sym-icon">🏊</span><span>Baignade en eau douce (lac, rivière) en Afrique</span>
+              <input type="checkbox" value="freshwater_exposure"><span class="sym-icon">🏊</span><span data-i18n="x-baignade-en-eau-douce-3465">Baignade en eau douce (lac, rivière) en Afrique</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="contact_case"><span class="sym-icon">👥</span><span>Personne proche avec les mêmes symptômes</span>
+              <input type="checkbox" value="contact_case"><span class="sym-icon">👥</span><span data-i18n="x-personne-proche-avec-les-6a80">Personne proche avec les mêmes symptômes</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="unvaccinated"><span class="sym-icon">💉</span><span>Non vacciné ou vaccins non à jour</span>
+              <input type="checkbox" value="unvaccinated"><span class="sym-icon">💉</span><span data-i18n="x-non-vaccine-ou-vaccins-bbb3">Non vacciné ou vaccins non à jour</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span>Contact volailles malades / marché animaux vivants</span>
+              <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span data-i18n="x-contact-volailles-malades-marche-3d3a">Contact volailles malades / marché animaux vivants</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="tick_bite"><span class="sym-icon">🕷️</span><span>Morsure de tique récente</span>
+              <input type="checkbox" value="tick_bite"><span class="sym-icon">🕷️</span><span data-i18n="x-morsure-de-tique-recente-1d9a">Morsure de tique récente</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span>Séjour hôtel, croisière, thermes, spa dans les 10 derniers jours (Légionellose)</span>
+              <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span data-i18n="x-sejour-hotel-croisiere-thermes-8bf9">Séjour hôtel, croisière, thermes, spa dans les 10 derniers jours (Légionellose)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span>Système immunitaire affaibli (cancer, VIH, corticoïdes)</span>
+              <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span data-i18n="x-systeme-immunitaire-affaibli-cancer-b98e">Système immunitaire affaibli (cancer, VIH, corticoïdes)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="pregnant"><span class="sym-icon">🤰</span><span>Grossesse</span>
+              <input type="checkbox" value="pregnant"><span class="sym-icon">🤰</span><span data-i18n="x-grossesse-722a">Grossesse</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span>Contact avec personne ayant des lésions cutanées / Mpox confirmé (clade Ib : transmission familiale possible)</span>
+              <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span data-i18n="x-contact-avec-personne-ayant-1168">Contact avec personne ayant des lésions cutanées / Mpox confirmé (clade Ib : transmission familiale possible)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span>Aggravation rapide en moins de 48h</span>
+              <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span data-i18n="x-aggravation-rapide-en-moins-efd6">Aggravation rapide en moins de 48h</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="hypotension"><span class="sym-icon">⬇️</span><span>Tension très basse / étourdissements debout</span>
+              <input type="checkbox" value="hypotension"><span class="sym-icon">⬇️</span><span data-i18n="x-tension-tres-basse-etourdissements-168f">Tension très basse / étourdissements debout</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="tachycardia"><span class="sym-icon">💗</span><span>Cœur qui bat très vite (même au repos)</span>
+              <input type="checkbox" value="tachycardia"><span class="sym-icon">💗</span><span data-i18n="x-c-ur-qui-bat-d6cb">Cœur qui bat très vite (même au repos)</span>
             </label>
           </div>
         </div>
 
         <div class="wiz-nav">
-          <button class="wiz-btn-back" onclick="wizBack(3)">← Retour</button>
-          <button class="wiz-btn-primary" onclick="wizAnalyze()">
+          <button data-i18n="x-retour-e637" class="wiz-btn-back" onclick="wizBack(3)">← Retour</button>
+          <button data-i18n="x-analyser-mes-symptomes-6943" class="wiz-btn-primary" onclick="wizAnalyze()">
             🔬 Analyser mes symptômes →
           </button>
         </div>
@@ -1129,7 +1127,7 @@
 
       <!-- CTA vers care finder — visible après analyse -->
       <div class="checker-after-cta">
-        <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="checker-find-care-btn">
+        <a data-i18n="x-trouver-un-medecin-ou-131b" href="#careFinder" onclick="return navTo(event,'#careFinder')" class="checker-find-care-btn">
           📍 Trouver un médecin ou un centre de santé près de moi →
         </a>
       </div>
@@ -1141,19 +1139,17 @@
 <section class="score-section expert-only" id="score" aria-labelledby="score-title">
   <div class="container">
     <div class="section-header">
-      <h2 id="score-title" data-i18n="score-title">Indice Respiratoire Global</h2>
+      <h2 id="score-title" data-i18n="score-title">Votre score respiratoire du jour</h2>
       <p class="section-subtitle" data-i18n="score-subtitle">
-        Estimation 0–100 combinant qualité de l'air (données réelles), circulation virale (données SPF si disponibles) et indicateurs environnementaux.
+        Un score 0–100 qui résume la qualité de l'air, la circulation virale, les pollens et la météo autour de vous.
       </p>
       <div class="score-data-notice" role="note">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <span>
-          ⚡ <strong>Score ESTIMATIF — non validé cliniquement.</strong>
-          AQI : données réelles Open-Meteo (★★★★★) ·
-          Circulation virale : extrapolation nationale SPF, délai ~7 jours (★★★☆☆) ·
-          Pollen/météo : modèle saisonnier (★★☆☆☆).
-          <strong>Ne pas utiliser pour une décision clinique.</strong>
-          <a href="methodologie.html" style="color:var(--c-blue);text-decoration:underline">Méthodologie complète →</a>
+          ⚡ <strong data-i18n="x-score-estimatif-non-valide-0a4c">Score ESTIMATIF — non validé cliniquement.</strong>
+          <span data-i18n="x-aqi-donnees-reelles-open-f994">AQI : données réelles Open-Meteo (★★★★★) · Circulation virale : extrapolation nationale SPF, délai ~7 jours (★★★☆☆) · Pollen/météo : modèle saisonnier (★★☆☆☆).</span>
+          <strong data-i18n="x-ne-pas-utiliser-pour-9faa">Ne pas utiliser pour une décision clinique.</strong>
+          <a data-i18n="x-methodologie-complete-9268" href="methodologie.html" style="color:var(--c-blue);text-decoration:underline">Méthodologie complète →</a>
         </span>
       </div>
     </div>
@@ -1206,8 +1202,8 @@
               <div class="component-bar"><div class="component-fill viral-fill" id="viralFill" style="width:50%"></div></div>
               <span class="component-val" id="viralVal"><span class="skeleton" aria-hidden="true">00</span></span>
             </div>
-            <div id="viralEstBadge" style="font-size:.68rem;color:#94a3b8;margin-top:.2rem;font-style:italic">〜 Estimation régionale</div>
-            <div id="viralLiveBadge" style="font-size:.68rem;color:#10B981;margin-top:.2rem;display:none">📡 Source : <span id="viralLiveSource"></span></div>
+            <div data-i18n="x-estimation-regionale-fd7b" id="viralEstBadge" style="font-size:.68rem;color:#94a3b8;margin-top:.2rem;font-style:italic">〜 Estimation régionale</div>
+            <div id="viralLiveBadge" style="font-size:.68rem;color:#10B981;margin-top:.2rem;display:none"><span data-i18n="x-source-a380">📡 Source :</span> <span id="viralLiveSource"></span></div>
           </div>
           <div class="component-item">
             <div class="component-header">
@@ -1234,13 +1230,10 @@
         </div>
         <div class="score-formula" aria-label="Formule de calcul">
           <span class="formula-label" data-i18n="formula-label">Formule :</span>
-          <code>SR = (0.40 × AQI) + (0.30 × Viral) + (0.20 × Pollen) + (0.10 × Météo)</code>
+          <code translate="no">SR = (0.40 × AQI) + (0.30 × Viral) + (0.20 × Pollen) + (0.10 × Météo)</code>
         </div>
-        <p class="score-methodology-note" data-ref="REF-04" data-doi="10.1016/S1470-2045(13)70579-1">
-          Indice composite propriétaire à valeur indicative. Les pondérations sont basées sur la prépondérance de la qualité de l'air dans la littérature épidémiologique
-          (IARC 2013<span class="cite-marker"><a href="bibliography.html#ref-03" class="cite-link" aria-label="Voir référence IARC 2013">[3]</a></span>, WHO 2021<span class="cite-marker"><a href="bibliography.html#ref-01" class="cite-link" aria-label="Voir référence WHO AQG 2021">[1]</a></span>)
-          mais ne correspondent pas à une formule publiée dans la littérature médicale.
-          Cet indice n'a pas valeur de diagnostic environnemental certifié.
+        <p translate="no" class="score-methodology-note" data-ref="REF-04" data-doi="10.1016/S1470-2045(13)70579-1">
+          <span data-i18n="x-indice-composite-proprietaire-a-78a3">Indice composite propriétaire à valeur indicative. Les pondérations sont basées sur la prépondérance de la qualité de l'air dans la littérature épidémiologique (IARC 2013</span><span class="cite-marker"><a href="bibliography.html#ref-03" class="cite-link" aria-label="Voir référence IARC 2013">[3]</a></span>, WHO 2021<span class="cite-marker"><a href="bibliography.html#ref-01" class="cite-link" aria-label="Voir référence WHO AQG 2021">[1]</a></span><span data-i18n="x-mais-ne-correspondent-pas-8198">) mais ne correspondent pas à une formule publiée dans la littérature médicale. Cet indice n'a pas valeur de diagnostic environnemental certifié.</span>
         </p>
       </div>
 
@@ -1254,7 +1247,7 @@
           Sélectionnez une région pour obtenir une analyse personnalisée.
         </p>
         <div class="ai-recommendation" id="aiReco"></div>
-        <p style="font-size:.72rem;color:var(--text-muted);margin-top:.5rem;opacity:.75">Information contextuelle — ne remplace pas l'avis de votre médecin</p>
+        <p data-i18n="x-information-contextuelle-ne-remplace-4484" style="font-size:.72rem;color:var(--text-muted);margin-top:.5rem;opacity:.75">Information contextuelle — ne remplace pas l'avis de votre médecin</p>
       </div>
     </div>
   </div>
@@ -1265,20 +1258,20 @@
   <div class="container">
     <details class="collapsible-section" id="liveSourcesDetails">
       <summary class="collapsible-summary">
-        <span class="collapsible-title" id="live-sources-title" data-i18n="live-sources-title">Sources de surveillance en direct</span>
-        <span class="collapsible-sub" data-i18n="live-sources-subtitle">8 sources épidémiologiques et environnementales</span>
+        <span class="collapsible-title" id="live-sources-title" data-i18n="live-sources-title">Sources de surveillance connectées</span>
+        <span class="collapsible-sub" data-i18n="live-sources-subtitle">8 sources épidémiologiques et environnementales — mises à jour quotidiennes, délai des sources indiqué</span>
         <span class="collapsible-chevron" aria-hidden="true">▾</span>
       </summary>
     <div class="live-sources-grid">
       <!-- Panneau sources statut -->
       <div class="lsd-card lsd-sources">
         <h3 class="lsd-title" data-i18n="live-src-status">Statut des sources</h3>
-        <div id="liveSourcesPanel"><p class="lsd-loading">Connexion en cours…</p></div>
+        <div id="liveSourcesPanel"><p data-i18n="x-connexion-en-cours-7ad4" class="lsd-loading">Connexion en cours…</p></div>
       </div>
       <!-- Widget WAQI -->
       <div class="lsd-card lsd-waqi">
         <h3 class="lsd-title" data-i18n="live-src-air">Qualité de l'air locale</h3>
-        <p class="lsd-subtitle" data-i18n="live-src-air-sub">WAQI · 11 polluants · Prévisions 7j</p>
+        <p class="lsd-subtitle" data-i18n="live-src-air-sub">CAMS Copernicus · 6 polluants · Modèle EU officiel</p>
         <div id="waqiWidget"><p class="lsd-loading" data-i18n="live-src-waiting">En attente de la géolocalisation…</p></div>
       </div>
       <!-- Widget Pollen -->
@@ -1291,19 +1284,19 @@
       <div class="lsd-card lsd-sumeau">
         <h3 class="lsd-title" data-i18n="live-src-sumeau">COVID-19 — Eaux usées</h3>
         <p class="lsd-subtitle" data-i18n="live-src-sumeau-sub">SUM'EAU · 54 collectivités · Signal précoce France</p>
-        <div id="sumeauWidget"><p class="lsd-loading">Chargement…</p></div>
+        <div id="sumeauWidget"><p translate="no" class="lsd-loading">Chargement…</p></div>
       </div>
       <!-- Widget COVID-19 courbe épidémique (disease.sh) -->
       <div class="lsd-card lsd-covid">
-        <h3 class="lsd-title">COVID-19 — Courbe épidémique France</h3>
-        <p class="lsd-subtitle">disease.sh · Données officielles · Série 30 jours</p>
-        <div id="covidCurveWidget"><p class="lsd-loading">Chargement…</p></div>
+        <h3 data-i18n="x-covid-19-courbe-epidemique-e67f" class="lsd-title">COVID-19 — Courbe épidémique France</h3>
+        <p data-i18n="x-disease-sh-donnees-officielles-4a0c" class="lsd-subtitle">disease.sh · Données officielles · Série 30 jours</p>
+        <div id="covidCurveWidget"><p translate="no" class="lsd-loading">Chargement…</p></div>
       </div>
       <!-- Widget Vaccination grippe (SPF / data.gouv.fr) -->
       <div class="lsd-card lsd-vacc">
-        <h3 class="lsd-title">Vaccination grippe — Couverture France</h3>
-        <p class="lsd-subtitle">SPF · data.gouv.fr · Saison 2025-2026</p>
-        <div id="vaccGrippeWidget"><p class="lsd-loading">Chargement…</p></div>
+        <h3 data-i18n="x-vaccination-grippe-couverture-france-654e" class="lsd-title">Vaccination grippe — Couverture France</h3>
+        <p data-i18n="x-spf-data-gouv-fr-45d5" class="lsd-subtitle">SPF · data.gouv.fr · Saison 2025-2026</p>
+        <div id="vaccGrippeWidget"><p translate="no" class="lsd-loading">Chargement…</p></div>
       </div>
     </div>
     </details>
@@ -1315,14 +1308,14 @@
   <div class="container">
     <div class="section-header" style="display:flex;align-items:flex-start;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
       <div>
-        <h2 id="syndromic-title" data-i18n="syn-title">Surveillance épidémique mondiale</h2>
-        <p class="section-subtitle">Suivi en temps réel des épidémies actives · Algorithme Z-score OMS 7-1-7 · Données SPF, OMS, ECDC</p>
+        <h2 id="syndromic-title" data-i18n="syn-title">Surveillance syndromique — Détection précoce</h2>
+        <p data-i18n="x-suivi-en-temps-reel-7d2f" class="section-subtitle">Suivi quotidien des épidémies actives · Seuils statistiques internes (Z-score) · Données SPF, OMS, ECDC</p>
       </div>
       <button onclick="shareBreathIQ()" id="shareColleagueBtn" aria-label="Partager à un collègue"
         style="display:flex;align-items:center;gap:.45rem;padding:.5rem 1rem;font-size:.8rem;font-weight:700;color:#fff;background:rgba(42,127,212,.25);border:1px solid rgba(42,127,212,.45);border-radius:999px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s"
         onmouseover="this.style.background='rgba(42,127,212,.4)'" onmouseout="this.style.background='rgba(42,127,212,.25)'">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-        Partager à un collègue
+        <span data-i18n="x-partager-a-un-collegue-0b67">Partager à un collègue</span>
       </button>
     </div>
 
@@ -1336,18 +1329,18 @@
     <div id="ecdcVaccSection" class="ecdc-vacc-section" hidden></div>
 
     <!-- ── TRACKER MULTI-ÉPIDÉMIES ───────────────────────────── -->
-    <div class="epi-tracker" id="epiTracker">
+    <div class="epi-tracker" id="epiTracker" translate="no">
       <!-- injecté par renderEpiTracker() -->
     </div>
 
     <!-- ── EXPLICATION Z-SCORE ────────────────────────────────── -->
     <div class="zscore-explainer">
-      <div class="zscore-explainer-title">📊 Comment lire le Score Z ?</div>
+      <div data-i18n="x-comment-lire-le-score-8510" class="zscore-explainer-title">📊 Comment lire le Score Z ?</div>
       <div class="zscore-levels-row">
-        <div class="zsl zsl-normal"><span class="zsl-val">z &lt; 1.5</span><span class="zsl-label">🟢 NORMAL</span><span class="zsl-desc">Signal dans la norme des 52 dernières semaines</span></div>
-        <div class="zsl zsl-jaune"><span class="zsl-val">z ≥ 1.5</span><span class="zsl-label">⚠️ VIGILANCE</span><span class="zsl-desc">Augmentation inhabituelle — surveiller de près</span></div>
-        <div class="zsl zsl-orange"><span class="zsl-val">z ≥ 2.0</span><span class="zsl-label">🟠 ALERTE</span><span class="zsl-desc">Signal épidémique probable · p&lt;5%</span></div>
-        <div class="zsl zsl-rouge"><span class="zsl-val">z ≥ 3.0</span><span class="zsl-label">🔴 ÉPIDÉMIE</span><span class="zsl-desc">Épidémie confirmée · p&lt;0.3% — déclarer</span></div>
+        <div class="zsl zsl-normal"><span class="zsl-val">z &lt; 1.5</span><span data-i18n="x-normal-4d02" class="zsl-label">🟢 NORMAL</span><span data-i18n="x-signal-dans-la-norme-acaa" class="zsl-desc">Signal dans la norme des 52 dernières semaines</span></div>
+        <div class="zsl zsl-jaune"><span class="zsl-val">z ≥ 1.5</span><span data-i18n="x-vigilance-2754" class="zsl-label">⚠️ VIGILANCE</span><span data-i18n="x-augmentation-inhabituelle-surveiller-de-79ed" class="zsl-desc">Augmentation inhabituelle — surveiller de près</span></div>
+        <div class="zsl zsl-orange"><span class="zsl-val">z ≥ 2.0</span><span data-i18n="x-alerte-1d6c" class="zsl-label">🟠 ALERTE</span><span data-i18n="x-signal-epidemique-probable-p-217a" class="zsl-desc">Signal épidémique probable · p&lt;5%</span></div>
+        <div class="zsl zsl-rouge"><span class="zsl-val">z ≥ 3.0</span><span data-i18n="x-epidemie-d387" class="zsl-label">🔴 ÉPIDÉMIE</span><span data-i18n="x-epidemie-confirmee-p-lt-449c" class="zsl-desc">Épidémie confirmée · p&lt;0.3% — déclarer</span></div>
       </div>
     </div>
 
@@ -1355,15 +1348,15 @@
     <div id="epiSurveillanceModule" style="margin-top:var(--s4)">
       <div class="epi-no-data">
         <span class="epi-no-data-icon">📡</span>
-        <span>Chargement des données de surveillance…</span>
+        <span data-i18n="x-chargement-des-donnees-de-f675">Chargement des données de surveillance…</span>
       </div>
     </div>
 
     <!-- Déclarations locales -->
     <div class="epi-card" style="margin-top:.75rem">
-      <div class="epi-card-title">Déclarations locales (cette semaine)</div>
+      <div data-i18n="x-declarations-locales-cette-semaine-680b" class="epi-card-title">Déclarations locales (cette semaine)</div>
       <div class="epi-decl-counts" id="epiDeclCounts">
-        <span class="epi-decl-none">Aucune déclaration cette semaine</span>
+        <span data-i18n="x-aucune-declaration-cette-semaine-1d69" class="epi-decl-none">Aucune déclaration cette semaine</span>
       </div>
     </div>
 
@@ -1376,10 +1369,10 @@
 
         <!-- ⚠️ Rappel DO — affiché AVANT saisie (obligation légale) -->
         <div style="background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.30);border-radius:.65rem;padding:.75rem 1rem;margin:.85rem 0 0;text-align:left;font-size:.80rem;line-height:1.6;color:#FCD34D;">
-          <strong>⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
-          Ce formulaire est un outil de <strong>surveillance locale</strong>. Il <strong>ne remplace pas</strong> la déclaration officielle à l'ARS via
-          <a href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
-          ou cerfa, obligatoire pour les maladies à DO (Art. L3113-1 CSP).
+          <strong data-i18n="x-rappel-declaration-obligatoire-do-6c95">⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
+          <span data-i18n="x-ce-formulaire-est-un-cccd">Ce formulaire est un outil de</span> <strong data-i18n="x-surveillance-locale-4647">surveillance locale</strong>. Il <strong data-i18n="x-ne-remplace-pas-2c72">ne remplace pas</strong> <span data-i18n="x-la-declaration-officielle-a-71cb">la déclaration officielle à l'ARS via</span>
+          <a translate="no" href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
+          <span data-i18n="x-ou-cerfa-obligatoire-pour-cc6b">ou cerfa, obligatoire pour les maladies à DO (Art. L3113-1 CSP).</span>
         </div>
       </div>
 
@@ -1387,45 +1380,45 @@
 
         <!-- Pathologie suspecte — champ principal -->
         <div class="decl-field decl-field-pathologie">
-          <label class="decl-label">🔬 Pathologie suspecte *</label>
+          <label data-i18n="x-pathologie-suspecte-0554" class="decl-label">🔬 Pathologie suspecte *</label>
           <select class="decl-select decl-select-pathologie" name="pathologie" required id="declPathologie">
-            <option value="">— Sélectionner la pathologie —</option>
+            <option data-i18n="x-selectionner-la-pathologie-7083" value="">— Sélectionner la pathologie —</option>
             <optgroup label="Pathogènes courants">
-              <option value="grippe">🤒 Grippe / Syndrome grippal (ILI)</option>
-              <option value="covid19">🦠 COVID-19 / SARS-CoV-2</option>
-              <option value="rsv">🌬️ VRS / Bronchiolite</option>
-              <option value="mpox">🔴 Mpox (variole du singe)</option>
-              <option value="dengue">🦟 Dengue</option>
-              <option value="cholera">💧 Choléra</option>
-              <option value="rougeole">🔴 Rougeole</option>
-              <option value="meningo">🧠 Méningite bactérienne</option>
-              <option value="enceph">🧠 Encéphalite virale</option>
-              <option value="chikungunya">🦟 Chikungunya / Zika</option>
-              <option value="typhus">🦠 Typhus / Fièvre typhoïde</option>
-              <option value="autre">🏥 Autre syndrome à déclarer</option>
+              <option data-i18n="x-grippe-syndrome-grippal-ili-329c" value="grippe">🤒 Grippe / Syndrome grippal (ILI)</option>
+              <option data-i18n="x-covid-19-sars-cov-6525" value="covid19">🦠 COVID-19 / SARS-CoV-2</option>
+              <option data-i18n="x-vrs-bronchiolite-75db" value="rsv">🌬️ VRS / Bronchiolite</option>
+              <option data-i18n="x-mpox-variole-du-singe-d0bd" value="mpox">🔴 Mpox (variole du singe)</option>
+              <option data-i18n="x-dengue-98cd" value="dengue">🦟 Dengue</option>
+              <option data-i18n="x-cholera-67d0" value="cholera">💧 Choléra</option>
+              <option data-i18n="x-rougeole-af2d" value="rougeole">🔴 Rougeole</option>
+              <option data-i18n="x-meningite-bacterienne-d60f" value="meningo">🧠 Méningite bactérienne</option>
+              <option data-i18n="x-encephalite-virale-ec19" value="enceph">🧠 Encéphalite virale</option>
+              <option data-i18n="x-chikungunya-zika-38d1" value="chikungunya">🦟 Chikungunya / Zika</option>
+              <option data-i18n="x-typhus-fievre-typhoide-c835" value="typhus">🦠 Typhus / Fièvre typhoïde</option>
+              <option data-i18n="x-autre-syndrome-a-declarer-ba4c" value="autre">🏥 Autre syndrome à déclarer</option>
             </optgroup>
             <!-- Pathogènes à risque élevé — mode soignant uniquement -->
             <optgroup label="⚕️ Pathogènes à haut risque [Mode Soignant]" id="declExoticGroup" style="display:none">
-              <option value="ebola">🩸 Ebola / Marburg / Hémorragique viral</option>
-              <option value="h5n1">🐦 H5N1 / Grippe aviaire</option>
-              <option value="mers">🐪 MERS-CoV</option>
-              <option value="anthrax">☣️ Charbon (anthrax)</option>
-              <option value="botulisme">⚠️ Botulisme</option>
+              <option data-i18n="x-ebola-marburg-hemorragique-viral-bab8" value="ebola">🩸 Ebola / Marburg / Hémorragique viral</option>
+              <option data-i18n="x-h5n1-grippe-aviaire-f2be" value="h5n1">🐦 H5N1 / Grippe aviaire</option>
+              <option data-i18n="x-mers-cov-feee" value="mers">🐪 MERS-CoV</option>
+              <option data-i18n="x-charbon-anthrax-27d6" value="anthrax">☣️ Charbon (anthrax)</option>
+              <option data-i18n="x-botulisme-a68f" value="botulisme">⚠️ Botulisme</option>
             </optgroup>
           </select>
         </div>
 
         <!-- Syndrome -->
         <div class="decl-field">
-          <label class="decl-label" data-i18n="decl-syndrome">Syndrome clinique *</label>
+          <label class="decl-label" data-i18n="decl-syndrome">Syndrome observé *</label>
           <div class="decl-radio-group" role="group">
-            <label class="decl-radio"><input type="radio" name="syndrome" value="grippal" required><span class="decl-radio-pill">🤒 Grippal</span></label>
-            <label class="decl-radio"><input type="radio" name="syndrome" value="respiratoire"><span class="decl-radio-pill">😮‍💨 Respiratoire</span></label>
-            <label class="decl-radio"><input type="radio" name="syndrome" value="diarrhéique"><span class="decl-radio-pill">🤢 Diarrhéique</span></label>
-            <label class="decl-radio"><input type="radio" name="syndrome" value="fébrile"><span class="decl-radio-pill">🌡️ Fébrile aigu</span></label>
-            <label class="decl-radio"><input type="radio" name="syndrome" value="neurologique"><span class="decl-radio-pill">🧠 Neurologique</span></label>
-            <label class="decl-radio"><input type="radio" name="syndrome" value="hémorragique"><span class="decl-radio-pill">🩸 Hémorragique</span></label>
-            <label class="decl-radio"><input type="radio" name="syndrome" value="cutané"><span class="decl-radio-pill">🔴 Cutané</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="grippal" required><span data-i18n="x-grippal-6d45" class="decl-radio-pill">🤒 Grippal</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="respiratoire"><span data-i18n="x-respiratoire-1b59" class="decl-radio-pill">😮‍💨 Respiratoire</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="diarrhéique"><span data-i18n="x-diarrheique-ff31" class="decl-radio-pill">🤢 Diarrhéique</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="fébrile"><span data-i18n="x-febrile-aigu-d281" class="decl-radio-pill">🌡️ Fébrile aigu</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="neurologique"><span data-i18n="x-neurologique-5640" class="decl-radio-pill">🧠 Neurologique</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="hémorragique"><span data-i18n="x-hemorragique-0950" class="decl-radio-pill">🩸 Hémorragique</span></label>
+            <label class="decl-radio"><input type="radio" name="syndrome" value="cutané"><span data-i18n="x-cutane-97d4" class="decl-radio-pill">🔴 Cutané</span></label>
           </div>
         </div>
 
@@ -1478,32 +1471,32 @@
             </select>
           </div>
           <div class="decl-field">
-            <label class="decl-label">Région / Territoire</label>
+            <label data-i18n="x-region-territoire-7fbd" class="decl-label">Région / Territoire</label>
             <select class="decl-select" name="region_code" id="declRegion">
-              <option value="">— Sélectionner —</option>
+              <option data-i18n="x-selectionner-f961" value="">— Sélectionner —</option>
               <optgroup label="France métropolitaine">
-                <option value="IDF">Île-de-France</option>
-                <option value="ARA">Auvergne-Rhône-Alpes</option>
-                <option value="BFC">Bourgogne-Franche-Comté</option>
-                <option value="BRE">Bretagne</option>
-                <option value="CVL">Centre-Val de Loire</option>
-                <option value="COR">Corse</option>
-                <option value="GES">Grand Est</option>
-                <option value="HDF">Hauts-de-France</option>
-                <option value="NOR">Normandie</option>
-                <option value="NAQ">Nouvelle-Aquitaine</option>
-                <option value="OCC">Occitanie</option>
-                <option value="PDL">Pays de la Loire</option>
-                <option value="PAC">Provence-Alpes-Côte d'Azur</option>
+                <option data-i18n="x-ile-de-france-72dc" value="IDF">Île-de-France</option>
+                <option data-i18n="x-auvergne-rhone-alpes-65b8" value="ARA">Auvergne-Rhône-Alpes</option>
+                <option data-i18n="x-bourgogne-franche-comte-cada" value="BFC">Bourgogne-Franche-Comté</option>
+                <option data-i18n="x-bretagne-7ae1" value="BRE">Bretagne</option>
+                <option data-i18n="x-centre-val-de-loire-e1f1" value="CVL">Centre-Val de Loire</option>
+                <option data-i18n="x-corse-8ca9" value="COR">Corse</option>
+                <option data-i18n="x-grand-est-016e" value="GES">Grand Est</option>
+                <option data-i18n="x-hauts-de-france-d0f4" value="HDF">Hauts-de-France</option>
+                <option data-i18n="x-normandie-17e0" value="NOR">Normandie</option>
+                <option data-i18n="x-nouvelle-aquitaine-100e" value="NAQ">Nouvelle-Aquitaine</option>
+                <option data-i18n="x-occitanie-4925" value="OCC">Occitanie</option>
+                <option data-i18n="x-pays-de-la-loire-2dfc" value="PDL">Pays de la Loire</option>
+                <option data-i18n="x-provence-alpes-cote-d-229f" value="PAC">Provence-Alpes-Côte d'Azur</option>
               </optgroup>
               <optgroup label="DROM-COM">
-                <option value="GUA">Guadeloupe</option>
-                <option value="MAR">Martinique</option>
-                <option value="GUY">Guyane</option>
-                <option value="REU">La Réunion</option>
-                <option value="MAY">Mayotte</option>
+                <option data-i18n="x-guadeloupe-0dc8" value="GUA">Guadeloupe</option>
+                <option data-i18n="x-martinique-899c" value="MAR">Martinique</option>
+                <option data-i18n="x-guyane-a34e" value="GUY">Guyane</option>
+                <option data-i18n="x-la-reunion-d76a" value="REU">La Réunion</option>
+                <option data-i18n="x-mayotte-9c05" value="MAY">Mayotte</option>
               </optgroup>
-              <option value="INT">Hors France</option>
+              <option data-i18n="x-hors-france-9fea" value="INT">Hors France</option>
             </select>
           </div>
         </div>
@@ -1511,18 +1504,18 @@
         <!-- Avertissement secret professionnel -->
         <div class="decl-secpro-warning">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          <span>Secret professionnel : ne saisir aucune information permettant d'identifier un patient (nom, DDN, n° sécu). Seules des données agrégées sont traitées, conformément au CSP Art. L1110-4.</span>
+          <span data-i18n="x-secret-professionnel-ne-saisir-54ec">Secret professionnel : ne saisir aucune information permettant d'identifier un patient (nom, DDN, n° sécu). Seules des données agrégées sont traitées, conformément au CSP Art. L1110-4.</span>
         </div>
 
         <!-- Notice géolocalisation silencieuse — Art. 13 RGPD -->
-        <p style="font-size:.75rem;color:#94a3b8;line-height:1.5;margin-bottom:.5rem;padding:.5rem .75rem;background:rgba(255,255,255,.04);border-radius:.35rem;border:1px solid rgba(255,255,255,.07)">
+        <p data-i18n="x-si-vous-avez-deja-44d3" style="font-size:.75rem;color:#94a3b8;line-height:1.5;margin-bottom:.5rem;padding:.5rem .75rem;background:rgba(255,255,255,.04);border-radius:.35rem;border:1px solid rgba(255,255,255,.07)">
           📍 Si vous avez déjà autorisé l'accès à votre position dans ce navigateur, votre localisation approximative (arrondie à 0,5° — précision ~55 km) sera incluse anonymement dans la déclaration. Aucune position précise n'est stockée.
         </p>
         <!-- Consentement RGPD Art. 6 -->
         <div class="decl-consent">
           <label class="decl-consent-label">
             <input type="checkbox" name="consent" required id="declConsent">
-            <span data-i18n="decl-consent-text">J'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n'est collectée (données agrégées uniquement). Conformément au RGPD, ces données peuvent être effacées à tout moment.</span>
+            <span data-i18n="decl-consent-text">J'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n'est collectée (données agrégées uniquement).</span>
           </label>
         </div>
         <!-- Consentement explicite Art. 9 RGPD — données de santé -->
@@ -1531,7 +1524,7 @@
             <input type="checkbox" name="consent_art9" required id="declConsentArt9">
             <span data-i18n="decl-consent-art9">Je déclare agir en qualité de professionnel de santé ou de citoyen informé, et consens expressément au traitement de cette donnée de santé (Art. 9 RGPD) à des fins exclusives de surveillance épidémiologique locale, sans transmission serveur.</span>
           </label>
-          <div class="decl-art9-badge">Art. 9 RGPD — Donnée de santé</div>
+          <div data-i18n="x-art-9-rgpd-donnee-f846" class="decl-art9-badge">Art. 9 RGPD — Donnée de santé</div>
         </div>
 
         <div class="decl-actions">
@@ -1546,15 +1539,15 @@
       <!-- Confirmation + widget signal -->
       <div class="decl-confirm hidden" id="declConfirm">
         <div class="decl-confirm-icon">✅</div>
-        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Signal enregistré localement</p>
-        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Signal intégré à l'analyse locale en temps réel.</p>
+        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Déclaration enregistrée localement</p>
+        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Merci. Signal intégré à l'analyse locale.</p>
 
         <!-- Rappel DO officielle — critique légalement -->
         <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.35);border-radius:.75rem;padding:.85rem 1rem;margin:.75rem 0;text-align:left;font-size:.82rem;line-height:1.6;color:#FCD34D;">
-          <strong>⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
-          Ce signal est uniquement local. Il <strong>ne remplace pas</strong> la déclaration officielle à l'ARS via
-          <a href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
-          ou par fiche cerfa, obligatoire pour les maladies à DO.
+          <strong data-i18n="x-rappel-declaration-obligatoire-do-6c95">⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
+          <span data-i18n="x-ce-signal-est-uniquement-a840">Ce signal est uniquement local. Il</span> <strong data-i18n="x-ne-remplace-pas-2c72">ne remplace pas</strong> <span data-i18n="x-la-declaration-officielle-a-71cb">la déclaration officielle à l'ARS via</span>
+          <a translate="no" href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
+          <span data-i18n="x-ou-par-fiche-cerfa-ef71">ou par fiche cerfa, obligatoire pour les maladies à DO.</span>
         </div>
 
         <!-- Widget signal épidémique injecté ici après déclaration -->
@@ -1579,9 +1572,8 @@
     <div class="data-notice" role="status" aria-live="polite">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       <span>
-        <strong>Données de stocks :</strong> Les niveaux affichés sont représentatifs et indicatifs. Ils ne constituent pas des données officielles en temps réel.
-        Les données épidémiques sont issues de l'OMS, ECDC et CDC (sources officielles).
-        <a href="bibliography.html">Voir les sources →</a>
+        <strong data-i18n="x-donnees-de-stocks-6f65">Données de stocks :</strong> <span data-i18n="x-les-niveaux-affiches-sont-ca1c">Les niveaux affichés sont représentatifs et indicatifs. Ils ne constituent pas des données officielles actualisées. Les données épidémiques sont issues de l'OMS, ECDC et CDC (sources officielles).</span>
+        <a data-i18n="x-voir-les-sources-4694" href="bibliography.html">Voir les sources →</a>
       </span>
     </div>
 
@@ -1625,7 +1617,7 @@
       </div>
       <div class="mstat">
         <span class="mstat-val" id="mstatMonitored">7</span>
-        <span class="mstat-label">sources officielles</span>
+        <span data-i18n="x-sources-officielles-a0d2" class="mstat-label">sources officielles</span>
       </div>
       <div class="mstat">
         <span class="mstat-val" id="mstatLastUpdate">—</span>
@@ -1641,9 +1633,9 @@
     <!-- Header Mode Patient -->
     <div class="section-header patient-only">
       <div class="pathogens-patient-header">
-        <div class="ppb">21 virus et infections suivis · données actualisées quotidiennement</div>
+        <div data-i18n="x-21-virus-et-infections-9a27" class="ppb">21 virus et infections suivis · données actualisées quotidiennement</div>
       </div>
-      <h2 id="pathogens-title" data-i18n="pathogens-patient-title">Virus et infections — quels symptômes surveiller ?</h2>
+      <h2 id="pathogens-title" data-i18n="pathogens-patient-title">Maladies infectieuses — quels symptômes surveiller ?</h2>
       <p class="section-subtitle" data-i18n="pathogens-patient-sub">Cliquez sur une maladie pour voir ses symptômes et savoir quand s'isoler</p>
     </div>
     <!-- Header Mode Expert -->
@@ -1651,7 +1643,6 @@
       <h2 data-i18n="pathogens-title">Pathogènes sous surveillance mondiale</h2>
       <p class="section-subtitle" data-i18n="pathogens-subtitle">
         Revue infectiologique des agents pathogènes nécessitant une protection FFP2/N95 ou équivalent.
-        Sources : OMS, CDC, ECDC, littérature scientifique peer-reviewed.
       </p>
     </div>
 
@@ -1698,7 +1689,7 @@
       <!-- Fallback : recherche par ville / code postal -->
       <div class="care-city-fallback" id="careCityFallback">
         <div class="care-city-divider">
-          <span>ou rechercher par ville</span>
+          <span data-i18n="x-ou-rechercher-par-ville-ca77">ou rechercher par ville</span>
         </div>
         <div class="care-city-row" role="search" aria-label="Recherche par ville ou code postal">
           <input
@@ -1713,10 +1704,10 @@
           >
           <button id="careCityBtn" class="care-city-btn" onclick="searchCareByCity()" aria-label="Lancer la recherche">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-            Rechercher
+            <span data-i18n="x-rechercher-3a8a">Rechercher</span>
           </button>
         </div>
-        <p class="care-city-note">Recherche via OpenStreetMap — fonctionne dans le monde entier.</p>
+        <p data-i18n="x-recherche-via-openstreetmap-fonctionne-7506" class="care-city-note">Recherche via OpenStreetMap — fonctionne dans le monde entier.</p>
       </div>
 
       <p class="care-privacy-note">
@@ -1732,21 +1723,21 @@
 <section class="expert-only biq-pro-section" id="proPathogens" aria-labelledby="proPathogensTitle">
   <div class="container">
     <div class="biq-pro-header">
-      <h2 id="proPathogensTitle" class="biq-pro-title">🦠 Référentiel Pathogènes Soignant</h2>
-      <p class="biq-pro-subtitle">Fiches cliniques • EPI • Bibliographie PubMed live — <strong>Non dispositif médical</strong></p>
+      <h2 data-i18n="x-referentiel-pathogenes-soignant-4c35" id="proPathogensTitle" class="biq-pro-title">🦠 Référentiel Pathogènes Soignant</h2>
+      <p class="biq-pro-subtitle"><span data-i18n="x-fiches-cliniques-epi-bibliographie-cd65">Fiches cliniques • EPI • Bibliographie PubMed live —</span> <strong data-i18n="x-non-dispositif-medical-aa69">Non dispositif médical</strong></p>
     </div>
 
     <!-- Onglets -->
     <div class="biq-tabs" role="tablist" aria-label="Sections espace soignant">
-      <button id="biqTabPathogens" class="biq-tab biq-tab-active" role="tab" aria-selected="true"
+      <button data-i18n="x-pathogenes-ce82" id="biqTabPathogens" class="biq-tab biq-tab-active" role="tab" aria-selected="true"
               aria-controls="biqTabPathogensPanel" onclick="BIQ_PRO.switchTab('biqTabPathogens')">
         🦠 Pathogènes
       </button>
-      <button id="biqTabEpi4" class="biq-tab" role="tab" aria-selected="false"
+      <button data-i18n="x-epi-niveau-4-ebola-4e32" id="biqTabEpi4" class="biq-tab" role="tab" aria-selected="false"
               aria-controls="biqTabEpi4Panel" onclick="BIQ_PRO.switchTab('biqTabEpi4')">
         🛡️ EPI Niveau 4 / Ebola
       </button>
-      <button id="biqTabContacts" class="biq-tab" role="tab" aria-selected="false"
+      <button data-i18n="x-contacts-urgence-fc54" id="biqTabContacts" class="biq-tab" role="tab" aria-selected="false"
               aria-controls="biqTabContactsPanel" onclick="BIQ_PRO.switchTab('biqTabContacts')">
         📞 Contacts urgence
       </button>
@@ -1767,105 +1758,105 @@
     <div id="biqTabEpi4Panel" role="tabpanel" aria-labelledby="biqTabEpi4" hidden>
       <div class="epi4-guide">
         <div class="epi4-quarantine-box" role="note">
-          <strong>📌 Quarantaine ≠ Isolement — distinction fondamentale</strong>
+          <strong data-i18n="x-quarantaine-isolement-distinction-fondamentale-9c9a">📌 Quarantaine ≠ Isolement — distinction fondamentale</strong>
           <div class="epi4-q-grid">
-            <div><strong>Isolement</strong> — pour le <em>cas confirmé ou probable</em> (malade) : séparation physique stricte, EPI soignants, chambre individuelle avec sas, déchets DASRI catégorie B.</div>
-            <div><strong>Quarantaine</strong> — pour le <em>contact asymptomatique</em> (exposé mais pas malade) : surveillance thermique quotidienne, restriction de déplacements, durée = période d'incubation max du pathogène. <strong>Un contact Ebola n'est pas isolé — il est mis en quarantaine 21 jours avec suivi ARS.</strong></div>
+            <div><strong data-i18n="x-isolement-2ba2">Isolement</strong> <span data-i18n="x-pour-le-df8d">— pour le</span> <em data-i18n="x-cas-confirme-ou-probable-76f5">cas confirmé ou probable</em> <span data-i18n="x-malade-separation-physique-stricte-eaf6">(malade) : séparation physique stricte, EPI soignants, chambre individuelle avec sas, déchets DASRI catégorie B.</span></div>
+            <div><strong data-i18n="x-quarantaine-1c4e">Quarantaine</strong> <span data-i18n="x-pour-le-df8d">— pour le</span> <em data-i18n="x-contact-asymptomatique-e40d">contact asymptomatique</em> <span data-i18n="x-expose-mais-pas-malade-97e3">(exposé mais pas malade) : surveillance thermique quotidienne, restriction de déplacements, durée = période d'incubation max du pathogène.</span> <strong data-i18n="x-un-contact-ebola-n-9f15">Un contact Ebola n'est pas isolé — il est mis en quarantaine 21 jours avec suivi ARS.</strong></div>
           </div>
         </div>
         <div class="epi4-disclaimer" role="note">
-          ⚠️ <strong>Outil d'information — non dispositif médical (Règl. UE 2017/745).</strong> Ce contenu est destiné aux professionnels de santé formés. La prise en charge Ebola nécessite une formation institutionnelle préalable (UHSI/INSERM) et ne doit jamais être réalisée sans habilitation spécifique.
+          ⚠️ <strong data-i18n="x-outil-d-information-non-1fb4">Outil d'information — non dispositif médical (Règl. UE 2017/745).</strong> <span data-i18n="x-ce-contenu-est-destine-6b46">Ce contenu est destiné aux professionnels de santé formés. La prise en charge Ebola nécessite une formation institutionnelle préalable (UHSI/INSERM) et ne doit jamais être réalisée sans habilitation spécifique.</span>
         </div>
 
-        <h3 class="epi4-section-title">🛡️ EPI Niveau 4 — Spécificités Ebola (souche Bundibugyo)</h3>
+        <h3 data-i18n="x-epi-niveau-4-specificites-b452" class="epi4-section-title">🛡️ EPI Niveau 4 — Spécificités Ebola (souche Bundibugyo)</h3>
 
         <div class="epi4-alert-box">
-          <strong>⚡ Différence critique EPI-4 ≠ EPI-3 (FFP3) :</strong> Ebola exige une combinaison étanche type BSL-4 (SCBA ou masque respiratoire intégral + combinaison étanche à double gants). <strong>Un FFP3 seul est INSUFFISANT pour Ebola.</strong> La contamination peut survenir par muqueuses oculaires et buccales.
+          <strong data-i18n="x-difference-critique-epi-4-8693">⚡ Différence critique EPI-4 ≠ EPI-3 (FFP3) :</strong> <span data-i18n="x-ebola-exige-une-combinaison-1f90">Ebola exige une combinaison étanche type BSL-4 (SCBA ou masque respiratoire intégral + combinaison étanche à double gants).</span> <strong data-i18n="x-un-ffp3-seul-est-8d30">Un FFP3 seul est INSUFFISANT pour Ebola.</strong> <span data-i18n="x-la-contamination-peut-survenir-cdc5">La contamination peut survenir par muqueuses oculaires et buccales.</span>
         </div>
 
         <div class="epi4-grid">
           <div class="epi4-card">
-            <h4>🔴 Équipement obligatoire (EPI-4)</h4>
+            <h4 data-i18n="x-equipement-obligatoire-epi-4-c77c">🔴 Équipement obligatoire (EPI-4)</h4>
             <ul>
-              <li>Combinaison étanche imperméable (type DEMRON® ou équivalent UHSI)</li>
-              <li>Masque respiratoire à ventilation assistée (PAPR) <em>ou</em> SCBA — FFP3 insuffisant</li>
-              <li>Double gants nitrile (stériles intérieurs)</li>
-              <li>Tablier imperméable + manchettes étanches</li>
-              <li>Bottes imperméables + surbottes</li>
-              <li>Protection oculaire intégrale (écran facial étanche)</li>
+              <li data-i18n="x-combinaison-etanche-impermeable-type-3f27">Combinaison étanche imperméable (type DEMRON® ou équivalent UHSI)</li>
+              <li><span data-i18n="x-masque-respiratoire-a-ventilation-0a56">Masque respiratoire à ventilation assistée (PAPR)</span> <em>ou</em> <span data-i18n="x-scba-ffp3-insuffisant-d8e6">SCBA — FFP3 insuffisant</span></li>
+              <li data-i18n="x-double-gants-nitrile-steriles-1b9d">Double gants nitrile (stériles intérieurs)</li>
+              <li data-i18n="x-tablier-impermeable-manchettes-etanches-0d12">Tablier imperméable + manchettes étanches</li>
+              <li data-i18n="x-bottes-impermeables-surbottes-a21c">Bottes imperméables + surbottes</li>
+              <li data-i18n="x-protection-oculaire-integrale-ecran-5ffd">Protection oculaire intégrale (écran facial étanche)</li>
             </ul>
           </div>
 
           <div class="epi4-card">
-            <h4>🟡 Procédure habillage (UHSI)</h4>
+            <h4 data-i18n="x-procedure-habillage-uhsi-b88d">🟡 Procédure habillage (UHSI)</h4>
             <ol>
-              <li>Vérification visuelle matériel + 2ème soignant observateur</li>
-              <li>Hygiène mains SHA 30 sec</li>
-              <li>Combinaison + fermeture éclair hermétique</li>
-              <li>Capuche + masque PAPR/SCBA</li>
-              <li>Gants intérieurs fixés au poignet (adhésif)</li>
-              <li>Écran facial + tablier + gants extérieurs</li>
-              <li>Vérification double par observateur avant entrée zone</li>
+              <li data-i18n="x-verification-visuelle-materiel-2eme-8fc4">Vérification visuelle matériel + 2ème soignant observateur</li>
+              <li data-i18n="x-hygiene-mains-sha-30-028f">Hygiène mains SHA 30 sec</li>
+              <li data-i18n="x-combinaison-fermeture-eclair-hermetique-fbbb">Combinaison + fermeture éclair hermétique</li>
+              <li data-i18n="x-capuche-masque-papr-scba-f633">Capuche + masque PAPR/SCBA</li>
+              <li data-i18n="x-gants-interieurs-fixes-au-1522">Gants intérieurs fixés au poignet (adhésif)</li>
+              <li data-i18n="x-ecran-facial-tablier-gants-28a9">Écran facial + tablier + gants extérieurs</li>
+              <li data-i18n="x-verification-double-par-observateur-18f9">Vérification double par observateur avant entrée zone</li>
             </ol>
           </div>
 
           <div class="epi4-card">
-            <h4>🟢 Protocole déshabillage (ordre strict)</h4>
+            <h4 data-i18n="x-protocole-deshabillage-ordre-strict-3bf6">🟢 Protocole déshabillage (ordre strict)</h4>
             <ol>
-              <li>SHA mains gantées AVANT tout retrait</li>
-              <li>Retrait tablier + bottes (sans toucher la face)</li>
-              <li>SHA mains gantées</li>
-              <li>Retrait combinaison (retournement vers l'intérieur)</li>
-              <li>SHA mains gantées</li>
-              <li>Retrait masque (par l'arrière sans toucher l'avant)</li>
-              <li>SHA mains gantées + retrait gants intérieurs</li>
-              <li>SHA mains nues 60 sec</li>
+              <li data-i18n="x-sha-mains-gantees-avant-f54e">SHA mains gantées AVANT tout retrait</li>
+              <li data-i18n="x-retrait-tablier-bottes-sans-1e47">Retrait tablier + bottes (sans toucher la face)</li>
+              <li data-i18n="x-sha-mains-gantees-6ca9">SHA mains gantées</li>
+              <li data-i18n="x-retrait-combinaison-retournement-vers-282c">Retrait combinaison (retournement vers l'intérieur)</li>
+              <li data-i18n="x-sha-mains-gantees-6ca9">SHA mains gantées</li>
+              <li data-i18n="x-retrait-masque-par-l-c282">Retrait masque (par l'arrière sans toucher l'avant)</li>
+              <li data-i18n="x-sha-mains-gantees-retrait-4905">SHA mains gantées + retrait gants intérieurs</li>
+              <li data-i18n="x-sha-mains-nues-60-051e">SHA mains nues 60 sec</li>
             </ol>
           </div>
 
           <div class="epi4-card epi4-card-red">
-            <h4>🚨 Conduite à tenir — exposition accidentelle</h4>
+            <h4 data-i18n="x-conduite-a-tenir-exposition-7f8a">🚨 Conduite à tenir — exposition accidentelle</h4>
             <ul>
-              <li><strong>Coupure/piqûre :</strong> laisser saigner 5 min, rincer eau savonneuse 15 min, antisepsie povidone iodée ou alcool 70°</li>
-              <li><strong>Projection muqueuse :</strong> rinçage sérum physio 15 min (yeux), eau 15 min (bouche)</li>
-              <li><strong>Contacter immédiatement :</strong> SAMU 15 + référent UHSI + InVS (0 800 13 00 00)</li>
-              <li><strong>Pas d'automédication, pas de traitement prophylactique sans avis UHSI</strong></li>
-              <li>Note : AUCUN vaccin homologué contre Ebola Bundibugyo (rVSV-ZEBOV = efficacité Zaïre uniquement)</li>
+              <li><strong data-i18n="x-coupure-piqure-b718">Coupure/piqûre :</strong> <span data-i18n="x-laisser-saigner-5-min-6e5d">laisser saigner 5 min, rincer eau savonneuse 15 min, antisepsie povidone iodée ou alcool 70°</span></li>
+              <li><strong data-i18n="x-projection-muqueuse-78c5">Projection muqueuse :</strong> <span data-i18n="x-rincage-serum-physio-15-e09c">rinçage sérum physio 15 min (yeux), eau 15 min (bouche)</span></li>
+              <li><strong data-i18n="x-contacter-immediatement-4d56">Contacter immédiatement :</strong> <span data-i18n="x-samu-15-referent-uhsi-a007">SAMU 15 + référent UHSI + InVS (0 800 13 00 00)</span></li>
+              <li><strong data-i18n="x-pas-d-automedication-pas-ed32">Pas d'automédication, pas de traitement prophylactique sans avis UHSI</strong></li>
+              <li data-i18n="x-note-aucun-vaccin-homologue-95df">Note : AUCUN vaccin homologué contre Ebola Bundibugyo (rVSV-ZEBOV = efficacité Zaïre uniquement)</li>
             </ul>
           </div>
 
           <div class="epi4-card">
-            <h4>📋 Définition cas suspect (OMS 2026)</h4>
-            <p><strong>Fièvre ≥ 38,5°C</strong> + au moins un signe parmi :</p>
+            <h4 data-i18n="x-definition-cas-suspect-oms-f3de">📋 Définition cas suspect (OMS 2026)</h4>
+            <p><strong data-i18n="x-fievre-38-5-c-335a">Fièvre ≥ 38,5°C</strong> <span data-i18n="x-au-moins-un-signe-1ef2">+ au moins un signe parmi :</span></p>
             <ul>
-              <li>Céphalées intenses, myalgies, asthénie sévère</li>
-              <li>Vomissements / diarrhée inexpliqués</li>
-              <li>Saignements inexpliqués (tout site)</li>
-              <li>Contact avec cas confirmé ou décédé de FHV</li>
+              <li data-i18n="x-cephalees-intenses-myalgies-asthenie-51d0">Céphalées intenses, myalgies, asthénie sévère</li>
+              <li data-i18n="x-vomissements-diarrhee-inexpliques-da34">Vomissements / diarrhée inexpliqués</li>
+              <li data-i18n="x-saignements-inexpliques-tout-site-4870">Saignements inexpliqués (tout site)</li>
+              <li data-i18n="x-contact-avec-cas-confirme-40c8">Contact avec cas confirmé ou décédé de FHV</li>
             </ul>
-            <p style="margin-top:.5rem"><strong>ET</strong> voyage/résidence zone épidémique (RDC, Ouganda, Rwanda, Burundi) dans les 21 jours précédant les symptômes.</p>
+            <p style="margin-top:.5rem"><strong>ET</strong> <span data-i18n="x-voyage-residence-zone-epidemique-cef6">voyage/résidence zone épidémique (RDC, Ouganda, Rwanda, Burundi) dans les 21 jours précédant les symptômes.</span></p>
           </div>
 
           <div class="epi4-card">
-            <h4>📌 Persistance virale post-guérison</h4>
+            <h4 data-i18n="x-persistance-virale-post-guerison-719b">📌 Persistance virale post-guérison</h4>
             <ul>
-              <li><strong>Sperme :</strong> jusqu'à 9 mois après guérison (Varkey, NEJM 2015)</li>
-              <li><strong>Liquide oculaire :</strong> documenté même après PCR sang négative</li>
-              <li><strong>Lait maternel :</strong> possible — allaitement à éviter</li>
-              <li>Les survivants doivent être suivis et informés du risque de transmission sexuelle</li>
+              <li><strong data-i18n="x-sperme-c1ae">Sperme :</strong> <span data-i18n="x-jusqu-a-9-mois-d68d">jusqu'à 9 mois après guérison (Varkey, NEJM 2015)</span></li>
+              <li><strong data-i18n="x-liquide-oculaire-e4ff">Liquide oculaire :</strong> <span data-i18n="x-documente-meme-apres-pcr-e4f7">documenté même après PCR sang négative</span></li>
+              <li><strong data-i18n="x-lait-maternel-681e">Lait maternel :</strong> <span data-i18n="x-possible-allaitement-a-eviter-f7fc">possible — allaitement à éviter</span></li>
+              <li data-i18n="x-les-survivants-doivent-etre-60d6">Les survivants doivent être suivis et informés du risque de transmission sexuelle</li>
             </ul>
           </div>
         </div>
 
         <div class="epi4-contacts">
-          <strong>📞 Contacts de référence :</strong>
-          <span>SAMU national : <strong>15</strong></span>
-          <span>InVS (urgence) : <strong>0 800 13 00 00</strong></span>
-          <span>UHSI Bichat (Paris) : <strong>01 40 25 85 85</strong></span>
-          <span>UHSI Lyon Croix-Rousse : <strong>04 26 10 93 30</strong></span>
+          <strong data-i18n="x-contacts-de-reference-8387">📞 Contacts de référence :</strong>
+          <span><span data-i18n="x-samu-national-d69f">SAMU national :</span> <strong>15</strong></span>
+          <span><span data-i18n="x-invs-urgence-308d">InVS (urgence) :</span> <strong>0 800 13 00 00</strong></span>
+          <span><span data-i18n="x-uhsi-bichat-paris-09bf">UHSI Bichat (Paris) :</span> <strong>01 40 25 85 85</strong></span>
+          <span><span data-i18n="x-uhsi-lyon-croix-rousse-bf4e">UHSI Lyon Croix-Rousse :</span> <strong>04 26 10 93 30</strong></span>
         </div>
 
-        <div class="epi4-refs">
+        <div data-i18n="x-ref-oms-protocole-ebola-5cf4" class="epi4-refs">
           Réf : OMS Protocole Ebola 2022 · Varkey JB et al. NEJM 2015 · Protocole UHSI France · WHO DON 2026-DON605
         </div>
       </div>
@@ -1877,55 +1868,55 @@
 
         <!-- Déclarations obligatoires -->
         <div class="do-section">
-          <h3 class="do-title">📋 Maladies à Déclaration Obligatoire (DO) — France</h3>
-          <p class="do-subtitle">Déclaration immédiate à l'ARS dès la suspicion clinique, sans attendre la confirmation biologique.</p>
+          <h3 data-i18n="x-maladies-a-declaration-obligatoire-8278" class="do-title">📋 Maladies à Déclaration Obligatoire (DO) — France</h3>
+          <p data-i18n="x-declaration-immediate-a-l-f6c5" class="do-subtitle">Déclaration immédiate à l'ARS dès la suspicion clinique, sans attendre la confirmation biologique.</p>
 
           <div class="do-grid">
             <div class="do-card do-card-red">
-              <div class="do-card-header">🚨 DO Immédiate — Fièvres hémorragiques virales</div>
+              <div data-i18n="x-do-immediate-fievres-hemorragiques-a111" class="do-card-header">🚨 DO Immédiate — Fièvres hémorragiques virales</div>
               <ul>
-                <li><strong>Ebola</strong> — ARS + SAMU 15 + UHSI de référence</li>
-                <li><strong>Marburg</strong> — ARS + SAMU 15 + UHSI de référence</li>
-                <li><strong>Lassa</strong> — ARS + SAMU 15</li>
-                <li><strong>CCHF</strong> (Fièvre Hémorragique Crimée-Congo) — ARS</li>
-                <li><strong>MERS-CoV</strong> — ARS + SAMU 15</li>
-                <li><strong>Nipah</strong> — ARS + SAMU 15</li>
+                <li><strong data-i18n="x-ebola-4514">Ebola</strong> <span data-i18n="x-ars-samu-15-uhsi-2d86">— ARS + SAMU 15 + UHSI de référence</span></li>
+                <li><strong data-i18n="x-marburg-fd3e">Marburg</strong> <span data-i18n="x-ars-samu-15-uhsi-2d86">— ARS + SAMU 15 + UHSI de référence</span></li>
+                <li><strong data-i18n="x-lassa-b0fc">Lassa</strong> <span data-i18n="x-ars-samu-15-5ace">— ARS + SAMU 15</span></li>
+                <li><strong data-i18n="x-cchf-20ee">CCHF</strong> <span data-i18n="x-fievre-hemorragique-crimee-congo-90d5">(Fièvre Hémorragique Crimée-Congo) — ARS</span></li>
+                <li><strong data-i18n="x-mers-cov-258b">MERS-CoV</strong> <span data-i18n="x-ars-samu-15-5ace">— ARS + SAMU 15</span></li>
+                <li><strong data-i18n="x-nipah-bf36">Nipah</strong> <span data-i18n="x-ars-samu-15-5ace">— ARS + SAMU 15</span></li>
               </ul>
-              <div class="do-contact">ARS → <strong>numéro régional</strong> · InVS urgences : <strong>0 800 13 00 00</strong></div>
+              <div class="do-contact"><span data-i18n="x-ars-8afd">ARS →</span> <strong data-i18n="x-numero-regional-0896">numéro régional</strong> <span data-i18n="x-invs-urgences-c08b">· InVS urgences :</span> <strong>0 800 13 00 00</strong></div>
             </div>
 
             <div class="do-card do-card-orange">
-              <div class="do-card-header">⚠️ DO dans les 24–48h</div>
+              <div data-i18n="x-do-dans-les-24-f674" class="do-card-header">⚠️ DO dans les 24–48h</div>
               <ul>
-                <li><strong>Tuberculose</strong> — DO à l'ARS dans les 48h</li>
-                <li><strong>Rougeole</strong> — DO dès suspicion (avant confirmation)</li>
-                <li><strong>Coqueluche</strong> — DO chez nourrissons < 6 mois</li>
-                <li><strong>Méningite bactérienne</strong> — DO immédiate + chimioprophylaxie entourage</li>
-                <li><strong>Légionellose</strong> — DO ARS + investigation source</li>
-                <li><strong>Mpox (variole du singe)</strong> — DO à l'ARS</li>
-                <li><strong>H5N1 humain</strong> — DO ARS + signalement SPF</li>
+                <li><strong data-i18n="x-tuberculose-a443">Tuberculose</strong> <span data-i18n="x-do-a-l-ars-b7f4">— DO à l'ARS dans les 48h</span></li>
+                <li><strong data-i18n="x-rougeole-0774">Rougeole</strong> <span data-i18n="x-do-des-suspicion-avant-0b86">— DO dès suspicion (avant confirmation)</span></li>
+                <li><strong data-i18n="x-coqueluche-23ad">Coqueluche</strong> <span data-i18n="x-do-chez-nourrissons-6-fca1">— DO chez nourrissons < 6 mois</span></li>
+                <li><strong data-i18n="x-meningite-bacterienne-632d">Méningite bactérienne</strong> <span data-i18n="x-do-immediate-chimioprophylaxie-entourage-d284">— DO immédiate + chimioprophylaxie entourage</span></li>
+                <li><strong data-i18n="x-legionellose-8a32">Légionellose</strong> <span data-i18n="x-do-ars-investigation-source-8e20">— DO ARS + investigation source</span></li>
+                <li><strong data-i18n="x-mpox-variole-du-singe-b9a2">Mpox (variole du singe)</strong> <span data-i18n="x-do-a-l-ars-7d98">— DO à l'ARS</span></li>
+                <li><strong data-i18n="x-h5n1-humain-695b">H5N1 humain</strong> <span data-i18n="x-do-ars-signalement-spf-848c">— DO ARS + signalement SPF</span></li>
               </ul>
             </div>
 
             <div class="do-card do-card-blue">
-              <div class="do-card-header">📞 Numéros de référence soignants</div>
+              <div data-i18n="x-numeros-de-reference-soignants-7505" class="do-card-header">📞 Numéros de référence soignants</div>
               <ul>
-                <li>SAMU national : <strong>15</strong></li>
-                <li>InVS urgences épidémiques : <strong>0 800 13 00 00</strong></li>
-                <li>COREB nationale : <strong>coreb@aphp.fr</strong></li>
-                <li>UHSI Bichat (Paris) : <strong>01 40 25 85 85</strong></li>
-                <li>UHSI Croix-Rousse (Lyon) : <strong>04 26 10 93 30</strong></li>
-                <li>UHSI Pellegrin (Bordeaux) : <strong>05 57 82 13 82</strong></li>
-                <li>UHSI Timone (Marseille) : <strong>04 91 38 60 00</strong></li>
+                <li><span data-i18n="x-samu-national-d69f">SAMU national :</span> <strong>15</strong></li>
+                <li><span data-i18n="x-invs-urgences-epidemiques-03ac">InVS urgences épidémiques :</span> <strong>0 800 13 00 00</strong></li>
+                <li><span data-i18n="x-coreb-nationale-a685">COREB nationale :</span> <strong translate="no">coreb@aphp.fr</strong></li>
+                <li><span data-i18n="x-uhsi-bichat-paris-09bf">UHSI Bichat (Paris) :</span> <strong>01 40 25 85 85</strong></li>
+                <li><span data-i18n="x-uhsi-croix-rousse-lyon-cf46">UHSI Croix-Rousse (Lyon) :</span> <strong>04 26 10 93 30</strong></li>
+                <li><span data-i18n="x-uhsi-pellegrin-bordeaux-6082">UHSI Pellegrin (Bordeaux) :</span> <strong>05 57 82 13 82</strong></li>
+                <li><span data-i18n="x-uhsi-timone-marseille-467b">UHSI Timone (Marseille) :</span> <strong>04 91 38 60 00</strong></li>
               </ul>
-              <div class="do-contact">Liste complète ARS : <a href="https://www.health.gouv.fr" style="color:#93c5fd" target="_blank" rel="noopener">sante.gouv.fr</a></div>
+              <div class="do-contact"><span data-i18n="x-liste-complete-ars-93ce">Liste complète ARS :</span> <a translate="no" href="https://www.health.gouv.fr" style="color:#93c5fd" target="_blank" rel="noopener">sante.gouv.fr</a></div>
             </div>
 
             <div class="do-card">
-              <div class="do-card-header">📄 Fiche DO pratique</div>
-              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6">La déclaration obligatoire se fait via le <strong>portail e-SI (signalement.social-sante.gouv.fr)</strong> ou par fiche papier cerfa transmise à l'ARS régionale.</p>
-              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6;margin-top:.5rem">Pour les maladies à risque épidémique immédiat (FHV, MERS, Nipah) : <strong>appel téléphonique direct à l'ARS avant tout</strong>, puis confirmation écrite.</p>
-              <p style="font-size:.82rem;color:#fbbf24;margin-top:.5rem">⚠️ Ne pas attendre la confirmation PCR pour signaler — la suspicion clinique suffit pour les FHV.</p>
+              <div data-i18n="x-fiche-do-pratique-fc9f" class="do-card-header">📄 Fiche DO pratique</div>
+              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6"><span data-i18n="x-la-declaration-obligatoire-se-e50c">La déclaration obligatoire se fait via le</span> <strong data-i18n="x-portail-e-si-signalement-54cf">portail e-SI (signalement.social-sante.gouv.fr)</strong> <span data-i18n="x-ou-par-fiche-papier-620e">ou par fiche papier cerfa transmise à l'ARS régionale.</span></p>
+              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6;margin-top:.5rem"><span data-i18n="x-pour-les-maladies-a-9ff1">Pour les maladies à risque épidémique immédiat (FHV, MERS, Nipah) :</span> <strong data-i18n="x-appel-telephonique-direct-a-f311">appel téléphonique direct à l'ARS avant tout</strong><span data-i18n="x-puis-confirmation-ecrite-1738">, puis confirmation écrite.</span></p>
+              <p data-i18n="x-ne-pas-attendre-la-f78d" style="font-size:.82rem;color:#fbbf24;margin-top:.5rem">⚠️ Ne pas attendre la confirmation PCR pour signaler — la suspicion clinique suffit pour les FHV.</p>
             </div>
           </div>
         </div>
@@ -1948,7 +1939,7 @@
     <details class="collapsible-section" open>
       <summary class="collapsible-summary">
         <span class="collapsible-title" id="protection-title" data-i18n="protection-title">Guide de protection respiratoire</span>
-        <span class="collapsible-sub">FFP2 / N95 · FFP3 · Chirurgical · Comparatif standards</span>
+        <span data-i18n="x-ffp2-n95-ffp3-chirurgical-6f90" class="collapsible-sub">FFP2 / N95 · FFP3 · Chirurgical · Comparatif standards</span>
         <span class="collapsible-chevron" aria-hidden="true">▾</span>
       </summary>
 
@@ -1956,7 +1947,7 @@
       <!-- FFP2 card -->
       <div class="prot-card" data-mask="ffp2">
         <div class="prot-card-header">
-          <span class="prot-badge ffp2-badge">FFP2 / N95 / KN95</span>
+          <span data-i18n="x-ffp2-n95-kn95-de47" class="prot-badge ffp2-badge">FFP2 / N95 / KN95</span>
           <span class="prot-eff">≥ 94%</span>
         </div>
         <h3 data-i18n="prot-ffp2-title">Protection haute efficacité</h3>
@@ -1973,7 +1964,7 @@
         </ul>
         <div class="prot-standards">
           <span class="std-chip">EN 149:2001+A1</span>
-          <span class="std-chip">NIOSH N95</span>
+          <span translate="no" class="std-chip">NIOSH N95</span>
           <span class="std-chip">GB 2626-2019</span>
         </div>
       </div>
@@ -1981,38 +1972,38 @@
       <!-- FFP3 card -->
       <div class="prot-card" data-mask="ffp3">
         <div class="prot-card-header">
-          <span class="prot-badge ffp3-badge">FFP3 / N99 / P100</span>
+          <span data-i18n="x-ffp3-n99-p100-93d0" class="prot-badge ffp3-badge">FFP3 / N99 / P100</span>
           <span class="prot-eff">≥ 99%</span>
         </div>
         <h3 data-i18n="prot-ffp3-title">Protection maximale</h3>
-        <p data-i18n="prot-ffp3-desc">Filtre ≥ 99% des particules. Pour pathogènes à très haute contagiosité (Ebola, Nipah, Hantavirus pulmonaire). Usage professionnel principalement.</p>
+        <p data-i18n="prot-ffp3-desc">Filtre ≥ 99% des particules. Pour pathogènes à très haute contagiosité. Usage professionnel principalement.</p>
         <ul class="prot-list">
           <li data-i18n="prot-ffp3-li1">Virus Nipah, Hantavirus, Marburg, Ebola</li>
           <li data-i18n="prot-ffp3-li2">Interventions à haut risque d'aérosolisation</li>
           <li data-i18n="prot-ffp3-li3">PM1.0 ou métaux lourds en suspension</li>
         </ul>
         <div class="prot-standards">
-          <span class="std-chip">EN 149:2001 FFP3</span>
-          <span class="std-chip">NIOSH N99/P100</span>
+          <span translate="no" class="std-chip">EN 149:2001 FFP3</span>
+          <span translate="no" class="std-chip">NIOSH N99/P100</span>
         </div>
       </div>
 
       <!-- Masque chirurgical -->
       <div class="prot-card" data-mask="surgical">
         <div class="prot-card-header">
-          <span class="prot-badge surg-badge">Chirurgical / Type II</span>
-          <span class="prot-eff">≥ 98% BFE</span>
+          <span data-i18n="x-chirurgical-type-ii-67c5" class="prot-badge surg-badge">Chirurgical / Type II</span>
+          <span data-i18n="x-98-bfe-a538" class="prot-eff">≥ 98% BFE</span>
         </div>
         <h3 data-i18n="prot-surg-title">Barrière gouttelettes</h3>
-        <p data-i18n="prot-surg-desc">Efficacité bactérienne ≥ 98%. Protège contre les projections de gouttelettes. Insuffisant pour les aérosols fins et pathogènes à haute transmissibilité aérienne.</p>
+        <p data-i18n="prot-surg-desc">Efficacité bactérienne ≥ 98%. Protège contre les projections de gouttelettes. Insuffisant pour les aérosols fins.</p>
         <ul class="prot-list">
           <li data-i18n="prot-surg-li1">Rhinovirus, Grippe saisonnière faible</li>
           <li data-i18n="prot-surg-li2">Environnements chirurgicaux</li>
           <li data-i18n="prot-surg-li3">Prévention source (symptomatiques)</li>
         </ul>
         <div class="prot-standards">
-          <span class="std-chip">EN 14683 Type IIR</span>
-          <span class="std-chip">ASTM F2100</span>
+          <span data-i18n="x-en-14683-type-iir-4e0c" class="std-chip">EN 14683 Type IIR</span>
+          <span translate="no" class="std-chip">ASTM F2100</span>
         </div>
       </div>
     </div>
@@ -2032,16 +2023,16 @@
         </thead>
         <tbody>
           <tr>
-            <td><strong>FFP3 / N99</strong></td>
-            <td>EN 149 / NIOSH</td>
+            <td><strong data-i18n="x-ffp3-n99-0b5e">FFP3 / N99</strong></td>
+            <td translate="no">EN 149 / NIOSH</td>
             <td class="eff-high">≥ 99%</td>
             <td class="check">✓</td>
             <td class="check">✓</td>
             <td class="check">✓✓</td>
           </tr>
           <tr>
-            <td><strong>FFP2 / N95</strong></td>
-            <td>EN 149 / NIOSH</td>
+            <td><strong data-i18n="x-ffp2-n95-fb3e">FFP2 / N95</strong></td>
+            <td translate="no">EN 149 / NIOSH</td>
             <td class="eff-high">≥ 94%</td>
             <td class="check">✓</td>
             <td class="check">✓</td>
@@ -2056,17 +2047,17 @@
             <td class="check">✓</td>
           </tr>
           <tr>
-            <td><strong>Chirurgical IIR</strong></td>
+            <td><strong data-i18n="x-chirurgical-iir-cabe">Chirurgical IIR</strong></td>
             <td>EN 14683</td>
-            <td class="eff-low">BFE ≥ 98%</td>
+            <td translate="no" class="eff-low">BFE ≥ 98%</td>
             <td class="cross">✗</td>
             <td class="check">✓</td>
             <td class="cross">✗</td>
           </tr>
           <tr>
-            <td><strong>Tissu</strong></td>
+            <td><strong data-i18n="x-tissu-583f">Tissu</strong></td>
             <td>—</td>
-            <td class="eff-low">Variable</td>
+            <td data-i18n="x-variable-47c1" class="eff-low">Variable</td>
             <td class="cross">✗</td>
             <td class="check">~</td>
             <td class="cross">✗</td>
@@ -2074,11 +2065,9 @@
         </tbody>
       </table>
       <p class="table-footnote" data-ref="REF-02" data-year="2020">
-        <strong>* KN95 (GB 2626-2019) :</strong> filtration ≥ 95% en laboratoire mais test de fuite de joint
-        non équivalent à la norme EN 149. L'efficacité réelle en port peut être inférieure selon l'ajustement
-        au visage.
+        <strong>* KN95 (GB 2626-2019) :</strong> <span data-i18n="x-filtration-95-en-laboratoire-b049">filtration ≥ 95% en laboratoire mais test de fuite de joint non équivalent à la norme EN 149. L'efficacité réelle en port peut être inférieure selon l'ajustement au visage.</span>
         <span class="cite-marker"><a href="bibliography.html#ref-07" class="cite-link" aria-label="Voir référence ECDC 2020">[7]</a></span>
-        — Source : ECDC Technical Report on Face Masks, 2020 ; Ueki et al. mSphere 2020
+        <span data-i18n="x-source-ecdc-technical-report-6d17">— Source : ECDC Technical Report on Face Masks, 2020 ; Ueki et al. mSphere 2020</span>
         <span class="cite-marker"><a href="bibliography.html#ref-04" class="cite-link" aria-label="Voir référence Ueki 2020">[4]</a></span>
       </p>
     </div>
@@ -2091,25 +2080,25 @@
   <div class="container">
     <details class="collapsible-section" open>
       <summary class="collapsible-summary">
-        <span class="collapsible-title" id="about-title" data-i18n="about-title">Pourquoi faire confiance à BreathIQ ?</span>
-        <span class="collapsible-sub">Dr. Clément MÉDEAU · Données publiques · Sans pub · RGPD</span>
+        <span class="collapsible-title" id="about-title" data-i18n="about-title">Confiance &amp; Transparence</span>
+        <span translate="no" class="collapsible-sub">Dr. Clément MÉDEAU · Données publiques · Sans pub · RGPD</span>
         <span class="collapsible-chevron" aria-hidden="true">▾</span>
       </summary>
 
     <div class="trust-grid">
       <div class="trust-card author-card">
         <div class="author-info">
-          <h3>Dr. Clément MÉDEAU</h3>
-          <span class="author-role" data-i18n="author-role">Médecin généraliste · La Rochelle, France</span>
-          <p class="author-bio author-bio-personal">
+          <h3 translate="no">Dr. Clément MÉDEAU</h3>
+          <span class="author-role" data-i18n="author-role">Docteur en médecine · La Rochelle, France</span>
+          <p data-i18n="x-medecin-generaliste-installe-a-f415" class="author-bio author-bio-personal">
             Médecin généraliste installé à La Rochelle, j'ai créé BreathIQ par conviction de santé publique : trop de patients consultent trop tard — ou trop tôt — faute d'un repère fiable entre leurs symptômes et les alertes épidémiques mondiales. BreathIQ est ma réponse : gratuite, sourcée, sans publicité.
           </p>
           <p class="author-bio" data-i18n="author-bio" style="margin-top:.4rem;font-size:.78rem;opacity:.7">
-            Outil d'information et d'orientation — non dispositif médical (Règl. UE 2017/745). Ne constitue pas un diagnostic individuel.
+            Initiative indépendante de santé publique créée par un médecin. Cet outil vous informe — il ne remplace pas une consultation médicale.
           </p>
           <div style="display:flex;gap:.75rem;flex-wrap:wrap;margin-top:.5rem">
-            <a href="about.html" class="author-contact" style="font-weight:700">→ En savoir plus</a>
-            <a href="mailto:contact@breathiq.fr" class="author-contact">contact@breathiq.fr</a>
+            <a data-i18n="x-en-savoir-plus-417d" href="about.html" class="author-contact" style="font-weight:700">→ En savoir plus</a>
+            <a translate="no" href="mailto:contact@breathiq.fr" class="author-contact">contact@breathiq.fr</a>
           </div>
         </div>
       </div>
@@ -2119,8 +2108,7 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Accès libre"><title>Accès libre</title><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 9.9-1"/></svg>
         </div>
         <h3 data-i18n="trust-open-title">100% Open &amp; Libre</h3>
-        <p data-i18n="trust-open-desc">Accès sans compte, sans inscription, sans tracking publicitaire.
-        Aucune donnée de santé collectée. Conformité RGPD totale.</p>
+        <p data-i18n="trust-open-desc">Accès sans compte, sans inscription, sans tracking publicitaire. Aucune donnée de santé collectée. Conformité RGPD totale.</p>
       </div>
 
       <div class="trust-card">
@@ -2128,18 +2116,16 @@
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Sources vérifiables"><title>Sources vérifiables</title><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         </div>
         <h3 data-i18n="trust-sources-title">Sources vérifiables</h3>
-        <p data-i18n="trust-sources-desc">Données issues de l'OMS, ECDC, data.gouv.fr, Eurostat et CDC.
-        Toutes les sources sont citées et vérifiables publiquement.</p>
+        <p data-i18n="trust-sources-desc">Données issues de l'OMS, ECDC, data.gouv.fr, Eurostat et CDC. Toutes les sources sont citées et vérifiables publiquement.</p>
       </div>
 
       <div class="trust-card">
         <div class="trust-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" role="img" aria-label="Pas de diagnostic"><title>Pas de diagnostic</title><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
-        <h3 data-i18n="trust-legal-title">Pas de diagnostic</h3>
+        <h3 data-i18n="trust-legal-title">Données protégées</h3>
         <p data-i18n="trust-legal-desc">
-          BreathIQ ne pose pas de diagnostic et ne remplace pas un médecin.
-          C'est un outil de prévention et d'information, fondé sur des données publiques.
+          Aucune exploitation commerciale des données. Reproduction à des fins publicitaires ou d'entraînement IA interdite.
         </p>
       </div>
     </div>
@@ -2147,19 +2133,12 @@
     <div class="disclaimer-box" role="note">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       <div>
-        <strong data-i18n="disclaimer-title">BreathIQ est un outil d'information et de prévention</strong>
+        <strong data-i18n="disclaimer-title">Non-dispositif médical — Important</strong>
         <p data-i18n="disclaimer-text">
-          Il ne remplace pas un avis médical et ne constitue pas un dispositif médical (Règlement UE 2017/745).
-          Les informations affichées sont contextuelles et générales — elles ne tiennent pas compte de votre situation médicale personnelle.
-          En cas de symptômes, consultez un professionnel de santé ou appelez le 15.
+          BreathIQ est exclusivement un outil d'information publique. Il ne constitue pas un dispositif médical et n'émet pas de recommandations médicales individuelles. Pour tout conseil médical, consultez un professionnel de santé.
         </p>
         <p style="font-size:.78rem;color:var(--text-muted);margin-top:.6rem;line-height:1.5">
-          <strong>Nature juridique de l'outil :</strong> BreathIQ est une initiative personnelle de vulgarisation scientifique,
-          réalisée à titre bénévole par son auteur en dehors de tout cadre d'exercice professionnel.
-          Il n'est pas produit dans un but commercial, ne collecte aucune donnée personnelle de santé,
-          et n'entretient aucun lien avec un établissement de soins, un laboratoire ou une industrie pharmaceutique.
-          Il est exclusivement fondé sur des données publiques (OMS, ECDC, Santé Publique France).
-          Il ne constitue pas de la publicité pour une activité médicale au sens de l'article R4127-19 du Code de déontologie médicale.
+          <strong data-i18n="x-nature-juridique-de-l-b217">Nature juridique de l'outil :</strong> <span data-i18n="x-breathiq-est-une-initiative-b4f8">BreathIQ est une initiative personnelle de vulgarisation scientifique, réalisée à titre bénévole par son auteur en dehors de tout cadre d'exercice professionnel. Il n'est pas produit dans un but commercial, ne collecte aucune donnée personnelle de santé, et n'entretient aucun lien avec un établissement de soins, un laboratoire ou une industrie pharmaceutique. Il est exclusivement fondé sur des données publiques (OMS, ECDC, Santé Publique France). Il ne constitue pas de la publicité pour une activité médicale au sens de l'article R4127-19 du Code de déontologie médicale.</span>
         </p>
       </div>
     </div>
@@ -2174,20 +2153,20 @@
 <footer class="biq-footer" role="contentinfo">
   <div class="footer-inner">
     <div class="footer-brand">
-      <span class="brand-text footer-brand-text">Breath<strong>IQ</strong></span>
-      <p class="footer-tagline" data-i18n="footer-tagline">Prévention respiratoire · Données publiques</p>
+      <span translate="no" class="brand-text footer-brand-text">Breath<strong>IQ</strong></span>
+      <p class="footer-tagline" data-i18n="footer-tagline">Surveillance épidémique mondiale</p>
     </div>
 
     <div class="footer-cols">
       <div class="footer-col">
-        <p class="footer-col-title">Ressources</p>
-        <a href="bilan-epidemique.html">📋 Bilan épidémique</a>
-        <a href="methodologie.html">📐 Méthodologie</a>
-        <a href="bibliography.html">Bibliographie scientifique</a>
-        <a href="stocks.html">Masques &amp; Stocks FFP2</a>
+        <p data-i18n="x-ressources-6c13" class="footer-col-title">Ressources</p>
+        <a data-i18n="x-bilan-epidemique-e7db" href="bilan-epidemique.html">📋 Bilan épidémique</a>
+        <a data-i18n="x-methodologie-4e98" href="methodologie.html">📐 Méthodologie</a>
+        <a data-i18n="x-bibliographie-scientifique-ca4f" href="bibliography.html">Bibliographie scientifique</a>
+        <a data-i18n="x-masques-amp-stocks-ffp2-3861" href="stocks.html">Masques &amp; Stocks FFP2</a>
       </div>
       <div class="footer-col">
-        <p class="footer-col-title">Légal</p>
+        <p data-i18n="x-legal-2aaa" class="footer-col-title">Légal</p>
         <a href="mentions-legales.html" data-i18n="footer-mentions">Mentions légales</a>
         <a href="conditions-utilisation.html" data-i18n="footer-cgu">CGU</a>
         <a href="privacy.html" data-i18n="footer-privacy">Confidentialité</a>
@@ -2195,21 +2174,21 @@
         <a href="legal-notice.html" data-i18n="footer-legal-en">Legal Notice (EN)</a>
       </div>
       <div class="footer-col">
-        <p class="footer-col-title">À propos</p>
+        <p data-i18n="x-a-propos-36df" class="footer-col-title">À propos</p>
         <a href="about.html" data-i18n="footer-about">À propos</a>
-        <a href="presse.html">Espace Presse</a>
-        <a href="about.html">Dr Clément Médeau</a>
+        <a data-i18n="x-espace-presse-dffd" href="presse.html">Espace Presse</a>
+        <a data-i18n="x-dr-clement-medeau-d35e" href="about.html">Dr Clément Médeau</a>
       </div>
     </div>
 
     <div class="footer-copy">
       <p class="footer-author">
-        Conçu par <a href="about.html" class="footer-author-link">Dr Clément Médeau</a>
+        <span data-i18n="x-concu-par-9a1a">Conçu par</span> <a data-i18n="x-dr-clement-medeau-d35e" href="about.html" class="footer-author-link">Dr Clément Médeau</a>
         <span class="footer-author-sep">·</span>
-        Docteur en médecine · La Rochelle, France
+        <span data-i18n="x-docteur-en-medecine-la-bb7f">Docteur en médecine · La Rochelle, France</span>
       </p>
-      <p class="footer-sources">Sources : OMS · ECDC · Santé Publique France · Open-Meteo · données publiques</p>
-      <p class="footer-disclaimer" data-i18n="footer-disclaimer-short">Outil de vulgarisation scientifique bénévole · Non dispositif médical (Règl. UE 2017/745) · Aucun lien commercial · © 2026</p>
+      <p data-i18n="x-sources-oms-ecdc-sante-44a6" class="footer-sources">Sources : OMS · ECDC · Santé Publique France · Open-Meteo · données publiques</p>
+      <p class="footer-disclaimer" data-i18n="footer-disclaimer-short">Outil d'information publique · Non dispositif médical</p>
     </div>
   </div>
 </footer>
@@ -2219,12 +2198,12 @@
   <!-- Mode patient : Symptômes en premier -->
   <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="mbn-item patient-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
-    <span>Symptômes</span>
+    <span data-i18n="x-symptomes-2796">Symptômes</span>
   </a>
   <!-- Mode expert : Score en premier -->
   <a href="#score" onclick="return navTo(event,'#score')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    <span>Score</span>
+    <span data-i18n="x-score-5dd1">Score</span>
   </a>
   <a href="#map" onclick="return navTo(event,'#map')" class="mbn-item" data-i18n="mbn-map">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
@@ -2267,39 +2246,39 @@
     <!-- ── PROFIL SOIGNANT (accès direct, sans code) ── -->
     <div id="proStep2">
       <div class="soignant-modal-icon">🏥</div>
-      <h2 class="soignant-modal-title" id="soignantModalTitle">Espace Soignant</h2>
-      <p class="soignant-modal-desc">Sélectionnez votre profession pour accéder aux outils cliniques</p>
+      <h2 data-i18n="x-espace-soignant-8155" class="soignant-modal-title" id="soignantModalTitle">Espace Soignant</h2>
+      <p data-i18n="x-selectionnez-votre-profession-pour-8d1d" class="soignant-modal-desc">Sélectionnez votre profession pour accéder aux outils cliniques</p>
 
       <!-- Pays auto-détecté -->
       <div class="pro-country-row">
         <span id="proCountryFlag" class="pro-country-flag"></span>
         <select id="proCountrySelect" class="pro-country-select" onchange="_onCountryChange()">
-          <option value="FR">🇫🇷 France</option>
-          <option value="BE">🇧🇪 Belgique</option>
-          <option value="CH">🇨🇭 Suisse</option>
-          <option value="LU">🇱🇺 Luxembourg</option>
-          <option value="CA">🇨🇦 Canada</option>
-          <option value="SN">🇸🇳 Sénégal</option>
-          <option value="MA">🇲🇦 Maroc</option>
-          <option value="DZ">🇩🇿 Algérie</option>
-          <option value="TN">🇹🇳 Tunisie</option>
-          <option value="CI">🇨🇮 Côte d'Ivoire</option>
-          <option value="CM">🇨🇲 Cameroun</option>
-          <option value="CD">🇨🇩 RD Congo</option>
-          <option value="US">🇺🇸 USA</option>
+          <option data-i18n="x-france-a58b" value="FR">🇫🇷 France</option>
+          <option data-i18n="x-belgique-5383" value="BE">🇧🇪 Belgique</option>
+          <option data-i18n="x-suisse-8ed2" value="CH">🇨🇭 Suisse</option>
+          <option data-i18n="x-luxembourg-1bc3" value="LU">🇱🇺 Luxembourg</option>
+          <option data-i18n="x-canada-17a7" value="CA">🇨🇦 Canada</option>
+          <option data-i18n="x-senegal-797b" value="SN">🇸🇳 Sénégal</option>
+          <option data-i18n="x-maroc-eb81" value="MA">🇲🇦 Maroc</option>
+          <option data-i18n="x-algerie-dabc" value="DZ">🇩🇿 Algérie</option>
+          <option data-i18n="x-tunisie-46c7" value="TN">🇹🇳 Tunisie</option>
+          <option data-i18n="x-cote-d-ivoire-02f7" value="CI">🇨🇮 Côte d'Ivoire</option>
+          <option data-i18n="x-cameroun-a900" value="CM">🇨🇲 Cameroun</option>
+          <option data-i18n="x-rd-congo-35ff" value="CD">🇨🇩 RD Congo</option>
+          <option data-i18n="x-usa-9334" value="US">🇺🇸 USA</option>
           <option value="GB">🇬🇧 UK</option>
-          <option value="OTHER">🌍 Autre pays</option>
+          <option data-i18n="x-autre-pays-12ed" value="OTHER">🌍 Autre pays</option>
         </select>
       </div>
 
       <!-- Spécialité — cartes 1 clic -->
       <div class="pro-specialty-grid">
-        <button class="pro-spec-card" data-spec="medecin" onclick="selectSpecialty(this)"><span class="spec-icon">🩺</span><span>Médecin</span></button>
-        <button class="pro-spec-card" data-spec="infirmier" onclick="selectSpecialty(this)"><span class="spec-icon">💉</span><span>Infirmier·e</span></button>
-        <button class="pro-spec-card" data-spec="pharmacien" onclick="selectSpecialty(this)"><span class="spec-icon">💊</span><span>Pharmacien·ne</span></button>
-        <button class="pro-spec-card" data-spec="epidemiologiste" onclick="selectSpecialty(this)"><span class="spec-icon">🔬</span><span>Épidémiologiste</span></button>
-        <button class="pro-spec-card" data-spec="autre-soignant" onclick="selectSpecialty(this)"><span class="spec-icon">🏥</span><span>Autre soignant</span></button>
-        <button class="pro-spec-card" data-spec="etudiant" onclick="selectSpecialty(this)"><span class="spec-icon">🎓</span><span>Étudiant santé</span></button>
+        <button class="pro-spec-card" data-spec="medecin" onclick="selectSpecialty(this)"><span class="spec-icon">🩺</span><span data-i18n="x-medecin-9dac">Médecin</span></button>
+        <button class="pro-spec-card" data-spec="infirmier" onclick="selectSpecialty(this)"><span class="spec-icon">💉</span><span data-i18n="x-infirmier-e-e7e7">Infirmier·e</span></button>
+        <button class="pro-spec-card" data-spec="pharmacien" onclick="selectSpecialty(this)"><span class="spec-icon">💊</span><span data-i18n="x-pharmacien-ne-cee2">Pharmacien·ne</span></button>
+        <button class="pro-spec-card" data-spec="epidemiologiste" onclick="selectSpecialty(this)"><span class="spec-icon">🔬</span><span data-i18n="x-epidemiologiste-d185">Épidémiologiste</span></button>
+        <button class="pro-spec-card" data-spec="autre-soignant" onclick="selectSpecialty(this)"><span class="spec-icon">🏥</span><span data-i18n="x-autre-soignant-c099">Autre soignant</span></button>
+        <button class="pro-spec-card" data-spec="etudiant" onclick="selectSpecialty(this)"><span class="spec-icon">🎓</span><span data-i18n="x-etudiant-sante-db82">Étudiant santé</span></button>
       </div>
 
       <!-- Identifiant professionnel — adapté au pays -->
@@ -2307,16 +2286,16 @@
         <input id="proRppsInput" class="pro-rpps-input" type="text" inputmode="numeric"
                placeholder="N° RPPS (11 chiffres) — optionnel"
                oninput="this.value=this.value.replace(/\D/g,'').slice(0,11)">
-        <p class="pro-rpps-hint" id="proRppsHint">Identifiant national · non obligatoire · jamais transmis</p>
+        <p class="pro-rpps-hint" id="proRppsHint" translate="no">Identifiant national · non obligatoire · jamais transmis</p>
       </div>
 
       <label class="pro-declaration-checkbox" style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--text-secondary);margin-top:.75rem;cursor:pointer">
         <input type="checkbox" id="proDeclarationChk" onchange="_onProDeclarationChange()" style="margin-top:.15rem;flex-shrink:0;accent-color:var(--c-teal)">
-        <span>Je déclare exercer ou me former dans le domaine de la santé. J'ai compris que les informations cliniques de cet espace sont destinées aux professionnels et ne remplacent pas un protocole institutionnel validé.</span>
+        <span data-i18n="x-je-declare-exercer-ou-048f">Je déclare exercer ou me former dans le domaine de la santé. J'ai compris que les informations cliniques de cet espace sont destinées aux professionnels et ne remplacent pas un protocole institutionnel validé.</span>
       </label>
       <div class="soignant-modal-actions" style="margin-top:.75rem">
-        <button class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
-        <button class="soignant-btn-validate" id="proStep2Btn" onclick="saveProProfile()" disabled>Accéder →</button>
+        <button data-i18n="x-annuler-d12c" class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
+        <button class="soignant-btn-validate" id="proStep2Btn" translate="no" onclick="saveProProfile()" disabled>Accéder →</button>
       </div>
     </div>
 
@@ -2342,36 +2321,36 @@
         <circle cx="16" cy="16" r="8" fill="none" stroke="#0E8C7A" stroke-width="1.2" opacity="0.7"/>
         <circle cx="16" cy="16" r="4" fill="#0E8C7A"/>
       </svg>
-      <span class="onboarding-brand">Breath<strong>IQ</strong></span>
+      <span translate="no" class="onboarding-brand">Breath<strong>IQ</strong></span>
     </div>
     <h2 id="onboardingTitle" class="onboarding-title" data-i18n="ob-title">Bienvenue sur BreathIQ</h2>
-    <p class="onboarding-subtitle" data-i18n="ob-subtitle">Qualité de l'air, virus saisonniers et alertes épidémiques — données OMS · ECDC · SPF. Gratuit, sans compte.</p>
+    <p class="onboarding-subtitle" data-i18n="ob-subtitle">Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.</p>
 
     <div class="onboarding-modes">
       <button class="onboarding-mode-card onboarding-mode-patient" onclick="closeOnboarding('patient')" data-i18n-aria="ob-patient-aria">
         <span class="om-icon">👤</span>
-        <span class="om-title" data-i18n="ob-patient-title">Grand public</span>
-        <p class="om-tagline">Dehors aujourd'hui, c'est comment ?</p>
+        <span class="om-title" data-i18n="ob-patient-title">Je suis patient / citoyen</span>
+        <p data-i18n="x-dehors-aujourd-hui-c-885e" class="om-tagline">Dehors aujourd'hui, c'est comment ?</p>
         <ul class="om-features">
-          <li data-i18n="ob-patient-f1">Score respiratoire du jour</li>
-          <li data-i18n="ob-patient-f2">Alertes épidémies près de chez vous</li>
-          <li data-i18n="ob-patient-f3">Que faire si j'ai des symptômes</li>
-          <li data-i18n="ob-patient-f4">Trouver un médecin ou une pharmacie</li>
+          <li data-i18n="ob-patient-f1">✓ Vérifier mes symptômes</li>
+          <li data-i18n="ob-patient-f2">✓ Trouver un médecin proche</li>
+          <li data-i18n="ob-patient-f3">✓ Maladies à surveiller</li>
+          <li data-i18n="ob-patient-f4">✓ Triage urgences</li>
         </ul>
-        <span class="om-cta" data-i18n="ob-patient-cta">Accéder →</span>
+        <span class="om-cta" data-i18n="ob-patient-cta">Commencer →</span>
       </button>
 
       <button class="onboarding-mode-card onboarding-mode-expert" onclick="closeOnboarding('expert')" data-i18n-aria="ob-expert-aria">
         <span class="om-icon">🩺</span>
-        <span class="om-title" data-i18n="ob-expert-title">Professionnel de santé</span>
-        <p class="om-tagline">Données épidémio brutes, sans filtre</p>
+        <span class="om-title" data-i18n="ob-expert-title">Je suis soignant / expert</span>
+        <p data-i18n="x-donnees-epidemio-brutes-sans-a2a3" class="om-tagline">Données épidémio brutes, sans filtre</p>
         <ul class="om-features">
-          <li data-i18n="ob-expert-f1">Z-scores SPF · ECDC en temps réel</li>
-          <li data-i18n="ob-expert-f2">Carte mondiale des foyers actifs</li>
-          <li data-i18n="ob-expert-f3">Fiches cliniques + protocoles EPI</li>
-          <li data-i18n="ob-expert-f4">26 pathogènes · alertes PHEIC OMS</li>
+          <li data-i18n="ob-expert-f1">✓ Tableau de bord épidémique</li>
+          <li data-i18n="ob-expert-f2">✓ Score respiratoire 0–100</li>
+          <li data-i18n="ob-expert-f3">✓ Carte mondiale des foyers</li>
+          <li data-i18n="ob-expert-f4">✓ Déclaration de cas</li>
         </ul>
-        <span class="om-cta om-cta-expert" data-i18n="ob-expert-cta">Espace soignant →</span>
+        <span class="om-cta om-cta-expert" data-i18n="ob-expert-cta">Accès soignant →</span>
       </button>
     </div>
 
@@ -2421,23 +2400,27 @@ function hideEpiAlert(type) {
 }
 
 // ── Overlay score non-respiratoire si PHEIC Ebola actif ───
-(function() {
-  function addEbolaPheicOverlay() {
-    const scoreCard = document.getElementById('dailyScore');
-    if (!scoreCard || scoreCard.querySelector('.ebola-pheic-overlay')) return;
-    const overlay = document.createElement('div');
-    overlay.className = 'ebola-pheic-overlay';
-    overlay.setAttribute('role', 'note');
-    overlay.innerHTML = `<strong>⚠️ Note — PHEIC Ebola active</strong><p>Le score affiché concerne la qualité de l'air et les virus respiratoires. <strong>Ebola n'est pas transmis par voie respiratoire</strong> et n'est pas pris en compte dans ce score. Consultez la section épidémio pour évaluer votre risque Ebola.</p><a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">Suis-je concerné(e) ? →</a>`;
-    scoreCard.insertAdjacentElement('afterbegin', overlay);
-  }
-  // Attendre que le DOM soit prêt
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', addEbolaPheicOverlay);
-  else addEbolaPheicOverlay();
-})();
+// Appelé par loadPheicAlert() uniquement quand une alerte sourcée est active (plus de note codée en dur)
+window.syncPheicScoreOverlay = function(lang, alert) {
+  const scoreCard = document.getElementById('dailyScore');
+  if (!scoreCard) return;
+  const existing = scoreCard.querySelector('.ebola-pheic-overlay');
+  if (!alert) { existing?.remove(); return; }
+  const fr = lang === 'fr';
+  const name = alert.shortName ? (alert.shortName[lang] || alert.shortName.fr) : alert.disease;
+  const html = fr
+    ? `<strong>⚠️ Note — alerte internationale active : ${name}</strong><p>Le score affiché concerne la qualité de l'air et les virus respiratoires ; cette alerte n'y est pas intégrée. Consultez la section « Alertes épidémiques » pour savoir si vous êtes concerné(e).</p><a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">Suis-je concerné(e) ? →</a>`
+    : `<strong>⚠️ Note — active international alert: ${name}</strong><p>The score shown covers air quality and respiratory viruses; this alert is not part of it. See the "Epidemic alerts" section to find out whether it concerns you.</p><a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">Does it concern me? →</a>`;
+  if (existing) { existing.innerHTML = html; return; }
+  const overlay = document.createElement('div');
+  overlay.className = 'ebola-pheic-overlay';
+  overlay.setAttribute('role', 'note');
+  overlay.innerHTML = html;
+  scoreCard.insertAdjacentElement('afterbegin', overlay);
+};
 </script>
 <script src="api-live.min.js?v=20261007k" defer></script>
-<script src="script.min.js?v=20261007v" defer></script>
+<script src="script.min.js?v=20261007w" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
