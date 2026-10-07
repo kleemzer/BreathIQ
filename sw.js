@@ -6,10 +6,10 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v35';
+const CACHE_VERSION = 'biq-v36';
 // Doit suivre le ?v= de index.html : les URLs .min.* sans ?v= sont figées un an par le CDN (immutable),
 // le SW ne doit donc jamais les demander au réseau sans version.
-const ASSET_VERSION = '20261007o';
+const ASSET_VERSION = '20261007p';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 

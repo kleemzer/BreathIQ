@@ -3143,10 +3143,10 @@ function _updateExpertStats() {
   el('esbPheic', pheicCount);
   el('esbOutbreaks', outbreakCount);
   el('esbPathogens', OUTBREAK_DATA.length);
-  // Décès PHEIC : uniquement depuis une alerte sourcée (sinon « — », jamais un 0 trompeur)
-  const sourcedActive = (window._pheicData?.alerts || []).filter(a => a.active);
+  // Cas confirmés PHEIC : uniquement depuis une alerte sourcée (sinon « — », jamais un 0 trompeur)
+  const sourcedActive = (window._pheicData?.alerts || []).filter(a => a.active && typeof a.casesConfirmed === 'number');
   el('esbEbolaCases', sourcedActive.length
-    ? sourcedActive.reduce((sum, a) => sum + (a.deaths || 0), 0)
+    ? sourcedActive.reduce((sum, a) => sum + a.casesConfirmed, 0).toLocaleString(currentLang === 'fr' ? 'fr-FR' : 'en-GB')
     : '—');
 }
 
@@ -6152,7 +6152,13 @@ async function loadPheicAlert({ force = false } = {}) {
       const deathsLabel = { fr:'décès confirmés', en:'confirmed deaths', es:'muertes confirmadas', pt:'mortes confirmadas', ar:'وفاة مؤكدة', zh:'确认死亡', hi:'पुष्ट मृत्यु', sw:'vifo vilivyothibitishwa', ru:'подтверждённых смертей' }[lang] || 'deaths';
       const updateLabel = { fr:'Mise à jour :', en:'Updated:', es:'Actualizado:', pt:'Atualizado:', ar:'تحديث:', zh:'更新:', hi:'अपडेट:', sw:'Ilisasishwa:', ru:'Обновлено:' }[lang] || 'Updated:';
       const franceLabel = L(active.franceStatus);
-      dateEl.textContent = `${pheicLabel} ${pheicFormatted} · ${active.deaths} ${deathsLabel} · ${updateLabel} ${updateFormatted}${franceLabel ? ' · ' + franceLabel : ''}`;
+      // N'afficher que les champs réellement renseignés — jamais « null décès » ni une date PHEIC absente
+      const parts = [];
+      if (pheicFormatted) parts.push(`${pheicLabel} ${pheicFormatted}`);
+      if (typeof active.deaths === 'number') parts.push(`${active.deaths} ${deathsLabel}`);
+      if (updateFormatted) parts.push(`${updateLabel} ${updateFormatted}`);
+      if (franceLabel) parts.push(franceLabel);
+      dateEl.textContent = parts.join(' · ');
     }
     if (msgEl) {
       msgEl.innerHTML = `🚨 <strong>${active.level === 'rouge' ? (lang === 'fr' ? 'Urgence sanitaire internationale (PHEIC)' : 'International Health Emergency (PHEIC)') : 'Alerte OMS'}</strong> — ${L(active.message)}`;
