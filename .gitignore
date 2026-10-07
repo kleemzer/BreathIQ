@@ -8,3 +8,4 @@ node_modules/
 .netlify
 .vercel
 data/science-agent-log.json
+.claude/worktrees/
