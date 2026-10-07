@@ -6,7 +6,10 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v33';
+const CACHE_VERSION = 'biq-v34';
+// Doit suivre le ?v= de index.html : les URLs .min.* sans ?v= sont figées un an par le CDN (immutable),
+// le SW ne doit donc jamais les demander au réseau sans version.
+const ASSET_VERSION = '20261007n';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -44,11 +47,15 @@ const DATA_ASSETS = [
 ];
 
 // ── Installation — pré-cache des assets statiques ────────────
-// cache: 'reload' bypass le HTTP cache du navigateur pour les .min.* immutables
+// Réseau : URL versionnée + cache:'reload' (contourne CDN immutable et HTTP cache) ; clé de cache : URL nue
+function isVersionedAsset(pathname) {
+  return pathname.endsWith('.js') || pathname.endsWith('.css') || pathname.endsWith('.woff2');
+}
+
 async function precacheAll(cache, urls) {
   await Promise.all(urls.map(url => {
-    const isImmutable = url.endsWith('.js') || url.endsWith('.css') || url.endsWith('.woff2');
-    const req = new Request(url, isImmutable ? { cache: 'reload' } : {});
+    const versioned = isVersionedAsset(url);
+    const req = new Request(versioned ? `${url}?v=${ASSET_VERSION}` : url, versioned ? { cache: 'reload' } : {});
     return fetch(req).then(r => r.ok ? cache.put(url, r) : null).catch(() => null);
   }));
 }
@@ -116,7 +123,7 @@ self.addEventListener('fetch', event => {
     url.pathname.endsWith('.webp')||
     url.pathname === '/manifest.json'
   )) {
-    event.respondWith(cacheFirstWithNetworkFallback(normalizeRequest(request), CACHE_STATIC));
+    event.respondWith(cacheFirstWithNetworkFallback(normalizeRequest(request), CACHE_STATIC, request));
     return;
   }
 
@@ -151,18 +158,19 @@ async function networkFirstWithCache(request, cacheName) {
   }
 }
 
-async function cacheFirstWithNetworkFallback(request, cacheName) {
-  const cached = await caches.match(request);
+// cacheKeyRequest : URL normalisée (clé) ; networkRequest : requête d'origine, versionnée, pour le réseau
+async function cacheFirstWithNetworkFallback(cacheKeyRequest, cacheName, networkRequest = cacheKeyRequest) {
+  const cached = await caches.match(cacheKeyRequest);
   if (cached) return cached;
   try {
-    const response = await fetch(request);
+    const response = await fetch(networkRequest);
     if (response.ok) {
       const cache = await caches.open(cacheName);
-      cache.put(request, response.clone());
+      cache.put(cacheKeyRequest, response.clone());
     }
     return response;
   } catch {
-    return offlineFallback(request);
+    return offlineFallback(cacheKeyRequest);
   }
 }
 
