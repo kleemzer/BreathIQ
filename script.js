@@ -2442,11 +2442,15 @@ function cleanSPFSignals(signals) {
     .slice(0, 3);
 }
 
+// Désactivé (audit oct. 2026) : texte aspiré sans accents, hors sujet, restes de navigation,
+// « chiffres repères » sans sens. Code conservé pour réactivation après refonte de la collecte.
+const FEATURE_SPF_SYNTHESIS = false;
+
 function renderSPFCompactSummary(live) {
   const panel = document.getElementById('spfLiveSummary');
   if (!panel) return;
 
-  if (!isCompactSPFLiveData(live)) {
+  if (!FEATURE_SPF_SYNTHESIS || !isCompactSPFLiveData(live)) {
     panel.hidden = true;
     panel.innerHTML = '';
     return;
