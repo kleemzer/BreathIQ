@@ -2218,8 +2218,11 @@ function updateMapStats() {
   if (el('mstatCritical'))  el('mstatCritical').textContent  = critical;
   if (el('mstatOutbreaks')) el('mstatOutbreaks').textContent = outbreaks;
   if (el('mstatLastUpdate')) {
-    el('mstatLastUpdate').textContent = _pathogensGeneratedAt
-      ? new Date(_pathogensGeneratedAt).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+    // Date de la donnée (dernière fiche modifiée), pas la date d'exécution du script de vérification
+    const latest = OUTBREAK_DATA.map(o => o.lastUpdate).filter(Boolean).sort().pop();
+    const d = latest && new Date(latest.length === 7 ? latest + '-01' : latest);
+    el('mstatLastUpdate').textContent = d && !isNaN(d)
+      ? d.toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
       : '—';
   }
 
@@ -2418,9 +2421,11 @@ function applySPFPatches(live) {
 function updateSPFLiveBadge(live) {
   const badge = document.getElementById('spfLiveBadge');
   if (!badge) return;
+  // run_date est la date d'exécution du script, pas celle du bulletin : sans bulletinDate, ne rien afficher
+  if (!FEATURE_SPF_SYNTHESIS) { badge.style.display = 'none'; return; }
 
-  const dateValue = live.generatedAt || live.run_date || live.bulletinDate;
-  if (!dateValue) return;
+  const dateValue = live.bulletinDate;
+  if (!dateValue) { badge.style.display = 'none'; return; }
 
   const label = formatFrenchDate(dateValue);
   badge.textContent = `📡 Données SPF mises à jour le ${label}`;
@@ -5989,7 +5994,7 @@ function _updateLiveBadgeAqi(isLive) {
   if (isLive) {
     badge.classList.remove('live-off');
     badge.classList.add('live-partial');
-    if (label) label.textContent = currentLang === 'fr' ? `Actualisé ${hhmm}` : `Updated ${hhmm}`;
+    if (label) label.textContent = currentLang === 'fr' ? `AQI actualisé ${hhmm}` : `AQI updated ${hhmm}`;
     badge.title = currentLang === 'fr'
       ? `AQI CAMS Copernicus (Open-Meteo) · modèle horaire européen · actualisé à ${hhmm}`
       : `AQI CAMS Copernicus (Open-Meteo) · hourly EU model · updated at ${hhmm}`;
