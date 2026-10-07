@@ -2137,8 +2137,7 @@
       "lat": 51.7,
       "lon": 85,
       "activeRegions": [
-        "Russie (Altaï, Touva)",
-        "Kazakhstan (frontalier)"
+        "Foyers enzootiques permanents : Asie centrale, Afrique (Madagascar, RDC), Amériques"
       ],
       "transmission": [
         "Contact avec rongeurs infectés",
@@ -2174,42 +2173,35 @@
         "Manipulation cadavres animaux infectés"
       ],
       "currentStatus": {
-        "fr": "Cluster confirmé Altaï-Touva (Russie), octobre 2026 — Investigation OMS en cours. Forme bubonique majoritaire. Cas humains sporadiques signalés.",
-        "en": "Confirmed cluster in Altai-Tuva (Russia), October 2026 — WHO investigation ongoing. Predominantly bubonic form. Sporadic human cases reported."
+        "fr": "Surveillance enzootique permanente. Cas humains sporadiques annuels (Madagascar, RDC, Kirghizstan). Aucun cluster majeur confirmé par l'OMS en Europe ou Russie en 2026.",
+        "en": "Permanent enzootic surveillance. Annual sporadic human cases (Madagascar, DRC, Kyrgyzstan). No major cluster confirmed by WHO in Europe or Russia in 2026."
       },
-      "outbreakStart": "2026-09-20",
-      "lastUpdate": "2026-10-06",
+      "outbreakStart": null,
+      "lastUpdate": "2026-10-07",
       "iconColor": "#7B2D8B",
       "references": [
-        "WHO DON Plague Russia 2026",
-        "Rospotrebnadzor (autorité sanitaire russe)",
-        "ECDC Plague factsheet"
+        "ECDC — Plague factsheet (https://www.ecdc.europa.eu/en/plague)",
+        "WHO — Plague fact sheet (https://www.who.int/news-room/fact-sheets/detail/plague)",
+        "WHO DON — Plague Madagascar 2017 (dernier cluster majeur documenté OMS)"
       ],
-      "descFR": "La peste est une maladie bactérienne grave causée par Yersinia pestis, transmise principalement par les puces des rongeurs. Il existe 3 formes : bubonique (ganglions douloureux), septicémique (sepsis) et pulmonaire (pneumonie — contagieuse de personne à personne). Les antibiotiques (doxycycline, streptomycine, fluoroquinolones) sont efficaces si débutés précocement. Un cluster actif est signalé en Russie (Altaï-Touva) depuis fin septembre 2026.",
-      "descEN": "Plague is a serious bacterial disease caused by Yersinia pestis, transmitted primarily by rodent fleas. Three forms exist: bubonic (painful lymph nodes), septicemic (bloodstream infection), and pneumonic (pneumonia — person-to-person contagious). Antibiotics (doxycycline, streptomycin, fluoroquinolones) are effective if started early. An active cluster has been reported in Russia (Altai-Tuva) since late September 2026.",
+      "descFR": "La peste est une maladie bactérienne grave causée par Yersinia pestis, transmise principalement par les puces des rongeurs. Il existe 3 formes : bubonique (ganglions douloureux), septicémique (sepsis) et pulmonaire (pneumonie — contagieuse de personne à personne). Les antibiotiques (doxycycline, streptomycine, fluoroquinolones) sont efficaces si débutés précocement. Foyers enzootiques permanents en Asie centrale, Afrique et Amériques.",
+      "descEN": "Plague is a serious bacterial disease caused by Yersinia pestis, transmitted primarily by rodent fleas. Three forms exist: bubonic (painful lymph nodes), septicemic (bloodstream infection), and pneumonic (pneumonia — person-to-person contagious). Antibiotics (doxycycline, streptomycin, fluoroquinolones) are effective if started early. Permanent enzootic foci in Central Asia, Africa and the Americas.",
       "descPatientFR": "La peste est une infection bactérienne grave transmise par les puces des rats. Elle se soigne très bien avec des antibiotiques si prise en charge tôt. Le risque pour la France est actuellement très faible. Si vous avez voyagé en Asie centrale (Russie, Kazakhstan) et avez de la fièvre + ganglions gonflés : consultez rapidement.",
       "descPatientEN": "Plague is a serious bacterial infection transmitted by rat fleas. It responds well to antibiotics if treated early. The risk for Western Europe is currently very low. If you have traveled to Central Asia (Russia, Kazakhstan) and have fever + swollen lymph nodes: seek medical care promptly.",
       "foci": [
         {
-          "lat": 51.7,
-          "lon": 85,
-          "country": "Russie — Altaï",
-          "cases": 12,
-          "note": "Cluster confirmé — investigation en cours"
+          "lat": -18.9,
+          "lon": 47.5,
+          "country": "Madagascar",
+          "cases": null,
+          "note": "Foyer enzootique majeur — cas annuels"
         },
         {
-          "lat": 51.2,
-          "lon": 94.3,
-          "country": "Russie — Touva (Tyva)",
-          "cases": 8,
-          "note": "Cas sporadiques — réservoirs rongeurs actifs"
-        },
-        {
-          "lat": 48,
-          "lon": 68,
-          "country": "Kazakhstan (frontalier Russie)",
-          "cases": 0,
-          "note": "Surveillance renforcée — aucun cas humain confirmé"
+          "lat": 42.8,
+          "lon": 74.6,
+          "country": "Kirghizstan",
+          "cases": null,
+          "note": "Foyer enzootique — cas sporadiques"
         }
       ],
       "verifiedAt": "2026-10-07"
