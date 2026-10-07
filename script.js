@@ -1203,6 +1203,7 @@ var DEMO_DATA = [
 
 // ── OUTBREAK DATA — chargé depuis data/pathogens.json ──────
 let OUTBREAK_DATA = []; // rempli par loadPathogensData()
+let _pathogensGeneratedAt = null; // horodatage réel du fichier pathogens.json
 
 
 // ── Données symptomatologiques ────────────────────────────────
@@ -2205,8 +2206,11 @@ function updateMapStats() {
   const el = (id) => document.getElementById(id);
   if (el('mstatCritical'))  el('mstatCritical').textContent  = critical;
   if (el('mstatOutbreaks')) el('mstatOutbreaks').textContent = outbreaks;
-  if (el('mstatMonitored')) el('mstatMonitored').textContent = 8;
-  if (el('mstatLastUpdate'))el('mstatLastUpdate').textContent = '2026-08-14';
+  if (el('mstatLastUpdate')) {
+    el('mstatLastUpdate').textContent = _pathogensGeneratedAt
+      ? new Date(_pathogensGeneratedAt).toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' })
+      : '—';
+  }
 
   // Simple patient count
   const simpleCount = document.getElementById('simpleOutbreakCount');
@@ -2255,6 +2259,10 @@ async function loadPathogensData() {
       validate: d => Array.isArray(d.pathogens) && d.pathogens.length > 0,
     });
     OUTBREAK_DATA = data.pathogens;
+    _pathogensGeneratedAt = data.generatedAt || data.verifiedAt || null;
+    // Les compteurs ont pu être rendus avant l'arrivée des données (ils affichaient 0)
+    updateMapStats();
+    _updateExpertStats();
   } catch (e) {
     logDataWarning('pathogens.json indisponible', e);
   }
@@ -3135,11 +3143,11 @@ function _updateExpertStats() {
   el('esbPheic', pheicCount);
   el('esbOutbreaks', outbreakCount);
   el('esbPathogens', OUTBREAK_DATA.length);
-  // Mettre à jour les cas PHEIC depuis _pheicData si disponible
-  if (window._pheicData) {
-    const totalDeaths = window._pheicData.alerts.filter(a => a.active).reduce((sum, a) => sum + (a.deaths || 0), 0);
-    el('esbEbolaCases', totalDeaths);
-  }
+  // Décès PHEIC : uniquement depuis une alerte sourcée (sinon « — », jamais un 0 trompeur)
+  const sourcedActive = (window._pheicData?.alerts || []).filter(a => a.active);
+  el('esbEbolaCases', sourcedActive.length
+    ? sourcedActive.reduce((sum, a) => sum + (a.deaths || 0), 0)
+    : '—');
 }
 
 // ── Quick symptom selection from chips ──────────────────────────
@@ -6239,9 +6247,8 @@ async function loadPheicAlert({ force = false } = {}) {
         : `${activeAlerts.length} active international alert(s) · Check your exposure`;
     }
 
-    // Update expert stats bar
-    const esbPheic = document.getElementById('esbPheic');
-    if (esbPheic) esbPheic.textContent = data.alerts.filter(a => a.active).length;
+    // Compteurs de la barre experte : source unique = _updateExpertStats (pathogens.json)
+    _updateExpertStats();
 
     // Mise à jour date patient GP banner (dynamique — évite la date codée en dur)
     const gpDateEl = document.getElementById('epidemicGpDate');
