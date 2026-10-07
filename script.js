@@ -2199,6 +2199,17 @@ function buildFocusPopup(ob, focus) {
   </div>`;
 }
 
+// Valeur épidémiologique affichable : jamais « undefined » ni « [object Object] »
+function fmtEpiValue(v) {
+  if (v == null || v === '') return '—';
+  if (Array.isArray(v)) return v.length ? v.join(', ') : '—';
+  if (typeof v === 'object') {
+    const main = Object.entries(v).filter(([k, val]) => k !== 'note' && val != null && val !== '').map(([k, val]) => `${k} ${val}`).join(' · ');
+    return (main || '—') + (v.note ? ` (${v.note})` : '');
+  }
+  return String(v);
+}
+
 function updateMapStats() {
   const critical = DEMO_DATA.filter(r => r.status === 'critical').length;
   const outbreaks = OUTBREAK_DATA.filter(ob => ob.currentStatus === 'active').length;
@@ -2558,8 +2569,9 @@ function renderPathogens() {
     const name = currentLang === 'fr' ? ob.nameFR : (ob.nameEN || ob.nameFR);
     const desc = currentLang === 'fr' ? ob.descFR : (ob.descEN || ob.descFR);
     const riskColor = riskColors[ob.riskLevel] || '#6B7280';
-    const riskLabel = (riskLabels[currentLang] || riskLabels.en || riskLabels.fr)[ob.riskLevel] || ob.riskLevel;
-    const catLabel  = (categoryLabels[currentLang] || categoryLabels.en || categoryLabels.fr)[ob.category] || ob.category;
+    // Champ absent → libellé explicite, jamais « undefined »
+    const riskLabel = (riskLabels[currentLang] || riskLabels.en || riskLabels.fr)[ob.riskLevel] || ob.riskLevel || (currentLang === 'fr' ? 'Non classé' : 'Unclassified');
+    const catLabel  = (categoryLabels[currentLang] || categoryLabels.en || categoryLabels.fr)[ob.category] || ob.category || (currentLang === 'fr' ? 'Non catégorisé' : 'Uncategorised');
     const statLabel = (statusLabels[currentLang] || statusLabels.en || statusLabels.fr)[ob.currentStatus] || ob.currentStatus;
     const protBadgeClass = ob.protectionLevel >= 3 ? 'prot-ffp3' : ob.protectionLevel === 2 ? 'prot-ffp2' : 'prot-surg';
     const refList = ob.references ? ob.references.map(r => `<li>${makeRefLink(r)}</li>`).join('') : '';
@@ -2619,7 +2631,7 @@ function renderPathogens() {
         <div class="pc-dot" style="background:${ob.iconColor}"></div>
         <div class="pc-titles">
           <h3 class="pc-name">${name}</h3>
-          <span class="pc-pathogen">${ob.pathogen}</span>
+          <span class="pc-pathogen">${ob.pathogen || ''}</span>
         </div>
         <span class="pc-risk" style="color:${riskColor};border-color:${riskColor}40;background:${riskColor}10">${riskLabel}</span>
       </div>
@@ -2628,7 +2640,7 @@ function renderPathogens() {
       <div class="pc-badges">
         <span class="pc-badge pc-cat">${catLabel}</span>
         <span class="pc-badge pc-status${isOutbreak ? ' status-active' : ''}">${statLabel}</span>
-        <span class="pc-badge ${protBadgeClass}">${ob.protectionRequired}</span>
+        <span class="pc-badge ${protBadgeClass}">${ob.protectionRequired || (lbl ? 'Protection non précisée' : 'Protection not specified')}</span>
         ${(ob.verifiedAt || ob.lastUpdate) ? `<span class="pc-badge pc-update" title="${lbl?'Données vérifiées par BreathIQ':'Data verified by BreathIQ'}">✓ ${lbl?'Vérifié':'Verified'} ${ob.verifiedAt || ob.lastUpdate}</span>` : ''}
       </div>
 
@@ -2645,19 +2657,19 @@ function renderPathogens() {
       <div class="pc-epi-grid">
         <div class="pc-epi-cell">
           <span class="pc-epi-label">R₀ / Reff</span>
-          <span class="pc-epi-val">${ob.reproductionNumber}</span>
+          <span class="pc-epi-val">${fmtEpiValue(ob.reproductionNumber ?? ob.r0)}</span>
         </div>
         <div class="pc-epi-cell">
           <span class="pc-epi-label">${lbl?'Létalité (CFR)':'Case fatality rate'}</span>
-          <span class="pc-epi-val">${ob.cfr}</span>
+          <span class="pc-epi-val">${fmtEpiValue(ob.cfr)}</span>
         </div>
         <div class="pc-epi-cell">
           <span class="pc-epi-label">${lbl?'Incubation':'Incubation'}</span>
-          <span class="pc-epi-val">${ob.incubation}</span>
+          <span class="pc-epi-val">${fmtEpiValue(ob.incubation)}</span>
         </div>
         <div class="pc-epi-cell pc-epi-wide">
           <span class="pc-epi-label">${lbl?'Voie de transmission':'Transmission route'}</span>
-          <span class="pc-epi-val">${ob.transmission_route}</span>
+          <span class="pc-epi-val">${fmtEpiValue(ob.transmission_route)}</span>
         </div>
       </div>
 
@@ -6105,13 +6117,13 @@ function exportMyDeclarations() {
 }
 
 // ── PHEIC Alert — chargement dynamique depuis data/pheic-alerts.json ─────────
-async function loadPheicAlert({ force = false } = {}) {
+async function loadPheicAlert({ force = false, retry = false } = {}) {
   const banner = document.getElementById('epidemicAlertBanner');
   if (!banner) return;
   // Skip fetch if data already in memory (e.g. lang switch re-render)
   try {
     const data = (force || !window._pheicData)
-      ? await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 6000 })
+      ? await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 10000 })
       : window._pheicData;
     // Garde-fou : une alerte n'est affichée que si elle cite une URL officielle vérifiable
     const OFFICIAL_SOURCE_RE = /^https:\/\/(www\.)?(who\.int|ecdc\.europa\.eu|santepubliquefrance\.fr)\//;
@@ -6293,6 +6305,8 @@ async function loadPheicAlert({ force = false } = {}) {
     banner.classList.remove('alert-inactive');
   } catch (e) {
     logDataWarning('PHEIC alert load failed', e);
+    // Au premier chargement après mise à jour du SW, le réseau est saturé par le précache : une 2e tentative suffit
+    if (!retry) setTimeout(() => loadPheicAlert({ force: true, retry: true }), 4000);
   }
 }
 
