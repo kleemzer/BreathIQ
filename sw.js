@@ -6,7 +6,7 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v31';
+const CACHE_VERSION = 'biq-v32';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -44,10 +44,19 @@ const DATA_ASSETS = [
 ];
 
 // ── Installation — pré-cache des assets statiques ────────────
+// cache: 'reload' bypass le HTTP cache du navigateur pour les .min.* immutables
+async function precacheAll(cache, urls) {
+  await Promise.all(urls.map(url => {
+    const isImmutable = url.endsWith('.js') || url.endsWith('.css') || url.endsWith('.woff2');
+    const req = new Request(url, isImmutable ? { cache: 'reload' } : {});
+    return fetch(req).then(r => r.ok ? cache.put(url, r) : null).catch(() => null);
+  }));
+}
+
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_STATIC)
-      .then(cache => cache.addAll(STATIC_ASSETS))
+      .then(cache => precacheAll(cache, STATIC_ASSETS))
       .then(() => self.skipWaiting())
       .catch(err => console.warn('[SW] Install partial fail:', err))
   );
