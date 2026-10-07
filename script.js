@@ -1351,10 +1351,17 @@ function _eaqiToScore(eaqi) {
   return Math.min(100, Math.round(90 + (eaqi-100) * 0.5)); // 90-100
 }
 
+// Clé de cache AQI : une ville personnalisée est identifiée par ses coordonnées,
+// sinon deux recherches successives partageraient la même entrée 'custom'.
+function _aqiCacheKey(region) {
+  if (region.id === 'custom') return `custom:${(+region.lat).toFixed(2)},${(+region.lon).toFixed(2)}`;
+  return String(region.id);
+}
+
 // Récupère l'AQI réel depuis Open-Meteo CAMS (Copernicus — référence scientifique EU, sans clé API)
 async function fetchLiveAqi(region) {
   if (!region.lat || !region.lon) return null;
-  const cacheKey = `${region.id}`;
+  const cacheKey = _aqiCacheKey(region);
   const cached = _liveAqiCache[cacheKey];
   // Utiliser le cache si < 30 min
   if (cached && cached.ts && (Date.now() - cached.ts) < 30 * 60 * 1000) return cached.score;
@@ -1411,7 +1418,9 @@ async function fetchLiveAqi(region) {
 
 function generateScoreForRegion(region) {
   // Uniquement des données réelles — aucune valeur synthétique
-  const cacheKey = _customCity ? 'custom' : String(region.id);
+  const cacheKey = _customCity
+    ? _aqiCacheKey({ id: 'custom', lat: _customCity.lat, lon: _customCity.lon })
+    : String(region.id);
   const cachedAqi = _liveAqiCache[cacheKey];
 
   const viralResult = computeViralScore(region);
@@ -1463,22 +1472,25 @@ function scoreGradeEN(sr) {
 function aiMessageForRegion(region, score, lang) {
   if (score.sr == null) return '';
   const g = scoreGrade(score.sr);
-  const name = lang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR);
+  // Ville recherchée/géolocalisée en priorité ; forme « Lieu : … » valable pour une ville, une région ou un pays
+  const name = _customCity
+    ? _customCity.name
+    : (lang === 'fr' ? region.nameFR : (region.nameEN || region.nameFR));
 
   const messages = {
     fr: {
-      excellent: `Contexte respiratoire favorable en ${name}. Aucun facteur particulier détecté aujourd'hui.`,
-      good: `Contexte respiratoire satisfaisant en ${name}. Les indicateurs de qualité de l'air et de circulation virale sont dans les normes habituelles.`,
-      moderate: `Contexte respiratoire modéré en ${name}. Quelques facteurs environnementaux ou épidémiologiques à surveiller — les personnes à risque respiratoire peuvent consulter leur médecin pour adapter leur suivi.`,
-      high: `Contexte respiratoire chargé en ${name}. Cumul de facteurs défavorables (qualité de l'air, circulation virale ou pollens). Les personnes présentant une pathologie respiratoire chronique sont encouragées à contacter leur médecin traitant.`,
-      critical: `Contexte respiratoire dégradé en ${name}. Situation multi-factorielle défavorable. Toute personne présentant des symptômes respiratoires est invitée à contacter un professionnel de santé.`
+      excellent: `${name} : contexte respiratoire favorable. Aucun facteur particulier détecté aujourd'hui.`,
+      good: `${name} : contexte respiratoire satisfaisant. Les indicateurs de qualité de l'air et de circulation virale sont dans les normes habituelles.`,
+      moderate: `${name} : contexte respiratoire modéré. Quelques facteurs environnementaux ou épidémiologiques à surveiller — les personnes à risque respiratoire peuvent consulter leur médecin pour adapter leur suivi.`,
+      high: `${name} : contexte respiratoire chargé. Cumul de facteurs défavorables (qualité de l'air, circulation virale ou pollens). Les personnes présentant une pathologie respiratoire chronique sont encouragées à contacter leur médecin traitant.`,
+      critical: `${name} : contexte respiratoire dégradé. Situation multi-factorielle défavorable. Toute personne présentant des symptômes respiratoires est invitée à contacter un professionnel de santé.`
     },
     en: {
-      excellent: `Favourable respiratory context in ${name}. No particular factor detected today.`,
-      good: `Satisfactory respiratory context in ${name}. Air quality and viral circulation indicators are within normal ranges.`,
-      moderate: `Moderate respiratory context in ${name}. Some environmental or epidemiological factors to monitor — people with respiratory conditions may wish to consult their doctor.`,
-      high: `High respiratory context in ${name}. Unfavourable combination of factors (air quality, viral circulation or pollen). People with chronic respiratory conditions are encouraged to contact their GP.`,
-      critical: `Degraded respiratory context in ${name}. Multifactorial unfavourable situation. Anyone experiencing respiratory symptoms is encouraged to contact a healthcare professional.`
+      excellent: `${name}: favourable respiratory context. No particular factor detected today.`,
+      good: `${name}: satisfactory respiratory context. Air quality and viral circulation indicators are within normal ranges.`,
+      moderate: `${name}: moderate respiratory context. Some environmental or epidemiological factors to monitor — people with respiratory conditions may wish to consult their doctor.`,
+      high: `${name}: high respiratory context. Unfavourable combination of factors (air quality, viral circulation or pollen). People with chronic respiratory conditions are encouraged to contact their GP.`,
+      critical: `${name}: degraded respiratory context. Multifactorial unfavourable situation. Anyone experiencing respiratory symptoms is encouraged to contact a healthcare professional.`
     }
   };
 
@@ -3083,7 +3095,7 @@ function updatePatientRiskBanner() {
     if (icon)  { icon.textContent = 'ℹ️'; icon.classList.remove('pulse'); }
     if (label) label.textContent = lang === 'fr' ? 'SURVEILLANCE INTERNATIONALE' : 'INTERNATIONAL MONITORING';
     // Lire le statut depuis _pheicData si disponible, sinon message générique
-    const pheicAlert = window._pheicData?.alerts?.[0];
+    const pheicAlert = window._pheicData?.alerts?.find(a => a.active);
     const pheicSubtitle = pheicAlert?.subtitle?.[lang] || pheicAlert?.subtitle?.fr || 'Épidémie active en Afrique centrale — PHEIC OMS';
     const pheicLastUpdate = pheicAlert?.lastUpdate ? ` · Données au ${new Date(pheicAlert.lastUpdate).toLocaleDateString('fr-FR', {day:'numeric',month:'long',year:'numeric'})}` : '';
     if (title) title.textContent = '⚠️ ' + pheicSubtitle + pheicLastUpdate;
@@ -6093,6 +6105,15 @@ async function loadPheicAlert({ force = false } = {}) {
     const data = (force || !window._pheicData)
       ? await fetchJsonWithTimeout('data/pheic-alerts.json?_=' + Date.now(), { timeout: 6000 })
       : window._pheicData;
+    // Garde-fou : une alerte n'est affichée que si elle cite une URL officielle vérifiable
+    const OFFICIAL_SOURCE_RE = /^https:\/\/(www\.)?(who\.int|ecdc\.europa\.eu|santepubliquefrance\.fr)\//;
+    if (data && Array.isArray(data.alerts)) {
+      data.alerts = data.alerts.filter(a => {
+        const sourced = OFFICIAL_SOURCE_RE.test(a.sourceUrl || '');
+        if (a.active && !sourced) console.warn('[PHEIC] alerte ignorée — sourceUrl officielle (OMS/ECDC/SPF) manquante :', a.id);
+        return sourced;
+      });
+    }
     window._pheicData = data;
     const active = data?.alerts?.find(a => a.active);
     if (!active) {

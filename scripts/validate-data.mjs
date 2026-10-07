@@ -47,9 +47,24 @@ function validateSpfLive(data) {
   }
 }
 
+// Toute alerte PHEIC publiée doit pointer vers une source officielle vérifiable.
+// Refuse les alertes rédigées sans URL OMS/ECDC/SPF (incident alerte peste fictive, oct. 2026).
+const OFFICIAL_SOURCE_RE = /^https:\/\/(www\.)?(who\.int|ecdc\.europa\.eu|santepubliquefrance\.fr)\//;
+
+function validatePheicAlerts(data) {
+  assert(Array.isArray(data.alerts), 'pheic-alerts.json: alerts doit etre un tableau');
+  for (const alert of data.alerts) {
+    assert(typeof alert.id === 'string' && alert.id, 'pheic-alerts.json: alerte sans id');
+    assert(OFFICIAL_SOURCE_RE.test(alert.sourceUrl || ''),
+      `pheic-alerts.json: ${alert.id} — sourceUrl officielle (who.int / ecdc.europa.eu / santepubliquefrance.fr) manquante ou invalide`);
+    assert(typeof alert.lastUpdate === 'string', `pheic-alerts.json: ${alert.id} — lastUpdate manquant`);
+  }
+}
+
 const validators = {
   'who-alerts.json': validateWhoAlerts,
   'spf-live.json': validateSpfLive,
+  'pheic-alerts.json': validatePheicAlerts,
 };
 
 let checked = 0;
