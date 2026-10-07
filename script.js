@@ -1467,11 +1467,11 @@ function aiMessageForRegion(region, score, lang) {
 
   const messages = {
     fr: {
-      excellent: `Contexte respiratoire favorable à ${name}. Aucun facteur particulier détecté aujourd'hui.`,
-      good: `Contexte respiratoire satisfaisant à ${name}. Les indicateurs de qualité de l'air et de circulation virale sont dans les normes habituelles.`,
-      moderate: `Contexte respiratoire modéré à ${name}. Quelques facteurs environnementaux ou épidémiologiques à surveiller — les personnes à risque respiratoire peuvent consulter leur médecin pour adapter leur suivi.`,
-      high: `Contexte respiratoire chargé à ${name}. Cumul de facteurs défavorables (qualité de l'air, circulation virale ou pollens). Les personnes présentant une pathologie respiratoire chronique sont encouragées à contacter leur médecin traitant.`,
-      critical: `Contexte respiratoire dégradé à ${name}. Situation multi-factorielle défavorable. Toute personne présentant des symptômes respiratoires est invitée à contacter un professionnel de santé.`
+      excellent: `Contexte respiratoire favorable en ${name}. Aucun facteur particulier détecté aujourd'hui.`,
+      good: `Contexte respiratoire satisfaisant en ${name}. Les indicateurs de qualité de l'air et de circulation virale sont dans les normes habituelles.`,
+      moderate: `Contexte respiratoire modéré en ${name}. Quelques facteurs environnementaux ou épidémiologiques à surveiller — les personnes à risque respiratoire peuvent consulter leur médecin pour adapter leur suivi.`,
+      high: `Contexte respiratoire chargé en ${name}. Cumul de facteurs défavorables (qualité de l'air, circulation virale ou pollens). Les personnes présentant une pathologie respiratoire chronique sont encouragées à contacter leur médecin traitant.`,
+      critical: `Contexte respiratoire dégradé en ${name}. Situation multi-factorielle défavorable. Toute personne présentant des symptômes respiratoires est invitée à contacter un professionnel de santé.`
     },
     en: {
       excellent: `Favourable respiratory context in ${name}. No particular factor detected today.`,
