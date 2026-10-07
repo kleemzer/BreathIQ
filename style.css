@@ -4010,8 +4010,35 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 /* Lang select lisible partout */
 .lang-select{min-width:0;flex-shrink:0}
 @media(max-width:640px){
-  .lang-select{max-width:52px;padding:.3rem .2rem;font-size:.9rem}
+  .lang-select{width:52px;max-width:52px;padding:.3rem .2rem;font-size:.9rem}
   .lang-select option::after{content:''}
+}
+
+/* ── Mobile ≤480px : la barre ne doit jamais dépasser le viewport (audit : 332px d'actions pour 375px) ──
+   Badge, taille du texte et thème quittent la barre ; les deux derniers restent accessibles dans le menu. */
+.nav-mobile-tools{display:none}
+@media(max-width:480px){
+  .nav-actions{gap:.35rem;flex-shrink:1;min-width:0}
+  .nav-actions .live-badge,
+  .nav-actions .font-size-btn,
+  .nav-actions .theme-toggle{display:none}
+  .nav-links.is-open .nav-mobile-tools{display:flex;gap:.5rem;width:100%;margin-top:.75rem;padding-top:.75rem;border-top:1px solid rgba(255,255,255,.1)}
+  .nav-links.is-open .nav-tool-btn{flex:1;min-height:44px;padding:.6rem .8rem;border-radius:10px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.06);color:#E8F0F7;font:inherit;font-size:.95rem;cursor:pointer}
+  .onboarding-overlay{padding:16px}
+  .onboarding-box{max-width:calc(100vw - 32px);padding:var(--s4) var(--s3);overflow-wrap:anywhere}
+  /* Bandeau épidémique : les actions passent sous le texte au lieu de pousser la page */
+  .epidemic-alert-banner .epidemic-alert-inner{flex-wrap:wrap!important}
+  .epidemic-alert-banner .epidemic-alert-actions{flex:1 1 100%;flex-wrap:wrap;width:100%;justify-content:flex-end;gap:.5rem}
+  .epidemic-link{white-space:normal}
+  .epidemic-alert-banner .epidemic-alert-gp{flex-wrap:wrap;min-width:0;max-width:100%}
+  .epidemic-alert-banner .epidemic-alert-gp .epidemic-level,.epidemic-alert-banner .epidemic-alert-body .epidemic-level,.epidemic-alert-banner .epidemic-gp-text,.epidemic-alert-banner .epidemic-disease{white-space:normal!important;overflow-wrap:anywhere;min-width:0;max-width:100%}
+  /* Recherche de structure par ville : champ + bouton sur deux lignes si besoin */
+  #careCityFallback .care-city-row{flex-wrap:wrap}
+  #careCityFallback .care-city-btn{flex:1 1 auto;white-space:normal;min-width:0}
+  /* Cartes pathogènes patient : jamais plus larges que leur colonne (minmax(0,1fr) ignore le min-content des étiquettes) */
+  .pathogens-grid{grid-template-columns:minmax(0,1fr)}
+  .pc-patient,.pathogen-card{min-width:0;max-width:100%;overflow-wrap:anywhere}
+  .pcp-sym-tag{max-width:100%;white-space:normal}
 }
 
 /* ── FIX : Modal soignant passe au-dessus de tous les éléments ── */
