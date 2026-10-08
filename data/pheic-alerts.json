@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-07T00:00:00.000Z",
-  "fetchDate": "2026-10-07",
+  "generatedAt": "2026-10-08T14:58:39.713Z",
+  "fetchDate": "2026-10-08",
   "note": "Chaque alerte doit citer une sourceUrl officielle (who.int / ecdc.europa.eu / santepubliquefrance.fr) et ne contenir que des faits présents dans cette source. Validé par scripts/validate-data.mjs (CI) et filtré à l'exécution par loadPheicAlert().",
   "alerts": [
     {
@@ -12,7 +12,10 @@
         "en": "PUBLIC HEALTH EMERGENCY OF INTERNATIONAL CONCERN — WHO PHEIC"
       },
       "disease": "Ebola — virus Bundibugyo (BDBV)",
-      "shortName": { "fr": "Ebola (RDC)", "en": "Ebola (DRC)" },
+      "shortName": {
+        "fr": "Ebola (RDC)",
+        "en": "Ebola (DRC)"
+      },
       "subtitle": {
         "fr": "RDC · PHEIC OMS depuis le 17 mai 2026, maintenue le 18 août · 63 zones de santé, 7 provinces — OMS DON618 (25 sept. 2026)",
         "en": "DRC · WHO PHEIC since 17 May 2026, maintained on 18 August · 63 health zones, 7 provinces — WHO DON618 (25 Sept 2026)"
@@ -45,11 +48,22 @@
       "pathogen_id": "EBOLA",
       "sourceUrl": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618",
       "sources": [
-        { "label": "OMS DON602 — détermination de la PHEIC, 17 mai 2026", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602" },
-        { "label": "OMS DON616 — PHEIC maintenue (Comité d'urgence du 18 août 2026)", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON616" },
-        { "label": "OMS DON618 — situation au 23 sept. 2026", "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618" }
+        {
+          "label": "OMS DON602 — détermination de la PHEIC, 17 mai 2026",
+          "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602"
+        },
+        {
+          "label": "OMS DON616 — PHEIC maintenue (Comité d'urgence du 18 août 2026)",
+          "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON616"
+        },
+        {
+          "label": "OMS DON618 — situation au 23 sept. 2026",
+          "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618"
+        }
       ],
-      "verifiedAgainstWhoApi": "2026-10-07"
+      "verifiedAgainstWhoApi": "2026-10-07",
+      "verifiedAt": "2026-10-08"
     }
-  ]
+  ],
+  "verifiedAt": "2026-10-08"
 }
