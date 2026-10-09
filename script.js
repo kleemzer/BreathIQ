@@ -148,7 +148,7 @@ var I18N = {
     'x-docteur-en-medecine-la-bb7f': 'Docteur en médecine · La Rochelle, France',
     'x-breathiq-surveillance-epidemiologique-virus-227d': 'BreathIQ — Surveillance épidémiologique · Virus en circulation · Alertes OMS',
     'x-aucune-donnee-personnelle-collectee-9f92': 'Aucune donnée personnelle collectée. Données publiques OMS/ECDC uniquement.',
-    'x-bilan-mensuel-aabb': 'Bilan mensuel',
+    'x-bilan-mensuel-aabb': 'Dernier bilan',
     'x-plus-6cea': 'Plus ▾',
     'x-espace-soignant-8155': 'Espace Soignant',
     'x-guide-clinique-complet-7633': 'Guide clinique complet →',
@@ -771,17 +771,17 @@ var I18N = {
     'ob-subtitle': 'Outil d\'information épidémique mondiale — gratuit, sans inscription, sans publicité.',
     'ob-patient-aria': 'Continuer en mode patient',
     'ob-patient-title': 'Je suis patient / citoyen',
-    'ob-patient-f1': '✓ Vérifier mes symptômes',
-    'ob-patient-f2': '✓ Trouver un médecin proche',
-    'ob-patient-f3': '✓ Maladies à surveiller',
-    'ob-patient-f4': '✓ Triage urgences',
+    'ob-patient-f1': 'Vérifier mes symptômes',
+    'ob-patient-f2': 'Trouver un médecin proche',
+    'ob-patient-f3': 'Maladies à surveiller',
+    'ob-patient-f4': 'Triage urgences',
     'ob-patient-cta': 'Commencer →',
     'ob-expert-aria': 'Continuer en mode soignant',
     'ob-expert-title': 'Je suis soignant / expert',
-    'ob-expert-f1': '✓ Tableau de bord épidémique',
-    'ob-expert-f2': '✓ Score respiratoire 0–100',
-    'ob-expert-f3': '✓ Carte mondiale des foyers',
-    'ob-expert-f4': '✓ Déclaration de cas',
+    'ob-expert-f1': 'Tableau de bord épidémique',
+    'ob-expert-f2': 'Score respiratoire 0–100',
+    'ob-expert-f3': 'Carte mondiale des foyers',
+    'ob-expert-f4': 'Déclaration de cas',
     'ob-expert-cta': 'Accès soignant →',
     'ob-disclaimer': 'Outil d\'information publique — non dispositif médical (Règl. UE 2017/745)',
     'ob-skip': 'Continuer sans choisir',
@@ -912,7 +912,7 @@ var I18N = {
     'x-docteur-en-medecine-la-bb7f': 'Doctor of Medicine · La Rochelle, France',
     'x-breathiq-surveillance-epidemiologique-virus-227d': 'BreathIQ — Epidemiological surveillance · Circulating viruses · WHO alerts',
     'x-aucune-donnee-personnelle-collectee-9f92': 'No personal data collected. Public WHO/ECDC data only.',
-    'x-bilan-mensuel-aabb': 'Monthly report',
+    'x-bilan-mensuel-aabb': 'Latest report',
     'x-plus-6cea': 'More ▾',
     'x-espace-soignant-8155': 'Clinician area',
     'x-guide-clinique-complet-7633': 'Full clinical guide →',
@@ -1536,17 +1536,17 @@ var I18N = {
     'ob-subtitle': 'Global epidemic information tool — free, no registration, no ads.',
     'ob-patient-aria': 'Continue as patient',
     'ob-patient-title': 'I am a patient / citizen',
-    'ob-patient-f1': '✓ Check my symptoms',
-    'ob-patient-f2': '✓ Find a nearby doctor',
-    'ob-patient-f3': '✓ Diseases to watch',
-    'ob-patient-f4': '✓ Emergency triage',
+    'ob-patient-f1': 'Check my symptoms',
+    'ob-patient-f2': 'Find a nearby doctor',
+    'ob-patient-f3': 'Diseases to watch',
+    'ob-patient-f4': 'Emergency triage',
     'ob-patient-cta': 'Get started →',
     'ob-expert-aria': 'Continue in healthcare professional mode',
     'ob-expert-title': 'I am a healthcare professional / expert',
-    'ob-expert-f1': '✓ Epidemic dashboard',
-    'ob-expert-f2': '✓ Respiratory score 0–100',
-    'ob-expert-f3': '✓ Global outbreak map',
-    'ob-expert-f4': '✓ Case reporting',
+    'ob-expert-f1': 'Epidemic dashboard',
+    'ob-expert-f2': 'Respiratory score 0–100',
+    'ob-expert-f3': 'Global outbreak map',
+    'ob-expert-f4': 'Case reporting',
     'ob-expert-cta': 'Healthcare access →',
     'ob-disclaimer': 'Public information tool — not a medical device (EU Reg. 2017/745)',
     'ob-skip': 'Continue without choosing',
@@ -1625,17 +1625,17 @@ var I18N = {
     'ob-subtitle': 'Herramienta de información epidémica mundial — gratuita, sin registro, sin publicidad.',
     'ob-patient-aria': 'Continuar como paciente',
     'ob-patient-title': 'Soy paciente / ciudadano',
-    'ob-patient-f1': '✓ Verificar mis síntomas',
-    'ob-patient-f2': '✓ Encontrar médico cercano',
-    'ob-patient-f3': '✓ Enfermedades a vigilar',
-    'ob-patient-f4': '✓ Triaje de urgencias',
+    'ob-patient-f1': 'Verificar mis síntomas',
+    'ob-patient-f2': 'Encontrar médico cercano',
+    'ob-patient-f3': 'Enfermedades a vigilar',
+    'ob-patient-f4': 'Triaje de urgencias',
     'ob-patient-cta': 'Comenzar →',
     'ob-expert-aria': 'Continuar como sanitario',
     'ob-expert-title': 'Soy profesional sanitario',
-    'ob-expert-f1': '✓ Panel epidémico',
-    'ob-expert-f2': '✓ Puntuación respiratoria 0–100',
-    'ob-expert-f3': '✓ Mapa mundial de focos',
-    'ob-expert-f4': '✓ Declaración de casos',
+    'ob-expert-f1': 'Panel epidémico',
+    'ob-expert-f2': 'Puntuación respiratoria 0–100',
+    'ob-expert-f3': 'Mapa mundial de focos',
+    'ob-expert-f4': 'Declaración de casos',
     'ob-expert-cta': 'Acceso sanitario →',
     'ob-disclaimer': 'Herramienta de información pública — no dispositivo médico (Regl. UE 2017/745)',
     'ob-skip': 'Continuar sin elegir',
@@ -1711,17 +1711,17 @@ var I18N = {
     'ob-subtitle': 'Ferramenta de informação epidêmica mundial — gratuita, sem cadastro, sem anúncios.',
     'ob-patient-aria': 'Continuar como paciente',
     'ob-patient-title': 'Sou paciente / cidadão',
-    'ob-patient-f1': '✓ Verificar meus sintomas',
-    'ob-patient-f2': '✓ Encontrar médico próximo',
-    'ob-patient-f3': '✓ Doenças a monitorar',
-    'ob-patient-f4': '✓ Triagem de emergências',
+    'ob-patient-f1': 'Verificar meus sintomas',
+    'ob-patient-f2': 'Encontrar médico próximo',
+    'ob-patient-f3': 'Doenças a monitorar',
+    'ob-patient-f4': 'Triagem de emergências',
     'ob-patient-cta': 'Começar →',
     'ob-expert-aria': 'Continuar como profissional de saúde',
     'ob-expert-title': 'Sou profissional de saúde',
-    'ob-expert-f1': '✓ Painel epidêmico',
-    'ob-expert-f2': '✓ Pontuação respiratória 0–100',
-    'ob-expert-f3': '✓ Mapa mundial de surtos',
-    'ob-expert-f4': '✓ Declaração de casos',
+    'ob-expert-f1': 'Painel epidêmico',
+    'ob-expert-f2': 'Pontuação respiratória 0–100',
+    'ob-expert-f3': 'Mapa mundial de surtos',
+    'ob-expert-f4': 'Declaração de casos',
     'ob-expert-cta': 'Acesso profissional →',
     'ob-disclaimer': 'Ferramenta de informação pública — não dispositivo médico (Reg. UE 2017/745)',
     'ob-skip': 'Continuar sem escolher',
@@ -1795,17 +1795,17 @@ var I18N = {
     'ob-subtitle': 'أداة معلومات وبائية عالمية — مجانية، بدون تسجيل، بدون إعلانات.',
     'ob-patient-aria': 'المتابعة كمريض',
     'ob-patient-title': 'أنا مريض / مواطن',
-    'ob-patient-f1': '✓ فحص أعراضي',
-    'ob-patient-f2': '✓ إيجاد طبيب قريب',
-    'ob-patient-f3': '✓ الأمراض التي يجب مراقبتها',
-    'ob-patient-f4': '✓ فرز حالات الطوارئ',
+    'ob-patient-f1': 'فحص أعراضي',
+    'ob-patient-f2': 'إيجاد طبيب قريب',
+    'ob-patient-f3': 'الأمراض التي يجب مراقبتها',
+    'ob-patient-f4': 'فرز حالات الطوارئ',
     'ob-patient-cta': 'ابدأ ←',
     'ob-expert-aria': 'المتابعة كمتخصص صحي',
     'ob-expert-title': 'أنا متخصص صحي',
-    'ob-expert-f1': '✓ لوحة المتابعة الوبائية',
-    'ob-expert-f2': '✓ مؤشر التنفس 0–100',
-    'ob-expert-f3': '✓ خريطة بؤر عالمية',
-    'ob-expert-f4': '✓ الإبلاغ عن الحالات',
+    'ob-expert-f1': 'لوحة المتابعة الوبائية',
+    'ob-expert-f2': 'مؤشر التنفس 0–100',
+    'ob-expert-f3': 'خريطة بؤر عالمية',
+    'ob-expert-f4': 'الإبلاغ عن الحالات',
     'ob-expert-cta': 'وصول المتخصصين ←',
     'ob-disclaimer': 'أداة معلومات عامة — ليست جهازاً طبياً (لائحة UE 2017/745)',
     'ob-skip': 'المتابعة بدون اختيار',
@@ -1879,17 +1879,17 @@ var I18N = {
     'ob-subtitle': '全球流行病信息工具 — 免费，无需注册，无广告。',
     'ob-patient-aria': '以患者身份继续',
     'ob-patient-title': '我是患者 / 公众',
-    'ob-patient-f1': '✓ 检查我的症状',
-    'ob-patient-f2': '✓ 寻找附近医生',
-    'ob-patient-f3': '✓ 需要关注的疾病',
-    'ob-patient-f4': '✓ 急诊分诊',
+    'ob-patient-f1': '检查我的症状',
+    'ob-patient-f2': '寻找附近医生',
+    'ob-patient-f3': '需要关注的疾病',
+    'ob-patient-f4': '急诊分诊',
     'ob-patient-cta': '开始 →',
     'ob-expert-aria': '以医疗专业人员身份继续',
     'ob-expert-title': '我是医疗专业人员',
-    'ob-expert-f1': '✓ 流行病监测仪表盘',
-    'ob-expert-f2': '✓ 呼吸评分 0–100',
-    'ob-expert-f3': '✓ 全球疫情地图',
-    'ob-expert-f4': '✓ 病例申报',
+    'ob-expert-f1': '流行病监测仪表盘',
+    'ob-expert-f2': '呼吸评分 0–100',
+    'ob-expert-f3': '全球疫情地图',
+    'ob-expert-f4': '病例申报',
     'ob-expert-cta': '医疗人员入口 →',
     'ob-disclaimer': '公共信息工具 — 非医疗设备（欧盟法规 2017/745）',
     'ob-skip': '不选择继续',
@@ -1962,17 +1962,17 @@ var I18N = {
     'ob-subtitle': 'वैश्विक महामारी सूचना उपकरण — मुफ्त, बिना पंजीकरण, बिना विज्ञापन।',
     'ob-patient-aria': 'रोगी के रूप में जारी रखें',
     'ob-patient-title': 'मैं रोगी / नागरिक हूं',
-    'ob-patient-f1': '✓ अपने लक्षण जांचें',
-    'ob-patient-f2': '✓ नजदीकी डॉक्टर खोजें',
-    'ob-patient-f3': '✓ निगरानी योग्य रोग',
-    'ob-patient-f4': '✓ आपातकालीन ट्राइएज',
+    'ob-patient-f1': 'अपने लक्षण जांचें',
+    'ob-patient-f2': 'नजदीकी डॉक्टर खोजें',
+    'ob-patient-f3': 'निगरानी योग्य रोग',
+    'ob-patient-f4': 'आपातकालीन ट्राइएज',
     'ob-patient-cta': 'शुरू करें →',
     'ob-expert-aria': 'स्वास्थ्यकर्मी के रूप में जारी रखें',
     'ob-expert-title': 'मैं स्वास्थ्यकर्मी हूं',
-    'ob-expert-f1': '✓ महामारी डैशबोर्ड',
-    'ob-expert-f2': '✓ श्वसन स्कोर 0–100',
-    'ob-expert-f3': '✓ वैश्विक फ़ोकस मानचित्र',
-    'ob-expert-f4': '✓ मामले की रिपोर्टिंग',
+    'ob-expert-f1': 'महामारी डैशबोर्ड',
+    'ob-expert-f2': 'श्वसन स्कोर 0–100',
+    'ob-expert-f3': 'वैश्विक फ़ोकस मानचित्र',
+    'ob-expert-f4': 'मामले की रिपोर्टिंग',
     'ob-expert-cta': 'चिकित्सक पहुंच →',
     'ob-disclaimer': 'सार्वजनिक सूचना उपकरण — चिकित्सा उपकरण नहीं (EU Reg. 2017/745)',
     'ob-skip': 'बिना चुने जारी रखें',
@@ -2045,17 +2045,17 @@ var I18N = {
     'ob-subtitle': 'Zana ya habari za magonjwa ya mlipuko duniani — bila malipo, bila usajili, bila matangazo.',
     'ob-patient-aria': 'Endelea kama mgonjwa',
     'ob-patient-title': 'Mimi ni mgonjwa / raia',
-    'ob-patient-f1': '✓ Angalia dalili zangu',
-    'ob-patient-f2': '✓ Tafuta daktari karibu',
-    'ob-patient-f3': '✓ Magonjwa ya kufuatilia',
-    'ob-patient-f4': '✓ Uchunguzi wa dharura',
+    'ob-patient-f1': 'Angalia dalili zangu',
+    'ob-patient-f2': 'Tafuta daktari karibu',
+    'ob-patient-f3': 'Magonjwa ya kufuatilia',
+    'ob-patient-f4': 'Uchunguzi wa dharura',
     'ob-patient-cta': 'Anza →',
     'ob-expert-aria': 'Endelea kama mtaalamu wa afya',
     'ob-expert-title': 'Mimi ni mtaalamu wa afya',
-    'ob-expert-f1': '✓ Dashibodi ya magonjwa',
-    'ob-expert-f2': '✓ Alama ya upumzaji 0–100',
-    'ob-expert-f3': '✓ Ramani ya mlipuko duniani',
-    'ob-expert-f4': '✓ Kutangaza kesi',
+    'ob-expert-f1': 'Dashibodi ya magonjwa',
+    'ob-expert-f2': 'Alama ya upumzaji 0–100',
+    'ob-expert-f3': 'Ramani ya mlipuko duniani',
+    'ob-expert-f4': 'Kutangaza kesi',
     'ob-expert-cta': 'Ufikiaji wa mtaalamu →',
     'ob-disclaimer': 'Zana ya habari za umma — si kifaa cha matibabu (Kanuni EU 2017/745)',
     'ob-skip': 'Endelea bila kuchagua',
@@ -2129,17 +2129,17 @@ var I18N = {
     'ob-subtitle': 'Мировой инструмент эпидемической информации — бесплатно, без регистрации, без рекламы.',
     'ob-patient-aria': 'Продолжить как пациент',
     'ob-patient-title': 'Я пациент / гражданин',
-    'ob-patient-f1': '✓ Проверить мои симптомы',
-    'ob-patient-f2': '✓ Найти ближайшего врача',
-    'ob-patient-f3': '✓ Болезни под наблюдением',
-    'ob-patient-f4': '✓ Сортировка при неотложной помощи',
+    'ob-patient-f1': 'Проверить мои симптомы',
+    'ob-patient-f2': 'Найти ближайшего врача',
+    'ob-patient-f3': 'Болезни под наблюдением',
+    'ob-patient-f4': 'Сортировка при неотложной помощи',
     'ob-patient-cta': 'Начать →',
     'ob-expert-aria': 'Продолжить как медработник',
     'ob-expert-title': 'Я медицинский работник',
-    'ob-expert-f1': '✓ Эпидемиологическая панель',
-    'ob-expert-f2': '✓ Респираторный счёт 0–100',
-    'ob-expert-f3': '✓ Мировая карта вспышек',
-    'ob-expert-f4': '✓ Декларация случаев',
+    'ob-expert-f1': 'Эпидемиологическая панель',
+    'ob-expert-f2': 'Респираторный счёт 0–100',
+    'ob-expert-f3': 'Мировая карта вспышек',
+    'ob-expert-f4': 'Декларация случаев',
     'ob-expert-cta': 'Доступ для специалистов →',
     'ob-disclaimer': 'Инструмент публичной информации — не медицинское устройство (Рег. ЕС 2017/745)',
     'ob-skip': 'Продолжить без выбора',
@@ -2650,7 +2650,7 @@ let darkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 let worldMap = null;
 let stockLayer = null;
 let outbreakLayer = null;
-let activeLayer = 'both';
+let activeLayer = 'outbreaks'; // stocks « indicatifs » retirés de l'accueil (lot 3.3) — chiffres officiels sur stocks.html
 let currentFilter = localStorage.getItem('biq-pathogen-filter') || 'all';
 let selectedRegionId = null;
 let _customCity = null; // { name, lat, lon } quand l'utilisateur a cherché une ville ou utilisé la géolocalisation
@@ -2785,6 +2785,9 @@ function setLang(lang) {
   loadPheicAlert();
   initDataFreshness();
   initDeclarationGate();
+  // Canonical propre à la langue (fr = racine, autres = ?lang=xx) pour éviter une canonical unique sur toutes les versions
+  const canonical = document.querySelector('link[rel="canonical"]');
+  if (canonical) canonical.href = currentLang === 'fr' ? 'https://breathiq.fr/' : `https://breathiq.fr/?lang=${currentLang}`;
 }
 
 // ── Theme ────────────────────────────────────────────────────
@@ -3045,10 +3048,26 @@ function updateScoreDisplay(regionId) {
     gpFactorPollen:  score.pollen  != null ? factorLabel(score.pollen,  currentLang) : '—',
     gpFactorWeather: '—'
   };
+  // Une tuile sans donnée est masquée (pas de « — » à côté d'un score affiché) ; la base du score est dite en une ligne
   Object.entries(gpFactorMap).forEach(([id, val]) => {
     const el = document.getElementById(id);
-    if (el) el.textContent = val;
+    if (!el) return;
+    el.textContent = val;
+    const tile = el.closest('.gp-factor');
+    if (tile) tile.hidden = (val === '—');
   });
+  const basisEl = document.getElementById('gpScoreBasis');
+  if (basisEl) {
+    const fr = currentLang === 'fr';
+    const parts = [];
+    if (score.aqi != null)    parts.push(fr ? 'qualité de l\'air (Open-Meteo / CAMS, votre ville)' : 'air quality (Open-Meteo / CAMS, your city)');
+    if (score.viral != null)  parts.push(fr ? 'circulation virale nationale (Sentinelles · ECDC)' : 'national viral circulation (Sentinelles · ECDC)');
+    if (score.pollen != null) parts.push(fr ? 'pollens (CAMS)' : 'pollen (CAMS)');
+    basisEl.textContent = score.sr == null ? ''
+      : parts.length ? (fr ? `Score fondé sur : ${parts.join(' · ')}` : `Score based on: ${parts.join(' · ')}`)
+      : (fr ? 'Aucune composante disponible' : 'No component available');
+    if (score.aqi == null && score.sr != null) basisEl.textContent += fr ? ' — entrez votre ville pour inclure la qualité de l\'air locale.' : ' — enter your city to include local air quality.';
+  }
 
   // Delta J vs J-1 (localStorage)
   const TODAY = new Date().toISOString().slice(0, 10);
@@ -3937,7 +3956,7 @@ function initMapWhenReady() {
   if (!document.querySelector('link[href*="leaflet"]')) {
     const css = document.createElement('link');
     css.rel = 'stylesheet';
-    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    css.href = '/assets/vendor/leaflet/leaflet.css';
     css.integrity = 'sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=';
     css.crossOrigin = '';
     document.head.appendChild(css);
@@ -3945,7 +3964,7 @@ function initMapWhenReady() {
 
   // Dynamically load Leaflet JS
   const script = document.createElement('script');
-  script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+  script.src = '/assets/vendor/leaflet/leaflet.js';
   script.integrity = 'sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=';
   script.crossOrigin = '';
   script.onload = () => { _leafletLoading = false; initMap(); };
@@ -7656,22 +7675,18 @@ function getFlagForNumber(num) {
 // ── Onboarding first-visit ────────────────────────────────────────────────────
 var ONBOARDING_KEY = 'biq-onboarded';
 
+// Plus d'ouverture automatique à la première visite (audit 4.1 : bandeau cookies + fenêtre de choix
+// + bandeau Ebola empilés). Le choix patient / soignant reste accessible via les boutons de l'accueil.
 function initOnboarding() {
-  try {
-    if (localStorage.getItem(ONBOARDING_KEY)) return;
-  } catch { return; }
+  try { localStorage.setItem(ONBOARDING_KEY, '1'); } catch { /* rien */ }
+}
 
+function openOnboarding() {
   const modal = document.getElementById('onboardingModal');
   if (!modal) return;
-
-  // Show after a brief delay so the page renders first
-  setTimeout(() => {
-    modal.removeAttribute('hidden');
-    modal.setAttribute('aria-hidden', 'false');
-    // Trap focus on first button
-    const firstBtn = modal.querySelector('button');
-    if (firstBtn) firstBtn.focus();
-  }, 800);
+  modal.removeAttribute('hidden');
+  modal.setAttribute('aria-hidden', 'false');
+  modal.querySelector('button')?.focus();
 }
 
 function closeOnboarding(chosenMode) {

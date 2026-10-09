@@ -4018,6 +4018,12 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
    Badge, taille du texte et thème quittent la barre ; les deux derniers restent accessibles dans le menu. */
 .nav-mobile-tools{display:none}
 
+/* Zones tactiles ≥ 44 px sur écrans tactiles (audit : 39 contrôles < 32 px) */
+@media (pointer:coarse), (max-width:768px){
+  .layer-btn,.triage-num-btn,.triage-alarm-tel,.epi-btn,.wiz-btn,.wiz-opt,.wiz-chip,.pcp-cta,.gp-city-btn,.gp-geo-btn,.decl-submit-btn,.decl-psc-btn,.epi-call-btn,.lang-select,.font-size-btn,.theme-toggle,.nav-toggle,.mode-toggle-btn,.nav-more-btn,.gp-score-actions a,.gp-score-actions button,.bottom-nav a,.symptom-check,.pc-filter-btn,.biq-tab{min-height:44px}
+  .nav-links.is-open a,.nav-links.is-open .nav-more-btn{min-height:44px}
+}
+
 .lsd-source-date{font-size:.75rem;color:var(--text-muted);margin:.5rem 0 0;font-style:italic}
 .decl-ars-hint:empty{display:none}
 .decl-ars-hint{margin:.75rem 0;padding:.8rem 1rem;border-radius:.75rem;border:1px solid rgba(14,74,150,.35);background:rgba(14,74,150,.08);text-align:left;font-size:.88rem;line-height:1.55}
@@ -4040,6 +4046,9 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 .pcp-risk-pill,.pc-risk{font-size:.7rem;font-weight:700;padding:.2rem .55rem;border-radius:999px;border:1.5px solid rgba(148,163,184,.35);background:rgba(148,163,184,.1);color:var(--text-secondary);cursor:help;line-height:1.3;text-align:center}
 .pcp-risk-pill-gravity,.pc-risk-gravity{color:#F87171;border-color:rgba(248,113,113,.4);background:rgba(248,113,113,.08)}
 .gp-score-note{font-size:.78rem;color:#94a3b8;text-align:center;margin:.25rem 0 .5rem}
+.gp-score-basis{font-size:.78rem;color:#94a3b8;text-align:center;margin:.35rem 0 .25rem;line-height:1.5}
+.gp-score-basis:empty{display:none}
+.gp-factor[hidden]{display:none}
 .gp-score-note a{color:inherit;text-decoration:underline}
 .triage-num-hint{display:block;width:100%;font-size:.75rem;color:var(--text-muted);margin-top:.25rem}
 @media(max-width:480px){

@@ -25,19 +25,13 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" data-i18n-content="meta-og-title" content="BreathIQ — Surveillance air & épidémies · Données OMS/ECDC/SPF mises à jour quotidiennement">
   <meta name="twitter:description" data-i18n-content="meta-og-description" content="Outil de veille épidémiologique et qualité de l'air — OMS, ECDC, Santé Publique France, mises à jour quotidiennes, délai des sources indiqué. Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription.">
-  <meta name="twitter:creator" content="@breathiq">
+  <meta name="twitter:creator" content="@breathiq"><!-- TODO (vérification humaine) : confirmer que le compte @breathiq existe et appartient à BreathIQ ; ne pas supprimer sans accord -->
   <meta name="twitter:image" content="https://breathiq.fr/assets/og-image.png">
   <meta name="twitter:image:alt" data-i18n-content="meta-image-alt" content="BreathIQ — Qualité de l'air et alertes épidémies, mises à jour quotidiennement">
   <!-- hreflang — indexation multilingue Google/Bing -->
-  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/?lang=fr">
+  <!-- Uniquement les langues complètes (cf. scripts/check-i18n.mjs) ; canonical ajustée par langue dans setLang() -->
+  <link rel="alternate" hreflang="fr" href="https://breathiq.fr/">
   <link rel="alternate" hreflang="en" href="https://breathiq.fr/?lang=en">
-  <link rel="alternate" hreflang="es" href="https://breathiq.fr/?lang=es">
-  <link rel="alternate" hreflang="pt" href="https://breathiq.fr/?lang=pt">
-  <link rel="alternate" hreflang="ar" href="https://breathiq.fr/?lang=ar">
-  <link rel="alternate" hreflang="zh" href="https://breathiq.fr/?lang=zh">
-  <link rel="alternate" hreflang="hi" href="https://breathiq.fr/?lang=hi">
-  <link rel="alternate" hreflang="sw" href="https://breathiq.fr/?lang=sw">
-  <link rel="alternate" hreflang="ru" href="https://breathiq.fr/?lang=ru">
   <link rel="alternate" hreflang="x-default" href="https://breathiq.fr/">
   <!-- Favicon & PWA -->
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
@@ -197,7 +191,6 @@
   <noscript><link rel="stylesheet" href="style.min.css?v=20261009x"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
-  <link rel="preconnect" href="https://unpkg.com" crossorigin>
   <link rel="preconnect" href="https://cloud.umami.is" crossorigin>
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
   <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
@@ -242,7 +235,7 @@
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
-      <li><a data-i18n="x-bilan-mensuel-aabb" href="bilan-epidemique.html">Bilan mensuel</a></li>
+      <li><a data-i18n="x-bilan-mensuel-aabb" href="bilan-epidemique.html">Dernier bilan</a></li>
       <li class="nav-more-item">
         <button data-i18n="x-plus-6cea" class="nav-more-btn" onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
         <ul class="nav-more-dropdown" role="menu">
@@ -468,6 +461,7 @@
           <span translate="no" class="gp-factor-val" id="gpFactorWeather" style="font-size:.72rem;color:rgba(232,240,247,.6)">SPF · ECDC</span>
         </div>
       </div>
+      <p class="gp-score-basis" id="gpScoreBasis" translate="no"></p>
       <!-- CTA contextuel dynamique selon le niveau de risque -->
       <div id="gpScoreCta" style="margin:.75rem 0;text-align:center;display:none">
         <a id="gpScoreCtaBtn" href="#dailyActions" onclick="return navTo(event,'#dailyActions')" style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;padding:.65rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background .2s">
@@ -1578,15 +1572,15 @@
 
     <div class="map-controls">
       <div class="map-layer-toggles" role="group" aria-label="Couches cartographiques">
-        <button class="layer-btn active" id="btnLayerStocks" data-layer="stocks" data-i18n="layer-stocks">
+        <button class="layer-btn" id="btnLayerStocks" hidden data-layer="stocks" data-i18n="layer-stocks">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
           Stocks masques
         </button>
-        <button class="layer-btn" id="btnLayerOutbreaks" data-layer="outbreaks" data-i18n="layer-outbreaks">
+        <button class="layer-btn active" id="btnLayerOutbreaks" data-layer="outbreaks" data-i18n="layer-outbreaks">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Foyers pathogènes
         </button>
-        <button class="layer-btn active" id="btnLayerBoth" data-layer="both" data-i18n="layer-both">
+        <button class="layer-btn" id="btnLayerBoth" hidden data-layer="both" data-i18n="layer-both">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
           Vue combinée
         </button>
@@ -1606,10 +1600,6 @@
     </div>
 
     <div class="map-stats-bar">
-      <div class="mstat">
-        <span class="mstat-val" id="mstatCritical">0</span>
-        <span class="mstat-label" data-i18n="mstat-critical">régions critiques</span>
-      </div>
       <div class="mstat">
         <span class="mstat-val" id="mstatOutbreaks">0</span>
         <span class="mstat-label" data-i18n="mstat-outbreaks">foyers actifs</span>
@@ -2331,10 +2321,10 @@
         <span class="om-title" data-i18n="ob-patient-title">Je suis patient / citoyen</span>
         <p data-i18n="x-dehors-aujourd-hui-c-885e" class="om-tagline">Dehors aujourd'hui, c'est comment ?</p>
         <ul class="om-features">
-          <li data-i18n="ob-patient-f1">✓ Vérifier mes symptômes</li>
-          <li data-i18n="ob-patient-f2">✓ Trouver un médecin proche</li>
-          <li data-i18n="ob-patient-f3">✓ Maladies à surveiller</li>
-          <li data-i18n="ob-patient-f4">✓ Triage urgences</li>
+          <li data-i18n="ob-patient-f1">Vérifier mes symptômes</li>
+          <li data-i18n="ob-patient-f2">Trouver un médecin proche</li>
+          <li data-i18n="ob-patient-f3">Maladies à surveiller</li>
+          <li data-i18n="ob-patient-f4">Triage urgences</li>
         </ul>
         <span class="om-cta" data-i18n="ob-patient-cta">Commencer →</span>
       </button>
@@ -2344,10 +2334,10 @@
         <span class="om-title" data-i18n="ob-expert-title">Je suis soignant / expert</span>
         <p data-i18n="x-donnees-epidemio-brutes-sans-a2a3" class="om-tagline">Données épidémio brutes, sans filtre</p>
         <ul class="om-features">
-          <li data-i18n="ob-expert-f1">✓ Tableau de bord épidémique</li>
-          <li data-i18n="ob-expert-f2">✓ Score respiratoire 0–100</li>
-          <li data-i18n="ob-expert-f3">✓ Carte mondiale des foyers</li>
-          <li data-i18n="ob-expert-f4">✓ Déclaration de cas</li>
+          <li data-i18n="ob-expert-f1">Tableau de bord épidémique</li>
+          <li data-i18n="ob-expert-f2">Score respiratoire 0–100</li>
+          <li data-i18n="ob-expert-f3">Carte mondiale des foyers</li>
+          <li data-i18n="ob-expert-f4">Déclaration de cas</li>
         </ul>
         <span class="om-cta om-cta-expert" data-i18n="ob-expert-cta">Accès soignant →</span>
       </button>
