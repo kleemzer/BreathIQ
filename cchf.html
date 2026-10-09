@@ -44,7 +44,10 @@
   }
   </script>
   <link rel="stylesheet" href="style.min.css?v=20261009y">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="6ddfd578-3f85-41a4-a987-8768ada1d2aa"></script>
+  <script>
+  // Mesure d'audience uniquement si le visiteur l'a acceptée sur l'accueil (biq-consent = accepted) — RGPD
+  try { if (localStorage.getItem('biq-consent') === 'accepted') { var u = document.createElement('script'); u.defer = true; u.src = 'https://cloud.umami.is/script.js'; u.setAttribute('data-website-id', '6ddfd578-3f85-41a4-a987-8768ada1d2aa'); document.head.appendChild(u); } } catch (e) {}
+  </script>
   <style>
     .ebola-hero {
       background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #3b0c02 100%);

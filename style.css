@@ -4018,6 +4018,11 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
    Badge, taille du texte et thème quittent la barre ; les deux derniers restent accessibles dans le menu. */
 .nav-mobile-tools{display:none}
 
+/* Tableaux larges (méthodologie, souches, normes) : défilement interne, jamais de défilement de page */
+@media (max-width:768px){
+  .methodo-table,.prot-table,.strain-table,.methodo-section table,.comparison-table{display:block;max-width:100%;overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
+
 /* Zones tactiles ≥ 44 px sur écrans tactiles (audit : 39 contrôles < 32 px) */
 @media (pointer:coarse), (max-width:768px){
   .layer-btn,.triage-num-btn,.triage-alarm-tel,.epi-btn,.wiz-btn,.wiz-opt,.wiz-chip,.pcp-cta,.gp-city-btn,.gp-geo-btn,.decl-submit-btn,.decl-psc-btn,.epi-call-btn,.lang-select,.font-size-btn,.theme-toggle,.nav-toggle,.mode-toggle-btn,.nav-more-btn,.gp-score-actions a,.gp-score-actions button,.bottom-nav a,.symptom-check,.pc-filter-btn,.biq-tab{min-height:44px}
