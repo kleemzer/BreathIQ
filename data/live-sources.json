@@ -1,0 +1,785 @@
+{
+  "generatedAt": "2026-10-09T10:11:40.777Z",
+  "sources": {
+    "who_flunet_fr": {
+      "ok": true,
+      "fetchedAt": "2026-10-09T10:11:40.280Z",
+      "raw": {
+        "value": [
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-09-21",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 39,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 79,
+            "INF_A": 76,
+            "INF_B": 3,
+            "RSV": 7,
+            "SPEC_PROCESSED_NB": 6973,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-09-21",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 39,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": 2,
+            "INF_A": 2,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 115,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-09-14",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 38,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 100,
+            "INF_A": 92,
+            "INF_B": 8,
+            "RSV": 6,
+            "SPEC_PROCESSED_NB": 6585,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-09-14",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 38,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": 5,
+            "INF_A": 5,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 133,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-09-07",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 37,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 90,
+            "INF_A": 87,
+            "INF_B": 3,
+            "RSV": 5,
+            "SPEC_PROCESSED_NB": 5698,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-09-07",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 37,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": 7,
+            "INF_A": 7,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 90,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-31",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 36,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 88,
+            "INF_A": 83,
+            "INF_B": 5,
+            "RSV": 1,
+            "SPEC_PROCESSED_NB": 5057,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-31",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 36,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": 6,
+            "INF_A": 6,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 43,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-24",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 35,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 63,
+            "INF_A": 60,
+            "INF_B": 3,
+            "RSV": 4,
+            "SPEC_PROCESSED_NB": 4559,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-24",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 35,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": 1,
+            "INF_A": 1,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 2,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-17",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 34,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 53,
+            "INF_A": 50,
+            "INF_B": 3,
+            "RSV": 2,
+            "SPEC_PROCESSED_NB": 4376,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-17",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 34,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 5,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-10",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 33,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 29,
+            "INF_A": 27,
+            "INF_B": 2,
+            "RSV": 1,
+            "SPEC_PROCESSED_NB": 4088,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-10",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 33,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 1,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-03",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 32,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 42,
+            "INF_A": 38,
+            "INF_B": 4,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 3875,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-08-03",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 32,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 2,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-27",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 31,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 15,
+            "INF_A": 13,
+            "INF_B": 2,
+            "RSV": 5,
+            "SPEC_PROCESSED_NB": 4027,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-27",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 31,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 0,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-20",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 30,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 20,
+            "INF_A": 17,
+            "INF_B": 3,
+            "RSV": 4,
+            "SPEC_PROCESSED_NB": 4444,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-20",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 30,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 1,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-13",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 29,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 9,
+            "INF_A": 7,
+            "INF_B": 2,
+            "RSV": 7,
+            "SPEC_PROCESSED_NB": 4738,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-13",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 29,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 0,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-06",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 28,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 11,
+            "INF_A": 7,
+            "INF_B": 4,
+            "RSV": 4,
+            "SPEC_PROCESSED_NB": 5060,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-07-06",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 28,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 0,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-06-29",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 27,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 12,
+            "INF_A": 8,
+            "INF_B": 4,
+            "RSV": 6,
+            "SPEC_PROCESSED_NB": 4685,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-06-29",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 27,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 4,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-06-22",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 26,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 16,
+            "INF_A": 9,
+            "INF_B": 7,
+            "RSV": 14,
+            "SPEC_PROCESSED_NB": 5615,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-06-22",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 26,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 4,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-06-15",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 25,
+            "ORIGIN_SOURCE": "NONSENTINEL",
+            "INF_ALL": 20,
+            "INF_A": 13,
+            "INF_B": 7,
+            "RSV": 12,
+            "SPEC_PROCESSED_NB": 5703,
+            "ILI_ACTIVITY": null
+          },
+          {
+            "COUNTRY_CODE": "FRA",
+            "ISO_WEEKSTARTDATE": "2026-06-15",
+            "ISO_YEAR": 2026,
+            "ISO_WEEK": 25,
+            "ORIGIN_SOURCE": "SENTINEL",
+            "INF_ALL": null,
+            "INF_A": 0,
+            "INF_B": 0,
+            "RSV": 0,
+            "SPEC_PROCESSED_NB": 4,
+            "ILI_ACTIVITY": null
+          }
+        ]
+      },
+      "sourceUrl": "https://xmart-api-public.who.int/FLUMART/VIW_FNT?$format=json&$filter=COUNTRY_CODE%20eq%20%27FRA%27&$orderby=ISO_WEEKSTARTDATE%20desc&$top=30",
+      "sourceLastModified": "2026-09-21"
+    },
+    "sumeau": {
+      "ok": true,
+      "fetchedAt": "2026-10-09T10:11:40.681Z",
+      "raw": "\"semaine\";\"AMIENS\";\"ANGERS LA BAUMETTE\";\"ANGLET (PONT DE L'AVEUGLE No2)\";\"AQUAVARA\";\"AUXERRE - APPOIGNY\";\"BASTIA-SUD\";\"BESANCON - PORT-DOUVOT\";\"BONNEUIL-EN-FRANCE\";\"BORDEAUX (LOUIS FARGUE 2)\";\"CANNES\";\"CAP SICIE - AMPHITRIA\";\"CARCASSONNE NOUVELLE\";\"CARRE DE REUNION\";\"CHALON SUR SAONE-PORT BAROIS\";\"CLERMONT-FERRAND\";\"CRAN-GEVRIER - SILOE\";\"DIJON\";\"EVRY CENTRE-CAECE\";\"GRANDE-SYNTHE\";\"GRENOBLE / AQUAPOLE\";\"LA BAULE-ESCOUBLAC-GUERANDE LIVERY\";\"LA ROCHELLE\";\"LAGNY-SUR-MARNE ST THIBAULT-DES-VIGNES\";\"LE HAVRE\";\"LENS LOISON SOUS LENS\";\"LESCAR\";\"LILLE-MARQUETTE-LEZ-LILLE\";\"LIMOGES\";\"LMM_LE MANS - LA CHAUVINIERE\";\"LYON - SAINT FONS\";\"MAERA (EX CEREIREDE)\";\"MARSEILLE\";\"MAXEVILLE\";\"METZ\";\"MONDEVILLE\";\"NANTES 1-TOUGAS\";\"NICE-HALIOTIS\";\"NIMES\";\"ORLEANS LA CHAPELLE-SAINT-MESMIN\";\"PARIS MARNE AVAL\";\"PARIS SEINE-AMONT\";\"PARIS SEINE-CENTRE\";\"POITIERS LA FOLIE\";\"REIMS\";\"RENNES\";\"ROUBAIX-WATTRELOS\";\"ROUEN\";\"SAINT-BRIEUC LE LEGUE\";\"SAINT-ETIENNE - FURANIA\";\"SAUSHEIM\";\"STEU DE: BREST (ZONE-PORTUAIRE)\";\"STRASBOURG - LA WANTZENAU\";\"TOULOUSE GINESTOUS\";\"TOURS- LA RICHE LA GRANGE DAVID\";\"VALENCIENNES\";\"National_12\";\"National_54\"\n\"2025-S43\";3825,61580445703;2002,69114047673;948,127404124599;2141,65988150764;3180,37558426491;819,928730935143;4304,07093897265;515,010771963774;1479,18778410334;909,953384406345;597,093953058896;1030,66964082962;534,154351676713;2735,75628016731;1611,74220680642;1102,43556201719;3741,58811112472;427,585474669068;2001,42868535091;2766,47979253232;1190,95063334062;992,781050217962;589,94511746477;2011,46643788948;2250,02183805666;1843,80970297042;2201,07294864507;980,441692407254;1763,31344127069;1472,11915229238;1459,28746027215;678,290884853653;3687,6631386019;3760,24927210929;2179,97594239136;2338,19714145697;1331,55541275439;1077,43235270806;1636,42419970032;461,253991064991;394,734335066691;1385,11818249907;752,036521436597;4038,19624705173;2075,93777197033;NA;1860,13520202438;1890,13293633255;1247,57336238327;3223,69105938074;2705,06317141027;4123,57050571689;1435,62867392708;2147,07694188301;2605,76227183828;1796,60436459397;1565,27315649257\n\"2025-S44\";2739,63898036438;1447,92276991457;682,449690084738;1571,28610452083;2399,77459096476;609,403136905656;3162,99581011671;367,85207732023;1075,64280227258;652,545403608204;450,725383018196;764,252071193515;383,866530407671;2054,97916137781;1155,13962701461;784,188450518875;2748,06583210182;312,452258379535;1440,58753647984;2058,92022907754;853,801929986182;742,501838110371;408,680869651818;1428,29835046426;1650,35648956008;1322,55341147028;1542,94879078552;735,367397449378;1245,91244982196;1009,77550897913;1037,37090514821;462,237535080761;2718,06008424525;2770,26436584379;1571,42153981116;1657,28925702989;980,275595784968;797,403938132112;1172,30317637882;333,713030684601;292,167582604793;1020,68873676231;547,987112998573;2927,27673259963;1465,33521385878;NA;1309,48433824488;1358,81675923628;919,66341871748;2433,23040781029;1908,41659863459;2954,3489633023;987,784000628518;1517,86690381818;1893,55596398933;1290,77899278761;1127,65075436516\n\"2025-S45\";2058,45629557087;1097,70543499572;517,409261613231;1212,44297755961;1903,87377300863;477,475460137415;2435,52808715111;277,503359291601;824,082229897406;492,514089202498;359,744877995055;596,920932471681;290,86491167267;1621,60042389691;870,613176361108;586,621614440318;2117,82971390491;240,614238066501;1086,68519658688;1622,30074973434;643,903854278353;585,610785305181;298,041534807174;1066,32181248608;1268,45913646225;998,916246993937;1133,0804605409;582,866457417558;925,657117726018;723,526790181238;778,718969847614;333,496176487022;2099,22486300651;2141,476119025;1191,05881515741;1234,93033387539;762,357780346022;623,960992602088;884,724081772035;253,815301268503;227,764895103045;790,171464870999;421,400911432447;2226,82848512534;1084,90347910305;NA;968,21816233352;1026,82181205363;716,425331844895;1927,0788261943;1412,40851159976;2215,90129254182;715,642144457883;1127,38738552528;1444,01399365185;976,791754627421;854,394720056994\n\"2025-S46\";1730,03434655505;929,931765424258;440,203105555877;1048,15831942543;1692,42167635321;420,079041501745;2094,71991847093;235,607004783545;708,618504656665;416,905031495984;323,347875265016;523,258576531422;247,636461087846;1432,44215617256;735,318748891938;491,57276663703;1825,55837934816;207,967540613638;915,605382784056;1442,15086028883;544,329520884002;519,014908432832;243,895771162886;892,118757723122;1088,89898547177;846,343021888584;929,901408279945;520,106940067182;770,405395134485;577,63210438973;657,868524512754;271,651014930548;1810,82993925227;1851,00823132088;1011,53950778528;1031,07111037626;666,92689582218;550,057499195786;749,439011060079;216,097745393429;199,057598875642;684,946659000686;364,433425083095;1894,82106617173;897,903247650837;NA;801,545116990699;869,063603326747;628,370697544098;1706,28163844384;1168,62365820044;1854,76575317029;581,969533566427;937,75835259223;1231,77178132692;829,853550946777;725,669555161336\n\"2025-S47\";1675,6571160166;906,703174839006;432,659458755541;1045,15669467632;1736,13050891237;427,22608004501;2073,3526296815;231,771695771954;704,189531707583;407,572992287298;336,880379072581;530,138900027787;243,945037219571;1458,76978511154;716,687500368029;474,99682945698;1813,279396666;207,679374118768;887,688103698825;1488,87502846591;531,167490901903;532,232659453147;230,694200794035;861,707643975485;1075,47742513637;828,121174914845;879,302372269893;537,803370667611;739,690905487887;529,56006846936;644,307801644405;257,747666086228;1797,40782241281;1842,41053608109;991,335895598467;993,501560344027;675,191210625253;562,378880351477;733,775169622695;212,118947599762;200,9810815208;684,849369819124;364,967992712404;1857,77258199353;855,793212240701;NA;765,598697703822;848,404487449538;638,854905675724;1739,46062024231;1113,51273826709;1785,12975779655;546,758607049735;899,775104021399;1210,69741191913;815,309611713695;711,742581219365\n\"2025-S48\";1832,93766100109;996,91395757736;481,070819995943;1177,25269766327;2013,5211422512;491,901724034615;2314,77918870161;258,589528502308;792,053416377025;450,706963469765;398,311481631003;608,104368802334;272,272153826503;1677,9358711394;789,720382261238;518,224380552196;2033,80165460438;234,686435877828;970,593289969124;1747,0038696344;586,099971458931;618,476760602667;247,09004562623;941,597453937683;1197,60429337668;916,418330920099;939,532312208034;630,871956921314;802,614874371209;546,358020743235;716,836178508681;279,749348526103;2011,94271159403;2068,85125674507;1098,13852990644;1082,19914888413;773,874350248197;652,769040555914;813,313813413833;235,318060321406;229,538571222241;773,808186334349;414,494324345377;2056,52138669482;920,501902015602;NA;827,017978740113;935,934701379268;737,170270846014;2000,45698761558;1197,33674362979;1936,62595657935;580,622601157071;975,640045331446;1343,57395220731;907,540390558319;789,87070675252\n\"2025-S49\";2127,2058312173;1160,95610903453;568,111742912592;1406,53390246545;2479,63556416831;602,024305938105;2738,80835598576;306,995064900192;946,516635815382;529,316368953669;501,672354027405;741,567899219218;323,133407090687;2047,53974964099;924,116263403286;599,318485596351;2419,76446679816;281,849754286346;1124,69739312639;2184,65082440393;686,739147231105;764,631551370617;281,393572323295;1093,03596072991;1412,57432370367;1076,87952250992;1066,55742532281;787,971417092591;924,256301551667;595,956733041434;850,9884707685;326,723488470096;2386,05032107347;2461,60410637989;1290,91427507694;1251,15477187789;941,873803791627;807,085704751595;958,012688306834;277,278512720825;277,707621220166;927,864126992246;501,109013332464;2414,48168451531;1049,58383663044;NA;949,094214634549;1095,83118444647;906,060661721981;2438,08909462015;1364,77244684633;2225,36067699932;653,725221672654;1122,86123495121;1581,45708015379;1074,7357228401;931,438338188829\n\"2025-S50\";2424,40270019424;1325,28422216796;659,216097571321;1649,31470838394;3000,4701529199;724,488194756627;3179,13960123377;358,601618388322;1111,40255286212;610,795234900946;622,56432471542;889,425703909692;377,115399813385;2453,14004608233;1062,82617398327;679,881122351272;2826,44411464264;332,919285380622;1278,85297587909;2689,8812942636;790,638829832334;930,349412798403;315,222386030931;1247,01485473557;1633,75911568261;1243,22847666961;1191,65148849933;969,234990484813;1045,16186431358;636,309485421911;997,460398675352;380,014174037399;2775,05287063354;2872,44050465031;1489,62612678373;1420,44605142982;1125,66184088778;982,645950827458;1109,20807996376;321,251828709249;328,519901416108;NA;596,466950600735;2782,80938172403;1174,05075485793;NA;1070,60356803289;1260,18525092989;1097,01941828002;2914,9270989757;1526,12403708721;2507,32102793275;721,723874640086;1269,50593833579;1827,47843399806;1280,28360427752;1079,35713516041\n\"2025-S51\";2553,88935857269;1395,7689800535;707,10014166311;1786,0852559107;3356,64917593775;806,371397479962;3407,71547400047;387,747348701514;1206,14239931318;651,59607726427;715,891706118386;986,955677715074;407,098076513274;2715,58698423448;1130,2792862684;712,118904494302;3050,22411940544;NA;1343,2484102063;3064,87949709604;841,53424719435;1047,82296796838;326,775696065533;1315,45173897795;1744,26340074398;1326,69027407306;1234,08912644828;1104,27654155947;1092,11605474422;626,117633828604;1085,64271054006;413,728506190311;2979,09663644473;3093,94716650483;1587,08456245715;1490,4363913594;1242,98261281911;1107,60469546272;1187,46677685038;344,384281263042;357,733687870035;NA;657,406110525602;2963,55564440638;1212,34995663024;NA;1116,64651799163;1339,44912130022;1230,53370731654;3217,96099996198;1575,56508403333;2607,26627271082;735,309762674578;1326,97012518739;1951,299657784;1380,11325661657;1167,93149592937\n\"2025-S52\";2425,7035111561;1323,37412289776;683,789628167751;1742,47109805577;3385,98686335996;809,415364425585;3290,847891046;378,582163387389;1179,96850887707;626,80865063277;743,49446751171;NA;396,414103854031;2709,52802158109;1083,67779928521;671,974968198495;2966,6971791762;359,154783014011;1271,58517688758;3150,36377526436;807,646144782164;1065,05714212069;305,695561353523;1251,38926180917;1677,47482894941;1276,37347125874;1155,76066541168;1136,10053672114;1028,72683971651;554,044066586051;1069,0155478409;410,351919514919;2880,44882572528;3001,31419233233;1522,54882406508;1410,31352827437;1237,30188628099;1126,60126141449;1146,34108462899;333,149463449563;350,613036627068;1170,31163486734;654,088589370119;2845,24523629222;1127,38827047521;NA;1050,1830368122;1283,64757821827;1246,69877767989;3200,60677801617;1465,07416460143;2441,48673876873;674,650314568024;1250,80448945284;1878,18450227323;1318,44339082551;1122,28402778663\n\"2026-S01\";2100,32421438356;1142,59089554936;602,715441661302;1548,61018411306;3113,63883145927;740,685226609371;2895,23481010372;337,391496378985;1052,16159574686;549,668023893898;704,572722182432;902,099928687221;351,963974143801;2464,00960259443;946,678272768156;577,704290199776;2629,43988794726;323,412419339786;1097,03500736848;2952,86386003372;706,583840704388;987,468239217736;260,809393932573;1085,26194318214;1469,7546644225;1119,26591538089;989,154941166833;1066,47945866317;883,309075583157;445,952280257984;961,357453573098;373,649127110536;2537,07265115835;2651,804924107;1329,92361421242;1216,86277726593;1122,92513864812;1045,02707117201;1008,80043488499;293,975342584516;313,100133743639;1049,31871617925;593,684240673225;2490,2017597116;954,718224016114;NA;900,32560652139;1121,45282929514;1152,73281822627;2900,44871614995;1240,78641212931;2082,04844059647;563,777152533078;1074,7803024865;1647,83699820782;1173,80661279976;991,376920186722\n\"2026-S02\";1712,02928063796;928,140666937402;500,098584126977;1295,15498023051;2695,39428526923;638,083575475981;2396,86462978453;283,280278199283;883,127572939265;453,750066222375;628,840233728902;775,558471968392;NA;2109,31226468093;778,089882690592;467,371441170093;2193,35477844913;274,366822631679;890,84139936697;2605,98279230321;581,921024682127;862,210881459126;209,480641567582;885,948212347251;1211,91896842703;923,896065953481;798,159854955802;942,824476066956;714,023314042879;337,408589765991;814,327739710665;321,408177295827;2102,89635421736;2204,51457927125;1092,76602453992;988,524718807971;959,704060205534;912,709570923195;835,654695149596;244,30435272099;262,950058073393;885,50943474023;507,465018048352;2051,79639422288;760,565645197897;NA;726,562252656184;922,35977145904;1003,96412170479;2473,67576462221;988,572610556947;1670,15285529054;443,218823689899;869,29943960533;1360,98833120179;985,146742851845;834,534854047039",
+      "sourceUrl": "https://static.data.gouv.fr/resources/surveillance-du-sars-cov-2-dans-les-eaux-usees-sumeau/20260121-132916/sumeau-indicateurs.csv",
+      "sourceLastModified": "2026-01-21T13:29:16.520000+00:00"
+    },
+    "flu_vacc_data": {
+      "ok": true,
+      "fetchedAt": "2026-10-09T10:11:40.777Z",
+      "raw": [
+        {
+          "region": "11 - ILE-DE-France",
+          "code": 11,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 4556
+        },
+        {
+          "region": "11 - ILE-DE-France",
+          "code": 11,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 5797
+        },
+        {
+          "region": "11 - ILE-DE-France",
+          "code": 11,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 443
+        },
+        {
+          "region": "11 - ILE-DE-France",
+          "code": 11,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 605
+        },
+        {
+          "region": "24 - CENTRE-VAL-DE-LOIRE",
+          "code": 24,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 4229
+        },
+        {
+          "region": "24 - CENTRE-VAL-DE-LOIRE",
+          "code": 24,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 6134
+        },
+        {
+          "region": "24 - CENTRE-VAL-DE-LOIRE",
+          "code": 24,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 452
+        },
+        {
+          "region": "24 - CENTRE-VAL-DE-LOIRE",
+          "code": 24,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 654
+        },
+        {
+          "region": "27 - BOURGOGNE-FRANCHE-COMTE",
+          "code": 27,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 3627
+        },
+        {
+          "region": "27 - BOURGOGNE-FRANCHE-COMTE",
+          "code": 27,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 5813
+        },
+        {
+          "region": "27 - BOURGOGNE-FRANCHE-COMTE",
+          "code": 27,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 365
+        },
+        {
+          "region": "27 - BOURGOGNE-FRANCHE-COMTE",
+          "code": 27,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 599
+        },
+        {
+          "region": "28 - NORMANDIE",
+          "code": 28,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 4483
+        },
+        {
+          "region": "28 - NORMANDIE",
+          "code": 28,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 6266
+        },
+        {
+          "region": "28 - NORMANDIE",
+          "code": 28,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 514
+        },
+        {
+          "region": "28 - NORMANDIE",
+          "code": 28,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 735
+        },
+        {
+          "region": "32 - HAUTS-DE-France",
+          "code": 32,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 3542
+        },
+        {
+          "region": "32 - HAUTS-DE-France",
+          "code": 32,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 6126
+        },
+        {
+          "region": "32 - HAUTS-DE-France",
+          "code": 32,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 417
+        },
+        {
+          "region": "32 - HAUTS-DE-France",
+          "code": 32,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 692
+        },
+        {
+          "region": "44 - GRAND-EST",
+          "code": 44,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 3749
+        },
+        {
+          "region": "44 - GRAND-EST",
+          "code": 44,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 5720
+        },
+        {
+          "region": "44 - GRAND-EST",
+          "code": 44,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 394
+        },
+        {
+          "region": "44 - GRAND-EST",
+          "code": 44,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 613
+        },
+        {
+          "region": "52 - PAYS-DE-LA-LOIRE",
+          "code": 52,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 4334
+        },
+        {
+          "region": "52 - PAYS-DE-LA-LOIRE",
+          "code": 52,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 6268
+        },
+        {
+          "region": "52 - PAYS-DE-LA-LOIRE",
+          "code": 52,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 462
+        },
+        {
+          "region": "52 - PAYS-DE-LA-LOIRE",
+          "code": 52,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 674
+        },
+        {
+          "region": "53 - BRETAGNE",
+          "code": 53,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 4427
+        },
+        {
+          "region": "53 - BRETAGNE",
+          "code": 53,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 6633
+        },
+        {
+          "region": "53 - BRETAGNE",
+          "code": 53,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 534
+        },
+        {
+          "region": "53 - BRETAGNE",
+          "code": 53,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 789
+        },
+        {
+          "region": "75 - NOUVELLE-AQUITAINE",
+          "code": 75,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 4063
+        },
+        {
+          "region": "75 - NOUVELLE-AQUITAINE",
+          "code": 75,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 6220
+        },
+        {
+          "region": "75 - NOUVELLE-AQUITAINE",
+          "code": 75,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 442
+        },
+        {
+          "region": "75 - NOUVELLE-AQUITAINE",
+          "code": 75,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 687
+        },
+        {
+          "region": "76 - OCCITANIE",
+          "code": 76,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 3988
+        },
+        {
+          "region": "76 - OCCITANIE",
+          "code": 76,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 5995
+        },
+        {
+          "region": "76 - OCCITANIE",
+          "code": 76,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 402
+        },
+        {
+          "region": "76 - OCCITANIE",
+          "code": 76,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 606
+        },
+        {
+          "region": "84 - AUVERGNE-RHONE-ALPES",
+          "code": 84,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 3747
+        },
+        {
+          "region": "84 - AUVERGNE-RHONE-ALPES",
+          "code": 84,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 5867
+        },
+        {
+          "region": "84 - AUVERGNE-RHONE-ALPES",
+          "code": 84,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 382
+        },
+        {
+          "region": "84 - AUVERGNE-RHONE-ALPES",
+          "code": 84,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 612
+        },
+        {
+          "region": "93 - PROVENCE-ALPES-COTES-D'AZUR",
+          "code": 93,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 3775
+        },
+        {
+          "region": "93 - PROVENCE-ALPES-COTES-D'AZUR",
+          "code": 93,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 5859
+        },
+        {
+          "region": "93 - PROVENCE-ALPES-COTES-D'AZUR",
+          "code": 93,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 375
+        },
+        {
+          "region": "93 - PROVENCE-ALPES-COTES-D'AZUR",
+          "code": 93,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 604
+        },
+        {
+          "region": "94 - CORSE",
+          "code": 94,
+          "variable": "ACTE(VGP)",
+          "groupe": "65 ans et plus",
+          "valeur": 2074
+        },
+        {
+          "region": "94 - CORSE",
+          "code": 94,
+          "variable": "DOSES(J07E1)",
+          "groupe": "65 ans et plus",
+          "valeur": 4858
+        },
+        {
+          "region": "94 - CORSE",
+          "code": 94,
+          "variable": "ACTE(VGP)",
+          "groupe": "moins de 65 ans",
+          "valeur": 209
+        },
+        {
+          "region": "94 - CORSE",
+          "code": 94,
+          "variable": "DOSES(J07E1)",
+          "groupe": "moins de 65 ans",
+          "valeur": 494
+        }
+      ],
+      "sourceUrl": "https://static.data.gouv.fr/resources/vaccination-grippe-2025-2026/20260226-130936/couverture-2025.json",
+      "sourceLastModified": "2026-02-26T14:09:36.653000+00:00",
+      "datasetTitle": "Vaccination Grippe 2025-2026"
+    }
+  }
+}

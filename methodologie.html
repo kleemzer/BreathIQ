@@ -64,7 +64,6 @@
         <tr><td>ECDC opendata</td><td>Cas Mpox Union Européenne / EEE</td><td>Hebdomadaire</td><td>CC BY 4.0</td><td><span class="badge-real">RÉEL</span></td></tr>
         <tr><td>WHO Disease Outbreak News</td><td>Alertes épidémiques mondiales officielles</td><td>Quotidien</td><td>Public</td><td><span class="badge-real">RÉEL</span></td></tr>
         <tr><td>Open-Meteo</td><td>Qualité de l'air (PM2.5, PM10, AQI européen)</td><td>Horaire</td><td>CC BY 4.0</td><td><span class="badge-real">RÉEL</span></td></tr>
-        <tr><td>WAQI (World Air Quality Index)</td><td>AQI stations locales</td><td>Horaire</td><td>Token requis</td><td><span class="badge-real">RÉEL</span></td></tr>
         <tr><td>OpenStreetMap / Overpass API</td><td>Pharmacies locales (géolocalisation)</td><td>Continue</td><td>ODbL</td><td><span class="badge-real">RÉEL</span></td></tr>
         <tr><td>Score régional /100</td><td>Indice respiratoire composite</td><td>—</td><td>—</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
       </tbody>
@@ -213,7 +212,7 @@
     <table class="methodo-table">
       <thead><tr><th>Composante</th><th>Poids</th><th>Source</th><th>Statut</th></tr></thead>
       <tbody>
-        <tr><td>Qualité air (AQI)</td><td>40%</td><td>Open-Meteo / WAQI</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>Qualité air (AQI)</td><td>40%</td><td>Open-Meteo / CAMS Copernicus</td><td><span class="badge-real">RÉEL</span></td></tr>
         <tr><td>Circulation virale</td><td>30%</td><td>SPF national (extrapolé région)</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
         <tr><td>Indice pollinique</td><td>20%</td><td>Modèle saisonnier approximatif</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
         <tr><td>Météo</td><td>10%</td><td>Open-Meteo</td><td><span class="badge-real">RÉEL</span></td></tr>
@@ -241,7 +240,7 @@
     <h2>⚠️ 7. Limites et incertitudes</h2>
 
     <div class="limit-item"><span class="limit-icon">📍</span><div><strong>Granularité géographique limitée</strong> — Les données SPF sont disponibles au niveau national/régional, pas communal. Les scores locaux sont extrapolés.</div></div>
-    <div class="limit-item"><span class="limit-icon">⏱️</span><div><strong>Délai de publication</strong> — Les bulletins SPF sont publiés avec un délai de 7 à 10 jours. Les données affichées ne sont donc pas en temps réel pour la France.</div></div>
+    <div class="limit-item"><span class="limit-icon">⏱️</span><div><strong>Délai de publication</strong> — Les bulletins SPF sont publiés avec un délai de 7 à 10 jours. Les données affichées pour la France reflètent donc la semaine épidémiologique indiquée, pas la situation du jour.</div></div>
     <div class="limit-item"><span class="limit-icon">🤖</span><div><strong>Extraction IA non infaillible</strong> — Le pipeline Llama/Groq peut commettre des erreurs d'interprétation. Une validation humaine est prévue pour les données critiques.</div></div>
     <div class="limit-item"><span class="limit-icon">🌍</span><div><strong>Couverture internationale inégale</strong> — La surveillance est plus complète pour la France et l'UE. Les données Afrique, Asie et Amériques reposent principalement sur les alertes OMS/ECDC.</div></div>
     <div class="limit-item"><span class="limit-icon">📊</span><div><strong>Score Z basé sur déclarations</strong> — Les déclarations locales sont stockées uniquement en localStorage. Le score Z local repose sur des données non agrégées au niveau national.</div></div>
@@ -257,7 +256,7 @@
         <tr><td>Préférences (thème, langue)</td><td>localStorage navigateur</td><td>Aucune</td><td>Jusqu'à effacement</td></tr>
         <tr><td>Profil soignant (pays, spécialité)</td><td>localStorage navigateur</td><td>Aucune</td><td>Jusqu'à effacement</td></tr>
         <tr><td>Déclarations de cas</td><td>localStorage navigateur</td><td>Aucune</td><td>Jusqu'à effacement</td></tr>
-        <tr><td>Position géographique (optionnel)</td><td>Mémoire session uniquement</td><td>API Open-Meteo/WAQI (coordonnées arrondies)</td><td>Session uniquement</td></tr>
+        <tr><td>Position géographique (optionnel)</td><td>Mémoire session uniquement</td><td>API Open-Meteo (coordonnées arrondies)</td><td>Session uniquement</td></tr>
       </tbody>
     </table>
     <p style="font-size:.78rem;color:var(--text-muted);margin-top:.75rem">Aucune donnée personnelle n'est transmise à des serveurs BreathIQ. Les données de déclaration de cas ne quittent jamais votre navigateur.</p>

@@ -1,0 +1,35 @@
+name: Live Sources Daily
+
+# Les sources autrefois appelées depuis le navigateur (FluNet, SUM'Eau, vaccination grippe, ECDC mpox)
+# sont collectées ici et servies en JSON statique.
+on:
+  schedule:
+    - cron: '30 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Collecte → data/live-sources.json
+        run: node scripts/live-sources-fetch.mjs
+      - name: Validation des données
+        run: node scripts/validate-data.mjs
+      - name: Commit si changement
+        run: |
+          git config user.name "LiveSources-Bot"
+          git config user.email "bot@breathiq.fr"
+          git add data/live-sources.json
+          if git diff --staged --quiet; then
+            echo "Aucune modification"
+          else
+            git commit -m "data: live-sources $(date +%Y-%m-%d)"
+            git pull --rebase origin main || true
+            git push origin main || { echo "Push échoué — retenté au prochain run"; exit 0; }
+          fi

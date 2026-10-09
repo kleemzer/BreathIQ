@@ -20,112 +20,30 @@ const BIQ_LIVE = (() => {
     airQuality:  5  * 60 * 1000,   // 5 min  — WAQI, OpenAQ
     flu:         60 * 60 * 1000,   // 1 h    — SPF, CDC
     outbreaks:   6  * 60 * 60 * 1000, // 6 h — ECDC, SUM'EAU
-    covid:       6  * 60 * 60 * 1000, // 6 h — disease.sh
     don:         2  * 60 * 60 * 1000, // 2 h  — WHO DON
     stocks:      24 * 60 * 60 * 1000, // 24 h
   };
 
-  // ── Détection pays utilisateur (pour FluMart mondial) ─────────
-  function _detectFluNetCountry() {
-    const lang = (navigator.language || navigator.languages?.[0] || 'fr-FR');
-    const [langCode, cc] = lang.split(/[-_]/);
-    const iso2to3 = {
-      FR:'FRA',US:'USA',GB:'GBR',DE:'DEU',ES:'ESP',IT:'ITA',PT:'PRT',
-      NL:'NLD',PL:'POL',SE:'SWE',NO:'NOR',DK:'DNK',FI:'FIN',BE:'BEL',
-      CH:'CHE',AT:'AUT',CZ:'CZE',HU:'HUN',RO:'ROU',GR:'GRC',TR:'TUR',
-      JP:'JPN',CN:'CHN',AU:'AUS',CA:'CAN',BR:'BRA',MX:'MEX',AR:'ARG',
-      ZA:'ZAF',IN:'IND',KR:'KOR',SG:'SGP',TH:'THA',ID:'IDN',PH:'PHL',
-      VN:'VNM',EG:'EGY',MA:'MAR',SA:'SAU',AE:'ARE',RU:'RUS',UA:'UKR',
-      IL:'ISR',NG:'NGA',KE:'KEN',CO:'COL',CL:'CHL',PE:'PER',
-    };
-    // Southern hemisphere countries
-    const shCountries = new Set(['AUS','NZL','ZAF','BRA','ARG','CHL','PER','BOL','PRY','URY','ECU','COL','VEN','IDN','PHL','VNM']);
-    const iso3 = iso2to3[cc?.toUpperCase()] || (cc ? 'FRA' : (() => {
-      const m = { fr:'FRA',de:'DEU',es:'ESP',it:'ITA',pt:'PRT',nl:'NLD',pl:'POL',sv:'SWE',da:'DNK',fi:'FIN',ja:'JPN',zh:'CHN',ko:'KOR',ar:'SAU',ru:'RUS' };
-      return m[langCode?.toLowerCase()] || 'FRA';
-    })());
-    const hemisphere = shCountries.has(iso3) ? 'SH' : 'NH';
-    return { iso3, hemisphere };
-  }
 
   // Couverture vaccinale grippe France — données statiques SPF (fallback si API indisponible)
-  const VACC_GRIPPE_STATIC = {
-    nationalRate: 54.2, // % couverture vaccinale grippe saisonnière 2024-2025 (SPF, déc 2024)
-    target: 75,
-    season: '2024-2025',
-    belowTarget: true,
-    byRegion: [
-      { region: 'Bretagne', rate: 58.1 },
-      { region: 'Normandie', rate: 57.4 },
-      { region: 'Pays de la Loire', rate: 56.8 },
-      { region: 'Hauts-de-France', rate: 55.3 },
-      { region: 'Nouvelle-Aquitaine', rate: 54.9 },
-    ],
-    label: 'Couverture grippe 54.2% (SPF 2024-2025 — données statiques)',
-    _isStatic: true,
-  };
 
   // ── Endpoints statiques (sans géolocalisation) ─────────────────
   const EP = {
-    // SPF — grippe France via data.gouv.fr (miroir stable, CORS *)
-    spf_grippe: {
-      label: 'Santé Publique France — Grippe',
-      url: 'https://www.data.gouv.fr/api/1/datasets/donnees-de-surveillance-des-cas-de-grippe-vus-en-consultations-de-medecins-sentinelles-en-france/?format=json',
-      ttl: 'flu',
-      region: 'FR',
-      disabled: true, // endpoint instable — remplacé par Open-Meteo + WAQI
-    },
-    // CDC — grippe USA (endpoint 400 depuis oct.2026 — dataset ID changé)
-    cdc_flu: {
-      label: 'CDC — Grippe USA (ILI)',
-      url: 'https://data.cdc.gov/resource/ks3g-spdg.json?$limit=5&$order=week_start+DESC',
-      ttl: 'flu',
-      region: 'US',
-      disabled: true,
-    },
-    // ECDC — Mpox Europe
-    ecdc_mpox: {
-      label: 'ECDC — Mpox Europe',
-      url: 'https://opendata.ecdc.europa.eu/monkeypox/casedistribution/json',
-      ttl: 'outbreaks',
-      region: 'EU',
-    },
-    // SUM'EAU — SARS-CoV-2 eaux usées France
-    sumeau: {
-      label: 'SUM\'EAU — SARS-CoV-2 eaux usées France',
-      url: 'https://static.data.gouv.fr/resources/surveillance-du-sars-cov-2-dans-les-eaux-usees-sumeau/20260121-132916/sumeau-indicateurs.csv',
+    // spf_grippe (data.gouv) et cdc_flu retirés : la grippe France vient du Réseau Sentinelles
+    // (data/spf-surveillance.json) et de FluNet (data/live-sources.json) ; plus d'appel navigateur.
+    // ── Sources collectées côté serveur (scripts/live-sources-fetch.mjs → data/live-sources.json) ──
+    // Le navigateur ne contacte plus ECDC, data.gouv ni l'OMS directement : une seule requête locale.
+    live_sources: {
+      label: 'Sources collectées quotidiennement (FluNet, SUM\'Eau, vaccination grippe, ECDC mpox)',
+      url: '/data/live-sources.json',
       ttl: 'outbreaks',
       region: 'FR',
     },
-    // WHO FluNet — Grippe pays utilisateur (VIW_FNT) — URL construite dynamiquement
-    who_flunet_fr: (() => {
-      const { iso3, hemisphere } = _detectFluNetCountry();
-      // OData : $ doit être littéral (non encodé %24) pour être reconnu comme opérateur système
-      const filter = `COUNTRY_CODE eq '${iso3}' and HEMISPHERE eq '${hemisphere}'`;
-      return {
-        label: `WHO FluNet — Grippe ${iso3} (VIW_FNT)`,
-        url: `https://xmart-api-public.who.int/FLUMART/VIW_FNT?$format=json&$filter=${encodeURIComponent(filter)}&$orderby=ISO_WEEK_START%20desc&$top=12`,
-        ttl: 'flu',
-        region: iso3,
-        _detectedCountry: iso3,
-        _hemisphere: hemisphere,
-      };
-    })(),
-    // disease.sh — COVID-19 France (séries 30j)
-    disease_sh_covid: {
-      label: 'disease.sh — COVID-19 France (30j)',
-      url: 'https://disease.sh/v3/covid-19/historical/France?lastdays=30',
-      ttl: 'covid',
-      region: 'FR',
-    },
-    // data.gouv.fr — Couverture vaccinale grippe 2024-2025 (SPF)
-    flu_vacc_fr: {
-      label: 'SPF — Couverture vaccinale grippe France',
-      url: 'https://www.data.gouv.fr/api/1/datasets/68f1ff3cda987ca867e6ba7e/',
-      ttl: 'outbreaks',
-      region: 'FR',
-      _metaFetch: true,
-    },
+    // ecdc_mpox retiré : le flux casedistribution/json est figé au 15/02/2023 (mpox → data/ecdc-surveillance.json)
+    sumeau:        { label: 'SUM\'EAU — SARS-CoV-2 eaux usées France',     ttl: 'outbreaks', region: 'FR',  local: true },
+    who_flunet_fr: { label: 'WHO FluNet — Grippe France (VIW_FNT)',         ttl: 'flu',       region: 'FRA', local: true, _detectedCountry: 'FRA' },
+    flu_vacc_data: { label: 'SPF — Couverture vaccinale grippe France',     ttl: 'outbreaks', region: 'FR',  local: true },
+    // disease.sh retiré (dernière donnée France : 9 mars 2023 — source morte)
     // WHO Disease Outbreak News — fichier local mis à jour quotidiennement par GitHub Actions
     // (L'API OData WHO retourne 401 depuis sept. 2026 — workflow who-don-daily.yml prend le relais)
     who_don: {
@@ -134,18 +52,7 @@ const BIQ_LIVE = (() => {
       ttl: 'don',
       region: 'GLOBAL',
     },
-    // ECDC — Coqueluche/Rougeole : URLs supprimées (404 depuis réorg. portail ECDC 2026)
-    // Les données ECDC sont maintenant dans data/ecdc-surveillance.json via GitHub Actions
-    ecdc_pertussis: {
-      label: 'ECDC — Coqueluche Europe',
-      url: 'https://opendata.ecdc.europa.eu/pertussis/casedistribution/json',
-      ttl: 'outbreaks', region: 'EU', disabled: true,
-    },
-    ecdc_measles: {
-      label: 'ECDC — Rougeole Europe',
-      url: 'https://opendata.ecdc.europa.eu/measles/casedistribution/json',
-      ttl: 'outbreaks', region: 'EU', disabled: true,
-    },
+    // ECDC coqueluche/rougeole : flux JSON morts (404) — données dans data/ecdc-surveillance.json (GitHub Actions)
   };
   // Note : OpenAQ v2 est déprécié (CORS bloqué). Qualité de l'air assurée par WAQI + Open-Meteo (géolocalisés).
 
@@ -207,50 +114,6 @@ const BIQ_LIVE = (() => {
 
   // ── Parseurs ───────────────────────────────────────────────────
 
-  function parseSPFGrippe(raw) {
-    try {
-      const recs = raw.results || raw.records || [];
-      if (!recs.length) return null;
-
-      // Séries historiques (ordre décroissant → inverser pour chronologie)
-      const series = recs.map(r => {
-        const f = r.record?.fields || r;
-        return {
-          rate: parseFloat(f.tx_av_inc100_h || f.taux_pour_100000_habitants || 0),
-          week: f.semaine_annee_calc || f.date_de_debut || '',
-        };
-      }).filter(s => !isNaN(s.rate) && s.rate >= 0).reverse();
-
-      if (!series.length) return null;
-      const latest = series[series.length - 1];
-      const { rate, week } = latest;
-
-      // Baseline statistique : toutes les semaines sauf la dernière
-      const baseline = series.slice(0, -1).map(s => s.rate);
-      const mean = baseline.length
-        ? baseline.reduce((a,b) => a+b, 0) / baseline.length : rate;
-      const std = baseline.length > 1
-        ? Math.sqrt(baseline.reduce((s,v) => s + (v-mean)**2, 0) / baseline.length) : 0;
-
-      // Seuils dynamiques OMS (2 écart-types = 95% de confiance)
-      const t1 = mean + 1.5 * std;  // JAUNE
-      const t2 = mean + 2   * std;  // ORANGE
-      const t3 = mean + 3   * std;  // ROUGE
-
-      const zScore = std > 0 ? (rate - mean) / std : 0;
-      const alertLevel = zScore >= 3 ? 'rouge' : zScore >= 2 ? 'orange' : zScore >= 1.5 ? 'jaune' : 'normal';
-
-      return {
-        rate, week,
-        label: `Grippe ${rate.toFixed(0)}/100k (SPF sem. ${week})`,
-        viralScore: Math.min(100, Math.round(rate / 3)),
-        series,          // [{rate, week}] chronologique pour courbe épidémique
-        baseline: { mean, std, t1, t2, t3 },
-        zScore: Math.round(zScore * 10) / 10,
-        alertLevel,      // 'normal' | 'jaune' | 'orange' | 'rouge'
-      };
-    } catch { return null; }
-  }
 
   function parseOpenAQ(raw) {
     try {
@@ -269,81 +132,8 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
-  function parseCDCFlu(raw) {
-    try {
-      const rec = Array.isArray(raw) ? raw[0] : raw;
-      if (!rec) return null;
-      const level = rec.activity_level || rec.activity_level_label || '';
-      return {
-        level: level.toString(),
-        week: rec.week_end || '',
-        label: `Grippe USA niveau ${level} (CDC)`,
-        viralScore: Math.min(100, Math.round(parseFloat(level) * 10) || 30),
-      };
-    } catch { return null; }
-  }
 
-  function parseECDCMpox(raw) {
-    try {
-      const data = raw.data || raw;
-      if (!data.length) return null;
-      const recent = data.filter(r => {
-        const d = new Date(r.DateRep || r.date_rep || '');
-        return (Date.now() - d.getTime()) < 30 * 24 * 3600 * 1000;
-      });
-      const total = recent.reduce((s, r) => s + (parseInt(r.ConfCases || r.cases || 0) || 0), 0);
-      return { cases30d: total, label: `Mpox Europe: ${total} cas (30j, ECDC)`, active: total > 10 };
-    } catch { return null; }
-  }
 
-  /**
-   * WAQI — World Air Quality Index
-   * Renvoie AQI + 11 polluants + prévisions 7j PM2.5
-   */
-  function parseWAQI(raw) {
-    try {
-      if (raw.status !== 'ok') return null;
-      const d = raw.data;
-      const iaqi = d.iaqi || {};
-      const pm25 = iaqi.pm25?.v ?? null;
-      const pm10 = iaqi.pm10?.v ?? null;
-      const no2  = iaqi.no2?.v ?? null;
-      const o3   = iaqi.o3?.v ?? null;
-      const so2  = iaqi.so2?.v ?? null;
-      const co   = iaqi.co?.v ?? null;
-      const temp = iaqi.t?.v ?? null;
-      const hum  = iaqi.h?.v ?? null;
-      const wind = iaqi.w?.v ?? null;
-
-      // AQI brut US (0-500+) → normalisé 0-100 pour compatibilité BreathIQ
-      const aqi = d.aqi;
-      const aqiScore = typeof aqi === 'number' ? Math.min(100, Math.round(aqi / 3)) : null;
-
-      // Prévisions PM2.5 (7 jours)
-      const forecast7d = (d.forecast?.daily?.pm25 || []).slice(0, 7).map(f => ({
-        day: f.day, avg: f.avg, min: f.min, max: f.max,
-      }));
-
-      // Polluant dominant
-      const dominant = d.dominentpol || null;
-
-      return {
-        aqi, aqiScore, pm25, pm10, no2, o3, so2, co,
-        temp, hum, wind, dominant, forecast7d,
-        city: d.city?.name || '—',
-        stationUrl: d.city?.url || null,
-        attributions: (d.attributions || []).map(a => a.name).slice(0, 2),
-        label: `AQI ${aqi} — PM2.5 ${pm25 ?? '?'} µg/m³ (${d.city?.name || 'local'})`,
-        aboveWHO: pm25 != null && pm25 > 15,
-        // Catégorie AQI US pour affichage couleur
-        aqiCategory: aqi <= 50 ? 'good'
-          : aqi <= 100 ? 'moderate'
-          : aqi <= 150 ? 'unhealthy-sensitive'
-          : aqi <= 200 ? 'unhealthy'
-          : aqi <= 300 ? 'very-unhealthy' : 'hazardous',
-      };
-    } catch { return null; }
-  }
 
   /**
    * SUM'EAU — CSV avec concentrations SARS-CoV-2 dans les eaux usées (France)
@@ -405,91 +195,28 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
-  // ── disease.sh — COVID-19 France ──────────────────────────────
-  function parseDiseaseShCovid(raw) {
-    try {
-      const timeline = raw?.timeline;
-      if (!timeline) return null;
 
-      // Construire série chronologique à partir des cas cumulés
-      const caseEntries = Object.entries(timeline.cases || {});
-      const deathEntries = Object.entries(timeline.deaths || {});
-      if (caseEntries.length < 2) return null;
-
-      // Calculer les nouveaux cas quotidiens (delta des cumuls)
-      const dailyCases = caseEntries.map(([date, cum], i) => {
-        const prevCum = i > 0 ? caseEntries[i - 1][1] : cum;
-        return { date, cases: Math.max(0, cum - prevCum) };
-      }).slice(1); // enlever le 1er point (pas de delta)
-
-      const dailyDeaths = deathEntries.map(([date, cum], i) => {
-        const prevCum = i > 0 ? deathEntries[i - 1][1] : cum;
-        return { date, deaths: Math.max(0, cum - prevCum) };
-      }).slice(1);
-
-      const latestCases  = dailyCases[dailyCases.length - 1]?.cases  || 0;
-      const latestDeaths = dailyDeaths[dailyDeaths.length - 1]?.deaths || 0;
-
-      // Moyenne 7j glissants pour lissage
-      const avg7d = arr => arr.length >= 7
-        ? Math.round(arr.slice(-7).reduce((s, v) => s + v, 0) / 7)
-        : Math.round(arr.reduce((s, v) => s + v, 0) / arr.length);
-
-      const casesAvg7d  = avg7d(dailyCases.map(d => d.cases));
-      const deathsAvg7d = avg7d(dailyDeaths.map(d => d.deaths));
-
-      // Tendance : comparer la dernière semaine aux 7j précédents
-      const last7  = dailyCases.slice(-7).reduce((s, d) => s + d.cases, 0);
-      const prev7  = dailyCases.slice(-14, -7).reduce((s, d) => s + d.cases, 0);
-      const trend  = prev7 > 0 ? ((last7 - prev7) / prev7) * 100 : 0;
-      const trendDir = trend > 10 ? 'up' : trend < -10 ? 'down' : 'stable';
-
-      return {
-        dailyCases,
-        dailyDeaths,
-        latestCases,
-        latestDeaths,
-        casesAvg7d,
-        deathsAvg7d,
-        trend: Math.round(trend),
-        trendDir,
-        label: `COVID France — ${casesAvg7d} cas/j moy. 7j · tendance ${trendDir === 'up' ? '↗' : trendDir === 'down' ? '↘' : '→'}`,
-        lastDate: dailyCases[dailyCases.length - 1]?.date || '',
-      };
-    } catch { return null; }
-  }
-
-  // ── data.gouv.fr — Couverture vaccinale grippe ────────────────
-  function parseFluVaccFr(raw) {
-    try {
-      // La réponse de l'API dataset contient les ressources
-      const resources = raw?.resources || [];
-      if (!resources.length) return null;
-
-      // Chercher une ressource JSON ou CSV avec "couverture" ou "vacc" dans le titre/URL
-      const res = resources.find(r =>
-        /couverture|vacc|coverage/i.test(r.title || '') ||
-        /couverture|vacc|coverage/i.test(r.url || '')
-      ) || resources[0];
-
-      return {
-        resourceUrl: res?.url || null,
-        resourceTitle: res?.title || '',
-        datasetTitle: raw?.title || 'Vaccination grippe',
-        lastUpdate: raw?.last_update || raw?.last_modified || null,
-        label: `Vaccination grippe — ${res?.title || 'données disponibles'}`,
-        _needsSecondFetch: true,
-        _secondUrl: res?.url || null,
-      };
-    } catch { return null; }
-  }
 
   // Parseur de la ressource CSV/JSON de couverture vaccinale
   function parseFluVaccData(raw) {
     try {
-      // Format attendu : tableau d'objets avec région et taux de couverture
       const records = Array.isArray(raw) ? raw : (raw?.records || raw?.data || []);
       if (!records.length) return null;
+
+      // Format data.gouv « Vaccination Grippe 2025-2026 » : { region, code, variable: 'DOSES(J07E1)'|'ACTE(VGP)', groupe, valeur }
+      // → doses et actes réels (pas de taux de couverture dans cette ressource : on n'en invente pas)
+      if (records[0].variable != null && records[0].valeur != null) {
+        const sum = pred => records.filter(pred).reduce((s, r) => s + (Number(r.valeur) || 0), 0);
+        const doses = sum(r => /DOSES/i.test(r.variable));
+        const actes = sum(r => /ACTE/i.test(r.variable));
+        const groups = [...new Set(records.map(r => r.groupe).filter(Boolean))];
+        const byGroup = groups.map(g => ({ group: g, doses: sum(r => /DOSES/i.test(r.variable) && r.groupe === g), actes: sum(r => /ACTE/i.test(r.variable) && r.groupe === g) }));
+        const byRegion = [...new Set(records.map(r => r.region).filter(Boolean))]
+          .map(region => ({ region: String(region).replace(/^\d+\s*-\s*/, ''), doses: sum(r => /DOSES/i.test(r.variable) && r.region === region) }))
+          .sort((a, b) => b.doses - a.doses);
+        return { kind: 'doses', doses, actes, byGroup, byRegion: byRegion.slice(0, 5), season: '2025-2026', label: `Vaccination grippe 2025-2026 — ${doses.toLocaleString('fr-FR')} doses, ${actes.toLocaleString('fr-FR')} actes (data.gouv)` };
+      }
+
 
       // Chercher les colonnes région et couverture
       const sample = records[0];
@@ -535,37 +262,33 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
-  // Parseur CSV couverture vaccinale (fallback si la ressource est CSV)
-  function parseFluVaccDataCsv(csvText) {
-    try {
-      const lines = csvText.trim().split('\n').filter(l => l.trim());
-      if (lines.length < 2) return null;
-      const sep = lines[0].includes(';') ? ';' : ',';
-      const headers = lines[0].split(sep).map(h => h.replace(/"/g, '').trim().toLowerCase());
-      const records = lines.slice(1).map(l => {
-        const cols = l.split(sep).map(c => c.replace(/"/g, '').trim());
-        return Object.fromEntries(headers.map((h, i) => [h, cols[i] || '']));
-      });
-      return parseFluVaccData(records);
-    } catch { return null; }
-  }
 
   function parseFluNet(raw) {
   try {
-    // FluNet renvoie { value: [{COUNTRY_CODE, ISO_WEEK_START, ISO_WEEK, ALL_INF, INF_A, INF_B, ...}] }
+    // FluNet renvoie { value: [{COUNTRY_CODE, ISO_WEEKSTARTDATE, ISO_WEEK, ALL_INF, INF_A, INF_B, ...}] }
+    // (le champ s'appelle ISO_WEEKSTARTDATE — l'ancien nom ISO_WEEK_START provoquait un 400 OData)
     const records = raw?.value || [];
     if (!records.length) return null;
+    const startOf = r => r.ISO_WEEKSTARTDATE || r.ISO_WEEK_START || '';
 
-    // Filtrer les semaines avec données (ALL_INF non null)
-    const valid = records
-      .filter(r => r.ALL_INF != null && r.ALL_INF >= 0)
-      .sort((a, b) => (b.ISO_WEEK_START || '').localeCompare(a.ISO_WEEK_START || ''));
+    // Total grippe : INF_ALL (nom réel du champ FluNet) ou somme A+B ; une ligne par semaine (origines agrégées)
+    const allInf = r => { const v = r.INF_ALL ?? r.ALL_INF; return v != null ? Number(v) : (Number(r.INF_A) || 0) + (Number(r.INF_B) || 0); };
+    const byWeek = new Map();
+    for (const r of records) {
+      const k = startOf(r); if (!k) continue;
+      const cur = byWeek.get(k) || { ...r, ALL_INF: 0, INF_A: 0, INF_B: 0 };
+      cur.ALL_INF += allInf(r); cur.INF_A += Number(r.INF_A) || 0; cur.INF_B += Number(r.INF_B) || 0;
+      byWeek.set(k, cur);
+    }
+    const valid = [...byWeek.values()]
+      .filter(r => r.ALL_INF >= 0)
+      .sort((a, b) => startOf(b).localeCompare(startOf(a)));
 
     if (!valid.length) return null;
 
     const latest = valid[0];
     const series = valid.slice(0, 12).reverse().map(r => ({
-      week: r.ISO_WEEK || r.ISO_WEEK_START || '',
+      week: r.ISO_WEEK || startOf(r) || '',
       cases: parseInt(r.ALL_INF || 0),
       infA: parseInt(r.INF_A || 0),
       infB: parseInt(r.INF_B || 0),
@@ -628,60 +351,6 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
-  // ── ECDC — Pertussis / Rougeole Europe ───────────────────────
-  function parseECDCDisease(raw, diseaseName) {
-    try {
-      const records = raw?.data || raw?.records || (Array.isArray(raw) ? raw : null);
-      if (!records?.length) return null;
-
-      // Filtrer les 12 dernières semaines, agréger EU total
-      const sorted = [...records]
-        .filter(r => r.YearWeek || r.year_week || r.Week)
-        .sort((a, b) => {
-          const wa = a.YearWeek || a.year_week || a.Week || '';
-          const wb = b.YearWeek || b.year_week || b.Week || '';
-          return wb.localeCompare(wa);
-        });
-
-      if (!sorted.length) return null;
-
-      // Agréger par semaine (toutes les régions EU)
-      const byWeek = new Map();
-      sorted.forEach(r => {
-        const wk = r.YearWeek || r.year_week || r.Week || '';
-        const cases = parseInt(r.NumberOfCases || r.cases || r.count || 0);
-        if (!wk) return;
-        byWeek.set(wk, (byWeek.get(wk) || 0) + cases);
-      });
-
-      const weeks = [...byWeek.entries()]
-        .sort(([a],[b]) => b.localeCompare(a))
-        .slice(0, 12)
-        .reverse();
-
-      if (!weeks.length) return null;
-
-      const latestCases = weeks[weeks.length - 1][1];
-      const avgCases = Math.round(weeks.reduce((s,[,v]) => s + v, 0) / weeks.length);
-      const prevCases = weeks.length >= 2 ? weeks[weeks.length - 2][1] : avgCases;
-      const trend = prevCases > 0 ? Math.round(((latestCases - prevCases) / prevCases) * 100) : 0;
-      const trendDir = trend > 15 ? 'up' : trend < -15 ? 'down' : 'stable';
-      const alertLevel = latestCases > avgCases * 2 ? 'rouge' : latestCases > avgCases * 1.3 ? 'orange' : 'jaune';
-
-      return {
-        disease: diseaseName,
-        latestCases,
-        avgCases,
-        trend,
-        trendDir,
-        alertLevel,
-        lastWeek: weeks[weeks.length - 1][0],
-        series: weeks.map(([week, cases]) => ({ week, cases })),
-        label: `${diseaseName} EU — ${latestCases} cas sem. ${weeks[weeks.length - 1][0]}`,
-        source: 'ECDC opendata',
-      };
-    } catch { return null; }
-  }
 
   // ── Open-Meteo avec pollen ─────────────────────────────────────
   function fetchOpenMeteoForLocation(lat, lon) {
@@ -744,12 +413,6 @@ const BIQ_LIVE = (() => {
     } catch { return null; }
   }
 
-  // ── WAQI géolocalisé ──────────────────────────────────────────
-  function fetchWAQIForLocation(lat, lon) {
-    const token = (typeof window !== 'undefined' && window.BIQ_WAQI_KEY) || 'demo';
-    const url = `https://api.waqi.info/feed/geo:${lat.toFixed(4)};${lon.toFixed(4)}/?token=${token}`;
-    return fetchWithCache(`waqi_${Math.round(lat*10)}_${Math.round(lon*10)}`, url, 'airQuality');
-  }
 
   // ── Fetch avec géolocalisation (Open-Meteo + WAQI) ────────────
   function fetchWithGeolocation() {
@@ -788,7 +451,7 @@ const BIQ_LIVE = (() => {
     dispatch('status', { status: 'loading' });
 
     const tasks = Object.entries(EP)
-      .filter(([, ep]) => !ep.disabled)
+      .filter(([, ep]) => !ep.disabled && !ep.local)
       .map(async ([key, ep]) => {
         const isCSV = ep.url.endsWith('.csv');
         const result = await fetchWithCache(key, ep.url, ep.ttl, isCSV ? { accept: 'text/csv', text: true } : {});
@@ -799,22 +462,27 @@ const BIQ_LIVE = (() => {
 
     await Promise.allSettled(tasks);
 
-    // Second fetch pour flu_vacc_fr : découvrir l'URL de ressource puis la télécharger
-    const vaccMeta = state.data.flu_vacc_fr?.data;
-    if (vaccMeta) {
-      const metaParsed = parseFluVaccFr(vaccMeta);
-      if (metaParsed?._secondUrl) {
-        try {
-          const isJson = /\.json(\?|$)/i.test(metaParsed._secondUrl);
-          const isCSV  = /\.csv(\?|$)/i.test(metaParsed._secondUrl);
-          const res2 = await fetchWithCache('flu_vacc_data', metaParsed._secondUrl, 'outbreaks',
-            isCSV ? { accept: 'text/csv', text: true } : {});
-          if (res2.data) {
-            const parsed2 = isCSV ? parseFluVaccDataCsv(res2.data) : parseFluVaccData(res2.data);
-            if (parsed2) state.data.flu_vacc_data = { data: parsed2, source: res2.source, ep: { ttl: 'outbreaks', region: 'FR' }, _direct: true };
-          }
-        } catch { /* silencieux */ }
-      }
+    // Sources collectées côté serveur : on redistribue le contenu de data/live-sources.json
+    // aux clés attendues par les parseurs (une source ok:false est marquée indisponible, jamais inventée)
+    const bundle = state.data.live_sources?.data?.sources || {};
+    for (const [key, ep] of Object.entries(EP)) {
+      if (!ep.local) continue;
+      const src = bundle[key];
+      const hasData = src && src.raw != null;
+      state.data[key] = {
+        data: hasData ? src.raw : null,
+        source: !src ? 'error' : src.ok ? 'api' : 'stale',
+        fresh: !!src?.ok,
+        ep,
+        sourceUrl: src?.sourceUrl || null,
+        sourceLastModified: src?.sourceLastModified || null,
+        error: src?.error || null,
+      };
+      if (hasData) state.liveCount++;
+    }
+    if (state.data.flu_vacc_data?.data) {
+      const parsed2 = parseFluVaccData(state.data.flu_vacc_data.data);
+      state.data.flu_vacc_data = { ...state.data.flu_vacc_data, data: parsed2, _direct: !!parsed2 };
     }
 
     state.lastFetch = Date.now();
@@ -832,22 +500,16 @@ const BIQ_LIVE = (() => {
   function buildParsedData() {
     const out = { sources: {} };
 
-    if (state.data.spf_grippe?.data)       { out.frFlu      = parseSPFGrippe(state.data.spf_grippe.data);       out.sources.spfGrippe      = state.data.spf_grippe.source; }
-    if (state.data.cdc_flu?.data)          { out.usFlu      = parseCDCFlu(state.data.cdc_flu.data);              out.sources.cdcFlu         = state.data.cdc_flu.source; }
-    if (state.data.ecdc_mpox?.data)        { out.ecMpox     = parseECDCMpox(state.data.ecdc_mpox.data);          out.sources.ecdcMpox       = state.data.ecdc_mpox.source; }
     if (state.data.sumeau?.data)           { out.sumeau     = parseSumEau(state.data.sumeau.data);                out.sources.sumeau         = state.data.sumeau.source; }
     if (state.data.openmeteo_local?.data)  { out.localAqi   = parseOpenMeteo(state.data.openmeteo_local.data);   out.sources.openMeteoLocal = state.data.openmeteo_local.source; }
 
-    if (state.data.disease_sh_covid?.data) { out.covidFr    = parseDiseaseShCovid(state.data.disease_sh_covid.data); out.sources.covidFr   = state.data.disease_sh_covid.source; }
     if (state.data.who_flunet_fr?.data) { out.frFlu = out.frFlu || parseFluNet(state.data.who_flunet_fr.data); out.sources.fluNetFr = state.data.who_flunet_fr.source; }
     if (state.data.flu_vacc_data?._direct) { out.fluVaccFr  = state.data.flu_vacc_data.data;                    out.sources.fluVaccFr      = state.data.flu_vacc_data.source; }
-    else if (state.data.flu_vacc_fr?.data) { out.fluVaccMeta = parseFluVaccFr(state.data.flu_vacc_fr.data);     out.sources.fluVaccFr      = state.data.flu_vacc_fr.source; }
-    if (!out.fluVaccFr && !out.fluVaccMeta) out.fluVaccFr = VACC_GRIPPE_STATIC;
+    // Dates réelles des sources collectées (affichées par bloc, cf. règle « une seule date honnête »)
+    out.sourceDates = Object.fromEntries(Object.entries(state.data).filter(([, v]) => v?.sourceLastModified).map(([k, v]) => [k, v.sourceLastModified]));
 
     // Nouvelles sources live
     if (state.data.who_don?.data)       { out.whoDon      = parseWHODON(state.data.who_don.data);                      out.sources.whoDon       = state.data.who_don.source; }
-    if (state.data.ecdc_pertussis?.data){ out.ecdcPertussis= parseECDCDisease(state.data.ecdc_pertussis.data, 'Coqueluche'); out.sources.ecdcPertussis= state.data.ecdc_pertussis.source; }
-    if (state.data.ecdc_measles?.data)  { out.ecdcMeasles  = parseECDCDisease(state.data.ecdc_measles.data, 'Rougeole');    out.sources.ecdcMeasles  = state.data.ecdc_measles.source; }
     out.fluNetCountry = EP.who_flunet_fr?._detectedCountry || 'FRA';
 
     // Qualité d'air locale : WAQI (géolocalisé) > Open-Meteo (géolocalisé)

@@ -5707,7 +5707,7 @@ function applyLiveData(parsed) {
   // Panneau sources live (mode expert)
   renderLiveSourcesPanel(parsed);
   // Widget SUM'EAU
-  renderSumEauWidget(parsed.sumeau);
+  renderSumEauWidget(parsed.sumeau, parsed.sourceDates?.sumeau);
   // Widget WAQI détaillé
   renderWaqiWidget(parsed.waqiLocal || parsed.localAqi);
   // Pollen : géoloc prioritaire, sinon données régionales Open-Meteo
@@ -5716,9 +5716,8 @@ function applyLiveData(parsed) {
     : (score.pollenData ? { pollen: score.pollenData, pollenScore: score.pollen } : null);
   renderPollenWidget(pollenData);
   // Widget COVID-19 courbe épidémique (disease.sh)
-  renderCovidCurveWidget(parsed.covidFr);
   // Widget vaccination grippe (data.gouv.fr SPF)
-  renderVaccGrippeWidget(parsed.fluVaccFr || parsed.fluVaccMeta);
+  renderVaccGrippeWidget(parsed.fluVaccFr, parsed.sourceDates?.flu_vacc_data);
   // WHO DON live feed
   if (parsed.whoDon?.alerts?.length) renderWHODonLive(parsed.whoDon);
   // ECDC pertussis + rougeole
@@ -6823,21 +6822,15 @@ function renderLiveSourcesPanel(parsed) {
   };
 
   const fr = currentLang === 'fr';
+  // Uniquement les sources réellement branchées (les flux morts — WAQI, OpenAQ, CDC, ECDC JSON — ont été retirés)
+  const dateOf = key => { const d = parsed.sourceDates?.[key]; const t = d && new Date(d); return t && !isNaN(t) ? t.toLocaleDateString(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : null; };
+  const withDate = (txt, key) => dateOf(key) ? `${txt} · ${fr ? 'source du' : 'source dated'} ${dateOf(key)}` : txt;
   const sources = [
-    { key:'waqiLocal',    icon:'🌫️', label: fr ? 'WAQI — Air local (11 polluants)' : 'WAQI — Local air (11 pollutants)',    value: parsed.waqiLocal   ? `AQI ${parsed.waqiLocal.aqi} · PM2.5 ${parsed.waqiLocal.pm25 ?? '?'}` : '—' },
-    { key:'openMeteoLocal',icon:'🌿',label: fr ? 'Open-Meteo — Pollen local'        : 'Open-Meteo — Local pollen',           value: parsed.localAqi?.dominantPollen ? `${parsed.localAqi.dominantPollen.name} ${parsed.localAqi.dominantPollen.value}` : (parsed.localAqi ? `PM2.5 ${parsed.localAqi.pm25}` : '—') },
-    { key:'openaqFr',     icon:'🇫🇷', label: fr ? 'OpenAQ — PM2.5 France'           : 'OpenAQ — PM2.5 France',               value: parsed.frAqi       ? `${parsed.frAqi.pm25} µg/m³` : '—' },
-    { key:'openaqWorld',  icon:'🌍', label: fr ? 'OpenAQ — PM2.5 mondial'           : 'OpenAQ — PM2.5 global',               value: parsed.worldAqi    ? `${parsed.worldAqi.pm25} µg/m³` : '—' },
-    { key:'spfGrippe',    icon:'🇫🇷', label: fr ? 'SPF — Grippe France'             : 'SPF — Flu France',                    value: parsed.frFlu       ? `${parsed.frFlu.rate?.toFixed(0) ?? '?'}/100k` : '—' },
-    { key:'cdcFlu',       icon:'🇺🇸', label: fr ? 'CDC — Grippe USA'                : 'CDC — Flu USA',                       value: parsed.usFlu       ? `niv. ${parsed.usFlu.level}` : '—' },
-    { key:'ecdcMpox',     icon:'🇪🇺', label: fr ? 'ECDC — Mpox Europe'             : 'ECDC — Mpox Europe',                  value: parsed.ecMpox      ? `${parsed.ecMpox.cases30d} cas/30j` : '—' },
-    { key:'sumeau',       icon:'💧', label: fr ? 'SUM\'EAU — COVID eaux usées'      : 'SUM\'EAU — COVID wastewater',         value: parsed.sumeau      ? `${parsed.sumeau.intensity} (${parsed.sumeau.week})` : '—' },
-    { key:'covidFr',      icon:'🦠', label: fr ? 'disease.sh — COVID-19 France 30j' : 'disease.sh — COVID-19 France 30d',     value: parsed.covidFr     ? `${parsed.covidFr.casesAvg7d?.toLocaleString()} cas/j · ${parsed.covidFr.trendDir === 'up' ? '↗' : parsed.covidFr.trendDir === 'down' ? '↘' : '→'}` : '—' },
-    { key:'fluVaccFr',    icon:'💉', label: fr ? 'SPF — Vaccination grippe France'   : 'SPF — Flu vaccination France',         value: parsed.fluVaccFr   ? `${parsed.fluVaccFr.nationalRate?.toFixed(1)}%${parsed.fluVaccFr._isStatic ? ' (statique)' : ''} / cible ${parsed.fluVaccFr.target}%` : '—' },
-    { key:'fluNetFr',     icon:'🌡️', label: fr ? `WHO FluNet — Grippe ${parsed.fluNetCountry || 'FR'}` : `WHO FluNet — Flu ${parsed.fluNetCountry || 'FR'}`, value: parsed.frFlu ? `${parsed.frFlu.rate} cas sem. ${parsed.frFlu.week} (${parsed.frFlu.source || 'FluNet'})` : '—' },
-    { key:'whoDon',       icon:'📡', label: fr ? 'WHO DON — Alertes du jour'        : 'WHO DON — Daily alerts',                value: parsed.whoDon      ? `${parsed.whoDon.alerts.length} alertes · ${parsed.whoDon.source === 'WHO DON API' ? '⚡ live' : '📋 statique'}` : '—' },
-    { key:'ecdcPertussis',icon:'🫁', label: fr ? 'ECDC — Coqueluche Europe'           : 'ECDC — Pertussis Europe',              value: parsed.ecdcPertussis ? `${parsed.ecdcPertussis.latestCases} cas/sem · ${parsed.ecdcPertussis.trendDir === 'up' ? '↗' : parsed.ecdcPertussis.trendDir === 'down' ? '↘' : '→'}` : '—' },
-    { key:'ecdcMeasles',  icon:'🔴', label: fr ? 'ECDC — Rougeole Europe'             : 'ECDC — Measles Europe',                value: parsed.ecdcMeasles   ? `${parsed.ecdcMeasles.latestCases} cas/sem · ${parsed.ecdcMeasles.trendDir === 'up' ? '↗' : parsed.ecdcMeasles.trendDir === 'down' ? '↘' : '→'}` : '—' },
+    { key:'openMeteoLocal',icon:'🌿',label: fr ? 'Open-Meteo / CAMS — Air & pollen local' : 'Open-Meteo / CAMS — Local air & pollen', value: parsed.localAqi?.dominantPollen ? `${parsed.localAqi.dominantPollen.name} ${parsed.localAqi.dominantPollen.value}` : (parsed.localAqi ? `PM2.5 ${parsed.localAqi.pm25}` : (fr ? 'position non partagée' : 'location not shared')) },
+    { key:'fluNetFr',     icon:'🌡️', label: fr ? 'WHO FluNet — Grippe France (collecte quotidienne)' : 'WHO FluNet — Flu France (daily collection)', value: parsed.frFlu ? withDate(`${parsed.frFlu.rate} ${fr ? 'détections sem.' : 'detections wk'} ${parsed.frFlu.week}`, 'who_flunet_fr') : '—' },
+    { key:'sumeau',       icon:'💧', label: fr ? 'SUM\'EAU — COVID eaux usées (SPF / data.gouv)' : 'SUM\'EAU — COVID wastewater (SPF / data.gouv)', value: parsed.sumeau ? withDate(`${parsed.sumeau.intensity} (${parsed.sumeau.week})`, 'sumeau') : '—' },
+    { key:'fluVaccFr',    icon:'💉', label: fr ? 'Vaccination grippe 2025-2026 (SPF / data.gouv)' : 'Flu vaccination 2025-2026 (SPF / data.gouv)', value: parsed.fluVaccFr?.kind === 'doses' ? withDate(`${parsed.fluVaccFr.doses.toLocaleString(fr ? 'fr-FR' : 'en-GB')} ${fr ? 'doses' : 'doses'}`, 'flu_vacc_data') : (parsed.fluVaccFr?.nationalRate ? `${parsed.fluVaccFr.nationalRate.toFixed(1)}%` : '—') },
+    { key:'whoDon',       icon:'📡', label: fr ? 'WHO DON — Alertes (collecte quotidienne)' : 'WHO DON — Alerts (daily collection)', value: parsed.whoDon ? `${parsed.whoDon.alerts.length} ${fr ? 'alertes' : 'alerts'}` : '—' },
   ];
 
   const statusLabel = fr
@@ -6857,14 +6850,20 @@ function renderLiveSourcesPanel(parsed) {
         </div>
       `).join('')}
     </div>
-    <p class="lsp-footer">${fr ? `Mis à jour : ${new Date().toLocaleTimeString(currentLang)}` : `Updated: ${new Date().toLocaleTimeString(currentLang)}`}</p>
+    <p class="lsp-footer">${fr ? 'La date indiquée est celle de la dernière publication de chaque source, pas celle de votre consultation.' : 'The date shown is each source\'s last publication date, not the time of your visit.'}</p>
   `;
 }
 
 // ── Widget SUM'EAU ───────────────────────────────────────────
-function renderSumEauWidget(data) {
+function renderSumEauWidget(data, sourceDate) {
   const el = document.getElementById('sumeauWidget');
-  if (!el || !data) return;
+  if (!el) return;
+  if (!data) {
+    el.innerHTML = `<p class="lsd-loading">${currentLang === 'fr' ? 'Données SUM\'Eau indisponibles' : 'SUM\'Eau data unavailable'}</p>`;
+    return;
+  }
+  const srcDate = sourceDate ? new Date(sourceDate) : null;
+  const srcLabel = srcDate && !isNaN(srcDate) ? srcDate.toLocaleDateString(currentLang === 'fr' ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : null;
 
   const fr = currentLang === 'fr';
   const colors = { low: '#10B981', moderate: '#F59E0B', high: '#EF4444', unknown: '#6B7280' };
@@ -6885,6 +6884,7 @@ function renderSumEauWidget(data) {
       </div>
     </div>
     ${data.trend?.length > 1 ? `<div class="sumeau-sparkline">${renderSparkline(data.trend.map(t => t.nat54 ?? t.nat12).filter(v => v!=null), color)}</div>` : ''}
+    ${srcLabel ? `<p class="lsd-source-date">${fr ? `Dernière publication SPF / data.gouv : ${srcLabel}` : `Last SPF / data.gouv publication: ${srcLabel}`}</p>` : ''}
   `;
 }
 
@@ -6999,71 +6999,36 @@ function renderPollenWidget(data) {
   `;
 }
 
-// ── Widget COVID-19 courbe épidémique (disease.sh) ───────────────────────────
-function renderCovidCurveWidget(data) {
-  const el = document.getElementById('covidCurveWidget');
-  if (!el) return;
-
-  if (!data?.dailyCases?.length) {
-    el.innerHTML = `<p class="lsd-loading">Données COVID non disponibles</p>`;
-    return;
-  }
-
-  const fr = currentLang === 'fr';
-  const trendIcon = data.trendDir === 'up' ? '↗' : data.trendDir === 'down' ? '↘' : '→';
-  const trendColor = data.trendDir === 'up' ? '#EF4444' : data.trendDir === 'down' ? '#10B981' : '#F59E0B';
-
-  // Mini courbe SVG 30j
-  const vals = data.dailyCases.map(d => d.cases);
-  const maxVal = Math.max(...vals, 1);
-  const W = 220, H = 50;
-  const pts = vals.map((v, i) => {
-    const x = Math.round((i / (vals.length - 1)) * W);
-    const y = Math.round(H - (v / maxVal) * H);
-    return `${x},${y}`;
-  }).join(' ');
-
-  // Couleur selon tendance
-  const curveColor = data.trendDir === 'up' ? '#EF4444' : data.trendDir === 'down' ? '#10B981' : '#F59E0B';
-
-  el.innerHTML = `
-    <div class="covid-curve-header">
-      <span class="covid-curve-val">${data.casesAvg7d.toLocaleString(fr ? 'fr-FR' : 'en-US')}</span>
-      <span class="covid-curve-unit">${fr ? 'cas/j moy. 7j' : 'cases/day avg 7d'}</span>
-      <span class="covid-curve-trend" style="color:${trendColor}">${trendIcon} ${data.trend > 0 ? '+' : ''}${data.trend}%</span>
-    </div>
-    <svg viewBox="0 0 ${W} ${H}" class="covid-svg" aria-hidden="true">
-      <polyline points="${pts}" fill="none" stroke="${curveColor}" stroke-width="2" stroke-linejoin="round"/>
-      <line x1="0" y1="${H}" x2="${W}" y2="${H}" stroke="rgba(255,255,255,.15)" stroke-width="1"/>
-    </svg>
-    <div class="covid-curve-footer">
-      <span>💀 ${data.deathsAvg7d} ${fr ? 'décès/j moy.' : 'deaths/day avg'}</span>
-      <span class="covid-source">disease.sh · ${data.lastDate}</span>
-    </div>
-    <div class="covid-who-note">${fr
-      ? '⚠️ COVID-19 reste endémique — données déclaratives (sous-estimation probable)'
-      : '⚠️ COVID-19 remains endemic — declared cases (likely undercount)'}</div>
-  `;
-}
-
 // ── Widget vaccination grippe (data.gouv.fr SPF) ─────────────────────────────
-function renderVaccGrippeWidget(data) {
+function renderVaccGrippeWidget(data, sourceDate) {
   const el = document.getElementById('vaccGrippeWidget');
   if (!el) return;
 
   const fr = currentLang === 'fr';
+  const srcDate = sourceDate ? new Date(sourceDate) : null;
+  const srcLabel = srcDate && !isNaN(srcDate) ? srcDate.toLocaleDateString(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'short', year: 'numeric' }) : null;
 
-  // Cas où on a seulement les métadonnées (URL de ressource, pas encore les données)
-  if (data?._needsSecondFetch || !data?.nationalRate) {
-    if (data?.datasetTitle) {
-      el.innerHTML = `
-        <p class="lsd-loading">
-          📋 ${fr ? 'Jeu de données disponible' : 'Dataset available'} : <em>${data.datasetTitle}</em><br>
-          <small>${fr ? 'Ressource en cours de chargement…' : 'Loading resource…'}</small>
-        </p>`;
-    } else {
-      el.innerHTML = `<p class="lsd-loading">${fr ? 'Données vaccination non disponibles' : 'Vaccination data unavailable'}</p>`;
-    }
+  // Ressource data.gouv 2025-2026 : doses et actes (aucun taux de couverture publié → on n'en affiche pas)
+  if (data?.kind === 'doses') {
+    const n = v => (Number(v) || 0).toLocaleString(fr ? 'fr-FR' : 'en-GB');
+    const rows = (data.byGroup || []).map(g => `
+      <div class="vacc-region-row">
+        <span class="vacc-region-name">${g.group}</span>
+        <span class="vacc-region-rate">${n(g.doses)} ${fr ? 'doses' : 'doses'} · ${n(g.actes)} ${fr ? 'actes' : 'acts'}</span>
+      </div>`).join('');
+    el.innerHTML = `
+      <div class="vacc-national">
+        <span class="vacc-national-val">${n(data.doses)}</span>
+        <span class="vacc-national-label">${fr ? `doses délivrées · saison ${data.season}` : `doses dispensed · ${data.season} season`}</span>
+        <span class="vacc-target">${n(data.actes)} ${fr ? 'actes de vaccination' : 'vaccination acts'}</span>
+      </div>
+      ${rows ? `<div class="vacc-regions">${rows}</div>` : ''}
+      <p class="lsd-source-date">${fr ? 'Taux de couverture non publié dans cette ressource' : 'Coverage rate not published in this resource'}${srcLabel ? ` · ${fr ? 'données du' : 'data from'} ${srcLabel} (SPF / data.gouv)` : ''}</p>`;
+    return;
+  }
+
+  if (!data?.nationalRate) {
+    el.innerHTML = `<p class="lsd-loading">${fr ? 'Données vaccination non disponibles' : 'Vaccination data unavailable'}</p>`;
     return;
   }
 
