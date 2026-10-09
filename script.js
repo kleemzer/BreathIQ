@@ -2784,6 +2784,7 @@ function setLang(lang) {
   renderEmergencyNumbers();
   loadPheicAlert();
   initDataFreshness();
+  initDeclarationGate();
 }
 
 // ── Theme ────────────────────────────────────────────────────
