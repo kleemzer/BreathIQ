@@ -354,7 +354,7 @@
     <div class="data-notice" role="status" style="margin-top:var(--s4)" aria-live="polite">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
       <span>
-        <strong>Pas de données en temps réel.</strong> Les stocks stratégiques de masques sont classifiés ou non publiés dans la majorité des pays.
+        <strong>Pas de données actualisées en continu.</strong> Les stocks stratégiques de masques sont classifiés ou non publiés dans la majorité des pays.
         Cette page affiche uniquement les <strong>derniers chiffres officiels connus</strong> issus de rapports gouvernementaux publics, avec leur date de publication.
         <a href="bibliography.html#data-sources">Voir les sources →</a>
       </span>
@@ -632,7 +632,7 @@ async function loadPharmacyMarkers() {
           ${p.phone ? `<div style="font-size:.74rem;margin:.15rem 0">📞 <a href="tel:${p.phone}" style="color:#2563EB">${p.phone}</a></div>` : ''}
           ${p.website ? `<div style="font-size:.74rem;margin:.15rem 0">🌐 <a href="${p.website}" target="_blank" rel="noopener" style="color:#2563EB">Site web</a></div>` : ''}
           ${p.wheelchair === 'yes' ? `<div style="font-size:.72rem;color:#10B981;margin:.1rem 0">♿ Accessible PMR</div>` : ''}
-          <div style="margin-top:.5rem;font-size:.7rem;color:#9CA3AF;border-top:1px solid #e5e7eb;padding-top:.3rem">📡 OpenStreetMap · Stocks non disponibles en temps réel</div>
+          <div style="margin-top:.5rem;font-size:.7rem;color:#9CA3AF;border-top:1px solid #e5e7eb;padding-top:.3rem">📡 OpenStreetMap · Stocks non publiés en continu</div>
         </div>
       `);
       pharmacyLayer.addLayer(m);
