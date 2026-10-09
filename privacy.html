@@ -170,7 +170,7 @@
     <p>Lorsque vous acceptez l'accès à votre position géographique (via le modal dédié) :</p>
     <ul>
       <li>La position précise est utilisée en mémoire vive uniquement (jamais stockée)</li>
-      <li>Les coordonnées sont transmises directement depuis votre navigateur aux API WAQI et Open-Meteo</li>
+      <li>Les coordonnées sont transmises directement depuis votre navigateur à l'API Open-Meteo</li>
       <li>Pour les déclarations syndromiques : coordonnées arrondies à 0,5° avant stockage</li>
       <li>Aucune position n'est enregistrée sur nos serveurs BreathIQ</li>
     </ul>
@@ -193,84 +193,24 @@
         <tr><td>Géolocalisation (recherche de soins, qualité air locale)</td><td>Consentement explicite (modal dédié)</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
         <tr><td>Déclarations syndromiques (données de santé)</td><td>Consentement explicite + intérêt public (surveillance épidémiologique)</td><td><span class="chip chip-amber">Art. 9(2)(a) + (i)</span></td></tr>
         <tr><td>Logs serveur Cloudflare</td><td>Intérêt légitime (sécurité, lutte contre les abus)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
-        <tr><td>Analytique anonyme (Plausible)</td><td>Intérêt légitime (statistiques agrégées anonymes)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Analytique anonyme (Umami, après consentement)</td><td>Intérêt légitime (statistiques agrégées anonymes)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
       </tbody>
     </table>
   </section>
 
   <section id="transferts">
     <h2><span class="num">4</span> Transferts internationaux de données</h2>
-    <p>BreathIQ interroge plusieurs API tierces pour les données du jour. Ces requêtes sont effectuées
-    <strong>directement depuis votre navigateur</strong> (pas de proxy BreathIQ) et transmettent votre adresse IP à ces tiers :</p>
+    <p>BreathIQ interroge plusieurs API tierces pour les données du jour. Les données épidémiologiques (OMS, ECDC, Sentinelles, SUM'Eau…) sont collectées par nos scripts et servies depuis breathiq.fr ; seuls les services suivants sont contactés <strong>depuis votre navigateur</strong> et reçoivent votre adresse IP :</p>
     <table>
       <thead><tr><th>API / Service</th><th>Éditeur</th><th>Localisation</th><th>Données transmises</th><th>Garanties</th></tr></thead>
       <tbody>
-        <tr>
-          <td>WAQI / AQICN</td><td>World Air Quality Index</td>
-          <td><span class="chip chip-red">États-Unis</span></td>
-          <td>IP, coordonnées GPS (si géoloc accordée)</td>
-          <td><a href="https://aqicn.org/privacy/" target="_blank" rel="noopener">Politique AQICN</a> · Art. 49(1)(b)</td>
-        </tr>
-        <tr>
-          <td>OpenAQ</td><td>OpenAQ Inc.</td>
-          <td><span class="chip chip-red">États-Unis</span></td>
-          <td>IP, paramètres de requête</td>
-          <td><a href="https://openaq.org/privacy/" target="_blank" rel="noopener">Politique OpenAQ</a> · Art. 49(1)(b)</td>
-        </tr>
-        <tr>
-          <td>Open-Meteo Air Quality</td><td>Open-Meteo GmbH</td>
-          <td><span class="chip chip-green">Allemagne (UE)</span></td>
-          <td>IP, coordonnées GPS (si géoloc accordée)</td>
-          <td>RGPD applicable directement</td>
-        </tr>
-        <tr>
-          <td>SPF — data.santepubliquefrance.fr</td><td>Santé Publique France</td>
-          <td><span class="chip chip-green">France (UE)</span></td>
-          <td>IP uniquement (données publiques)</td>
-          <td>RGPD applicable directement</td>
-        </tr>
-        <tr>
-          <td>CDC — data.cdc.gov</td><td>US Centers for Disease Control</td>
-          <td><span class="chip chip-red">États-Unis</span></td>
-          <td>IP uniquement (données publiques)</td>
-          <td>Données publiques · Art. 49(1)(b)</td>
-        </tr>
-        <tr>
-          <td>ECDC — opendata.ecdc.europa.eu</td><td>European Centre for Disease Prevention</td>
-          <td><span class="chip chip-green">UE</span></td>
-          <td>IP uniquement (données publiques)</td>
-          <td>RGPD applicable directement</td>
-        </tr>
-        <tr>
-          <td>SUM'EAU — static.data.gouv.fr</td><td>Data.gouv.fr (DINUM)</td>
-          <td><span class="chip chip-green">France (UE)</span></td>
-          <td>IP uniquement (fichier public)</td>
-          <td>RGPD applicable directement</td>
-        </tr>
-        <tr>
-          <td>Nominatim / Overpass API (OSM)</td><td>OpenStreetMap Foundation</td>
-          <td><span class="chip chip-green">UE</span></td>
-          <td>IP, coordonnées GPS (si géoloc accordée)</td>
-          <td>RGPD applicable directement</td>
-        </tr>
-        <tr>
-          <td>Leaflet + tiles CartoCDN / OSM</td><td>CartoDB / OSM</td>
-          <td><span class="chip chip-green">UE</span></td>
-          <td>IP, tuiles demandées</td>
-          <td>RGPD applicable directement</td>
-        </tr>
-        <tr>
-          <td>Google Fonts + Unpkg</td><td>Google / npm Inc.</td>
-          <td><span class="chip chip-red">États-Unis</span></td>
-          <td>IP, user-agent</td>
-          <td>Art. 49(1)(b) — nécessité technique</td>
-        </tr>
-        <tr>
-          <td>Cloudflare (hébergeur)</td><td>Cloudflare, Inc.</td>
-          <td><span class="chip chip-red">États-Unis</span></td>
-          <td>IP, logs serveur</td>
-          <td>SCC (clauses contractuelles types) · Art. 46 RGPD · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener" style="font-size:.8em">politique CF</a></td>
-        </tr>
+        <tr><td>Tuiles cartographiques OpenStreetMap</td><td>OpenStreetMap Foundation</td><td><span class="chip chip-green">UE</span></td><td>IP, zone de carte affichée</td><td>RGPD applicable directement</td></tr>
+        <tr><td>Open-Meteo Air Quality (CAMS Copernicus)</td><td>Open-Meteo GmbH</td><td><span class="chip chip-green">Allemagne (UE)</span></td><td>IP, coordonnées de la ville saisie ou position (arrondie)</td><td>RGPD applicable directement</td></tr>
+        <tr><td>Nominatim (recherche de ville)</td><td>OpenStreetMap Foundation</td><td><span class="chip chip-green">UE</span></td><td>IP, nom de ville ou coordonnées</td><td>RGPD applicable directement</td></tr>
+        <tr><td>Overpass API (structures de soins à proximité)</td><td>OpenStreetMap / FOSSGIS e.V.</td><td><span class="chip chip-green">Allemagne (UE)</span></td><td>IP, coordonnées (uniquement si vous utilisez « Trouver un médecin »)</td><td>RGPD applicable directement</td></tr>
+        <tr><td>Umami Analytics (après consentement uniquement)</td><td>Umami Software</td><td><span class="chip chip-green">UE</span></td><td>Statistiques agrégées anonymes — pas de cookie</td><td>RGPD applicable directement · <a href="https://umami.is/privacy" target="_blank" rel="noopener">Politique Umami</a></td></tr>
+        <tr><td>Pro Santé Connect (soignants, lors d'une connexion uniquement)</td><td>Agence du Numérique en Santé</td><td><span class="chip chip-green">France (UE)</span></td><td>Authentification CPS / e-CPS ; BreathIQ ne conserve qu'un pseudonyme</td><td>Service de l'État · RGPD</td></tr>
+        <tr><td>Cloudflare Pages (hébergement, fonctions serveur)</td><td>Cloudflare, Inc.</td><td><span class="chip chip-amber">UE / États-Unis</span></td><td>IP, journaux techniques</td><td>Clauses contractuelles types · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politique Cloudflare</a></td></tr>
       </tbody>
     </table>
     <p><strong>Nota bene :</strong> Pour les transferts vers les États-Unis non couverts par un accord d'adéquation,
@@ -286,11 +226,11 @@
         <tr><td>Préférences d'interface (thème, langue, mode)</td><td>Indéfinie, jusqu'à effacement</td><td>Section "Mes données" → Réinitialiser</td></tr>
         <tr><td>Déclarations syndromiques</td><td>Indéfinie, max 500 entrées tournantes</td><td>Section "Mes données" → Effacer mes déclarations</td></tr>
         <tr><td>Cache API — Qualité de l'air</td><td>5 minutes</td><td>Section "Mes données" → Vider le cache</td></tr>
-        <tr><td>Cache API — Données de grippe (SPF, CDC)</td><td>1 heure</td><td>Section "Mes données" → Vider le cache</td></tr>
-        <tr><td>Cache API — Foyers épidémiques (ECDC, SUM'EAU)</td><td>6 heures</td><td>Section "Mes données" → Vider le cache</td></tr>
+        <tr><td>Cache — données collectées par BreathIQ (FluNet, SUM'Eau, vaccination)</td><td>1 heure</td><td>Section "Mes données" → Vider le cache</td></tr>
+        <tr><td>Cache — foyers épidémiques (fichiers BreathIQ : OMS, ECDC)</td><td>6 heures</td><td>Section "Mes données" → Vider le cache</td></tr>
         <tr><td>Consentement RGPD (biq-consent)</td><td>Indéfinie, jusqu'à retrait</td><td>Section "Mes données" → Retirer le consentement</td></tr>
         <tr><td>Géolocalisation précise</td><td>Session uniquement (mémoire vive)</td><td>— (effacée à la fermeture de page)</td></tr>
-        <tr><td>Logs serveur Cloudflare</td><td>30 jours (politique Vercel)</td><td>Non — sous-traitant Vercel</td></tr>
+        <tr><td>Logs serveur Cloudflare</td><td>30 jours (politique Cloudflare)</td><td>Non — sous-traitant Cloudflare</td></tr>
       </tbody>
     </table>
     <p>L'ensemble des données stockées localement est automatiquement effacé si vous videz les données
@@ -353,24 +293,24 @@
   </section>
 
   <section id="analytique">
-    <h2><span class="num">8</span> Analytique respectueuse de la vie privée (Plausible)</h2>
+    <h2><span class="num">8</span> Analytique respectueuse de la vie privée (Umami)</h2>
     <p>BreathIQ utilise <strong>Umami Analytics</strong>, un service d'analyse conçu sans cookies et respectueux de la vie privée, afin de comprendre l'utilisation du site et l'améliorer.</p>
-    <p><strong>Ce que Plausible ne collecte PAS :</strong></p>
+    <p><strong>Ce que Umami ne collecte PAS :</strong></p>
     <ul>
       <li>Aucun identifiant personnel (nom, e-mail, adresse IP stockée)</li>
       <li>Aucun cookie ni identifiant persistant d'aucune sorte</li>
       <li>Aucun suivi inter-sites</li>
       <li>Aucun fingerprinting d'appareil</li>
     </ul>
-    <p><strong>Ce que Plausible collecte (agrégé, anonyme) :</strong></p>
+    <p><strong>Ce que Umami collecte (agrégé, anonyme) :</strong></p>
     <ul>
       <li>Pages vues et nombre de visiteurs (calculé sans stocker les IP)</li>
       <li>Sources de trafic (référent, campagne)</li>
       <li>Localisation au niveau pays (dérivée de l'IP, jamais stockée)</li>
       <li>Type de navigateur et système d'exploitation (agrégé)</li>
     </ul>
-    <p>Le traitement est fondé sur l'intérêt légitime (art. 6(1)(f) RGPD), la collecte de Plausible étant anonyme par conception et ne nécessitant pas de consentement préalable au titre du RGPD ou de la directive ePrivacy.
-    <a href="https://cloud.umami.is/data-policy" target="_blank" rel="noopener">Politique de données Plausible →</a></p>
+    <p>Le traitement est fondé sur l'intérêt légitime (art. 6(1)(f) RGPD), la collecte de Umami étant anonyme par conception et ne nécessitant pas de consentement préalable au titre du RGPD ou de la directive ePrivacy.
+    <a href="https://cloud.umami.is/data-policy" target="_blank" rel="noopener">Politique de données Umami →</a></p>
   </section>
 
   <section id="securite">

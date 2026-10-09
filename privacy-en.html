@@ -173,16 +173,16 @@
     <p>When you grant access to your geographic position (via the dedicated modal):</p>
     <ul>
       <li>The precise position is used in working memory only (never stored)</li>
-      <li>Coordinates are sent directly from your browser to the WAQI and Open-Meteo APIs</li>
+      <li>Coordinates are sent directly from your browser to the Open-Meteo API</li>
       <li>For syndromic declarations: coordinates are rounded to 0.5° before storage</li>
       <li>No position is recorded on BreathIQ servers</li>
     </ul>
 
-    <h3>2.4 Server logs (Vercel host)</h3>
-    <p>The site is hosted by <strong>Vercel Inc.</strong> (San Francisco, USA). Vercel automatically collects
+    <h3>2.4 Server logs (Cloudflare host)</h3>
+    <p>The site is hosted by <strong>Cloudflare Inc.</strong> (San Francisco, USA). Cloudflare automatically collects
     technical logs (IP address, user-agent, timestamp) as part of server operations. These data are processed
-    by Vercel as a processor, under standard contractual clauses (SCC) ensuring adequate protection for
-    transfers to the United States (Art. 46 GDPR). Vercel policy:
+    by Cloudflare as a processor, under standard contractual clauses (SCC) ensuring adequate protection for
+    transfers to the United States (Art. 46 GDPR). Cloudflare policy:
     <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener">vercel.com/legal/privacy-policy</a></p>
   </section>
 
@@ -195,29 +195,25 @@
         <tr><td>API cache (air quality, epidemiological data)</td><td>Legitimate interest (performance)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
         <tr><td>Geolocation (care search, local air quality)</td><td>Explicit consent (dedicated modal)</td><td><span class="chip chip-blue">Art. 6(1)(a)</span></td></tr>
         <tr><td>Syndromic declarations (health data)</td><td>Explicit consent + public interest (epidemiological surveillance)</td><td><span class="chip chip-amber">Art. 9(2)(a) + (i)</span></td></tr>
-        <tr><td>Vercel server logs</td><td>Legitimate interest (security, abuse prevention)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
-        <tr><td>Privacy-first analytics (Plausible)</td><td>Legitimate interest (anonymous aggregated statistics)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Cloudflare server logs</td><td>Legitimate interest (security, abuse prevention)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
+        <tr><td>Privacy-first analytics (Umami)</td><td>Legitimate interest (anonymous aggregated statistics)</td><td><span class="chip chip-blue">Art. 6(1)(f)</span></td></tr>
       </tbody>
     </table>
   </section>
 
   <section id="transfers">
     <h2><span class="num">4</span> International data transfers</h2>
-    <p>BreathIQ queries several third-party APIs for up-to-date data. These requests are made
-    <strong>directly from your browser</strong> (no BreathIQ proxy) and transmit your IP address to these third parties:</p>
+    <p>BreathIQ queries several third-party APIs for up-to-date data. Epidemiological data (WHO, ECDC, Sentinelles, SUM'Eau…) are collected by our scripts and served from breathiq.fr; only the following services are contacted <strong>from your browser</strong> and receive your IP address:</p>
     <table>
       <thead><tr><th>API / Service</th><th>Publisher</th><th>Location</th><th>Data transmitted</th><th>Safeguards</th></tr></thead>
       <tbody>
-        <tr><td>WAQI / AQICN</td><td>World Air Quality Index</td><td><span class="chip chip-red">United States</span></td><td>IP, GPS coordinates (if geoloc granted)</td><td><a href="https://aqicn.org/privacy/" target="_blank" rel="noopener">AQICN policy</a> · Art. 49(1)(b)</td></tr>
-        <tr><td>OpenAQ</td><td>OpenAQ Inc.</td><td><span class="chip chip-red">United States</span></td><td>IP, query parameters</td><td><a href="https://openaq.org/privacy/" target="_blank" rel="noopener">OpenAQ policy</a> · Art. 49(1)(b)</td></tr>
-        <tr><td>Open-Meteo Air Quality</td><td>Open-Meteo GmbH</td><td><span class="chip chip-green">Germany (EU)</span></td><td>IP, GPS coordinates (if geoloc granted)</td><td>GDPR directly applicable</td></tr>
-        <tr><td>SPF — data.santepubliquefrance.fr</td><td>Santé Publique France</td><td><span class="chip chip-green">France (EU)</span></td><td>IP only (public data)</td><td>GDPR directly applicable</td></tr>
-        <tr><td>CDC — data.cdc.gov</td><td>US Centers for Disease Control</td><td><span class="chip chip-red">United States</span></td><td>IP only (public data)</td><td>Public data · Art. 49(1)(b)</td></tr>
-        <tr><td>ECDC — opendata.ecdc.europa.eu</td><td>European Centre for Disease Prevention</td><td><span class="chip chip-green">EU</span></td><td>IP only (public data)</td><td>GDPR directly applicable</td></tr>
-        <tr><td>Nominatim / Overpass API (OSM)</td><td>OpenStreetMap Foundation</td><td><span class="chip chip-green">EU</span></td><td>IP, GPS coordinates (if geoloc granted)</td><td>GDPR directly applicable</td></tr>
-        <tr><td>Umami Analytics</td><td>Umami</td><td><span class="chip chip-green">EU (Estonia)</span></td><td>Anonymous aggregated statistics — no IP stored, no cookies</td><td>GDPR directly applicable · <a href="https://cloud.umami.is/privacy" target="_blank" rel="noopener">Plausible policy</a></td></tr>
-        <tr><td>Google Fonts</td><td>Google LLC</td><td><span class="chip chip-red">United States</span></td><td>IP, user-agent</td><td>Art. 49(1)(b) — technical necessity</td></tr>
-        <tr><td>Vercel (host)</td><td>Vercel Inc.</td><td><span class="chip chip-red">United States</span></td><td>IP, server logs</td><td>SCC (standard contractual clauses) · Art. 46 GDPR</td></tr>
+        <tr><td>OpenStreetMap map tiles</td><td>OpenStreetMap Foundation</td><td><span class="chip chip-green">UE</span></td><td>IP, displayed map area</td><td>GDPR directly applicable</td></tr>
+        <tr><td>Open-Meteo Air Quality (CAMS Copernicus)</td><td>Open-Meteo GmbH</td><td><span class="chip chip-green">Germany (EU)</span></td><td>IP, coordinates of the entered city or position (rounded)</td><td>GDPR directly applicable</td></tr>
+        <tr><td>Nominatim (city search)</td><td>OpenStreetMap Foundation</td><td><span class="chip chip-green">UE</span></td><td>IP, city name or coordinates</td><td>GDPR directly applicable</td></tr>
+        <tr><td>Overpass API (nearby care facilities)</td><td>OpenStreetMap / FOSSGIS e.V.</td><td><span class="chip chip-green">Germany (EU)</span></td><td>IP, coordinates (only when you use “Find a doctor”)</td><td>GDPR directly applicable</td></tr>
+        <tr><td>Umami Analytics (after consent only)</td><td>Umami Software</td><td><span class="chip chip-green">UE</span></td><td>Anonymous aggregated statistics — no cookies</td><td>GDPR directly applicable · <a href="https://umami.is/privacy" target="_blank" rel="noopener">Umami policy</a></td></tr>
+        <tr><td>Pro Santé Connect (clinicians, only when signing in)</td><td>Agence du Numérique en Santé</td><td><span class="chip chip-green">France (EU)</span></td><td>CPS / e-CPS authentication; BreathIQ only keeps a pseudonym</td><td>French public service · GDPR</td></tr>
+        <tr><td>Cloudflare Pages (hosting, server functions)</td><td>Cloudflare, Inc.</td><td><span class="chip chip-amber">EU / United States</span></td><td>IP, technical logs</td><td>Standard contractual clauses · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Cloudflare policy</a></td></tr>
       </tbody>
     </table>
   </section>
@@ -230,12 +226,12 @@
         <tr><td>Interface preferences (theme, language, mode)</td><td>Indefinite, until deletion</td><td>"My Data" section → Reset</td></tr>
         <tr><td>Syndromic declarations</td><td>Indefinite, max 500 rolling entries</td><td>"My Data" → Delete my declarations</td></tr>
         <tr><td>API cache — Air quality</td><td>5 minutes</td><td>"My Data" → Clear cache</td></tr>
-        <tr><td>API cache — Flu data (SPF, CDC)</td><td>1 hour</td><td>"My Data" → Clear cache</td></tr>
-        <tr><td>API cache — Epidemic foci (ECDC)</td><td>6 hours</td><td>"My Data" → Clear cache</td></tr>
+        <tr><td>Cache — data collected by BreathIQ (FluNet, SUM'Eau, vaccination)</td><td>1 hour</td><td>"My Data" → Clear cache</td></tr>
+        <tr><td>Cache — epidemic foci (BreathIQ files: WHO, ECDC)</td><td>6 hours</td><td>"My Data" → Clear cache</td></tr>
         <tr><td>GDPR consent (biq-consent)</td><td>Indefinite, until withdrawal</td><td>"My Data" → Withdraw consent</td></tr>
         <tr><td>Precise geolocation</td><td>Session only (working memory)</td><td>— (cleared when page closes)</td></tr>
-        <tr><td>Vercel server logs</td><td>30 days (Vercel policy)</td><td>No — Vercel processor</td></tr>
-        <tr><td>Plausible analytics</td><td>Up to 2 years (aggregated, anonymous)</td><td>No individual data stored</td></tr>
+        <tr><td>Cloudflare server logs</td><td>30 days (Cloudflare policy)</td><td>No — Cloudflare processor</td></tr>
+        <tr><td>Umami analytics</td><td>Up to 2 years (aggregated, anonymous)</td><td>No individual data stored</td></tr>
       </tbody>
     </table>
   </section>
@@ -295,26 +291,26 @@
   </section>
 
   <section id="analytics">
-    <h2><span class="num">8</span> Privacy-first analytics (Plausible)</h2>
+    <h2><span class="num">8</span> Privacy-first analytics (Umami)</h2>
     <p>BreathIQ uses <strong>Umami Analytics</strong>, an EU-based (Estonia) privacy-first analytics
     service, to understand how the site is used and improve it.</p>
-    <p><strong>What Plausible does NOT collect:</strong></p>
+    <p><strong>What Umami does NOT collect:</strong></p>
     <ul>
       <li>No personal identifiers (no name, email, IP address stored)</li>
       <li>No cookies or persistent identifiers of any kind</li>
       <li>No cross-site tracking</li>
       <li>No device fingerprinting</li>
     </ul>
-    <p><strong>What Plausible collects (aggregated, anonymous):</strong></p>
+    <p><strong>What Umami collects (aggregated, anonymous):</strong></p>
     <ul>
       <li>Page views and unique visitor counts (calculated without storing IPs)</li>
       <li>Traffic sources (referrer, campaign)</li>
       <li>Country-level location (derived from IP, which is never stored)</li>
       <li>Browser type and operating system (aggregated)</li>
     </ul>
-    <p>Processing is based on legitimate interest (Art. 6(1)(f) GDPR), as Plausible's data collection
+    <p>Processing is based on legitimate interest (Art. 6(1)(f) GDPR), as Umami's data collection
     is anonymous by design and does not require consent under GDPR or ePrivacy Directive.
-    Plausible is hosted in the EU and subject to GDPR.
+    Umami is hosted in the EU and subject to GDPR.
     <a href="https://cloud.umami.is/data-policy" target="_blank" rel="noopener">Politique de données Umami →</a></p>
   </section>
 
