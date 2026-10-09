@@ -136,9 +136,10 @@ async function main() {
 
   // Always bump timestamps even if no data changed (shows the workflow ran)
   const now = new Date();
-  const nextTuesday = new Date(now);
-  nextTuesday.setDate(now.getDate() + (7 - now.getDay() + 2) % 7 || 7);
-  nextTuesday.setHours(8, 0, 0, 0);
+  // Prochain mardi 08:00 UTC — strictement dans le futur (le précédent `|| 7` portait sur la somme
+  // entière et renvoyait le jour même quand le script tournait un mardi → fichier marqué périmé à tort)
+  const daysUntilTuesday = (9 - now.getUTCDay()) % 7 || 7;
+  const nextTuesday = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate() + daysUntilTuesday, 8, 0, 0, 0));
 
   const output = {
     generatedAt: now.toISOString(),
