@@ -3436,7 +3436,7 @@ function exposureLevel(ob) {
 }
 function riskBadges(ob, lang, cls) {
   const fr = lang === 'fr';
-  const g = (GRAVITY_LABELS[lang] || GRAVITY_LABELS.en)[ob.riskLevel] || (fr ? 'Gravité clinique : non classée' : 'Clinical severity: unclassified');
+  const g = (GRAVITY_LABELS[lang] || GRAVITY_LABELS.en)[ob.riskLevel] || (fr ? 'Gravité clinique : à préciser' : 'Clinical severity: to be specified');
   const gTip = fr ? 'Gravité clinique : sévérité potentielle de la maladie chez une personne atteinte (létalité, complications), indépendamment de votre probabilité de la contracter.' : 'Clinical severity: how serious the disease can be for an infected person (fatality, complications), regardless of your likelihood of catching it.';
   const e = exposureLevel(ob);
   const eLabel = fr ? { present: 'Exposition en France : présente', travel: 'Exposition en France : très faible (voyage)', low: 'Exposition en France : très faible' }[e]
@@ -3782,7 +3782,7 @@ function renderPathogens() {
     const desc = currentLang === 'fr' ? ob.descFR : (ob.descEN || ob.descFR);
     const riskColor = riskColors[ob.riskLevel] || '#6B7280';
     // Champ absent → libellé explicite, jamais « undefined »
-    const riskLabel = (riskLabels[currentLang] || riskLabels.en || riskLabels.fr)[ob.riskLevel] || ob.riskLevel || (currentLang === 'fr' ? 'Non classé' : 'Unclassified');
+    const riskLabel = (riskLabels[currentLang] || riskLabels.en || riskLabels.fr)[ob.riskLevel] || ob.riskLevel || (currentLang === 'fr' ? 'Classement en cours' : 'Classification pending');
     const catLabel  = (categoryLabels[currentLang] || categoryLabels.en || categoryLabels.fr)[ob.category] || ob.category || (currentLang === 'fr' ? 'Non catégorisé' : 'Uncategorised');
     const statLabel = (statusLabels[currentLang] || statusLabels.en || statusLabels.fr)[ob.currentStatus]
       || (typeof ob.currentStatus === 'object' && ob.currentStatus ? (ob.currentStatus[currentLang] || ob.currentStatus.fr) : ob.currentStatus)
@@ -5830,7 +5830,7 @@ function renderEpiTracker() {
   wrap.innerHTML = cards;
 }
 
-// ── Surveillance syndromique — Algorithme OMS 7-1-7 ──────────
+// ── Surveillance syndromique — seuils statistiques internes (Z-score) ──
 
 // Données multi-pathogènes chargées au démarrage
 var _spfSurveillance = null;

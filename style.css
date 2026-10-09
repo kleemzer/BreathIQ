@@ -4022,6 +4022,9 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 @media (pointer:coarse), (max-width:768px){
   .layer-btn,.triage-num-btn,.triage-alarm-tel,.epi-btn,.wiz-btn,.wiz-opt,.wiz-chip,.pcp-cta,.gp-city-btn,.gp-geo-btn,.decl-submit-btn,.decl-psc-btn,.epi-call-btn,.lang-select,.font-size-btn,.theme-toggle,.nav-toggle,.mode-toggle-btn,.nav-more-btn,.gp-score-actions a,.gp-score-actions button,.bottom-nav a,.symptom-check,.pc-filter-btn,.biq-tab{min-height:44px}
   .nav-links.is-open a,.nav-links.is-open .nav-more-btn{min-height:44px}
+  /* Tous les boutons et les liens autonomes (hors liens dans le texte courant) */
+  button:not(.skip-link),[role="button"],.epidemic-link,.epidemic-toggle,.epidemic-close,.consent-link,.consent-banner a,.surv-tab,.lsd-card a,.footer-grid a,.footer-cols a,.path-card,.quick-nav a,.trust-item a,.gp-score-cta a{min-height:44px;display:inline-flex;align-items:center}
+  .epidemic-close,.epidemic-toggle{min-width:44px;justify-content:center}
 }
 
 .lsd-source-date{font-size:.75rem;color:var(--text-muted);margin:.5rem 0 0;font-style:italic}

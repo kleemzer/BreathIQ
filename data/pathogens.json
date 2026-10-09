@@ -911,7 +911,9 @@
       "maskNote": "Pas de transmission respiratoire — prévention vectorielle uniquement (Aedes aegypti/albopictus).",
       "reproductionNumber": "R0 ≈ 2–3 (variable selon densité Aedes et saison ; Bhatt 2013 Nature)",
       "protectionRequired": "Masque non requis — protection anti-moustiques (répulsifs DEET/IR3535, vêtements couvrants)",
-      "verifiedAt": "2026-10-07"
+      "verifiedAt": "2026-10-07",
+      "riskLevel": "moderate",
+      "riskLevelNote": "Provisoire (gravité clinique modérée en France : cas importés) — À VALIDER par le Dr Médeau"
     },
     {
       "id": "PALUDISME",
@@ -954,7 +956,9 @@
       "lon": 20,
       "protectionLevel": 0,
       "maskNote": "Pas de transmission respiratoire — prévention vectorielle (répulsifs, moustiquaires, chimioprophylaxie). Masque non utile.",
-      "verifiedAt": "2026-10-07"
+      "verifiedAt": "2026-10-07",
+      "riskLevel": "moderate",
+      "riskLevelNote": "Provisoire (gravité clinique modérée en France : cas importés) — À VALIDER par le Dr Médeau"
     },
     {
       "id": "RSYNCYTIAL",

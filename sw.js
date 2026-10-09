@@ -125,9 +125,8 @@ self.addEventListener('fetch', event => {
   // Ne traiter que les requêtes GET du même origin + CDN Leaflet/Fonts
   if (request.method !== 'GET') return;
   const isOwnOrigin = url.origin === self.location.origin;
-  const isCDN = url.hostname === 'unpkg.com' ||
-                url.hostname === 'fonts.googleapis.com' ||
-                url.hostname === 'fonts.gstatic.com';
+  // Leaflet et la police sont auto-hébergés : plus aucun CDN tiers à mettre en cache
+  const isCDN = false;
 
   if (!isOwnOrigin && !isCDN) return;
 
