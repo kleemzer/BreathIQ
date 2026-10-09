@@ -4018,6 +4018,21 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
    Badge, taille du texte et thème quittent la barre ; les deux derniers restent accessibles dans le menu. */
 .nav-mobile-tools{display:none}
 
+.decl-ars-hint:empty{display:none}
+.decl-ars-hint{margin:.75rem 0;padding:.8rem 1rem;border-radius:.75rem;border:1px solid rgba(14,74,150,.35);background:rgba(14,74,150,.08);text-align:left;font-size:.88rem;line-height:1.55}
+.decl-ars-hint a{color:#60a5fa;font-weight:600}
+
+/* Porte Pro Santé Connect devant le formulaire de déclaration */
+.decl-psc-gate:empty{display:none}
+.decl-psc-gate{margin:1rem 0;padding:1rem 1.1rem;border-radius:.75rem;border:1px solid rgba(14,74,150,.35);background:rgba(14,74,150,.08)}
+.decl-psc-gate h4{margin:0 0 .4rem;font-size:.95rem}
+.decl-psc-gate p{margin:.25rem 0;font-size:.85rem;color:var(--text-secondary);line-height:1.5}
+.decl-psc-btn{display:inline-flex;align-items:center;gap:.6rem;margin-top:.6rem;background:#0e4a96;color:#fff;border:none;border-radius:.6rem;padding:.7rem 1.2rem;font:inherit;font-size:.9rem;font-weight:600;cursor:pointer}
+.decl-psc-btn:hover{background:#0a3873}
+.decl-psc-btn[disabled]{opacity:.55;cursor:not-allowed}
+.decl-psc-session{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem 1rem;font-size:.85rem}
+.decl-psc-session .decl-psc-logout{background:transparent;border:1px solid rgba(148,163,184,.4);color:var(--text-secondary);border-radius:999px;padding:.25rem .7rem;font:inherit;font-size:.78rem;cursor:pointer}
+
 /* Gravité clinique / exposition : deux pastilles distinctes, infobulle = définition */
 .pcp-risk-pills,.pc-risk-pills{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center}
 .pc-risk-pills{justify-content:flex-end;max-width:52%}

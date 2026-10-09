@@ -1366,7 +1366,7 @@
       <div class="decl-form-header">
         <h3 class="decl-form-title" data-i18n="decl-title">📋 Déclarer des cas suspects</h3>
         <p class="decl-form-sub" data-i18n="decl-subtitle">Formulaire ultra-rapide · &lt; 30 secondes · 100% anonyme · RGPD</p>
-        <div class="decl-pilot-badge" data-i18n="decl-pilot">⚗️ MODE PILOTE — données stockées localement · Pas de transmission serveur</div>
+        <div class="decl-pilot-badge" data-i18n="decl-pilot">🔐 Réservé aux professionnels de santé authentifiés via Pro Santé Connect · déclarations pseudonymisées, agrégées par semaine et région</div>
 
         <!-- ⚠️ Rappel DO — affiché AVANT saisie (obligation légale) -->
         <div style="background:rgba(245,158,11,0.10);border:1px solid rgba(245,158,11,0.30);border-radius:.65rem;padding:.75rem 1rem;margin:.85rem 0 0;text-align:left;font-size:.80rem;line-height:1.6;color:#FCD34D;">
@@ -1377,7 +1377,10 @@
         </div>
       </div>
 
-      <form class="decl-form" id="declForm" onsubmit="submitDeclaration(event)" autocomplete="off" novalidate>
+      <!-- Porte Pro Santé Connect : le formulaire n'est affiché qu'avec une session PSC valide ;
+           le serveur (/api/declare) revérifie le jeton auprès de l'ANS à chaque envoi. -->
+      <div id="declPscGate" class="decl-psc-gate" role="region" aria-live="polite"></div>
+      <form class="decl-form hidden" id="declForm" onsubmit="submitDeclaration(event)" autocomplete="off" novalidate>
 
         <!-- Pathologie suspecte — champ principal -->
         <div class="decl-field decl-field-pathologie">
@@ -1473,7 +1476,7 @@
           </div>
           <div class="decl-field">
             <label data-i18n="x-region-territoire-7fbd" class="decl-label">Région / Territoire</label>
-            <select class="decl-select" name="region_code" id="declRegion">
+            <select class="decl-select" name="region_code" id="declRegion" required>
               <option data-i18n="x-selectionner-f961" value="">— Sélectionner —</option>
               <optgroup label="France métropolitaine">
                 <option data-i18n="x-ile-de-france-72dc" value="IDF">Île-de-France</option>
@@ -1497,7 +1500,7 @@
                 <option data-i18n="x-la-reunion-d76a" value="REU">La Réunion</option>
                 <option data-i18n="x-mayotte-9c05" value="MAY">Mayotte</option>
               </optgroup>
-              <option data-i18n="x-hors-france-9fea" value="INT">Hors France</option>
+              <option data-i18n="decl-region-abroad-soon" value="" disabled>Autres pays — bientôt (France métropolitaine et DROM d'abord)</option>
             </select>
           </div>
         </div>
@@ -1540,8 +1543,9 @@
       <!-- Confirmation + widget signal -->
       <div class="decl-confirm hidden" id="declConfirm">
         <div class="decl-confirm-icon">✅</div>
-        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Déclaration enregistrée localement</p>
-        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Merci. Signal intégré à l'analyse locale.</p>
+        <p class="decl-confirm-title" data-i18n="decl-confirm-title">Déclaration transmise</p>
+        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Merci. Signal pseudonymisé intégré à la surveillance régionale.</p>
+        <div id="declArsHint" class="decl-ars-hint" translate="no"></div>
 
         <!-- Rappel DO officielle — critique légalement -->
         <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.35);border-radius:.75rem;padding:.85rem 1rem;margin:.75rem 0;text-align:left;font-size:.82rem;line-height:1.6;color:#FCD34D;">
@@ -2420,6 +2424,8 @@ window.syncPheicScoreOverlay = function(lang, alert) {
   scoreCard.insertAdjacentElement('afterbegin', overlay);
 };
 </script>
+<script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
+<script src="js/psc-auth.js?v=20261009a" defer></script>
 <script src="api-live.min.js?v=20261007k" defer></script>
 <script src="script.min.js?v=20261007w" defer></script>
 <script>

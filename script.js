@@ -31,6 +31,7 @@ var I18N = {
     'nav-about': 'À propos',
     'nav-tool-font': 'Aa · Taille du texte',
     'nav-tool-theme': '☀️ / 🌙 Thème',
+    'decl-region-abroad-soon': 'Autres pays — bientôt (France métropolitaine et DROM d\'abord)',
     'gp-score-estimate-note': 'Score composite estimatif, non validé cliniquement — <a href="methodologie.html">voir la méthodologie</a>',
     'meta-description': 'Qualité de l\'air, alertes virus et épidémies près de chez vous — mis à jour quotidiennement (délai des sources indiqué), gratuit, sans inscription. Créé par un médecin généraliste français. Données OMS, SPF et ECDC.',
     'meta-og-title': 'BreathIQ — Surveillance air & épidémies · Données OMS/ECDC/SPF mises à jour quotidiennement',
@@ -700,7 +701,7 @@ var I18N = {
     'epi-decl-none': 'Aucune déclaration cette semaine',
     'decl-title': '📋 Déclarer des cas suspects',
     'decl-subtitle': 'Formulaire ultra-rapide · < 30 secondes · 100% anonyme · RGPD',
-    'decl-pilot': '⚗️ MODE PILOTE — données stockées localement · Pas de transmission serveur',
+    'decl-pilot': '🔐 Réservé aux professionnels de santé authentifiés via Pro Santé Connect · déclarations pseudonymisées, agrégées par semaine et région',
     'decl-syndrome': 'Syndrome observé *',
     'decl-count': 'Nb de cas *',
     'decl-age': 'Âge *',
@@ -721,8 +722,8 @@ var I18N = {
     'decl-consent-text': 'J\'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n\'est collectée (données agrégées uniquement).',
     'decl-submit': '📤 Déclarer — Anonymement',
     'decl-privacy-note': 'Aucune donnée personnelle collectée — uniquement syndrome, effectif, semaine, région approximative',
-    'decl-confirm-title': 'Déclaration enregistrée localement',
-    'decl-confirm-sub': 'Merci. Signal intégré à l\'analyse locale.',
+    'decl-confirm-title': 'Déclaration transmise',
+    'decl-confirm-sub': 'Merci. Signal pseudonymisé intégré à la surveillance régionale.',
     'decl-confirm-new': '+ Nouvelle déclaration',
     'live-sources-title': 'Sources de surveillance connectées',
     'live-sources-subtitle': '8 sources épidémiologiques et environnementales — mises à jour quotidiennes, délai des sources indiqué',
@@ -794,6 +795,7 @@ var I18N = {
     'nav-about': 'About',
     'nav-tool-font': 'Aa · Text size',
     'nav-tool-theme': '☀️ / 🌙 Theme',
+    'decl-region-abroad-soon': 'Other countries — coming soon (mainland France and overseas departments first)',
     'gp-score-estimate-note': 'Estimated composite score, not clinically validated — <a href="methodologie.html">see the methodology</a>',
     'meta-description': 'Air quality, virus and epidemic alerts near you — updated daily (source delay shown), free, no sign-up. Created by a French general practitioner. WHO, SPF and ECDC data.',
     'meta-og-title': 'BreathIQ — Air & epidemic surveillance · WHO/ECDC/SPF data updated daily',
@@ -1465,7 +1467,7 @@ var I18N = {
     'epi-decl-none': 'No declarations this week',
     'decl-title': '📋 Report suspected cases',
     'decl-subtitle': 'Ultra-fast form · < 30 seconds · 100% anonymous · GDPR',
-    'decl-pilot': '⚗️ PILOT MODE — data stored locally · No server transmission',
+    'decl-pilot': '🔐 Restricted to healthcare professionals authenticated via Pro Santé Connect · pseudonymised reports, aggregated by week and region',
     'decl-syndrome': 'Observed syndrome *',
     'decl-count': 'Case count *',
     'decl-age': 'Age *',
@@ -1486,8 +1488,8 @@ var I18N = {
     'decl-consent-text': 'I agree to the anonymous sharing of this data for epidemiological surveillance purposes. No personal data is collected (aggregated data only).',
     'decl-submit': '📤 Report — Anonymously',
     'decl-privacy-note': 'No personal data collected — only syndrome, count, week, approximate region',
-    'decl-confirm-title': 'Declaration stored locally',
-    'decl-confirm-sub': 'Thank you. Signal integrated into the local analysis.',
+    'decl-confirm-title': 'Report submitted',
+    'decl-confirm-sub': 'Thank you. Pseudonymised signal added to regional surveillance.',
     'decl-confirm-new': '+ New declaration',
     'live-sources-title': 'Live surveillance sources',
     'live-sources-subtitle': '8 epidemiological and environmental sources — updated daily, source delay shown',
@@ -5574,6 +5576,7 @@ domReady(() => {
     renderEmergencyNumbers();
     // #3 — Fraîcheur des données dans le hero
     initDataFreshness();
+    initDeclarationGate();
   }, { timeout: 2500 });
 
   // #6 — Deep link #pro : activer mode soignant si URL contient #pro
@@ -6245,10 +6248,77 @@ function getCurrentISOWeek() {
   return `${d.getUTCFullYear()}-S${String(week).padStart(2,'0')}`;
 }
 
-function submitDeclaration(e) {
+// ── Annuaire des ARS (métropole + DROM) — sites officiels uniquement, À VALIDER par le Dr Médeau.
+// Aucun numéro de point focal n'est codé : le signalement réglementaire passe par le portail e-SI.
+var ARS_DIRECTORY = {
+  IDF: { name: 'ARS Île-de-France',            site: 'https://www.iledefrance.ars.sante.fr' },
+  ARA: { name: 'ARS Auvergne-Rhône-Alpes',     site: 'https://www.auvergne-rhone-alpes.ars.sante.fr' },
+  BFC: { name: 'ARS Bourgogne-Franche-Comté',  site: 'https://www.bourgogne-franche-comte.ars.sante.fr' },
+  BRE: { name: 'ARS Bretagne',                 site: 'https://www.bretagne.ars.sante.fr' },
+  CVL: { name: 'ARS Centre-Val de Loire',      site: 'https://www.centre-val-de-loire.ars.sante.fr' },
+  COR: { name: 'ARS Corse',                    site: 'https://www.corse.ars.sante.fr' },
+  GES: { name: 'ARS Grand Est',                site: 'https://www.grand-est.ars.sante.fr' },
+  HDF: { name: 'ARS Hauts-de-France',          site: 'https://www.hauts-de-france.ars.sante.fr' },
+  NOR: { name: 'ARS Normandie',                site: 'https://www.normandie.ars.sante.fr' },
+  NAQ: { name: 'ARS Nouvelle-Aquitaine',       site: 'https://www.nouvelle-aquitaine.ars.sante.fr' },
+  OCC: { name: 'ARS Occitanie',                site: 'https://www.occitanie.ars.sante.fr' },
+  PDL: { name: 'ARS Pays de la Loire',         site: 'https://www.pays-de-la-loire.ars.sante.fr' },
+  PAC: { name: 'ARS Provence-Alpes-Côte d\'Azur', site: 'https://www.paca.ars.sante.fr' },
+  GUA: { name: 'ARS Guadeloupe',               site: 'https://www.guadeloupe.ars.sante.fr' },
+  MTQ: { name: 'ARS Martinique',               site: 'https://www.martinique.ars.sante.fr' },
+  GUF: { name: 'ARS Guyane',                   site: 'https://www.guyane.ars.sante.fr' },
+  REU: { name: 'ARS La Réunion',               site: 'https://www.lareunion.ars.sante.fr' },
+  MAY: { name: 'ARS Mayotte',                  site: 'https://www.mayotte.ars.sante.fr' },
+};
+function renderArsHint(regionCode) {
+  const el = document.getElementById('declArsHint');
+  if (!el) return;
+  const ars = ARS_DIRECTORY[regionCode];
+  const fr = currentLang === 'fr';
+  if (!ars) { el.innerHTML = ''; return; }
+  el.innerHTML = `<strong>🏛️ ${fr ? 'Autorité sanitaire compétente' : 'Competent health authority'} : ${ars.name}</strong><br>
+    <a href="${ars.site}" target="_blank" rel="noopener">${ars.site.replace('https://www.', '')}</a> ·
+    <a href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener">${fr ? 'signalement officiel (portail e-SI)' : 'official notification (e-SI portal)'}</a><br>
+    <span style="font-size:.8rem;opacity:.85">${fr ? 'Pour une maladie à déclaration obligatoire ou un risque épidémique immédiat, appelez directement le point focal régional de votre ARS (numéro sur son site), puis confirmez par écrit.' : 'For a notifiable disease or an immediate epidemic risk, call your regional health agency\'s focal point directly (number on its website), then confirm in writing.'}</span>`;
+}
+
+// ── Porte Pro Santé Connect : seul un PS authentifié peut déclarer ──
+function initDeclarationGate() {
+  const gate = document.getElementById('declPscGate');
+  const form = document.getElementById('declForm');
+  if (!gate || !form) return;
+  const fr = currentLang === 'fr';
+  const psc = typeof BIQ_PSC !== 'undefined' ? BIQ_PSC : null;
+  const session = psc?.getSession?.();
+
+  if (session) {
+    form.classList.remove('hidden');
+    const who = session.professional?.displayName || (fr ? 'professionnel authentifié' : 'authenticated professional');
+    gate.innerHTML = `<div class="decl-psc-session">✅ <span>${fr ? 'Authentifié via Pro Santé Connect' : 'Authenticated via Pro Santé Connect'} — <strong>${escapeHTML(who)}</strong></span>
+      <button type="button" class="decl-psc-logout" onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button></div>`;
+    return;
+  }
+
+  form.classList.add('hidden');
+  const enabled = !!psc?.isEnabled?.();
+  gate.innerHTML = `
+    <h4>🔐 ${fr ? 'Déclaration réservée aux professionnels de santé' : 'Reporting restricted to healthcare professionals'}</h4>
+    <p>${fr ? 'Pour éviter toute fausse déclaration, l\'envoi exige une authentification Pro Santé Connect (carte CPS / e-CPS). Votre identité n\'est pas conservée : seul un pseudonyme sert à limiter les abus.' : 'To prevent false reports, submission requires Pro Santé Connect authentication (CPS / e-CPS card). Your identity is not stored: only a pseudonym is used to limit abuse.'}</p>
+    <button type="button" class="decl-psc-btn" ${enabled ? 'onclick="BIQ_PSC.redirectToLogin(\'/?psc=success#declaration\')"' : 'disabled'}>
+      <img src="https://esante.gouv.fr/sites/default/files/media_entity/articles/psc-logo.png" alt="" width="22" height="22" onerror="this.style.display='none'">
+      ${fr ? 'Se connecter avec Pro Santé Connect' : 'Sign in with Pro Santé Connect'}
+    </button>
+    ${enabled ? '' : `<p><em>${fr ? 'Raccordement Pro Santé Connect en cours auprès de l\'ANS — la déclaration sera ouverte dès son activation.' : 'Pro Santé Connect onboarding with the French e-health agency is in progress — reporting will open once activated.'}</em></p>`}`;
+}
+
+async function submitDeclaration(e) {
   e.preventDefault();
   const form = e.target;
   const data = new FormData(form);
+  if (typeof BIQ_PSC === 'undefined' || !BIQ_PSC.getSession()) {
+    initDeclarationGate();
+    return;
+  }
 
   const syndrome   = data.get('syndrome');
   const count      = data.get('count');
@@ -6305,25 +6375,47 @@ function submitDeclaration(e) {
     region_code,
   };
 
-  // Essai géoloc silencieux (si permission déjà accordée)
+  // Position arrondie au demi-degré (~55 km), uniquement si la permission est déjà accordée
   try {
-    navigator.permissions.query({ name: 'geolocation' }).then(p => {
-      if (p.state === 'granted') {
-        navigator.geolocation.getCurrentPosition(pos => {
-          decl.region = `${(Math.round(pos.coords.latitude * 2) / 2).toFixed(1)},${(Math.round(pos.coords.longitude * 2) / 2).toFixed(1)}`;
-          saveDeclaration(decl);
-        }, () => saveDeclaration(decl), { timeout: 2000, maximumAge: 600000 });
-      } else {
-        saveDeclaration(decl);
-      }
-    }).catch(() => saveDeclaration(decl));
-  } catch { saveDeclaration(decl); }
+    const perm = await navigator.permissions.query({ name: 'geolocation' });
+    if (perm.state === 'granted') {
+      await new Promise(resolve => navigator.geolocation.getCurrentPosition(pos => {
+        decl.region = `${(Math.round(pos.coords.latitude * 2) / 2).toFixed(1)},${(Math.round(pos.coords.longitude * 2) / 2).toFixed(1)}`;
+        resolve();
+      }, resolve, { timeout: 2000, maximumAge: 600000 }));
+    }
+  } catch { /* pas de position */ }
+
+  // Envoi au serveur : le jeton PSC est revérifié auprès de l'ANS, la charge utile revalidée
+  const submitBtn = form.querySelector('.decl-submit-btn');
+  if (submitBtn) submitBtn.disabled = true;
+  try {
+    const { id: _localId, ts: _ts, ...payload } = decl;
+    const res = await BIQ_PSC.submitDeclaration(payload);
+    decl.serverId = res.id;
+    saveDeclaration(decl); // copie locale = journal personnel du déclarant
+  } catch (err) {
+    if (submitBtn) submitBtn.disabled = false;
+    const fr = currentLang === 'fr';
+    const reason = err.code === 'profession_not_allowed' ? (fr ? 'votre profession n\'est pas autorisée à déclarer' : 'your profession is not allowed to report')
+      : err.code === 'rate_limited' ? (fr ? 'limite quotidienne de déclarations atteinte' : 'daily reporting limit reached')
+      : err.code === 'storage_not_configured' || err.code === 'psc_not_configured' ? (fr ? 'service de déclaration non encore activé' : 'reporting service not yet activated')
+      : err.status === 401 ? (fr ? 'session Pro Santé Connect expirée — reconnectez-vous' : 'Pro Santé Connect session expired — sign in again')
+      : (fr ? 'envoi impossible pour le moment' : 'submission failed for now');
+    let errEl = form.querySelector('.decl-global-error');
+    if (!errEl) { errEl = document.createElement('p'); errEl.className = 'decl-global-error'; errEl.style.cssText = 'color:#F87171;font-size:.83rem;margin:.5rem 0 0;font-weight:600;'; submitBtn?.before(errEl); }
+    errEl.textContent = `⚠️ ${fr ? 'Déclaration non enregistrée' : 'Report not saved'} : ${reason}.`;
+    if (err.status === 401) initDeclarationGate();
+    return;
+  }
+  if (submitBtn) submitBtn.disabled = false;
 
   // Afficher confirmation + widget signal épidémique
   const container = form.closest('.decl-form-container');
   container.querySelector('#declForm').classList.add('hidden');
   const confirmEl = container.querySelector('#declConfirm');
   confirmEl.classList.remove('hidden');
+  renderArsHint(region_code);
 
   // Calculer et afficher le signal Z-score pour la pathologie déclarée
   if (pathologie) {

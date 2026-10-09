@@ -37,12 +37,12 @@
       }
 
       try {
-        const tokens = await BIQ_PSC.exchangeCode(code, state);
-        sessionStorage.setItem('psc_token', tokens.access_token);
-        const pro = await BIQ_PSC.getProfessionalInfo(tokens.access_token);
-        sessionStorage.setItem('psc_professional', JSON.stringify(pro));
-        // Redirection vers la page principale section soignant
-        window.location.href = '/?psc=success#soignant';
+        // Échange du code et lecture du profil côté serveur (/api/psc-token) — rien d'autre en clair ici
+        const data = await BIQ_PSC.exchangeCode(code, state);
+        BIQ_PSC.saveSession(data);
+        const returnTo = sessionStorage.getItem('psc_return') || '/?psc=success#declaration';
+        sessionStorage.removeItem('psc_return');
+        window.location.href = returnTo.startsWith('/') ? returnTo : '/?psc=success#declaration';
       } catch (err) {
         showError('Erreur d\'authentification : ' + err.message);
       }
