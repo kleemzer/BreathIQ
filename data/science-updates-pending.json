@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-10-08T13:15:22.958Z",
+  "generatedAt": "2026-10-09T13:01:56.362Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-08",
+      "detectedAt": "2026-10-09",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-08",
+      "detectedAt": "2026-10-09",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-08",
+      "detectedAt": "2026-10-09",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-08",
+      "detectedAt": "2026-10-09",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-08",
+      "detectedAt": "2026-10-09",
       "humanValidationRequired": true
     }
   ]
