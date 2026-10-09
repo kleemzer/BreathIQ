@@ -6,7 +6,7 @@
 //   PSC_CLIENT_ID, PSC_CLIENT_SECRET            (obligatoires)
 //   PSC_TOKEN_ENDPOINT, PSC_USERINFO_ENDPOINT   (défaut : bac à sable ANS)
 //   PSC_ALLOWED_REDIRECTS                       (liste séparée par des virgules)
-import { professionCodes } from '../_lib/decl-schema.js';
+import { professionCodes, categoryFor, DEFAULT_ALLOWED_PROFESSIONS } from '../_lib/decl-schema.js';
 
 const DEFAULT_TOKEN = 'https://auth.bas.psc.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/token';
 const DEFAULT_USERINFO = 'https://auth.bas.psc.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/userinfo';
@@ -50,6 +50,8 @@ export async function onRequestPost({ request, env }) {
     professional: {
       displayName: [ex?.prenomDexercice || info.given_name, ex?.nomDexercice || info.family_name].filter(Boolean).join(' '),
       professionCodes: professionCodes(info),
+      // Catégorie de signalement autorisée (clinical | field | null) — revérifiée côté serveur à chaque envoi
+      category: categoryFor(professionCodes(info), (env.PSC_ALLOWED_PROFESSIONS || DEFAULT_ALLOWED_PROFESSIONS.join(',')).split(',').map(s => s.trim())),
       specialtyCode: ex?.codeSavoirFaire || null,
     },
   });
