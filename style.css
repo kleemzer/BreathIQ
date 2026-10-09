@@ -4025,6 +4025,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
   /* Tous les boutons et les liens autonomes (hors liens dans le texte courant) */
   button:not(.skip-link),[role="button"],.epidemic-link,.epidemic-toggle,.epidemic-close,.consent-link,.consent-banner a,.surv-tab,.lsd-card a,.footer-grid a,.footer-cols a,.path-card,.quick-nav a,.trust-item a,.gp-score-cta a{min-height:44px;display:inline-flex;align-items:center}
   .epidemic-close,.epidemic-toggle{min-width:44px;justify-content:center}
+  .mbn-item,.mobile-bottom-nav a,.author-contact,.surv-src-link,footer a:not(p a),.footer-legal a,.footer-links a,.legal-links a{min-height:44px;display:inline-flex;align-items:center}
 }
 
 .lsd-source-date{font-size:.75rem;color:var(--text-muted);margin:.5rem 0 0;font-style:italic}
