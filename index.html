@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261009z" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261009z"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261010a" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261010a"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://cloud.umami.is" crossorigin>
@@ -1352,8 +1352,8 @@
     <!-- Formulaire de déclaration syndromique -->
     <div class="decl-form-container" id="declFormContainer">
       <div class="decl-form-header">
-        <h3 class="decl-form-title" data-i18n="decl-title">📋 Déclarer des cas suspects</h3>
-        <p class="decl-form-sub" data-i18n="decl-subtitle">Formulaire ultra-rapide · &lt; 30 secondes · 100% anonyme · RGPD</p>
+        <h3 class="decl-form-title" data-i18n="decl-title">📋 Signaler des cas suspects</h3>
+        <p class="decl-form-sub" data-i18n="decl-subtitle">Moins de 30 secondes · aucune donnée patient · signalement pseudonymisé</p>
         <div class="decl-pilot-badge" data-i18n="decl-pilot">🔐 Réservé aux professionnels de santé authentifiés via Pro Santé Connect · déclarations pseudonymisées, agrégées par semaine et région</div>
 
         <!-- ⚠️ Rappel DO — affiché AVANT saisie (obligation légale) -->
@@ -2409,9 +2409,9 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261009a" defer></script>
-<script src="api-live.min.js?v=20261009z" defer></script>
-<script src="script.min.js?v=20261009z" defer></script>
+<script src="js/psc-auth.js?v=20261010a" defer></script>
+<script src="api-live.min.js?v=20261010a" defer></script>
+<script src="script.min.js?v=20261010a" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

@@ -4034,6 +4034,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 }
 
 .lsd-source-date{font-size:.75rem;color:var(--text-muted);margin:.5rem 0 0;font-style:italic}
+.epi-decl-pilot{display:block;width:100%;margin-top:.4rem;font-size:.75rem;color:var(--text-muted);font-style:italic}
 .decl-ars-hint:empty{display:none}
 .decl-ars-hint{margin:.75rem 0;padding:.8rem 1rem;border-radius:.75rem;border:1px solid rgba(14,74,150,.35);background:rgba(14,74,150,.08);text-align:left;font-size:.88rem;line-height:1.55}
 .decl-ars-hint a{color:#60a5fa;font-weight:600}

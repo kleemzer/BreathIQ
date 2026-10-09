@@ -699,8 +699,8 @@ var I18N = {
     'epi-stat-thresh-rouge': 'Seuil ROUGE',
     'epi-decl-local': 'Déclarations locales (cette semaine)',
     'epi-decl-none': 'Aucune déclaration cette semaine',
-    'decl-title': '📋 Déclarer des cas suspects',
-    'decl-subtitle': 'Formulaire ultra-rapide · < 30 secondes · 100% anonyme · RGPD',
+    'decl-title': '📋 Signaler des cas suspects',
+    'decl-subtitle': 'Moins de 30 secondes · aucune donnée patient · signalement pseudonymisé',
     'decl-pilot': '🔐 Réservé aux professionnels de santé authentifiés via Pro Santé Connect · déclarations pseudonymisées, agrégées par semaine et région',
     'decl-syndrome': 'Syndrome observé *',
     'decl-count': 'Nb de cas *',
@@ -1466,7 +1466,7 @@ var I18N = {
     'epi-decl-local': 'Local declarations (this week)',
     'epi-decl-none': 'No declarations this week',
     'decl-title': '📋 Report suspected cases',
-    'decl-subtitle': 'Ultra-fast form · < 30 seconds · 100% anonymous · GDPR',
+    'decl-subtitle': 'Under 30 seconds · no patient data · pseudonymised report',
     'decl-pilot': '🔐 Restricted to healthcare professionals authenticated via Pro Santé Connect · pseudonymised reports, aggregated by week and region',
     'decl-syndrome': 'Observed syndrome *',
     'decl-count': 'Case count *',
@@ -6284,8 +6284,8 @@ var ARS_DIRECTORY = {
   PDL: { name: 'ARS Pays de la Loire',         site: 'https://www.pays-de-la-loire.ars.sante.fr' },
   PAC: { name: 'ARS Provence-Alpes-Côte d\'Azur', site: 'https://www.paca.ars.sante.fr' },
   GUA: { name: 'ARS Guadeloupe',               site: 'https://www.guadeloupe.ars.sante.fr' },
-  MTQ: { name: 'ARS Martinique',               site: 'https://www.martinique.ars.sante.fr' },
-  GUF: { name: 'ARS Guyane',                   site: 'https://www.guyane.ars.sante.fr' },
+  MAR: { name: 'ARS Martinique',               site: 'https://www.martinique.ars.sante.fr' },
+  GUY: { name: 'ARS Guyane',                   site: 'https://www.guyane.ars.sante.fr' },
   REU: { name: 'ARS La Réunion',               site: 'https://www.lareunion.ars.sante.fr' },
   MAY: { name: 'ARS Mayotte',                  site: 'https://www.mayotte.ars.sante.fr' },
 };
@@ -6311,9 +6311,27 @@ function initDeclarationGate() {
   const session = psc?.getSession?.();
 
   if (session) {
+    const category = session.professional?.category || null;
+    if (!category) {
+      // Profession hors liste : le serveur refuserait de toute façon ; on l'explique plutôt que d'afficher le formulaire
+      form.classList.add('hidden');
+      gate.innerHTML = `<p>${fr ? 'Votre profession d\'exercice ne fait pas partie de celles autorisées à signaler pendant la phase pilote (médecins, sages-femmes, pharmaciens, infirmiers, masseurs-kinésithérapeutes).' : 'Your profession is not among those allowed to report during the pilot (physicians, midwives, pharmacists, nurses, physiotherapists).'}</p>
+        <button type="button" class="decl-psc-logout" onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button>`;
+      return;
+    }
     form.classList.remove('hidden');
+    // Signal de terrain : la pathologie relève du diagnostic, elle devient facultative
+    const pathSelect = document.getElementById('declPathologie');
+    const pathLabel = form.querySelector('.decl-field-pathologie .decl-label');
+    if (pathSelect) pathSelect.required = category === 'clinical';
+    if (pathLabel) pathLabel.textContent = category === 'clinical'
+      ? (fr ? '🔬 Pathologie suspecte *' : '🔬 Suspected disease *')
+      : (fr ? '🔬 Pathologie évoquée (facultatif)' : '🔬 Possible disease (optional)');
     const who = session.professional?.displayName || (fr ? 'professionnel authentifié' : 'authenticated professional');
-    gate.innerHTML = `<div class="decl-psc-session">✅ <span>${fr ? 'Authentifié via Pro Santé Connect' : 'Authenticated via Pro Santé Connect'} — <strong>${escapeHTML(who)}</strong></span>
+    const catText = category === 'clinical'
+      ? (fr ? 'suspicion clinique de cas' : 'clinical case suspicion')
+      : (fr ? 'signal de terrain (situation inhabituelle observée)' : 'field signal (unusual situation observed)');
+    gate.innerHTML = `<div class="decl-psc-session">✅ <span>${fr ? 'Authentifié via Pro Santé Connect' : 'Authenticated via Pro Santé Connect'} — <strong>${escapeHTML(who)}</strong> · ${catText}</span>
       <button type="button" class="decl-psc-logout" onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button></div>`;
     return;
   }
@@ -6382,6 +6400,7 @@ async function submitDeclaration(e) {
 
   if (!syndrome || !count || !age || !severity || !onsetDate) return;
 
+  // Seule la région d'exercice localise le signalement (aucune géolocalisation : minimisation)
   const region_code = data.get('region_code') || null;
 
   const decl = {
@@ -6390,20 +6409,8 @@ async function submitDeclaration(e) {
     week: getCurrentISOWeek(),
     onset: onsetDate,
     ts: Date.now(),
-    region: null,
     region_code,
   };
-
-  // Position arrondie au demi-degré (~55 km), uniquement si la permission est déjà accordée
-  try {
-    const perm = await navigator.permissions.query({ name: 'geolocation' });
-    if (perm.state === 'granted') {
-      await new Promise(resolve => navigator.geolocation.getCurrentPosition(pos => {
-        decl.region = `${(Math.round(pos.coords.latitude * 2) / 2).toFixed(1)},${(Math.round(pos.coords.longitude * 2) / 2).toFixed(1)}`;
-        resolve();
-      }, resolve, { timeout: 2000, maximumAge: 600000 }));
-    }
-  } catch { /* pas de position */ }
 
   // Envoi au serveur : le jeton PSC est revérifié auprès de l'ANS, la charge utile revalidée
   const submitBtn = form.querySelector('.decl-submit-btn');
@@ -6436,8 +6443,8 @@ async function submitDeclaration(e) {
   confirmEl.classList.remove('hidden');
   renderArsHint(region_code);
 
-  // Calculer et afficher le signal Z-score pour la pathologie déclarée
-  if (pathologie) {
+  // Phase pilote : aucun Z-score ni « alerte » calculé à partir des seules saisies du navigateur
+  if (FEATURE_LOCAL_SIGNALS && pathologie) {
     const signal = detectEpiSignal(pathologie);
     const signalEl = document.getElementById('epiSignalResult');
     if (signalEl) signalEl.innerHTML = renderEpiSignalWidget(signal);
@@ -6458,22 +6465,31 @@ function resetDeclForm() {
   if (dateInput) dateInput.value = new Date().toISOString().slice(0,10);
 }
 
-function renderLocalDeclarations() {
+// Restitution = agrégat serveur (/api/declarations) : comptages par semaine × région × catégorie,
+// avec le nombre de professionnels participants ; cellules < 3 supprimées ; aucune alerte en phase pilote.
+async function renderLocalDeclarations() {
   const el = document.getElementById('epiDeclCounts');
   if (!el) return;
+  const fr = currentLang === 'fr';
   const week = getCurrentISOWeek();
-  const all  = getDeclarations().filter(d => d.week === week);
-  if (!all.length) {
-    el.innerHTML = `<span class="epi-decl-none" data-i18n="epi-decl-none">${currentLang === 'fr' ? 'Aucune déclaration cette semaine' : 'No declarations this week'}</span>`;
+  let agg = null;
+  try { agg = await fetchJsonWithTimeout('/api/declarations?_=' + Date.now(), { timeout: 6000 }); } catch { agg = null; }
+  const pilot = `<span class="epi-decl-pilot">${fr ? 'Phase pilote — comptages uniquement, aucune alerte statistique. Effectifs inférieurs à 3 masqués.' : 'Pilot phase — counts only, no statistical alerts. Counts below 3 hidden.'}</span>`;
+  if (!agg || agg.available === false) {
+    el.innerHTML = `<span class="epi-decl-none">${fr ? 'Signalements agrégés indisponibles pour le moment.' : 'Aggregated reports unavailable for now.'}</span>${pilot}`;
     return;
   }
-  // Agrégation par syndrome
-  const counts = {};
-  all.forEach(d => { counts[d.syndrome] = (counts[d.syndrome] || 0) + 1; });
-  const synIcons = { grippal:'🤒', respiratoire:'😮‍💨', diarrhéique:'🤢', fébrile:'🌡️', neurologique:'🧠', hémorragique:'🩸', cutané:'🔴' };
-  el.innerHTML = Object.entries(counts).map(([s,n]) =>
-    `<span class="epi-decl-tag">${synIcons[s] || '🏥'} ${s} <strong>${n}</strong></span>`
-  ).join('');
+  const cells = (agg.cells || []).filter(c => c.week === week);
+  if (!cells.length) {
+    el.innerHTML = `<span class="epi-decl-none">${fr ? 'Aucun regroupement publiable cette semaine.' : 'No publishable cluster this week.'}</span>${pilot}`;
+    return;
+  }
+  const catLabel = c => c === 'field' ? (fr ? 'signal de terrain' : 'field signal') : (fr ? 'suspicion clinique' : 'clinical suspicion');
+  const regionName = code => (ARS_DIRECTORY[code]?.name || code).replace(/^ARS /, '');
+  const pathLabel = id => WATCHED_PATHOLOGIES.find(p => p.id === id)?.label || id;
+  el.innerHTML = cells.map(c =>
+    `<span class="epi-decl-tag">${pathLabel(c.pathologie)} · ${regionName(c.region_code)} · ${catLabel(c.category)} — <strong>${c.signalements}</strong> ${fr ? 'signalements' : 'reports'}, ${c.professionnels} ${fr ? 'professionnels' : 'professionals'}</span>`
+  ).join('') + pilot;
 }
 
 // ── Pathologies surveillées ──────────────────────────────────────────────────
@@ -6503,7 +6519,7 @@ var ARS_REGIONS = {
   ARA: { name: 'ARS Auvergne-Rhône-Alpes',     portal: 'https://www.auvergne-rhone-alpes.ars.sante.fr',  email: 'ars-ara-sg@ars.sante.fr' },
   BFC: { name: 'ARS Bourgogne-Franche-Comté',  portal: 'https://www.bourgogne-franche-comte.ars.sante.fr', email: 'ars-bfc-sg@ars.sante.fr' },
   BRE: { name: 'ARS Bretagne',                 portal: 'https://www.bretagne.ars.sante.fr',              email: 'ars-bretagne-sg@ars.sante.fr' },
-  CVL: { name: 'ARS Centre-Val de Loire',      portal: 'https://www.centre.ars.sante.fr',                email: 'ars-cvl-sg@ars.sante.fr' },
+  CVL: { name: 'ARS Centre-Val de Loire',      portal: 'https://www.centre-val-de-loire.ars.sante.fr', email: 'ars-cvl-sg@ars.sante.fr' },
   COR: { name: 'ARS Corse',                    portal: 'https://www.corse.ars.sante.fr',                 email: 'ars-corse-sg@ars.sante.fr' },
   GES: { name: 'ARS Grand Est',                portal: 'https://www.grand-est.ars.sante.fr',             email: 'ars-grand-est-sg@ars.sante.fr' },
   HDF: { name: 'ARS Hauts-de-France',          portal: 'https://www.hauts-de-france.ars.sante.fr',       email: 'ars-hdf-sg@ars.sante.fr' },
@@ -6562,8 +6578,14 @@ function detectAllClusters() {
 }
 
 // ── Bannière clusters dans le mode soignant ────────────────────────────────────
+// Désactivé (phase pilote) : clusters, Z-scores et brouillons d'e-mail d'alerte à l'ARS calculés à partir
+// des seuls signalements stockés dans le navigateur — statistiquement infondés et adresses ARS non vérifiées.
+// La restitution passe par l'agrégat serveur /api/declarations (comptages, k ≥ 3, sans alerte).
+var FEATURE_LOCAL_SIGNALS = false;
+
 function renderClusterAlertBanner() {
   const el = document.getElementById('clusterAlertBanner');
+  if (el && !FEATURE_LOCAL_SIGNALS) { el.innerHTML = ''; return; }
   if (!el || currentMode !== 'expert') return;
 
   const clusters = detectAllClusters();
