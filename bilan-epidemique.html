@@ -224,7 +224,7 @@
       <li><a href="https://www.who.int/emergencies/disease-outbreak-news" target="_blank" rel="noopener">OMS — Disease Outbreak News</a> : alertes épidémiques mondiales officielles</li>
       <li><a href="https://www.ecdc.europa.eu/en/threats-and-outbreaks" target="_blank" rel="noopener">ECDC — Threats and Outbreaks</a> : surveillance épidémiologique européenne</li>
       <li><a href="https://www.santepubliquefrance.fr/maladies-et-traumatismes/maladies-et-infections-respiratoires/grippe/articles/bulletin-epidemiologique-grippe-semaine" target="_blank" rel="noopener">Santé Publique France — Bulletin épidémiologique hebdomadaire</a></li>
-      <li><a href="https://openaq.org" target="_blank" rel="noopener">OpenAQ / Open-Meteo</a> : qualité de l'air en temps réel (PM2.5, PM10, AQI)</li>
+      <li><a href="https://openaq.org" target="_blank" rel="noopener">OpenAQ / Open-Meteo</a> : qualité de l'air horaire (PM2.5, PM10, AQI)</li>
       <li><a href="https://nextstrain.org" target="_blank" rel="noopener">Nextstrain</a> : phylogénie virale SARS-CoV-2, grippe, Mpox</li>
     </ul>
     <p style="font-size:.8rem;color:#64748b;margin-top:.75rem">BreathIQ n'est pas producteur de données. Ce bilan agrège et synthétise exclusivement des sources institutionnelles publiques et vérifiables. <a href="methodologie.html">Voir la méthodologie complète →</a></p>
@@ -250,5 +250,23 @@
   </p>
 
 </main>
+<script>
+// Avertissement automatique si le bilan a plus de 45 jours (date lue dans le JSON-LD datePublished)
+(function () {
+  try {
+    const ld = Array.from(document.querySelectorAll('script[type="application/ld+json"]')).map(s => { try { return JSON.parse(s.textContent); } catch { return null; } }).find(j => j && j.datePublished);
+    const published = ld && new Date(ld.datePublished);
+    if (!published || isNaN(published)) return;
+    const days = Math.floor((Date.now() - published.getTime()) / 86400000);
+    if (days <= 45) return;
+    const box = document.createElement('div');
+    box.setAttribute('role', 'status');
+    box.style.cssText = 'margin:1rem auto;max-width:900px;padding:.85rem 1.1rem;border-radius:.75rem;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.4);font-size:.9rem;line-height:1.5';
+    box.innerHTML = `⏳ <strong>Bilan daté du ${published.toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</strong> — il a ${days} jours. Pour la situation actuelle, consultez la <a href="/#virusSaison">page d'accueil</a> (données mises à jour quotidiennement).`;
+    const main = document.querySelector('main') || document.body;
+    main.insertAdjacentElement('afterbegin', box);
+  } catch (e) { /* silencieux */ }
+})();
+</script>
 </body>
 </html>
