@@ -106,11 +106,14 @@
   <div class="alert alert-amber">
     <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
     <div>
-      <strong>Données de santé (Art. 9 RGPD)</strong>
-      <p>Si vous utilisez le formulaire de surveillance syndromique (mode Expert), vos déclarations
-      constituent des données de santé. Elles restent stockées <strong>uniquement sur votre appareil</strong>
-      et nécessitent un double consentement explicite. Vous pouvez les effacer à tout moment depuis
-      la section <a href="privacy.html#mydata">Mes données</a>.</p>
+      <strong>Signalement de cas par les professionnels de santé</strong>
+      <p>Le signalement de cas (espace professionnel) est réservé aux professionnels de santé authentifiés par
+      <strong>Pro Santé Connect</strong> (ANS). Un signalement ne contient <strong>aucune donnée permettant d'identifier un patient</strong>
+      (listes fermées, tranche d'âge, région, semaine). Il est transmis à BreathIQ et conservé <strong>120 jours</strong> chez
+      l'hébergeur Cloudflare, puis supprimé automatiquement. Seule la profession d'exercice du professionnel est utilisée ;
+      son identifiant national n'est pas conservé, un pseudonyme calculé côté serveur sert uniquement à limiter les abus et à
+      dénombrer les participants. Les résultats ne sont publiés que sous forme agrégée, sans effectif inférieur à 3.
+      Le reste du site, dont le mode grand public, ne demande aucune authentification.</p>
     </div>
   </div>
 
@@ -145,22 +148,20 @@
     <h3>2.2 Données de santé — Art. 9 RGPD (Formulaire de surveillance syndromique)</h3>
     <p>Le formulaire de déclaration syndromique (mode Expert uniquement) permet de saisir :</p>
     <ul>
-      <li>Type de syndrome clinique (grippal, respiratoire, diarrhéique, fébrile, neurologique, hémorragique, cutané)</li>
-      <li>Tranche d'âge (enfant, adulte, senior)</li>
-      <li>Niveau de gravité (légère, modérée, sévère, hospitalisation)</li>
-      <li>Nombre de cas (donnée numérique)</li>
-      <li>Semaine de début des symptômes (date)</li>
-      <li>Résultat de laboratoire (optionnel)</li>
-      <li>Région géographique approximative (arrondie à 0,5° soit ±55 km, si géolocalisation accordée)</li>
+      <li>Pathologie ou syndrome suspecté (listes fermées)</li>
+      <li>Classe du nombre de cas (1-5, 6-20, 21-50, plus de 50)</li>
+      <li>Tranche d'âge (enfant, adulte, senior, mixte), gravité, résultat biologique (oui / non / inconnu)</li>
+      <li>Date de début des signes et semaine de signalement</li>
+      <li>Région d'exercice (France métropolitaine ou DROM) — aucune position</li>
+      <li>Catégorie (suspicion clinique ou signal de terrain), déduite de la profession</li>
     </ul>
-    <p><strong>Ces données constituent des données de santé</strong> au sens de l'article 9 du RGPD. Protections mises en place :</p>
+    <p>Aucun champ libre, aucun élément permettant d'identifier un patient. Protections mises en place :</p>
     <ul>
-      <li>Double consentement explicite : Art. 6(1)(a) général + Art. 9(2)(i) spécifique aux données de santé</li>
-      <li>Stockage exclusivement local sur l'appareil de l'utilisateur (jamais sur nos serveurs)</li>
-      <li>Identifiant aléatoire non-persistant (8 caractères, non lié à une personne)</li>
-      <li>Géolocalisation arrondie à 0,5° (pas de position précise stockée)</li>
-      <li>Effacement complet possible à tout moment depuis la section <a href="privacy.html#mydata">Mes données</a></li>
-      <li>Export JSON possible avant effacement</li>
+      <li>Accès réservé aux professionnels de santé authentifiés par Pro Santé Connect ; jeton revérifié auprès de l'ANS à chaque envoi</li>
+      <li>Identifiant national du professionnel non conservé ; pseudonyme calculé côté serveur (limitation à 20 signalements par jour, dénombrement des participants)</li>
+      <li>Conservation 120 jours chez l'hébergeur Cloudflare, puis suppression automatique</li>
+      <li>Publication uniquement agrégée (semaine, région, catégorie, pathologie), sans effectif inférieur à 3</li>
+      <li>Aucune transmission automatique à une autorité sanitaire</li>
     </ul>
 
     <h3>2.3 Géolocalisation</h3>
@@ -168,8 +169,8 @@
     <ul>
       <li>La position précise est utilisée en mémoire vive uniquement (jamais stockée)</li>
       <li>Les coordonnées sont transmises directement depuis votre navigateur à l'API Open-Meteo</li>
-      <li>Pour les déclarations syndromiques : coordonnées arrondies à 0,5° avant stockage</li>
-      <li>Aucune position n'est enregistrée sur nos serveurs BreathIQ</li>
+      <li>Les signalements de cas ne contiennent aucune position : seule la région d'exercice est indiquée</li>
+      <li>Aucune position n'est enregistrée sur les serveurs de BreathIQ</li>
     </ul>
 
     <h3>2.4 Logs serveur (hébergeur Cloudflare)</h3>

@@ -110,10 +110,7 @@
     <span style="font-size:1.4rem;flex-shrink:0">⚠️</span>
     <div>
       <strong>Health data (Art. 9 GDPR)</strong>
-      <p>If you use the syndromic surveillance form (Expert mode), your declarations
-      constitute health data. They are stored <strong>only on your device</strong>
-      and require explicit dual consent. You can delete them at any time from the
-      <a href="privacy-en.html#mydata">My Data</a> section.</p>
+      <p>Case reporting (clinician area) is restricted to healthcare professionals authenticated through <strong>Pro Santé Connect</strong> (French e-health agency). A report contains <strong>no data that could identify a patient</strong> (closed lists, age group, region, week). It is sent to BreathIQ and kept for <strong>120 days</strong> by the host Cloudflare, then deleted automatically. Only the professional's occupation is used; their national identifier is not kept — a server-side pseudonym is used only to limit abuse and count participants. Results are published only in aggregated form, with no count below 3. The rest of the site, including the public mode, requires no sign-in.</p>
     </div>
   </div>
 
@@ -148,22 +145,20 @@
     <h3>2.2 Health data — Art. 9 GDPR (Syndromic surveillance form)</h3>
     <p>The syndromic declaration form (Expert mode only) allows entry of:</p>
     <ul>
-      <li>Clinical syndrome type (flu-like, respiratory, diarrhoeal, febrile, neurological, haemorrhagic, cutaneous)</li>
-      <li>Age group (child, adult, senior)</li>
-      <li>Severity level (mild, moderate, severe, hospitalisation)</li>
-      <li>Number of cases (numeric)</li>
-      <li>Week of symptom onset (date)</li>
-      <li>Laboratory result (optional)</li>
-      <li>Approximate geographic region (rounded to 0.5° = ±55 km, if geolocation granted)</li>
+      <li>Suspected disease or syndrome (closed lists)</li>
+      <li>Case count class (1-5, 6-20, 21-50, over 50)</li>
+      <li>Age group (child, adult, senior, mixed), severity, laboratory result (yes / no / unknown)</li>
+      <li>Symptom onset date and reporting week</li>
+      <li>Region of practice (mainland France or overseas departments) — no location</li>
+      <li>Category (clinical suspicion or field signal), derived from the occupation</li>
     </ul>
-    <p><strong>These data constitute health data</strong> under Article 9 GDPR. Protections in place:</p>
+    <p>No free text, nothing that could identify a patient. Safeguards:</p>
     <ul>
-      <li>Explicit dual consent: Art. 6(1)(a) general + Art. 9(2)(i) specific to health data</li>
-      <li>Storage exclusively local on the user's device (never on our servers)</li>
-      <li>Non-persistent random identifier (8 characters, not linked to a person)</li>
-      <li>Geolocation rounded to 0.5° (no precise position stored)</li>
-      <li>Complete deletion possible at any time from the <a href="privacy-en.html#mydata">My Data</a> section</li>
-      <li>JSON export possible before deletion</li>
+      <li>Restricted to healthcare professionals authenticated by Pro Santé Connect; token re-checked with the French e-health agency on every submission</li>
+      <li>The professional's national identifier is not kept; a server-side pseudonym is used (limit of 20 reports per day, participant count)</li>
+      <li>Kept 120 days by the host Cloudflare, then deleted automatically</li>
+      <li>Published only in aggregated form (week, region, category, disease), with no count below 3</li>
+      <li>No automatic transmission to any health authority</li>
     </ul>
 
     <h3>2.3 Geolocation</h3>
@@ -171,7 +166,7 @@
     <ul>
       <li>The precise position is used in working memory only (never stored)</li>
       <li>Coordinates are sent directly from your browser to the Open-Meteo API</li>
-      <li>For syndromic declarations: coordinates are rounded to 0.5° before storage</li>
+      <li>Case reports contain no location: only the region of practice is given</li>
       <li>No position is recorded on BreathIQ servers</li>
     </ul>
 

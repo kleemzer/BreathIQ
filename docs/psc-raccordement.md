@@ -11,9 +11,9 @@ raccordement » (bac à sable). Éléments à fournir (prêts à coller) :
 
 | Champ | Valeur |
 |---|---|
-| Nom du service | BreathIQ — Espace Soignant (déclaration de suspicions de cas) |
+| Nom du projet (public) | BreathIQ |
 | Éditeur / contact technique | Dr Clément Médeau — contact@breathiq.fr |
-| Finalité | Identifier les professionnels de santé qui déclarent des suspicions de cas (surveillance syndromique locale, hors déclaration obligatoire, hors dispositif médical) afin d'exclure toute déclaration par un non-professionnel. |
+| Description | Texte final validé le 2026-10-09 : voir la section « Description DataPass » ci-dessous |
 | Type de client OIDC | Confidentiel côté serveur (Cloudflare Pages Function), flux **Authorization Code + PKCE (S256)** |
 | URLs de redirection | `https://breathiq.fr/psc-callback.html` ; preview : `https://fix-audit-lancement.<projet>.pages.dev/psc-callback.html` |
 | URL de déconnexion | `https://breathiq.fr/` |
@@ -32,7 +32,7 @@ Après réception : `client_id` et `client_secret` bac à sable.
 | `PSC_TOKEN_ENDPOINT` | `https://auth.bas.psc.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/token` |
 | `PSC_USERINFO_ENDPOINT` | `https://auth.bas.psc.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/userinfo` |
 | `PSC_ALLOWED_REDIRECTS` | `https://breathiq.fr/psc-callback.html,https://fix-audit-lancement.<projet>.pages.dev/psc-callback.html` |
-| `PSC_ALLOWED_PROFESSIONS` | `10,21,40,50,60` (médecin, pharmacien, chirurgien-dentiste, sage-femme, infirmier) — **à valider** |
+| `PSC_ALLOWED_PROFESSIONS` | `10,50,21,60,70` — suspicion clinique : médecin (10), sage-femme (50) ; signal de terrain : pharmacien (21), infirmier (60), masseur-kinésithérapeute (70) |
 | `DECL_SALT` | chaîne aléatoire longue (ex. `openssl rand -hex 32`) |
 
 KV : Workers & Pages → KV → créer l'espace `breathiq-declarations`, puis Pages → Settings → Functions →
@@ -61,3 +61,17 @@ après homologation ANS.
    redirection.
 4. Tenter l'envoi sans jeton (`curl -X POST /api/declare`) → 401 ; avec une identité de test
    non-PS → 403.
+
+## Description DataPass (version finale du 2026-10-09)
+
+Nom du projet : **BreathIQ**
+
+À coller tel quel dans « Description du projet » (DataPass, étape 1). Deux réserves à la charge du Dr Médeau : vérifier les articles cités sur Légifrance (L3113-1, L1413-15) et ne pas se désigner soi-même DPO.
+
+Le texte est conservé dans l'historique de la conversation ; points clés que le code respecte (testés par `npm run test:declarations`) :
+- PSC uniquement pour la fonction de signalement ; mode grand public et contenus professionnels en accès libre ;
+- deux catégories déduites de la profession, jamais additionnées : suspicion clinique (10, 50) et signal de terrain (21, 60, 70) ;
+- France métropolitaine et DROM uniquement ; aucune position, seule la région ;
+- pseudonyme salé côté serveur, conservation 120 jours, hébergement Cloudflare ;
+- restitution agrégée semaine × région × catégorie × pathologie, avec nombre de professionnels, cellules < 3 supprimées ;
+- phase pilote : aucune alerte statistique (`FEATURE_LOCAL_SIGNALS = false`).
