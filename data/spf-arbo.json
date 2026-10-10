@@ -1,0 +1,69 @@
+{
+  "ok": true,
+  "generatedAt": "2026-10-10T13:39:06.196Z",
+  "sourceVerifiedAt": "2026-10-07T00:00:00.000Z",
+  "nextUpdateExpected": "2026-10-14T18:00:00.000Z",
+  "stale": false,
+  "source": "Santé publique France — bulletin national de surveillance renforcée des arboviroses (France hexagonale)",
+  "source_url": "https://www.santepubliquefrance.fr/maladies-a-transmission-vectorielle/chikungunya/bulletin-national/chikungunya-dengue-zika-et-west-nile-en-france-hexagonale-bulletin-de-la-surveillance-renforcee-du-7",
+  "pdf_url": "https://www.santepubliquefrance.fr/sites/default/files/2026-10/bullnat_arboviroses_20261007.pdf",
+  "regionalNote": "Le bulletin national ne détaille pas les cas par région ; consulter le bulletin régional SPF ou le site de l'ARS concernée.",
+  "publicationDate": "2026-10-07",
+  "epiWeek": "2026-S40",
+  "dataAsOf": "2026-10-05",
+  "westNile": {
+    "autochthonousCases": 161,
+    "weeklyChange": 16,
+    "asymptomatic": 28,
+    "symptomatic": 133,
+    "neuroinvasive": 60,
+    "deaths": 5,
+    "deathsNote": "Données du signalement initial, susceptibles d'être incomplètes ; ne permettent pas de déterminer si ces décès sont imputables au virus (SPF).",
+    "regions": [
+      {
+        "region": "Provence-Alpes-Côte d'Azur",
+        "departements": 3
+      },
+      {
+        "region": "Occitanie",
+        "departements": 7
+      },
+      {
+        "region": "Île-de-France",
+        "departements": 7
+      },
+      {
+        "region": "Auvergne-Rhône-Alpes",
+        "departements": 4
+      },
+      {
+        "region": "Nouvelle-Aquitaine",
+        "departements": 1
+      },
+      {
+        "region": "Pays de la Loire",
+        "departements": 3
+      },
+      {
+        "region": "Centre-Val de Loire",
+        "departements": 1
+      }
+    ],
+    "casesWithoutKnownPlace": 15
+  },
+  "chikungunya": {
+    "autochthonousEpisodes": 20,
+    "autochthonousCases": 146,
+    "importedCases": 156
+  },
+  "dengue": {
+    "autochthonousEpisodes": 4,
+    "autochthonousCases": 6,
+    "importedCases": 437
+  },
+  "zika": {
+    "autochthonousEpisodes": null,
+    "autochthonousCases": null,
+    "importedCases": 17
+  }
+}

@@ -11,7 +11,8 @@
     "test:freshness": "node scripts/test-freshness.mjs",
     "check:i18n": "node scripts/check-i18n.mjs",
     "test:declarations": "node scripts/test-declarations.mjs",
-    "test": "node scripts/test-clinical-care.mjs && node scripts/test-diagnostic-engine.mjs && node scripts/test-freshness.mjs && node scripts/test-declarations.mjs",
+    "test:arbo": "node scripts/test-spf-arbo.mjs",
+    "test": "node scripts/test-clinical-care.mjs && node scripts/test-diagnostic-engine.mjs && node scripts/test-freshness.mjs && node scripts/test-declarations.mjs && node scripts/test-spf-arbo.mjs",
     "build": "npx terser script.js --compress --mangle -o script.min.js && npx terser js/clinical-orientation.js --compress --mangle -o js/clinical-orientation.min.js && npx terser js/care-facilities.js --compress --mangle -o js/care-facilities.min.js && npx terser js/diagnostic-engine.js --compress --mangle -o js/diagnostic-engine.min.js && npx cleancss -o style.min.css style.css && echo Build done"
   },
   "devDependencies": {
