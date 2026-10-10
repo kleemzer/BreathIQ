@@ -2785,6 +2785,8 @@ function setLang(lang) {
   loadPheicAlert();
   initDataFreshness();
   initDeclarationGate();
+  if (typeof renderVirusSaison === 'function' && _spfSurveillance) renderVirusSaison();
+  if (typeof renderArboBulletin === 'function') renderArboBulletin();
   // Canonical propre à la langue (fr = racine, autres = ?lang=xx) pour éviter une canonical unique sur toutes les versions
   const canonical = document.querySelector('link[rel="canonical"]');
   if (canonical) canonical.href = currentLang === 'fr' ? 'https://breathiq.fr/' : `https://breathiq.fr/?lang=${currentLang}`;
@@ -5835,23 +5837,58 @@ function renderEpiTracker() {
 // Données multi-pathogènes chargées au démarrage
 var _spfSurveillance = null;
 var _ecdcSurveillance = null;
+var _spfArbo = null;
 var _activeSurveillancePathogen = null;
 
 async function loadSurveillanceData() {
   try {
-    const [spf, ecdc] = await Promise.all([
+    const [spf, ecdc, arbo] = await Promise.all([
       fetch('/data/spf-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
       fetch('/data/ecdc-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
+      fetch('/data/spf-arbo.json').then(r => r.ok ? r.json() : null).catch(() => null),
     ]);
     _spfSurveillance = spf;
-    _ecdcSurveillance = ecdc;
+    // Seules les séries ECDC réellement collectées (collectedAt, posé par scripts/ecdc-surveillance.mjs)
+    // sont affichées : les séries saisies à la main en août 2026, sans source vérifiable, sont écartées
+    _ecdcSurveillance = ecdc ? { ...ecdc, pathogens: (ecdc.pathogens || []).filter(p => p.collectedAt) } : null;
+    _spfArbo = arbo;
     renderVirusSaison();
+    renderArboBulletin();
     const active = getActivePathogens();
     if (active.length) {
       _activeSurveillancePathogen = active[0].id;
       renderSurveillanceModule(active);
     }
   } catch(e) { /* silencieux */ }
+}
+
+// ── Bulletin SPF arboviroses (West Nile, chikungunya, dengue, Zika) — chiffres verbatim du bulletin ──
+function renderArboBulletin() {
+  const el = document.getElementById('arboBulletin');
+  if (!el) return;
+  const d = _spfArbo;
+  const fr = currentLang === 'fr';
+  if (!d || d.westNile?.autochthonousCases == null) { el.hidden = true; return; }
+  const n = v => (v == null ? '—' : Number(v).toLocaleString(fr ? 'fr-FR' : 'en-GB'));
+  const date = s => s ? new Date(s).toLocaleDateString(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: 'long', year: 'numeric' }) : '—';
+  const stale = d.nextUpdateExpected && Date.now() > new Date(d.nextUpdateExpected).getTime() + 48 * 3600 * 1000;
+  const w = d.westNile;
+  const regions = (w.regions || []).map(r => `${r.region} (${r.departements} ${fr ? (r.departements > 1 ? 'départements' : 'département') : (r.departements > 1 ? 'departments' : 'department')})`).join(', ');
+  const ep = (x, label) => x?.autochthonousEpisodes != null
+    ? `<li><strong>${label}</strong> : ${n(x.autochthonousEpisodes)} ${fr ? 'épisodes autochtones' : 'local transmission episodes'} (${n(x.autochthonousCases)} ${fr ? 'cas' : 'cases'}) · ${n(x.importedCases)} ${fr ? 'cas importés' : 'imported cases'}</li>`
+    : (x?.importedCases != null ? `<li><strong>${label}</strong> : ${n(x.importedCases)} ${fr ? 'cas importés' : 'imported cases'}</li>` : '');
+  el.hidden = false;
+  el.innerHTML = `
+    <h3 class="arbo-title">🦟 ${fr ? 'Arboviroses en France hexagonale — bulletin Santé publique France' : 'Arboviruses in mainland France — Santé publique France bulletin'}</h3>
+    <p class="arbo-meta">${fr ? 'Bulletin du' : 'Bulletin of'} ${date(d.publicationDate)} · ${fr ? 'données au' : 'data as of'} ${date(d.dataAsOf)} · ${d.epiWeek || ''}${stale ? ` · <strong>${fr ? 'source en attente de mise à jour' : 'awaiting source update'}</strong>` : ''}</p>
+    <div class="arbo-wnv">
+      <p><strong>${fr ? 'Virus West Nile (Nil occidental)' : 'West Nile virus'}</strong> : ${n(w.autochthonousCases)} ${fr ? 'cas autochtones cette saison' : 'locally acquired cases this season'}${w.weeklyChange != null ? ` (+${n(w.weeklyChange)} ${fr ? 'en une semaine' : 'in one week'})` : ''}, ${fr ? 'dont' : 'including'} ${n(w.neuroinvasive)} ${fr ? 'formes neuro-invasives' : 'neuroinvasive forms'} ${fr ? 'et' : 'and'} ${n(w.deaths)} ${fr ? 'décès' : 'deaths'}.</p>
+      ${w.deaths != null ? `<p class="arbo-note">${fr ? 'Selon SPF, ces données du signalement initial ne permettent pas de déterminer si les décès sont imputables au virus.' : 'According to SPF, these initial-report data do not establish whether the deaths are attributable to the virus.'}</p>` : ''}
+      ${regions ? `<p class="arbo-regions">${fr ? 'Régions concernées' : 'Affected regions'} : ${regions}.</p>` : ''}
+      <p class="arbo-note">${fr ? 'Le bulletin national ne détaille pas les cas par région : pour votre région, consultez le bulletin régional de Santé publique France ou le site de votre ARS.' : 'The national bulletin does not break cases down by region: see the regional Santé publique France bulletin or your regional health agency.'}</p>
+    </div>
+    <ul class="arbo-list">${ep(d.chikungunya, 'Chikungunya')}${ep(d.dengue, fr ? 'Dengue' : 'Dengue')}${ep(d.zika, 'Zika')}</ul>
+    <p class="arbo-source"><a href="${d.source_url}" target="_blank" rel="noopener">${fr ? 'Lire le bulletin sur santepubliquefrance.fr' : 'Read the bulletin on santepubliquefrance.fr'} →</a></p>`;
 }
 
 function renderVirusSaison() {
@@ -5867,7 +5904,7 @@ function renderVirusSaison() {
     rouge:   { cls:'virus-level-red',    label:'Alerte épidémique' },
   };
 
-  const spfPathogens  = (_spfSurveillance?.pathogens  || []).map(p => ({ ...p, _src: 'SPF' }));
+  const spfPathogens  = (_spfSurveillance?.pathogens  || []).map(p => ({ ...p, _src: 'Réseau Sentinelles' }));
   const ecdcPathogens = (_ecdcSurveillance?.pathogens || []).map(p => ({ ...p, _src: 'ECDC' }));
   const all = [...spfPathogens, ...ecdcPathogens];
 
@@ -5884,10 +5921,28 @@ function renderVirusSaison() {
     return (b.zscore || 0) - (a.zscore || 0);
   });
 
-  // Afficher max 6 pathogènes pour ne pas surcharger
-  const shown = all.slice(0, 6);
+  // Une série dont la dernière semaine date de plus de 4 semaines n'est pas une situation actuelle :
+  // pas de niveau d'alerte, mention explicite « non actualisé »
+  const weekIndex = w => { const m = /^(\d{4})-S(\d{1,2})$/.exec(w || ''); return m ? Number(m[1]) * 53 + Number(m[2]) : null; };
+  const nowIdx = weekIndex(getCurrentISOWeek());
+  const isOutdated = p => { const i = weekIndex(p.week); return i == null || nowIdx == null || nowIdx - i > 4; };
+  // Le West Nile est désormais couvert par le bulletin SPF arboviroses (bloc dédié) : on retire la carte ECDC périmée
+  const covered = new Set(_spfArbo?.westNile?.autochthonousCases != null ? ['westnile'] : []);
+  const visible = all.filter(p => !(covered.has(p.id) && p._src === 'ECDC'));
+
+  // Afficher max 6 pathogènes pour ne pas surcharger ; les séries actuelles d'abord
+  const shown = [...visible.filter(p => !isOutdated(p)), ...visible.filter(isOutdated)].slice(0, 6);
 
   grid.innerHTML = shown.map(p => {
+    if (isOutdated(p)) {
+      const icon = ICONS[p.id] || '🦠';
+      return `<div class="virus-card virus-card-outdated">
+      <span style="font-size:1.4rem">${icon}</span>
+      <div class="virus-card-name">${p.nameFR || p.nameEN || p.id}</div>
+      <span class="virus-card-level virus-level-grey">${currentLang === 'fr' ? 'Donnée non actualisée' : 'Not updated'}</span>
+      <div class="virus-card-note">${p._src} · ${currentLang === 'fr' ? 'dernière semaine disponible' : 'last available week'} ${p.week || '—'}</div>
+    </div>`;
+    }
     const lv = LEVEL_MAP[p.alertLevel] || LEVEL_MAP.normal;
     const icon = ICONS[p.id] || '🦠';
     const week = p.week ? `S${p.week.split('-S')[1]} · ` : '';
@@ -5909,10 +5964,13 @@ function renderVirusSaison() {
     const week = all[0]?.week || '';
     // stale = now > nextUpdateExpected + 48 h (même règle que scripts/lib/freshness.mjs)
     const isStale = src => src?.nextUpdateExpected ? Date.now() > new Date(src.nextUpdateExpected).getTime() + 48 * 3600 * 1000 : false;
-    const stale = isStale(_spfSurveillance) || isStale(_ecdcSurveillance);
+    const hasEcdc = (_ecdcSurveillance?.pathogens || []).length > 0;
+    const stale = isStale(_spfSurveillance) || (hasEcdc && isStale(_ecdcSurveillance));
+    const fr = currentLang === 'fr';
+    const srcName = hasEcdc ? 'Réseau Sentinelles · ECDC' : 'Réseau Sentinelles';
     sourceEl.textContent = stale
-      ? `Données de la semaine ${week} — source en attente de mise à jour (dernière donnée du ${label})`
-      : `Données Sentinelles · ECDC du ${label} — semaine épidémiologique ${week}`;
+      ? (fr ? `Données de la semaine ${week} — source en attente de mise à jour (dernière donnée du ${label})` : `Data for week ${week} — awaiting source update (last data ${label})`)
+      : (fr ? `Données ${srcName} du ${label} — semaine épidémiologique ${week}` : `${srcName} data of ${label} — epidemiological week ${week}`);
   }
 }
 

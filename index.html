@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261010a" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261010a"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261010b" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261010b"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <link rel="preconnect" href="https://cloud.umami.is" crossorigin>
@@ -509,6 +509,7 @@
       <a data-i18n="x-voir-tous-les-pathogenes-9fe3" href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les pathogènes →</a>
     </div>
     <p class="virus-saison-source" id="virusSaisonSource" translate="no">Données SPF · ECDC — chargement…</p>
+    <div class="arbo-bulletin" id="arboBulletin" translate="no" hidden></div>
   </div>
 </section>
 
@@ -2409,9 +2410,9 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261010a" defer></script>
-<script src="api-live.min.js?v=20261010a" defer></script>
-<script src="script.min.js?v=20261010a" defer></script>
+<script src="js/psc-auth.js?v=20261010b" defer></script>
+<script src="api-live.min.js?v=20261010b" defer></script>
+<script src="script.min.js?v=20261010b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

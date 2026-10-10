@@ -119,6 +119,8 @@ async function main() {
         zscore: z,
         baseline: pathogens[idx]?.baseline || { mean: 0, t1: 0, t2: 0, t3: 0 },
         source_url: src.url,
+        // Marqueur de provenance : seules les séries portant collectedAt sont affichées par le site
+        collectedAt: new Date().toISOString(),
         series
       };
 
@@ -143,7 +145,9 @@ async function main() {
 
   const output = {
     generatedAt: now.toISOString(),
-    sourceVerifiedAt: now.toISOString(),
+    // N'avancer la date de vérification que si une série a réellement été mise à jour : sinon le fichier
+    // se dirait « vérifié aujourd'hui » avec des données figées depuis des semaines
+    sourceVerifiedAt: anyUpdated ? now.toISOString() : (existing?.sourceVerifiedAt || null),
     nextUpdateExpected: nextTuesday.toISOString(),
     stale: false,
     source: 'ECDC — Surveillance Atlas / Threat Reports',
