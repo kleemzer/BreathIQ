@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-13T14:00:56.046Z",
+  "generatedAt": "2026-10-14T11:37:51.122Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 5,
+    "totalUpdates": 6,
     "warnings": 0,
-    "newLiterature": 5,
+    "newLiterature": 6,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-13",
+      "detectedAt": "2026-10-14",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-13",
+      "detectedAt": "2026-10-14",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +67,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-13",
+      "detectedAt": "2026-10-14",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "MERS",
+      "pathogenName": "MERS-CoV",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
+      "articles": [
+        {
+          "pmid": "42815505",
+          "title": "MERS-CoV in Africa: a One Health review of the silent reservoir.",
+          "authors": "El-Kafrawy SA, El-Daly MM, El-Kafrawy MS",
+          "year": "2026",
+          "journal": "Lancet Microbe",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42815505/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-10-14",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-13",
+      "detectedAt": "2026-10-14",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-13",
+      "detectedAt": "2026-10-14",
       "humanValidationRequired": true
     }
   ]
