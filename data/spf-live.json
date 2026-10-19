@@ -1,5 +1,5 @@
 {
-  "run_date": "2026-10-12",
+  "run_date": "2026-10-19",
   "overall_summary": "Les bulletins SPF rapportent plusieurs signaux sous surveillance, sans alerte majeure consolidee.",
   "sources": [
     {
@@ -28,7 +28,7 @@
       "risk_level": "low",
       "key_points": [
         "Maladies citees: grippe, tuberculose",
-        "Chiffres reperes: 6, 2026, 21, 2012, 2022",
+        "Chiffres reperes: 13, 2026, 22, 2025, 21",
         "La sante mentale des jeunes exiles : vulnerabilite sociale et troubles psychiques chez les patients suivis au Comede entre 2015 et 2025."
       ]
     },
@@ -58,7 +58,7 @@
       "risk_level": "medium",
       "key_points": [
         "Maladies citees: grippe",
-        "Chiffres reperes: 15, 2026, 40, 29, 2023",
+        "Chiffres reperes: 14, 2026, 40, 15, 29",
         "Epidemiological surveillance of influenza | Skip to main content Flu The flu is a contagious viral respiratory infection that causes seasonal outbreaks every winter."
       ]
     },
