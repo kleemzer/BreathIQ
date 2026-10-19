@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-18T12:12:43.993Z",
-  "fetchDate": "2026-10-18",
+  "generatedAt": "2026-10-19T15:01:59.095Z",
+  "fetchDate": "2026-10-19",
   "note": "Chaque alerte doit citer une sourceUrl officielle (who.int / ecdc.europa.eu / santepubliquefrance.fr) et ne contenir que des faits présents dans cette source. Validé par scripts/validate-data.mjs (CI) et filtré à l'exécution par loadPheicAlert().",
   "alerts": [
     {
@@ -62,8 +62,8 @@
         }
       ],
       "verifiedAgainstWhoApi": "2026-10-07",
-      "verifiedAt": "2026-10-18"
+      "verifiedAt": "2026-10-19"
     }
   ],
-  "verifiedAt": "2026-10-18"
+  "verifiedAt": "2026-10-19"
 }
