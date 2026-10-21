@@ -1,5 +1,5 @@
 {
-  "run_date": "2026-10-05",
+  "run_date": "2026-10-19",
   "overall_summary": "Les bulletins SPF rapportent plusieurs signaux sous surveillance, sans alerte majeure consolidee.",
   "sources": [
     {
@@ -28,7 +28,7 @@
       "risk_level": "low",
       "key_points": [
         "Maladies citees: grippe, tuberculose",
-        "Chiffres reperes: 29, 2026, 19, 20, 2023",
+        "Chiffres reperes: 13, 2026, 22, 2025, 21",
         "La sante mentale des jeunes exiles : vulnerabilite sociale et troubles psychiques chez les patients suivis au Comede entre 2015 et 2025."
       ]
     },
@@ -53,12 +53,12 @@
       "signals": [
         "Epidemiological surveillance of influenza | Skip to main content Flu The flu is a contagious viral respiratory infection that causes seasonal outbreaks every winter.",
         "Learn more thematic dossier 12 March 2026 Aging Well People over the age of 60 could account for one-third of the population by 2050.",
-        "Learn more Vaccination thematic dossier 27 April 2026 Contagious diseases most often affect children at a very young age."
+        "Learn more Vaccination thematic dossier 8 October 2026 Contagious diseases most often affect children at a very young age."
       ],
       "risk_level": "medium",
       "key_points": [
         "Maladies citees: grippe",
-        "Chiffres reperes: 15, 2026, 40, 29, 2023",
+        "Chiffres reperes: 14, 2026, 40, 15, 29",
         "Epidemiological surveillance of influenza | Skip to main content Flu The flu is a contagious viral respiratory infection that causes seasonal outbreaks every winter."
       ]
     },

@@ -1,9 +1,33 @@
 {
-  "generatedAt": "2026-10-07T14:03:37.659Z",
-  "fetchDate": "2026-10-07",
+  "generatedAt": "2026-10-21T12:35:24.658Z",
+  "fetchDate": "2026-10-21",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Middle East respiratory syndrome coronavirus - Kingdom of Saudi Arabia",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/middle-east-respiratory-syndrome-coronavirus---kingdom-of-saudi-arabia",
+      "donId": "middle-east-respiratory-syndrome-coronavirus---kingdom-of-saudi-arabia",
+      "pubDate": "2026-10",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Pneumonia of undetermined etiology - the Russian Federation",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON620",
+      "donId": "2026-DON620",
+      "pubDate": "2026-10",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
+    {
+      "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619",
+      "donId": "2026-DON619",
+      "pubDate": "2026-10",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618",
@@ -138,30 +162,6 @@
       "donId": "2026-DON602",
       "pubDate": "2026-05",
       "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Hantavirus cluster linked to cruise ship travel, Multi-country",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON601",
-      "donId": "2026-DON601",
-      "pubDate": "2026-05",
-      "riskLevel": "high",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Hantavirus cluster linked to cruise ship travel, Multi-country",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON600",
-      "donId": "2026-DON600",
-      "pubDate": "2026-05",
-      "riskLevel": "high",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Hantavirus cluster linked to cruise ship travel, Multi-country",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON599",
-      "donId": "2026-DON599",
-      "pubDate": "2026-05",
-      "riskLevel": "high",
       "source": "WHO OData API"
     }
   ]

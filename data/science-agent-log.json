@@ -1,5 +1,103 @@
 [
   {
+    "timestamp": "2026-10-21T11:36:08.429Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-20T11:20:28.898Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-19T12:51:11.338Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-18T10:49:45.100Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-17T10:30:01.331Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-16T11:11:10.130Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-15T11:16:33.027Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-14T11:37:51.122Z",
+    "updatesFound": 6,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-13T14:00:56.047Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-12T15:08:11.427Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-11T12:35:33.578Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-10T12:18:39.633Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-09T13:01:56.362Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
+    "timestamp": "2026-10-08T13:15:22.958Z",
+    "updatesFound": 5,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
     "timestamp": "2026-10-07T13:07:54.303Z",
     "updatesFound": 5,
     "pubmedQueriesRun": 14,
