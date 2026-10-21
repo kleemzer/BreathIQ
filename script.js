@@ -3889,7 +3889,7 @@ function renderPathogens() {
         <span class="pc-badge pc-cat">${catLabel}</span>
         <span class="pc-badge pc-status${isOutbreak ? ' status-active' : ''}">${statLabel}</span>
         <span class="pc-badge ${protBadgeClass}">${ob.protectionRequired || (lbl ? 'Protection non précisée' : 'Protection not specified')}</span>
-        ${(ob.verifiedAt || ob.lastUpdate) ? `<span class="pc-badge pc-update" title="${lbl?'Données vérifiées par BreathIQ':'Data verified by BreathIQ'}">✓ ${lbl?'Vérifié':'Verified'} ${ob.verifiedAt || ob.lastUpdate}</span>` : ''}
+        ${ob.lastUpdate ? `<span class="pc-badge pc-update" title="${lbl?'Date de la dernière mise à jour du contenu':'Date of the last content update'}">${lbl?'Contenu du':'Content as of'} ${ob.lastUpdate}</span>` : ''}
       </div>
 
       <!-- ③ Régions actives -->
@@ -4720,7 +4720,7 @@ function wizAnalyze() {
     latestClinicalOrientation = ebolaResult.clinical;
     renderDiagnosticResult(ebolaResult, state);
     const res = document.getElementById('symptomResult');
-    if (res) { res.classList.remove('hidden'); res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    if (res) { res.classList.remove('hidden'); res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); res.focus({ preventScroll: true }); }
     return;
   }
 
@@ -4747,7 +4747,7 @@ function wizAnalyze() {
     latestClinicalOrientation = infantResult.clinical;
     renderDiagnosticResult(infantResult, state);
     const res = document.getElementById('symptomResult');
-    if (res) { res.classList.remove('hidden'); res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }
+    if (res) { res.classList.remove('hidden'); res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); res.focus({ preventScroll: true }); }
     return;
   }
 
@@ -4768,7 +4768,7 @@ function wizAnalyze() {
   const res = document.getElementById('symptomResult');
   if (res) {
     res.classList.remove('hidden');
-    res.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    res.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); res.focus({ preventScroll: true });
   }
   // #9 — Proposer installation PWA après première complétion du wizard
   setTimeout(showPwaInstallBanner, 3000);
@@ -5016,11 +5016,11 @@ function renderDiagnosticResult(result, state) {
     ? `<div class="diag-alarm-reason">${fr ? 'Pourquoi :' : 'Why:'} ${reasons.map(escapeHTML).join(' · ')}</div>`
     : '';
 
+  // Un lien d'appel par numéro (« 15 / 112 » ne doit jamais devenir tel:15112)
+  const phoneIcon = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>';
   const phoneBlock = visual.phone
-    ? `<a class="diag-phone-btn" href="tel:${visual.phone.replace(/[^\d]/g,'')}">
-         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-         ${visual.phone}
-       </a>`
+    ? String(visual.phone).split('/').map(n => n.replace(/[^\d]/g, '')).filter(Boolean)
+        .map(n => `<a class="diag-phone-btn" href="tel:${n}">${phoneIcon} ${n}</a>`).join(' ')
     : '';
 
   // ── Pathogènes probables ────────────────────────────────────
@@ -5159,7 +5159,7 @@ function renderDiagnosticResult(result, state) {
           ? `⚠️ <strong>Orientation indicative — non diagnostique.</strong> En cas de doute ou d'aggravation, consultez immédiatement un professionnel de santé.`
           : `⚠️ <strong>Indicative guidance — not a diagnosis.</strong> If in doubt or symptoms worsen, seek immediate medical care.`}</p>
         <p class="diag-legal-meta">${fr
-          ? '📋 Références : OMS · ECDC · CDC · HCSP · Repères généraux d'orientation. Non dispositif médical (UE 2017/745).'
+          ? '📋 Références : OMS · ECDC · CDC · HCSP · Repères généraux d\'orientation. Non dispositif médical (UE 2017/745).'
           : '📋 References: WHO · ECDC · CDC · General guidance on where to seek care. Not a medical device (EU 2017/745).'}</p>
       </div>
     </div>
@@ -5974,7 +5974,7 @@ function renderVirusSaison() {
       const icon = ICONS[p.id] || '🦠';
       return `<div class="virus-card virus-card-outdated">
       <span style="font-size:1.4rem">${icon}</span>
-      <div class="virus-card-name">${p.nameFR || p.nameEN || p.id}</div>
+      <div class="virus-card-name">${escapeHTML(p.nameFR || p.nameEN || p.id)}</div>
       <span class="virus-card-level virus-level-grey">${currentLang === 'fr' ? 'Donnée non actualisée' : 'Not updated'}</span>
       <div class="virus-card-note">${p._src} · ${currentLang === 'fr' ? 'dernière semaine disponible' : 'last available week'} ${p.week || '—'}</div>
     </div>`;
@@ -5986,7 +5986,7 @@ function renderVirusSaison() {
     const note  = rate ? `${week}${rate} · ${p._src}` : `${p._src} · ${p.week || ''}`;
     return `<div class="virus-card">
       <span style="font-size:1.4rem">${icon}</span>
-      <div class="virus-card-name">${p.nameFR || p.nameEN || p.id}</div>
+      <div class="virus-card-name">${escapeHTML(p.nameFR || p.nameEN || p.id)}</div>
       <span class="virus-card-level ${lv.cls}">${lv.label}</span>
       <div class="virus-card-note">${note}</div>
     </div>`;
@@ -6390,7 +6390,7 @@ function renderArsHint(regionCode) {
   const fr = currentLang === 'fr';
   if (!ars) { el.innerHTML = ''; return; }
   el.innerHTML = `<strong>🏛️ ${fr ? 'Autorité sanitaire compétente' : 'Competent health authority'} : ${ars.name}</strong><br>
-    <a href="${ars.site}" target="_blank" rel="noopener">${ars.site.replace('https://www.', '')}</a> ·
+    <a href="${/^https:\/\/[a-z0-9.-]+\.ars\.sante\.fr\/?$/.test(ars.site) ? ars.site : '#'}" target="_blank" rel="noopener">${escapeHTML(ars.site.replace('https://www.', ''))}</a> ·
     <a href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener">${fr ? 'signalement officiel (portail e-SI)' : 'official notification (e-SI portal)'}</a><br>
     <span style="font-size:.8rem;opacity:.85">${fr ? 'Pour une maladie à déclaration obligatoire ou un risque épidémique immédiat, appelez directement le point focal régional de votre ARS (numéro sur son site), puis confirmez par écrit.' : 'For a notifiable disease or an immediate epidemic risk, call your regional health agency\'s focal point directly (number on its website), then confirm in writing.'}</span>`;
 }

@@ -18,7 +18,8 @@
   'use strict';
 
   const PSC_CONFIG = {
-    authEndpoint: 'https://auth.bas.psc.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/auth',
+    // Bac à sable par défaut ; en production, définir window.__PSC_AUTH_ENDPOINT__ dans index.html
+    authEndpoint: (typeof window !== 'undefined' && window.__PSC_AUTH_ENDPOINT__) || 'https://auth.bas.psc.esante.gouv.fr/auth/realms/esante-wallet/protocol/openid-connect/auth',
     tokenEndpoint: '/api/psc-token',
     clientId: (typeof window !== 'undefined' && window.__PSC_CLIENT_ID__) || '',
     redirectUri: typeof window !== 'undefined' ? window.location.origin + '/psc-callback.html' : '',

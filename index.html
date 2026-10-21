@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261010b" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261010b"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261021a" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261021a"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -1118,7 +1118,7 @@
       </div>
 
       <!-- ── RÉSULTAT ────────────────────────────────────── -->
-      <div class="symptom-result hidden" id="symptomResult" role="alert" aria-live="assertive"></div>
+      <div class="symptom-result hidden" id="symptomResult" role="region" aria-live="polite" aria-label="Résultat de l'orientation" tabindex="-1"></div>
 
       <!-- CTA vers care finder — visible après analyse -->
       <div class="checker-after-cta">
@@ -2236,7 +2236,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261007k';
+    s.src='/pro/pathogens.js?v=20261021a';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2288,9 +2288,9 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261010b" defer></script>
-<script src="api-live.min.js?v=20261010b" defer></script>
-<script src="script.min.js?v=20261010b" defer></script>
+<script src="js/psc-auth.js?v=20261021a" defer></script>
+<script src="api-live.min.js?v=20261021a" defer></script>
+<script src="script.min.js?v=20261021a" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

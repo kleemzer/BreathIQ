@@ -53,7 +53,9 @@ async function fetchIndicator(def) {
   const url = `${BASE}/inc-${def.indicator}-PAY.csv`;
   const resp = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(30000) });
   if (!resp.ok) throw new Error(`HTTP ${resp.status} ${url}`);
-  const { meta, rows } = parseCsv(await resp.text());
+  const text = await resp.text();
+  if (/^\s*<!doctype html/i.test(text)) throw new Error(`source indisponible (page HTML, maintenance probable) ${url}`);
+  const { meta, rows } = parseCsv(text);
   const points = rows
     .map(r => ({ weekNum: Number(r.week), rate: r.inc100 === '' || r.inc100 == null ? null : Number(r.inc100) }))
     .filter(p => Number.isFinite(p.weekNum) && p.rate != null && !isNaN(p.rate))

@@ -1,5 +1,5 @@
 {
-  "ok": true,
+  "ok": false,
   "generatedAt": "2026-10-10T13:39:06.196Z",
   "sourceVerifiedAt": "2026-10-07T00:00:00.000Z",
   "nextUpdateExpected": "2026-10-14T18:00:00.000Z",
@@ -65,5 +65,7 @@
     "autochthonousEpisodes": null,
     "autochthonousCases": null,
     "importedCases": 17
-  }
+  },
+  "error": "lien du bulletin national introuvable sur la page dossier West Nile",
+  "failedAt": "2026-10-21T20:03:40.424Z"
 }

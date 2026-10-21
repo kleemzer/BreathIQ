@@ -35,6 +35,11 @@ const cases = [
     expected: ['medical_regulation'],
   },
   {
+    name: 'Fievre legere + retour voyage tropical (paludisme a rechercher)',
+    input: { symptoms: ['fever_low'], ageGroup: 'adult', riskFactors: ['travel_tropical'], context: { localOutbreakRisk: 'medium' } },
+    expected: ['same_day_doctor'],
+  },
+  {
     name: 'Senior + dyspnee moderee',
     input: { symptoms: ['dyspnea'], ageGroup: 'senior', riskFactors: [], context: { localOutbreakRisk: 'low' } },
     expected: ['same_day_doctor', 'emergency'],

@@ -17,36 +17,40 @@
         "en": "Ebola (DRC)"
       },
       "subtitle": {
-        "fr": "RDC · PHEIC OMS depuis le 17 mai 2026, maintenue le 18 août · 63 zones de santé, 7 provinces — OMS DON618 (25 sept. 2026)",
-        "en": "DRC · WHO PHEIC since 17 May 2026, maintained on 18 August · 63 health zones, 7 provinces — WHO DON618 (25 Sept 2026)"
+        "fr": "RDC · PHEIC OMS depuis le 17 mai 2026 · cas importé au Kenya (5 oct.) — OMS DON619 (8 oct. 2026)",
+        "en": "DRC · WHO PHEIC since 17 May 2026 · imported case in Kenya (5 Oct) — WHO DON619 (8 Oct 2026)"
       },
       "pheicDate": "2026-05-17",
-      "casesConfirmed": 7890,
-      "deaths": 3799,
-      "asOf": "2026-09-23",
-      "lastUpdate": "2026-09-25",
+      "casesConfirmed": 8728,
+      "deaths": 4205,
+      "asOf": "2026-10-06",
+      "lastUpdate": "2026-10-08",
       "regions": [
         {
           "country": "République démocratique du Congo",
-          "detail": "7 890 cas confirmés, 3 799 décès (létalité 48,1 %) au 23 sept. 2026 · 63 zones de santé dans 7 provinces : Bas-Uélé, Haut-Uélé, Ituri (épicentre, 6 032 cas), Nord-Kivu (1 480 cas), Sud-Kivu, Sud-Ubangi, Tshopo"
+          "detail": "8 728 cas confirmés, 4 205 décès (létalité 48,2 %) et 2 269 guérisons au 6 oct. 2026 · Ituri (épicentre) : 6 480 cas, 2 989 décès · Nord-Kivu : 1 755 cas, 1 013 décès · Haut-Uélé : 364 cas, 153 décès · Tshopo : 51 cas, 17 décès (OMS DON619)"
+        },
+        {
+          "country": "Kenya",
+          "detail": "1 cas importé confirmé le 5 oct. 2026 (voyage depuis la RDC via l'Ouganda), décédé le 5 oct. ; recherche des contacts au Kenya et en Ouganda (OMS DON619)"
         },
         {
           "country": "Ouganda",
-          "detail": "Inclus dans la PHEIC du 17 mai 2026 (DON602) · 9 cas confirmés au 29 mai 2026 (DON605) · non mis à jour dans DON618"
+          "detail": "Inclus dans la PHEIC du 17 mai 2026 (DON602) · pays de transit du cas importé au Kenya (DON619)"
         }
       ],
       "franceStatus": null,
       "vigilanceArea": null,
       "message": {
-        "fr": "Épidémie d'Ebola (virus Bundibugyo) en République démocratique du Congo, déclarée urgence sanitaire internationale (PHEIC) par l'OMS le 17 mai 2026. Au 23 septembre 2026 : 7 890 cas confirmés et 3 799 décès, dans 63 zones de santé de 7 provinces ; l'OMS signale un risque accru de transmission transfrontalière. Si vous présentez de la fièvre dans les 21 jours suivant un retour de RDC ou d'Ouganda, ou un contact avec un malade : <strong>appelez le 15 sans vous déplacer</strong>.",
-        "en": "Ebola disease (Bundibugyo virus) outbreak in the Democratic Republic of the Congo, declared a Public Health Emergency of International Concern by WHO on 17 May 2026. As of 23 September 2026: 7,890 confirmed cases and 3,799 deaths across 63 health zones in 7 provinces; WHO reports an increased risk of cross-border transmission. If you develop fever within 21 days of returning from DRC or Uganda, or after contact with a sick person: <strong>call emergency services without travelling</strong>."
+        "fr": "Épidémie d'Ebola (virus Bundibugyo) en République démocratique du Congo, déclarée urgence sanitaire internationale (PHEIC) par l'OMS le 17 mai 2026. Au 6 octobre 2026 : 8 728 cas confirmés et 4 205 décès ; un cas importé a été confirmé au Kenya le 5 octobre. Si vous présentez de la fièvre dans les 21 jours suivant un retour de RDC, d'Ouganda ou du Kenya, ou un contact avec un malade : <strong>appelez le 15 sans vous déplacer</strong>.",
+        "en": "Ebola disease (Bundibugyo virus) outbreak in the Democratic Republic of the Congo, declared a Public Health Emergency of International Concern by WHO on 17 May 2026. As of 6 October 2026: 8,728 confirmed cases and 4,205 deaths; an imported case was confirmed in Kenya on 5 October. If you develop fever within 21 days of returning from DRC, Uganda or Kenya, or after contact with a sick person: <strong>call 15 (or 112) without travelling</strong>."
       },
       "hcwNote": {
         "fr": "Incubation 2–21 jours, contagiosité uniquement à partir des symptômes (OMS DON618) · Transmission par contact direct avec sang/fluides, surfaces contaminées, soins et rites funéraires sans précautions — pas de transmission aérienne · Tout cas suspect : isolement immédiat, EPI complet selon la procédure Ebola de l'établissement, appel SAMU-Centre 15 et signalement sans délai à l'ARS",
         "en": "Incubation 2–21 days, infectious only from symptom onset (WHO DON618) · Transmission through direct contact with blood/body fluids, contaminated surfaces, healthcare and burial practices without precautions — no airborne transmission · Any suspected case: immediate isolation, full PPE per local Ebola procedure, notify public health authorities without delay"
       },
       "pathogen_id": "EBOLA",
-      "sourceUrl": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618",
+      "sourceUrl": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619",
       "sources": [
         {
           "label": "OMS DON602 — détermination de la PHEIC, 17 mai 2026",
@@ -59,9 +63,13 @@
         {
           "label": "OMS DON618 — situation au 23 sept. 2026",
           "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618"
+        },
+        {
+          "label": "OMS DON619 — situation au 6 oct. 2026, cas importé au Kenya",
+          "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619"
         }
       ],
-      "verifiedAgainstWhoApi": "2026-10-07",
+      "verifiedAgainstWhoApi": "2026-10-21",
       "verifiedAt": "2026-10-21"
     }
   ],

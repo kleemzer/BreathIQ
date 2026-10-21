@@ -53,42 +53,36 @@
           "lat": 37,
           "lon": -96,
           "country": "USA",
-          "cases": 67,
           "note": "Travailleurs laitiers, variant B3.13"
         },
         {
           "lat": 21,
           "lon": 105.8,
           "country": "Vietnam",
-          "cases": 5,
           "note": "Volailles, Delta du Mékong"
         },
         {
           "lat": 23.6,
           "lon": 120,
           "country": "Taïwan",
-          "cases": 1,
           "note": "Cas sporadique volailles"
         },
         {
           "lat": 30.1,
           "lon": 31.2,
           "country": "Égypte",
-          "cases": 4,
           "note": "Contact volailles marché vivant"
         },
         {
           "lat": 11.6,
           "lon": 104.9,
           "country": "Cambodge",
-          "cases": 6,
           "note": "Zones rurales"
         },
         {
           "lat": 35.9,
           "lon": 104.2,
           "country": "Chine",
-          "cases": 3,
           "note": "Foyers aviaires Anhui/Fujian"
         }
       ],
@@ -190,42 +184,36 @@
           "lat": 20.6,
           "lon": 78.9,
           "country": "Inde",
-          "cases": 2800000,
           "note": "28% charge mondiale TB — OMS 2024"
         },
         {
           "lat": 7.9,
           "lon": 29.7,
           "country": "Afrique subsaharienne",
-          "cases": 1100000,
           "note": "TB-VIH co-infection — charge élevée"
         },
         {
           "lat": 30.4,
           "lon": 69.3,
           "country": "Pakistan",
-          "cases": 570000,
           "note": "TB multi-résistante (MDR-TB) en hausse"
         },
         {
           "lat": -6.2,
           "lon": 106.8,
           "country": "Indonésie",
-          "cases": 1000000,
           "note": "2e charge mondiale absolue OMS 2024"
         },
         {
           "lat": 6.5,
           "lon": 3.4,
           "country": "Nigeria",
-          "cases": 470000,
           "note": "3e charge africaine — diagnostic insuffisant"
         },
         {
           "lat": 61.5,
           "lon": 105.3,
           "country": "Russie",
-          "cases": 80000,
           "note": "TB-XDR (ultra-résistante) — vigilance Europe"
         }
       ],
@@ -278,21 +266,18 @@
           "lat": 10.8,
           "lon": 76.3,
           "country": "Inde (Kerala)",
-          "cases": 14,
           "note": "Cluster Kozhikode 2023-2024 — cycles récurrents"
         },
         {
           "lat": 23.7,
           "lon": 90.4,
           "country": "Bangladesh",
-          "cases": 8,
           "note": "Endémique — transmission salive chauve-souris/palmier"
         },
         {
           "lat": 1.3,
           "lon": 103.8,
           "country": "Singapour",
-          "cases": 11,
           "note": "Historique 1999 — contrôlé, vigilance porcs"
         }
       ],
@@ -341,8 +326,8 @@
         "Ferrés M et al. Emerg Infect Dis 2007 — Andes hantavirus CFR 25-35% Chile",
         "Vial PA et al. Clin Infect Dis 2006 — Andean hantavirus cardiopulmonary syndrome"
       ],
-      "descFR": "🚨 CLUSTER ACTIF (mai 2026) — 10 cas Hantavirus Andes confirmés sur paquebot MV Hondius (Ushuaia → Atlantique Sud). 3 décès (CFR 38%). Ex-passagers dans 12+ pays, 600+ contacts dans 32 pays. Andes virus = seul hantavirus avec transmission interhumaine prouvée. Phase prodromique (J0–J5) : fièvre, myalgies, céphalées — INDISCERNABLE d'une grippe. Dégradation brutale à J5–J10 : détresse respiratoire, collapsus hémodynamique. Facteurs de risque : voyage Patagonie/Amérique du Sud + contact rongeurs/excrétas. Toute personne ayant voyagé en Amérique du Sud dans les 6 semaines avec ces symptômes doit contacter un médecin en mentionnant le voyage. Mortalité élevée si non pris en charge en réanimation.",
-      "descEN": "🚨 ACTIVE CLUSTER (May 2026) — 10 confirmed Andes Hantavirus cases on cruise ship MV Hondius (Ushuaia → South Atlantic). 3 deaths (CFR 38%). Former passengers hospitalized in 12+ countries, 600+ contacts in 32 countries. Published in NEJM. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2.",
+      "descFR": "⚠️ Cluster d'hantavirus Andes lié au paquebot MV Hondius (2026) : voir les bulletins OMS DON600, DON604 et DON611 pour les chiffres à jour. Andes virus = seul hantavirus avec transmission interhumaine prouvée. Phase prodromique (J0–J5) : fièvre, myalgies, céphalées — INDISCERNABLE d'une grippe. Dégradation brutale à J5–J10 : détresse respiratoire, collapsus hémodynamique. Facteurs de risque : voyage Patagonie/Amérique du Sud + contact rongeurs/excrétas. Toute personne ayant voyagé en Amérique du Sud dans les 6 semaines avec ces symptômes doit contacter un médecin en mentionnant le voyage. Mortalité élevée si non pris en charge en réanimation.",
+      "descEN": "⚠️ Andes hantavirus cluster linked to the MV Hondius cruise ship (2026): see WHO DON600, DON604 and DON611 for current figures. Andes virus = only hantavirus with proven human-to-human transmission. Fever + respiratory distress after Patagonia/cruise travel: immediate isolation and FFP2.",
       "descPatientFR": "🟠 L'Hantavirus est rare mais grave. Il se transmet en respirant des poussières contenant les déjections de rongeurs infectés (souris, rats) — pas de personne à personne (sauf la souche des Andes). Risque si vous avez été en contact avec des rongeurs, des granges, ou des endroits poussiéreux en Amérique du Sud ou si vous étiez sur le paquebot MV Hondius en mai 2026. La maladie commence comme une grippe (J0–J5) puis peut devenir grave rapidement (difficultés à respirer).",
       "descPatientEN": "🟠 Hantavirus is rare but serious. It spreads by breathing dust containing infected rodent droppings (mice, rats) — not person to person (except Andes strain). Risk if you had contact with rodents, barns, or dusty places in South America or if you were on cruise ship MV Hondius in May 2026. Disease starts like flu (day 0-5) then can worsen rapidly (breathing difficulty).",
       "descPatientES": "🟠 El Hantavirus es raro pero grave. Se transmite respirando polvo con excrementos de roedores infectados. Riesgo si estuvo en contacto con roedores en América del Sur o si viajó en el crucero MV Hondius en mayo 2026. La enfermedad empieza como gripe (días 0-5) y puede empeorar rápidamente.",
@@ -352,14 +337,12 @@
           "lat": -54.8,
           "lon": -68.3,
           "country": "Patagonie",
-          "cases": 7,
           "note": "Cluster MV Hondius mai 2026"
         },
         {
           "lat": -32.9,
           "lon": -60.7,
           "country": "Argentine",
-          "cases": 45,
           "note": "Endémique — zone rurale Pampa"
         }
       ],
@@ -411,8 +394,8 @@
         "Mitjà O et al. Lancet 2023 — Mpox vaccine effectiveness",
         "INSP/INSPQ — Rapport épidémiologique Mpox clade Ib Afrique 2024-2025"
       ],
-      "descFR": "📊 SPF mai 2026 (IDF S18) : légère hausse des cas Mpox, tendance comparable à mai 2025. Clade Ib : plus transmissible que clade IIb (2022) — transmission contact cutané (lésions), gouttelettes en contact prolongé, et voie sexuelle. Cas importés en Europe documentés en 2026. Urgence de santé publique OMS (clade Ib) maintenue. FFP2 + EPI contact requis pour soignants. Différence critique avec clade IIb : CFR plus élevée (3–10% vs < 1%), transmission familiale et ménagère documentée, non limitée à la voie sexuelle.",
-      "descEN": "📊 SPF May 2026 (IDF week 18): slight Mpox case increase, trend comparable to May 2025, well below 2022 peak. WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.",
+      "descFR": "Clade Ib : plus transmissible que clade IIb (2022) — transmission contact cutané (lésions), gouttelettes en contact prolongé, et voie sexuelle. Cas importés en Europe documentés en 2026. Urgence de santé publique OMS (clade Ib) maintenue. FFP2 + EPI contact requis pour soignants. Différence critique avec clade IIb : CFR plus élevée (3–10% vs < 1%), transmission familiale et ménagère documentée, non limitée à la voie sexuelle.",
+      "descEN": "WHO PHEIC (clade Ib) maintained. Clade Ib more transmissible than 2022 clade IIb. Transmission via skin contact and droplets during prolonged contact. FFP2 + contact PPE required for healthcare workers.",
       "descPatientFR": "🟠 Mpox provoque une fièvre et des boutons/vésicules sur la peau. Il se transmet par contact cutané direct avec les lésions d'une personne malade — pas dans l'air pour la plupart des cas. La nouvelle souche (clade Ib) peut se transmettre dans une famille par contact prolongé. Si vous avez des boutons suspects + fièvre : consultez un médecin, ne grattez pas les lésions, couvrez-les. Il existe une vaccination préventive.",
       "descPatientEN": "🟠 Mpox causes fever and skin blisters/vesicles. It spreads through direct skin contact with lesions of a sick person — not through the air in most cases. The new strain (clade Ib) can spread within a family through prolonged contact. If you have suspicious rash + fever: see a doctor, do not scratch lesions, cover them. Preventive vaccination is available.",
       "r0": "Clade Ib : 1,8–2,2 (NEJM 2024, cluster Kibungo) vs Clade IIb 2022 : 1,1–1,3 · C'est pourquoi le clade Ib justifie une PHEIC OMS et pas le clade IIb",
@@ -423,56 +406,48 @@
           "lat": -1.7,
           "lon": 29.2,
           "country": "RDC",
-          "cases": 52000,
           "note": "Clade Ib — épicentre Kivu"
         },
         {
           "lat": -2.5,
           "lon": 28.8,
           "country": "Burundi",
-          "cases": 3800,
           "note": "Clade Ib transfrontalier"
         },
         {
           "lat": -1.9,
           "lon": 30.1,
           "country": "Rwanda",
-          "cases": 1200,
           "note": "Clade Ib importé"
         },
         {
           "lat": 0.35,
           "lon": 32.6,
           "country": "Ouganda",
-          "cases": 980,
           "note": "Clade Ib frontière RDC"
         },
         {
           "lat": -6.3,
           "lon": 34.9,
           "country": "Tanzanie",
-          "cases": 280,
           "note": "Clade Ib 2025"
         },
         {
           "lat": 52.5,
           "lon": 13.4,
           "country": "Allemagne",
-          "cases": 45,
           "note": "Clade IIb importé MSM"
         },
         {
           "lat": 48.9,
           "lon": 2.3,
           "country": "France",
-          "cases": 38,
           "note": "Clade IIb — vaccination recommandée"
         },
         {
           "lat": 40.4,
           "lon": -3.7,
           "country": "Espagne",
-          "cases": 29,
           "note": "Clade IIb"
         }
       ],
@@ -557,28 +532,25 @@
         "Rwanda Biomedical Centre — Marburg Outbreak Report 2024",
         "Towner JS et al. PLoS Pathog 2009 — Isolation of genetically diverse Marburg viruses"
       ],
-      "descFR": "⚠️ MARBURG : épidémie Éthiopie terminée jan 2026 (42 jours sans cas). Rwanda 2024 terminée. Haute vigilance maintenue — réservoir naturel : chauves-souris frugivores (Rousettus aegyptiacus), mines et grottes d'Afrique sub-saharienne. CFR 64% Éthiopie 2025–2026 (souche Ravn). Transmission : contact sang/fluides. Aucun vaccin homologué. Traitement expérimental (MAb114 en évaluation).",
-      "descEN": "✅ Ethiopia outbreak ENDED (Jan 26, 2026) — first-ever Marburg outbreak in Ethiopia: 14 confirmed cases, 9 deaths (CFR 64%), 5 probable cases (all died). Rwanda 2024 outbreak also ended. Active surveillance maintained — Rousettus bat reservoir present across sub-Saharan Africa. BSL-4 required.",
+      "descFR": "⚠️ MARBURG : épidémie Éthiopie terminée jan 2026 (42 jours sans cas). Rwanda 2024 terminée. Haute vigilance maintenue — réservoir naturel : chauves-souris frugivores (Rousettus aegyptiacus), mines et grottes d'Afrique sub-saharienne. Transmission : contact sang/fluides. Aucun vaccin homologué. Traitement expérimental (MAb114 en évaluation).",
+      "descEN": "✅ Ethiopia outbreak ENDED (Jan 26, 2026) — first-ever Marburg outbreak in Ethiopia. Rwanda 2024 outbreak also ended. Active surveillance maintained — Rousettus bat reservoir present across sub-Saharan Africa. BSL-4 required.",
       "foci": [
         {
           "lat": -6.2,
           "lon": 35.7,
           "country": "Tanzanie",
-          "cases": 9,
           "note": "Cluster Kagera 2025 — endiguement en cours"
         },
         {
           "lat": -1.9,
           "lon": 30.1,
           "country": "Rwanda",
-          "cases": 66,
           "note": "Flambée Kigali 2024 — personnel soignant touché"
         },
         {
           "lat": -8.8,
           "lon": 13.2,
           "country": "Angola",
-          "cases": 374,
           "note": "Référence historique : Uíge 2005 (CFR 90%)"
         }
       ],
@@ -620,49 +592,43 @@
         "CDC HICPAC 2024 — Airborne precautions for measles",
         "Griffin DE. Measles virus-induced suppression of immune responses. Immunol Rev 2010"
       ],
-      "descFR": "📈 RÉSURGENCE EUROPE 2026 : ECDC Q1 2026 — +180% cas vs Q1 2025 en UE/EEE. France : hausse SPF validée. CONTAGIEUX 4 JOURS AVANT L'ÉRUPTION CUTANÉE : pendant la phase de fièvre+toux+yeux rouges, le patient est déjà très contagieux — même sans éruption visible. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
+      "descFR": "CONTAGIEUX 4 JOURS AVANT L'ÉRUPTION CUTANÉE : pendant la phase de fièvre+toux+yeux rouges, le patient est déjà très contagieux — même sans éruption visible. La rougeole est 4x plus transmissible que le SARS-CoV-2 (R0 12–18). Un cas non vacciné peut contaminer jusqu'à 18 personnes. Signe de Köplik (taches blanches internes bouche) = pathognomonique avant l'éruption. Complications graves : pneumonie (1/20), encéphalite (1/1000), PESS (décès tardif). VACCINATION = seule protection efficace (2 doses ROR nécessaires).",
       "descEN": "Global resurgence 2022-2024: 306,000 cases reported (WHO 2024). R0 12-18. Long-range airborne transmission (2h in confined air). Post-measles immune suppression 2-3 years. FFP2 recommended for non-immune individuals in epidemic areas.",
       "foci": [
         {
           "lat": 55.7,
           "lon": 37.6,
           "country": "Russie",
-          "cases": 8900,
           "note": "Couverture vaccinale insuffisante"
         },
         {
           "lat": -4.3,
           "lon": 15.3,
           "country": "RDC",
-          "cases": 310000,
           "note": "Endémique + flambée 2025"
         },
         {
           "lat": 13.5,
           "lon": 2.1,
           "country": "Niger",
-          "cases": 18000,
           "note": "Sous-vaccination zones rurales"
         },
         {
           "lat": 33.9,
           "lon": 9.6,
           "country": "Tunisie",
-          "cases": 4200,
           "note": "Flambée 2025 — lacune vaccinale"
         },
         {
           "lat": 15.6,
           "lon": 32.5,
           "country": "Soudan",
-          "cases": 25000,
           "note": "Conflit → accès vaccins interrompu"
         },
         {
           "lat": 25.2,
           "lon": 55.3,
           "country": "ÉAU",
-          "cases": 620,
           "note": "Importés + transmission locale"
         }
       ],
@@ -754,42 +720,36 @@
           "lat": 35.9,
           "lon": 104.2,
           "country": "Chine",
-          "cases": 580000,
           "note": "H3N2 dominant hiver 2025-2026 — surveillance GISAID"
         },
         {
           "lat": 48.9,
           "lon": 2.4,
           "country": "France",
-          "cases": 3200000,
           "note": "Grippe A/H1N1 saison 2025-2026 — pic jan/fév (SPF)"
         },
         {
           "lat": 51.5,
           "lon": -0.1,
           "country": "Royaume-Uni",
-          "cases": 2800000,
           "note": "Grippe A — impact hospitalier élevé hiver 2025"
         },
         {
           "lat": 37.1,
           "lon": -95.7,
           "country": "USA",
-          "cases": 29000000,
           "note": "Saison 2024-2025 : 29M cas estimés CDC — H3N2"
         },
         {
           "lat": -33.9,
           "lon": 151.2,
           "country": "Australie",
-          "cases": 680000,
           "note": "Saison antipodale juin-sept 2025 — H1N1 dominant"
         },
         {
           "lat": -23.5,
           "lon": -46.6,
           "country": "Brésil",
-          "cases": 1400000,
           "note": "Saison hiver austral juin-août 2025"
         }
       ],
@@ -840,70 +800,60 @@
           "lat": -15.8,
           "lon": -47.9,
           "country": "Brésil",
-          "cases": 3800000,
           "note": "Pire épidémie historique 2024-2025"
         },
         {
           "lat": 4.9,
           "lon": 114.9,
           "country": "Malaisie",
-          "cases": 135000,
           "note": "Endémique + flambée 2025"
         },
         {
           "lat": 14.6,
           "lon": 121,
           "country": "Philippines",
-          "cases": 95000,
           "note": "Saison haute"
         },
         {
           "lat": 10.8,
           "lon": 106.6,
           "country": "Vietnam",
-          "cases": 68000,
           "note": "DENV-2 dominant"
         },
         {
           "lat": 13.8,
           "lon": 100.5,
           "country": "Thaïlande",
-          "cases": 52000,
           "note": "Saison sèche prolongée"
         },
         {
           "lat": 17.4,
           "lon": 78.5,
           "country": "Inde",
-          "cases": 290000,
           "note": "Saisons décalées"
         },
         {
           "lat": -12,
           "lon": -77,
           "country": "Pérou",
-          "cases": 42000,
           "note": "Flambée côtière"
         },
         {
           "lat": 4,
           "lon": 9.7,
           "country": "Cameroun",
-          "cases": 15000,
           "note": "Progression Afrique centrale"
         },
         {
           "lat": 18.5,
           "lon": -69.9,
           "country": "RépubliqueDominicaine",
-          "cases": 22000,
           "note": "Caraïbes 2025"
         },
         {
           "lat": 43.3,
           "lon": -1.9,
           "country": "France",
-          "cases": 12,
           "note": "Cas autochtones Pyrénées-Atlantiques (Aedes albopictus)"
         }
       ],
@@ -1033,49 +983,43 @@
         "ECDC — Pertussis Surveillance Report 2024 — flambée historique Europe",
         "Tan T et al. Pediatrics 2024 — pertussis resurgence post-COVID vaccination gaps"
       ],
-      "descFR": "📈 HAUSSE 2026 : SPF confirme augmentation cas coqueluche France 2025–2026. ECDC 2024 : niveaux record Europe depuis 20 ans. Pic chez nourrissons < 6 mois non encore vaccinés (mortalité élevée). Adultes : réservoir principal (vaccin a-cellulaire immunité déclinante après 5–10 ans). Stratégie cocooning : vaccination entourage + cocooning maternité. Phase catarrhale (J0–J14) = phase contagieuse maximale mais toux encore banale → diagnostic difficile.",
+      "descFR": "ECDC 2024 : niveaux record en Europe. Pic chez nourrissons < 6 mois non encore vaccinés (mortalité élevée). Adultes : réservoir principal (vaccin a-cellulaire immunité déclinante après 5–10 ans). Stratégie cocooning : vaccination entourage + cocooning maternité. Phase catarrhale (J0–J14) = phase contagieuse maximale mais toux encore banale → diagnostic difficile.",
       "descEN": "Record 2024 resurgence in Europe (ECDC: highest levels in decades). R0 12-17. CFR 1-2% in infants. FFP2 recommended for unprotected close contact with confirmed case, especially around infants.",
       "foci": [
         {
           "lat": 39.9,
           "lon": 116.4,
           "country": "Chine",
-          "cases": 320000,
           "note": "Plus grande flambée mondiale 2024-2025"
         },
         {
           "lat": 51.5,
           "lon": -0.1,
           "country": "Royaume-Uni",
-          "cases": 15000,
           "note": "Flambée 2024 — meilleure depuis 50 ans"
         },
         {
           "lat": 48.9,
           "lon": 2.4,
           "country": "France",
-          "cases": 9000,
           "note": "Flambée 2024-2025 (SPF)"
         },
         {
           "lat": 40.4,
           "lon": -3.7,
           "country": "Espagne",
-          "cases": 8200,
           "note": "Flambée simultanée"
         },
         {
           "lat": 52.5,
           "lon": 13.4,
           "country": "Allemagne",
-          "cases": 12000,
           "note": "ECDC alerte 2024"
         },
         {
           "lat": 37.1,
           "lon": -95.7,
           "country": "USA",
-          "cases": 18500,
           "note": "Cycle épidémique 3-5 ans"
         }
       ],
@@ -1129,12 +1073,10 @@
       "lat": 1.65,
       "lon": 30.25,
       "activeRegions": [
-        "🚨🇫🇷 FRANCE — 1 cas importé confirmé · isolement en établissement de santé de référence · rapatriement depuis RDC · 24/06/2026",
-        "🚨 Ituri (RD Congo) — 322 cas confirmés · épicentre",
-        "🚨 Nord-Kivu (RD Congo) — 19 cas confirmés",
-        "🚨 Sud-Kivu (RD Congo) — 3 cas confirmés",
-        "🚨 Ouganda — 15 cas confirmés · 1 décès · propagation transfrontalière",
-        "⚠️ Mayotte (France) — vigilance renforcée · aucun cas confirmé"
+        "🚨 RD Congo — 8 728 cas confirmés, 4 205 décès au 6 oct. 2026 (OMS DON619) · épicentre Ituri",
+        "⚠️ Kenya — 1 cas importé confirmé le 5 oct. 2026 (OMS DON619)",
+        "⚠️ Ouganda — inclus dans la PHEIC (OMS DON602)",
+        "🇫🇷 France — 1 cas importé confirmé le 24/06/2026 (OMS DON612)"
       ],
       "transmission": [
         "Contact direct sang/fluides biologiques",
@@ -1387,8 +1329,8 @@
         "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid during recovery",
         "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors (semen persistence 9 months)"
       ],
-      "descFR": "🚨 PREMIER CAS EN FRANCE (24/06/2026) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en établissement de santé de référence — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
-      "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in a designated referral hospital — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
+      "descFR": "🚨 Cas importé en France le 24/06/2026 (OMS DON612) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en établissement de santé de référence — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active — 8 728 cas confirmés et 4 205 décès au 6 oct. 2026, cas importé au Kenya le 5 oct. (OMS DON619). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
+      "descEN": "🚨 Imported case in France on 24/06/2026 (WHO DON612) · WHO PHEIC active since 17/05/2026. Imported isolated case in a designated referral hospital — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak — 8,728 confirmed cases and 4,205 deaths as of 6 Oct 2026, imported case in Kenya on 5 Oct (WHO DON619). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
       "descPatientFR": "🟥 Ebola est une maladie très grave mais qui ne se transmet PAS dans l'air. On l'attrape uniquement en touchant le sang ou les liquides corporels d'une personne malade. Si vous n'avez pas voyagé en Afrique centrale/Est récemment et n'avez pas eu de contact avec un malade, votre risque est extrêmement faible — même avec l'alerte en France. Si vous avez de la fièvre ET avez voyagé dans ces pays dans les 21 derniers jours : appelez le 15 avant d'aller aux urgences.",
       "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room.",
       "descPatientES": "🟥 El Ébola es muy grave pero NO se transmite por el aire. Solo se contagia por contacto con sangre o fluidos de una persona enferma. Si no viajó a África central/oriental recientemente, su riesgo es extremadamente bajo. Si tiene fiebre Y viajó a esos países en los últimos 21 días: llame al 15 antes de ir a urgencias.",
@@ -1397,9 +1339,9 @@
         {
           "lat": 1.65,
           "lon": 29.3,
-          "country": "Ouganda/RDC",
-          "cases": 1,
-          "note": "Cas isolé — PHEIC actif OMS"
+          "country": "RDC (Ituri)",
+          "note": "Épicentre — OMS DON619",
+          "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619"
         }
       ],
       "verifiedAt": "2026-10-07"
@@ -1626,35 +1568,30 @@
           "lat": 41,
           "lon": 29,
           "country": "Turquie",
-          "cases": 380,
           "note": "Zone endémique — tiques Hyalomma"
         },
         {
           "lat": 34.5,
           "lon": 69.2,
           "country": "Afghanistan",
-          "cases": 210,
           "note": "Pasteurs/éleveurs"
         },
         {
           "lat": 31.5,
           "lon": 34.8,
           "country": "Israël",
-          "cases": 18,
           "note": "Nouveau foyer 2024"
         },
         {
           "lat": 40.4,
           "lon": -3.7,
           "country": "Espagne",
-          "cases": 9,
           "note": "Tiques importées bétail"
         },
         {
           "lat": 52,
           "lon": 45,
           "country": "Russie",
-          "cases": 75,
           "note": "Steppe russe — zone classique"
         }
       ],
@@ -1714,70 +1651,60 @@
           "lat": 14,
           "lon": 8,
           "country": "Niger",
-          "cases": 4800,
           "note": "Sécheresse + eau contaminée"
         },
         {
           "lat": 15.6,
           "lon": 32.5,
           "country": "Soudan",
-          "cases": 12000,
           "note": "Conflit — système eau effondré"
         },
         {
           "lat": 23.7,
           "lon": 90.4,
           "country": "Bangladesh",
-          "cases": 15000,
           "note": "Saison cyclonique 2025"
         },
         {
           "lat": 7.4,
           "lon": -2,
           "country": "Ghana",
-          "cases": 3200,
           "note": "Inondations nord Ghana"
         },
         {
           "lat": 13.5,
           "lon": 2.1,
           "country": "Nigéria",
-          "cases": 8500,
           "note": "Nord-Est — accès eau limité"
         },
         {
           "lat": -17.7,
           "lon": 168.3,
           "country": "Vanuatu",
-          "cases": 1800,
           "note": "Post-cyclone 2025"
         },
         {
           "lat": 13,
           "lon": 42.7,
           "country": "Éthiopie",
-          "cases": 22000,
           "note": "Plus grande épidémie 2025"
         },
         {
           "lat": -18.9,
           "lon": 47.5,
           "country": "Madagascar",
-          "cases": 6400,
           "note": "Saison des pluies 2025"
         },
         {
           "lat": 24.5,
           "lon": 54.4,
           "country": "Yémen",
-          "cases": 35000,
           "note": "Conflit chronique — 2024-2025"
         },
         {
           "lat": 8,
           "lon": 38.7,
           "country": "Éthiopie-Sud",
-          "cases": 5000,
           "note": "Somalie/Kenya frontalier"
         }
       ],
@@ -1834,42 +1761,36 @@
           "lat": -3.1,
           "lon": -60,
           "country": "Brésil (Amazonas)",
-          "cases": 280000,
           "note": "Pire épidémie historique 2024-2025 — PHEIC potentiel PAHO"
         },
         {
           "lat": -12,
           "lon": -77,
           "country": "Pérou",
-          "cases": 15000,
           "note": "Nouveaux foyers 2024-2025"
         },
         {
           "lat": 4.7,
           "lon": -74.1,
           "country": "Colombie",
-          "cases": 8000,
           "note": "Expansion nord 2024-2025"
         },
         {
           "lat": 23.1,
           "lon": -82.4,
           "country": "Cuba",
-          "cases": 3500,
           "note": "Premier foyer important Caraïbes 2024"
         },
         {
           "lat": 14.1,
           "lon": -87.2,
           "country": "Honduras",
-          "cases": 1200,
           "note": "Importation 2025"
         },
         {
           "lat": 48.9,
           "lon": 2.4,
           "country": "France",
-          "cases": 8,
           "note": "Cas importés voyageurs Amazonie"
         }
       ],
@@ -1924,49 +1845,42 @@
           "lat": -4,
           "lon": 21.8,
           "country": "RDC",
-          "cases": 4800,
           "note": "Foyer chronique — vaccination insuffisante"
         },
         {
           "lat": 6.4,
           "lon": 12.4,
           "country": "Cameroun",
-          "cases": 1200,
           "note": "Flambée 2024-2025"
         },
         {
           "lat": 9.1,
           "lon": 8.7,
           "country": "Nigeria",
-          "cases": 2600,
           "note": "Zones rurales non vaccinées"
         },
         {
           "lat": -14.2,
           "lon": -51.9,
           "country": "Brésil",
-          "cases": 580,
           "note": "Zones rurales cerrado 2025"
         },
         {
           "lat": -12,
           "lon": -77,
           "country": "Pérou",
-          "cases": 85,
           "note": "Forêt amazonienne"
         },
         {
           "lat": 9.1,
           "lon": 40.5,
           "country": "Éthiopie",
-          "cases": 420,
           "note": "Foyer nouveau 2024 — frontière soudan"
         },
         {
           "lat": 11.5,
           "lon": -2.5,
           "country": "Burkina Faso",
-          "cases": 310,
           "note": "Expansion sahélienne"
         }
       ],
@@ -2022,49 +1936,42 @@
           "lat": -21.1,
           "lon": 55.5,
           "country": "La Réunion",
-          "cases": 420,
           "note": "Endémique — saison cyclonique 2025"
         },
         {
           "lat": -17.7,
           "lon": -149.4,
           "country": "Polynésie française",
-          "cases": 280,
           "note": "Inondations 2025"
         },
         {
           "lat": -14.3,
           "lon": -170.7,
           "country": "Samoa américaines",
-          "cases": 95,
           "note": "Post-cyclone"
         },
         {
           "lat": -14.2,
           "lon": -51.9,
           "country": "Brésil",
-          "cases": 8500,
           "note": "Inondations Rio Grande do Sul 2024"
         },
         {
           "lat": 10.8,
           "lon": 106.6,
           "country": "Vietnam",
-          "cases": 4200,
           "note": "Agriculteurs riziculteurs"
         },
         {
           "lat": 13.8,
           "lon": 100.5,
           "country": "Thaïlande",
-          "cases": 3800,
           "note": "Inondations saison mousson"
         },
         {
           "lat": 28.6,
           "lon": 77.2,
           "country": "Inde",
-          "cases": 12000,
           "note": "Post-mousson Maharashtra/Kerala"
         }
       ],
@@ -2167,14 +2074,12 @@
           "lat": -18.9,
           "lon": 47.5,
           "country": "Madagascar",
-          "cases": null,
           "note": "Foyer enzootique majeur — cas annuels"
         },
         {
           "lat": 42.8,
           "lon": 74.6,
           "country": "Kirghizstan",
-          "cases": null,
           "note": "Foyer enzootique — cas sporadiques"
         }
       ],
