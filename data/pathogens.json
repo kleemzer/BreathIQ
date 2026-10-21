@@ -1129,7 +1129,7 @@
       "lat": 1.65,
       "lon": 30.25,
       "activeRegions": [
-        "🚨🇫🇷 FRANCE — 1 cas importé confirmé · isolement UHSI · rapatriement depuis RDC · 24/06/2026",
+        "🚨🇫🇷 FRANCE — 1 cas importé confirmé · isolement en établissement de santé de référence · rapatriement depuis RDC · 24/06/2026",
         "🚨 Ituri (RD Congo) — 322 cas confirmés · épicentre",
         "🚨 Nord-Kivu (RD Congo) — 19 cas confirmés",
         "🚨 Sud-Kivu (RD Congo) — 3 cas confirmés",
@@ -1338,7 +1338,7 @@
           "levelFR": "Cas confirmé (PCR+)",
           "levelEN": "Confirmed case (PCR+)",
           "epiFR": [
-            "Unité d'isolement haute sécurité (type UHSI)",
+            "Chambre d'isolement en établissement de santé de référence (ESR)",
             "FFP3/PAPR obligatoire",
             "Combinaison imperméable complète",
             "Double gantage + couvre-bottes + visière intégrale",
@@ -1346,7 +1346,7 @@
             "Décontamination sas avant sortie"
           ],
           "epiEN": [
-            "High-security isolation unit (UHSI type)",
+            "Isolation room in a designated referral hospital (ESR)",
             "FFP3/PAPR mandatory",
             "Full impermeable suit",
             "Double gloves + boot covers + full-face visor",
@@ -1387,8 +1387,8 @@
         "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid during recovery",
         "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors (semen persistence 9 months)"
       ],
-      "descFR": "🚨 PREMIER CAS EN FRANCE (24/06/2026) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en UHSI — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
-      "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in UHSI — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
+      "descFR": "🚨 PREMIER CAS EN FRANCE (24/06/2026) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en établissement de santé de référence — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active (Ituri, Nord-Kivu, Sud-Kivu). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
+      "descEN": "🚨 FIRST CASE IN FRANCE (24/06/2026) · WHO PHEIC active since 17/05/2026. Imported isolated case in a designated referral hospital — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak (Ituri, North Kivu, South Kivu). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
       "descPatientFR": "🟥 Ebola est une maladie très grave mais qui ne se transmet PAS dans l'air. On l'attrape uniquement en touchant le sang ou les liquides corporels d'une personne malade. Si vous n'avez pas voyagé en Afrique centrale/Est récemment et n'avez pas eu de contact avec un malade, votre risque est extrêmement faible — même avec l'alerte en France. Si vous avez de la fièvre ET avez voyagé dans ces pays dans les 21 derniers jours : appelez le 15 avant d'aller aux urgences.",
       "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room.",
       "descPatientES": "🟥 El Ébola es muy grave pero NO se transmite por el aire. Solo se contagia por contacto con sangre o fluidos de una persona enferma. Si no viajó a África central/oriental recientemente, su riesgo es extremadamente bajo. Si tiene fiebre Y viajó a esos países en los últimos 21 días: llame al 15 antes de ir a urgencias.",
@@ -2099,7 +2099,7 @@
         "OMS — Leptospirosis global situation 2024",
         "Hartskeerl RA. J Bacteriol 2006 — Leptospira taxonomy",
         "Haake DA & Levett PN. Curr Top Microbiol Immunol 2015;387:65-97",
-        "InVS/SPF — Leptospirose La Réunion : facteurs de risque et saisonnalité 2023"
+        "SPF — Leptospirose La Réunion : facteurs de risque et saisonnalité 2023"
       ],
       "descFR": "Leptospirose : zoonose bactérienne transmise par contact cutané avec eau/sol souillé par urine de rongeurs. Aucune transmission interhumaine ni respiratoire. La Réunion et Polynésie française : zones hyper-endémiques. Saison à risque : pluies + inondations. Forme grave (Weil) : ictère + insuffisance rénale.",
       "descEN": "Leptospirosis: bacterial zoonosis transmitted by skin contact with water/soil contaminated by rodent urine. No person-to-person or respiratory transmission. Réunion and French Polynesia: hyper-endemic zones. High-risk season: rains + floods. Severe form (Weil's disease): jaundice + renal failure.",

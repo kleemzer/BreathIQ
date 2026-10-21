@@ -3,8 +3,8 @@
 //
 // Le navigateur ne détient que le client_id. L'échange du code (client_secret) et la lecture
 // du userinfo se font côté serveur : Cloudflare Pages Function /api/psc-token.
-// La déclaration de cas (/api/declare) exige un jeton PSC valide, revérifié auprès de l'ANS
-// à chaque envoi — une « porte » côté navigateur seule ne suffirait pas.
+// Le jeton d'accès reste côté serveur (KV) ; le navigateur ne détient qu'un cookie de session
+// HttpOnly. /api/declare revérifie le jeton auprès de l'ANS à chaque envoi.
 //
 // Configuration : window.__PSC_CLIENT_ID__ (injecté dans index.html) ; endpoints bac à sable
 // par défaut, production après homologation ANS.
@@ -53,17 +53,17 @@
     window.location.href = `${PSC_CONFIG.authEndpoint}?${params.toString()}`;
   }
 
-  // Échange du code côté serveur ; renvoie { access_token, expires_in, professional }
+  // Échange du code côté serveur ; renvoie { expires_in, professional } et pose le cookie de session
   async function exchangeCode(code, state) {
     const savedState = sessionStorage.getItem('psc_state');
     const codeVerifier = sessionStorage.getItem('psc_verifier');
     if (!savedState || state !== savedState) throw new Error('état CSRF invalide');
     const resp = await fetch(PSC_CONFIG.tokenEndpoint, {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ code, code_verifier: codeVerifier, redirect_uri: PSC_CONFIG.redirectUri }),
     });
     const data = await resp.json().catch(() => ({}));
-    if (!resp.ok) throw new Error(data.message || data.error || `échange de code refusé (${resp.status})`);
+    if (!resp.ok) throw new Error(data.message || 'connexion refusée');
     sessionStorage.removeItem('psc_verifier');
     sessionStorage.removeItem('psc_state');
     return data;
@@ -71,28 +71,33 @@
 
   function saveSession(data) {
     const expiresAt = Date.now() + Math.max(60, Number(data.expires_in) || 300) * 1000;
-    sessionStorage.setItem('psc_session', JSON.stringify({ token: data.access_token, expiresAt, professional: data.professional || null }));
+    // Aucun jeton côté navigateur : seulement le profil d'affichage et l'échéance de la session
+    sessionStorage.setItem('psc_session', JSON.stringify({ expiresAt, professional: data.professional || null }));
   }
   function getSession() {
     try {
       const s = JSON.parse(sessionStorage.getItem('psc_session') || 'null');
-      if (!s || !s.token || s.expiresAt <= Date.now()) return null;
+      if (!s || s.expiresAt <= Date.now()) return null;
       return s;
     } catch { return null; }
   }
   function isLoggedIn() { return !!getSession(); }
-  function logout() { ['psc_session', 'psc_verifier', 'psc_state', 'psc_return'].forEach(k => sessionStorage.removeItem(k)); }
+  function clearLocal() { ['psc_session', 'psc_verifier', 'psc_state', 'psc_return'].forEach(k => sessionStorage.removeItem(k)); }
+  function logout() {
+    clearLocal();
+    fetch('/api/psc-logout', { method: 'POST', credentials: 'same-origin' }).catch(() => {});
+  }
 
-  // Envoi authentifié d'une déclaration ; le serveur revalide le jeton auprès de l'ANS
+  // Envoi authentifié (cookie de session) ; le serveur revalide le jeton auprès de l'ANS
   async function submitDeclaration(payload) {
     const s = getSession();
     if (!s) throw new Error('session PSC absente ou expirée');
     const resp = await fetch('/api/declare', {
-      method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${s.token}` },
+      method: 'POST', credentials: 'same-origin', headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload),
     });
     const data = await resp.json().catch(() => ({}));
-    if (!resp.ok) { if (resp.status === 401) logout(); throw Object.assign(new Error(data.message || data.error || `refus (${resp.status})`), { code: data.error, status: resp.status }); }
+    if (!resp.ok) { if (resp.status === 401) clearLocal(); throw Object.assign(new Error(data.message || data.error || `refus (${resp.status})`), { code: data.error, status: resp.status }); }
     return data;
   }
 

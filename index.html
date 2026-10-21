@@ -191,7 +191,6 @@
   <noscript><link rel="stylesheet" href="style.min.css?v=20261010b"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
-  <link rel="preconnect" href="https://cloud.umami.is" crossorigin>
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
   <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
   <link rel="dns-prefetch" href="https://api.openaq.org">
@@ -1001,8 +1000,8 @@
           <div class="wiz-ctx-group">
             <span data-i18n="x-qui-est-concerne-cfdd" class="wiz-ctx-label">👤 Qui est concerné ?</span>
             <div class="ctx-pills-row">
-              <button data-i18n="x-nourrisson-lt-2-ans-27de" class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')" aria-label="Profil : nourrisson moins de 2 ans" aria-pressed="false">Nourrisson &lt;2 ans</button>
-              <button data-i18n="x-enfant-2-15-ans-e003" class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de 2 à 15 ans" aria-pressed="false">Enfant 2–15 ans</button>
+              <button data-i18n="x-nourrisson-lt-2-ans-27de" class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de moins de 2 ans" aria-pressed="false">Moins de 2 ans</button>
+              <button data-i18n="x-enfant-2-15-ans-e003" class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de 2 ans à 15 ans" aria-pressed="false">2 à 15 ans</button>
               <button data-i18n="x-adulte-04e6" class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')" aria-label="Profil : adulte" aria-pressed="true">Adulte</button>
               <button data-i18n="x-senior-65-ans-5312" class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')" aria-label="Profil : senior 65 ans ou plus" aria-pressed="false">Senior ≥ 65 ans</button>
             </div>
@@ -1057,7 +1056,7 @@
               <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span data-i18n="x-voyage-tropical-recent-lt-b01a">Voyage tropical récent (&lt; 21 jours)</span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
-              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span><span data-i18n="x-voyage-afrique-centrale-est-2c82">Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) &lt; 21j</span> <span data-i18n="x-ebola-pheic-eabc" class="ctx-alert-badge">⚠️ Ebola PHEIC</span></span>
+              <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span><span data-i18n="x-voyage-afrique-centrale-est-2c82">Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) &lt; 21j</span> <span data-i18n="x-ebola-pheic-eabc" class="ctx-alert-badge">⚠️ Alerte OMS en cours</span></span>
             </label>
             <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
               <input type="checkbox" value="mv_hondius"><span class="sym-icon">🐭</span><span><span data-i18n="x-voyage-patagonie-amerique-du-5b18">Voyage Patagonie / Amérique du Sud rurale &lt; 6 sem.</span> <span data-i18n="x-hantavirus-7ddd" class="ctx-alert-badge ctx-alert-orange">⚠️ Hantavirus</span></span>
@@ -1508,14 +1507,14 @@
         <div class="decl-consent">
           <label class="decl-consent-label">
             <input type="checkbox" name="consent" required id="declConsent">
-            <span data-i18n="decl-consent-text">J'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n'est collectée (données agrégées uniquement).</span>
+            <span data-i18n="decl-consent-text">J&#39;ai compris que ce signalement est transmis au serveur de BreathIQ (Cloudflare) et conservé 120 jours, rattaché à un pseudonyme de mon compte Pro Santé Connect (et non à mon nom ni à mon RPPS). Seuls des totaux par semaine, région et pathologie, d&#39;au moins 3 professionnels, peuvent être publiés.</span>
           </label>
         </div>
         <!-- Consentement explicite Art. 9 RGPD — données de santé -->
         <div class="decl-consent decl-consent-art9">
           <label class="decl-consent-label">
             <input type="checkbox" name="consent_art9" required id="declConsentArt9">
-            <span data-i18n="decl-consent-art9">Je déclare agir en qualité de professionnel de santé ou de citoyen informé, et consens expressément au traitement de cette donnée de santé (Art. 9 RGPD) à des fins exclusives de surveillance épidémiologique locale, sans transmission serveur.</span>
+            <span data-i18n="decl-consent-art9">Je certifie agir en qualité de professionnel de santé. Le signalement ne contient aucune donnée identifiant un patient. Il ne remplace ni la déclaration obligatoire ni le signal à l'ARS.</span>
           </label>
           <div data-i18n="x-art-9-rgpd-donnee-f846" class="decl-art9-badge">Art. 9 RGPD — Donnée de santé</div>
         </div>
@@ -1533,15 +1532,14 @@
       <div class="decl-confirm hidden" id="declConfirm">
         <div class="decl-confirm-icon">✅</div>
         <p class="decl-confirm-title" data-i18n="decl-confirm-title">Déclaration transmise</p>
-        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Merci. Signal pseudonymisé intégré à la surveillance régionale.</p>
+        <p class="decl-confirm-sub" data-i18n="decl-confirm-sub">Merci. Signalement enregistré (phase pilote) : il ne sera visible que dans des totaux régionaux, et seulement lorsqu'au moins 3 professionnels auront signalé.</p>
         <div id="declArsHint" class="decl-ars-hint" translate="no"></div>
 
         <!-- Rappel DO officielle — critique légalement -->
         <div style="background:rgba(245,158,11,0.12);border:1px solid rgba(245,158,11,0.35);border-radius:.75rem;padding:.85rem 1rem;margin:.75rem 0;text-align:left;font-size:.82rem;line-height:1.6;color:#FCD34D;">
           <strong data-i18n="x-rappel-declaration-obligatoire-do-6c95">⚠️ Rappel — Déclaration Obligatoire (DO)</strong><br>
-          <span data-i18n="x-ce-signal-est-uniquement-a840">Ce signal est uniquement local. Il</span> <strong data-i18n="x-ne-remplace-pas-2c72">ne remplace pas</strong> <span data-i18n="x-la-declaration-officielle-a-71cb">la déclaration officielle à l'ARS via</span>
-          <a translate="no" href="https://signalement.social-sante.gouv.fr" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;">signalement.social-sante.gouv.fr</a>
-          <span data-i18n="x-ou-par-fiche-cerfa-ef71">ou par fiche cerfa, obligatoire pour les maladies à DO.</span>
+          <span data-i18n="decl-confirm-do">Ce signalement n'est pas une déclaration obligatoire et n'est transmis ni à l'ARS ni à Santé publique France. Pour une maladie à déclaration obligatoire, suivez le circuit officiel de la maladie :</span>
+          <a href="https://www.santepubliquefrance.fr/maladies-a-declaration-obligatoire/liste-des-maladies-a-declaration-obligatoire" target="_blank" rel="noopener" style="color:#FCD34D;font-weight:700;" data-i18n="decl-confirm-do-link">liste et fiches de déclaration (Santé publique France)</a>
         </div>
 
         <!-- Widget signal épidémique injecté ici après déclaration -->
@@ -1725,11 +1723,11 @@
       </button>
       <button data-i18n="x-epi-niveau-4-ebola-4e32" id="biqTabEpi4" class="biq-tab" role="tab" aria-selected="false"
               aria-controls="biqTabEpi4Panel" onclick="BIQ_PRO.switchTab('biqTabEpi4')">
-        🛡️ EPI Niveau 4 / Ebola
+        🛡️ Fièvres hémorragiques / Ebola
       </button>
       <button data-i18n="x-contacts-urgence-fc54" id="biqTabContacts" class="biq-tab" role="tab" aria-selected="false"
               aria-controls="biqTabContactsPanel" onclick="BIQ_PRO.switchTab('biqTabContacts')">
-        📞 Contacts urgence
+        📞 DO et contacts
       </button>
     </div>
 
@@ -1744,169 +1742,49 @@
       </div>
     </div>
 
-    <!-- Panel EPI Niveau 4 -->
+    <!-- Panel FHV / Ebola : renvoi exclusif vers les référentiels officiels (aucun protocole maison) -->
     <div id="biqTabEpi4Panel" role="tabpanel" aria-labelledby="biqTabEpi4" hidden>
       <div class="epi4-guide">
-        <div class="epi4-quarantine-box" role="note">
-          <strong data-i18n="x-quarantaine-isolement-distinction-fondamentale-9c9a">📌 Quarantaine ≠ Isolement — distinction fondamentale</strong>
-          <div class="epi4-q-grid">
-            <div><strong data-i18n="x-isolement-2ba2">Isolement</strong> <span data-i18n="x-pour-le-df8d">— pour le</span> <em data-i18n="x-cas-confirme-ou-probable-76f5">cas confirmé ou probable</em> <span data-i18n="x-malade-separation-physique-stricte-eaf6">(malade) : séparation physique stricte, EPI soignants, chambre individuelle avec sas, déchets DASRI catégorie B.</span></div>
-            <div><strong data-i18n="x-quarantaine-1c4e">Quarantaine</strong> <span data-i18n="x-pour-le-df8d">— pour le</span> <em data-i18n="x-contact-asymptomatique-e40d">contact asymptomatique</em> <span data-i18n="x-expose-mais-pas-malade-97e3">(exposé mais pas malade) : surveillance thermique quotidienne, restriction de déplacements, durée = période d'incubation max du pathogène.</span> <strong data-i18n="x-un-contact-ebola-n-9f15">Un contact Ebola n'est pas isolé — il est mis en quarantaine 21 jours avec suivi ARS.</strong></div>
-          </div>
+        <div class="epi4-alert-box" role="note">
+          <strong data-i18n="fhv-urgent-title">Suspicion de fièvre hémorragique virale (Ebola, Marburg, Lassa, FHCC) :</strong>
+          <span data-i18n="fhv-urgent-body">isolez le patient sans examen invasif, ne l'adressez pas aux urgences par ses propres moyens, et appelez immédiatement le 15 (SAMU), puis le point focal de votre ARS. Le SAMU et l'infectiologue référent organisent le classement du cas et le transfert vers l'établissement de santé de référence (ESR).</span>
         </div>
         <div class="epi4-disclaimer" role="note">
-          ⚠️ <strong data-i18n="x-outil-d-information-non-1fb4">Outil d'information — non dispositif médical (Règl. UE 2017/745).</strong> <span data-i18n="x-ce-contenu-est-destine-6b46">Ce contenu est destiné aux professionnels de santé formés. La prise en charge Ebola nécessite une formation institutionnelle préalable (UHSI/INSERM) et ne doit jamais être réalisée sans habilitation spécifique.</span>
+          ⚠️ <strong data-i18n="x-outil-d-information-non-1fb4">Outil d'information — non dispositif médical (Règl. UE 2017/745).</strong>
+          <span data-i18n="fhv-no-protocol">BreathIQ ne publie aucun protocole d'habillage, de déshabillage ni de conduite à tenir après exposition : ces procédures relèvent des référentiels nationaux et de la formation de votre établissement. Utilisez exclusivement les documents ci-dessous, dans leur version en vigueur.</span>
         </div>
-
-        <h3 data-i18n="x-epi-niveau-4-specificites-b452" class="epi4-section-title">🛡️ EPI Niveau 4 — Spécificités Ebola (souche Bundibugyo)</h3>
-
-        <div class="epi4-alert-box">
-          <strong data-i18n="x-difference-critique-epi-4-8693">⚡ Différence critique EPI-4 ≠ EPI-3 (FFP3) :</strong> <span data-i18n="x-ebola-exige-une-combinaison-1f90">Ebola exige une combinaison étanche type BSL-4 (SCBA ou masque respiratoire intégral + combinaison étanche à double gants).</span> <strong data-i18n="x-un-ffp3-seul-est-8d30">Un FFP3 seul est INSUFFISANT pour Ebola.</strong> <span data-i18n="x-la-contamination-peut-survenir-cdc5">La contamination peut survenir par muqueuses oculaires et buccales.</span>
-        </div>
-
-        <div class="epi4-grid">
-          <div class="epi4-card">
-            <h4 data-i18n="x-equipement-obligatoire-epi-4-c77c">🔴 Équipement obligatoire (EPI-4)</h4>
-            <ul>
-              <li data-i18n="x-combinaison-etanche-impermeable-type-3f27">Combinaison étanche imperméable (type DEMRON® ou équivalent UHSI)</li>
-              <li><span data-i18n="x-masque-respiratoire-a-ventilation-0a56">Masque respiratoire à ventilation assistée (PAPR)</span> <em>ou</em> <span data-i18n="x-scba-ffp3-insuffisant-d8e6">SCBA — FFP3 insuffisant</span></li>
-              <li data-i18n="x-double-gants-nitrile-steriles-1b9d">Double gants nitrile (stériles intérieurs)</li>
-              <li data-i18n="x-tablier-impermeable-manchettes-etanches-0d12">Tablier imperméable + manchettes étanches</li>
-              <li data-i18n="x-bottes-impermeables-surbottes-a21c">Bottes imperméables + surbottes</li>
-              <li data-i18n="x-protection-oculaire-integrale-ecran-5ffd">Protection oculaire intégrale (écran facial étanche)</li>
-            </ul>
-          </div>
-
-          <div class="epi4-card">
-            <h4 data-i18n="x-procedure-habillage-uhsi-b88d">🟡 Procédure habillage (UHSI)</h4>
-            <ol>
-              <li data-i18n="x-verification-visuelle-materiel-2eme-8fc4">Vérification visuelle matériel + 2ème soignant observateur</li>
-              <li data-i18n="x-hygiene-mains-sha-30-028f">Hygiène mains SHA 30 sec</li>
-              <li data-i18n="x-combinaison-fermeture-eclair-hermetique-fbbb">Combinaison + fermeture éclair hermétique</li>
-              <li data-i18n="x-capuche-masque-papr-scba-f633">Capuche + masque PAPR/SCBA</li>
-              <li data-i18n="x-gants-interieurs-fixes-au-1522">Gants intérieurs fixés au poignet (adhésif)</li>
-              <li data-i18n="x-ecran-facial-tablier-gants-28a9">Écran facial + tablier + gants extérieurs</li>
-              <li data-i18n="x-verification-double-par-observateur-18f9">Vérification double par observateur avant entrée zone</li>
-            </ol>
-          </div>
-
-          <div class="epi4-card">
-            <h4 data-i18n="x-protocole-deshabillage-ordre-strict-3bf6">🟢 Protocole déshabillage (ordre strict)</h4>
-            <ol>
-              <li data-i18n="x-sha-mains-gantees-avant-f54e">SHA mains gantées AVANT tout retrait</li>
-              <li data-i18n="x-retrait-tablier-bottes-sans-1e47">Retrait tablier + bottes (sans toucher la face)</li>
-              <li data-i18n="x-sha-mains-gantees-6ca9">SHA mains gantées</li>
-              <li data-i18n="x-retrait-combinaison-retournement-vers-282c">Retrait combinaison (retournement vers l'intérieur)</li>
-              <li data-i18n="x-sha-mains-gantees-6ca9">SHA mains gantées</li>
-              <li data-i18n="x-retrait-masque-par-l-c282">Retrait masque (par l'arrière sans toucher l'avant)</li>
-              <li data-i18n="x-sha-mains-gantees-retrait-4905">SHA mains gantées + retrait gants intérieurs</li>
-              <li data-i18n="x-sha-mains-nues-60-051e">SHA mains nues 60 sec</li>
-            </ol>
-          </div>
-
-          <div class="epi4-card epi4-card-red">
-            <h4 data-i18n="x-conduite-a-tenir-exposition-7f8a">🚨 Conduite à tenir — exposition accidentelle</h4>
-            <ul>
-              <li><strong data-i18n="x-coupure-piqure-b718">Coupure/piqûre :</strong> <span data-i18n="x-laisser-saigner-5-min-6e5d">laisser saigner 5 min, rincer eau savonneuse 15 min, antisepsie povidone iodée ou alcool 70°</span></li>
-              <li><strong data-i18n="x-projection-muqueuse-78c5">Projection muqueuse :</strong> <span data-i18n="x-rincage-serum-physio-15-e09c">rinçage sérum physio 15 min (yeux), eau 15 min (bouche)</span></li>
-              <li><strong data-i18n="x-contacter-immediatement-4d56">Contacter immédiatement :</strong> <span data-i18n="x-samu-15-referent-uhsi-a007">SAMU 15 + référent UHSI + InVS (0 800 13 00 00)</span></li>
-              <li><strong data-i18n="x-pas-d-automedication-pas-ed32">Pas d'automédication, pas de traitement prophylactique sans avis UHSI</strong></li>
-              <li data-i18n="x-note-aucun-vaccin-homologue-95df">Note : AUCUN vaccin homologué contre Ebola Bundibugyo (rVSV-ZEBOV = efficacité Zaïre uniquement)</li>
-            </ul>
-          </div>
-
-          <div class="epi4-card">
-            <h4 data-i18n="x-definition-cas-suspect-oms-f3de">📋 Définition cas suspect (OMS 2026)</h4>
-            <p><strong data-i18n="x-fievre-38-5-c-335a">Fièvre ≥ 38,5°C</strong> <span data-i18n="x-au-moins-un-signe-1ef2">+ au moins un signe parmi :</span></p>
-            <ul>
-              <li data-i18n="x-cephalees-intenses-myalgies-asthenie-51d0">Céphalées intenses, myalgies, asthénie sévère</li>
-              <li data-i18n="x-vomissements-diarrhee-inexpliques-da34">Vomissements / diarrhée inexpliqués</li>
-              <li data-i18n="x-saignements-inexpliques-tout-site-4870">Saignements inexpliqués (tout site)</li>
-              <li data-i18n="x-contact-avec-cas-confirme-40c8">Contact avec cas confirmé ou décédé de FHV</li>
-            </ul>
-            <p style="margin-top:.5rem"><strong>ET</strong> <span data-i18n="x-voyage-residence-zone-epidemique-cef6">voyage/résidence zone épidémique (RDC, Ouganda, Rwanda, Burundi) dans les 21 jours précédant les symptômes.</span></p>
-          </div>
-
-          <div class="epi4-card">
-            <h4 data-i18n="x-persistance-virale-post-guerison-719b">📌 Persistance virale post-guérison</h4>
-            <ul>
-              <li><strong data-i18n="x-sperme-c1ae">Sperme :</strong> <span data-i18n="x-jusqu-a-9-mois-d68d">jusqu'à 9 mois après guérison (Varkey, NEJM 2015)</span></li>
-              <li><strong data-i18n="x-liquide-oculaire-e4ff">Liquide oculaire :</strong> <span data-i18n="x-documente-meme-apres-pcr-e4f7">documenté même après PCR sang négative</span></li>
-              <li><strong data-i18n="x-lait-maternel-681e">Lait maternel :</strong> <span data-i18n="x-possible-allaitement-a-eviter-f7fc">possible — allaitement à éviter</span></li>
-              <li data-i18n="x-les-survivants-doivent-etre-60d6">Les survivants doivent être suivis et informés du risque de transmission sexuelle</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="epi4-contacts">
-          <strong data-i18n="x-contacts-de-reference-8387">📞 Contacts de référence :</strong>
-          <span><span data-i18n="x-samu-national-d69f">SAMU national :</span> <strong>15</strong></span>
-          <span><span data-i18n="x-invs-urgence-308d">InVS (urgence) :</span> <strong>0 800 13 00 00</strong></span>
-          <span><span data-i18n="x-uhsi-bichat-paris-09bf">UHSI Bichat (Paris) :</span> <strong>01 40 25 85 85</strong></span>
-          <span><span data-i18n="x-uhsi-lyon-croix-rousse-bf4e">UHSI Lyon Croix-Rousse :</span> <strong>04 26 10 93 30</strong></span>
-        </div>
-
-        <div data-i18n="x-ref-oms-protocole-ebola-5cf4" class="epi4-refs">
-          Réf : OMS Protocole Ebola 2022 · Varkey JB et al. NEJM 2015 · Protocole UHSI France · WHO DON 2026-DON605
-        </div>
+        <h3 data-i18n="fhv-refs-title" class="epi4-section-title">Référentiels officiels</h3>
+        <ul class="epi4-official-links">
+          <li><a href="https://www.coreb.infectiologie.com/" target="_blank" rel="noopener" data-i18n="fhv-link-coreb">COREB (SPILF) — procédures REB : repérage, classement du cas, EPI, prise en charge</a></li>
+          <li><a href="https://www.who.int/health-topics/ebola" target="_blank" rel="noopener" data-i18n="fhv-link-who">OMS — maladie à virus Ebola (épidémies en cours, définitions de cas)</a></li>
+          <li><a href="https://www.santepubliquefrance.fr/maladies-a-declaration-obligatoire/liste-des-maladies-a-declaration-obligatoire" target="_blank" rel="noopener" data-i18n="fhv-link-do">Santé publique France — liste officielle des maladies à déclaration obligatoire</a></li>
+        </ul>
+        <p class="epi4-refs" data-i18n="fhv-exposure">Exposition accidentelle d'un soignant : appliquez la procédure AES de votre établissement et prévenez sans délai le SAMU (15) et l'infectiologue référent.</p>
       </div>
     </div>
 
     <!-- Panel Contacts -->
     <div id="biqTabContactsPanel" role="tabpanel" aria-labelledby="biqTabContacts" hidden>
       <div class="contacts-guide">
-
-        <!-- Déclarations obligatoires -->
         <div class="do-section">
-          <h3 data-i18n="x-maladies-a-declaration-obligatoire-8278" class="do-title">📋 Maladies à Déclaration Obligatoire (DO) — France</h3>
-          <p data-i18n="x-declaration-immediate-a-l-f6c5" class="do-subtitle">Déclaration immédiate à l'ARS dès la suspicion clinique, sans attendre la confirmation biologique.</p>
-
+          <h3 data-i18n="do2-title" class="do-title">Déclaration obligatoire et signalement — France</h3>
+          <p data-i18n="do2-intro" class="do-subtitle">BreathIQ ne reproduit pas la liste des maladies à déclaration obligatoire : la seule liste à jour, avec les fiches et le circuit de chaque maladie (e-DO ou fiche transmise à l'ARS), est celle de Santé publique France.</p>
           <div class="do-grid">
-            <div class="do-card do-card-red">
-              <div data-i18n="x-do-immediate-fievres-hemorragiques-a111" class="do-card-header">🚨 DO Immédiate — Fièvres hémorragiques virales</div>
-              <ul>
-                <li><strong data-i18n="x-ebola-4514">Ebola</strong> <span data-i18n="x-ars-samu-15-uhsi-2d86">— ARS + SAMU 15 + UHSI de référence</span></li>
-                <li><strong data-i18n="x-marburg-fd3e">Marburg</strong> <span data-i18n="x-ars-samu-15-uhsi-2d86">— ARS + SAMU 15 + UHSI de référence</span></li>
-                <li><strong data-i18n="x-lassa-b0fc">Lassa</strong> <span data-i18n="x-ars-samu-15-5ace">— ARS + SAMU 15</span></li>
-                <li><strong data-i18n="x-cchf-20ee">CCHF</strong> <span data-i18n="x-fievre-hemorragique-crimee-congo-90d5">(Fièvre Hémorragique Crimée-Congo) — ARS</span></li>
-                <li><strong data-i18n="x-mers-cov-258b">MERS-CoV</strong> <span data-i18n="x-ars-samu-15-5ace">— ARS + SAMU 15</span></li>
-                <li><strong data-i18n="x-nipah-bf36">Nipah</strong> <span data-i18n="x-ars-samu-15-5ace">— ARS + SAMU 15</span></li>
-              </ul>
-              <div class="do-contact"><span data-i18n="x-ars-8afd">ARS →</span> <strong data-i18n="x-numero-regional-0896">numéro régional</strong> <span data-i18n="x-invs-urgences-c08b">· InVS urgences :</span> <strong>0 800 13 00 00</strong></div>
-            </div>
-
-            <div class="do-card do-card-orange">
-              <div data-i18n="x-do-dans-les-24-f674" class="do-card-header">⚠️ DO dans les 24–48h</div>
-              <ul>
-                <li><strong data-i18n="x-tuberculose-a443">Tuberculose</strong> <span data-i18n="x-do-a-l-ars-b7f4">— DO à l'ARS dans les 48h</span></li>
-                <li><strong data-i18n="x-rougeole-0774">Rougeole</strong> <span data-i18n="x-do-des-suspicion-avant-0b86">— DO dès suspicion (avant confirmation)</span></li>
-                <li><strong data-i18n="x-coqueluche-23ad">Coqueluche</strong> <span data-i18n="x-do-chez-nourrissons-6-fca1">— DO chez nourrissons < 6 mois</span></li>
-                <li><strong data-i18n="x-meningite-bacterienne-632d">Méningite bactérienne</strong> <span data-i18n="x-do-immediate-chimioprophylaxie-entourage-d284">— DO immédiate + chimioprophylaxie entourage</span></li>
-                <li><strong data-i18n="x-legionellose-8a32">Légionellose</strong> <span data-i18n="x-do-ars-investigation-source-8e20">— DO ARS + investigation source</span></li>
-                <li><strong data-i18n="x-mpox-variole-du-singe-b9a2">Mpox (variole du singe)</strong> <span data-i18n="x-do-a-l-ars-7d98">— DO à l'ARS</span></li>
-                <li><strong data-i18n="x-h5n1-humain-695b">H5N1 humain</strong> <span data-i18n="x-do-ars-signalement-spf-848c">— DO ARS + signalement SPF</span></li>
-              </ul>
-            </div>
-
             <div class="do-card do-card-blue">
-              <div data-i18n="x-numeros-de-reference-soignants-7505" class="do-card-header">📞 Numéros de référence soignants</div>
+              <div data-i18n="do2-numbers-title" class="do-card-header">📞 Numéros vérifiés</div>
               <ul>
-                <li><span data-i18n="x-samu-national-d69f">SAMU national :</span> <strong>15</strong></li>
-                <li><span data-i18n="x-invs-urgences-epidemiques-03ac">InVS urgences épidémiques :</span> <strong>0 800 13 00 00</strong></li>
-                <li><span data-i18n="x-coreb-nationale-a685">COREB nationale :</span> <strong translate="no">coreb@aphp.fr</strong></li>
-                <li><span data-i18n="x-uhsi-bichat-paris-09bf">UHSI Bichat (Paris) :</span> <strong>01 40 25 85 85</strong></li>
-                <li><span data-i18n="x-uhsi-croix-rousse-lyon-cf46">UHSI Croix-Rousse (Lyon) :</span> <strong>04 26 10 93 30</strong></li>
-                <li><span data-i18n="x-uhsi-pellegrin-bordeaux-6082">UHSI Pellegrin (Bordeaux) :</span> <strong>05 57 82 13 82</strong></li>
-                <li><span data-i18n="x-uhsi-timone-marseille-467b">UHSI Timone (Marseille) :</span> <strong>04 91 38 60 00</strong></li>
+                <li><span data-i18n="do2-samu">SAMU (urgence vitale, suspicion de FHV) :</span> <strong>15</strong></li>
+                <li><span data-i18n="do2-112">Numéro d'urgence européen :</span> <strong>112</strong></li>
+                <li><span data-i18n="do2-ars">Point focal de l'ARS : selon votre région, voir le site de l'ARS</span></li>
               </ul>
-              <div class="do-contact"><span data-i18n="x-liste-complete-ars-93ce">Liste complète ARS :</span> <a translate="no" href="https://www.health.gouv.fr" style="color:#93c5fd" target="_blank" rel="noopener">sante.gouv.fr</a></div>
             </div>
-
             <div class="do-card">
-              <div data-i18n="x-fiche-do-pratique-fc9f" class="do-card-header">📄 Fiche DO pratique</div>
-              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6"><span data-i18n="x-la-declaration-obligatoire-se-e50c">La déclaration obligatoire se fait via le</span> <strong data-i18n="x-portail-e-si-signalement-54cf">portail e-SI (signalement.social-sante.gouv.fr)</strong> <span data-i18n="x-ou-par-fiche-papier-620e">ou par fiche papier cerfa transmise à l'ARS régionale.</span></p>
-              <p style="font-size:.82rem;color:#cbd5e1;line-height:1.6;margin-top:.5rem"><span data-i18n="x-pour-les-maladies-a-9ff1">Pour les maladies à risque épidémique immédiat (FHV, MERS, Nipah) :</span> <strong data-i18n="x-appel-telephonique-direct-a-f311">appel téléphonique direct à l'ARS avant tout</strong><span data-i18n="x-puis-confirmation-ecrite-1738">, puis confirmation écrite.</span></p>
-              <p data-i18n="x-ne-pas-attendre-la-f78d" style="font-size:.82rem;color:#fbbf24;margin-top:.5rem">⚠️ Ne pas attendre la confirmation PCR pour signaler — la suspicion clinique suffit pour les FHV.</p>
+              <div data-i18n="do2-links-title" class="do-card-header">📄 Sources officielles</div>
+              <ul>
+                <li><a href="https://www.santepubliquefrance.fr/maladies-a-declaration-obligatoire/liste-des-maladies-a-declaration-obligatoire" target="_blank" rel="noopener" data-i18n="do2-link-list">Liste des maladies à déclaration obligatoire (Santé publique France)</a></li>
+                <li><a href="https://www.coreb.infectiologie.com/" target="_blank" rel="noopener" data-i18n="do2-link-coreb">COREB — risque épidémique et biologique</a></li>
+              </ul>
+              <p data-i18n="do2-not-do" style="font-size:.82rem;color:#fbbf24;margin-top:.5rem">⚠️ Un signalement sur BreathIQ ne remplace jamais la déclaration obligatoire ni le signal à l'ARS.</p>
             </div>
           </div>
         </div>
@@ -2081,7 +1959,7 @@
           <h3 translate="no">Dr. Clément MÉDEAU</h3>
           <span class="author-role" data-i18n="author-role">Docteur en médecine · La Rochelle, France</span>
           <p data-i18n="x-medecin-generaliste-installe-a-f415" class="author-bio author-bio-personal">
-            Médecin généraliste installé à La Rochelle, j'ai créé BreathIQ par conviction de santé publique : trop de patients consultent trop tard — ou trop tôt — faute d'un repère fiable entre leurs symptômes et les alertes épidémiques mondiales. BreathIQ est ma réponse : gratuite, sourcée, sans publicité.
+            Médecin généraliste installé à La Rochelle, j'ai créé BreathIQ par conviction de santé publique : trop de patients consultent trop tard — ou trop tôt — faute d'un repère clair entre leurs symptômes et les alertes épidémiques mondiales. BreathIQ est ma réponse : gratuite, sourcée, sans publicité.
           </p>
           <p class="author-bio" data-i18n="author-bio" style="margin-top:.4rem;font-size:.78rem;opacity:.7">
             Initiative indépendante de santé publique créée par un médecin. Cet outil vous informe — il ne remplace pas une consultation médicale.
@@ -2325,7 +2203,7 @@
           <li data-i18n="ob-patient-f1">Vérifier mes symptômes</li>
           <li data-i18n="ob-patient-f2">Trouver un médecin proche</li>
           <li data-i18n="ob-patient-f3">Maladies à surveiller</li>
-          <li data-i18n="ob-patient-f4">Triage urgences</li>
+          <li data-i18n="ob-patient-f4">Aide à l'orientation</li>
         </ul>
         <span class="om-cta" data-i18n="ob-patient-cta">Commencer →</span>
       </button>

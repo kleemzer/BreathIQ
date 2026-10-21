@@ -1,4 +1,4 @@
-// Cloudflare Pages Function — agrégat anonymisé des déclarations (lecture publique).
+// Cloudflare Pages Function — agrégat des déclarations (déclarants pseudonymisés, cellules < 3 supprimées) (lecture publique).
 // Aucune déclaration individuelle n'est exposée : comptes par semaine × région × pathologie,
 // cellules < K_ANONYMITY supprimées. Cache 5 minutes.
 import { aggregateDeclarations } from '../_lib/decl-schema.js';

@@ -194,7 +194,8 @@
     </div>
 
     <h3>Pondération</h3>
-    <div class="formula-block">Score = 0.40 × AQI + 0.30 × circulation_virale + 0.20 × pollen + 0.10 × météo</div>
+    <div class="formula-block">Score = (0,45 × AQI + 0,40 × circulation_virale + 0,15 × pollen) ÷ somme des poids disponibles</div>
+    <p style="font-size:.84rem;color:var(--text-secondary)">Aucun score n'est affiché si la qualité de l'air ou la circulation virale manque. Le pollen est facultatif : en son absence, les deux autres composantes sont renormalisées (0,45 et 0,40 sur 0,85). La météo n'entre pas dans le calcul. Conversion de la circulation virale : score = 35 + 15 × Z moyen (borné à 0–100), Z étant l'écart à la moyenne des 52 dernières semaines en nombre d'écarts-types.</p>
 
     <h3>Niveaux verbaux (affichés en mode grand public)</h3>
     <table class="methodo-table">
@@ -212,10 +213,9 @@
     <table class="methodo-table">
       <thead><tr><th>Composante</th><th>Poids</th><th>Source</th><th>Statut</th></tr></thead>
       <tbody>
-        <tr><td>Qualité air (AQI)</td><td>40%</td><td>Open-Meteo / CAMS Copernicus</td><td><span class="badge-real">RÉEL</span></td></tr>
-        <tr><td>Circulation virale</td><td>30%</td><td>SPF national (extrapolé région)</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
-        <tr><td>Indice pollinique</td><td>20%</td><td>Modèle saisonnier approximatif</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
-        <tr><td>Météo</td><td>10%</td><td>Open-Meteo</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>Qualité air (AQI)</td><td>45 %</td><td>Open-Meteo / CAMS Copernicus</td><td><span class="badge-real">RÉEL</span></td></tr>
+        <tr><td>Circulation virale</td><td>40 %</td><td>France : Réseau Sentinelles (incidence nationale, appliquée à toutes les régions) · Europe : ECDC, uniquement les séries respiratoires collectées automatiquement · Monde : alertes OMS (DON) visant le pays</td><td><span class="badge-est">NATIONAL</span></td></tr>
+        <tr><td>Indice pollinique</td><td>15 %</td><td>Open-Meteo / CAMS (si disponible)</td><td><span class="badge-est">ESTIMATIF</span></td></tr>
       </tbody>
     </table>
   </section>
@@ -229,7 +229,7 @@
     </div>
 
     <h3>Algorithme</h3>
-    <p style="font-size:.84rem;color:var(--text-secondary)">Moteur bayésien pondéré basé sur les critères de définition de cas ILI (OMS), CURB-65, FLU score et SARI. Chaque symptôme coché incrémente le score de probabilité des pathogènes correspondants selon des coefficients issus de la littérature.</p>
+    <p style="font-size:.84rem;color:var(--text-secondary)">Règles fixes d'orientation : chaque signe d'alerte déclaré (gêne respiratoire au repos, confusion, purpura, fièvre du nourrisson de moins de 3 mois, fièvre au retour de voyage…) oriente vers un niveau de recours (15, médecin le jour même, pharmacien, surveillance). En mode grand public, aucune hypothèse diagnostique n'est affichée. Les règles n'ont pas fait l'objet d'une validation clinique.</p>
 
     <h3>Références</h3>
     <p style="font-size:.84rem;color:var(--text-secondary)">OMS Influenza Surveillance, ECDC Case Definitions, CDC Influenza, HCSP France, Critères SARI (Severe Acute Respiratory Illness).</p>

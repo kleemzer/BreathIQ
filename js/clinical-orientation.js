@@ -16,6 +16,7 @@
     { flags: ['neck_stiffness', 'fever'], level: 'emergency', score: 93, careNeed: 'emergency_department', reasonFR: 'Raideur de nuque avec fièvre : méningite à exclure.', reasonEN: 'Neck stiffness with fever: meningitis must be ruled out.' },
     { flags: ['severe_dehydration'], level: 'emergency', score: 88, careNeed: 'emergency_department', reasonFR: 'Signes de déshydratation sévère.', reasonEN: 'Signs of severe dehydration.' },
     { flags: ['travel_africa_high_risk', 'fever'], level: 'medical_regulation', score: 91, careNeed: 'medical_regulation', reasonFR: 'Fièvre après retour d’une zone à risque : appelez la régulation avant tout déplacement.', reasonEN: 'Fever after travel to a high-risk area: call medical regulation before travelling.' },
+    { flags: ['travel_tropical', 'fever'], level: 'same_day_doctor', score: 80, careNeed: 'doctor', reasonFR: 'Fièvre au retour d’un voyage en zone tropicale : consultez un médecin aujourd’hui, sans attendre, et signalez votre voyage (le paludisme doit être recherché).', reasonEN: 'Fever after travel to a tropical area: see a doctor today, without waiting, and mention your trip (malaria must be ruled out).' },
   ];
 
   const CARE_LABELS = {

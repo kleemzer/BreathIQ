@@ -773,35 +773,12 @@ SCHISTOSOMIASIS: {
 }; // fin PRO_PATHOGENS
 
 // ─── CONTACTS URGENCE FRANCE ─────────────────────────────────────────────────
+// Uniquement des numéros vérifiables ; les ARS sont renvoyées vers leur site officiel
+// (ARS_DIRECTORY dans script.js) — aucun numéro ni courriel saisi à la main.
 const EMERGENCY_CONTACTS = {
   national: [
-    {label:'SAMU', number:'15', desc:'Médecin régulateur 24h/24', urgent:true},
-    {label:'Centre 15', number:'15', desc:'Régulation médicale — conseil, ambulance, SMUR'},
-    {label:'Santé Publique France (InVS)', number:'01 41 79 67 00', desc:'Épidémiosurveillance, déclarations obligatoires'},
-    {label:'ANSM — Alerte médicament', number:'01 55 87 30 00', desc:'Pharmacovigilance, rupture médicaments critiques'},
-    {label:'CNR Fièvres Hémorragiques (INSERM P4 Lyon)', number:'04 37 28 24 40', desc:'Ebola, Marburg, Lassa, CCHF — Identification urgente'},
-    {label:'EPRUS — Réserve sanitaire', number:'0 800 130 000', desc:'Mobilisation réserve sanitaire nationale (gratuit)'},
-    {label:'DGS-Urgent (ARS → national)', number:'', desc:'Plateforme numérique DGS-Urgent.fr — alertes nationales'},
-  ],
-  ars: [
-    {region:'Île-de-France', number:'01 44 02 00 00', email:'ars-idf-alerte@ars.sante.fr'},
-    {region:'Auvergne-Rhône-Alpes', number:'04 72 34 74 00', email:'ars-ara-alerte@ars.sante.fr'},
-    {region:'Nouvelle-Aquitaine', number:'05 57 01 31 00', email:'ars-na-alerte@ars.sante.fr'},
-    {region:'Occitanie', number:'05 34 30 27 00', email:'ars-occ-alerte@ars.sante.fr'},
-    {region:'Grand Est', number:'03 87 69 47 00', email:'ars-ge-alerte@ars.sante.fr'},
-    {region:'Hauts-de-France', number:'03 62 28 18 00', email:'ars-hdf-alerte@ars.sante.fr'},
-    {region:'Normandie', number:'02 32 18 25 00', email:'ars-nor-alerte@ars.sante.fr'},
-    {region:'Bretagne', number:'02 99 29 67 67', email:'ars-bre-alerte@ars.sante.fr'},
-    {region:'Pays de la Loire', number:'02 49 10 40 00', email:'ars-pdl-alerte@ars.sante.fr'},
-    {region:'Centre-Val de Loire', number:'02 38 77 37 37', email:'ars-cvl-alerte@ars.sante.fr'},
-    {region:'Bourgogne-Franche-Comté', number:'03 81 65 72 00', email:'ars-bfc-alerte@ars.sante.fr'},
-    {region:'Provence-Alpes-Côte d\'Azur', number:'04 13 55 80 10', email:'ars-paca-alerte@ars.sante.fr'},
-    {region:'Corse', number:'04 95 51 91 91', email:'ars-cor-alerte@ars.sante.fr'},
-    {region:'La Réunion', number:'02 62 93 90 00', email:'ars-oi-alerte@ars.sante.fr'},
-    {region:'Martinique', number:'05 96 39 42 00', email:'ars-martinique@ars.sante.fr'},
-    {region:'Guadeloupe', number:'05 90 99 77 00', email:'ars-guadeloupe@ars.sante.fr'},
-    {region:'Guyane', number:'05 94 39 41 00', email:'ars-guyane@ars.sante.fr'},
-    {region:'Mayotte', number:'02 69 63 37 00', email:'ars-mayotte@ars.sante.fr'},
+    {label:'SAMU', number:'15', desc:'Urgence vitale, suspicion de fièvre hémorragique : appeler avant tout déplacement', urgent:true},
+    {label:'Numéro d\'urgence européen', number:'112', desc:'Valable dans toute l\'Union européenne'},
   ],
 };
 
@@ -1180,47 +1157,51 @@ function showList() {
 }
 
 // ─── ONGLET CONTACTS ─────────────────────────────────────────────────────────
+function escHtml(v) {
+  return String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
 function renderContacts(container) {
-  container.innerHTML = `
+  const dir = window.ARS_DIRECTORY || {};
+  const opts = Object.keys(dir).map(k => `<option value="${k}">${escHtml(dir[k].name)}</option>`).join('');
+  const html = `
     <div class="biq-contacts-section">
-      <h3 class="biq-contacts-h3">🇫🇷 Numéros nationaux — Urgences sanitaires</h3>
       <div class="biq-contacts-grid">
         ${EMERGENCY_CONTACTS.national.map(c => `
           <div class="biq-contact-card ${c.urgent ? 'biq-contact-urgent' : ''}">
-            <div class="biq-contact-label">${c.label}</div>
-            ${c.number ? `<a href="tel:${c.number.replace(/\s/g,'')}" class="biq-contact-number" aria-label="Appeler ${c.label}">${c.number}</a>` : ''}
-            <div class="biq-contact-desc">${c.desc}</div>
+            <div class="biq-contact-label">${escHtml(c.label)}</div>
+            <a href="tel:${c.number}" class="biq-contact-number" aria-label="Appeler ${escHtml(c.label)}">${c.number}</a>
+            <div class="biq-contact-desc">${escHtml(c.desc)}</div>
           </div>`).join('')}
       </div>
-
-      <h3 class="biq-contacts-h3" style="margin-top:1.5rem">🏥 ARS — Agences Régionales de Santé</h3>
+      <h3 class="biq-contacts-h3" style="margin-top:1.5rem">🏥 ARS — Agences régionales de santé</h3>
       <div class="biq-ars-select-row">
-        <label for="biqArsSelect" class="biq-ars-label">Sélectionner une région :</label>
+        <label for="biqArsSelect" class="biq-ars-label">Région :</label>
         <select id="biqArsSelect" class="biq-ars-select" onchange="BIQ_PRO.showArs(this.value)">
-          <option value="">— Choisir une région —</option>
-          ${EMERGENCY_CONTACTS.ars.map(a => `<option value="${a.region}">${a.region}</option>`).join('')}
+          <option value="">— Choisir une région —</option>${opts}
         </select>
       </div>
       <div id="biqArsDetail" class="biq-ars-detail"></div>
     </div>`;
+  const host = container.querySelector('.contacts-guide') || container;
+  host.insertAdjacentHTML('beforeend', html);
 }
 
-function showArs(region) {
-  const ars = EMERGENCY_CONTACTS.ars.find(a => a.region === region);
+function showArs(code) {
+  const ars = (window.ARS_DIRECTORY || {})[code];
   const d = document.getElementById('biqArsDetail');
   if (!d) return;
-  if (!ars) { d.innerHTML = ''; return; }
+  if (!ars || !/^https:\/\/[a-z0-9.-]+\.ars\.sante\.fr\/?$/.test(ars.site)) { d.innerHTML = ''; return; }
   d.innerHTML = `
     <div class="biq-contact-card biq-contact-ars">
-      <div class="biq-contact-label">ARS ${ars.region}</div>
-      <a href="tel:${ars.number.replace(/[\s.]/g,'')}" class="biq-contact-number" aria-label="Appeler ARS ${ars.region}">${ars.number}</a>
-      <div class="biq-contact-desc"><a href="mailto:${ars.email}" class="biq-ars-email">${ars.email}</a></div>
+      <div class="biq-contact-label">${escHtml(ars.name)}</div>
+      <div class="biq-contact-desc">Coordonnées du point focal régional et circuit de signalement : <a href="${ars.site}" target="_blank" rel="noopener" class="biq-ars-email">site officiel de l'ARS</a></div>
     </div>`;
 }
 
 // ─── SYSTÈME D'ONGLETS ────────────────────────────────────────────────────────
 function switchTab(tabId) {
-  ['biqTabPathogens','biqTabContacts'].forEach(id => {
+  ['biqTabPathogens','biqTabEpi4','biqTabContacts'].forEach(id => {
     const btn = document.getElementById(id);
     const panel = document.getElementById(id + 'Panel');
     if (btn) { btn.classList.toggle('biq-tab-active', id === tabId); btn.setAttribute('aria-selected', id === tabId); }

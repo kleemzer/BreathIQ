@@ -1,7 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import {
-  validateDeclaration, isAllowedProfessional, professionCodes, categoryFor, aggregateDeclarations,
+  validateDeclaration, isAllowedProfessional, professionCodes, categoryFor, aggregateDeclarations, isHighConsequence,
   PATHOLOGIES, SYNDROMES, AGES, SEVERITIES, LABS, COUNT_CLASSES, REGIONS,
 } from '../functions/_lib/decl-schema.js';
 
@@ -76,6 +76,16 @@ check('cellule unique (mpox) supprimée', !cell('clinical', 'mpox'));
 check('participation publiée par catégorie', agg.participation.some(p => p.category === 'field' && p.professionnels === 3));
 check('phase pilote : aucune alerte', agg.alertes === false && agg.phase === 'pilote');
 check('aucun identifiant dans l\'agrégat', !JSON.stringify(agg).includes('declarant') && !JSON.stringify(agg).includes('"a"'));
+
+// ── Suspicions à haut risque : refusées par le serveur (appel 15 + ARS) ──
+check('Ebola = haut risque', isHighConsequence({ pathologie: 'ebola', syndrome: 'fébrile' }));
+check('syndrome hémorragique = haut risque', isHighConsequence({ pathologie: 'autre', syndrome: 'hémorragique' }));
+check('grippe ≠ haut risque', !isHighConsequence({ pathologie: 'grippe', syndrome: 'grippal' }));
+
+// ── Régions peu peuplées : seuil relevé à 5 ──
+const may = ['p1', 'p2', 'p3', 'p4'].map(w => mk({ region_code: 'MAY' }, w));
+check('Mayotte : 4 professionnels ne suffisent pas', !aggregateDeclarations(may).cells.some(c => c.region_code === 'MAY'));
+check('Mayotte : 5 professionnels publiés', aggregateDeclarations([...may, mk({ region_code: 'MAY' }, 'p5')]).cells.some(c => c.region_code === 'MAY'));
 
 console.log(failures ? `\n${failures} échec(s)` : '\nTous les tests signalements passent');
 process.exit(failures ? 1 : 0);

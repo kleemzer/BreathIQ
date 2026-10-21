@@ -26,6 +26,14 @@ export const DEFAULT_ALLOWED_PROFESSIONS = [...CLINICAL_PROFESSIONS, ...FIELD_PR
 
 export const K_ANONYMITY = 3;
 
+// Suspicions à haut risque (fièvres hémorragiques, MERS, H5N1, charbon, botulisme) : elles relèvent
+// d'un appel immédiat au 15 et à l'ARS, jamais d'un enregistrement différé — le serveur les refuse.
+export const HIGH_CONSEQUENCE_PATHOLOGIES = new Set(['ebola', 'mers', 'h5n1', 'anthrax', 'botulisme']);
+export const HIGH_CONSEQUENCE_SYNDROMES = new Set(['hémorragique']);
+export function isHighConsequence(d) {
+  return HIGH_CONSEQUENCE_PATHOLOGIES.has(d?.pathologie) || HIGH_CONSEQUENCE_SYNDROMES.has(d?.syndrome);
+}
+
 const ISO_WEEK_RE = /^\d{4}-S(0[1-9]|[1-4]\d|5[0-3])$/;
 const ISO_DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
@@ -86,9 +94,15 @@ export function isAllowedProfessional(userinfo, allowed = DEFAULT_ALLOWED_PROFES
   return categoryFor(professionCodes(userinfo), allowed) !== null;
 }
 
-// Agrégat anonymisé : semaine × région × catégorie × pathologie.
-// Une cellule n'est publiée que si elle compte ≥ K signalements ET ≥ K professionnels distincts.
+// Régions peu peuplées : seuil relevé pour limiter le risque de réidentification d'un patient
+export const SMALL_REGIONS = new Set(['COR', 'GUY', 'MAY']);
+export const K_SMALL_REGION = 5;
+
+// Agrégat (déclarants pseudonymisés) : semaine × région × catégorie × pathologie.
+// Une cellule n'est publiée que si elle compte ≥ K signalements ET ≥ K professionnels distincts
+// (K relevé à K_SMALL_REGION pour les régions peu peuplées).
 export function aggregateDeclarations(decls, k = K_ANONYMITY) {
+  const kOf = region => (SMALL_REGIONS.has(region) ? Math.max(k, K_SMALL_REGION) : k);
   const cells = new Map();
   const participants = new Map(); // semaine × région × catégorie → professionnels distincts
   for (const d of decls) {
@@ -105,11 +119,11 @@ export function aggregateDeclarations(decls, k = K_ANONYMITY) {
   }
   const all = [...cells.values()];
   const published = all
-    .filter(c => c.signalements >= k && c._who.size >= k)
+    .filter(c => c.signalements >= kOf(c.region_code) && c._who.size >= kOf(c.region_code))
     .map(({ _who, ...c }) => ({ ...c, professionnels: _who.size }))
     .sort((a, b) => b.week.localeCompare(a.week) || b.signalements - a.signalements);
   const participation = [...participants.entries()]
     .map(([pk, set]) => { const [week, region_code, category] = pk.split('|'); return { week, region_code, category, professionnels: set.size }; })
-    .filter(p => p.professionnels >= k);
+    .filter(p => p.professionnels >= kOf(p.region_code));
   return { k, phase: 'pilote', alertes: false, cells: published, participation, suppressedCells: all.length - published.length, totalSignalements: decls.length };
 }

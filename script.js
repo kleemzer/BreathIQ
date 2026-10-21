@@ -301,8 +301,8 @@ var I18N = {
     'x-temperature-b0e7': '🌡️ Température ?',
     'x-pas-de-fievre-db03': 'Pas de fièvre',
     'x-qui-est-concerne-cfdd': '👤 Qui est concerné ?',
-    'x-nourrisson-lt-2-ans-27de': 'Nourrisson <2 ans',
-    'x-enfant-2-15-ans-e003': 'Enfant 2–15 ans',
+    'x-nourrisson-lt-2-ans-27de': 'Moins de 2 ans',
+    'x-enfant-2-15-ans-e003': '2 à 15 ans',
     'x-adulte-04e6': 'Adulte',
     'x-senior-65-ans-5312': 'Senior ≥ 65 ans',
     'x-etape-suivante-3faf': 'Étape suivante →',
@@ -319,7 +319,7 @@ var I18N = {
     'x-tres-elevee-c778': 'Très élevée',
     'x-contexte-de-vie-amp-29c7': '✈️ Contexte de vie & expositions',
     'x-voyage-tropical-recent-lt-b01a': 'Voyage tropical récent (< 21 jours)',
-    'x-ebola-pheic-eabc': '⚠️ Ebola PHEIC',
+    'x-ebola-pheic-eabc': '⚠️ Alerte OMS en cours',
     'x-hantavirus-7ddd': '⚠️ Hantavirus',
     'x-voyage-balkans-turquie-espagne-286b': 'Voyage Balkans / Turquie / Espagne rurale',
     'x-voyage-asie-du-sud-2c70': 'Voyage Asie du Sud-Est / Moyen-Orient',
@@ -423,8 +423,26 @@ var I18N = {
     'x-referentiel-pathogenes-soignant-4c35': '🦠 Référentiel Pathogènes Soignant',
     'x-non-dispositif-medical-aa69': 'Non dispositif médical',
     'x-pathogenes-ce82': '🦠 Pathogènes',
-    'x-epi-niveau-4-ebola-4e32': '🛡️ EPI Niveau 4 / Ebola',
-    'x-contacts-urgence-fc54': '📞 Contacts urgence',
+    'x-epi-niveau-4-ebola-4e32': '🛡️ Fièvres hémorragiques / Ebola',
+    'x-contacts-urgence-fc54': '📞 DO et contacts',
+    "fhv-urgent-title": "Suspicion de fièvre hémorragique virale (Ebola, Marburg, Lassa, FHCC) :",
+    "fhv-urgent-body": "isolez le patient sans examen invasif, ne l'adressez pas aux urgences par ses propres moyens, et appelez immédiatement le 15 (SAMU), puis le point focal de votre ARS. Le SAMU et l'infectiologue référent organisent le classement du cas et le transfert vers l'établissement de santé de référence (ESR).",
+    "fhv-no-protocol": "BreathIQ ne publie aucun protocole d'habillage, de déshabillage ni de conduite à tenir après exposition : ces procédures relèvent des référentiels nationaux et de la formation de votre établissement. Utilisez exclusivement les documents ci-dessous, dans leur version en vigueur.",
+    "fhv-refs-title": "Référentiels officiels",
+    "fhv-link-coreb": "COREB (SPILF) — procédures REB : repérage, classement du cas, EPI, prise en charge",
+    "fhv-link-who": "OMS — maladie à virus Ebola (épidémies en cours, définitions de cas)",
+    "fhv-link-do": "Santé publique France — liste officielle des maladies à déclaration obligatoire",
+    "fhv-exposure": "Exposition accidentelle d'un soignant : appliquez la procédure AES de votre établissement et prévenez sans délai le SAMU (15) et l'infectiologue référent.",
+    "do2-title": "Déclaration obligatoire et signalement — France",
+    "do2-intro": "BreathIQ ne reproduit pas la liste des maladies à déclaration obligatoire : la seule liste à jour, avec les fiches et le circuit de chaque maladie (e-DO ou fiche transmise à l'ARS), est celle de Santé publique France.",
+    "do2-numbers-title": "📞 Numéros vérifiés",
+    "do2-samu": "SAMU (urgence vitale, suspicion de FHV) :",
+    "do2-112": "Numéro d'urgence européen :",
+    "do2-ars": "Point focal de l'ARS : selon votre région, voir le site de l'ARS",
+    "do2-links-title": "📄 Sources officielles",
+    "do2-link-list": "Liste des maladies à déclaration obligatoire (Santé publique France)",
+    "do2-link-coreb": "COREB — risque épidémique et biologique",
+    "do2-not-do": "⚠️ Un signalement sur BreathIQ ne remplace jamais la déclaration obligatoire ni le signal à l'ARS.",
     'x-quarantaine-isolement-distinction-fondamentale-9c9a': '📌 Quarantaine ≠ Isolement — distinction fondamentale',
     'x-isolement-2ba2': 'Isolement',
     'x-cas-confirme-ou-probable-76f5': 'cas confirmé ou probable',
@@ -510,7 +528,7 @@ var I18N = {
     'x-chirurgical-iir-cabe': 'Chirurgical IIR',
     'x-tissu-583f': 'Tissu',
     'x-variable-47c1': 'Variable',
-    'x-medecin-generaliste-installe-a-f415': 'Médecin généraliste installé à La Rochelle, j\'ai créé BreathIQ par conviction de santé publique : trop de patients consultent trop tard — ou trop tôt — faute d\'un repère fiable entre leurs symptômes et les alertes épidémiques mondiales. BreathIQ est ma réponse : gratuite, sourcée, sans publicité.',
+    'x-medecin-generaliste-installe-a-f415': 'Médecin généraliste installé à La Rochelle, j\'ai créé BreathIQ par conviction de santé publique : trop de patients consultent trop tard — ou trop tôt — faute d\'un repère clair entre leurs symptômes et les alertes épidémiques mondiales. BreathIQ est ma réponse : gratuite, sourcée, sans publicité.',
     'x-en-savoir-plus-417d': '→ En savoir plus',
     'x-nature-juridique-de-l-b217': 'Nature juridique de l\'outil :',
     'x-ressources-6c13': 'Ressources',
@@ -719,11 +737,13 @@ var I18N = {
     'decl-lab-unknown': 'Sans objet',
     'decl-lab-yes': 'Oui',
     'decl-lab-no': 'Non',
-    'decl-consent-text': 'J\'accepte le partage anonymisé de ces données à des fins de surveillance épidémiologique. Aucune donnée personnelle n\'est collectée (données agrégées uniquement).',
+    'decl-consent-text': "J'ai compris que ce signalement est transmis au serveur de BreathIQ (Cloudflare) et conservé 120 jours, rattaché à un pseudonyme de mon compte Pro Santé Connect (et non à mon nom ni à mon RPPS). Seuls des totaux par semaine, région et pathologie, d'au moins 3 professionnels, peuvent être publiés.",
     'decl-submit': '📤 Déclarer — Anonymement',
     'decl-privacy-note': 'Aucune donnée personnelle collectée — uniquement syndrome, effectif, semaine, région approximative',
+    "decl-confirm-do": "Ce signalement n'est pas une déclaration obligatoire et n'est transmis ni à l'ARS ni à Santé publique France. Pour une maladie à déclaration obligatoire, suivez le circuit officiel de la maladie :",
+    "decl-confirm-do-link": "liste et fiches de déclaration (Santé publique France)",
     'decl-confirm-title': 'Déclaration transmise',
-    'decl-confirm-sub': 'Merci. Signal pseudonymisé intégré à la surveillance régionale.',
+    'decl-confirm-sub': 'Merci. Signalement enregistré (phase pilote) : il ne sera visible que dans des totaux régionaux, et seulement lorsqu\'au moins 3 professionnels auront signalé.',
     'decl-confirm-new': '+ Nouvelle déclaration',
     'live-sources-title': 'Sources de surveillance connectées',
     'live-sources-subtitle': '8 sources épidémiologiques et environnementales — mises à jour quotidiennes, délai des sources indiqué',
@@ -762,7 +782,7 @@ var I18N = {
     'mydata-export': 'Exporter mes déclarations (JSON)',
     'mydata-rights': 'Conformément aux articles 15, 17 et 21 du RGPD, vous pouvez accéder à vos données, les effacer ou vous y opposer à tout moment.',
     'mydata-dpo': 'Contact DPO',
-    'decl-consent-art9': 'Je déclare agir en qualité de professionnel de santé ou de citoyen informé, et consens expressément au traitement de cette donnée de santé (Art. 9 RGPD) à des fins exclusives de surveillance épidémiologique locale, sans transmission serveur.',
+    'decl-consent-art9': "Je certifie agir en qualité de professionnel de santé. Le signalement ne contient aucune donnée identifiant un patient. Il ne remplace ni la déclaration obligatoire ni le signal à l'ARS.",
     'nav-mydata': 'Mes données',
     'skip-link': 'Aller au contenu principal',
     'scroll-top-aria': 'Retour en haut de page',
@@ -774,7 +794,7 @@ var I18N = {
     'ob-patient-f1': 'Vérifier mes symptômes',
     'ob-patient-f2': 'Trouver un médecin proche',
     'ob-patient-f3': 'Maladies à surveiller',
-    'ob-patient-f4': 'Triage urgences',
+    'ob-patient-f4': 'Aide à l\'orientation',
     'ob-patient-cta': 'Commencer →',
     'ob-expert-aria': 'Continuer en mode soignant',
     'ob-expert-title': 'Je suis soignant / expert',
@@ -1065,8 +1085,8 @@ var I18N = {
     'x-temperature-b0e7': '🌡️ Temperature?',
     'x-pas-de-fievre-db03': 'No fever',
     'x-qui-est-concerne-cfdd': '👤 Who is affected?',
-    'x-nourrisson-lt-2-ans-27de': 'Infant <2 years',
-    'x-enfant-2-15-ans-e003': 'Child 2–15 years',
+    'x-nourrisson-lt-2-ans-27de': 'Under 2 years',
+    'x-enfant-2-15-ans-e003': '2 to 15 years',
     'x-adulte-04e6': 'Adult',
     'x-senior-65-ans-5312': 'Senior ≥ 65 years',
     'x-etape-suivante-3faf': 'Next step →',
@@ -1083,7 +1103,7 @@ var I18N = {
     'x-tres-elevee-c778': 'Very high',
     'x-contexte-de-vie-amp-29c7': '✈️ Living context & exposures',
     'x-voyage-tropical-recent-lt-b01a': 'Recent tropical travel (< 21 days)',
-    'x-ebola-pheic-eabc': '⚠️ Ebola PHEIC',
+    'x-ebola-pheic-eabc': '⚠️ Active WHO alert',
     'x-hantavirus-7ddd': '⚠️ Hantavirus',
     'x-voyage-balkans-turquie-espagne-286b': 'Travel to the Balkans / Turkey / rural Spain',
     'x-voyage-asie-du-sud-2c70': 'Travel to South-East Asia / Middle East',
@@ -1187,8 +1207,26 @@ var I18N = {
     'x-referentiel-pathogenes-soignant-4c35': '🦠 Clinician pathogen reference',
     'x-non-dispositif-medical-aa69': 'Not a medical device',
     'x-pathogenes-ce82': '🦠 Pathogens',
-    'x-epi-niveau-4-ebola-4e32': '🛡️ Level-4 PPE / Ebola',
-    'x-contacts-urgence-fc54': '📞 Emergency contacts',
+    'x-epi-niveau-4-ebola-4e32': '🛡️ Haemorrhagic fevers / Ebola',
+    'x-contacts-urgence-fc54': '📞 Notification & contacts',
+    "fhv-urgent-title": "Suspected viral haemorrhagic fever (Ebola, Marburg, Lassa, CCHF):",
+    "fhv-urgent-body": "isolate the patient without invasive procedures, do not send them to the emergency department on their own, and immediately call 15 (SAMU), then your regional health agency (ARS) focal point. SAMU and the referral infectious-disease physician classify the case and arrange transfer to the designated referral hospital (ESR).",
+    "fhv-no-protocol": "BreathIQ does not publish any donning, doffing or post-exposure protocol: these procedures belong to national guidelines and your facility's training. Use only the documents below, in their current version.",
+    "fhv-refs-title": "Official guidelines",
+    "fhv-link-coreb": "COREB (SPILF) — high-consequence infectious disease procedures: detection, case classification, PPE, care",
+    "fhv-link-who": "WHO — Ebola virus disease (current outbreaks, case definitions)",
+    "fhv-link-do": "Santé publique France — official list of notifiable diseases",
+    "fhv-exposure": "Occupational exposure of a health worker: follow your facility's blood/body-fluid exposure procedure and notify SAMU (15) and the referral infectious-disease physician without delay.",
+    "do2-title": "Mandatory notification and reporting — France",
+    "do2-intro": "BreathIQ does not reproduce the list of notifiable diseases: the only up-to-date list, with the form and channel for each disease (e-DO or form sent to the ARS), is Santé publique France's.",
+    "do2-numbers-title": "📞 Verified numbers",
+    "do2-samu": "SAMU (life-threatening emergency, suspected VHF):",
+    "do2-112": "European emergency number:",
+    "do2-ars": "ARS focal point: depends on your region, see the ARS website",
+    "do2-links-title": "📄 Official sources",
+    "do2-link-list": "List of notifiable diseases (Santé publique France)",
+    "do2-link-coreb": "COREB — epidemic and biological risk",
+    "do2-not-do": "⚠️ A report on BreathIQ never replaces mandatory notification or the alert to the ARS.",
     'x-quarantaine-isolement-distinction-fondamentale-9c9a': '📌 Quarantine ≠ Isolation — a fundamental distinction',
     'x-isolement-2ba2': 'Isolation',
     'x-cas-confirme-ou-probable-76f5': 'confirmed or probable case',
@@ -1274,7 +1312,7 @@ var I18N = {
     'x-chirurgical-iir-cabe': 'Surgical IIR',
     'x-tissu-583f': 'Cloth',
     'x-variable-47c1': 'Variable',
-    'x-medecin-generaliste-installe-a-f415': 'A general practitioner based in La Rochelle, I created BreathIQ out of a public-health conviction: too many patients consult too late — or too early — for lack of a reliable reference point between their symptoms and global epidemic alerts. BreathIQ is my answer: free, sourced, ad-free.',
+    'x-medecin-generaliste-installe-a-f415': 'A general practitioner based in La Rochelle, I created BreathIQ out of a public-health conviction: too many patients consult too late — or too early — for lack of a clear reference point between their symptoms and global epidemic alerts. BreathIQ is my answer: free, sourced, ad-free.',
     'x-en-savoir-plus-417d': '→ Learn more',
     'x-nature-juridique-de-l-b217': 'Legal nature of the tool:',
     'x-ressources-6c13': 'Resources',
@@ -1485,11 +1523,13 @@ var I18N = {
     'decl-lab-unknown': 'N/A',
     'decl-lab-yes': 'Yes',
     'decl-lab-no': 'No',
-    'decl-consent-text': 'I agree to the anonymous sharing of this data for epidemiological surveillance purposes. No personal data is collected (aggregated data only).',
+    'decl-consent-text': "I understand that this report is sent to BreathIQ's server (Cloudflare) and kept for 120 days, linked to a pseudonym of my Pro Santé Connect account (not to my name or RPPS number). Only totals by week, region and condition, from at least 3 professionals, may be published.",
     'decl-submit': '📤 Report — Anonymously',
     'decl-privacy-note': 'No personal data collected — only syndrome, count, week, approximate region',
+    "decl-confirm-do": "This report is not a mandatory notification and is not sent to the ARS or Santé publique France. For a notifiable disease, follow the official channel for that disease:",
+    "decl-confirm-do-link": "list and notification forms (Santé publique France)",
     'decl-confirm-title': 'Report submitted',
-    'decl-confirm-sub': 'Thank you. Pseudonymised signal added to regional surveillance.',
+    'decl-confirm-sub': 'Thank you. Report recorded (pilot phase): it will only appear in regional totals, and only once at least 3 professionals have reported.',
     'decl-confirm-new': '+ New declaration',
     'live-sources-title': 'Live surveillance sources',
     'live-sources-subtitle': '8 epidemiological and environmental sources — updated daily, source delay shown',
@@ -1528,7 +1568,7 @@ var I18N = {
     'mydata-export': 'Export my declarations (JSON)',
     'mydata-rights': 'Under Articles 15, 17 and 21 of the GDPR, you can access, delete or object to your data at any time.',
     'mydata-dpo': 'DPO Contact',
-    'decl-consent-art9': 'I declare that I am acting as a healthcare professional or informed citizen, and expressly consent to the processing of this health data (Art. 9 GDPR) for the exclusive purpose of local epidemiological surveillance, with no server transmission.',
+    'decl-consent-art9': "I certify that I am acting as a health professional. The report contains no data identifying a patient. It does not replace mandatory notification or the alert to the regional health agency (ARS).",
     'nav-mydata': 'My data',
     'skip-link': 'Skip to main content',
     'scroll-top-aria': 'Back to top',
@@ -1539,7 +1579,7 @@ var I18N = {
     'ob-patient-f1': 'Check my symptoms',
     'ob-patient-f2': 'Find a nearby doctor',
     'ob-patient-f3': 'Diseases to watch',
-    'ob-patient-f4': 'Emergency triage',
+    'ob-patient-f4': 'Help finding the right care',
     'ob-patient-cta': 'Get started →',
     'ob-expert-aria': 'Continue in healthcare professional mode',
     'ob-expert-title': 'I am a healthcare professional / expert',
@@ -2344,84 +2384,90 @@ var SYMPTOM_MAP = {
 };
 
 // ── Score calculation ────────────────────────────────────────
-// SR = (0.40 × AQI) + (0.30 × Viral) + (0.20 × Pollen) + (0.10 × Weather)
+// SR : voir composeSR()
 // Components: 0–100 scale (100 = worst)
 // AQI réel via Open-Meteo Air Quality API quand disponible, sinon estimation
 
 // ── Cache données épidémio statiques ─────────────────────────
 // Chargés une fois au démarrage depuis /data/*.json (mis à jour hebdomadairement par GitHub Actions)
-let _spfLiveCache   = null;  // data/spf-live.json  — SPF BEH
-let _ecdcCache      = null;  // data/ecdc-surveillance.json — Z-scores ECDC
+let _sentinellesCache = null;  // data/spf-surveillance.json — Réseau Sentinelles (incidences nationales)
+let _ecdcCache      = null;  // data/ecdc-surveillance.json — Z-scores ECDC (seules les séries collectedAt sont utilisées)
 let _whoAlertsCache = null;  // data/who-alerts.json — alertes WHO DON
+
+// Une source est périmée 48 h après sa prochaine mise à jour attendue
+function isSourceStale(src) {
+  return src?.nextUpdateExpected ? Date.now() > new Date(src.nextUpdateExpected).getTime() + 48 * 3600 * 1000 : false;
+}
 
 async function loadStaticEpiData() {
   try {
-    const [spfResp, ecdcResp, whoResp] = await Promise.allSettled([
-      fetch('/data/spf-live.json').then(r => r.ok ? r.json() : null).catch(() => null),
+    const [sentResp, ecdcResp, whoResp] = await Promise.allSettled([
+      fetch('/data/spf-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
       fetch('/data/ecdc-surveillance.json').then(r => r.ok ? r.json() : null).catch(() => null),
       fetch('/data/who-alerts.json').then(r => r.ok ? r.json() : null).catch(() => null),
     ]);
-    if (spfResp.status === 'fulfilled' && spfResp.value) _spfLiveCache   = spfResp.value;
+    if (sentResp.status === 'fulfilled' && sentResp.value) _sentinellesCache = sentResp.value;
     if (ecdcResp.status === 'fulfilled' && ecdcResp.value) _ecdcCache     = ecdcResp.value;
     if (whoResp.status === 'fulfilled' && whoResp.value) _whoAlertsCache  = whoResp.value;
     if (typeof refreshScoreDisplay === 'function') refreshScoreDisplay();
   } catch(e) { /* silent */ }
 }
 
+// Indice composite — formule unique, documentée dans methodologie.html :
+// SR = (0,45 × qualité de l'air + 0,40 × circulation virale + 0,15 × pollen) / somme des poids disponibles.
+// Pas d'indice si la qualité de l'air OU la circulation virale manque : un score reposant sur une seule
+// composante serait trompeur.
+function composeSR(aqi, viral, pollen) {
+  if (aqi == null || viral == null) return null;
+  let num = 0.45 * aqi + 0.40 * viral, w = 0.85;
+  if (pollen != null) { num += 0.15 * pollen; w += 0.15; }
+  return Math.min(100, Math.max(0, Math.round(num / w)));
+}
+
 // Calcule le score viral (0–100) pour une région à partir des données épidémio réelles.
 // Retourne { score: number, isLive: boolean, source: string }
 function computeViralScore(region) {
-  const seed = region.id * 137 + 42;
-  const noise = (n) => ((Math.sin(n) * 43758.5453123) % 1 + 1) % 1;
   const statusBase = { critical: 75, low: 60, moderate: 45, sufficient: 25 }[region.status] || 40;
   const alertLevelBase = { critical: 80, high: 65, moderate: 45, low: 25 }[region.alertLevel] || statusBase;
+  // Z-score moyen → score 0-100 (z=0 → 35, z=1 → 50, z=2 → 65) ; les Z négatifs sont conservés
+  const zToScore = (zs) => {
+    const meanZ = zs.reduce((a, b) => a + b, 0) / zs.length;
+    return Math.max(0, Math.min(100, Math.round(35 + meanZ * 15)));
+  };
 
-  // ── France : données SPF BEH ─────────────────────────────────
-  if (region.iso === 'FR' && _spfLiveCache?.sources?.length) {
-    const regionNameLow = (region.nameFR || '').toLowerCase();
-    let matched = _spfLiveCache.sources.find(s => {
-      const sr = (s.region || '').toLowerCase();
-      return regionNameLow.includes(sr) || sr.includes(regionNameLow.split(' ')[0]);
-    });
-    if (!matched) matched = _spfLiveCache.sources.find(s => (s.region || '') === 'France');
-    if (matched) {
-      const score = { low: 25, medium: 55, high: 75 }[matched.risk_level] ?? alertLevelBase;
-      const week  = _spfLiveCache.run_date || '';
-      return { score: Math.round(score), isLive: true, source: `SPF BEH${week ? ' — ' + week : ''}` };
+  // ── France : Réseau Sentinelles (incidence nationale, Z-score sur 52 semaines) ──
+  // Donnée nationale : la même valeur s'applique à toutes les régions françaises
+  if (region.iso === 'FR' && _sentinellesCache?.pathogens?.length && !isSourceStale(_sentinellesCache)) {
+    const zs = _sentinellesCache.pathogens.map(p => p.zscore).filter(z => typeof z === 'number');
+    if (zs.length) {
+      const week = _sentinellesCache.pathogens[0]?.week || '';
+      return { score: zToScore(zs), isLive: true, source: `Réseau Sentinelles — national${week ? ' ' + week : ''}` };
     }
   }
 
-  // ── Europe (hors France) : Z-scores ECDC ─────────────────────
-  if (region.whoRegion === 'EURO' && _ecdcCache?.pathogens?.length) {
-    const zscores = _ecdcCache.pathogens
+  // ── Europe (hors France) : Z-scores ECDC réellement collectés, pathogènes respiratoires ──
+  const RESPIRATORY_ECDC = new Set(['influenza', 'flu', 'covid19', 'covid', 'rsv', 'pertussis', 'measles', 'legionella']);
+  if (region.whoRegion === 'EURO' && region.iso !== 'FR' && _ecdcCache?.pathogens?.length && !isSourceStale(_ecdcCache)) {
+    const zs = _ecdcCache.pathogens
+      .filter(p => p.collectedAt && RESPIRATORY_ECDC.has(String(p.id).toLowerCase()))
       .map(p => p.zscore)
-      .filter(z => typeof z === 'number' && z > 0);
-    if (zscores.length) {
-      const meanZ = zscores.reduce((a, b) => a + b, 0) / zscores.length;
-      // z=0 → ~35 (baseline), z=1 → 50, z=2 → 65, z=3+ → 80+
-      const score = Math.min(100, Math.round(35 + meanZ * 15));
-      const date  = (_ecdcCache.sourceVerifiedAt || _ecdcCache.generatedAt || '').slice(0, 10);
-      return { score, isLive: true, source: `ECDC Z-score${date ? ' (' + date + ')' : ''}` };
+      .filter(z => typeof z === 'number');
+    if (zs.length) {
+      const date = (_ecdcCache.sourceVerifiedAt || '').slice(0, 10);
+      return { score: zToScore(zs), isLive: true, source: `ECDC${date ? ' (' + date + ')' : ''}` };
     }
   }
 
-  // ── Monde : alertes WHO DON ───────────────────────────────────
+  // ── Monde : alertes OMS (DON) visant explicitement le pays de la région ──
   if (_whoAlertsCache?.alerts?.length) {
-    const nameLC = (region.nameEN || region.nameFR || '').toLowerCase();
-    const whoReg = region.whoRegion || '';
-    const regionAlerts = _whoAlertsCache.alerts.filter(a => {
-      const t = (a.title || '').toLowerCase();
-      return t.includes(nameLC) ||
-        (whoReg === 'AFRO'  && (t.includes('congo') || t.includes('africa') || t.includes('uganda'))) ||
-        (whoReg === 'SEARO' && (t.includes('india') || t.includes('bangladesh')));
-    });
+    const nameLC = (region.nameEN || '').toLowerCase();
+    const regionAlerts = nameLC ? _whoAlertsCache.alerts.filter(a => (a.title || '').toLowerCase().includes(nameLC)) : [];
     if (regionAlerts.length) {
       const critCount = regionAlerts.filter(a => a.riskLevel === 'critical').length;
       const highCount = regionAlerts.filter(a => a.riskLevel === 'high').length;
       const boost = Math.min(20, critCount * 10 + highCount * 5);
-      const score = Math.min(100, alertLevelBase + boost);
-      const date  = _whoAlertsCache.fetchDate || '';
-      return { score, isLive: true, source: `WHO DON${date ? ' ' + date : ''}` };
+      const latest = regionAlerts.map(a => a.pubDate || '').sort().pop();
+      return { score: Math.min(100, alertLevelBase + boost), isLive: true, source: `OMS DON${latest ? ' ' + latest : ''}` };
     }
   }
 
@@ -2528,14 +2574,7 @@ function generateScoreForRegion(region) {
   const pollenLive = cachedAqi?.pollenScore ?? null;
 
   // Score composite uniquement avec les composantes réelles disponibles
-  let sr, weights = 0;
-  let srNum = 0;
-  if (aqiLive != null)   { srNum += 0.45 * aqiLive;   weights += 0.45; }
-  if (viral != null)     { srNum += 0.40 * viral;      weights += 0.40; }
-  if (pollenLive != null){ srNum += 0.15 * pollenLive; weights += 0.15; }
-
-  // Score final normalisé par les poids réels disponibles
-  sr = weights > 0 ? Math.round(srNum / weights) : null;
+  const sr = composeSR(aqiLive, viral, pollenLive);
 
   return {
     sr: sr != null ? Math.min(100, Math.max(0, sr)) : null,
@@ -4659,7 +4698,7 @@ function wizAnalyze() {
   if (hasEbolaContext && hasBleeding) {
     const ebolaResult = {
       ranked: [],
-      orientLevel: 'emergency',
+      orientLevel: 'ROUGE',
       alarmReason: '🚨 Combinaison critique : voyage zone Ebola/Hantavirus + saignements — orientation SAMU immédiate',
       clinical: {
         level: 'emergency',
@@ -4689,7 +4728,7 @@ function wizAnalyze() {
   if (state.alarm.includes('infant_fever_alarm')) {
     const infantResult = {
       ranked: [],
-      orientLevel: 'emergency',
+      orientLevel: 'ROUGE',
       alarmReason: '👶 Nourrisson < 3 mois avec fièvre ≥ 38°C — urgences pédiatriques immédiates (HAS/SFMU)',
       clinical: {
         level: 'emergency',
@@ -4782,7 +4821,7 @@ function toggleSymptom(labelEl) {
 // ============================================================
 // MOTEUR DIAGNOSTIQUE INFECTIOLOGIQUE — BreathIQ v2.0
 // Algorithme Bayésien pondéré — Référentiels OMS, ECDC, CDC
-// Critères validés: ILI (OMS), CURB-65, FLU score, SARI
+// Règles d'orientation non validées cliniquement
 // © 2026 Dr. Clément MÉDEAU — Non dispositif médical
 // ============================================================
 
@@ -4809,14 +4848,14 @@ function buildClinicalOrientationInput(state) {
         ? 2
         : 1;
 
-  const hasGlobalCriticalOutbreak = OUTBREAK_DATA.some(ob => ob.currentStatus === 'outbreak' && ob.riskLevel === 'critical');
   return {
     symptoms,
     durationDays,
     ageGroup: state.age === 'senior' || state.age === 'infant' || state.age === 'child' ? state.age : 'adult',
     riskFactors,
     context: {
-      localOutbreakRisk: hasGlobalCriticalOutbreak ? 'high' : 'medium',
+      // Pas de donnée régionale française fiable : une épidémie à l'étranger ne doit pas relever l'orientation locale
+      localOutbreakRisk: 'medium',
       userCountry: 'FR',
       userRegion: selectedRegionId ? String(selectedRegionId) : '',
     },
@@ -4840,7 +4879,7 @@ function checkSymptoms() {
 // ── Numéros d'urgence simples par langue (utilisé dans renderDiagnosticResult) ─
 var EMERGENCY_NUMBERS_SIMPLE = {
   fr: { main:'15', alt:'112', label:'SAMU', note:'Ou 112 partout en Europe' },
-  en: { main:'999', alt:'112', label:'Emergency', note:'Or 112 in Europe / 911 in USA' },
+  en: { main:'15', alt:'112', label:'SAMU (France)', note:'In France: 15 (SAMU) or 112' },
   es: { main:'112', alt:'061', label:'Emergencias', note:'O 061 para urgencias médicas' },
   pt: { main:'112', alt:'192', label:'Emergência', note:'Ou 192 SAMU no Brasil' },
   ar: { main:'15', alt:'190', label:'الإسعاف', note:'أو 190 في بعض الدول العربية' },
@@ -4861,16 +4900,16 @@ var WAITING_ADVICE = {
     en: ['Go to emergency room now or call emergency services', 'Do not drive alone if feeling very unwell', 'Take your medical ID card', 'Note the time symptoms started'],
   },
   JAUNE: {
-    fr: ['Appelez votre médecin ou le 116 117 (médecin de garde)', 'Buvez de l\'eau régulièrement', 'Prenez du paracétamol si fièvre > 38.5°C (dose : 1g adulte)', 'Reposez-vous', 'Si ça empire dans les 2h → appelez le 15'],
-    en: ['Call your doctor or medical helpline', 'Drink water regularly', 'Take paracetamol if fever > 38.5°C (1g adult dose)', 'Rest', 'If worsening in 2h → call emergency services'],
+    fr: ['Appelez votre médecin ou le 116 117 (médecin de garde)', 'Buvez de l\'eau régulièrement', 'Pour la fièvre ou la douleur : demandez conseil à votre pharmacien (dose selon l\'âge et le poids)', 'Reposez-vous', 'Si l\'état s\'aggrave → appelez le 15'],
+    en: ['Call your doctor or 116 117 (out-of-hours GP, France)', 'Drink water regularly', 'For fever or pain: ask your pharmacist (dose depends on age and weight)', 'Rest', 'If it gets worse → call 15 (or 112)'],
   },
   BLEU: {
-    fr: ['Consultez un médecin dans les 48h', 'Buvez beaucoup d\'eau', 'Paracétamol si besoin', 'Portez un masque pour protéger votre entourage', 'Revenez ici si nouveaux symptômes'],
-    en: ['See a doctor within 48h', 'Drink plenty of water', 'Paracetamol if needed', 'Wear a mask to protect others', 'Return here if new symptoms develop'],
+    fr: ['Consultez un médecin dans les 48h', 'Buvez beaucoup d\'eau', 'Fièvre ou douleur : demandez conseil à votre pharmacien', 'Portez un masque pour protéger votre entourage', 'Revenez ici si nouveaux symptômes'],
+    en: ['See a doctor within 48h', 'Drink plenty of water', 'Fever or pain: ask your pharmacist', 'Wear a mask to protect others', 'Return here if new symptoms develop'],
   },
   VERT: {
-    fr: ['Restez chez vous et reposez-vous', 'Buvez de l\'eau — minimum 1,5L par jour', 'Paracétamol si douleur ou fièvre légère', 'Isolez-vous des personnes fragiles (bébés, personnes âgées)', 'Revenez consulter si pas d\'amélioration en 5 jours'],
-    en: ['Stay home and rest', 'Drink water — minimum 1.5L per day', 'Paracetamol for pain or mild fever', 'Stay away from vulnerable people', 'See a doctor if no improvement in 5 days'],
+    fr: ['Restez chez vous et reposez-vous', 'Buvez de l\'eau — minimum 1,5L par jour', 'Fièvre ou douleur : demandez conseil à votre pharmacien', 'Isolez-vous des personnes fragiles (bébés, personnes âgées)', 'Consultez un médecin si les symptômes persistent ou s\'aggravent'],
+    en: ['Stay home and rest', 'Drink water — minimum 1.5L per day', 'Fever or pain: ask your pharmacist', 'Stay away from vulnerable people', 'See a doctor if symptoms persist or get worse'],
   },
 };
 
@@ -4986,7 +5025,8 @@ function renderDiagnosticResult(result, state) {
 
   // ── Pathogènes probables ────────────────────────────────────
   let pathoBlock = '';
-  if (ranked.length > 0) {
+  // Mode patient : niveau de recours uniquement — aucune hypothèse diagnostique classée (frontière DM)
+  if (ranked.length > 0 && currentMode === 'expert') {
     pathoBlock = `<div class="diag-patho-title">${fr ? '🔬 Hypothèses à discuter avec un professionnel' : '🔬 Possibilities to discuss with a clinician'}</div>`;
     ranked.forEach((d,i) => {
       const p = BIQ_DIAG.PATHOGENS[d.pid];
@@ -5019,7 +5059,7 @@ function renderDiagnosticResult(result, state) {
     ['emergency','medical_regulation'].includes(clinical?.level);
 
   // ── Conduite à tenir (waiting advice) ───────────────────────
-  const waitKey = orientLevel || (clinical?.level === 'emergency' ? 'ROUGE' :
+  const waitKey = (orientLevel === 'emergency' ? 'ROUGE' : orientLevel) || (clinical?.level === 'emergency' ? 'ROUGE' :
     clinical?.level === 'medical_regulation' ? 'ORANGE' :
     clinical?.level === 'same_day_doctor' ? 'JAUNE' : 'VERT');
   const waitingTips = (WAITING_ADVICE[waitKey] || WAITING_ADVICE.VERT)[fr ? 'fr' : 'en'];
@@ -5054,7 +5094,7 @@ function renderDiagnosticResult(result, state) {
 
   // ── Conduite 1er pathogène ───────────────────────────────────
   const topPathogen = ranked[0] ? BIQ_DIAG.PATHOGENS[ranked[0].pid] : null;
-  const conduiteBlock = topPathogen?.conduiteFR ? `
+  const conduiteBlock = (currentMode === 'expert' && topPathogen?.conduiteFR) ? `
     <div class="diag-conduite-block">
       <div class="diag-action-title">🩺 ${fr ? 'Conduite à tenir spécifique' : 'Specific guidance'}</div>
       <p class="diag-conduite-text">${escapeHTML(fr ? topPathogen.conduiteFR : (topPathogen.conduiteEN || topPathogen.conduiteFR))}</p>
@@ -5119,8 +5159,8 @@ function renderDiagnosticResult(result, state) {
           ? `⚠️ <strong>Orientation indicative — non diagnostique.</strong> En cas de doute ou d'aggravation, consultez immédiatement un professionnel de santé.`
           : `⚠️ <strong>Indicative guidance — not a diagnosis.</strong> If in doubt or symptoms worsen, seek immediate medical care.`}</p>
         <p class="diag-legal-meta">${fr
-          ? '📋 Références : OMS · ECDC · CDC · HCSP · Critères ILI/SARI/CURB-65/qSOFA. Non dispositif médical (UE 2017/745).'
-          : '📋 References: WHO · ECDC · CDC · ILI/SARI/CURB-65/qSOFA criteria. Not a medical device (EU 2017/745).'}</p>
+          ? '📋 Références : OMS · ECDC · CDC · HCSP · Repères généraux d'orientation. Non dispositif médical (UE 2017/745).'
+          : '📋 References: WHO · ECDC · CDC · General guidance on where to seek care. Not a medical device (EU 2017/745).'}</p>
       </div>
     </div>
   </div>`;
@@ -5537,7 +5577,8 @@ domReady(() => {
   fetchLiveAqiAndRefresh(null);
 
   // SPF — charger immédiatement (patches sur OUTBREAK_DATA et stats hero)
-  loadSPFLiveData();
+  // loadSPFLiveData() désactivé : data/spf-live.json est un résumé automatique (IA + mots-clés)
+  // de pages génériques SPF, pas un bulletin daté — il ne doit alimenter ni le score ni l'affichage.
 
   // Pathogens — lazy: fetch déclenché quand la section approche du viewport
   // Fallback après 4s pour les stats hero (utilisateurs qui ne scrollent pas)
@@ -5675,19 +5716,14 @@ function applyLiveData(parsed) {
   const bestAqi = parsed.waqiLocal || parsed.localAqi || parsed.frAqi;
   if (bestAqi?.aqiScore != null) {
     score.aqi = bestAqi.aqiScore;
-    score.sr  = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
+    score.sr = composeSR(score.aqi, score.viral, score.pollen);
   }
-  if (parsed.frFlu?.viralScore != null) {
-    score.viral = parsed.frFlu.viralScore;
-    score.sr    = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
-    const viralBadge = document.getElementById('viralEstBadge');
-    if (viralBadge) viralBadge.style.display = 'none';
-  }
+  // La composante virale France vient uniquement du Réseau Sentinelles (computeViralScore)
   // Pollen : géoloc (Open-Meteo géolocalisé) > région (Open-Meteo régional)
   const pollenSource = parsed.localAqi?.pollen ? parsed.localAqi : (score.pollenData ? { pollen: score.pollenData, pollenScore: score.pollen } : null);
   if (parsed.localAqi?.pollenScore != null) {
     score.pollen = parsed.localAqi.pollenScore;
-    score.sr     = Math.round(0.40 * score.aqi + 0.30 * score.viral + 0.15 * score.pollen + 0.15 * score.weather);
+    score.sr = composeSR(score.aqi, score.viral, score.pollen);
   }
 
   updatePatientRiskBanner();
@@ -6458,6 +6494,12 @@ async function submitDeclaration(e) {
 
   if (!syndrome || !count || !age || !severity || !onsetDate) return;
 
+  // Suspicion à haut risque : arrêt de la saisie, appel immédiat 15 + ARS (refusé aussi par le serveur)
+  if (['ebola', 'mers', 'h5n1', 'anthrax', 'botulisme'].includes(pathologie) || syndrome === 'hémorragique') {
+    showHighConsequenceStop(form);
+    return;
+  }
+
   // Seule la région d'exercice localise le signalement (aucune géolocalisation : minimisation)
   const region_code = data.get('region_code') || null;
 
@@ -6481,9 +6523,10 @@ async function submitDeclaration(e) {
   } catch (err) {
     if (submitBtn) submitBtn.disabled = false;
     const fr = currentLang === 'fr';
+    if (err.code === 'call_15_now') { showHighConsequenceStop(form); return; }
     const reason = err.code === 'profession_not_allowed' ? (fr ? 'votre profession n\'est pas autorisée à déclarer' : 'your profession is not allowed to report')
       : err.code === 'rate_limited' ? (fr ? 'limite quotidienne de déclarations atteinte' : 'daily reporting limit reached')
-      : err.code === 'storage_not_configured' || err.code === 'psc_not_configured' ? (fr ? 'service de déclaration non encore activé' : 'reporting service not yet activated')
+      : err.code === 'service_unavailable' ? (fr ? 'service de déclaration non encore activé' : 'reporting service not yet activated')
       : err.status === 401 ? (fr ? 'session Pro Santé Connect expirée — reconnectez-vous' : 'Pro Santé Connect session expired — sign in again')
       : (fr ? 'envoi impossible pour le moment' : 'submission failed for now');
     let errEl = form.querySelector('.decl-global-error');
@@ -6510,6 +6553,22 @@ async function submitDeclaration(e) {
 
   renderLocalDeclarations();
   renderClusterAlertBanner();
+}
+
+function showHighConsequenceStop(form) {
+  const fr = currentLang === 'fr';
+  let el = form.querySelector('.decl-stop-15');
+  if (!el) {
+    el = document.createElement('div');
+    el.className = 'decl-stop-15';
+    el.setAttribute('role', 'alert');
+    el.style.cssText = 'border:2px solid #DC2626;background:#FEF2F2;color:#7F1D1D;border-radius:.6rem;padding:1rem;margin:.75rem 0;font-size:.9rem;line-height:1.5;';
+    form.querySelector('.decl-submit-btn')?.before(el);
+  }
+  el.innerHTML = fr
+    ? '<strong>🚨 Ne pas enregistrer ici : appelez maintenant le 15 (SAMU), puis le point focal de votre ARS.</strong><br>Une suspicion de fièvre hémorragique, de MERS, de grippe aviaire, de charbon ou de botulisme relève d\'un signalement immédiat par téléphone. Isolez le patient et n\'orientez pas vers les urgences par ses propres moyens. BreathIQ n\'enregistre pas ces suspicions.'
+    : '<strong>🚨 Do not record this here: call 15 (SAMU) now, then your regional health agency (ARS) focal point.</strong><br>Suspected haemorrhagic fever, MERS, avian influenza, anthrax or botulism requires an immediate phone alert. Isolate the patient and do not send them to the emergency department on their own. BreathIQ does not record these suspicions.';
+  el.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
 
 function resetDeclForm() {
@@ -6620,15 +6679,11 @@ function detectAllClusters() {
         return map[d.count] || 3;
       });
       const totalEstimate = counts.reduce((a,b) => a + b, 0);
-      // Bruit différentiel ε=1 : ±1-2 cas aléatoires pour anonymisation supplémentaire
-      const noisedTotal = totalEstimate + Math.floor(Math.random() * 3) - 1;
       const pathologies = [...new Set(g.decls.map(d => d.pathologie).filter(Boolean))];
       const ars = ARS_REGIONS[g.region_code] || null;
       const isMaladieDO = g.decls.some(d => MALADIES_DO.includes(d.pathologie));
-      // Z-score simplifié sur 14 jours (baseline = 1 déclaration/semaine attendue)
-      const zscore = Math.round((g.decls.length - 1) / 1 * 10) / 10;
       const level = g.decls.length >= 10 ? 'ROUGE' : g.decls.length >= 6 ? 'ORANGE' : g.decls.length >= 3 ? 'JAUNE' : 'NORMAL';
-      return { ...g, totalEstimate: Math.max(1, noisedTotal), pathologies, ars, isMaladieDO, zscore, level };
+      return { ...g, totalEstimate, pathologies, ars, isMaladieDO, level };
     })
     .sort((a,b) => b.decls.length - a.decls.length);
 
@@ -6685,7 +6740,7 @@ function renderClusterAlertBanner() {
       <span class="cluster-banner-sub">Basé sur vos déclarations locales des 14 derniers jours · Données anonymes agrégées</span>
     </div>
     ${rows}
-    <p class="cluster-legal-note">⚖️ Données anonymisées — aucune information patient identifiable (RGPD Art. 2 · k-anonymité ≥3 · bruit différentiel). Cette alerte est générée automatiquement à titre d'aide à la décision et doit être confirmée par les voies officielles avant toute action.</p>
+    <p class="cluster-legal-note">⚖️ Aucune information patient identifiable (seuil de publication : 3 déclarations au moins). Cette alerte est générée automatiquement à titre d'aide à la décision et doit être confirmée par les voies officielles avant toute action.</p>
   </div>`;
 }
 
@@ -6715,8 +6770,8 @@ function openARSAlert(cluster) {
     `----------------------------------------`,
     `CONFORMITÉ RÉGLEMENTAIRE`,
     `----------------------------------------`,
-    `• Données anonymisées de façon irréversible (RGPD Art. 2 + considérant 26)`,
-    `• Aucune information patient identifiable (k-anonymité ≥ 3 + bruit différentiel)`,
+    `• Aucune donnée identifiant un patient`,
+    `• Aucune information patient identifiable (seuil de publication : 3 déclarations au moins)`,
     `• Déclarations de professionnels de santé (Art. 9(2)(j) RGPD)`,
     `• Secret médical préservé (CSP Art. L1110-4)`,
     ``,
@@ -6871,7 +6926,7 @@ function openAuthorityAlert(pathologyId, level, zscore, count, baseline) {
     `Baseline historique : ${baseline} cas/semaine`,
     ``,
     `Source : Déclarations anonymes de professionnels de santé — BreathIQ (breathiq.fr)`,
-    `RGPD : Données agrégées anonymisées, aucune information patient identifiable`,
+    `Données agrégées, aucune information patient identifiable`,
     ``,
     `Pour déclarer officiellement : ${auth.declUrl}`,
   ].join('\n');

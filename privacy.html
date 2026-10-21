@@ -88,7 +88,7 @@
   <a href="#analytique">8. Analytique</a>
   <a href="#securite">9. Sécurité</a>
   <a href="#cnil">10. CNIL</a>
-  <a href="#contact">Contact DPO</a>
+  <a href="#contact">Contact données personnelles</a>
 </nav>
 
 <main class="main">
@@ -96,10 +96,12 @@
   <div class="alert alert-teal">
     <span style="font-size:1.4rem;flex-shrink:0">🔐</span>
     <div>
-      <strong>Résumé : BreathIQ ne stocke aucune donnée personnelle sur ses serveurs</strong>
-      <p>Ce site est conçu selon le principe <em>Privacy by Design</em> (art. 25 RGPD). Toutes les données
-      (préférences, déclarations syndromiques, cache API) restent exclusivement sur votre appareil.
-      Aucun compte, aucun cookie publicitaire, aucun traceur tiers.</p>
+      <strong>Résumé : en mode patient, BreathIQ ne conserve aucune donnée personnelle sur ses serveurs</strong>
+      <p>Ce site est conçu selon le principe <em>Privacy by Design</em> (art. 25 RGPD). Pour le grand public, les données
+      (préférences, réponses au questionnaire, cache des sources) restent sur votre appareil. Aucun compte, aucun cookie
+      publicitaire. <strong>Exception : les signalements des professionnels de santé</strong> connectés par Pro Santé Connect
+      sont transmis au serveur (Cloudflare) et conservés 120 jours, rattachés à un pseudonyme du déclarant (voir section dédiée).
+      Le pseudonyme est une donnée personnelle au sens du RGPD (art. 4.5) : ces données ne sont pas anonymes.</p>
     </div>
   </div>
 
@@ -124,7 +126,7 @@
       <tr><td style="font-weight:600">Qualité</td><td>Docteur en médecine — Éditeur personne physique (LCEN Art. 6.II)</td></tr>
       <tr><td style="font-weight:600">Localisation</td><td>La Rochelle (17000), France</td></tr>
       <tr><td style="font-weight:600">Contact général</td><td><a href="mailto:contact@breathiq.fr">contact@breathiq.fr</a></td></tr>
-      <tr><td style="font-weight:600">DPO / Référent données</td><td><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></td></tr>
+      <tr><td style="font-weight:600">Contact données personnelles</td><td><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></td></tr>
     </table>
   </section>
 
@@ -211,9 +213,9 @@
         <tr><td>Cloudflare Pages (hébergement, fonctions serveur)</td><td>Cloudflare, Inc.</td><td><span class="chip chip-amber">UE / États-Unis</span></td><td>IP, journaux techniques</td><td>Clauses contractuelles types · <a href="https://www.cloudflare.com/privacypolicy/" target="_blank" rel="noopener">Politique Cloudflare</a></td></tr>
       </tbody>
     </table>
-    <p><strong>Nota bene :</strong> Pour les transferts vers les États-Unis non couverts par un accord d'adéquation,
-    aucune donnée identifiable ne transitant au-delà de l'adresse IP, ces transferts relèvent de l'exception
-    de l'article 49(1)(b) (nécessité pour l'exécution d'un service expressément demandé par la personne concernée).</p>
+    <p><strong>Nota bene :</strong> Cloudflare, Inc. peut traiter des données aux États-Unis (adresse IP, journaux techniques et,
+    pour les professionnels, signalements pseudonymisés). Ces transferts reposent sur les clauses contractuelles types de la
+    Commission européenne (art. 46 RGPD) prévues par l'accord de traitement de Cloudflare.</p>
   </section>
 
   <section id="durees">
@@ -266,7 +268,7 @@
       </div>
       <div class="right-item">
         <div class="ri">✉️</div>
-        <strong>Contact DPO</strong>
+        <strong>Contact données personnelles</strong>
         <p>Pour toute question : <a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a> — réponse sous 30 jours (Art. 12 RGPD).</p>
       </div>
     </div>
@@ -307,7 +309,7 @@
       <li>Localisation au niveau pays (dérivée de l'IP, jamais stockée)</li>
       <li>Type de navigateur et système d'exploitation (agrégé)</li>
     </ul>
-    <p>Le traitement est fondé sur l'intérêt légitime (art. 6(1)(f) RGPD), la collecte de Umami étant anonyme par conception et ne nécessitant pas de consentement préalable au titre du RGPD ou de la directive ePrivacy.
+    <p>Umami n'est chargé qu'après votre accord explicite dans le bandeau : le traitement est fondé sur votre consentement (art. 6(1)(a) RGPD), que vous pouvez retirer à tout moment.
     <a href="https://cloud.umami.is/data-policy" target="_blank" rel="noopener">Politique de données Umami →</a></p>
   </section>
 
@@ -337,7 +339,8 @@
   </section>
 
   <div class="contact-box">
-    <h3>Délégué à la Protection des Données (DPO)</h3>
+    <h3>Contact données personnelles</h3>
+    <p style="font-size:.8rem">Aucun délégué à la protection des données (DPO) n'est désigné à ce jour ; l'éditeur traite directement vos demandes.</p>
     <p><a href="mailto:privacy@breathiq.fr">privacy@breathiq.fr</a></p>
     <p>Dr. Clément MÉDEAU — BreathIQ</p>
     <p>La Rochelle (17000), France</p>

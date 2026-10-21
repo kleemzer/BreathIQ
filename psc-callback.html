@@ -28,7 +28,7 @@
       const error = params.get('error');
 
       if (error) {
-        showError('Connexion refusée : ' + (params.get('error_description') || error));
+        showError('La connexion Pro Santé Connect a été annulée ou refusée.');
         return;
       }
       if (!code || !state) {
@@ -42,9 +42,11 @@
         BIQ_PSC.saveSession(data);
         const returnTo = sessionStorage.getItem('psc_return') || '/?psc=success#declaration';
         sessionStorage.removeItem('psc_return');
-        window.location.href = returnTo.startsWith('/') ? returnTo : '/?psc=success#declaration';
+        // Chemin local uniquement : « //domaine » ou « /\domaine » seraient des redirections externes
+        const safe = /^\/(?![\/\\])/.test(returnTo) ? returnTo : '/?psc=success#declaration';
+        window.location.href = safe;
       } catch (err) {
-        showError('Erreur d\'authentification : ' + err.message);
+        showError('Connexion impossible pour le moment. Réessayez dans quelques minutes.');
       }
     })();
 
