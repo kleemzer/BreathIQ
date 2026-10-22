@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-10-21T12:35:24.658Z",
-  "fetchDate": "2026-10-21",
+  "generatedAt": "2026-10-22T12:37:33.638Z",
+  "fetchDate": "2026-10-22",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
@@ -30,8 +30,8 @@
     },
     {
       "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618",
-      "donId": "2026-DON618",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON621",
+      "donId": "2026-DON621",
       "pubDate": "2026-09",
       "riskLevel": "critical",
       "source": "WHO OData API"
