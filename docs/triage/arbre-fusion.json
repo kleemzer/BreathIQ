@@ -25,7 +25,8 @@
       "choix": [
         {
           "libelle": "Oui",
-          "vers": "U02"
+          "vers": "U02",
+          "pose": "pop_nourrisson_moins_3m"
         },
         {
           "libelle": "Non",
@@ -3942,7 +3943,8 @@
       "choix": [
         {
           "libelle": "Oui",
-          "vers": "U02"
+          "vers": "U02",
+          "pose": "pop_nourrisson_moins_3m"
         },
         {
           "libelle": "Non",
@@ -4652,5 +4654,15 @@
     "RV_PALU_TARDIF",
     "U_NRS_G",
     "R_NRS_2H"
+  ],
+  "corrections_integration": [
+    {
+      "date": "2026-10-25",
+      "noeuds": [
+        "U01",
+        "U01B"
+      ],
+      "description": "« Oui » pose pop_nourrisson_moins_3m : sans ce token, U_NRS_G (signes de gravité du nourrisson < 3 mois) était franchi par le moteur, sa condition d activation étant fausse avant POP00."
+    }
   ]
 }

@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261021a" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261021a"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261025a" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261025a"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -847,7 +847,7 @@
 <!-- ===== VÉRIFICATEUR DE SYMPTÔMES (Mode Patient) ===== -->
 
 
-<section class="symptom-checker-section patient-only" id="symptomChecker" aria-labelledby="checker-title">
+<section class="symptom-checker-section" id="symptomChecker" aria-labelledby="checker-title">
   <div class="container">
     <div class="section-header" style="text-align:center">
       <h2 id="checker-title" data-i18n="symptom-checker-title">Ai-je des symptômes qui doivent m'alerter ?</h2>
@@ -866,7 +866,11 @@
     <!-- Note de confidentialité avant le wizard -->
     <p class="wizard-privacy-note">🔒 <strong data-i18n="x-aucune-donnee-n-est-fb95">Aucune donnée n'est enregistrée.</strong> <span data-i18n="x-vos-reponses-restent-sur-4087">Vos réponses restent sur votre appareil — rien n'est transmis, ni vendu, ni partagé.</span></p>
 
-    <div class="symptom-wizard" id="symptomWizard">
+    <!-- Questionnaire de triage (arbre docs/triage, moteur js/triage-engine.js) -->
+    <div id="triageApp" class="triage-app" aria-live="polite"></div>
+
+    <!-- Ancien questionnaire en 4 étapes : conservé masqué le temps de la validation du nouvel arbre -->
+    <div class="symptom-wizard" id="symptomWizard" hidden>
 
       <!-- Barre de progression -->
       <div class="wizard-progress" id="wizardProgress" aria-hidden="true">
@@ -2236,7 +2240,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261021a';
+    s.src='/pro/pathogens.js?v=20261025a';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2288,9 +2292,11 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261021a" defer></script>
-<script src="api-live.min.js?v=20261021a" defer></script>
-<script src="script.min.js?v=20261021a" defer></script>
+<script src="js/psc-auth.js?v=20261025a" defer></script>
+<script src="api-live.min.js?v=20261025a" defer></script>
+<script src="script.min.js?v=20261025a" defer></script>
+<script src="js/triage-engine.min.js?v=20261025a" defer></script>
+<script src="js/triage-ui.min.js?v=20261025a" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

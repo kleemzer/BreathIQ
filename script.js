@@ -2813,6 +2813,7 @@ function applyI18n() {
 }
 
 function setLang(lang) {
+  setTimeout(() => window.BIQ_TRIAGE_UI?.render(), 0); // questionnaire : textes selon langue et mode
   currentLang = lang;
   applyI18n();
   renderPathogens();
@@ -4146,6 +4147,7 @@ function initMode() {
 }
 
 function toggleMode() {
+  setTimeout(() => window.BIQ_TRIAGE_UI?.render(), 0); // questionnaire : textes selon langue et mode
   if (currentMode === 'patient') {
     // Si profil déjà enregistré → accès direct sans re-saisie
     if (localStorage.getItem('biq-pro-profile')) {

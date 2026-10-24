@@ -4770,3 +4770,40 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 @media (max-width: 768px) {
   .biq-nav { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }
 }
+
+/* ── Questionnaire de triage (js/triage-ui.js) ─────────────────────────── */
+.triage-app { max-width: 640px; margin: 0 auto; }
+.tri-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px; padding: var(--s4); display: grid; gap: var(--s3); }
+.tri-head { display: flex; flex-wrap: wrap; gap: var(--s2); justify-content: space-between; }
+.tri-country { display: grid; gap: 4px; font-size: .9rem; color: var(--text-secondary); }
+.tri-country select { min-height: 44px; padding: 0 var(--s2); border: 1px solid var(--border-strong); border-radius: 8px; background: var(--bg-card); color: var(--text-primary); font: inherit; }
+.tri-step { margin: 0; font-size: .85rem; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
+.tri-question { margin: 0; font-size: 1.25rem; line-height: 1.4; color: var(--text-primary); text-wrap: balance; }
+.tri-question:focus { outline: none; }
+.tri-help { margin: 0; color: var(--text-secondary); font-size: 1rem; line-height: 1.55; }
+.tri-choices { display: grid; gap: var(--s2); border: 0; padding: 0; margin: 0; }
+.tri-btn { min-height: 48px; padding: 10px 16px; border-radius: 10px; border: 1px solid var(--border-strong); background: var(--bg-card); color: var(--text-primary); font: inherit; font-size: 1rem; text-align: left; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 8px; }
+.tri-btn:hover { border-color: var(--c-blue); }
+.tri-btn:focus-visible, .tri-check input:focus-visible { outline: 3px solid var(--c-blue); outline-offset: 2px; }
+.tri-btn:disabled { opacity: .5; cursor: not-allowed; }
+.tri-btn-primary { background: var(--c-blue); border-color: var(--c-blue); color: #fff; justify-content: center; font-weight: 600; }
+.tri-btn-ghost { background: transparent; font-size: .95rem; }
+.tri-btn-call { background: var(--c-red); border-color: var(--c-red); color: #fff; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+.tri-check { display: flex; gap: 10px; align-items: flex-start; min-height: 44px; padding: 10px 12px; border: 1px solid var(--border); border-radius: 10px; cursor: pointer; line-height: 1.4; }
+.tri-check input { width: 22px; height: 22px; margin-top: 1px; flex-shrink: 0; }
+.tri-nav { display: flex; flex-wrap: wrap; gap: var(--s2); }
+.tri-result { border-left-width: 8px; }
+.tri-level { margin: 0; font-size: 1.3rem; font-weight: 700; color: var(--text-primary); }
+.tri-text { margin: 0; font-size: 1.05rem; line-height: 1.55; color: var(--text-primary); }
+.tri-raised { margin: 0; padding: 8px 12px; border-radius: 8px; background: var(--bg-card-2); color: var(--text-primary); font-size: .95rem; }
+.tri-watch ul { margin: 6px 0 0; padding-left: 1.2rem; display: grid; gap: 4px; color: var(--text-primary); }
+.tri-watch p { margin: 0; }
+.tri-disclaimer { margin: 0; font-size: .9rem; color: var(--text-secondary); }
+.tri-meta, .tri-draft { margin: 0; font-size: .82rem; color: var(--text-muted); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+.tri-error { padding: var(--s3); border-radius: 10px; background: var(--c-red-soft); color: var(--text-primary); }
+.tri-lv-red    { border-left-color: var(--c-red); }
+.tri-lv-orange { border-left-color: #EA580C; }
+.tri-lv-amber  { border-left-color: var(--c-amber); }
+.tri-lv-blue   { border-left-color: var(--c-blue); }
+.tri-lv-green  { border-left-color: var(--c-teal); }
+@media (max-width: 480px) { .tri-card { padding: var(--s3); } .tri-question { font-size: 1.15rem; } .tri-nav .tri-btn { flex: 1 1 100%; } }

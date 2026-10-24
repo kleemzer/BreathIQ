@@ -6,10 +6,10 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v49';
+const CACHE_VERSION = 'biq-v50';
 // Doit suivre le ?v= de index.html : les URLs .min.* sans ?v= sont figées un an par le CDN (immutable),
 // le SW ne doit donc jamais les demander au réseau sans version.
-const ASSET_VERSION = '20261021a';
+const ASSET_VERSION = '20261025a';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -24,6 +24,8 @@ const STATIC_ASSETS = [
   '/js/clinical-orientation.min.js',
   '/js/care-facilities.min.js',
   '/js/symptom-guide.min.js',
+  '/js/triage-engine.min.js',
+  '/js/triage-ui.min.js',
   '/favicon.svg',
   '/manifest.json',
   '/assets/og-image.png',
@@ -45,6 +47,7 @@ const DATA_ASSETS = [
   '/data/who-alerts.json',
   '/data/spf-live.json',
   '/data/spf-arbo.json',
+  '/data/triage.json',
 ];
 
 // ── Installation — pré-cache des assets statiques ────────────
