@@ -4,7 +4,7 @@ import fs from 'node:fs'; import path from 'node:path'; import { fileURLToPath }
 const dir = path.dirname(fileURLToPath(import.meta.url));
 const A = JSON.parse(fs.readFileSync(path.join(dir, 'arbre-fusion.json'), 'utf8'));
 const N = Object.fromEntries(A.noeuds.map(n => [n.id, n]));
-const LV = ['autosoins_surveillance','consultation_programmee','consultation_rapide','consultation_urgente','urgence_vitale'];
+const LV = A.niveaux_ordre || ['autosoins_surveillance','consultation_programmee','consultation_rapide','consultation_urgente','urgence_vitale'];
 const L = x => LV.indexOf(x);
 const AGE = {n:'Moins de 3 mois', b:'De 3 mois à 2 ans', e:'De 2 à 15 ans', a:'De 16 à 64 ans', v:'65 ans ou plus', '?':'Je ne sais pas'};
 const POPS = {chimio:'Chimiothérapie', pp:'Accouchement', diad:'Diabète avec soif', cir:'Cirrhose', chute:'65 ans ou plus : chute', imm:'Cancer ou hémopathie', vih:'Infection par le VIH', greffe:'Greffe', bio:'Biothérapie', asp:'Rate retirée', gro:'Grossesse', dia:'Diabète', ic:'Insuffisance cardiaque', ir:'Insuffisance respiratoire', irn:'Insuffisance rénale', jnsp:'Je ne sais pas'};
@@ -112,8 +112,8 @@ const ROUTE2 = {
   V57:{a:{U02:'Moins de 36'}}, V65:{a:{U_GRO01:'Non'}}, V66:{a:{U_GRO01:'Oui'}}, V67:{a:{U_GRO01:'Non'}}, V68:{a:{U_GRO01:'Non'}},
   V24:{a:{U_GRO01:'Non'}}, V27:{a:{U_GRO01:'Non'}},
   V69:{pops:['pp']}, V70:{pops:['chute']}, V73:{pops:['chimio']}, V77:{f:{frissons:1}}, V80:{pops:['dia','diad']}, V83:{pops:['cir']},
-  V88:{a:{T_PALU:'Oui',V01:'Oui',V02:'Oui'}, amb:'T_PALU inclut désormais la fatigue : le patient répond Oui'},
-  V29:{a:{O05:'Enfant de moins'}}, V45:{a:{I03:'Écoulement de pus'}}, V48:{a:{I03:'Oui, autre'}}, V55:{a:{U02:'38'}}, V56:{a:{U02:'38'}},
+  V88:{a:{T_PALU:'Oui',V01:'Oui',V02:'Oui, retour il y a moins'}, amb:'T_PALU inclut désormais la fatigue : le patient répond Oui'},
+  V29:{a:{O05:'Enfant de moins'}}, V45:{a:{I03:'Écoulement de pus'}}, V48:{a:{I03:'Oui, autre'}}, V60:{a:{D01:'Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures ou refus de boire, sans'}}, V40:{a:{V02:'Oui, retour il y a moins'}}, V41:{a:{V02:'Oui, retour il y a moins'}}, V38:{a:{U12:'Malaise'}}, V55:{a:{U02:'38'}}, V56:{a:{U02:'38'}},
 };
 function defaultChoice(n, age, jnsp) {
   const by = p => n.choix.find(c => c.libelle.startsWith(p));
@@ -123,7 +123,8 @@ function defaultChoice(n, age, jnsp) {
   if (n.id === 'U03') return by(age === 'n' || age === 'b' ? 'Non' : 'Non concerné');
   if (['U06','U07','R03','S01','S05'].includes(n.id)) return by('Je ne sais pas');
   if (n.id === 'S03A') return by('Pas de tensiomètre'); if (n.id === 'S03B') return by('Je ne sais pas');
-  if (n.id === 'O01') return by('Aucun');
+  if (n.id === 'O01' || n.id === 'D01') return by('Aucun');
+  if (n.id === 'U12') return by('Non, aucun');
   return by('Non') || null;
 }
 // ---- Cycle 3 : moteur de modulation = évaluation du champ "condition" (tokens posés par les choix du chemin uniquement)
@@ -147,6 +148,7 @@ function run([id, vignette, attendu, grave, age, pops, f, ans, amb]) {
   const r2 = ROUTE2[id] || {};
   const jnsp = ans === 'JNSP'; ans = jnsp ? {} : { ...ans, ...(r2.a || {}) };
   pops = [...pops, ...(r2.pops || [])]; f = { ...f, ...(r2.f || {}) }; amb = r2.amb || amb;
+  if (ans.D01 === 'Oui') ans.D01 = 'Vomissements'; if (ans.D01 === 'Non') ans.D01 = 'Aucun'; if (ans.U12 === 'Oui') ans.U12 = 'Malaise';
   const chemin = []; const poses = new Set(); let cur = A.racine, steps = 0, res = null, issue = null;
   while (steps++ < 200) {
     const n = N[cur]; if (!n) { issue = 'impasse:' + cur; break; }
@@ -169,10 +171,18 @@ function run([id, vignette, attendu, grave, age, pops, f, ans, amb]) {
   const gravite_ecart = d < 0 && grave ? 'FAUX NEGATIF GRAVE' : d < 0 ? 'sous-triage' : d > 0 ? 'sur-triage' : null;
   return { id, vignette, attendu, obtenu, grave: !!grave, chemin: [...chemin, `resultat:${res.id}(${res.niveau_orientation})`, ...mods.map(m => 'mod:' + m)], ecart, gravite_ecart, ambiguite: amb || null };
 }
-const out = V.map(run);
-const outFile = process.argv[2] || 'E-vignettes-final.json';
+// Attendus arbitrés (ARBITRAGES.md, 25/10/2026) : l'attendu d'origine reste inchangé
+const ARBITRE = { V55:['urgence_sans_delai','ARBITRAGES §3 : < 3 mois fébrile sans signe de gravité → urgences pédiatriques < 2 h'], V56:['urgence_sans_delai','ARBITRAGES §3'] };
+const out = V.map(run).map(o => {
+  const ar = ARBITRE[o.id]; if (!ar || !o.obtenu) return o;
+  const d = L(o.obtenu) - L(ar[0]);
+  return { ...o, attendu_arbitre: ar[0], arbitrage: ar[1], ecart_arbitre: d === 0 ? null : d < 0 ? 'sous-triage' : 'sur-triage', gravite_ecart_arbitre: d < 0 && o.grave ? 'FAUX NEGATIF GRAVE' : d < 0 ? 'sous-triage' : d > 0 ? 'sur-triage' : null };
+});
+const outFile = process.argv[2] || 'E-vignettes-arbitrage.json';
 fs.writeFileSync(path.join(dir, outFile), JSON.stringify(out, null, 2));
 const g = out.filter(o => o.grave).length, fn = out.filter(o => o.gravite_ecart === 'FAUX NEGATIF GRAVE');
 console.log('vignettes', out.length, 'graves', g, 'resultat atteint', out.filter(o => o.obtenu).length, 'FNG', fn.length,
   'sous', out.filter(o => o.gravite_ecart === 'sous-triage').length, 'sur', out.filter(o => o.ecart === 'sur-triage').length, 'concordants', out.filter(o => !o.ecart).length);
-for (const o of out) if (o.ecart || process.env.ALL) console.log(o.id, o.gravite_ecart, o.attendu, '->', o.obtenu, '|', o.chemin.slice(-4).join(' '));
+const ref = o => o.attendu_arbitre ? o.gravite_ecart_arbitre : o.gravite_ecart;
+console.log('arbitre: FNG', out.filter(o => ref(o) === 'FAUX NEGATIF GRAVE').length, 'concordants', out.filter(o => !(o.attendu_arbitre ? o.ecart_arbitre : o.ecart)).length, 'nb arbitres', out.filter(o => o.attendu_arbitre).length);
+for (const o of out) if (o.ecart || o.attendu_arbitre || process.env.ALL) console.log(o.id, o.gravite_ecart, o.attendu, o.attendu_arbitre ? '[arb ' + o.attendu_arbitre + ' ' + o.gravite_ecart_arbitre + ']' : '', '->', o.obtenu, '|', o.chemin.slice(-4).join(' '));

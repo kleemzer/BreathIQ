@@ -181,3 +181,36 @@ Il ne reste aucun faux négatif grave. Les corrections ci-dessous portent sur la
 8. **V20, V22, V58, sur-triage** d'un ou deux niveaux : varicelle, furoncle, fièvre bien tolérée chez un enfant de 14 mois.
 
 Plus aucune correction n'est exigée par ce relecteur. Les points ci-dessus sont transmis à l'arbitrage clinique.
+
+---
+
+## Après arbitrage (ARBITRAGES.md du 25/10/2026, arbre de 156 nœuds)
+
+### Méthode
+- `E-run.mjs` lit l'ordre des niveaux dans `niveaux_ordre`, ce qui inclut le nouveau niveau `urgence_sans_delai`, placé entre consultation_urgente et urgence_vitale.
+- Il gère les nouveaux nœuds `U_NRS_G`, `R_NRS_2H`, `U_PALU_G` et `RV_PALU_TARDIF`, ainsi que les nouvelles formes de `D01`, `U12`, `V02` et `V06`, et les règles MOD20 et MOD21.
+- Les attendus d'origine sont inchangés. Seuls les chemins ont été re-routés : V60 (couches sèches sans somnolence), V38 (malaise), V40, V41 et V88 (retour de zone palustre depuis moins de 3 mois). Les anciens libellés Oui/Non de `D01` et `U12` ont été traduits vers les nouveaux choix.
+- Un champ `attendu_arbitre` est ajouté pour **2 vignettes**, V55 et V56 : nourrisson de moins de 3 mois, fébrile, sans signe de gravité. Selon ARBITRAGES §3, l'attendu arbitré est urgence_sans_delai.
+- Les autres arbitrages ne contredisent aucun attendu existant :
+  - §1 grossesse : V65 était déjà attendu en consultation_urgente ;
+  - §2 paludisme : V40, V41 et V88 étaient déjà attendus en consultation_urgente ;
+  - §4 V60 : l'attendu était déjà consultation_urgente.
+
+### Taux
+| Indicateur | Cycle 3 | Après arbitrage |
+|---|---|---|
+| Faux négatifs graves, sur l'attendu d'origine | 1 (V60) | **2 (V55, V56 : urgence_vitale attendu, urgence_sans_delai obtenu ; écart voulu par l'arbitrage §3)** |
+| Faux négatifs graves, sur l'attendu arbitré | — | **0** |
+| Concordance, sur l'attendu d'origine | 79/90 | 78/90 (87 %) |
+| Concordance, sur l'attendu arbitré | — | **80/90 (89 %)** |
+| Sous-triage et sur-triage | 2 et 8 | 2 et 8 (inchangés : V11 et V31 ; V20, V22, V43, V58, V61, V68, V84, V85) |
+| Résultat atteint, impasse, boucle | 90/90, 0, 0 | 90/90, 0, 0 |
+
+### Effet des modifications
+- **V60 est résolu.** Le choix « couches sèches > 6 h » de `D01` mène à `RD_6H` et pose sig_desh, ce qui déclenche MOD04. Résultat : consultation_urgente.
+- **V55 et V56** passent de urgence_vitale à urgence_sans_delai, comme le prévoit l'arbitrage.
+- **Aucune régression** sur les 87 autres vignettes : leur niveau obtenu est identique au cycle 3, et aucune impasse n'a été introduite.
+
+### Points de conformité à signaler, non testés par une vignette et non résolus (à arbitrer par un clinicien)
+- **ARBITRAGES §1 n'est pas entièrement implémenté.** Aucune règle MOD ni aucun nœud ne fait passer en urgence_vitale une grossesse avec frissons intenses ou fièvre ≥ 39 °C. MOD08 s'arrête à consultation_urgente. Contractions, perte de liquide, saignement et malaise sont couverts par `U_GRO01` et `U12`.
+- **qSOFA (§4).** MOD20 et MOD21 portent sur la respiration rapide (FR) et la tension systolique (PAS). En revanche, `U08` (confusion) mène toujours seul à U00, alors que l'arbitrage dit qu'un critère isolé avec fièvre donne consultation_urgente. Ce choix est plus prudent, mais il est incohérent avec la lettre de l'arbitrage. Vignettes concernées : V34, V44, V71, V86.

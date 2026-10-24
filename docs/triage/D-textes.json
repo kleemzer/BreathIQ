@@ -611,7 +611,7 @@
         "aide": "Stay with the person. Unlock the front door for the rescue team. Get the list of their medicines ready. To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from fragile people: babies, pregnant women, older people, people with weak defences.",
         "choix": [],
         "signes_reconsultation": [],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -681,7 +681,7 @@
     "patient": {
       "fr": {
         "texte": "Quelle est la température du bébé ? Utilisez un thermomètre (dans les fesses ou sur le front).",
-        "aide": "Bébé de moins de 3 mois : à 38 °C ou plus, appelez le {URGENCE}. Un bébé trop froid (moins de 36 °C) est aussi un signe d'alerte.",
+        "aide": "Bébé de moins de 3 mois à 38 °C ou plus : il doit être vu vite. Un bébé trop froid (moins de 36 °C) est aussi un signe d'alerte.",
         "choix": [
           "38 °C ou plus",
           "Moins de 36 °C",
@@ -692,7 +692,7 @@
       },
       "en": {
         "texte": "What is the baby's temperature? Use a thermometer (in the bottom or on the forehead).",
-        "aide": "Baby under 3 months: at 38 °C or more, call {URGENCE}. A baby who is too cold (below 36 °C) is also a warning sign.",
+        "aide": "A baby under 3 months with 38 °C or more must be seen urgently. A baby who is too cold (below 36 °C) is also a warning sign.",
         "choix": [
           "38 °C or more",
           "Below 36 °C",
@@ -705,7 +705,7 @@
     "soignant": {
       "fr": {
         "texte": "Température mesurée (rectale ou frontale) ?",
-        "aide": "Nourrisson < 3 mois : T ≥ 38 °C → {URGENCE}. Hypothermie < 36 °C : signe d'alerte (seuil à valider).",
+        "aide": "Nourrisson < 3 mois : T ≥ 38 °C → urgences pédiatriques < 2 h (NICE NG143 rouge), {URGENCE} si signe de gravité. Hypothermie < 36 °C → {URGENCE} (seuil à valider).",
         "choix": [
           "≥ 38 °C",
           "< 36 °C",
@@ -716,7 +716,7 @@
       },
       "en": {
         "texte": "Measured temperature (rectal or forehead)?",
-        "aide": "Infant < 3 months: T ≥ 38 °C → {URGENCE}. Hypothermia < 36 °C: red flag (threshold to be validated).",
+        "aide": "Infant < 3 months: T ≥ 38 °C → paediatric ED < 2 h (NICE NG143 red), {URGENCE} if red flag. Hypothermia < 36 °C → {URGENCE} (threshold to be validated).",
         "choix": [
           "≥ 38 °C",
           "< 36 °C",
@@ -1160,21 +1160,25 @@
   "U12": {
     "patient": {
       "fr": {
-        "texte": "La personne fait-elle un malaise ? A-t-elle des vertiges qui l'empêchent de tenir debout ? Ou, si vous avez un appareil, la tension est-elle basse ?",
-        "aide": "Tension basse : le premier chiffre (le plus haut) est de 100 mmHg ou moins. Sans appareil, répondez seulement pour le malaise et les vertiges.",
+        "texte": "La personne fait-elle un malaise, ou ne tient-elle pas debout ? Si vous avez un appareil, quelle est la tension ?",
+        "aide": "Tension : lisez le premier chiffre (le plus haut). Sans appareil, répondez pour le malaise.",
         "choix": [
-          "Oui",
-          "Non",
+          "Malaise, ou ne tient pas debout",
+          "Tension sous 90 mmHg",
+          "Tension de 90 à 100 mmHg, sans malaise",
+          "Non, rien de cela",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Is the person feeling faint? Are they too dizzy to stand? Or, if you have a device, is the blood pressure low?",
-        "aide": "Low blood pressure: the first (top) number is 100 mmHg or less. Without a device, answer only about fainting and dizziness.",
+        "texte": "Is the person fainting, or unable to stand? If you have a device, what is the blood pressure?",
+        "aide": "Blood pressure: read the first (top) number. Without a device, answer about fainting.",
         "choix": [
-          "Yes",
-          "No",
+          "Fainting, or cannot stand",
+          "Blood pressure below 90 mmHg",
+          "Blood pressure 90 to 100 mmHg, no fainting",
+          "No, none of these",
           "I don't know"
         ],
         "signes_reconsultation": []
@@ -1182,21 +1186,25 @@
     },
     "soignant": {
       "fr": {
-        "texte": "Malaise, lipothymie empêchant l'orthostatisme, ou PAS ≤ 100 mmHg ?",
-        "aide": "Seuil harmonisé sur la PAS ≤ 100 mmHg du qSOFA (Singer, JAMA 2016) ; sur-triage possible si hypotension habituelle, à valider.",
+        "texte": "Malaise / impossibilité de tenir debout, ou PAS mesurée ?",
+        "aide": "PAS 90-100 mmHg isolée = 1 critère qSOFA → consultation_urgente (MOD20) ; avec FR ≥ 22/min → urgence_vitale (MOD21). qSOFA : outil pronostique, pas de dépistage (Singer, JAMA 2016).",
         "choix": [
-          "Oui",
-          "Non",
+          "Malaise / station debout impossible",
+          "PAS < 90 mmHg",
+          "PAS 90-100 mmHg sans malaise",
+          "Aucun",
           "Inconnu"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Syncope/presyncope preventing standing, or SBP ≤ 100 mmHg?",
-        "aide": "Aligned with qSOFA SBP ≤ 100 mmHg (Singer, JAMA 2016); possible over-triage if usual low BP, to be validated.",
+        "texte": "Syncope / unable to stand, or measured SBP?",
+        "aide": "Isolated SBP 90-100 mmHg = 1 qSOFA criterion → consultation_urgente (MOD20); with RR ≥ 22/min → urgence_vitale (MOD21). qSOFA is prognostic, not a screening tool (Singer, JAMA 2016).",
         "choix": [
-          "Yes",
-          "No",
+          "Syncope / unable to stand",
+          "SBP < 90 mmHg",
+          "SBP 90-100 mmHg without syncope",
+          "None",
           "Unknown"
         ],
         "signes_reconsultation": []
@@ -1451,8 +1459,8 @@
         "texte": "La personne est-elle dans une de ces situations ? Vous pouvez cocher plusieurs réponses.",
         "aide": "Cochez tout ce qui correspond.",
         "choix": [
-          "Chimiothérapie dans les 6 dernières semaines",
-          "Cancer ou cancer du sang soigné en ce moment, sans chimiothérapie ces 6 dernières semaines",
+          "Traitement contre le cancer (perfusions ou comprimés) dans les 6 dernières semaines",
+          "Cancer ou cancer du sang soigné en ce moment, sans traitement par perfusion ces 6 dernières semaines",
           "Infection par le VIH",
           "Greffe d'un organe ou de moelle osseuse",
           "Cortisone prise chaque jour depuis plusieurs semaines",
@@ -1467,7 +1475,7 @@
           "Reins qui fonctionnent mal (dont dialyse)",
           "Maladie grave du foie (par exemple cirrhose)",
           "65 ans ou plus : chute, ou ne se débrouille plus seul depuis le début",
-          "Contact proche, ces 14 derniers jours, avec une personne qui a une méningite (infection grave autour du cerveau)",
+          "Contact proche, ces 14 derniers jours, avec une personne qui a une infection grave des méninges (enveloppes du cerveau)",
           "Ces 6 dernières semaines : contact avec des rongeurs ou leurs crottes (cave, grange, chalet fermé), ou croisière avec une alerte santé",
           "Aucune de ces situations",
           "Je ne sais pas"
@@ -1478,8 +1486,8 @@
         "texte": "Is the person in any of these situations? You can tick more than one.",
         "aide": "Tick everything that applies.",
         "choix": [
-          "Chemotherapy in the last 6 weeks",
-          "Cancer or blood cancer being treated now, no chemotherapy in the last 6 weeks",
+          "Cancer treatment (drip or tablets) in the last 6 weeks",
+          "Cancer or blood cancer being treated now, no Cancer treatment (drip or tablets) in the last 6 weeks",
           "HIV infection",
           "Organ or bone marrow transplant",
           "Taking cortisone (steroids) every day for several weeks",
@@ -1915,7 +1923,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -1977,7 +1985,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2041,7 +2049,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2289,7 +2297,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2351,7 +2359,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2413,7 +2421,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2713,7 +2721,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2775,7 +2783,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2837,7 +2845,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2901,7 +2909,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -2965,7 +2973,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3002,21 +3010,25 @@
   "D01": {
     "patient": {
       "fr": {
-        "texte": "La personne vomit-elle tout ce qu'elle boit ? Depuis plus de 6 heures (4 heures pour un enfant de moins de 2 ans) ? Ou un enfant de moins de 2 ans refuse-t-il de boire ? A-t-il moins de 4 couches mouillées par jour ?",
+        "texte": "Lequel de ces cas correspond ?",
         "aide": "",
         "choix": [
-          "Oui",
-          "Non",
+          "Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures, ou refuse de boire. ET il est très endormi, ou a les yeux creusés.",
+          "Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures, ou refuse de boire. Mais il n'est pas endormi et n'a pas les yeux creusés.",
+          "Vomit tout ce qu'il boit depuis plus de 6 heures (4 heures avant 2 ans)",
+          "Aucun de ces cas",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Is the person vomiting everything they drink? For more than 6 hours (4 hours for a child under 2)? Or is a child under 2 refusing to drink? Do they have fewer than 4 wet nappies a day?",
+        "texte": "Which of these fits?",
         "aide": "",
         "choix": [
-          "Yes",
-          "No",
+          "Child under 2: dry nappies for more than 6 hours, or refuses to drink. AND very sleepy, or sunken eyes.",
+          "Child under 2: dry nappies for more than 6 hours, or refuses to drink. But not sleepy and no sunken eyes.",
+          "Vomiting everything they drink for more than 6 hours (4 hours under 2)",
+          "None of these",
           "I don't know"
         ],
         "signes_reconsultation": []
@@ -3024,21 +3036,25 @@
     },
     "soignant": {
       "fr": {
-        "texte": "Vomissements incoercibles > 6 h (> 4 h si < 2 ans), OU < 2 ans : refus de boire ou < 4 couches mouillées/24 h ?",
-        "aide": "Durées à valider.",
+        "texte": "Déshydratation / vomissements : quel cas ?",
+        "aide": "Durées à valider (seuil 6 h : NICE NG143, CG84).",
         "choix": [
-          "Oui",
-          "Non",
+          "< 2 ans : anurie > 6 h ou refus de boire, AVEC somnolence ou yeux creusés",
+          "< 2 ans : anurie > 6 h ou refus de boire, sans somnolence ni yeux creusés",
+          "Vomissements incoercibles > 6 h (> 4 h si < 2 ans)",
+          "Aucun",
           "Inconnu"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Intractable vomiting > 6 h (> 4 h if < 2 years), OR < 2 years: refusing fluids or < 4 wet nappies/24 h?",
-        "aide": "Durations to be validated.",
+        "texte": "Dehydration / vomiting: which case?",
+        "aide": "Durations to be validated (6 h threshold: NICE NG143, CG84).",
         "choix": [
-          "Yes",
-          "No",
+          "< 2 years: anuria > 6 h or refusing fluids, WITH drowsiness or sunken eyes",
+          "< 2 years: anuria > 6 h or refusing fluids, without drowsiness or sunken eyes",
+          "Intractable vomiting > 6 h (> 4 h if < 2 years)",
+          "None",
           "Unknown"
         ],
         "signes_reconsultation": []
@@ -3211,7 +3227,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3273,7 +3289,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3335,7 +3351,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3399,7 +3415,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3693,7 +3709,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3755,7 +3771,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3817,7 +3833,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -3879,7 +3895,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -4183,7 +4199,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -4245,7 +4261,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -4307,7 +4323,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -4665,7 +4681,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -4727,7 +4743,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -4789,7 +4805,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5081,7 +5097,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5143,7 +5159,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5489,7 +5505,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5551,7 +5567,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5634,20 +5650,22 @@
   "V02": {
     "patient": {
       "fr": {
-        "texte": "Le voyage était-il dans un pays avec du paludisme, ces 3 derniers mois ?",
+        "texte": "Le voyage était-il dans un pays avec du paludisme ?",
         "aide": "Paludisme : maladie donnée par des moustiques dans les pays chauds.",
         "choix": [
-          "Oui",
+          "Oui, retour il y a moins de 3 mois (ou toujours sur place)",
+          "Oui, retour il y a plus de 3 mois",
           "Non",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Was the trip to a country with malaria, in the last 3 months?",
+        "texte": "Was the trip to a country with malaria?",
         "aide": "Malaria: a disease spread by mosquitoes in hot countries.",
         "choix": [
-          "Yes",
+          "Yes, back less than 3 months ago (or still there)",
+          "Yes, back more than 3 months ago",
           "No",
           "I don't know"
         ],
@@ -5656,20 +5674,22 @@
     },
     "soignant": {
       "fr": {
-        "texte": "Séjour en zone d'endémie palustre < 3 mois ?",
-        "aide": "",
+        "texte": "Séjour en zone d'endémie palustre ?",
+        "aide": "Fenêtre P. falciparum : 3 mois après le retour (SPILF 2017).",
         "choix": [
-          "Oui",
+          "Oui, retour < 3 mois (ou sur place)",
+          "Oui, retour > 3 mois",
           "Non",
           "Inconnu"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Stay in a malaria-endemic area within 3 months?",
-        "aide": "",
+        "texte": "Stay in a malaria-endemic area?",
+        "aide": "P. falciparum window: 3 months after return (SPILF 2017).",
         "choix": [
-          "Yes",
+          "Yes, return < 3 months (or still there)",
+          "Yes, return > 3 months",
           "No",
           "Unknown"
         ],
@@ -5849,7 +5869,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5913,7 +5933,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -5975,7 +5995,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6037,7 +6057,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6099,7 +6119,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6239,7 +6259,7 @@
         "aide": "Stay alone in one room. Do not touch anyone. If possible, do not share linen or toilets. To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from fragile people: babies, pregnant women, older people, people with weak defences.",
         "choix": [],
         "signes_reconsultation": [],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6291,7 +6311,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6499,7 +6519,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6561,7 +6581,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6623,7 +6643,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -6685,7 +6705,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7023,7 +7043,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7085,7 +7105,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7147,7 +7167,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7209,7 +7229,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7271,7 +7291,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7333,7 +7353,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7399,7 +7419,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -7736,7 +7756,7 @@
     "soignant": {
       "fr": {
         "texte": "Âge inconnu, nourrisson possible : température mesurée ?",
-        "aide": "Si T inconnue : poursuite du questionnaire, niveau final plancher consultation_urgente (MOD19).",
+        "aide": "T ≥ 38 °C → filtre U_NRS_G. Si T inconnue : poursuite, niveau final plancher consultation_urgente (MOD19).",
         "choix": [
           "≥ 38 °C",
           "< 36 °C",
@@ -7747,7 +7767,7 @@
       },
       "en": {
         "texte": "Age unknown, possible infant: measured temperature?",
-        "aide": "If T unknown: questionnaire continues, final level floored at consultation_urgente (MOD19).",
+        "aide": "T ≥ 38 °C → U_NRS_G filter. If T unknown: continue, final level floored at consultation_urgente (MOD19).",
         "choix": [
           "≥ 38 °C",
           "< 36 °C",
@@ -7761,8 +7781,8 @@
   "U_GRO01": {
     "patient": {
       "fr": {
-        "texte": "Pendant cette grossesse, y a-t-il un de ces signes ? Contractions (ventre qui durcit). Perte de liquide ou de sang par le vagin. Bébé qui bouge moins que d'habitude.",
-        "aide": "",
+        "texte": "Pendant cette grossesse, y a-t-il un de ces signes ? Gros frissons. Fièvre de 39 °C ou plus. Contractions (ventre qui durcit). Perte de liquide ou de sang par le vagin. Malaise. Bébé qui bouge moins.",
+        "aide": "Fièvre de 38 °C ou plus sans ces signes : allez aux urgences de la maternité dans les 6 heures.",
         "choix": [
           "Oui",
           "Non",
@@ -7771,8 +7791,8 @@
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "During this pregnancy, is there any of these signs? Contractions (belly tightening). Fluid or blood leaking from the vagina. Baby moving less than usual.",
-        "aide": "",
+        "texte": "During this pregnancy, is there any of these signs? Hard shivering. Fever of 39 °C or more. Contractions (belly tightening). Fluid or blood from the vagina. Fainting. Baby moving less.",
+        "aide": "Fever of 38 °C or more without these signs: go to the maternity emergency unit within 6 hours.",
         "choix": [
           "Yes",
           "No",
@@ -7783,8 +7803,8 @@
     },
     "soignant": {
       "fr": {
-        "texte": "Grossesse : contractions, rupture des membranes, métrorragies ou diminution des mouvements actifs fœtaux ?",
-        "aide": "Filtre d'urgence obstétricale (GRO01), hors compte des 7 questions.",
+        "texte": "Grossesse : frissons intenses, T ≥ 39 °C, contractions, rupture des membranes, métrorragies, malaise ou diminution des MAF ?",
+        "aide": "Filtre d'urgence obstétricale (GRO01). T ≥ 38 °C sans ces signes : urgences maternité < 6 h (MOD08 ; listériose, pyélonéphrite, chorioamniotite).",
         "choix": [
           "Oui",
           "Non",
@@ -7793,8 +7813,8 @@
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Pregnancy: contractions, rupture of membranes, vaginal bleeding or reduced fetal movements?",
-        "aide": "Obstetric red-flag filter (GRO01), not counted in the 7 questions.",
+        "texte": "Pregnancy: rigors, T ≥ 39 °C, contractions, ROM, vaginal bleeding, syncope or reduced fetal movements?",
+        "aide": "Obstetric red-flag filter (GRO01). T ≥ 38 °C without these: maternity ED < 6 h (MOD08; listeriosis, pyelonephritis, chorioamnionitis).",
         "choix": [
           "Yes",
           "No",
@@ -7999,20 +8019,22 @@
   "V06": {
     "patient": {
       "fr": {
-        "texte": "Le voyage était-il dans un pays avec du paludisme, ces 3 derniers mois ?",
+        "texte": "Le voyage était-il dans un pays avec du paludisme ?",
         "aide": "Paludisme : maladie donnée par des moustiques dans les pays chauds.",
         "choix": [
-          "Oui",
+          "Oui, retour il y a moins de 3 mois (ou toujours sur place)",
+          "Oui, retour il y a plus de 3 mois",
           "Non",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Was the trip to a country with malaria, in the last 3 months?",
+        "texte": "Was the trip to a country with malaria?",
         "aide": "Malaria: a disease spread by mosquitoes in hot countries.",
         "choix": [
-          "Yes",
+          "Yes, back less than 3 months ago (or still there)",
+          "Yes, back more than 3 months ago",
           "No",
           "I don't know"
         ],
@@ -8021,20 +8043,22 @@
     },
     "soignant": {
       "fr": {
-        "texte": "Séjour en zone d'endémie palustre < 3 mois ?",
-        "aide": "",
+        "texte": "Séjour en zone d'endémie palustre ?",
+        "aide": "Fenêtre P. falciparum : 3 mois après le retour (SPILF 2017).",
         "choix": [
-          "Oui",
+          "Oui, retour < 3 mois (ou sur place)",
+          "Oui, retour > 3 mois",
           "Non",
           "Inconnu"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "Stay in a malaria-endemic area within 3 months?",
-        "aide": "",
+        "texte": "Stay in a malaria-endemic area?",
+        "aide": "P. falciparum window: 3 months after return (SPILF 2017).",
         "choix": [
-          "Yes",
+          "Yes, return < 3 months (or still there)",
+          "Yes, return > 3 months",
           "No",
           "Unknown"
         ],
@@ -8118,7 +8142,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -8186,7 +8210,7 @@
           "No urine for more than 12 hours.",
           "Fever for more than 3 days, or fever that comes back after getting better."
         ],
-        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace advice from a doctor."
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
       }
     },
     "soignant": {
@@ -8245,5 +8269,217 @@
       "numero": "",
       "statut": "à vérifier"
     }
-  ]
+  ],
+  "U_PALU_G": {
+    "patient": {
+      "fr": {
+        "texte": "Y a-t-il un de ces signes ? Personne confuse. Vomissements qui se répètent. Urines foncées. Peau ou blanc des yeux jaunes. Respiration difficile. Malaise.",
+        "aide": "Un seul signe suffit pour appeler le {URGENCE}.",
+        "choix": [
+          "Oui",
+          "Non",
+          "Je ne sais pas"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "Is there any of these signs? Confusion. Repeated vomiting. Dark urine. Yellow skin or eye whites. Hard breathing. Fainting.",
+        "aide": "One sign is enough to call {URGENCE}.",
+        "choix": [
+          "Yes",
+          "No",
+          "I don't know"
+        ],
+        "signes_reconsultation": []
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Signes de gravité du paludisme : confusion, vomissements répétés, urines foncées, ictère, détresse respiratoire ou malaise ?",
+        "aide": "Paludisme grave suspecté (critères OMS) : {URGENCE}.",
+        "choix": [
+          "Oui",
+          "Non",
+          "Inconnu"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "Severe malaria signs: confusion, repeated vomiting, dark urine, jaundice, respiratory distress or syncope?",
+        "aide": "Suspected severe malaria (WHO criteria): {URGENCE}.",
+        "choix": [
+          "Yes",
+          "No",
+          "Unknown"
+        ],
+        "signes_reconsultation": []
+      }
+    }
+  },
+  "RV_PALU_TARDIF": {
+    "patient": {
+      "fr": {
+        "texte": "Votre voyage dans un pays avec du paludisme date de plus de 3 mois. Le paludisme peut encore apparaître. Dites bien votre voyage au médecin. Voyez un médecin dans les 24 heures. Le soir et le week-end, contactez {GARDE}. En cas de doute, appelez le {URGENCE}.",
+        "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
+        "choix": [],
+        "signes_reconsultation": [
+          "Respiration difficile ou très rapide.",
+          "Personne confuse ou anormalement endormie.",
+          "Taches rouges ou violettes qui ne s'effacent pas sous un verre appuyé dessus.",
+          "Malaise, ou peau marbrée de violet, comme un filet.",
+          "Pas d'urine depuis plus de 12 heures.",
+          "Fièvre depuis plus de 3 jours, ou fièvre qui revient après un mieux."
+        ],
+        "rappel": "BreathIQ donne une orientation. Ce n'est pas un diagnostic. Cela ne remplace pas l'avis d'un médecin."
+      },
+      "en": {
+        "texte": "You went to a country with malaria more than 3 months ago. Malaria can still appear. Tell the doctor about your trip. See a doctor within 24 hours. In the evening or at the weekend, contact {GARDE}. If in doubt, call {URGENCE}.",
+        "aide": "To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from fragile people: babies, pregnant women, older people, people with weak defences.",
+        "choix": [],
+        "signes_reconsultation": [
+          "Breathing is hard or very fast.",
+          "The person is confused or unusually sleepy.",
+          "Red or purple spots that do not fade when you press a glass on them.",
+          "Fainting, or skin with purple blotches like a net.",
+          "No urine for more than 12 hours.",
+          "Fever for more than 3 days, or fever that comes back after getting better."
+        ],
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Séjour en zone d'endémie > 3 mois : accès tardifs possibles (P. vivax, P. ovale). Signaler le voyage, recherche de paludisme. Consultation médicale < 24 h (médecin traitant ou {GARDE} ; FR : 116 117 ; sinon {URGENCE}).",
+        "aide": "Mesures barrières : masque en présence d'autrui, aération 10 min plusieurs fois/j, hygiène des mains, éviction des sujets fragiles (nourrissons, grossesse, sujets âgés, immunodéprimés).",
+        "choix": [],
+        "signes_reconsultation": [
+          "Détresse respiratoire ou polypnée",
+          "Confusion, somnolence (altération de la vigilance)",
+          "Purpura non effaçable à la vitropression",
+          "Malaise, marbrures",
+          "Oligo-anurie > 12 h",
+          "Fièvre > 72 h ou recrudescence fébrile secondaire"
+        ],
+        "rappel": "Outil d'information et d'orientation, non validé cliniquement : ne remplace pas un avis médical."
+      },
+      "en": {
+        "texte": "Stay in endemic area > 3 months ago: late attacks possible (P. vivax, P. ovale). Report travel, test for malaria. Medical review within 24 h (GP or {GARDE}; FR: 116 117; otherwise {URGENCE}).",
+        "aide": "Infection control: mask around others, ventilate room 10 min several times daily, hand hygiene, avoid contact with vulnerable people (infants, pregnancy, elderly, immunocompromised).",
+        "choix": [],
+        "signes_reconsultation": [
+          "Respiratory distress or tachypnoea",
+          "Confusion, drowsiness (altered consciousness)",
+          "Non-blanching purpura (glass test)",
+          "Syncope/presyncope, mottling",
+          "Oligo-anuria > 12 h",
+          "Fever > 72 h or secondary recurrence of fever"
+        ],
+        "rappel": "Information and guidance tool, not clinically validated: does not replace medical advice."
+      }
+    }
+  },
+  "U_NRS_G": {
+    "patient": {
+      "fr": {
+        "texte": "Chez ce bébé, y a-t-il un de ces signes ? Respire mal. Difficile à réveiller, ou ne réagit pas. Teint gris ou marbré. Convulsions. Taches qui ne s'effacent pas sous un verre. Ou vous ne pouvez pas aller vite aux urgences.",
+        "aide": "Un seul signe suffit pour appeler le {URGENCE}. Bébé de moins de 28 jours sans transport : appelez aussi le {URGENCE}. Sur une peau foncée, regardez l'intérieur des lèvres, les paumes et le blanc des yeux.",
+        "choix": [
+          "Oui, au moins un",
+          "Non, aucun",
+          "Je ne sais pas"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "In this baby, is there any of these signs? Hard breathing. Hard to wake, or not reacting. Grey or blotchy skin. Fits. Spots that do not fade under a glass. Or you cannot get quickly to the emergency department.",
+        "aide": "One sign is enough to call {URGENCE}. Baby under 28 days with no transport: also call {URGENCE}. On dark skin, check inside the lips, the palms and the eye whites.",
+        "choix": [
+          "Yes, at least one",
+          "No, none",
+          "I don't know"
+        ],
+        "signes_reconsultation": []
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Nourrisson < 3 mois fébrile : détresse respiratoire, trouble de la vigilance, teint gris/marbrures, convulsions, purpura non effaçable, OU pas d'accès rapide aux urgences (ou < 28 j sans transport) ?",
+        "aide": "Un seul élément → {URGENCE}. Phototypes foncés : examiner muqueuse labiale, paumes, conjonctives.",
+        "choix": [
+          "Oui (≥ 1)",
+          "Non, aucun",
+          "Inconnu"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "Febrile infant < 3 months: respiratory distress, altered consciousness, grey/mottled, seizures, non-blanching purpura, OR no rapid access to ED (or < 28 days without transport)?",
+        "aide": "Any one item → {URGENCE}. Darker skin tones: examine labial mucosa, palms, conjunctivae.",
+        "choix": [
+          "Yes (≥ 1)",
+          "No, none",
+          "Unknown"
+        ],
+        "signes_reconsultation": []
+      }
+    }
+  },
+  "R_NRS_2H": {
+    "patient": {
+      "fr": {
+        "texte": "Allez tout de suite aux urgences pour enfants, sans attendre. Ne donnez pas de médicament contre la fièvre sans avis. Si un signe grave apparaît en chemin, appelez le {URGENCE}.",
+        "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
+        "choix": [],
+        "signes_reconsultation": [
+          "Respire mal.",
+          "Bébé difficile à réveiller, ou qui ne réagit pas.",
+          "Teint gris ou marbré.",
+          "Convulsions (secousses du corps).",
+          "Taches qui ne s'effacent pas sous un verre : appelez le {URGENCE}. Sur peau foncée, regardez paumes et intérieur des lèvres."
+        ],
+        "rappel": "BreathIQ donne une orientation. Ce n'est pas un diagnostic. Cela ne remplace pas l'avis d'un médecin."
+      },
+      "en": {
+        "texte": "Go straight to the children's emergency department, without waiting. Do not give fever medicine without advice. If a serious sign appears on the way, call {URGENCE}.",
+        "aide": "To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from fragile people: babies, pregnant women, older people, people with weak defences.",
+        "choix": [],
+        "signes_reconsultation": [
+          "Hard breathing.",
+          "Baby hard to wake, or not reacting.",
+          "Grey or blotchy skin.",
+          "Fits (jerking of the body).",
+          "Spots that do not fade under a glass: call {URGENCE}. On dark skin, check palms and inside the lips."
+        ],
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Nourrisson < 3 mois, T ≥ 38 °C : catégorie rouge NICE NG143, évaluation pédiatrique en urgence (< 2 h). Risque d'IBS 7-23 % entre 1 et 3 mois ; hospitalisation si < 28 j. Ibuprofène contre-indiqué avant 3 mois. Pas d'antipyrétique sans avis. Escalade {URGENCE} si signe de gravité.",
+        "aide": "Mesures barrières : masque en présence d'autrui, aération 10 min plusieurs fois/j, hygiène des mains, éviction des sujets fragiles (nourrissons, grossesse, sujets âgés, immunodéprimés).",
+        "choix": [],
+        "signes_reconsultation": [
+          "Détresse respiratoire",
+          "Trouble de la vigilance, aréactivité",
+          "Teint gris, marbrures",
+          "Convulsions",
+          "Purpura non effaçable → {URGENCE}"
+        ],
+        "rappel": "Outil d'information et d'orientation, non validé cliniquement : ne remplace pas un avis médical."
+      },
+      "en": {
+        "texte": "Infant < 3 months, T ≥ 38 °C: NICE NG143 red category, urgent paediatric assessment (< 2 h). SBI risk 7-23% at 1-3 months; admit if < 28 days. Ibuprofen contraindicated under 3 months. No antipyretic without advice. Escalate to {URGENCE} if red flag.",
+        "aide": "Infection control: mask around others, ventilate room 10 min several times daily, hand hygiene, avoid contact with vulnerable people (infants, pregnancy, elderly, immunocompromised).",
+        "choix": [],
+        "signes_reconsultation": [
+          "Respiratory distress",
+          "Altered consciousness, unresponsive",
+          "Grey colour, mottling",
+          "Seizures",
+          "Non-blanching purpura → {URGENCE}"
+        ],
+        "rappel": "Information and guidance tool, not clinically validated: does not replace medical advice."
+      }
+    }
+  }
 }

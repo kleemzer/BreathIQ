@@ -43,7 +43,7 @@ const RX_CLIN = new RegExp(`(^|[^\\p{L}])(${CLINIQUE.join('|')})(?=$|[^\\p{L}])`
 // Sigles : sensibles à la casse (évite « pas » = PAS).
 const RX_SIGLE = /(^|[^\p{L}])(AEG|FR|FC|PA|PAS|SpO2|TPE|FHV|PEP)(?=$|[^\p{L}])/u;
 
-const strs = (o) => [o?.texte, o?.aide, ...(o?.choix || []).map((c) => (typeof c === 'string' ? c : c?.libelle)), ...(o?.signes_reconsultation || [])].filter(Boolean);
+const strs = (o) => [o?.texte, o?.aide, ...(o?.choix || []).map((c) => (typeof c === 'string' ? c : c?.libelle)), ...(o?.signes_reconsultation || []), o?.rappel].filter(Boolean);
 
 // 1. Arbre : questions, choix, pré-cochage, résultats.
 for (const n of arbre.noeuds) {

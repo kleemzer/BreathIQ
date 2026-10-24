@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-brouillon+E-cycle2+E-cycle3",
+  "version": "0.1.0-brouillon+E-cycle2+E-cycle3+arbitrages-2026-10-25",
   "date": "2026-10-24",
   "racine": "U01",
   "noeuds": [
@@ -51,7 +51,7 @@
       "choix": [
         {
           "libelle": "38 °C ou plus",
-          "vers": "U00",
+          "vers": "U_NRS_G",
           "pose": "sig_fievre"
         },
         {
@@ -72,7 +72,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "Seuil 38 °C < 3 mois : NICE NG143 (fièvre de l'enfant < 5 ans) — référence exacte à valider",
+      "source": "NICE NG143 (contenu confirmé via BMJ ADC Education & Practice 2021) ; Vidal, recommandation 3758 « Fièvre de l'enfant » (d'après HAS/SFP)",
       "a_valider_clinicien": true
     },
     {
@@ -329,15 +329,24 @@
     {
       "id": "U12",
       "type": "question",
-      "texte": "Y a-t-il un malaise, des étourdissements empêchant de tenir debout, ou une tension artérielle mesurée de 100 mmHg ou moins (chiffre du haut) ?",
-      "aide": "Seuil harmonisé sur la PAS ≤ 100 mmHg du qSOFA (Singer et al., JAMA 2016) : sur-triage possible chez les personnes à tension habituellement basse, à valider.",
+      "texte": "Y a-t-il un malaise ou des étourdissements empêchant de tenir debout, ou quelle est la tension mesurée (chiffre du haut) ?",
+      "aide": "PAS 90 à 100 mmHg seule = un critère qSOFA → consultation_urgente (MOD20) ; associée à FR ≥ 22/min → urgence_vitale (MOD21).",
       "choix": [
         {
-          "libelle": "Oui",
+          "libelle": "Malaise ou ne tient pas debout",
           "vers": "U00"
         },
         {
-          "libelle": "Non",
+          "libelle": "Tension inférieure à 90 mmHg",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Tension de 90 à 100 mmHg, sans malaise",
+          "vers": "U13",
+          "pose": "sig_pas_100"
+        },
+        {
+          "libelle": "Non, aucun de ces cas",
           "vers": "U13"
         },
         {
@@ -349,7 +358,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true
     },
     {
@@ -626,7 +635,7 @@
     {
       "id": "T_PALU",
       "type": "question",
-      "texte": "Depuis un séjour dans une zone où sévit le paludisme au cours des 3 derniers mois, y a-t-il de la fièvre, des frissons, des sueurs, une fatigue inhabituelle, des maux de tête ou des courbatures, même sans thermomètre ?",
+      "texte": "Pendant le voyage ou depuis le retour d'une zone où sévit le paludisme, y a-t-il de la fièvre, des frissons, des sueurs, une fatigue inhabituelle, des maux de tête ou des courbatures, même sans thermomètre ?",
       "aide": "Zones : Afrique subsaharienne, Asie du Sud et du Sud-Est, Amérique du Sud tropicale, Océanie (liste à valider).",
       "choix": [
         {
@@ -648,7 +657,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 ; recommandations SPILF 2017 paludisme d'importation",
       "a_valider_clinicien": true
     },
     {
@@ -1409,16 +1418,26 @@
     {
       "id": "D01",
       "type": "question",
-      "texte": "Les vomissements empêchent-ils de garder le moindre liquide depuis plus de 6 heures (4 heures chez l'enfant de moins de 2 ans), OU, chez l'enfant de moins de 2 ans, y a-t-il un refus de boire ou moins de couches mouillées que d'habitude (moins de 4 par 24 h) ?",
+      "texte": "Lequel de ces cas correspond ?",
       "aide": "Durées à valider.",
       "choix": [
         {
-          "libelle": "Oui",
+          "libelle": "Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures ou refus de boire, AVEC somnolence ou yeux creusés",
+          "vers": "U00",
+          "pose": "sig_desh"
+        },
+        {
+          "libelle": "Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures ou refus de boire, sans somnolence ni yeux creusés",
           "vers": "RD_6H",
           "pose": "sig_desh"
         },
         {
-          "libelle": "Non",
+          "libelle": "Vomissements empêchant de garder le moindre liquide depuis plus de 6 heures (4 heures avant 2 ans)",
+          "vers": "RD_6H",
+          "pose": "sig_desh"
+        },
+        {
+          "libelle": "Aucun de ces cas",
           "vers": "D02"
         },
         {
@@ -1431,7 +1450,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "NICE NG143 et CG84 ; seuil de 6 h à vérifier",
       "a_valider_clinicien": true
     },
     {
@@ -2574,7 +2593,7 @@
       "id": "S01",
       "type": "question",
       "texte": "Au repos, la personne respire-t-elle vite (22 respirations par minute ou plus chez l'adulte) ?",
-      "aide": "Critère qSOFA : fréquence respiratoire ≥ 22/min (adulte).",
+      "aide": "Critère qSOFA : fréquence respiratoire ≥ 22/min (adulte). qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
       "choix": [
         {
           "libelle": "Oui",
@@ -2593,14 +2612,14 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "Singer M et al., JAMA 2016 (Sepsis-3, qSOFA)",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true
     },
     {
       "id": "S02A",
       "type": "question",
       "texte": "Comportement inhabituel : somnolence, lenteur, propos décousus ?",
-      "aide": "Critère qSOFA : altération de la conscience.",
+      "aide": "Critère qSOFA : altération de la conscience. qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
       "choix": [
         {
           "libelle": "Oui",
@@ -2620,14 +2639,14 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true
     },
     {
       "id": "S02B",
       "type": "question",
       "texte": "Comportement inhabituel : somnolence, lenteur, propos décousus ?",
-      "aide": "Deux critères qSOFA ou plus : appel au 15.",
+      "aide": "Deux critères qSOFA ou plus : appel au 15. qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
       "choix": [
         {
           "libelle": "Oui",
@@ -2646,14 +2665,14 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true
     },
     {
       "id": "S03A",
       "type": "question",
       "texte": "Tension mesurée (chiffre du haut) de 100 mmHg ou moins, OU frissons intenses, peau pâle ou grisâtre, extrémités froides ?",
-      "aide": "Critère qSOFA : pression systolique ≤ 100 mmHg (seuil adulte).",
+      "aide": "Critère qSOFA : pression systolique ≤ 100 mmHg (seuil adulte). qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
       "choix": [
         {
           "libelle": "Oui, au moins un des deux",
@@ -2678,14 +2697,14 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true
     },
     {
       "id": "S03B",
       "type": "question",
       "texte": "Tension mesurée : chiffre du haut ?",
-      "aide": "Un critère qSOFA est déjà présent.",
+      "aide": "Un critère qSOFA est déjà présent. qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
       "choix": [
         {
           "libelle": "Plus de 100 mmHg",
@@ -2704,7 +2723,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true
     },
     {
@@ -2836,12 +2855,16 @@
     {
       "id": "V02",
       "type": "question",
-      "texte": "Le séjour a-t-il eu lieu dans une zone où sévit le paludisme, au cours des 3 derniers mois ?",
+      "texte": "Le séjour a-t-il eu lieu dans une zone où sévit le paludisme ?",
       "aide": "",
       "choix": [
         {
-          "libelle": "Oui",
-          "vers": "RV_PALU"
+          "libelle": "Oui, retour il y a moins de 3 mois (ou toujours sur place)",
+          "vers": "U_PALU_G"
+        },
+        {
+          "libelle": "Oui, retour il y a plus de 3 mois",
+          "vers": "RV_PALU_TARDIF"
         },
         {
           "libelle": "Non",
@@ -2849,14 +2872,14 @@
         },
         {
           "libelle": "Je ne sais pas",
-          "vers": "RV_PALU"
+          "vers": "U_PALU_G"
         }
       ],
       "condition_activation": null,
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 ; recommandations SPILF 2017 paludisme d'importation",
       "a_valider_clinicien": true
     },
     {
@@ -2944,7 +2967,7 @@
     {
       "id": "RV_PALU",
       "type": "resultat",
-      "texte": "Fièvre au retour d'une zone d'endémie palustre : consulter le jour même, sans attendre le lendemain, en signalant le voyage (médecin, urgences ; appeler le 15 si aucun médecin n'est joignable). Ne pas prendre de traitement de son propre chef.",
+      "texte": "Fièvre ou symptômes pendant le voyage ou dans les 3 mois suivant le retour d'une zone d'endémie palustre : consulter dans les 6 heures, le jour même (service d'urgences ou médecin), en signalant le voyage. Un test du paludisme doit être fait en urgence. Ne pas prendre de traitement de son propre chef.",
       "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
       "choix": [],
       "condition_activation": null,
@@ -2959,7 +2982,7 @@
         "absence d'urines depuis plus de 12 h",
         "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
       ],
-      "source": "Délai : au plus 24 h exigé ; choix de 6 h à valider",
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 ; recommandations SPILF 2017 paludisme d'importation",
       "a_valider_clinicien": true,
       "modulable": true
     },
@@ -3717,12 +3740,16 @@
     {
       "id": "V06",
       "type": "question",
-      "texte": "Le séjour a-t-il eu lieu dans une zone où sévit le paludisme, au cours des 3 derniers mois ?",
+      "texte": "Le séjour a-t-il eu lieu dans une zone où sévit le paludisme ?",
       "aide": "",
       "choix": [
         {
-          "libelle": "Oui",
-          "vers": "RV_PALU"
+          "libelle": "Oui, retour il y a moins de 3 mois (ou toujours sur place)",
+          "vers": "U_PALU_G"
+        },
+        {
+          "libelle": "Oui, retour il y a plus de 3 mois",
+          "vers": "RV_PALU_TARDIF"
         },
         {
           "libelle": "Non",
@@ -3730,14 +3757,14 @@
         },
         {
           "libelle": "Je ne sais pas",
-          "vers": "RV_PALU"
+          "vers": "U_PALU_G"
         }
       ],
       "condition_activation": null,
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 ; recommandations SPILF 2017 paludisme d'importation",
       "a_valider_clinicien": true
     },
     {
@@ -3769,8 +3796,8 @@
     {
       "id": "U_GRO01",
       "type": "question",
-      "texte": "Pendant cette grossesse : contractions, perte de liquide, saignement vaginal, ou bébé qui bouge moins que d'habitude ?",
-      "aide": "Question d'urgence obstétricale (GRO01). Identifiant préfixé U_ : filtre d'urgence, exclu du compte des 7 questions.",
+      "texte": "Pendant cette grossesse : frissons intenses, fièvre de 39 °C ou plus, contractions, perte de liquide, saignement vaginal, malaise, ou bébé qui bouge moins que d'habitude ?",
+      "aide": "Question d'urgence obstétricale (GRO01). Identifiant préfixé U_ : filtre d'urgence, exclu du compte des 7 questions. En cas de fièvre ≥ 38 °C sans ces signes : urgences de la maternité dans les 6 heures (MOD08).",
       "choix": [
         {
           "libelle": "Oui",
@@ -3789,7 +3816,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "Memento Sages-femmes (Elsevier) ; La Revue du Praticien, « Fièvre et grossesse : points forts » ; UNF3S gynécologie-obstétrique chap. 25 ; texte CNGOF/HAS à vérifier",
       "a_valider_clinicien": true
     },
     {
@@ -3942,7 +3969,7 @@
       "choix": [
         {
           "libelle": "38 °C ou plus",
-          "vers": "U00",
+          "vers": "U_NRS_G",
           "pose": "sig_fievre"
         },
         {
@@ -3963,7 +3990,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "NICE NG143 (contenu confirmé via BMJ ADC Education & Practice 2021) ; Vidal, recommandation 3758 « Fièvre de l'enfant » (d'après HAS/SFP)",
       "a_valider_clinicien": true
     },
     {
@@ -4010,6 +4037,100 @@
       "source": "à valider",
       "a_valider_clinicien": true,
       "modulable": true
+    },
+    {
+      "id": "U_PALU_G",
+      "type": "question",
+      "texte": "Y a-t-il une confusion, des vomissements répétés, des urines foncées, une jaunisse (peau ou yeux jaunes), une respiration difficile ou un malaise ?",
+      "aide": "Signes de gravité du paludisme : appel au 15.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RV_PALU"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 ; recommandations SPILF 2017 paludisme d'importation",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RV_PALU_TARDIF",
+      "type": "resultat",
+      "texte": "Séjour en zone de paludisme il y a plus de 3 mois : des accès tardifs restent possibles. Consulter un médecin dans les 24 heures et SIGNALEZ VOTRE VOYAGE au médecin.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 ; recommandations SPILF 2017 paludisme d'importation",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_NRS_G",
+      "type": "question",
+      "texte": "Chez ce bébé : difficulté à respirer, difficile à réveiller ou ne réagit pas, teint gris ou marbré, convulsions, taches qui ne s'effacent pas à la pression, OU aucun moyen d'arriver rapidement aux urgences (ou bébé de moins de 28 jours sans transport possible) ?",
+      "aide": "Un seul de ces éléments suffit pour appeler le 15.",
+      "choix": [
+        {
+          "libelle": "Oui, au moins un",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non, aucun",
+          "vers": "R_NRS_2H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": "pop_nourrisson_moins_3m || pop_age_inconnu_bebe",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "NICE NG143 (contenu confirmé via BMJ ADC Education & Practice 2021) ; Vidal, recommandation 3758 « Fièvre de l'enfant » (d'après HAS/SFP)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R_NRS_2H",
+      "type": "resultat",
+      "texte": "Allez tout de suite aux urgences pédiatriques, sans attendre. Ne donnez pas de médicament contre la fièvre sans avis.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "urgence_sans_delai",
+      "delai_action": "moins_de_2h",
+      "signes_reconsultation": [
+        "difficulté à respirer",
+        "bébé difficile à réveiller ou qui ne réagit pas",
+        "teint gris ou marbré",
+        "convulsions",
+        "taches qui ne s'effacent pas : appeler le 15"
+      ],
+      "source": "NICE NG143 (contenu confirmé via BMJ ADC Education & Practice 2021) ; Vidal, recommandation 3758 « Fièvre de l'enfant » (d'après HAS/SFP)",
+      "a_valider_clinicien": true,
+      "modulable": true,
+      "note_soignant": "Pas d'ibuprofène avant 3 mois."
     }
   ],
   "regles_modulation": [
@@ -4018,11 +4139,13 @@
       "population": "pop_nourrisson_moins_3m || pop_age_inconnu_bebe",
       "tableau": "fièvre ≥ 38 °C (mesurée, ou « je ne sais pas »)",
       "effet": "plancher",
-      "valeur": "urgence_vitale",
-      "source": "à valider (consigne ; court-circuite toute autre question)",
+      "valeur": "urgence_sans_delai",
+      "source": "NICE NG143 (contenu confirmé via BMJ ADC Education & Practice 2021) ; Vidal, recommandation 3758 « Fièvre de l'enfant » (d'après HAS/SFP)",
       "a_valider_clinicien": true,
       "condition": "pop_nourrisson_moins_3m && (sig_fievre || sig_fievre_inconnue) || pop_age_inconnu_bebe && sig_fievre",
-      "commentaire": "population : pop_nourrisson_moins_3m || pop_age_inconnu_bebe ; tableau : fièvre ≥ 38 °C (mesurée, ou « je ne sais pas »)"
+      "commentaire": "population : pop_nourrisson_moins_3m || pop_age_inconnu_bebe ; tableau : fièvre ≥ 38 °C (mesurée, ou « je ne sais pas »)",
+      "resultat": "R_NRS_2H",
+      "escalade_U00": "signes de U_NRS_G"
     },
     {
       "id": "MOD02",
@@ -4098,11 +4221,12 @@
       "tableau": "fièvre",
       "effet": "plancher",
       "valeur": "consultation_urgente",
-      "source": "à valider (listériose, chorioamniotite)",
+      "source": "Memento Sages-femmes (Elsevier) ; La Revue du Praticien, « Fièvre et grossesse : points forts » ; UNF3S gynécologie-obstétrique chap. 25 ; texte CNGOF/HAS à vérifier",
       "a_valider_clinicien": true,
       "condition": "pop_grossesse && (sig_fievre || sig_fievre_inconnue)",
       "commentaire": "population : pop_grossesse ; tableau : fièvre",
-      "arbitrage_clinicien": "E-19 — plancher urgente pour tout syndrome grippal fébrile de la grossesse : trop large ?"
+      "orientation": "Urgences de la maternité (ou médecin en urgence avant 20 SA si la maternité n'accueille pas).",
+      "escalade_U00": "frissons intenses, fièvre ≥ 39 °C, contractions, perte de liquide, saignement ou malaise → U00 (via U_GRO01)"
     },
     {
       "id": "MOD09",
@@ -4292,12 +4416,12 @@
     {
       "id": "MOD16",
       "population": "sig_fr_22_29",
-      "tableau": "fréquence respiratoire adulte 22 à 29/min",
+      "tableau": "un critère qSOFA (FR 22 à 29/min)",
       "effet": "plancher",
       "valeur": "consultation_urgente",
-      "source": "à valider",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
       "a_valider_clinicien": true,
-      "condition": "sig_fr_22_29",
+      "condition": "sig_fr_22_29 && !sig_pas_100",
       "commentaire": "population : sig_fr_22_29 ; tableau : fréquence respiratoire adulte 22 à 29/min"
     },
     {
@@ -4332,6 +4456,28 @@
       "a_valider_clinicien": true,
       "condition": "pop_age_inconnu_bebe && sig_temp_inconnue_bebe",
       "commentaire": "population : pop_age_inconnu_bebe ; tableau : température inconnue à U02B"
+    },
+    {
+      "id": "MOD20",
+      "population": "tous",
+      "tableau": "un critère qSOFA (PAS 90 à 100 mmHg)",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "condition": "sig_pas_100 && !sig_fr_22_29",
+      "commentaire": "U12",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD21",
+      "population": "tous",
+      "tableau": "deux critères qSOFA (FR ≥ 22/min + PAS ≤ 100 mmHg ; la confusion mène déjà à U00 via U08)",
+      "effet": "plancher",
+      "valeur": "urgence_vitale",
+      "condition": "sig_fr_22_29 && sig_pas_100",
+      "commentaire": "U06 + U12",
+      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
+      "a_valider_clinicien": true
     },
     {
       "id": "MODG",
@@ -4437,7 +4583,7 @@
       "a_valider_clinicien": true
     }
   ],
-  "regle_fusion": "niveau_final = max(niveau du résultat clinique, planchers des règles applicables) puis relèvements (au plus +1 au total). Un relèvement est plafonné à consultation_urgente : il ne peut jamais créer une urgence_vitale. Seuls les nœuds U00 / RH_ISOL et les planchers explicites MOD01, MOD05B, MOD07B donnent urgence_vitale. « Je ne sais pas » = oui pour la modulation ; le niveau ne descend jamais. Les règles sont évaluées par leur champ condition (expression booléenne sur les tokens « pose »).",
+  "regle_fusion": "niveau_final = max(niveau du résultat clinique, planchers des règles applicables) puis relèvements (au plus +1 au total). Un relèvement est plafonné à consultation_urgente : il ne peut jamais créer une urgence_vitale. Seuls les nœuds U00 / RH_ISOL et les planchers explicites MOD05B, MOD07B, MOD21 donnent urgence_vitale ; MOD01 et R_NRS_2H donnent urgence_sans_delai (< 2 h). Ordre des niveaux : niveaux_ordre. « Je ne sais pas » = oui pour la modulation ; le niveau ne descend jamais. Les règles sont évaluées par leur champ condition (expression booléenne sur les tokens « pose »).",
   "expositions_retirees": [
     {
       "id": "EXP_PALU",
@@ -4483,11 +4629,28 @@
       "id": "E-23/sig_resp_G",
       "description": "sig_resp est posé par les entrées T00 ; les toux apparues en cours de branche (F, V) ne le posent pas.",
       "raison": "Couverture partielle acceptée ; à compléter par le moteur si besoin."
-    },
-    {
-      "id": "E-19",
-      "description": "Plancher MOD08 (urgente pour toute fièvre de la grossesse) maintenu.",
-      "raison": "Interdiction d'abaisser ; arbitrage clinicien requis."
     }
+  ],
+  "niveaux_ordre": [
+    "autosoins_surveillance",
+    "consultation_programmee",
+    "consultation_rapide",
+    "consultation_urgente",
+    "urgence_sans_delai",
+    "urgence_vitale"
+  ],
+  "niveaux_delai": {
+    "urgence_vitale": "immediat",
+    "urgence_sans_delai": "moins_de_2h",
+    "consultation_urgente": "moins_de_6h",
+    "consultation_rapide": "moins_de_24h",
+    "consultation_programmee": "moins_de_48h",
+    "autosoins_surveillance": "surveillance"
+  },
+  "noeuds_ajoutes_arbitrage": [
+    "U_PALU_G",
+    "RV_PALU_TARDIF",
+    "U_NRS_G",
+    "R_NRS_2H"
   ]
 }

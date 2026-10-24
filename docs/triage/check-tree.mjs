@@ -4,7 +4,7 @@ const f=process.argv[2]; if(!f){console.error('usage: node check-tree.mjs <arbre
 const t=JSON.parse(fs.readFileSync(f,'utf8')); const err=[]; const M=new Map();
 for(const n of t.noeuds){ if(M.has(n.id)) err.push('doublon '+n.id); M.set(n.id,n); }
 const KEYS=['id','type','texte','aide','choix','condition_activation','niveau_orientation','delai_action','signes_reconsultation','source','a_valider_clinicien'];
-const NIV={urgence_vitale:'immediat',consultation_urgente:'moins_de_6h',consultation_rapide:'moins_de_24h',consultation_programmee:'moins_de_48h',autosoins_surveillance:'surveillance'};
+const NIV={urgence_vitale:'immediat',urgence_sans_delai:'moins_de_2h',consultation_urgente:'moins_de_6h',consultation_rapide:'moins_de_24h',consultation_programmee:'moins_de_48h',autosoins_surveillance:'surveillance'};
 if(!M.has(t.racine)) err.push('racine absente');
 for(const n of M.values()){
   for(const k of KEYS) if(!(k in n)) err.push(`${n.id}: champ ${k} manquant`);
