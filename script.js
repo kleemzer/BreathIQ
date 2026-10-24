@@ -2597,6 +2597,7 @@ function generateScoreForRegion(region) {
 }
 
 function scoreGrade(sr) {
+  if (sr == null) return { grade: 'Indisponible', colorClass: 'grade-unknown', color: '#94A3B8' };
   if (sr <= 25) return { grade: 'Excellent', colorClass: 'grade-excellent', color: '#10B981' };
   if (sr <= 45) return { grade: 'Bon',       colorClass: 'grade-good',      color: '#84CC16' };
   if (sr <= 60) return { grade: 'Modéré',    colorClass: 'grade-moderate',  color: '#F59E0B' };
@@ -2605,6 +2606,7 @@ function scoreGrade(sr) {
 }
 
 function scoreGradeEN(sr) {
+  if (sr == null) return 'Unavailable';
   if (sr <= 25) return 'Excellent';
   if (sr <= 45) return 'Good';
   if (sr <= 60) return 'Moderate';
@@ -2638,6 +2640,9 @@ function aiMessageForRegion(region, score, lang) {
   };
 
   const t = messages[lang] || messages.fr;
+  if (score.sr == null) return lang === 'en'
+    ? `${name}: index unavailable today (a data source is awaiting an update).`
+    : `${name} : indice indisponible aujourd'hui (une source de données est en attente de mise à jour).`;
   if (score.sr <= 25) return t.excellent;
   if (score.sr <= 45) return t.good;
   if (score.sr <= 60) return t.moderate;
@@ -3161,8 +3166,10 @@ function updateScoreDisplay(regionId) {
   const ctaIcon = document.getElementById('gpScoreCtaIcon');
   const ctaTxt  = document.getElementById('gpScoreCtaText');
   if (ctaDiv && ctaBtn && ctaIcon && ctaTxt) {
-    ctaDiv.style.display = 'block';
-    if (score.sr <= 35) {
+    ctaDiv.style.display = score.sr == null ? 'none' : 'block';
+    if (score.sr == null) {
+      // aucun message de contexte sans indice calculé
+    } else if (score.sr <= 35) {
       ctaIcon.textContent = '✅'; ctaTxt.textContent = currentLang === 'fr' ? 'Contexte favorable — informations du jour' : 'Favourable context — today\'s information';
       ctaBtn.style.background = '#16a34a';
     } else if (score.sr <= 55) {
@@ -4386,6 +4393,15 @@ function updatePatientRiskBanner() {
       : 'If fever + return from Central/East Africa in the last 21 days: call emergency services without travelling.';
     const dot = document.getElementById('heroUrgencyDot');
     if (dot) dot.hidden = true;
+  } else if (score.sr == null) {
+    // Pas d'indice calculable (source en attente) : ne jamais afficher « favorable » sans donnée
+    banner.classList.add('risk-moderate');
+    if (icon)  { icon.textContent = 'ℹ️'; icon.classList.remove('pulse'); }
+    if (label) label.textContent = lang === 'fr' ? 'INDICE INDISPONIBLE' : 'INDEX UNAVAILABLE';
+    if (title) title.textContent = lang === 'fr' ? 'Indice du jour indisponible' : 'Today\'s index unavailable';
+    if (desc)  desc.textContent  = lang === 'fr'
+      ? 'Une source de données est en attente de mise à jour. Aucune estimation n\'est affichée plutôt qu\'une estimation incomplète.'
+      : 'A data source is awaiting an update. No estimate is shown rather than an incomplete one.';
   } else if (score.sr <= 45) {
     banner.classList.add('risk-low');
     if (icon)  { icon.textContent = '🟢'; icon.classList.remove('pulse'); }
