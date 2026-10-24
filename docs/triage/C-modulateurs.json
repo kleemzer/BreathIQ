@@ -1,0 +1,677 @@
+{
+  "meta": {
+    "auteur": "sous-agent C",
+    "date": "2026-10-24",
+    "statut": "brouillon, aucune règle validée cliniquement",
+    "niveaux": [
+      "autosoins_surveillance",
+      "consultation_programmee",
+      "consultation_rapide",
+      "consultation_urgente",
+      "urgence_vitale"
+    ],
+    "regle_je_ne_sais_pas": "compte comme oui pour la modulation",
+    "combinaison": "niveau final = max(niveau clinique, tous les planchers) puis relèvements, plafonné à urgence_vitale"
+  },
+  "noeuds_population": [
+    {
+      "id": "POP00",
+      "type": "choix_unique",
+      "texte": "Quel âge a la personne concernée ?",
+      "aide": "Pour un bébé, comptez l'âge réel depuis la naissance.",
+      "choix": [
+        {
+          "libelle": "Moins de 3 mois",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_nourrisson_moins_3m"
+        },
+        {
+          "libelle": "De 3 mois à 2 ans",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_enfant_3m_2a"
+        },
+        {
+          "libelle": "De 2 à 15 ans",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_enfant_2_15a"
+        },
+        {
+          "libelle": "De 16 à 64 ans",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_adulte"
+        },
+        {
+          "libelle": "65 ans ou plus",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_65_plus"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_age_inconnu"
+        }
+      ],
+      "condition_activation": "toujours",
+      "source": "Tranches issues de A-audit.md (A-07) ; seuils à valider",
+      "a_valider_clinicien": true,
+      "note": "Pas de réponse par défaut (A-05). « Je ne sais pas » : traité comme la tranche la plus à risque compatible, à valider."
+    },
+    {
+      "id": "POP01",
+      "type": "choix_multiple",
+      "texte": "La personne a-t-elle un traitement ou une maladie qui affaiblit les défenses contre les infections ?",
+      "aide": "Cochez tout ce qui s'applique.",
+      "choix": [
+        {
+          "libelle": "Cancer ou hémopathie en cours de traitement (dont chimiothérapie)",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_immunodeprime"
+        },
+        {
+          "libelle": "Infection par le VIH",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_immunodeprime"
+        },
+        {
+          "libelle": "Greffe d'organe ou de moelle",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_immunodeprime"
+        },
+        {
+          "libelle": "Corticoïdes (cortisone) pris tous les jours depuis plusieurs semaines",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_immunodeprime"
+        },
+        {
+          "libelle": "Biothérapie ou immunosuppresseur (polyarthrite, Crohn, psoriasis, sclérose en plaques…)",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_immunodeprime"
+        },
+        {
+          "libelle": "Rate retirée ou ne fonctionnant pas (asplénie, drépanocytose)",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_asplenie"
+        },
+        {
+          "libelle": "Aucun de ces cas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "aucun"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_immunodeprime"
+        }
+      ],
+      "condition_activation": "toujours",
+      "source": "Liste fournie par la consigne ; durée de corticothérapie non précisée, à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "POP02",
+      "type": "choix_multiple",
+      "texte": "Une de ces situations s'applique-t-elle ?",
+      "aide": "Cochez tout ce qui s'applique.",
+      "choix": [
+        {
+          "libelle": "Grossesse en cours (ou possible)",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_grossesse",
+          "condition_activation": "!pop_nourrisson_moins_3m && !pop_enfant_3m_2a"
+        },
+        {
+          "libelle": "Diabète",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_diabete"
+        },
+        {
+          "libelle": "Insuffisance cardiaque",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_insuffisance_organe"
+        },
+        {
+          "libelle": "Insuffisance respiratoire ou maladie pulmonaire chronique sévère (oxygène, BPCO)",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_insuffisance_organe"
+        },
+        {
+          "libelle": "Insuffisance rénale (dont dialyse)",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_insuffisance_organe"
+        },
+        {
+          "libelle": "Aucune",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "aucun"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "pop_comorbidite_inconnue"
+        }
+      ],
+      "condition_activation": "!pop_nourrisson_moins_3m",
+      "source": "Liste fournie par la consigne",
+      "a_valider_clinicien": true,
+      "note": "« Je ne sais pas » pour la grossesse = oui (règle consigne)."
+    }
+  ],
+  "regles_modulation": [
+    {
+      "id": "MOD01",
+      "population": "pop_nourrisson_moins_3m || pop_age_inconnu_bebe",
+      "tableau": "fièvre ≥ 38 °C (mesurée, ou « je ne sais pas »)",
+      "effet": "plancher",
+      "valeur": "urgence_vitale",
+      "source": "à valider (consigne ; court-circuite toute autre question)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD02",
+      "population": "pop_nourrisson_moins_3m",
+      "tableau": "tout résultat sans fièvre",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD03",
+      "population": "pop_enfant_3m_2a",
+      "tableau": "fièvre",
+      "effet": "plancher",
+      "valeur": "consultation_rapide",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD04",
+      "population": "pop_enfant_3m_2a",
+      "tableau": "signes respiratoires ou refus de boire / moins de couches mouillées",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD05",
+      "population": "pop_immunodeprime",
+      "tableau": "fièvre",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "à valider (consigne)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD06",
+      "population": "pop_immunodeprime",
+      "tableau": "tout autre tableau infectieux",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD07",
+      "population": "pop_asplenie",
+      "tableau": "fièvre",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD08",
+      "population": "pop_grossesse",
+      "tableau": "fièvre",
+      "effet": "plancher",
+      "valeur": "consultation_rapide",
+      "source": "à valider (consigne)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD09",
+      "population": "pop_grossesse",
+      "tableau": "signes urinaires, ou fièvre + éruption",
+      "effet": "plancher",
+      "valeur": "consultation_rapide",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD10",
+      "population": "pop_65_plus",
+      "tableau": "fièvre ou signes respiratoires",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD11",
+      "population": "pop_65_plus",
+      "tableau": "confusion ou chute récente",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD12",
+      "population": "pop_diabete",
+      "tableau": "fièvre, ou plaie / infection du pied",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD13",
+      "population": "pop_insuffisance_organe",
+      "tableau": "signes respiratoires ou fièvre",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD14",
+      "population": "pop_insuffisance_organe",
+      "tableau": "essoufflement inhabituel",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MOD15",
+      "population": "cumul : ≥ 2 populations à risque",
+      "tableau": "fièvre",
+      "effet": "relever",
+      "valeur": 1,
+      "source": "à valider (pas de cumul au-delà de +1, à arbitrer)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "MODG",
+      "population": "toute population",
+      "tableau": "règle générale",
+      "effet": "plancher",
+      "valeur": "max(niveau clinique, planchers, relèvements)",
+      "source": "A-audit.md A-01 (un seul niveau final = max) ; « Je ne sais pas » = oui",
+      "a_valider_clinicien": true
+    }
+  ],
+  "expositions": [
+    {
+      "id": "EXP_PALU",
+      "type": "choix_unique",
+      "pathogene": "paludisme",
+      "texte": "Êtes-vous revenu(e), dans les 3 derniers mois, d'un pays où sévit le paludisme (Afrique subsaharienne, Asie du Sud-Est, Amazonie, Océanie…) ?",
+      "aide": "Liste de pays à fournir par une source officielle (OMS) ; non générée ici.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_palu"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_palu"
+        }
+      ],
+      "fenetre_exposition": "3 mois après le retour",
+      "incubation": {
+        "habituelle": "7 jours minimum ; souvent 10-15 jours (P. falciparum)",
+        "maximale": "plusieurs mois, voire plus (P. vivax/ovale)",
+        "source": "OMS, aide-mémoire paludisme : 10-15 jours après la piqûre ; fenêtre de 3 mois : à valider"
+      },
+      "effet_si_oui": {
+        "si_fievre": "plancher consultation_rapide (moins de 24 h)"
+      },
+      "condition_activation": "fievre_presente_ou_inconnue",
+      "source": "Recommandations françaises (fenêtre 3 mois) : à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_FHV",
+      "type": "choix_unique",
+      "pathogene": "Ebola et fièvres hémorragiques virales",
+      "texte": "Dans les 21 derniers jours, avez-vous séjourné dans un pays concerné par une alerte Ebola en cours, ou été en contact avec un malade suspect ?",
+      "aide": "Pays affichés dynamiquement depuis pheic-alerts.json (regions[].country).",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_fhv"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_fhv"
+        }
+      ],
+      "fenetre_exposition": "21 jours",
+      "incubation": {
+        "habituelle": "2 à 21 jours",
+        "source": "OMS, aide-mémoire maladie à virus Ebola (2-21 jours)"
+      },
+      "effet_si_oui": {
+        "si_oui": "plancher consultation_urgente ; consigne : NE PAS se rendre aux urgences ni chez le médecin sans appeler le 15 d'abord",
+        "si_fievre": "plancher urgence_vitale (appel 15)"
+      },
+      "condition_activation": "ACT_EBOLA",
+      "source": "OMS",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_HANTA",
+      "type": "choix_unique",
+      "pathogene": "hantavirus",
+      "texte": "Dans les 6 dernières semaines, avez-vous voyagé en croisière concernée par une alerte, ou été exposé(e) à des rongeurs ou à leurs déjections (cave, grange, chalet fermé) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_hanta"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_hanta"
+        }
+      ],
+      "fenetre_exposition": "6 semaines",
+      "incubation": {
+        "habituelle": "1 à 8 semaines (syndrome pulmonaire)",
+        "source": "CDC (1-8 semaines) : à valider ; 6 semaines = consigne, à valider"
+      },
+      "effet_si_oui": {
+        "si_fievre_ou_essoufflement": "plancher consultation_urgente"
+      },
+      "condition_activation": "toujours (rongeurs) ; volet croisière : ACT_HANTA",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_DENGUE_CHIK",
+      "type": "choix_unique",
+      "pathogene": "dengue / chikungunya / zika",
+      "texte": "Dans les 15 derniers jours, avez-vous séjourné en zone tropicale (Antilles, Guyane, Réunion, Mayotte, Asie, Amérique latine, Afrique…) ou été piqué(e) par des moustiques dans une zone où des cas locaux sont signalés en France ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_dengue_chik"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_dengue_chik"
+        }
+      ],
+      "fenetre_exposition": "15 jours (à valider)",
+      "incubation": {
+        "dengue": "4 à 10 jours (OMS, aide-mémoire dengue)",
+        "chikungunya": "4 à 8 jours, extrêmes 2-12 (OMS, aide-mémoire chikungunya)",
+        "zika": "3 à 14 jours (OMS, aide-mémoire Zika)"
+      },
+      "effet_si_oui": {
+        "si_fievre": "relever 1 ; plancher consultation_rapide",
+        "si_grossesse": "plancher consultation_rapide",
+        "si_saignement_ou_douleur_abdominale": "plancher consultation_urgente"
+      },
+      "condition_activation": "toujours ; mention cas autochtones : ACT_ARBO_FR",
+      "source": "OMS",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_RAGE",
+      "type": "choix_unique",
+      "pathogene": "rage",
+      "texte": "Avez-vous été mordu(e), griffé(e) ou léché(e) sur une plaie par un animal (chien, chat, chauve-souris, singe…), en France ou à l'étranger ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_rage"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_rage"
+        }
+      ],
+      "fenetre_exposition": "sans limite (incubation longue)",
+      "incubation": {
+        "habituelle": "2 à 3 mois",
+        "extremes": "1 semaine à 1 an",
+        "source": "OMS, aide-mémoire rage"
+      },
+      "effet_si_oui": {
+        "si_oui": "plancher consultation_urgente (moins de 6 h) : un centre antirabique doit évaluer, même sans symptôme ; laver la plaie 15 min à l'eau et au savon (OMS)"
+      },
+      "condition_activation": "toujours",
+      "source": "OMS",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_TIQUE",
+      "type": "choix_unique",
+      "pathogene": "Lyme et maladies transmises par les tiques",
+      "texte": "Avez-vous été piqué(e) par une tique dans le dernier mois, ou vu une plaque rouge qui s'étend autour d'une piqûre ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_tique"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_tique"
+        }
+      ],
+      "fenetre_exposition": "30 jours (à valider)",
+      "incubation": {
+        "erytheme_migrant": "3 à 30 jours (CDC)",
+        "source": "CDC, Lyme disease signs and symptoms"
+      },
+      "effet_si_oui": {
+        "si_plaque_ou_fievre": "plancher consultation_programmee",
+        "si_paralysie_faciale_ou_signes_neuro": "plancher consultation_rapide (à valider)"
+      },
+      "condition_activation": "toujours",
+      "source": "CDC",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_CONTACT",
+      "type": "choix_unique",
+      "pathogene": "contact avec un malade",
+      "texte": "Dans les 14 derniers jours, avez-vous été en contact rapproché avec une personne malade ayant des symptômes proches des vôtres, ou avec un diagnostic connu (méningite, coqueluche, rougeole, tuberculose, grippe…) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_contact"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_contact"
+        }
+      ],
+      "fenetre_exposition": "14 jours (à valider ; dépend du pathogène)",
+      "incubation": {
+        "source": "variable selon le pathogène : à valider"
+      },
+      "effet_si_oui": {
+        "si_oui_et_meningite_contact": "plancher consultation_rapide (antibioprophylaxie éventuelle décidée par un médecin)",
+        "autres": "information, pas de relèvement par défaut"
+      },
+      "condition_activation": "toujours",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "EXP_IST",
+      "type": "choix_unique",
+      "pathogene": "IST",
+      "texte": "Dans les 3 derniers mois, avez-vous eu un rapport sexuel sans préservatif avec un(e) nouveau(elle) partenaire, ou un(e) partenaire vous a-t-il signalé une IST ?",
+      "aide": "Question sensible : réponse facultative, rien n'est stocké.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_ist"
+        },
+        {
+          "libelle": "Non",
+          "vers": "SUITE_CLINIQUE"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "SUITE_CLINIQUE",
+          "pose": "expo_exp_ist"
+        }
+      ],
+      "fenetre_exposition": "3 mois (à valider)",
+      "incubation": {
+        "source": "variable selon l'IST : à valider"
+      },
+      "effet_si_oui": {
+        "si_risque_vih_moins_48h": "plancher consultation_urgente (traitement post-exposition à débuter au plus vite, idéalement < 48 h ; à valider)",
+        "si_symptomes_genitaux": "plancher consultation_programmee"
+      },
+      "condition_activation": "age >= 16 ans (à valider)",
+      "source": "à valider",
+      "a_valider_clinicien": true
+    }
+  ],
+  "activations": [
+    {
+      "id": "ACT_EBOLA",
+      "active_question": "EXP_FHV",
+      "expression": "pheic.alerts.some(a => a.active && a.pathogen_id === 'EBOLA')",
+      "fichier": "data/pheic-alerts.json",
+      "pays_dans_les_donnees": [
+        "République démocratique du Congo",
+        "Kenya",
+        "Ouganda"
+      ],
+      "pays_expression": "pheic.alerts.filter(a => a.active && a.pathogen_id === 'EBOLA').flatMap(a => a.regions.map(r => r.country))",
+      "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619",
+      "a_valider_clinicien": true,
+      "note": "Hors alerte, la question FHV reste posée en version générique (contact malade / voyage) : à valider."
+    },
+    {
+      "id": "ACT_HANTA",
+      "active_question": "EXP_HANTA (volet croisière)",
+      "expression": "who.alerts.some(a => /hantavirus/i.test(a.title))",
+      "fichier": "data/who-alerts.json",
+      "pays_dans_les_donnees": [
+        "Multi-locations (titre OMS ; aucun pays listé)"
+      ],
+      "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON611",
+      "a_valider_clinicien": true,
+      "note": "who-alerts.json n'a ni champ active ni pathogen_id : activation par motif de titre, fragile. DON611 n'est peut-être plus d'actualité : ajouter une date limite à valider."
+    },
+    {
+      "id": "ACT_ARBO_FR",
+      "active_question": "EXP_DENGUE_CHIK (mention cas autochtones en France hexagonale)",
+      "expression": "arbo.ok === true && arbo.stale === false && ((arbo.dengue?.autochthonousCases ?? 0) > 0 || (arbo.chikungunya?.autochthonousCases ?? 0) > 0 || (arbo.zika?.autochthonousCases ?? 0) > 0)",
+      "fichier": "data/spf-arbo.json",
+      "pays_dans_les_donnees": [
+        "France hexagonale (pas de détail régional dans le bulletin national)"
+      ],
+      "source": "Santé publique France, bulletin arboviroses du 2026-10-07",
+      "a_valider_clinicien": true,
+      "note": "Actuellement arbo.ok === false (erreur de collecte du 2026-10-21) : l'expression renvoie false, donc pas d'activation, comportement voulu."
+    },
+    {
+      "id": "ACT_WESTNILE_FR",
+      "active_question": "aucune question dédiée ; message d'information si fièvre + signes neurologiques",
+      "expression": "arbo.ok === true && arbo.stale === false && (arbo.westNile?.autochthonousCases ?? 0) > 0",
+      "fichier": "data/spf-arbo.json",
+      "pays_dans_les_donnees": [
+        "Provence-Alpes-Côte d'Azur",
+        "Occitanie",
+        "Île-de-France",
+        "Auvergne-Rhône-Alpes",
+        "Nouvelle-Aquitaine",
+        "Pays de la Loire",
+        "Centre-Val de Loire"
+      ],
+      "source": "Santé publique France",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "ACT_NIPAH",
+      "active_question": "EXP_CONTACT (mention voyage)",
+      "expression": "who.alerts.some(a => /nipah/i.test(a.title))",
+      "fichier": "data/who-alerts.json",
+      "pays_dans_les_donnees": [
+        "India (titre OMS DON609)"
+      ],
+      "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON609",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "ACT_MERS",
+      "active_question": "EXP_CONTACT (mention voyage)",
+      "expression": "who.alerts.some(a => /middle east respiratory/i.test(a.title))",
+      "fichier": "data/who-alerts.json",
+      "pays_dans_les_donnees": [
+        "Kingdom of Saudi Arabia (titre OMS)"
+      ],
+      "source": "https://www.who.int/emergencies/disease-outbreak-news/item/middle-east-respiratory-syndrome-coronavirus---kingdom-of-saudi-arabia",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "ACT_FIEVRE_JAUNE",
+      "active_question": "EXP_PALU (mention voyage tropical)",
+      "expression": "who.alerts.some(a => /yellow fever/i.test(a.title))",
+      "fichier": "data/who-alerts.json",
+      "pays_dans_les_donnees": [
+        "Global (titre OMS DON610 ; aucun pays listé)"
+      ],
+      "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON610",
+      "a_valider_clinicien": true
+    }
+  ]
+}

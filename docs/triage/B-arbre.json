@@ -1,0 +1,3572 @@
+{
+  "version": "0.1.0-B",
+  "racine": "U01",
+  "noeuds": [
+    {
+      "id": "U00",
+      "type": "urgence",
+      "texte": "Signe d'urgence détecté. Appelez le 15 (SAMU) ou le 112 maintenant. Ne vous déplacez pas seul et ne conduisez pas.",
+      "aide": "Restez auprès de la personne, déverrouillez la porte, préparez la liste des traitements. Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "urgence_vitale",
+      "delai_action": "immediat",
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U01",
+      "type": "question",
+      "texte": "La personne concernée a-t-elle moins de 3 mois ?",
+      "aide": "Âge calculé à partir de la naissance.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U02"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U02",
+      "type": "question",
+      "texte": "Température mesurée (thermomètre rectal ou frontal) ?",
+      "aide": "Nourrisson de moins de 3 mois : toute température ≥ 38 °C impose un appel au 15. Une température < 36 °C est aussi un signe d'alerte (seuil à valider).",
+      "choix": [
+        {
+          "libelle": "38 °C ou plus",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Moins de 38 °C",
+          "vers": "U03"
+        },
+        {
+          "libelle": "Je ne sais pas / pas de thermomètre",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "Seuil 38 °C < 3 mois : NICE NG143 (fièvre de l'enfant < 5 ans) — référence exacte à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U03",
+      "type": "question",
+      "texte": "Chez un enfant de moins de 2 ans : pauses respiratoires (arrêt de respirer de plus de 10 secondes) ou geignement à chaque expiration ?",
+      "aide": "Seuil de 10 s à valider.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U04"
+        },
+        {
+          "libelle": "Non concerné (2 ans ou plus)",
+          "vers": "U04"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U04",
+      "type": "question",
+      "texte": "La personne (enfant ou adulte) est-elle difficile à réveiller, ou ne réagit-elle pas normalement quand on lui parle ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U05",
+      "type": "question",
+      "texte": "Au repos, la personne a-t-elle du mal à respirer (ne peut pas finir une phrase, creuse le cou ou les côtes, lèvres ou ongles bleutés) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U06"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U06",
+      "type": "question",
+      "texte": "Fréquence respiratoire au repos (compter les mouvements de la poitrine pendant 1 minute) ?",
+      "aide": "Seuils : moins de 2 mois ≥ 60/min ; 2 à 12 mois ≥ 50/min ; 1 à 5 ans ≥ 40/min (OMS, PCIME) ; 5 à 12 ans ≥ 30/min (à valider) ; adulte ≥ 30/min (à valider). « Je ne sais pas » ne rassure pas : les autres questions continuent.",
+      "choix": [
+        {
+          "libelle": "Au-dessus du seuil pour l'âge",
+          "vers": "U00"
+        },
+        {
+          "libelle": "En dessous du seuil",
+          "vers": "U07"
+        },
+        {
+          "libelle": "Je ne sais pas / pas compté",
+          "vers": "U07"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "OMS, Prise en charge intégrée des maladies de l'enfant (PCIME) pour < 5 ans ; autres seuils à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U07",
+      "type": "question",
+      "texte": "Saturation en oxygène (SpO2) mesurée au repos avec un saturomètre ?",
+      "aide": "Seuil général < 94 %. Seuil < 92 % en cas de BPCO connue : seuil à valider par un clinicien.",
+      "choix": [
+        {
+          "libelle": "94 % ou plus",
+          "vers": "U08"
+        },
+        {
+          "libelle": "92 à 93 % avec BPCO connue",
+          "vers": "U08"
+        },
+        {
+          "libelle": "92 à 93 % sans BPCO",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Moins de 92 %",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Je ne sais pas / pas de saturomètre",
+          "vers": "U08"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U08",
+      "type": "question",
+      "texte": "La personne est-elle confuse (ne sait plus où elle est, propos incohérents, comportement inhabituel apparu récemment) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U09"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U09",
+      "type": "question",
+      "texte": "Y a-t-il des taches rouges ou violacées sur la peau qui ne s'effacent pas quand on appuie dessus avec un verre transparent ?",
+      "aide": "Test du verre : appuyer le verre sur la tache ; si elle reste visible à travers, elle ne s'efface pas.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U10"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U10",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C) avec une nuque raide (impossible de toucher la poitrine avec le menton) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U11"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U11",
+      "type": "question",
+      "texte": "Y a-t-il eu des convulsions (mouvements saccadés incontrôlés) ou une perte de connaissance ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U12"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U12",
+      "type": "question",
+      "texte": "Y a-t-il un malaise, des étourdissements empêchant de tenir debout, ou une tension artérielle mesurée inférieure à 90 mmHg (chiffre du haut) ?",
+      "aide": "Seuil 90 mmHg à valider.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U13"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U13",
+      "type": "question",
+      "texte": "La peau présente-t-elle des marbrures (plaques violacées en réseau, surtout aux genoux) ou les mains et pieds sont-ils froids et gris ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U14"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U14",
+      "type": "question",
+      "texte": "La personne n'a-t-elle pas uriné depuis plus de 12 heures (couches sèches depuis plus de 12 h chez le nourrisson) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U15"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U15",
+      "type": "question",
+      "texte": "Y a-t-il des saignements inexpliqués (nez, gencives, sang dans les urines, les selles ou les vomissements) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "U16"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U16",
+      "type": "question",
+      "texte": "Y a-t-il une douleur dans la poitrine (serrement, oppression, douleur irradiant vers le bras ou la mâchoire) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "POP00"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "POP00",
+      "type": "question",
+      "texte": "Point d'entrée population (modulateurs définis par le sous-agent C).",
+      "aide": "Nœud réservé au sous-agent C : âge, grossesse, immunodépression, maladies chroniques.",
+      "choix": [
+        {
+          "libelle": "Continuer",
+          "vers": "T_PALU"
+        }
+      ],
+      "condition_activation": "Toujours, après le filtre d'urgence",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "T_PALU",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C ou sensation de fièvre) et un séjour dans une zone où sévit le paludisme au cours des 3 derniers mois ?",
+      "aide": "Zones : Afrique subsaharienne, Asie du Sud et du Sud-Est, Amérique du Sud tropicale, Océanie (liste à valider).",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U_RV"
+        },
+        {
+          "libelle": "Non",
+          "vers": "T00"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U_RV"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "T00",
+      "type": "question",
+      "texte": "Quel est le symptôme ou la situation principale ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Fièvre sans autre symptôme net",
+          "vers": "U_RF"
+        },
+        {
+          "libelle": "Fièvre avec courbatures, fatigue, toux",
+          "vers": "U_RG"
+        },
+        {
+          "libelle": "Toux, nez, gorge, gêne pour respirer",
+          "vers": "U_RR"
+        },
+        {
+          "libelle": "Ventre, vomissements, diarrhée",
+          "vers": "U_RD"
+        },
+        {
+          "libelle": "Peau : rougeur, boutons, éruption",
+          "vers": "U_RC"
+        },
+        {
+          "libelle": "Brûlures en urinant, envies fréquentes",
+          "vers": "U_RU"
+        },
+        {
+          "libelle": "Gorge, oreille, sinus",
+          "vers": "U_RO"
+        },
+        {
+          "libelle": "Maux de tête",
+          "vers": "U_RN"
+        },
+        {
+          "libelle": "Frissons, état général très altéré",
+          "vers": "U_RS"
+        },
+        {
+          "libelle": "Retour de voyage",
+          "vers": "U_RV"
+        },
+        {
+          "libelle": "Contact avec un malade de fièvre hémorragique ou séjour en zone d'épidémie déclarée",
+          "vers": "U_RH"
+        },
+        {
+          "libelle": "Symptôme génital ou rapport sexuel à risque",
+          "vers": "U_RI"
+        },
+        {
+          "libelle": "Morsure, griffure ou piqûre de tique",
+          "vers": "U_RM"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U_RS"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U_RF",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "F01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "F01",
+      "type": "question",
+      "texte": "Température la plus élevée mesurée ?",
+      "aide": "Mesure au thermomètre ; seuil 40 °C à valider.",
+      "choix": [
+        {
+          "libelle": "40 °C ou plus",
+          "vers": "RF_6H"
+        },
+        {
+          "libelle": "38 à 39,9 °C",
+          "vers": "F02"
+        },
+        {
+          "libelle": "Moins de 38 °C",
+          "vers": "F02"
+        },
+        {
+          "libelle": "Je ne sais pas / pas de thermomètre",
+          "vers": "F02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "F02",
+      "type": "question",
+      "texte": "Depuis combien de temps dure la fièvre ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Moins de 72 heures",
+          "vers": "F03"
+        },
+        {
+          "libelle": "72 heures ou plus",
+          "vers": "RF_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RF_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "F03",
+      "type": "question",
+      "texte": "Y a-t-il des frissons intenses avec tremblements incontrôlables ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RF_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "F04"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RF_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "F04",
+      "type": "question",
+      "texte": "Comment la personne boit-elle et urine-t-elle ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Comme d'habitude",
+          "vers": "F05"
+        },
+        {
+          "libelle": "Boit peu ou urine nettement moins",
+          "vers": "RF_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RF_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "F05",
+      "type": "question",
+      "texte": "Entre deux poussées de fièvre, comment est l'état général ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Activités habituelles possibles",
+          "vers": "RF_S"
+        },
+        {
+          "libelle": "Alité, très fatigué",
+          "vers": "RF_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RF_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RF_6H",
+      "type": "resultat",
+      "texte": "Fièvre élevée ou frissons intenses. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RF_24H",
+      "type": "resultat",
+      "texte": "Fièvre prolongée ou mal tolérée. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RF_S",
+      "type": "resultat",
+      "texte": "Fièvre bien tolérée depuis moins de 72 h. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "fièvre au-delà de 72 h",
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RG",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "G01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "G01",
+      "type": "question",
+      "texte": "Y a-t-il un essoufflement lors d'un effort léger (parler, marcher dans la pièce) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RG_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "G02"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RG_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "G02",
+      "type": "question",
+      "texte": "Une douleur d'un côté du thorax apparaît-elle en inspirant profondément ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RG_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "G03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RG_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "G03",
+      "type": "question",
+      "texte": "Après une amélioration de 2 jours ou plus, la fièvre ou la toux sont-elles revenues ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RG_24H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "G04"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RG_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "G04",
+      "type": "question",
+      "texte": "Depuis combien de temps dure la fièvre ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Moins de 72 heures",
+          "vers": "RG_S"
+        },
+        {
+          "libelle": "72 heures ou plus",
+          "vers": "RG_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RG_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RG_6H",
+      "type": "resultat",
+      "texte": "Gêne respiratoire ou douleur thoracique à l'inspiration. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RG_24H",
+      "type": "resultat",
+      "texte": "Évolution prolongée ou rechute. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RG_S",
+      "type": "resultat",
+      "texte": "Syndrome fébrile avec courbatures depuis moins de 72 h. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RR",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "R01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R01",
+      "type": "question",
+      "texte": "Où se situent surtout les symptômes ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Nez et gorge",
+          "vers": "R02"
+        },
+        {
+          "libelle": "Toux, poitrine",
+          "vers": "R03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "R03"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R02",
+      "type": "question",
+      "texte": "Les symptômes durent-ils depuis plus de 10 jours sans amélioration ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RR_48H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RR_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RR_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R03",
+      "type": "question",
+      "texte": "Saturation en oxygène (SpO2) au repos ?",
+      "aide": "Les valeurs < 94 % ont été traitées dans les signes d'urgence.",
+      "choix": [
+        {
+          "libelle": "96 % ou plus",
+          "vers": "R04"
+        },
+        {
+          "libelle": "94 à 95 %",
+          "vers": "RR_24H"
+        },
+        {
+          "libelle": "Je ne sais pas / pas de saturomètre",
+          "vers": "R04"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R04",
+      "type": "question",
+      "texte": "Température mesurée avec la toux ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "38 °C ou plus",
+          "vers": "R05"
+        },
+        {
+          "libelle": "Moins de 38 °C",
+          "vers": "R06"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "R05"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R05",
+      "type": "question",
+      "texte": "Depuis combien de jours dure la fièvre ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Moins de 3 jours",
+          "vers": "R07"
+        },
+        {
+          "libelle": "3 jours ou plus",
+          "vers": "RR_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RR_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R06",
+      "type": "question",
+      "texte": "Depuis combien de temps dure la toux ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Moins de 3 semaines",
+          "vers": "R07"
+        },
+        {
+          "libelle": "3 semaines ou plus",
+          "vers": "RR_48H_TOUX"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RR_48H_TOUX"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "R07",
+      "type": "question",
+      "texte": "Les crachats contiennent-ils du sang ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RR_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RR_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RR_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RR_6H",
+      "type": "resultat",
+      "texte": "Crachats sanglants. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RR_24H",
+      "type": "resultat",
+      "texte": "Fièvre prolongée ou saturation limite. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RR_48H",
+      "type": "resultat",
+      "texte": "Symptômes ORL prolongés. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RR_48H_TOUX",
+      "type": "resultat",
+      "texte": "Toux de plus de 3 semaines : un avis médical est nécessaire. Porter un masque en attendant. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "amaigrissement, sueurs nocturnes",
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RR_S",
+      "type": "resultat",
+      "texte": "Symptômes respiratoires récents sans signe de gravité. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RD",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "D01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "D01",
+      "type": "question",
+      "texte": "Les vomissements empêchent-ils de garder le moindre liquide depuis plus de 6 heures (4 heures chez l'enfant de moins de 2 ans) ?",
+      "aide": "Durées à valider.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RD_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "D02"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RD_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "D02",
+      "type": "question",
+      "texte": "Y a-t-il du sang dans les selles, ou des selles noires ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RD_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "D03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RD_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "D03",
+      "type": "question",
+      "texte": "La douleur du ventre est-elle intense et permanente, ou localisée en bas à droite ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RD_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "D04"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RD_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "D04",
+      "type": "question",
+      "texte": "Température mesurée ?",
+      "aide": "Seuil à valider.",
+      "choix": [
+        {
+          "libelle": "38,5 °C ou plus",
+          "vers": "RD_24H"
+        },
+        {
+          "libelle": "Moins de 38,5 °C",
+          "vers": "D05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RD_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "D05",
+      "type": "question",
+      "texte": "Depuis combien de temps dure la diarrhée ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Moins de 7 jours",
+          "vers": "RD_S"
+        },
+        {
+          "libelle": "7 jours ou plus",
+          "vers": "RD_48H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RD_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RD_6H",
+      "type": "resultat",
+      "texte": "Signes digestifs nécessitant un examen rapide. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RD_24H",
+      "type": "resultat",
+      "texte": "Troubles digestifs fébriles. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RD_48H",
+      "type": "resultat",
+      "texte": "Diarrhée prolongée. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RD_S",
+      "type": "resultat",
+      "texte": "Proposer à boire souvent par petites quantités (solution de réhydratation orale pour l'enfant). Lavage des mains après les toilettes, ne pas préparer les repas des autres. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "bouche sèche, yeux creusés, pas d'urines depuis 6 h chez l'enfant",
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RC",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "C01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "C01",
+      "type": "question",
+      "texte": "Y a-t-il une rougeur chaude et douloureuse dont le bord s'étend en quelques heures ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "C02"
+        },
+        {
+          "libelle": "Non",
+          "vers": "C03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "C02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "C02",
+      "type": "question",
+      "texte": "La douleur est-elle très intense, disproportionnée, avec une peau violacée, des bulles ou une zone insensible ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RC_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "C03",
+      "type": "question",
+      "texte": "Y a-t-il une éruption (boutons ou taches) étendue sur le corps avec de la fièvre ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "C04"
+        },
+        {
+          "libelle": "Non",
+          "vers": "C05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "C04"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "C04",
+      "type": "question",
+      "texte": "Y a-t-il des bulles, un décollement de la peau, ou une atteinte de la bouche ou des yeux ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RC_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RC_24H_ERUPT"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RC_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "C05",
+      "type": "question",
+      "texte": "La lésion est localisée (bouton, abcès, plaie). Y a-t-il de la fièvre (≥ 38 °C) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RC_24H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RC_48H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RC_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RC_6H",
+      "type": "resultat",
+      "texte": "Atteinte cutanée étendue ou des muqueuses. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RC_24H",
+      "type": "resultat",
+      "texte": "Lésion cutanée inflammatoire ou fébrile. Entourer au stylo le bord de la rougeur pour suivre son extension. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RC_24H_ERUPT",
+      "type": "resultat",
+      "texte": "Éruption fébrile : éviter tout contact avec femmes enceintes, nourrissons et personnes immunodéprimées jusqu'à l'avis médical. Prévenir le cabinet avant de venir. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RC_48H",
+      "type": "resultat",
+      "texte": "Lésion cutanée localisée sans fièvre. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RU",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "UR01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "UR01",
+      "type": "question",
+      "texte": "Une grossesse est-elle en cours ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "UR02"
+        },
+        {
+          "libelle": "Non",
+          "vers": "UR03"
+        },
+        {
+          "libelle": "Non concerné",
+          "vers": "UR03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "UR02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "UR02",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C) ou une douleur dans le bas du dos ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RU_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RU_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RU_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "UR03",
+      "type": "question",
+      "texte": "Y a-t-il une douleur d'un seul côté dans le bas du dos ou le flanc ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "UR04"
+        },
+        {
+          "libelle": "Non",
+          "vers": "UR05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "UR04"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "UR04",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C) ou des frissons ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RU_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RU_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RU_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "UR05",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RU_24H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "UR06"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RU_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "UR06",
+      "type": "question",
+      "texte": "Qui présente ces symptômes ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Une femme adulte",
+          "vers": "RU_48H"
+        },
+        {
+          "libelle": "Un homme",
+          "vers": "RU_24H"
+        },
+        {
+          "libelle": "Un enfant",
+          "vers": "RU_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RU_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RU_6H",
+      "type": "resultat",
+      "texte": "Signes urinaires avec fièvre ou douleur lombaire. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RU_24H",
+      "type": "resultat",
+      "texte": "Signes urinaires nécessitant un examen d'urines. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RU_48H",
+      "type": "resultat",
+      "texte": "Brûlures urinaires sans fièvre. Un test urinaire en pharmacie peut être proposé (à valider). Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RO",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "O01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "O01",
+      "type": "question",
+      "texte": "Y a-t-il un gonflement du cou, une impossibilité d'avaler sa salive, une voix étouffée ou une bouche difficile à ouvrir ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RO_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "O02"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RO_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "O02",
+      "type": "question",
+      "texte": "Y a-t-il un gonflement rouge et douloureux derrière l'oreille ou autour de l'œil ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RO_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "O03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RO_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "O03",
+      "type": "question",
+      "texte": "Où est la gêne principale ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Gorge",
+          "vers": "O04"
+        },
+        {
+          "libelle": "Oreille",
+          "vers": "O05"
+        },
+        {
+          "libelle": "Nez, sinus",
+          "vers": "O06"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "O04"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "O04",
+      "type": "question",
+      "texte": "Le mal de gorge dure-t-il depuis plus de 3 jours, ou la température est-elle de 38,5 °C ou plus ?",
+      "aide": "Un test rapide d'angine peut être réalisé en pharmacie ou au cabinet.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RO_48H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RO_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RO_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "O05",
+      "type": "question",
+      "texte": "Y a-t-il un écoulement par l'oreille, ou une douleur depuis plus de 48 heures ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RO_48H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RO_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RO_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "O06",
+      "type": "question",
+      "texte": "Les symptômes durent-ils depuis plus de 10 jours, ou se sont-ils aggravés après une amélioration ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RO_48H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RO_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RO_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RO_6H",
+      "type": "resultat",
+      "texte": "Gonflement ou gêne à avaler nécessitant un examen rapide. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RO_48H",
+      "type": "resultat",
+      "texte": "Symptômes ORL persistants. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RO_S",
+      "type": "resultat",
+      "texte": "Symptômes ORL récents sans signe de gravité. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RN",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "N01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "N01",
+      "type": "question",
+      "texte": "Le mal de tête a-t-il commencé brutalement, avec une intensité maximale en moins d'une minute ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "N02"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "N02",
+      "type": "question",
+      "texte": "Une faiblesse d'un bras ou d'une jambe, un visage asymétrique, ou un trouble de la parole ou de la vue sont-ils apparus récemment ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "N03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "N03",
+      "type": "question",
+      "texte": "Température mesurée ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "38 °C ou plus",
+          "vers": "N04"
+        },
+        {
+          "libelle": "Moins de 38 °C",
+          "vers": "N05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "N04"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "N04",
+      "type": "question",
+      "texte": "La lumière est-elle insupportable, ou y a-t-il des vomissements ?",
+      "aide": "Associés à la fièvre et au mal de tête, ces signes imposent un appel au 15 (choix prudent à valider).",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RN_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "N05",
+      "type": "question",
+      "texte": "Ce mal de tête est-il différent des maux de tête habituels, ou dure-t-il depuis plus de 3 jours ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RN_24H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RN_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RN_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RN_24H",
+      "type": "resultat",
+      "texte": "Céphalée inhabituelle ou fébrile. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RN_S",
+      "type": "resultat",
+      "texte": "Mal de tête habituel sans signe neurologique. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RS",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "S01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S01",
+      "type": "question",
+      "texte": "Au repos, la personne respire-t-elle vite (22 respirations par minute ou plus chez l'adulte) ?",
+      "aide": "Critère qSOFA : fréquence respiratoire ≥ 22/min (adulte).",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "S02B"
+        },
+        {
+          "libelle": "Non",
+          "vers": "S02A"
+        },
+        {
+          "libelle": "Je ne sais pas / pas compté",
+          "vers": "S02B"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "Singer M et al., JAMA 2016 (Sepsis-3, qSOFA)",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S02A",
+      "type": "question",
+      "texte": "Comportement inhabituel : somnolence, lenteur, propos décousus ?",
+      "aide": "Critère qSOFA : altération de la conscience.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "S03B"
+        },
+        {
+          "libelle": "Non",
+          "vers": "S03A"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "S03B"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S02B",
+      "type": "question",
+      "texte": "Comportement inhabituel : somnolence, lenteur, propos décousus ?",
+      "aide": "Deux critères qSOFA ou plus : appel au 15.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "S03B"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "U00"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S03A",
+      "type": "question",
+      "texte": "Tension mesurée : chiffre du haut ?",
+      "aide": "Critère qSOFA : pression systolique ≤ 100 mmHg.",
+      "choix": [
+        {
+          "libelle": "Plus de 100 mmHg",
+          "vers": "S04"
+        },
+        {
+          "libelle": "100 mmHg ou moins",
+          "vers": "RS_6H"
+        },
+        {
+          "libelle": "Je ne sais pas / pas de tensiomètre",
+          "vers": "S04"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S03B",
+      "type": "question",
+      "texte": "Tension mesurée : chiffre du haut ?",
+      "aide": "Un critère qSOFA est déjà présent.",
+      "choix": [
+        {
+          "libelle": "Plus de 100 mmHg",
+          "vers": "RS_6H"
+        },
+        {
+          "libelle": "100 mmHg ou moins",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Je ne sais pas / pas de tensiomètre",
+          "vers": "RS_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S04",
+      "type": "question",
+      "texte": "Y a-t-il des frissons intenses, une peau pâle ou grisâtre, ou des extrémités froides ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RS_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "S05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RS_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "S05",
+      "type": "question",
+      "texte": "Fréquence cardiaque au repos (pouls compté sur 1 minute) ?",
+      "aide": "Seuils adulte, à valider.",
+      "choix": [
+        {
+          "libelle": "Plus de 130/min",
+          "vers": "U00"
+        },
+        {
+          "libelle": "100 à 130/min",
+          "vers": "RS_6H"
+        },
+        {
+          "libelle": "Moins de 100/min",
+          "vers": "RS_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RS_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RS_6H",
+      "type": "resultat",
+      "texte": "Altération de l'état général avec un signe de gravité possible. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RS_24H",
+      "type": "resultat",
+      "texte": "Altération de l'état général sans critère de gravité retrouvé. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RV",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "V01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "V01",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C ou sensation de fièvre) depuis le retour ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "V02"
+        },
+        {
+          "libelle": "Non",
+          "vers": "V05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "V02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "V02",
+      "type": "question",
+      "texte": "Le séjour a-t-il eu lieu dans une zone où sévit le paludisme, au cours des 3 derniers mois ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RV_PALU"
+        },
+        {
+          "libelle": "Non",
+          "vers": "V03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RV_PALU"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "V03",
+      "type": "question",
+      "texte": "Dans les 21 jours avant les symptômes : séjour dans une zone d'épidémie déclarée de fièvre hémorragique, soins à un malade, rites funéraires, ou contact avec chauves-souris, rongeurs ou singes ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RH_ISOL"
+        },
+        {
+          "libelle": "Non",
+          "vers": "V04"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RH_ISOL"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "V04",
+      "type": "question",
+      "texte": "Le blanc des yeux ou la peau sont-ils jaunes, ou y a-t-il une éruption ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RV_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RV_24H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RV_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "V05",
+      "type": "question",
+      "texte": "Depuis le retour : diarrhée, éruption ou lésion de la peau ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RV_48H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RV_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RV_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RV_PALU",
+      "type": "resultat",
+      "texte": "Fièvre au retour d'une zone d'endémie palustre : consulter le jour même, sans attendre le lendemain, en signalant le voyage (médecin, urgences ; appeler le 15 si aucun médecin n'est joignable). Ne pas prendre de traitement de son propre chef.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "fièvre persistante malgré une consultation",
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "Délai : au plus 24 h exigé ; choix de 6 h à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RV_6H",
+      "type": "resultat",
+      "texte": "Fièvre au retour de voyage avec jaunisse ou éruption. Signaler le voyage. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RV_24H",
+      "type": "resultat",
+      "texte": "Fièvre au retour de voyage. Signaler le voyage. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RV_48H",
+      "type": "resultat",
+      "texte": "Symptôme sans fièvre au retour de voyage. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RV_S",
+      "type": "resultat",
+      "texte": "Pas de symptôme au retour : surveiller la température pendant 3 mois (paludisme) et consulter en cas de fièvre en signalant le voyage. Surveillance à domicile : repos, boire régulièrement, prendre la température matin et soir. Consulter si un signe d'aggravation apparaît ou si rien ne s'améliore.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RH",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "H01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "H01",
+      "type": "question",
+      "texte": "Dans les 21 derniers jours : contact avec une personne malade ou décédée d'une fièvre hémorragique, ses fluides, ou séjour dans une zone d'épidémie déclarée ?",
+      "aide": "Liste des zones : consulter les sites officiels (OMS, Santé publique France).",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "H02"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RH_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "H02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "H02",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C) ou un symptôme (fatigue intense, diarrhée, vomissements) ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RH_ISOL"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RH_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RH_ISOL"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RH_ISOL",
+      "type": "urgence",
+      "texte": "Exposition possible à une fièvre hémorragique avec symptômes. Appelez le 15 sans vous déplacer, ni chez le médecin ni aux urgences. Signalez le voyage ou le contact.",
+      "aide": "Restez isolé dans une pièce, n'ayez aucun contact physique, ne partagez ni linge ni toilettes si possible. Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "urgence_vitale",
+      "delai_action": "immediat",
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RH_S",
+      "type": "resultat",
+      "texte": "Pas de symptôme : prendre sa température matin et soir jusqu'à 21 jours après la dernière exposition. Si une fièvre apparaît, appeler le 15 sans se déplacer.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "fièvre ≥ 38 °C",
+        "diarrhée, vomissements, fatigue intense",
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RI",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "I01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "I01",
+      "type": "question",
+      "texte": "Rapport sexuel sans préservatif (ou rupture) avec un risque d'infection, il y a moins de 48 heures ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RI_6H_TPE"
+        },
+        {
+          "libelle": "Non",
+          "vers": "I02"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RI_6H_TPE"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "I02",
+      "type": "question",
+      "texte": "Y a-t-il une fièvre (≥ 38 °C) avec une douleur du bas-ventre ou des testicules ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RI_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "I03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RI_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "I03",
+      "type": "question",
+      "texte": "Y a-t-il un écoulement, des brûlures, une ulcération ou des boutons sur les organes génitaux ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RI_48H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RI_48H_DEP"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RI_48H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RI_6H_TPE",
+      "type": "resultat",
+      "texte": "Consulter au plus vite (service d'urgences, CeGIDD) : un traitement préventif peut être discuté, d'autant plus efficace qu'il est débuté tôt. Préservatif jusqu'à l'avis médical.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "Délai de 48 h pour le traitement post-exposition : à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RI_6H",
+      "type": "resultat",
+      "texte": "Douleur pelvienne ou testiculaire fébrile. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RI_48H",
+      "type": "resultat",
+      "texte": "Symptômes génitaux : consulter (médecin, CeGIDD, centre de santé sexuelle). Préservatif jusqu'à l'avis médical. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RI_48H_DEP",
+      "type": "resultat",
+      "texte": "Dépistage conseillé (médecin, CeGIDD, centre de santé sexuelle). Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "U_RM",
+      "type": "question",
+      "texte": "Un de ces signes est-il apparu ?",
+      "aide": "Difficulté à respirer, confusion, taches violacées qui ne s'effacent pas, nuque raide, convulsions, malaise, marbrures, absence d'urines depuis 12 h, saignements, douleur dans la poitrine, enfant difficile à réveiller.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "U00"
+        },
+        {
+          "libelle": "Non",
+          "vers": "M01"
+        }
+      ],
+      "condition_activation": "Retour possible vers U00 depuis la branche",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "M01",
+      "type": "question",
+      "texte": "De quel type d'exposition s'agit-il ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Morsure ou griffure d'animal",
+          "vers": "M02"
+        },
+        {
+          "libelle": "Piqûre de tique",
+          "vers": "M05"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "M02"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "M02",
+      "type": "question",
+      "texte": "La plaie est-elle profonde, au visage, aux mains ou aux organes génitaux, ou le saignement ne s'arrête-t-il pas ?",
+      "aide": "Laver immédiatement la plaie à l'eau et au savon pendant 15 minutes (durée à valider).",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RM_6H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "M03"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RM_6H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "M03",
+      "type": "question",
+      "texte": "L'animal était-il sauvage, errant, une chauve-souris, ou la morsure a-t-elle eu lieu à l'étranger ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RM_6H_RAGE"
+        },
+        {
+          "libelle": "Non",
+          "vers": "M04"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RM_6H_RAGE"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "M04",
+      "type": "question",
+      "texte": "Y a-t-il une rougeur, une chaleur, du pus ou une fièvre autour de la morsure ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RM_24H"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RM_48H"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RM_24H"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "M05",
+      "type": "question",
+      "texte": "Une rougeur en anneau qui s'étend (5 cm ou plus) est-elle apparue autour de la piqûre ?",
+      "aide": "Seuil 5 cm à valider.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RM_48H_T"
+        },
+        {
+          "libelle": "Non",
+          "vers": "M06"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RM_48H_T"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "M06",
+      "type": "question",
+      "texte": "Depuis la piqûre : fièvre, visage paralysé d'un côté ou douleurs articulaires ?",
+      "aide": "",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "RM_24H_T"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RM_S"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RM_24H_T"
+        }
+      ],
+      "condition_activation": null,
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "RM_6H",
+      "type": "resultat",
+      "texte": "Morsure à risque de complication. Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RM_6H_RAGE",
+      "type": "resultat",
+      "texte": "Exposition possible à la rage : consulter le jour même (urgences ou centre antirabique). Consulter un médecin dans les 6 heures (médecin traitant, SOS Médecins, maison médicale de garde ou service d'urgences). Si aucun médecin n'est joignable, appeler le 15.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RM_24H",
+      "type": "resultat",
+      "texte": "Morsure avec signes locaux d'inflammation. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RM_48H",
+      "type": "resultat",
+      "texte": "Morsure sans signe local : faire vérifier la plaie et la vaccination antitétanique. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RM_48H_T",
+      "type": "resultat",
+      "texte": "Rougeur après piqûre de tique. Photographier la lésion. Prendre rendez-vous avec un médecin dans les 48 heures.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_programmee",
+      "delai_action": "moins_de_48h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RM_24H_T",
+      "type": "resultat",
+      "texte": "Symptômes généraux après piqûre de tique. Consulter un médecin dans les 24 heures (médecin traitant ou médecin de garde ; le soir et le week-end, appeler le 116 117 ou le 15).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_rapide",
+      "delai_action": "moins_de_24h",
+      "signes_reconsultation": [
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RM_S",
+      "type": "resultat",
+      "texte": "Retirer la tique avec un tire-tique, désinfecter, noter la date. Surveiller la peau pendant 30 jours.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "autosoins_surveillance",
+      "delai_action": "surveillance",
+      "signes_reconsultation": [
+        "rougeur qui s'étend autour de la piqûre",
+        "fièvre, paralysie faciale, douleurs articulaires",
+        "difficulté à respirer ou respiration rapide",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "absence d'urines depuis plus de 12 h",
+        "fièvre qui persiste au-delà de 3 jours ou qui reprend après une amélioration"
+      ],
+      "source": "à valider",
+      "a_valider_clinicien": true,
+      "modulable": true
+    }
+  ]
+}
