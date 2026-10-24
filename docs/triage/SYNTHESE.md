@@ -6,7 +6,7 @@
 | Fichier | Contenu |
 |---|---|
 | `A-audit.md` | 41 écarts du questionnaire actuel (9 critiques), dont le conflit entre les deux moteurs et les pré-cochages |
-| `arbre-fusion.json` | Arbre final : 152 nœuds, filtre d'urgence U01–U16, 2 questions de population, 13 tableaux cliniques, règles de modulation à conditions booléennes |
+| `arbre-fusion.json` | Arbre final : 156 nœuds, filtre d'urgence U01–U16, 2 questions de population, 13 tableaux cliniques, règles de modulation à conditions booléennes |
 | `D-textes.json` | Textes de chaque nœud en 4 variantes : **patient** (phrases ≤ 15 mots, sans jargon, numéro d'urgence selon le pays via `{URGENCE}`, médecin de garde via `{GARDE}`, consignes pour peau foncée) et **soignant** (termes cliniques, seuils), FR et EN |
 | `E-rapport.md`, `E-vignettes-final.json` | 90 vignettes cliniques rédigées par un relecteur indépendant, réponses attendues figées avant le test |
 | `F-sources.md`, `F-conformite.md` | Sources règle par règle, analyse dispositif médical, accessibilité |
