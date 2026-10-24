@@ -354,9 +354,10 @@ button { font-family: var(--font); cursor: pointer; border: none; background: no
 .nav-toggle:active { background: rgba(255,255,255,.18); }
 
 @media (max-width: 1100px) {
-  .nav-links { display: none !important; }
+  .nav-links:not(.is-open) { display: none !important; }
 }
-@media (max-width: 768px) {
+/* Menu déroulant jusqu'à 1100 px : entre 769 et 1100 px, ni liens ni barre du bas ne s'affichaient */
+@media (max-width: 1100px) {
   .nav-toggle { display: flex; }
   .nav-links.is-open {
     display: flex !important; flex-direction: column; align-items: flex-start;
@@ -3987,7 +3988,7 @@ button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid 
 
 /* Masquer nav-links à ≤1100px — la mobile bottom-nav suffit */
 @media(max-width:1100px){
-  .nav-links{display:none!important}
+  .nav-links:not(.is-open){display:none!important}
 }
 
 /* Entre 1100px et 1280px : compacter les actions */
@@ -4807,3 +4808,6 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 .tri-lv-blue   { border-left-color: var(--c-blue); }
 .tri-lv-green  { border-left-color: var(--c-teal); }
 @media (max-width: 480px) { .tri-card { padding: var(--s3); } .tri-question { font-size: 1.15rem; } .tri-nav .tri-btn { flex: 1 1 100%; } }
+
+/* Sections retirées de l'accueil (étape 1 du nettoyage) : jamais affichées, quel que soit le mode */
+section[hidden], [data-retire] { display: none !important; }

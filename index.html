@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261025a" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261025a"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261025b" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261025b"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -230,7 +230,7 @@
     </a>
 
     <ul class="nav-links" role="list" id="mainNavLinks">
-      <li class="patient-only"><a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" data-i18n="nav-symptoms">Que faire ?</a></li>
+      <li class="patient-only"><a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" data-i18n="nav-symptoms">Que faire ?</a></li>
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
       <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
       <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
@@ -321,16 +321,16 @@
 
     <!-- H1 — positionnement épidémiologique -->
     <div class="gp-hero-intro">
-      <p class="hero-author-chip"><span data-i18n="x-dr-clement-medeau-medecin-c07e">🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle ·</span> <span data-i18n="x-outil-d-information-non-540b" style="font-weight:400;opacity:.75">Outil d'information — non dispositif médical</span></p>
+      <p class="hero-author-chip"><span data-i18n="x-dr-clement-medeau-medecin-c07e">Dr Clément Médeau · Médecin généraliste · La Rochelle</span></p>
       <h1 data-i18n="x-quels-virus-circulent-en-be32" class="gp-hero-title" id="patient-hero-title">Quels virus circulent en France en ce moment ?</h1>
-      <p class="gp-hero-subtitle"><span data-i18n="x-breathiq-surveille-chaque-jour-1771">BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF).</span> <strong data-i18n="x-gratuit-sans-compte-zero-f8ab" style="color:#93c5fd;font-weight:600">Gratuit, sans compte, zéro tracking.</strong></p>
-      <!-- CTA principal — alertes épidémiques -->
-      <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" class="hero-symptom-cta" aria-label="Voir les alertes épidémiques en cours">
-        <span data-i18n="x-voir-les-alertes-epidemiques-b615">🦠 Voir les alertes épidémiques</span> <span class="hero-cta-arrow" aria-hidden="true">→</span>
+      <p class="gp-hero-subtitle"><span data-i18n="x-breathiq-surveille-chaque-jour-1771">BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF).</span></p>
+      <!-- CTA principal — l'action la plus utile : que faire de mes symptômes -->
+      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-symptom-cta">
+        <span data-i18n="x-j-ai-des-symptomes-e5be">J'ai des symptômes : que faire ?</span> <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
-      <!-- CTA secondaire — symptômes -->
-      <a data-i18n="x-j-ai-des-symptomes-e5be" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-secondary-cta" aria-label="J'ai des symptômes">
-        🤒 J'ai des symptômes — que faire ?
+      <!-- CTA secondaire — situation épidémique -->
+      <a href="#virusSaison" onclick="return navTo(event,'#virusSaison')" class="hero-secondary-cta">
+        <span data-i18n="x-voir-les-alertes-epidemiques-b615">Voir la situation épidémique</span>
       </a>
       <!-- Fraîcheur des données -->
       <div class="hero-freshness" id="heroFreshness" aria-live="polite"></div>
@@ -358,10 +358,10 @@
         <span data-i18n="x-virus-en-circulation-c09c" class="path-title">Virus en circulation</span>
         <span data-i18n="x-grippe-covid-rsv-26-91a7" class="path-sub">Grippe · COVID · RSV · tous les pathogènes suivis</span>
       </a>
-      <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="path-card path-symptoms">
-        <span class="path-icon">🤒</span>
-        <span data-i18n="x-j-ai-des-symptomes-1ddb" class="path-title">J'ai des symptômes</span>
-        <span data-i18n="x-que-faire-maintenant-c42b" class="path-sub">Que faire maintenant ?</span>
+      <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="path-card path-symptoms">
+        <span class="path-icon" aria-hidden="true">📍</span>
+        <span data-i18n="path-care-title" class="path-title">Trouver un soignant</span>
+        <span data-i18n="path-care-sub" class="path-sub">Médecin, pharmacie, urgences près de moi</span>
       </a>
       <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
         <span class="path-icon" aria-hidden="true">🩺</span>
@@ -370,13 +370,6 @@
       </button>
     </div>
 
-    <p data-i18n="x-gratuit-sans-inscription-aucune-6739" class="hero-disclaimer">Gratuit · Sans inscription · Aucune donnée personnelle collectée</p>
-    <div class="hero-trust-strip" role="list" aria-label="Garanties">
-      <span data-i18n="x-zero-tracking-d2db" role="listitem">🚫 Zéro tracking</span>
-      <span data-i18n="x-donnees-oms-officielles-9d8e" role="listitem">🏛️ Données OMS officielles</span>
-      <span data-i18n="x-cree-par-un-medecin-658b" role="listitem">🩺 Créé par un médecin</span>
-      <span data-i18n="x-rien-de-vendu-00dc" role="listitem">🔒 Rien de vendu</span>
-    </div>
   </div>
 </section>
 
@@ -496,7 +489,7 @@
 <!-- ===== VIRUS SAISONNIERS (Mode Patient) ===== -->
 <section class="virus-saison-section patient-only" id="virusSaison" aria-labelledby="virusSaisonTitle">
   <div class="container">
-    <h2 data-i18n="x-virus-en-circulation-en-9770" id="virusSaisonTitle">🔬 Virus en circulation en France</h2>
+    <h2 data-i18n="x-virus-en-circulation-en-9770" id="virusSaisonTitle">Virus en circulation en France</h2>
     <div class="virus-saison-grid" id="virusSaisonGrid">
       <!-- Skeletons pendant le chargement -->
       <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:120px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:90px;height:.8em;margin-top:.4rem"></div></div>
@@ -516,7 +509,7 @@
 <section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
   <div class="container">
     <div class="epidemio-alert-header">
-      <h2 data-i18n="x-alertes-epidemiques-en-cours-5487" id="epidemioAlertTitle">🌍 Alertes épidémiques en cours</h2>
+      <h2 data-i18n="x-alertes-epidemiques-en-cours-5487" id="epidemioAlertTitle">Alertes épidémiques en cours</h2>
       <p class="epidemio-alert-sub" id="epidemioAlertSub" translate="no">Chargement des alertes OMS…</p>
     </div>
     <div class="epi-context-note" id="epiContextNote">
@@ -533,7 +526,7 @@
 </section>
 
 <!-- ===== QUE FAIRE AUJOURD'HUI (Mode Patient) ===== -->
-<section class="gp-daily-section patient-only" id="dailyActions" aria-labelledby="dailyActionsTitle" style="background:linear-gradient(180deg,#0F2A45 0%,#1A3C5E 100%);color:#e8f0f7">
+<section hidden data-retire="etape1-doublon" class="gp-daily-section patient-only" id="dailyActions" aria-labelledby="dailyActionsTitle" style="background:linear-gradient(180deg,#0F2A45 0%,#1A3C5E 100%);color:#e8f0f7">
   <div class="container">
     <p data-i18n="x-contexte-du-jour-34be" class="gp-section-label">Contexte du jour</p>
     <h2 data-i18n="x-informations-pratiques-du-moment-103a" class="gp-section-title" id="dailyActionsTitle">Informations pratiques du moment</h2>
@@ -575,7 +568,7 @@
 </section>
 
 <!-- ===== EN 30 SECONDES — EXPLAINER (Mode Patient) ===== -->
-<section class="gp-explainer patient-only" aria-label="Comment fonctionne BreathIQ ?" style="background:#0F1F35;color:#e8f0f7">
+<section hidden data-retire="etape1-doublon" class="gp-explainer patient-only" aria-label="Comment fonctionne BreathIQ ?" style="background:#0F1F35;color:#e8f0f7">
   <div class="container">
     <p data-i18n="x-comment-ca-marche-a74d" class="gp-section-label" style="text-align:center">Comment ça marche ?</p>
     <h2 data-i18n="x-breathiq-en-30-secondes-4ff8" class="gp-section-title" style="text-align:center;max-width:480px;margin-inline:auto" id="explainerTitle">BreathIQ en 30 secondes</h2>
@@ -605,7 +598,7 @@
 </section>
 
 <!-- ===== USE CASES FAMILLE (Mode Patient) ===== -->
-<section class="patient-only" id="usecasesFamily" aria-label="Questions pratiques du quotidien" style="background:#0A1F35;padding:2rem 0">
+<section hidden data-retire="etape1-doublon" class="patient-only" id="usecasesFamily" aria-label="Questions pratiques du quotidien" style="background:#0A1F35;padding:2rem 0">
   <div class="container">
     <p data-i18n="x-utilisation-au-quotidien-463c" class="gp-section-label" style="text-align:center">Utilisation au quotidien</p>
     <h2 data-i18n="x-verifiable-en-10-secondes-3c42" class="gp-section-title" style="text-align:center;max-width:520px;margin-inline:auto;margin-bottom:1.5rem">Vérifiable en 10 secondes, chaque jour</h2>
@@ -750,7 +743,7 @@
 </section>
 
 <!-- ===== GUIDE D'ACTION / TRIAGE (Mode Patient) — AVANT le checker ===== -->
-<section class="action-guide-section patient-only" id="actionGuide" aria-labelledby="action-guide-title">
+<section hidden data-retire="etape1-doublon" class="action-guide-section patient-only" id="actionGuide" aria-labelledby="action-guide-title">
   <div class="container">
     <h2 class="action-guide-title" id="action-guide-title" data-i18n="action-guide-title">J'ai des symptômes — que faire ?</h2>
     <p class="action-guide-subtitle" data-i18n="action-guide-subtitle">Évaluez votre situation et agissez au bon niveau d'urgence</p>
@@ -777,7 +770,7 @@
       <div class="triage-card triage-mild">
         <div class="triage-card-head">
           <span data-i18n="x-legerement-malade-8d19" class="triage-badge triage-badge-mild">Légèrement malade</span>
-          <h3 data-i18n="x-restez-chez-vous-03f7" class="triage-card-title">🏠 Restez chez vous</h3>
+          <h3 data-i18n="x-restez-chez-vous-03f7" class="triage-card-title">Restez chez vous</h3>
           <p data-i18n="x-vous-pouvez-marcher-et-dc04" class="triage-when">Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours</p>
         </div>
         <ul class="triage-checklist">
@@ -794,7 +787,7 @@
       <div class="triage-card triage-moderate">
         <div class="triage-card-head">
           <span data-i18n="x-assez-malade-a799" class="triage-badge triage-badge-moderate">Assez malade</span>
-          <h3 data-i18n="x-allez-au-centre-de-7896" class="triage-card-title">🩺 Allez au centre de santé</h3>
+          <h3 data-i18n="x-allez-au-centre-de-7896" class="triage-card-title">Allez au centre de santé</h3>
           <p data-i18n="x-forte-fievre-depuis-plus-642c" class="triage-when">Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, immunodéprimé ou diabétique</p>
         </div>
         <ul class="triage-checklist">
@@ -810,7 +803,7 @@
       <div class="triage-card triage-severe">
         <div class="triage-card-head">
           <span data-i18n="x-urgence-a020" class="triage-badge triage-badge-severe">Urgence</span>
-          <h3 data-i18n="x-appelez-les-secours-1802" class="triage-card-title">🚨 Appelez les secours</h3>
+          <h3 data-i18n="x-appelez-les-secours-1802" class="triage-card-title">Appelez les secours</h3>
           <p data-i18n="x-ces-signes-sont-dangereux-29e6" class="triage-when">Ces signes sont dangereux — n'attendez pas, ne restez pas seul</p>
         </div>
         <ul class="triage-checklist triage-alarms">
@@ -891,7 +884,7 @@
       <!-- ── ÉTAPE 0 : Signes d'alarme immédiats ─────────── -->
       <div class="wizard-panel active" id="wiz-step-0">
         <div data-i18n="x-etape-1-sur-4-8079" class="wiz-step-label">Étape 1 sur 4</div>
-        <h3 data-i18n="x-avez-vous-l-un-7bad" class="wiz-question" id="wiz-alarm-question">🚨 Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
+        <h3 data-i18n="x-avez-vous-l-un-7bad" class="wiz-question" id="wiz-alarm-question">Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
         <p data-i18n="x-si-oui-cochez-et-62b5" class="wiz-hint">Si oui, cochez et nous vous orientons immédiatement.</p>
         <div class="alarm-grid wiz-alarm-grid" role="group" aria-labelledby="wiz-alarm-question">
           <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
@@ -1356,7 +1349,7 @@
     <!-- Formulaire de déclaration syndromique -->
     <div class="decl-form-container" id="declFormContainer">
       <div class="decl-form-header">
-        <h3 class="decl-form-title" data-i18n="decl-title">📋 Signaler des cas suspects</h3>
+        <h3 class="decl-form-title" data-i18n="decl-title">Signaler des cas suspects</h3>
         <p class="decl-form-sub" data-i18n="decl-subtitle">Moins de 30 secondes · aucune donnée patient · signalement pseudonymisé</p>
         <div class="decl-pilot-badge" data-i18n="decl-pilot">🔐 Réservé aux professionnels de santé authentifiés via Pro Santé Connect · déclarations pseudonymisées, agrégées par semaine et région</div>
 
@@ -1715,7 +1708,7 @@
 <section class="expert-only biq-pro-section" id="proPathogens" aria-labelledby="proPathogensTitle">
   <div class="container">
     <div class="biq-pro-header">
-      <h2 data-i18n="x-referentiel-pathogenes-soignant-4c35" id="proPathogensTitle" class="biq-pro-title">🦠 Référentiel Pathogènes Soignant</h2>
+      <h2 data-i18n="x-referentiel-pathogenes-soignant-4c35" id="proPathogensTitle" class="biq-pro-title">Référentiel Pathogènes Soignant</h2>
       <p class="biq-pro-subtitle"><span data-i18n="x-fiches-cliniques-epi-bibliographie-cd65">Fiches cliniques • EPI • Bibliographie PubMed live —</span> <strong data-i18n="x-non-dispositif-medical-aa69">Non dispositif médical</strong></p>
     </div>
 
@@ -2068,7 +2061,7 @@
 <!-- Mobile bottom nav -->
 <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
   <!-- Mode patient : Symptômes en premier -->
-  <a href="#actionGuide" onclick="return navTo(event,'#actionGuide')" class="mbn-item patient-only">
+  <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="mbn-item patient-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
     <span data-i18n="x-symptomes-2796">Symptômes</span>
   </a>
@@ -2077,17 +2070,22 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span data-i18n="x-score-5dd1">Score</span>
   </a>
-  <a href="#map" onclick="return navTo(event,'#map')" class="mbn-item" data-i18n="mbn-map">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
-    <span>Carte</span>
+  <a href="#map" onclick="return navTo(event,'#map')" class="mbn-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+    <span data-i18n="mbn-map">Carte</span>
   </a>
-  <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="mbn-item" data-i18n="mbn-pathogens">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-    <span>Virus</span>
+  <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="mbn-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    <span data-i18n="mbn-pathogens">Virus</span>
   </a>
-  <a href="#protection" onclick="return navTo(event,'#protection')" class="mbn-item" data-i18n="mbn-protection">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    <span>FFP2</span>
+  <!-- Mode patient : trouver un soignant ; mode soignant : guide de protection (section réservée) -->
+  <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="mbn-item patient-only">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span data-i18n="mbn-care">Soignants</span>
+  </a>
+  <a href="#protection" onclick="return navTo(event,'#protection')" class="mbn-item expert-only">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span data-i18n="mbn-protection">FFP2</span>
   </a>
 </nav>
 
@@ -2240,7 +2238,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261025a';
+    s.src='/pro/pathogens.js?v=20261025b';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2292,11 +2290,11 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261025a" defer></script>
-<script src="api-live.min.js?v=20261025a" defer></script>
-<script src="script.min.js?v=20261025a" defer></script>
-<script src="js/triage-engine.min.js?v=20261025a" defer></script>
-<script src="js/triage-ui.min.js?v=20261025a" defer></script>
+<script src="js/psc-auth.js?v=20261025b" defer></script>
+<script src="api-live.min.js?v=20261025b" defer></script>
+<script src="script.min.js?v=20261025b" defer></script>
+<script src="js/triage-engine.min.js?v=20261025b" defer></script>
+<script src="js/triage-ui.min.js?v=20261025b" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

@@ -38,9 +38,9 @@ var I18N = {
     'meta-og-description': 'Outil de veille épidémiologique et de qualité de l\'air — données OMS, ECDC et Santé Publique France mises à jour quotidiennement, délai des sources indiqué. Créé par Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription.',
     'meta-image-alt': 'BreathIQ — Qualité de l\'air et alertes épidémies, mises à jour quotidiennement',
     'x-confidentialite-cc14': '🔒 Confidentialité —',
-    'x-dr-clement-medeau-medecin-c07e': '🩺 Dr. Clément Médeau · Médecin généraliste · La Rochelle ·',
+    'x-dr-clement-medeau-medecin-c07e': 'Dr Clément Médeau · Médecin généraliste · La Rochelle',
     'x-breathiq-surveille-chaque-jour-1771': 'BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF).',
-    'x-voir-les-alertes-epidemiques-b615': '🦠 Voir les alertes épidémiques',
+    'x-voir-les-alertes-epidemiques-b615': 'Voir la situation épidémique',
     'x-26-pathogenes-oms-ecdc-3f7b': 'Pathogènes suivis · OMS · ECDC · SPF · mis à jour quotidiennement',
     'x-sans-compte-sans-publicite-ac10': 'Sans compte · Sans publicité',
     'x-aucune-donnee-de-sante-7621': 'Aucune donnée de santé collectée',
@@ -156,7 +156,7 @@ var I18N = {
     'x-outil-d-information-non-540b': 'Outil d\'information — non dispositif médical',
     'x-quels-virus-circulent-en-be32': 'Quels virus circulent en France en ce moment ?',
     'x-gratuit-sans-compte-zero-f8ab': 'Gratuit, sans compte, zéro tracking.',
-    'x-j-ai-des-symptomes-e5be': '🤒 J\'ai des symptômes — que faire ?',
+    'x-j-ai-des-symptomes-e5be': 'J\'ai des symptômes : que faire ?',
     'x-alertes-epidemiques-3a8f': 'Alertes épidémiques',
     'x-oms-ecdc-foyers-actifs-5a76': 'OMS · ECDC · Foyers actifs',
     'x-virus-en-circulation-c09c': 'Virus en circulation',
@@ -181,9 +181,9 @@ var I18N = {
     'x-source-f31b': 'Source',
     'x-7-derniers-jours-1727': '7 derniers jours',
     'x-contexte-environnemental-general-dfe0': 'contexte environnemental général',
-    'x-virus-en-circulation-en-9770': '🔬 Virus en circulation en France',
+    'x-virus-en-circulation-en-9770': 'Virus en circulation en France',
     'x-voir-tous-les-pathogenes-9fe3': 'Voir tous les pathogènes →',
-    'x-alertes-epidemiques-en-cours-5487': '🌍 Alertes épidémiques en cours',
+    'x-alertes-epidemiques-en-cours-5487': 'Alertes épidémiques en cours',
     'x-si-vous-n-avez-dc65': 'Si vous n\'avez pas voyagé dans ces régions, ces alertes ne vous concernent pas directement.',
     'x-aucune-de-ces-situations-ebf4': 'Aucune de ces situations ne vous concerne ?',
     'x-continuer-vers-le-questionnaire-9959': '⬇️ Continuer vers le questionnaire de symptômes',
@@ -240,15 +240,15 @@ var I18N = {
     'x-appelez-les-secours-maintenant-8b63': 'Appelez les secours MAINTENANT si vous avez l\'un de ces signes :',
     'x-vous-n-arrivez-plus-2b53': 'Vous n\'arrivez plus à respirer · Lèvres, ongles ou langue qui deviennent bleus · Vous perdez connaissance · Douleur forte dans la poitrine · Vous ne reconnaissez plus les gens autour de vous',
     'x-legerement-malade-8d19': 'Légèrement malade',
-    'x-restez-chez-vous-03f7': '🏠 Restez chez vous',
+    'x-restez-chez-vous-03f7': 'Restez chez vous',
     'x-vous-pouvez-marcher-et-dc04': 'Vous pouvez marcher et parler normalement · Fièvre légère · Depuis moins de 3 jours',
     'x-si-vous-ne-vous-decc': '⬆ Si vous ne vous améliorez pas après 3 jours, ou si ça empire, allez consulter un médecin',
     'x-assez-malade-a799': 'Assez malade',
-    'x-allez-au-centre-de-7896': '🩺 Allez au centre de santé',
+    'x-allez-au-centre-de-7896': 'Allez au centre de santé',
     'x-forte-fievre-depuis-plus-642c': 'Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, immunodéprimé ou diabétique',
     'x-si-ca-empire-d-93ec': '⬆ Si ça empire d\'un coup — appelez les secours, n\'attendez pas',
     'x-urgence-a020': 'Urgence',
-    'x-appelez-les-secours-1802': '🚨 Appelez les secours',
+    'x-appelez-les-secours-1802': 'Appelez les secours',
     'x-ces-signes-sont-dangereux-29e6': 'Ces signes sont dangereux — n\'attendez pas, ne restez pas seul',
     'x-appelez-quelqu-un-pour-8205': 'Appelez quelqu\'un pour rester avec vous — ne vous déplacez pas seul',
     'x-numero-d-urgence-introuvable-b2a3': 'Numéro d\'urgence introuvable ?',
@@ -261,7 +261,7 @@ var I18N = {
     'x-signes-d-urgence-detectes-63ad': 'Signes d\'urgence détectés',
     'x-appelez-le-15-samu-f912': 'Appelez le 15 (SAMU) maintenant',
     'x-etape-1-sur-4-8079': 'Étape 1 sur 4',
-    'x-avez-vous-l-un-7bad': '🚨 Avez-vous l\'un de ces signes d\'urgence en ce moment ?',
+    'x-avez-vous-l-un-7bad': 'Avez-vous l\'un de ces signes d\'urgence en ce moment ?',
     'x-si-oui-cochez-et-62b5': 'Si oui, cochez et nous vous orientons immédiatement.',
     'x-difficultes-a-respirer-au-3ee5': 'Difficultés à respirer au repos',
     'x-pas-d-essoufflement-en-6930': 'Pas d\'essoufflement en marchant — au repos',
@@ -420,7 +420,7 @@ var I18N = {
     'x-21-virus-et-infections-9a27': 'Virus et infections suivis · données actualisées quotidiennement',
     'x-ou-rechercher-par-ville-ca77': 'ou rechercher par ville',
     'x-recherche-via-openstreetmap-fonctionne-7506': 'Recherche via OpenStreetMap — fonctionne dans le monde entier.',
-    'x-referentiel-pathogenes-soignant-4c35': '🦠 Référentiel Pathogènes Soignant',
+    'x-referentiel-pathogenes-soignant-4c35': 'Référentiel Pathogènes Soignant',
     'x-non-dispositif-medical-aa69': 'Non dispositif médical',
     'x-pathogenes-ce82': '🦠 Pathogènes',
     'x-epi-niveau-4-ebola-4e32': '🛡️ Fièvres hémorragiques / Ebola',
@@ -662,6 +662,9 @@ var I18N = {
     'mbn-map': 'Carte',
     'mbn-pathogens': 'Virus',
     'mbn-protection': 'FFP2',
+    'mbn-care': 'Soignants',
+    'path-care-title': 'Trouver un soignant',
+    'path-care-sub': 'Médecin, pharmacie, urgences près de moi',
     'mode-toggle-patient': '👤 Mode Patient',
     'mode-toggle-expert': '⚙️ Mode Expert',
     'patient-hero-badge': 'Surveillance respiratoire · Accès libre',
@@ -717,7 +720,7 @@ var I18N = {
     'epi-stat-thresh-rouge': 'Seuil ROUGE',
     'epi-decl-local': 'Déclarations locales (cette semaine)',
     'epi-decl-none': 'Aucune déclaration cette semaine',
-    'decl-title': '📋 Signaler des cas suspects',
+    'decl-title': 'Signaler des cas suspects',
     'decl-subtitle': 'Moins de 30 secondes · aucune donnée patient · signalement pseudonymisé',
     'decl-pilot': '🔐 Réservé aux professionnels de santé authentifiés via Pro Santé Connect · déclarations pseudonymisées, agrégées par semaine et région',
     'decl-syndrome': 'Syndrome observé *',
@@ -822,9 +825,9 @@ var I18N = {
     'meta-og-description': 'Epidemiological and air-quality monitoring tool — WHO, ECDC and Santé publique France data updated daily, source delay shown. Created by Dr Clément MÉDEAU, general practitioner. Free, no sign-up.',
     'meta-image-alt': 'BreathIQ — Air quality and epidemic alerts, updated daily',
     'x-confidentialite-cc14': '🔒 Privacy —',
-    'x-dr-clement-medeau-medecin-c07e': '🩺 Dr Clément Médeau · General practitioner · La Rochelle ·',
+    'x-dr-clement-medeau-medecin-c07e': 'Dr Clément Médeau · General practitioner · La Rochelle',
     'x-breathiq-surveille-chaque-jour-1771': 'BreathIQ monitors epidemics, WHO alerts and seasonal respiratory viruses every day, from official data (WHO · ECDC · SPF).',
-    'x-voir-les-alertes-epidemiques-b615': '🦠 See epidemic alerts',
+    'x-voir-les-alertes-epidemiques-b615': 'See the epidemic situation',
     'x-26-pathogenes-oms-ecdc-3f7b': 'Tracked pathogens · WHO · ECDC · SPF · updated daily',
     'x-sans-compte-sans-publicite-ac10': 'No account · No advertising',
     'x-aucune-donnee-de-sante-7621': 'No health data collected',
@@ -940,7 +943,7 @@ var I18N = {
     'x-outil-d-information-non-540b': 'Information tool — not a medical device',
     'x-quels-virus-circulent-en-be32': 'Which viruses are circulating right now?',
     'x-gratuit-sans-compte-zero-f8ab': 'Free, no account, zero tracking.',
-    'x-j-ai-des-symptomes-e5be': '🤒 I have symptoms — what should I do?',
+    'x-j-ai-des-symptomes-e5be': 'I have symptoms: what should I do?',
     'x-alertes-epidemiques-3a8f': 'Epidemic alerts',
     'x-oms-ecdc-foyers-actifs-5a76': 'WHO · ECDC · Active outbreaks',
     'x-virus-en-circulation-c09c': 'Circulating viruses',
@@ -965,9 +968,9 @@ var I18N = {
     'x-source-f31b': 'Source',
     'x-7-derniers-jours-1727': 'Last 7 days',
     'x-contexte-environnemental-general-dfe0': 'general environmental context',
-    'x-virus-en-circulation-en-9770': '🔬 Viruses circulating in France',
+    'x-virus-en-circulation-en-9770': 'Viruses circulating in France',
     'x-voir-tous-les-pathogenes-9fe3': 'See all pathogens →',
-    'x-alertes-epidemiques-en-cours-5487': '🌍 Ongoing epidemic alerts',
+    'x-alertes-epidemiques-en-cours-5487': 'Ongoing epidemic alerts',
     'x-si-vous-n-avez-dc65': 'If you have not travelled to these regions, these alerts do not directly concern you.',
     'x-aucune-de-ces-situations-ebf4': 'None of these situations apply to you?',
     'x-continuer-vers-le-questionnaire-9959': '⬇️ Continue to the symptom questionnaire',
@@ -1024,15 +1027,15 @@ var I18N = {
     'x-appelez-les-secours-maintenant-8b63': 'Call emergency services NOW if you have any of these signs:',
     'x-vous-n-arrivez-plus-2b53': 'You can no longer breathe · Lips, nails or tongue turning blue · You lose consciousness · Severe chest pain · You no longer recognise people around you',
     'x-legerement-malade-8d19': 'Mildly ill',
-    'x-restez-chez-vous-03f7': '🏠 Stay at home',
+    'x-restez-chez-vous-03f7': 'Stay at home',
     'x-vous-pouvez-marcher-et-dc04': 'You can walk and talk normally · Mild fever · For less than 3 days',
     'x-si-vous-ne-vous-decc': '⬆ If you do not improve after 3 days, or if things get worse, see a doctor',
     'x-assez-malade-a799': 'Quite ill',
-    'x-allez-au-centre-de-7896': '🩺 Go to a health centre',
+    'x-allez-au-centre-de-7896': 'Go to a health centre',
     'x-forte-fievre-depuis-plus-642c': 'High fever for more than 3 days · Cough with sputum · You feel very tired or very unwell · Elderly, pregnant, infant, immunocompromised or diabetic',
     'x-si-ca-empire-d-93ec': '⬆ If things suddenly get worse — call emergency services, do not wait',
     'x-urgence-a020': 'Emergency',
-    'x-appelez-les-secours-1802': '🚨 Call emergency services',
+    'x-appelez-les-secours-1802': 'Call emergency services',
     'x-ces-signes-sont-dangereux-29e6': 'These signs are dangerous — do not wait, do not stay alone',
     'x-appelez-quelqu-un-pour-8205': 'Call someone to stay with you — do not travel alone',
     'x-numero-d-urgence-introuvable-b2a3': 'Cannot find the emergency number?',
@@ -1045,7 +1048,7 @@ var I18N = {
     'x-signes-d-urgence-detectes-63ad': 'Emergency signs detected',
     'x-appelez-le-15-samu-f912': 'Call emergency services (112) now',
     'x-etape-1-sur-4-8079': 'Step 1 of 4',
-    'x-avez-vous-l-un-7bad': '🚨 Do you have any of these emergency signs right now?',
+    'x-avez-vous-l-un-7bad': 'Do you have any of these emergency signs right now?',
     'x-si-oui-cochez-et-62b5': 'If so, tick them and we will guide you immediately.',
     'x-difficultes-a-respirer-au-3ee5': 'Difficulty breathing at rest',
     'x-pas-d-essoufflement-en-6930': 'Not breathlessness on walking — at rest',
@@ -1204,7 +1207,7 @@ var I18N = {
     'x-21-virus-et-infections-9a27': 'Viruses and infections tracked · data updated daily',
     'x-ou-rechercher-par-ville-ca77': 'or search by city',
     'x-recherche-via-openstreetmap-fonctionne-7506': 'Search via OpenStreetMap — works worldwide.',
-    'x-referentiel-pathogenes-soignant-4c35': '🦠 Clinician pathogen reference',
+    'x-referentiel-pathogenes-soignant-4c35': 'Clinician pathogen reference',
     'x-non-dispositif-medical-aa69': 'Not a medical device',
     'x-pathogenes-ce82': '🦠 Pathogens',
     'x-epi-niveau-4-ebola-4e32': '🛡️ Haemorrhagic fevers / Ebola',
@@ -1447,6 +1450,9 @@ var I18N = {
     'mbn-map': 'Map',
     'mbn-pathogens': 'Viruses',
     'mbn-protection': 'FFP2',
+    'mbn-care': 'Find care',
+    'path-care-title': 'Find care',
+    'path-care-sub': 'Doctor, pharmacy, emergency department near me',
     'mode-toggle-patient': '👤 Patient Mode',
     'mode-toggle-expert': '⚙️ Expert Mode',
     'patient-hero-badge': 'Epidemic surveillance · Free access',
@@ -1503,7 +1509,7 @@ var I18N = {
     'epi-stat-thresh-rouge': 'RED threshold',
     'epi-decl-local': 'Local declarations (this week)',
     'epi-decl-none': 'No declarations this week',
-    'decl-title': '📋 Report suspected cases',
+    'decl-title': 'Report suspected cases',
     'decl-subtitle': 'Under 30 seconds · no patient data · pseudonymised report',
     'decl-pilot': '🔐 Restricted to healthcare professionals authenticated via Pro Santé Connect · pseudonymised reports, aggregated by week and region',
     'decl-syndrome': 'Observed syndrome *',
@@ -2813,6 +2819,7 @@ function applyI18n() {
 }
 
 function setLang(lang) {
+  setTimeout(() => updateModeToggleBtn(), 0);
   setTimeout(() => window.BIQ_TRIAGE_UI?.render(), 0); // questionnaire : textes selon langue et mode
   currentLang = lang;
   applyI18n();
@@ -4089,21 +4096,27 @@ function bindEvents() {
 // ── Smooth scroll for anchor links ───────────────────────────
 // ── Navigation — fonction globale appelable via onclick ───────
 // Définie ici (hors DOMContentLoaded) pour être disponible immédiatement
-var EXPERT_SECTIONS = new Set(['#score', '#map', '#protection', '#about']);
+// Sections réservées au mode soignant : y accéder depuis le mode patient demande une confirmation
+// explicite (jamais de bascule silencieuse). La carte et « À propos » sont visibles dans les deux modes.
+var EXPERT_SECTIONS = new Set(['#score', '#protection', '#syndromic', '#liveSources']);
 
 function navTo(e, href) {
   if (e) e.preventDefault();
   if (EXPERT_SECTIONS.has(href) && currentMode === 'patient') {
+    const msg = currentLang === 'en'
+      ? 'This section is for health professionals. Switch to the professional space?'
+      : 'Cette section est réservée aux professionnels de santé. Passer à l\'espace soignant ?';
+    if (!window.confirm(msg)) return false;
     currentMode = 'expert';
     localStorage.setItem('biq-mode', currentMode);
     document.body.dataset.mode = currentMode;
     updateModeToggleBtn();
-    setTimeout(() => {
-      if (!worldMap) { if (typeof initMapWhenReady === 'function') initMapWhenReady(); }
-      else worldMap.invalidateSize(true);
-      smoothScrollTo(href);
-    }, 80);
+    setTimeout(() => smoothScrollTo(href), 80);
     return false;
+  }
+  if (href === '#map') {
+    if (typeof worldMap !== 'undefined' && worldMap) worldMap.invalidateSize(true);
+    else if (typeof initMapWhenReady === 'function') initMapWhenReady();
   }
   smoothScrollTo(href);
   return false;
@@ -4170,19 +4183,18 @@ function toggleMode() {
 function updateModeToggleBtn() {
   const btn = document.getElementById('modeToggleBtn');
   if (!btn) return;
-  if (currentMode === 'patient') {
-    btn.textContent = '👨‍⚕️ Espace Soignant';
-    btn.setAttribute('title', 'Accès réservé aux professionnels de santé');
-    btn.classList.remove('mode-btn-expert-active');
-  } else {
-    btn.textContent = '👤 Mode Patient';
-    btn.setAttribute('title', 'Retour à l\'espace grand public');
-    btn.classList.add('mode-btn-expert-active');
-  }
+  const en = currentLang === 'en';
+  const patient = currentMode === 'patient';
+  // Icône + libellé dans un <span> : masqué sur les écrans étroits (style.css ≤ 1100 px), jamais en débordement
+  const icon = patient ? '👨‍⚕️' : '👤';
+  const label = patient ? (en ? 'Health professionals' : 'Espace soignant') : (en ? 'Patient mode' : 'Mode patient');
+  btn.innerHTML = `<span aria-hidden="true">${icon}</span><span class="mode-btn-text"> ${label}</span>`;
+  btn.setAttribute('aria-label', label);
+  btn.setAttribute('title', patient ? (en ? 'Reserved for health professionals' : 'Accès réservé aux professionnels de santé') : (en ? 'Back to the general public space' : 'Retour à l\'espace grand public'));
+  btn.classList.toggle('mode-btn-expert-active', !patient);
 }
 
 // ── Modal Espace Soignant ────────────────────────────────────────────────────
-var SOIGNANT_PASS = 'breathiq2026';
 
 // Country auto-detect from browser locale
 function _detectCountry() {
@@ -7571,7 +7583,9 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
 
     if (levelEl) {
       levelEl.className = `epidemic-level ${active.level}`;
-      levelEl.textContent = (active.level === 'rouge' ? '🔴 ' : active.level === 'orange' ? '🟠 ' : '⚠️ ') + L(active.levelLabel);
+      // Mode patient : pastille seule (le titre dit déjà « Alerte de l'OMS ») ; mode soignant : libellé complet
+      const dot = active.level === 'rouge' ? '🔴' : active.level === 'orange' ? '🟠' : '⚠️';
+      levelEl.textContent = currentMode === 'expert' ? `${dot} ${L(active.levelLabel)}` : dot;
     }
     if (diseaseEl) {
       diseaseEl.textContent = `${active.disease} · ${L(active.subtitle)}`;
@@ -7619,10 +7633,15 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
     }
 
     // Mettre à jour les nouveaux IDs du bandeau épidémique
+    // Bandeau grand public : une ligne (le détail est dans la section « Alertes épidémiques »)
     const gpTitle = document.getElementById('epidemicGpTitle');
-    if (gpTitle) gpTitle.textContent = `${active.disease} — ${L(active.levelLabel)}`;
+    if (gpTitle) gpTitle.textContent = lang === 'fr'
+      ? `Alerte de l'OMS : ${L(active.shortName) || active.disease}`
+      : `WHO alert: ${L(active.shortName) || active.disease}`;
     const gpInstr = document.getElementById('epidemicGpInstruction');
-    if (gpInstr) gpInstr.innerHTML = L(active.message) || '';
+    if (gpInstr) gpInstr.textContent = lang === 'fr'
+      ? 'Concerne surtout les personnes de retour de la zone touchée.'
+      : 'Mainly concerns people returning from the affected area.';
     const gpLink = document.getElementById('epidemicGpLink');
     if (gpLink && active.pathogen_id) {
       gpLink.href = `${active.pathogen_id.toLowerCase()}.html`;
@@ -7637,7 +7656,7 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
 
     // Render PHEIC strip in patient hero
     const strip = document.getElementById('riskPheicStrip');
-    if (strip) {
+    if (strip && currentMode === 'expert') { // mode patient : déjà signalé par le bandeau du haut
       const see = { fr:'Voir la fiche →', en:'See factsheet →', es:'Ver ficha →', pt:'Ver ficha →', ar:'انظر الملف ←', zh:'查看详情 →', hi:'विवरण देखें →', sw:'Tazama faili →', ru:'Подробнее →' }[lang] || '→';
       strip.innerHTML = `🚨 <strong>PHEIC OMS</strong> — ${active.disease} · ${L(active.subtitle)} · <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" style="color:#FCA5A5">${see}</a>`;
       strip.removeAttribute('hidden');
