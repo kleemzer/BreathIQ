@@ -1,6 +1,6 @@
 # Rapport de nuit — 25-26 octobre 2026
 
-Branche `fix/audit-lancement`. Rien n'a été mis en production. Release courante : `v=20261026d`, service worker `biq-v63`.
+Branche `fix/audit-lancement`. Rien n'a été mis en production. Release courante : `v=20261026d`, service worker `biq-v63`. La branche intègre `main` (données des robots) au 26/10.
 Après chaque lot : `npm run check:js`, `npm test` (questionnaire : 90 vignettes, 0 faux négatif grave), contrôle i18n FR/EN, contrôle de la charte CSS, vérification dans le navigateur.
 
 ## Ce qui a été fait
@@ -16,6 +16,8 @@ Après chaque lot : `npm run check:js`, `npm test` (questionnaire : 90 vignettes
 | c006746 | Pages Ebola, Marburg, Lassa, FHCC, bilan, méthodologie, à propos : posologies de ribavirine et protocoles EPI maison retirés (renvoi COREB / HCSP / OMS), Ebola EN aligné sur DON619, « protocole CHAZAL » introuvable retiré, PHEIC mpox levée (5 sept. 2025), DOI corrigé, hébergeur Cloudflare dans les mentions anglaises |
 | cb12e2a | Revue de code adversariale : 5 bugs corrigés (sections masquées en passant en mode soignant, retour arrière vers l'accueil, double défilement, erreurs console, garde-fous du moteur de triage) |
 | 2bcff2d | Relecture du français côté patient (80 corrections : langage clair, « signaler » au lieu de « déclarer », phrases ≤ 15 mots) |
+| 0c2a1f1 | **Ebola mis à jour d'après l'OMS DON622 (23 oct.)** : 9 704 cas et 4 687 décès en RDC au 20 oct., 9 cas au Kenya (dont 8 contacts du cas importé), 1 cas importé au Nigeria — chiffres relus dans le texte de l'OMS |
+| 181a4d2 | Contrôle des données : avertit quand l'alerte PHEIC cite un bulletin OMS plus ancien que le dernier collecté |
 
 ## Ce qui attend vos décisions
 
@@ -40,3 +42,9 @@ Après chaque lot : `npm run check:js`, `npm test` (questionnaire : 90 vignettes
 - **Suppression de l'ancien questionnaire** (masqué) et de ses deux moteurs : à faire après votre validation du nouvel arbre.
 - **Découpage de script.min.js** (137 Ko compressés) : gain réel sur mobile lent, mais chantier long et risqué.
 - **Traductions des 7 autres langues** : après validation clinique, avec relecture par des locuteurs natifs.
+
+## Points de vigilance
+
+- **Robot de vérification quotidienne sur `main`** : il tourne encore avec l'ancienne version, qui avance la date `verifiedAt` sans rien vérifier. La version corrigée est sur la branche et ne prendra effet qu'à la mise en production. En attendant, chaque fusion de `main` crée un conflit sur `pathogens.json` et `pheic-alerts.json` : garder la version de la branche.
+- **Ebola** : l'OMS publie un bulletin environ toutes les deux semaines. La mise à jour de l'alerte reste manuelle et doit être relue. Le contrôle des données signale désormais le retard.
+- **Réseau Sentinelles** : la source était en maintenance le 21/10. L'indice France reste « indisponible » tant que la collecte n'a pas repris, ce qui est le comportement voulu.
