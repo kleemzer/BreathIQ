@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261025i" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261025i"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261025j" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261025j"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -516,6 +516,16 @@
 <!-- ===== ALERTES ÉPIDÉMIQUES (Mode Patient) — ancre principale ===== -->
 <section data-view="voyager" class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
   <div class="container">
+    <div class="travel-prep-card" role="note">
+      <h2 data-i18n="travel-prep-title" class="travel-prep-title">Vous préparez un voyage ?</h2>
+      <p data-i18n="travel-prep-body">Voyez votre médecin ou un centre de vaccinations internationales plusieurs semaines avant le départ : vaccins, traitement contre le paludisme et conseils selon votre destination.</p>
+      <ul class="travel-prep-links">
+        <li><a href="https://www.diplomatie.gouv.fr/fr/conseils-aux-voyageurs/" target="_blank" rel="noopener" data-i18n="travel-prep-mae">Conseils aux voyageurs par pays (ministère des Affaires étrangères)</a></li>
+        <li><a href="https://www.pasteur.fr/fr/centre-medical/preparer-son-voyage" target="_blank" rel="noopener" data-i18n="travel-prep-pasteur">Préparer son voyage (Institut Pasteur, centre médical)</a></li>
+        <li><a href="https://www.who.int/travel-advice" target="_blank" rel="noopener" data-i18n="travel-prep-who">Santé des voyageurs (OMS)</a></li>
+      </ul>
+      <p data-i18n="travel-prep-return" class="travel-prep-return">Au retour, toute fièvre dans les 3 mois doit faire consulter rapidement en signalant le voyage.</p>
+    </div>
     <div class="epidemio-alert-header">
       <h2 data-i18n="x-alertes-epidemiques-en-cours-5487" id="epidemioAlertTitle">Alertes épidémiques en cours</h2>
       <p class="epidemio-alert-sub" id="epidemioAlertSub" translate="no">Chargement des alertes OMS…</p>
@@ -1805,10 +1815,8 @@
 
 <!-- ===== TOGGLE MODE EXPERT ===== -->
 <div class="expert-toggle-section patient-only" id="expertToggle" data-view="accueil">
-  <button class="expert-toggle-btn" onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">
-    ⚙️ Afficher les données techniques (Mode Expert)
-  </button>
-  <p class="expert-toggle-note" data-i18n="expert-toggle-note">Indices respiratoires, carte mondiale, guide de protection — pour professionnels et curieux</p>
+  <button class="expert-toggle-btn" onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">Vous êtes soignant ? Accéder à l'espace soignant</button>
+  <p class="expert-toggle-note" data-i18n="expert-toggle-note">Référentiel clinique, surveillance, déclaration de cas (Pro Santé Connect)</p>
 </div>
 
 <!-- ===== PROTECTION SECTION ===== -->
@@ -2259,7 +2267,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261025i';
+    s.src='/pro/pathogens.js?v=20261025j';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2311,11 +2319,11 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261025i" defer></script>
-<script src="api-live.min.js?v=20261025i" defer></script>
-<script src="script.min.js?v=20261025i" defer></script>
-<script src="js/triage-engine.min.js?v=20261025i" defer></script>
-<script src="js/triage-ui.min.js?v=20261025i" defer></script>
+<script src="js/psc-auth.js?v=20261025j" defer></script>
+<script src="api-live.min.js?v=20261025j" defer></script>
+<script src="script.min.js?v=20261025j" defer></script>
+<script src="js/triage-engine.min.js?v=20261025j" defer></script>
+<script src="js/triage-ui.min.js?v=20261025j" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
