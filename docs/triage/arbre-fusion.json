@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0-brouillon+E-cycle2+E-cycle3+arbitrages-2026-10-25",
+  "version": "0.1.0-brouillon+E-cycle2+E-cycle3+arbitrages-2026-10-25+arbitrages-finaux-2026-10-25",
   "date": "2026-10-24",
   "racine": "U01",
   "noeuds": [
@@ -480,7 +480,7 @@
         },
         {
           "libelle": "De 3 mois à 2 ans",
-          "vers": "POP01",
+          "vers": "U_NRS36",
           "pose": "pop_enfant_3m_2a"
         },
         {
@@ -512,6 +512,44 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": []
+    },
+    {
+      "id": "U_NRS36",
+      "type": "question",
+      "texte": "Bébé de 3 à 6 mois : la température mesurée est-elle de 39 °C ou plus ?",
+      "aide": "Question de modulation (MOD25). Identifiant préfixé U_ : exclu du compte des 7 questions. NICE NG143 : 3–6 mois et ≥ 39 °C = au moins risque intermédiaire de maladie grave. « Je ne sais pas » = oui.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "POP01",
+          "pose": [
+            "sig_fievre",
+            "sig_fievre_39_3_6m"
+          ]
+        },
+        {
+          "libelle": "Non",
+          "vers": "POP01"
+        },
+        {
+          "libelle": "Non concerné (6 mois ou plus)",
+          "vers": "POP01"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "POP01",
+          "pose": [
+            "sig_fievre_inconnue",
+            "sig_fievre_39_3_6m"
+          ]
+        }
+      ],
+      "condition_activation": "pop_enfant_3m_2a",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "NICE NG143 rec. 1.2.13 et tableau feu tricolore (3–6 mois, ≥ 39 °C = orange) ; rec. 1.3.4 (orange → évaluation en face à face)",
+      "a_valider_clinicien": true
     },
     {
       "id": "POP01",
@@ -643,7 +681,10 @@
         {
           "libelle": "Oui",
           "vers": "U_RV",
-          "pose": "sig_fievre"
+          "pose": [
+            "sig_fievre",
+            "expo_palu_3m"
+          ]
         },
         {
           "libelle": "Non",
@@ -652,7 +693,10 @@
         {
           "libelle": "Je ne sais pas",
           "vers": "U_RV",
-          "pose": "sig_fievre_inconnue"
+          "pose": [
+            "sig_fievre_inconnue",
+            "expo_palu_3m"
+          ]
         }
       ],
       "condition_activation": null,
@@ -1178,7 +1222,7 @@
       "choix": [
         {
           "libelle": "Nez et gorge",
-          "vers": "R02"
+          "vers": "U_R02F"
         },
         {
           "libelle": "Toux, poitrine",
@@ -1194,6 +1238,34 @@
       "delai_action": null,
       "signes_reconsultation": [],
       "source": "à valider",
+      "a_valider_clinicien": true
+    },
+    {
+      "id": "U_R02F",
+      "type": "question",
+      "texte": "Y a-t-il de la fièvre (38 °C ou plus, ou sensation de fièvre) ?",
+      "aide": "Question de modulation (arbitrages finaux §6) : le chemin Nez et gorge ne recueillait pas la fièvre, donc aucun plancher fièvre (MOD01, MOD05, MOD05B, MOD07, MOD08, MOD23) ne pouvait s’appliquer. Activée chez les personnes fragiles. Identifiant préfixé U_ : exclu du compte des 7 questions. « Je ne sais pas » = oui.",
+      "choix": [
+        {
+          "libelle": "Oui",
+          "vers": "R02",
+          "pose": "sig_fievre"
+        },
+        {
+          "libelle": "Non",
+          "vers": "R02"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "R02",
+          "pose": "sig_fievre_inconnue"
+        }
+      ],
+      "condition_activation": "pop_asplenie || pop_immunodeprime || pop_chimio || pop_nourrisson_moins_3m || pop_age_inconnu_bebe || pop_grossesse || pop_post_partum",
+      "niveau_orientation": null,
+      "delai_action": null,
+      "signes_reconsultation": [],
+      "source": "ARBITRAGES.md §6 ; sources des planchers MOD01, MOD05, MOD07, MOD08, MOD23",
       "a_valider_clinicien": true
     },
     {
@@ -4141,6 +4213,66 @@
       "a_valider_clinicien": true,
       "modulable": true,
       "note_soignant": "Pas d'ibuprofène avant 3 mois."
+    },
+    {
+      "id": "R_ASPL_2H",
+      "type": "resultat",
+      "texte": "Rate absente ou ne fonctionnant pas, avec de la fièvre : allez tout de suite aux urgences (moins de 2 heures), en signalant l'absence de rate. Un antibiotique doit être débuté sans attendre. Si vous avez un antibiotique de réserve prescrit pour ce cas, prenez-le comme convenu avec votre médecin.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "urgence_sans_delai",
+      "delai_action": "moins_de_2h",
+      "signes_reconsultation": [
+        "difficulté à respirer",
+        "confusion, somnolence inhabituelle",
+        "taches violacées qui ne s'effacent pas à la pression",
+        "malaise, marbrures de la peau",
+        "frissons intenses : appeler le 15"
+      ],
+      "source": "SPILF/SFLS 2019 (Rammaert, « Risque infectieux du patient hypo- ou asplénique », d'après recommandations HCSP 2015) ; fiche patient asplénie adulte (« consultez en urgence (ou appelez le 15) devant toute fièvre »)",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "RR_NRS_6H",
+      "type": "resultat",
+      "texte": "Bébé de moins de 3 mois qui tousse ou respire mal, même sans fièvre : faites-le examiner par un médecin dans les 6 heures (le jour même). Avant 3 mois, une bronchiolite peut s'aggraver vite et donner des pauses respiratoires.",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "pauses respiratoires, lèvres bleues : appeler le 15",
+        "bébé qui respire vite ou dont le ventre ou les côtes se creusent",
+        "bébé qui boit moins de la moitié de d'habitude",
+        "bébé difficile à réveiller",
+        "fièvre ≥ 38 °C"
+      ],
+      "source": "HAS/CNPP nov. 2019, bronchiolite < 12 mois (âge corrigé < 2 mois = vulnérabilité ; < 6 semaines = surveillance hospitalière systématique) ; NICE NG9 rec. 1.1.5 et 1.2.3",
+      "a_valider_clinicien": true,
+      "modulable": true
+    },
+    {
+      "id": "R_NRS36_6H",
+      "type": "resultat",
+      "texte": "Bébé de 3 à 6 mois avec une fièvre de 39 °C ou plus : faites-le examiner par un médecin dans les 6 heures (le jour même).",
+      "aide": "Protection de l'entourage : porter un masque en présence d'autres personnes, aérer la pièce 10 minutes plusieurs fois par jour, se laver les mains souvent, tenir à distance les personnes fragiles (nourrissons, femmes enceintes, personnes âgées ou immunodéprimées).",
+      "choix": [],
+      "condition_activation": null,
+      "niveau_orientation": "consultation_urgente",
+      "delai_action": "moins_de_6h",
+      "signes_reconsultation": [
+        "difficulté à respirer",
+        "bébé difficile à réveiller ou qui ne réagit pas",
+        "teint gris ou marbré",
+        "taches qui ne s'effacent pas : appeler le 15",
+        "couches sèches depuis plus de 6 heures"
+      ],
+      "source": "NICE NG143 rec. 1.2.13 et tableau feu tricolore (3–6 mois, ≥ 39 °C = orange) ; rec. 1.3.4 (orange → évaluation en face à face)",
+      "a_valider_clinicien": true,
+      "modulable": true
     }
   ],
   "regles_modulation": [
@@ -4499,6 +4631,54 @@
       "a_valider_clinicien": true,
       "condition": "true",
       "commentaire": "population : toute population ; tableau : règle générale"
+    },
+    {
+      "id": "MOD22",
+      "population": "expo_palu_3m",
+      "tableau": "fièvre ou symptôme compatible déclaré à T_PALU (zone d'endémie palustre, < 3 mois)",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "CMIT/SPILF, Pilly étudiant ECN 2020, item 170 (recherche de paludisme en urgence si fièvre dans les 3 mois du retour) ; ARBITRAGES.md §2",
+      "a_valider_clinicien": true,
+      "condition": "expo_palu_3m",
+      "commentaire": "Contre-expertise 25/10/2026 : T_PALU « Oui » puis V01 « Non » (réponse contradictoire) menait à RV_S/RV_S_PALU (autosoins). Le plancher empêche cette sous-orientation.",
+      "resultat": "RV_PALU"
+    },
+    {
+      "id": "MOD23",
+      "population": "pop_asplenie",
+      "tableau": "fièvre (mesurée ou « je ne sais pas »), même bien tolérée",
+      "effet": "plancher",
+      "valeur": "urgence_sans_delai",
+      "source": "SPILF/SFLS 2019 (Rammaert, « Risque infectieux du patient hypo- ou asplénique », d'après recommandations HCSP 2015) ; fiche patient asplénie adulte (« consultez en urgence (ou appelez le 15) devant toute fièvre »)",
+      "a_valider_clinicien": true,
+      "condition": "pop_asplenie && (sig_fievre || sig_fievre_inconnue)",
+      "commentaire": "Contre-expertise, arbitrages finaux 25/10/2026 (ARBITRAGES.md §6). Remplace en pratique MOD07 (consultation_urgente). Risque d'infection fulminante post-splénectomie (mortalité 50–70 %), antibiotique dans l'heure. MOD07B (urgence_vitale) reste prioritaire.",
+      "resultat": "R_ASPL_2H"
+    },
+    {
+      "id": "MOD24",
+      "population": "pop_nourrisson_moins_3m || pop_age_inconnu_bebe",
+      "tableau": "toux, nez, gorge ou gêne respiratoire (sig_resp), avec ou sans fièvre",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "HAS/CNPP nov. 2019, bronchiolite < 12 mois (âge corrigé < 2 mois = vulnérabilité ; < 6 semaines = surveillance hospitalière systématique) ; NICE NG9 rec. 1.1.5 et 1.2.3",
+      "a_valider_clinicien": true,
+      "condition": "(pop_nourrisson_moins_3m || pop_age_inconnu_bebe) && sig_resp",
+      "commentaire": "Contre-expertise, arbitrages finaux 25/10/2026 (ARBITRAGES.md §6). Avant : RR_S/RR_48H + MOD02 → 48 h. Avec fièvre, MOD01 (urgence_sans_delai) prime.",
+      "resultat": "RR_NRS_6H"
+    },
+    {
+      "id": "MOD25",
+      "population": "pop_enfant_3m_2a (3 à 6 mois, U_NRS36)",
+      "tableau": "température ≥ 39 °C (ou inconnue)",
+      "effet": "plancher",
+      "valeur": "consultation_urgente",
+      "source": "NICE NG143 rec. 1.2.13 et tableau feu tricolore (3–6 mois, ≥ 39 °C = orange) ; rec. 1.3.4 (orange → évaluation en face à face)",
+      "a_valider_clinicien": true,
+      "condition": "sig_fievre_39_3_6m",
+      "commentaire": "Contre-expertise, arbitrages finaux 25/10/2026 (ARBITRAGES.md §6). L'arbre ne distinguait pas 3–6 mois : ajout de U_NRS36 après POP00 « De 3 mois à 2 ans ». Avant : consultation_rapide (MOD03).",
+      "resultat": "R_NRS36_6H"
     }
   ],
   "expositions": [],
@@ -4593,7 +4773,7 @@
       "a_valider_clinicien": true
     }
   ],
-  "regle_fusion": "niveau_final = max(niveau du résultat clinique, planchers des règles applicables) puis relèvements (au plus +1 au total). Un relèvement est plafonné à consultation_urgente : il ne peut jamais créer une urgence_vitale. Seuls les nœuds U00 / RH_ISOL et les planchers explicites MOD05B, MOD07B, MOD21 donnent urgence_vitale ; MOD01 et R_NRS_2H donnent urgence_sans_delai (< 2 h). Ordre des niveaux : niveaux_ordre. « Je ne sais pas » = oui pour la modulation ; le niveau ne descend jamais. Les règles sont évaluées par leur champ condition (expression booléenne sur les tokens « pose »).",
+  "regle_fusion": "niveau_final = max(niveau du résultat clinique, planchers des règles applicables) puis relèvements (au plus +1 au total). Un relèvement est plafonné à consultation_urgente : il ne peut jamais créer une urgence_vitale. Seuls les nœuds U00 / RH_ISOL et les planchers explicites MOD05B, MOD07B, MOD21 donnent urgence_vitale ; MOD01, MOD23, R_NRS_2H et R_ASPL_2H donnent urgence_sans_delai (< 2 h). Ordre des niveaux : niveaux_ordre. « Je ne sais pas » = oui pour la modulation ; le niveau ne descend jamais. Les règles sont évaluées par leur champ condition (expression booléenne sur les tokens « pose »).",
   "expositions_retirees": [
     {
       "id": "EXP_PALU",

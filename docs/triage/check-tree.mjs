@@ -19,7 +19,7 @@ for(const n of M.values()){
   if(/aucun risque/i.test(JSON.stringify(n))) err.push(n.id+': formulation « aucun risque »');
 }
 // atteignabilité
-const seen=new Set(); const st=[t.racine];
+const seen=new Set(); const st=[t.racine, ...(t.regles_modulation||[]).map(r=>r.resultat).filter(Boolean)]; // résultats atteints par redirection d'une règle (MOD22…)
 while(st.length){const id=st.pop(); if(seen.has(id)||!M.has(id)) continue; seen.add(id); for(const c of M.get(id).choix) st.push(c.vers);}
 for(const id of M.keys()) if(!seen.has(id)) err.push('inatteignable '+id);
 // boucles (les arêtes vers U00 sont des retours volontaires)

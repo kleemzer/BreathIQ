@@ -8455,5 +8455,275 @@
         "rappel": "Information and guidance tool, not clinically validated: does not replace medical advice."
       }
     }
+  },
+  "R_ASPL_2H": {
+    "patient": {
+      "fr": {
+        "texte": "Vous n'avez plus de rate, ou elle ne marche pas bien, et vous avez de la fièvre. Allez tout de suite aux urgences, dans les 2 heures. Dites que vous n'avez pas de rate. Il faut un antibiotique sans attendre. Si un médecin vous a donné un antibiotique de réserve pour ce cas, prenez-le comme prévu. Si un signe grave apparaît, appelez le {URGENCE}.",
+        "signes_reconsultation": [
+          "Respire mal.",
+          "Confusion, ou très endormi.",
+          "Taches qui ne s'effacent pas sous un verre : appelez le {URGENCE}. Sur peau foncée, regardez paumes et intérieur des lèvres.",
+          "Malaise, ou peau marbrée de violet.",
+          "Gros frissons qui font trembler : appelez le {URGENCE}."
+        ],
+        "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
+        "choix": [],
+        "rappel": "BreathIQ donne une orientation. Ce n'est pas un diagnostic. Cela ne remplace pas l'avis d'un médecin."
+      },
+      "en": {
+        "texte": "You have no spleen, or it does not work well, and you have a fever. Go to the emergency department now, within 2 hours. Say that you have no spleen. You need an antibiotic without delay. If a doctor gave you a standby antibiotic for this situation, take it as planned. If a serious sign appears, call {URGENCE}.",
+        "signes_reconsultation": [
+          "Struggling to breathe.",
+          "Confused, or very drowsy.",
+          "Spots that do not fade under a glass: call {URGENCE}. On dark skin, check palms and inside the lips.",
+          "Feeling faint, or blotchy purple skin.",
+          "Strong shivering: call {URGENCE}."
+        ],
+        "aide": "To protect others: wear a mask near other people. Open a window for 10 minutes, several times a day. Wash your hands often. Stay away from people at higher risk: babies, pregnant women, older people and people with a weak immune system.",
+        "choix": [],
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Asplénie anatomique ou fonctionnelle fébrile : urgence infectieuse (risque d'OPSI, mortalité 50–70 %). Évaluation en SAU < 2 h, hémocultures puis antibiothérapie probabiliste dans l'heure (C3G parentérale en l'absence d'allergie). Prise de l'antibiotique de réserve si prescrite. {URGENCE} si signe de sepsis.",
+        "signes_reconsultation": [
+          "Détresse respiratoire",
+          "Confusion, troubles de la vigilance",
+          "Purpura non effaçable → {URGENCE}",
+          "Malaise, marbrures",
+          "Frissons intenses → {URGENCE}"
+        ],
+        "aide": "Mesures barrières : masque en présence d'autrui, aération 10 min plusieurs fois/j, hygiène des mains, éviction des sujets fragiles (nourrissons, grossesse, sujets âgés, immunodéprimés).",
+        "choix": [],
+        "rappel": "Outil d'information et d'orientation, non validé cliniquement : ne remplace pas un avis médical."
+      },
+      "en": {
+        "texte": "Febrile anatomical or functional asplenia: infectious emergency (OPSI risk, 50–70% mortality). ED assessment < 2 h, blood cultures then empirical antibiotics within the hour (parenteral 3rd-generation cephalosporin if no allergy). Standby antibiotic if prescribed. {URGENCE} if signs of sepsis.",
+        "signes_reconsultation": [
+          "Respiratory distress",
+          "Confusion, altered consciousness",
+          "Non-blanching purpura → {URGENCE}",
+          "Collapse, mottling",
+          "Severe rigors → {URGENCE}"
+        ],
+        "aide": "Infection control: mask around others, ventilate room 10 min several times daily, hand hygiene, avoid contact with vulnerable people (infants, pregnancy, elderly, immunocompromised).",
+        "choix": [],
+        "rappel": "Information and guidance tool, not clinically validated: does not replace medical advice."
+      }
+    }
+  },
+  "RR_NRS_6H": {
+    "patient": {
+      "fr": {
+        "texte": "Votre bébé a moins de 3 mois et il tousse ou respire mal, même sans fièvre. Faites-le voir par un médecin dans les 6 heures, aujourd'hui. Avant 3 mois, une bronchiolite peut s'aggraver vite. Le bébé peut arrêter de respirer quelques secondes. Si c'est le cas, appelez le {URGENCE}.",
+        "signes_reconsultation": [
+          "Arrête de respirer, ou lèvres bleues : appelez le {URGENCE}.",
+          "Respire vite, ou le ventre et les côtes se creusent.",
+          "Boit moins de la moitié de d'habitude.",
+          "Bébé difficile à réveiller.",
+          "Fièvre de 38 °C ou plus : urgences pour enfants sans attendre."
+        ],
+        "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
+        "choix": [],
+        "rappel": "BreathIQ donne une orientation. Ce n'est pas un diagnostic. Cela ne remplace pas l'avis d'un médecin."
+      },
+      "en": {
+        "texte": "Your baby is under 3 months old and is coughing or breathing badly, even without a fever. Get a doctor to see your baby within 6 hours, today. Under 3 months, bronchiolitis can get worse quickly. The baby may stop breathing for a few seconds. If this happens, call {URGENCE}.",
+        "signes_reconsultation": [
+          "Stops breathing, or blue lips: call {URGENCE}.",
+          "Breathing fast, or the belly and ribs pull in.",
+          "Drinking less than half the usual amount.",
+          "Baby hard to wake.",
+          "Temperature of 38 °C or more: go to the children's emergency department now."
+        ],
+        "aide": "To protect others: wear a mask near other people. Open a window for 10 minutes, several times a day. Wash your hands often. Stay away from people at higher risk: babies, pregnant women, older people and people with a weak immune system.",
+        "choix": [],
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Nourrisson < 3 mois avec symptômes respiratoires, apyrétique : évaluation médicale en face à face < 6 h. HAS 2019 : âge corrigé < 2 mois = critère de vulnérabilité, < 6 semaines = surveillance hospitalière systématique ; NICE NG9 : apnées possibles sans autre signe avant 6 semaines, âge < 3 mois = facteur de risque de forme sévère. {URGENCE} si apnée ou cyanose.",
+        "signes_reconsultation": [
+          "Apnées, cyanose → {URGENCE}",
+          "Polypnée, signes de lutte",
+          "Apports < 50 %",
+          "Trouble de la vigilance",
+          "T ≥ 38 °C → R_NRS_2H"
+        ],
+        "aide": "Mesures barrières : masque en présence d'autrui, aération 10 min plusieurs fois/j, hygiène des mains, éviction des sujets fragiles (nourrissons, grossesse, sujets âgés, immunodéprimés).",
+        "choix": [],
+        "rappel": "Outil d'information et d'orientation, non validé cliniquement : ne remplace pas un avis médical."
+      },
+      "en": {
+        "texte": "Infant < 3 months with respiratory symptoms, afebrile: face-to-face medical assessment < 6 h. HAS 2019: corrected age < 2 months = vulnerability criterion, < 6 weeks = systematic hospital observation; NICE NG9: apnoea may be the only sign under 6 weeks, age < 3 months = risk factor for severe disease. {URGENCE} if apnoea or cyanosis.",
+        "signes_reconsultation": [
+          "Apnoea, cyanosis → {URGENCE}",
+          "Tachypnoea, increased work of breathing",
+          "Intake < 50%",
+          "Altered consciousness",
+          "T ≥ 38 °C → R_NRS_2H"
+        ],
+        "aide": "Infection control: mask around others, ventilate room 10 min several times daily, hand hygiene, avoid contact with vulnerable people (infants, pregnancy, elderly, immunocompromised).",
+        "choix": [],
+        "rappel": "Information and guidance tool, not clinically validated: does not replace medical advice."
+      }
+    }
+  },
+  "R_NRS36_6H": {
+    "patient": {
+      "fr": {
+        "texte": "Votre bébé a entre 3 et 6 mois et a 39 °C ou plus. Faites-le voir par un médecin dans les 6 heures, aujourd'hui. Si un signe grave apparaît, appelez le {URGENCE}.",
+        "signes_reconsultation": [
+          "Respire mal.",
+          "Bébé difficile à réveiller, ou qui ne réagit pas.",
+          "Teint gris ou marbré.",
+          "Taches qui ne s'effacent pas sous un verre : appelez le {URGENCE}. Sur peau foncée, regardez paumes et intérieur des lèvres.",
+          "Couches sèches depuis plus de 6 heures."
+        ],
+        "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
+        "choix": [],
+        "rappel": "BreathIQ donne une orientation. Ce n'est pas un diagnostic. Cela ne remplace pas l'avis d'un médecin."
+      },
+      "en": {
+        "texte": "Your baby is 3 to 6 months old and has a temperature of 39 °C or more. Get a doctor to see your baby within 6 hours, today. If a serious sign appears, call {URGENCE}.",
+        "signes_reconsultation": [
+          "Struggling to breathe.",
+          "Baby hard to wake, or not reacting.",
+          "Grey or blotchy skin.",
+          "Spots that do not fade under a glass: call {URGENCE}. On dark skin, check palms and inside the lips.",
+          "Dry nappies for more than 6 hours."
+        ],
+        "aide": "To protect others: wear a mask near other people. Open a window for 10 minutes, several times a day. Wash your hands often. Stay away from people at higher risk: babies, pregnant women, older people and people with a weak immune system.",
+        "choix": [],
+        "rappel": "BreathIQ gives guidance. It is not a diagnosis. It does not replace a doctor's advice."
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Nourrisson 3–6 mois, T ≥ 39 °C : catégorie orange NICE NG143 (rec. 1.2.13, risque au moins intermédiaire d'infection sévère). Évaluation en face à face (rec. 1.3.4), délai retenu < 6 h. {URGENCE} si signe rouge.",
+        "signes_reconsultation": [
+          "Détresse respiratoire",
+          "Trouble de la vigilance, aréactivité",
+          "Teint gris, marbrures",
+          "Purpura non effaçable → {URGENCE}",
+          "Diurèse diminuée"
+        ],
+        "aide": "Mesures barrières : masque en présence d'autrui, aération 10 min plusieurs fois/j, hygiène des mains, éviction des sujets fragiles (nourrissons, grossesse, sujets âgés, immunodéprimés).",
+        "choix": [],
+        "rappel": "Outil d'information et d'orientation, non validé cliniquement : ne remplace pas un avis médical."
+      },
+      "en": {
+        "texte": "Infant 3–6 months, T ≥ 39 °C: NICE NG143 amber (rec. 1.2.13, at least intermediate risk of serious illness). Face-to-face assessment (rec. 1.3.4), timescale set at < 6 h. {URGENCE} if any red feature.",
+        "signes_reconsultation": [
+          "Respiratory distress",
+          "Altered consciousness, unresponsive",
+          "Grey colour, mottling",
+          "Non-blanching purpura → {URGENCE}",
+          "Reduced urine output"
+        ],
+        "aide": "Infection control: mask around others, ventilate room 10 min several times daily, hand hygiene, avoid contact with vulnerable people (infants, pregnancy, elderly, immunocompromised).",
+        "choix": [],
+        "rappel": "Information and guidance tool, not clinically validated: does not replace medical advice."
+      }
+    }
+  },
+  "U_NRS36": {
+    "patient": {
+      "fr": {
+        "texte": "Si le bébé a entre 3 et 6 mois : sa température est-elle de 39 °C ou plus ?",
+        "aide": "Mesurez au thermomètre. Si vous n'avez pas pu mesurer, répondez « Je ne sais pas ».",
+        "choix": [
+          "Oui",
+          "Non",
+          "Pas concerné (6 mois ou plus)",
+          "Je ne sais pas"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "If the baby is 3 to 6 months old: is the temperature 39 °C or more?",
+        "aide": "Measure with a thermometer. If you could not measure it, answer \"I don't know\".",
+        "choix": [
+          "Yes",
+          "No",
+          "Does not apply (6 months or older)",
+          "I don't know"
+        ],
+        "signes_reconsultation": []
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "Nourrisson 3–6 mois : T ≥ 39 °C ?",
+        "aide": "NICE NG143 : orange (MOD25 → consultation_urgente). Inconnu = oui.",
+        "choix": [
+          "Oui",
+          "Non",
+          "Non applicable (≥ 6 mois)",
+          "Inconnu"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "Infant 3–6 months: T ≥ 39 °C?",
+        "aide": "NICE NG143: amber (MOD25 → urgent consultation). Unknown = yes.",
+        "choix": [
+          "Yes",
+          "No",
+          "Not applicable (≥ 6 months)",
+          "Unknown"
+        ],
+        "signes_reconsultation": []
+      }
+    }
+  },
+  "U_R02F": {
+    "patient": {
+      "fr": {
+        "texte": "Y a-t-il de la fièvre : 38 °C ou plus, ou la sensation d’avoir de la fièvre ?",
+        "aide": "Si vous n’avez pas de thermomètre, répondez selon ce que vous ressentez, ou « Je ne sais pas ».",
+        "choix": [
+          "Oui",
+          "Non",
+          "Je ne sais pas"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "Is there a fever: 38 °C or more, or feeling feverish?",
+        "aide": "If you have no thermometer, answer from how you feel, or \"I don’t know\".",
+        "choix": [
+          "Yes",
+          "No",
+          "I don’t know"
+        ],
+        "signes_reconsultation": []
+      }
+    },
+    "soignant": {
+      "fr": {
+        "texte": "T ≥ 38 °C ou fièvre ressentie ?",
+        "aide": "Patient à risque : active les planchers fièvre (MOD01, MOD05/05B, MOD07/23, MOD08). Inconnu = oui.",
+        "choix": [
+          "Oui",
+          "Non",
+          "Inconnu"
+        ],
+        "signes_reconsultation": []
+      },
+      "en": {
+        "texte": "T ≥ 38 °C or subjective fever?",
+        "aide": "At-risk patient: triggers fever floors (MOD01, MOD05/05B, MOD07/23, MOD08). Unknown = yes.",
+        "choix": [
+          "Yes",
+          "No",
+          "Unknown"
+        ],
+        "signes_reconsultation": []
+      }
+    }
   }
 }
