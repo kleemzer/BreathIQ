@@ -4196,10 +4196,13 @@ function applyView(view, opts = {}) {
   if (opts.scrollTop) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
 }
 
-window.addEventListener('hashchange', () => {
-  const v = viewOf(location.hash);
-  if (v && v !== currentView) applyView(v, { scrollTop: VIEWS.includes(location.hash.slice(1)) });
-});
+function syncViewWithUrl() {
+  // Adresse sans ancre (retour vers l'accueil) → vue accueil
+  const v = viewOf(location.hash) || (location.hash ? null : 'accueil');
+  if (v && v !== currentView) applyView(v, { scrollTop: !location.hash || VIEWS.includes(location.hash.slice(1)) });
+}
+window.addEventListener('hashchange', syncViewWithUrl);
+window.addEventListener('popstate', syncViewWithUrl);
 document.addEventListener('DOMContentLoaded', () => applyView(viewOf(location.hash) || 'accueil'));
 
 function navTo(e, href) {
@@ -4222,6 +4225,7 @@ function navTo(e, href) {
     currentMode = 'expert';
     localStorage.setItem('biq-mode', currentMode);
     document.body.dataset.mode = currentMode;
+    applyView(currentView);
     updateModeToggleBtn();
     setTimeout(() => smoothScrollTo(href), 80);
     return false;
@@ -4243,7 +4247,7 @@ function smoothScrollTo(href) {
 
 function initSmoothScroll() {
   // Gère uniquement les ancres hors-nav (pas les liens onclick déjà traités)
-  document.querySelectorAll('a[href^="#"]:not([onclick])').forEach(link => {
+  document.querySelectorAll('a[href^="#"]:not([data-onclick])').forEach(link => {
     link.addEventListener('click', (e) => {
       const href = link.getAttribute('href');
       const target = document.querySelector(href);
@@ -4427,6 +4431,7 @@ function activateExpertMode() {
   currentMode = 'expert';
   localStorage.setItem('biq-mode', 'expert');
   document.body.dataset.mode = 'expert';
+  applyView(currentView); // mode soignant : toutes les sections redeviennent visibles
   updateModeToggleBtn();
   updateExoticPathogens();
   updateEpidemicBannerMode(true);
@@ -5683,9 +5688,9 @@ function _loadScript(src) {
 }
 // Pré-chargement des modules non critiques au premier rendu
 // Chargés en parallèle dès que le script principal s'exécute, disponibles avant les idle tasks
-const _diagReady    = _loadScript('/js/symptom-guide.min.js?v=20261026b');
-const _clinicReady  = _loadScript('/js/clinical-orientation.min.js?v=20261026b');
-const _careReady    = _loadScript('/js/care-facilities.min.js?v=20261026b');
+const _diagReady    = _loadScript('/js/symptom-guide.min.js?v=20261026c');
+const _clinicReady  = _loadScript('/js/clinical-orientation.min.js?v=20261026c');
+const _careReady    = _loadScript('/js/care-facilities.min.js?v=20261026c');
 
 // ── Init ─────────────────────────────────────────────────────
 // Wrapper robuste : fonctionne même si DOMContentLoaded est déjà passé

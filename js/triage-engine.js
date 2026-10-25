@@ -148,6 +148,8 @@
     function batchable(node) {
       if (!node || node.type !== 'question' || node.condition_activation || (node.selection || 'unique') !== 'unique') return null;
       const ch = node.choix || [];
+      // Indices valables pour answer() (qui travaille sur les choix visibles) : on exclut tout choix conditionnel
+      if (ch.some(c => c.condition_activation)) return null;
       if (ch.some(c => c.pose)) return null;
       const urgent = ch.filter(c => c.vers === 'U00');
       const rest = ch.filter(c => c.vers !== 'U00');
@@ -159,8 +161,8 @@
     // Série de questions regroupables consécutives à partir du nœud courant (au moins 2, sinon null)
     function batchAt(s) {
       const run = [];
-      let id = s.current;
-      while (true) {
+      let id = s.current, guard = 0;
+      while (guard++ < 50) {
         const n = nodes.get(id), b = batchable(n);
         if (!b) break;
         run.push(n.id);
@@ -173,6 +175,12 @@
       if (positive) {
         const id = typeof positive === 'string' ? positive : run[0];
         while (s.current !== id) answer(s, batchable(nodes.get(s.current)).no);
+        // « Je ne sais pas » : enregistré comme tel dans l'historique (même destination, U00)
+        if (positive === true) {
+          const ch = nodes.get(id).choix;
+          const unsure = ch.findIndex(c => c.vers === 'U00' && /ne sais pas/i.test(c.libelle));
+          if (unsure >= 0) return answer(s, unsure);
+        }
         return answer(s, batchable(nodes.get(id)).yes);
       }
       for (const id of run) { if (s.current !== id) break; answer(s, batchable(nodes.get(id)).no); }

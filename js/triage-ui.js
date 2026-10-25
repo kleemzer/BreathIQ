@@ -189,7 +189,7 @@
     el.querySelectorAll('.tri-choice').forEach(b => b.addEventListener('click', () => { engine.answer(session, Number(b.dataset.i)); render(); }));
     const boxes = [...el.querySelectorAll('.tri-check input')];
     const nextBtn = el.querySelector('#triMultiNext');
-    boxes.forEach(b => b.addEventListener('change', () => { nextBtn.disabled = !boxes.some(x => x.checked); }));
+    if (nextBtn) boxes.forEach(b => b.addEventListener('change', () => { nextBtn.disabled = !boxes.some(x => x.checked); }));
     nextBtn?.addEventListener('click', () => { engine.answer(session, boxes.filter(b => b.checked).map(b => Number(b.value))); render(); });
   }
 

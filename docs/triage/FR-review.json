@@ -1,0 +1,520 @@
+{
+  "i18n": [
+    {
+      "key": "nav-declare",
+      "current": "Déclarer un cas",
+      "proposed": "Signaler des cas",
+      "reason": "Cohérence : l'outil fait un signalement, pas une déclaration obligatoire (cf. do2-not-do, decl-confirm-do)."
+    },
+    {
+      "key": "x-declarer-des-cas-b143",
+      "current": "Déclarer des cas",
+      "proposed": "Signaler des cas",
+      "reason": "Même harmonisation « signalement » / « déclaration »."
+    },
+    {
+      "key": "x-declarez-des-cas-surveillez-6500",
+      "current": "Déclarez des cas, surveillez les foyers locaux et alertez les autorités sanitaires — données OMS · ECDC · SPF agrégées quotidiennement.",
+      "proposed": "Signalez des cas et surveillez les foyers locaux — données OMS · ECDC · SPF agrégées quotidiennement.",
+      "reason": "Exactitude : le signalement n'est transmis ni à l'ARS ni à SPF (decl-confirm-do) ; « alertez les autorités sanitaires » est faux, et « déclarez » prête à confusion avec la DO."
+    },
+    {
+      "key": "x-outils-cliniques-declaration-1fde",
+      "current": "Outils cliniques · Déclaration",
+      "proposed": "Outils cliniques · Signalement",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "decl-confirm-title",
+      "current": "Déclaration transmise",
+      "proposed": "Signalement transmis",
+      "reason": "Harmonisation : le corps du message parle de « signalement »."
+    },
+    {
+      "key": "decl-confirm-new",
+      "current": "+ Nouvelle déclaration",
+      "proposed": "+ Nouveau signalement",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "ob-expert-f4",
+      "current": "Déclaration de cas",
+      "proposed": "Signalement de cas",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "epi-decl-local",
+      "current": "Déclarations locales (cette semaine)",
+      "proposed": "Signalements locaux (cette semaine)",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "epi-decl-none",
+      "current": "Aucune déclaration cette semaine",
+      "proposed": "Aucun signalement cette semaine",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "x-declarations-locales-cette-semaine-680b",
+      "current": "Déclarations locales (cette semaine)",
+      "proposed": "Signalements locaux (cette semaine)",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "x-aucune-declaration-cette-semaine-1d69",
+      "current": "Aucune déclaration cette semaine",
+      "proposed": "Aucun signalement cette semaine",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "mydata-decl-label",
+      "current": "Déclarations syndromiques",
+      "proposed": "Signalements de cas",
+      "reason": "Harmonisation ; « syndromiques » est du jargon."
+    },
+    {
+      "key": "mydata-clear-decl",
+      "current": "Effacer mes déclarations",
+      "proposed": "Effacer mes signalements",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "mydata-export",
+      "current": "Exporter mes déclarations (JSON)",
+      "proposed": "Exporter mes signalements (JSON)",
+      "reason": "Harmonisation « signalement »."
+    },
+    {
+      "key": "checker-btn-text",
+      "current": "Analyser mes symptômes →",
+      "proposed": "Voir quoi faire →",
+      "reason": "« Analyser mes symptômes » suggère un diagnostic ; l'outil donne une orientation."
+    },
+    {
+      "key": "x-analyser-mes-symptomes-6943",
+      "current": "🔬 Analyser mes symptômes →",
+      "proposed": "🔍 Voir quoi faire →",
+      "reason": "Même raison : éviter l'idée d'une analyse diagnostique."
+    },
+    {
+      "key": "x-analysez-vos-symptomes-en-a414",
+      "current": "Analysez vos symptômes en détail →",
+      "proposed": "Répondez à quelques questions pour savoir quoi faire →",
+      "reason": "Même raison ; formulation plus concrète."
+    },
+    {
+      "key": "ob-patient-f1",
+      "current": "Vérifier mes symptômes",
+      "proposed": "Savoir quoi faire selon mes symptômes",
+      "reason": "« Vérifier mes symptômes » ressemble à un diagnostic."
+    },
+    {
+      "key": "symptom-checker-intro",
+      "current": "Cochez ce que vous ressentez pour identifier le risque et savoir quoi faire",
+      "proposed": "Cochez ce que vous ressentez pour savoir quoi faire.",
+      "reason": "« Identifier le risque » ressemble à un diagnostic ; point final manquant."
+    },
+    {
+      "key": "pathogens-patient-sub",
+      "current": "Cliquez sur une maladie pour voir ses symptômes et savoir quand s'isoler",
+      "proposed": "Cliquez sur une maladie pour voir ses symptômes et savoir quand s'isoler.",
+      "reason": "Point final manquant."
+    },
+    {
+      "key": "mode-toggle-patient",
+      "current": "👤 Mode Patient",
+      "proposed": "👤 Mode patient",
+      "reason": "Pas de majuscule à « patient » en français."
+    },
+    {
+      "key": "mode-toggle-expert",
+      "current": "⚙️ Mode Expert",
+      "proposed": "⚙️ Mode soignant",
+      "reason": "Cohérence : le site dit partout « espace soignant », « mode soignant »."
+    },
+    {
+      "key": "x-espace-soignant-8155",
+      "current": "Espace Soignant",
+      "proposed": "Espace soignant",
+      "reason": "Majuscule inutile ; la clé x-espace-soignant-8efa écrit « Espace soignant »."
+    },
+    {
+      "key": "nav-score",
+      "current": "Mon Score",
+      "proposed": "Mon score",
+      "reason": "Majuscule inutile."
+    },
+    {
+      "key": "about-title",
+      "current": "Confiance & Transparence",
+      "proposed": "Confiance et transparence",
+      "reason": "Majuscule inutile ; « et » plutôt que « & » dans un titre."
+    },
+    {
+      "key": "x-espace-presse-dffd",
+      "current": "Espace Presse",
+      "proposed": "Espace presse",
+      "reason": "Majuscule inutile."
+    },
+    {
+      "key": "mbn-pathogens",
+      "current": "Virus",
+      "proposed": "Maladies",
+      "reason": "Cohérence avec nav-pathogens (« Maladies »)."
+    },
+    {
+      "key": "travel-prep-body",
+      "current": "Voyez votre médecin ou un centre de vaccinations internationales plusieurs semaines avant le départ : vaccins, traitement contre le paludisme et conseils selon votre destination.",
+      "proposed": "Voyez votre médecin ou un centre de vaccinations internationales plusieurs semaines avant le départ. Vous aurez les vaccins, le traitement contre le paludisme et des conseils pour votre destination.",
+      "reason": "Phrase de 27 mots : coupée en deux phrases courtes."
+    },
+    {
+      "key": "travel-prep-return",
+      "current": "Au retour, toute fièvre dans les 3 mois doit faire consulter rapidement en signalant le voyage.",
+      "proposed": "Au retour, en cas de fièvre dans les 3 mois, voyez vite un médecin. Parlez-lui de votre voyage.",
+      "reason": "Tournure impersonnelle et passive ; deux phrases courtes."
+    },
+    {
+      "key": "x-nourrisson-lt-3-mois-d974",
+      "current": "Nourrisson < 3 mois avec fièvre ≥ 38°C",
+      "proposed": "Bébé de moins de 3 mois avec 38 °C ou plus",
+      "reason": "« Nourrisson » et symboles < ≥ difficiles ; espace avant °C ; aligné sur le questionnaire (U02)."
+    },
+    {
+      "key": "x-tout-nourrisson-de-moins-ca05",
+      "current": "Tout nourrisson de moins de 3 mois avec température ≥ 38°C doit aller aux urgences sans délai (HAS/SFMU)",
+      "proposed": "Un bébé de moins de 3 mois avec 38 °C ou plus doit aller aux urgences sans attendre (HAS/SFMU).",
+      "reason": "Même vocabulaire que le questionnaire ; espace avant °C ; point final."
+    },
+    {
+      "key": "x-petits-points-petechies-ou-1769",
+      "current": "Petits points (pétéchies) ou grandes taches (purpura) — appuyez un verre dessus : elles restent visibles",
+      "proposed": "Petits points ou grandes taches. Appuyez un verre dessus : elles restent visibles.",
+      "reason": "« Pétéchies » et « purpura » sont du jargon non nécessaire côté patient."
+    },
+    {
+      "key": "x-pas-d-essoufflement-en-6930",
+      "current": "Pas d'essoufflement en marchant — au repos",
+      "proposed": "Même au repos, pas seulement en marchant",
+      "reason": "Formulation actuelle ambiguë (peut se lire « pas d'essoufflement »)."
+    },
+    {
+      "key": "x-nez-gencives-sang-dans-daa2",
+      "current": "Nez, gencives, sang dans selles/urines",
+      "proposed": "Nez, gencives, sang dans les selles ou les urines",
+      "reason": "Barre oblique et articles manquants."
+    },
+    {
+      "key": "x-demandez-a-quelqu-un-5d57",
+      "current": "Demandez à quelqu'un près de vous ou rendez-vous directement à l'hôpital ou au centre de santé le plus proche.",
+      "proposed": "Demandez de l'aide à quelqu'un près de vous, ou allez directement à l'hôpital ou au centre de santé le plus proche.",
+      "reason": "Phrase incomplète (« Demandez à quelqu'un » quoi ?)."
+    },
+    {
+      "key": "x-voyage-afrique-centrale-est-2c82",
+      "current": "Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) < 21j",
+      "proposed": "Voyage en Afrique centrale ou de l'Est (RDC, Ouganda, Rwanda) depuis moins de 21 jours",
+      "reason": "Symbole « < 21j » illisible pour beaucoup ; espace manquante."
+    },
+    {
+      "key": "x-voyage-patagonie-amerique-du-5b18",
+      "current": "Voyage Patagonie / Amérique du Sud rurale < 6 sem.",
+      "proposed": "Voyage en Patagonie ou en Amérique du Sud rurale depuis moins de 6 semaines",
+      "reason": "Abréviation « sem. » et symbole « < »."
+    },
+    {
+      "key": "x-voyage-tropical-recent-lt-b01a",
+      "current": "Voyage tropical récent (< 21 jours)",
+      "proposed": "Voyage dans un pays chaud depuis moins de 21 jours",
+      "reason": "« Tropical » et « < » ; formulation plus simple."
+    },
+    {
+      "key": "x-forte-fievre-depuis-plus-642c",
+      "current": "Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, immunodéprimé ou diabétique",
+      "proposed": "Forte fièvre depuis plus de 3 jours · Toux avec crachats · Vous vous sentez très fatigué ou très mal · Personne âgée, enceinte, bébé, diabétique ou aux défenses immunitaires faibles",
+      "reason": "« Immunodéprimé » est du jargon (le triage dit « défenses faibles »)."
+    },
+    {
+      "key": "x-systeme-immunitaire-affaibli-cancer-b98e",
+      "current": "Système immunitaire affaibli (cancer, VIH, corticoïdes)",
+      "proposed": "Défenses immunitaires faibles (cancer, VIH, cortisone)",
+      "reason": "« Corticoïdes » : le questionnaire dit « cortisone » ; harmonisation."
+    },
+    {
+      "key": "x-les-personnes-de-65-12bb",
+      "current": "Les personnes de 65+ ans et immunodéprimées sont plus sensibles aux infections respiratoires. Le score du jour intègre ce contexte.",
+      "proposed": "Les personnes de 65 ans ou plus, ou aux défenses immunitaires faibles, sont plus sensibles aux infections respiratoires. Le score du jour intègre ce contexte.",
+      "reason": "« 65+ ans » et « immunodéprimées » : jargon et abréviation."
+    },
+    {
+      "key": "x-contact-avec-personne-ayant-1168",
+      "current": "Contact avec personne ayant des lésions cutanées / Mpox confirmé (clade Ib : transmission familiale possible)",
+      "proposed": "Contact avec une personne qui a des boutons ou des plaies sur la peau, ou un Mpox confirmé (il se transmet aussi dans la famille)",
+      "reason": "« Lésions cutanées » et « clade Ib » : jargon côté patient ; sens conservé."
+    },
+    {
+      "key": "x-morsure-de-tique-recente-1d9a",
+      "current": "Morsure de tique récente",
+      "proposed": "Piqûre de tique récente",
+      "reason": "Cohérence avec le questionnaire (« piqûre de tique »)."
+    },
+    {
+      "key": "x-contact-volailles-malades-marche-3d3a",
+      "current": "Contact volailles malades / marché animaux vivants",
+      "proposed": "Contact avec des volailles malades, ou marché d'animaux vivants",
+      "reason": "Articles manquants, style télégraphique."
+    },
+    {
+      "key": "x-signes-vitaux-amp-contexte-3f46",
+      "current": "Signes vitaux & contexte de vie",
+      "proposed": "Mesures et situation de vie",
+      "reason": "« Signes vitaux » est du jargon soignant."
+    },
+    {
+      "key": "x-signes-vitaux-si-disponibles-a649",
+      "current": "📊 Signes vitaux (si disponibles)",
+      "proposed": "📊 Mesures (si vous les avez)",
+      "reason": "Même raison."
+    },
+    {
+      "key": "x-spo2-saturometre-7995",
+      "current": "💧 SpO2 (saturomètre)",
+      "proposed": "💧 Oxygène dans le sang (oxymètre)",
+      "reason": "« SpO2 » et « saturomètre » : jargon ; le questionnaire dit « oxymètre »."
+    },
+    {
+      "key": "x-frequence-cardiaque-91ac",
+      "current": "❤️ Fréquence cardiaque",
+      "proposed": "❤️ Battements du cœur par minute",
+      "reason": "« Fréquence cardiaque » : moins clair pour le grand public ; aligné sur S05."
+    },
+    {
+      "key": "x-senior-65-ans-5312",
+      "current": "Senior ≥ 65 ans",
+      "proposed": "65 ans ou plus",
+      "reason": "Symbole ≥ ; aligné sur le questionnaire (POP00)."
+    },
+    {
+      "key": "x-moins-de-24h-55ba",
+      "current": "Moins de 24h",
+      "proposed": "Moins de 24 h",
+      "reason": "Espace entre le nombre et l'unité."
+    },
+    {
+      "key": "x-aggravation-rapide-en-moins-efd6",
+      "current": "Aggravation rapide en moins de 48h",
+      "proposed": "Aggravation rapide en moins de 48 h",
+      "reason": "Espace entre le nombre et l'unité."
+    },
+    {
+      "key": "sym-long-cough",
+      "current": "Toux depuis + de 3 semaines",
+      "proposed": "Toux depuis plus de 3 semaines",
+      "reason": "« + de » est une abréviation à éviter."
+    },
+    {
+      "key": "sym-rash",
+      "current": "Éruption cutanée ou lésions",
+      "proposed": "Boutons, plaques ou plaies sur la peau",
+      "reason": "« Éruption cutanée » et « lésions » : jargon."
+    },
+    {
+      "key": "x-boutons-eruption-cutanee-5bdb",
+      "current": "Boutons / éruption cutanée",
+      "proposed": "Boutons / taches sur la peau",
+      "reason": "« Éruption cutanée » : jargon ; cohérence avec le triage (« Peau : rougeur, boutons, taches »)."
+    },
+    {
+      "key": "sym-confusion",
+      "current": "Confusion ou somnolence",
+      "proposed": "Confusion ou envie de dormir inhabituelle",
+      "reason": "« Somnolence » : mot difficile."
+    },
+    {
+      "key": "sym-sweats",
+      "current": "Sueurs nocturnes importantes",
+      "proposed": "Fortes sueurs la nuit",
+      "reason": "« Nocturnes » : mot plus difficile ; aligné sur RR_48H_TOUX."
+    },
+    {
+      "key": "sym-lymph",
+      "current": "Ganglions gonflés",
+      "proposed": "Ganglions gonflés (petites boules dans le cou, sous les bras ou à l'aine)",
+      "reason": "Terme médical non expliqué."
+    },
+    {
+      "key": "x-grippe-covid-rsv-26-91a7",
+      "current": "Grippe · COVID · RSV · tous les pathogènes suivis",
+      "proposed": "Grippe · COVID · VRS (bronchiolite) · toutes les maladies suivies",
+      "reason": "« RSV » est le sigle anglais ; le site dit « VRS » ailleurs ; « pathogènes » est du jargon."
+    },
+    {
+      "key": "x-gratuit-sans-compte-zero-f8ab",
+      "current": "Gratuit, sans compte, zéro tracking.",
+      "proposed": "Gratuit, sans compte, aucun pistage publicitaire.",
+      "reason": "Anglicisme « tracking »."
+    },
+    {
+      "key": "ob-subtitle",
+      "current": "Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.",
+      "proposed": "Outil d'information sur les épidémies dans le monde — gratuit, sans inscription, sans publicité.",
+      "reason": "« Information épidémique mondiale » : tournure maladroite."
+    },
+    {
+      "key": "meta-og-description",
+      "current": "Outil de veille épidémiologique et de qualité de l'air — données OMS, ECDC et Santé Publique France mises à jour quotidiennement, délai des sources indiqué. Créé par Dr. Clément MÉDEAU, médecin généraliste. Gratuit, sans inscription.",
+      "proposed": "Outil de veille épidémiologique et de qualité de l'air — données OMS, ECDC et Santé publique France mises à jour quotidiennement, délai des sources indiqué. Créé par le Dr Clément Médeau, médecin généraliste. Gratuit, sans inscription.",
+      "reason": "Graphie officielle « Santé publique France » ; « Dr » sans point en français ; nom en casse normale comme ailleurs."
+    },
+    {
+      "key": "x-qualite-de-l-air-9899",
+      "current": "Qualité de l'air, signaux viraux, pollens — agrégés depuis OMS, ECDC et Santé Publique France.",
+      "proposed": "Qualité de l'air, signaux viraux, pollens — agrégés depuis OMS, ECDC et Santé publique France.",
+      "reason": "Graphie officielle « Santé publique France »."
+    },
+    {
+      "key": "x-sources-oms-ecdc-sante-44a6",
+      "current": "Sources : OMS · ECDC · Santé Publique France · Open-Meteo · données publiques",
+      "proposed": "Sources : OMS · ECDC · Santé publique France · Open-Meteo · données publiques",
+      "reason": "Graphie officielle « Santé publique France »."
+    }
+  ],
+  "triage": [
+    {
+      "node": "U02",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Bébé de moins de 3 mois à 38 °C ou plus : il doit être vu vite. Un bébé trop froid (moins de 36 °C) est aussi un signe d'alerte.",
+      "proposed": "Moins de 3 mois et 38 °C ou plus : le bébé doit être vu vite. Un bébé trop froid (moins de 36 °C) est aussi un signe d'alerte.",
+      "reason": "Première phrase de 17 mots, raccourcie."
+    },
+    {
+      "node": "U14",
+      "audience": "patient",
+      "field": "texte",
+      "current": "La personne n'a-t-elle pas fait pipi depuis plus de 12 heures ?",
+      "proposed": "Cela fait-il plus de 12 heures que la personne n'a pas fait pipi ?",
+      "reason": "Double négation interrogative : « Oui » / « Non » deviennent ambigus."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[1]",
+      "current": "Cancer ou cancer du sang soigné en ce moment, sans traitement par perfusion ces 6 dernières semaines",
+      "proposed": "Cancer (ou cancer du sang) soigné en ce moment, sans perfusion ces 6 dernières semaines",
+      "reason": "17 mots, raccourci sans changer le sens."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[5]",
+      "current": "Traitement qui baisse les défenses du corps (pour une maladie des articulations, de l'intestin, de la peau ou des nerfs)",
+      "proposed": "Traitement qui baisse les défenses (maladie des articulations, de l'intestin, de la peau ou des nerfs)",
+      "reason": "20 mots ; « du corps » superflu."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[10]",
+      "current": "Diabète avec grande soif, beaucoup de pipi, vomissements, ou sucre ou cétones élevés à l'appareil",
+      "proposed": "Diabète avec grande soif, beaucoup de pipi, vomissements, ou sucre ou acétone élevés à l'appareil",
+      "reason": "« Cétones » : terme non expliqué ; « acétone » est le mot utilisé par les patients diabétiques."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[17]",
+      "current": "Ces 6 dernières semaines : contact avec des rongeurs ou leurs crottes (cave, grange, chalet fermé), ou croisière avec une alerte santé",
+      "proposed": "Ces 6 dernières semaines : contact avec des rongeurs ou leurs crottes, ou croisière avec une alerte santé",
+      "reason": "22 mots ; exemples entre parenthèses retirés pour raccourcir (sens inchangé)."
+    },
+    {
+      "node": "T00",
+      "audience": "patient",
+      "field": "choix[5]",
+      "current": "Brûlures en faisant pipi, envie d'uriner souvent",
+      "proposed": "Brûlures en faisant pipi, envie de faire pipi souvent",
+      "reason": "Cohérence lexicale : le questionnaire dit « faire pipi » partout."
+    },
+    {
+      "node": "T00",
+      "audience": "patient",
+      "field": "choix[10]",
+      "current": "Contact avec un malade d'une maladie avec fièvre et saignements (comme Ebola), ou séjour où une telle épidémie est annoncée",
+      "proposed": "Contact avec un malade d'une fièvre avec saignements (comme Ebola), ou séjour dans une zone touchée",
+      "reason": "20 mots et tournure lourde (« une telle épidémie est annoncée »)."
+    },
+    {
+      "node": "D01",
+      "audience": "patient",
+      "field": "choix[2]",
+      "current": "Vomit tout ce qu'il boit depuis plus de 6 heures (4 heures avant 2 ans)",
+      "proposed": "Vomit tout ce qu'il boit depuis plus de 6 heures (4 heures pour un enfant de moins de 2 ans)",
+      "reason": "« Avant 2 ans » est ambigu ; même tournure que les autres choix."
+    },
+    {
+      "node": "O02",
+      "audience": "patient",
+      "field": "choix[0]",
+      "current": "Autour de l'œil, avec la vue qui baisse, l'œil qui ne bouge plus, ou mal en bougeant l'œil",
+      "proposed": "Autour de l'œil, avec la vue qui baisse, l'œil bloqué, ou mal quand l'œil bouge",
+      "reason": "18 mots ; « mal en bougeant l'œil » est maladroit."
+    },
+    {
+      "node": "S03A",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Si vous avez un appareil : le premier chiffre de la tension est-il de 100 mmHg ou moins ? Sinon : gros frissons, peau pâle ou grise, mains et pieds froids ?",
+      "proposed": "Avec un appareil : la tension (premier chiffre) est-elle de 100 mmHg ou moins ? Sinon : gros frissons, peau pâle ou grise, mains et pieds froids ?",
+      "reason": "Première phrase de 19 mots, raccourcie."
+    },
+    {
+      "node": "H01",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Dans les 21 derniers jours : contact avec une personne malade ou morte d'une fièvre avec saignements ? Ou avec son sang ou ses liquides ? Ou séjour où une telle épidémie est annoncée ?",
+      "proposed": "Ces 21 derniers jours : contact avec un malade, ou un mort, d'une fièvre avec saignements ? Ou avec son sang ou ses liquides ? Ou séjour où une telle épidémie est annoncée ?",
+      "reason": "Première phrase de 18 mots, raccourcie."
+    },
+    {
+      "node": "M06",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Depuis la piqûre : fièvre, visage qui ne bouge plus d'un côté, ou douleurs aux articulations ?",
+      "proposed": "Depuis la piqûre : fièvre, moitié du visage qui ne bouge plus, ou mal aux articulations ?",
+      "reason": "17 mots, raccourci."
+    },
+    {
+      "node": "RF_6H",
+      "audience": "patient",
+      "field": "signes[4]",
+      "current": "Pas d'urine depuis plus de 12 heures.",
+      "proposed": "Pas de pipi depuis plus de 12 heures.",
+      "reason": "Cohérence lexicale avec U14 (« faire pipi »)."
+    },
+    {
+      "node": "I03",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Urètre : petit trou au bout du pénis, par où sort l'urine.",
+      "proposed": "Par exemple : pus, écoulement, brûlures, plaie ou boutons.",
+      "reason": "L'aide explique « urètre », mot absent du texte et des choix : inutile et déroutant."
+    },
+    {
+      "node": "RM_6H_RAGE",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Risque possible de rage (maladie grave transmise par les animaux). Allez aujourd'hui aux urgences ou dans un centre antirabique (centre spécialisé dans la rage). Voyez un médecin dans les 6 heures. Allez chez un médecin ou aux urgences. Vous pouvez aussi contacter {GARDE}. Si aucun médecin n'est disponible, appelez le {URGENCE}.",
+      "proposed": "Risque possible de rage (maladie grave transmise par les animaux). Allez dans les 6 heures aux urgences ou dans un centre antirabique (centre spécialisé contre la rage). Vous pouvez aussi contacter {GARDE}. Si aucun médecin n'est disponible, appelez le {URGENCE}.",
+      "reason": "Doublon contradictoire (« aujourd'hui » puis « dans les 6 heures », deux fois « allez aux urgences ») ; délai 6 h et placeholders conservés."
+    },
+    {
+      "node": "RV_S",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Pas de symptôme au retour. Surveillez la température pendant 3 mois, à cause du paludisme. En cas de fièvre, voyez un médecin et parlez du voyage. Vous pouvez rester à la maison et surveiller. Reposez-vous et buvez souvent. Prenez la température le matin et le soir. Voyez un médecin si cela s'aggrave ou ne s'améliore pas.",
+      "proposed": "Pas de symptôme au retour. Surveillez la température pendant 3 mois, à cause du paludisme. En cas de fièvre, voyez un médecin et parlez du voyage. Vous pouvez rester à la maison et surveiller. Prenez la température le matin et le soir. Voyez un médecin si cela s'aggrave ou ne s'améliore pas.",
+      "reason": "« Reposez-vous et buvez souvent » n'a pas de sens pour une personne sans symptôme."
+    }
+  ]
+}
