@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-10-21T12:35:24.658Z",
-  "fetchDate": "2026-10-21",
+  "generatedAt": "2026-10-24T11:43:05.606Z",
+  "fetchDate": "2026-10-24",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo, Kenya and Nigeria",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON622",
+      "donId": "2026-DON622",
+      "pubDate": "2026-10",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Middle East respiratory syndrome coronavirus - Kingdom of Saudi Arabia",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/middle-east-respiratory-syndrome-coronavirus---kingdom-of-saudi-arabia",
@@ -30,8 +38,8 @@
     },
     {
       "title": "Ebola disease caused by Bundibugyo virus - Democratic Republic of the Congo",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON618",
-      "donId": "2026-DON618",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON621",
+      "donId": "2026-DON621",
       "pubDate": "2026-09",
       "riskLevel": "critical",
       "source": "WHO OData API"
@@ -152,14 +160,6 @@
       "title": "Ebola disease caused by Bundibugyo virus – Democratic Republic of the Congo",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON603",
       "donId": "2026-DON603",
-      "pubDate": "2026-05",
-      "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON602",
-      "donId": "2026-DON602",
       "pubDate": "2026-05",
       "riskLevel": "critical",
       "source": "WHO OData API"
