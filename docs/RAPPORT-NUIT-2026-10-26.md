@@ -35,7 +35,7 @@ Après chaque lot : `npm run check:js`, `npm test` (questionnaire : 90 vignettes
    - classement FHCC dans la liste des maladies à déclaration obligatoire.
 6. **Mentions légales** : SIRET et adresse professionnelle.
 7. **Pro Santé Connect** : client_id et secret quand l'ANS aura instruit DataPass D99412 (nécessite aussi le KV `DECL`).
-8. **Mise en production** : `git checkout main && git merge --ff-only fix/audit-lancement && git push origin main`. Avant cela, il faut fusionner `main` dans la branche : les robots de données y ont ajouté des commits.
+8. **Mise en production** : `git checkout main && git merge --ff-only fix/audit-lancement && git push origin main`. `main` a été intégré dans la branche le 26/10 ; si les robots y ont ajouté des commits depuis, le refusionner avant (garder la version de la branche pour `pathogens.json` et `pheic-alerts.json`).
 
 ## Non fait, volontairement
 
