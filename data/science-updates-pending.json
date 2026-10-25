@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-24T10:44:13.556Z",
+  "generatedAt": "2026-10-25T11:09:47.290Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 4,
+    "totalUpdates": 5,
     "warnings": 0,
-    "newLiterature": 4,
+    "newLiterature": 5,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-24",
+      "detectedAt": "2026-10-25",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "EBOLA",
+      "pathogenName": "Fièvre Ebola — Souche Bundibugyo (BDBV)",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour EBOLA",
+      "articles": [
+        {
+          "pmid": "42341299",
+          "title": "Bundibugyo Virus Disease in 2026 - Clinical and Public Health Responses.",
+          "authors": "Sullivan NJ",
+          "year": "2026",
+          "journal": "N Engl J Med",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42341299/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-10-25",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-24",
+      "detectedAt": "2026-10-25",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-24",
+      "detectedAt": "2026-10-25",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +95,7 @@
       "pathogenId": "LEPTOSPIROSIS",
       "pathogenName": "Leptospirose",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour LEPTOSPIROSIS",
       "articles": [
         {
           "pmid": "42009020",
@@ -84,18 +104,10 @@
           "year": "2026",
           "journal": "Lancet Infect Dis",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42009020/"
-        },
-        {
-          "pmid": "41489657",
-          "title": "Leptospira and Leptospirosis: A Review of Species Classifications, Genomes, Morphological Structures, Antimicrobial Resistances, Transmissions, and Clinical Manifestations.",
-          "authors": "Bilung LM, Tahar AS, Pui CF",
-          "year": "2026",
-          "journal": "Curr Microbiol",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41489657/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-24",
+      "detectedAt": "2026-10-25",
       "humanValidationRequired": true
     }
   ]
