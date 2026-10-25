@@ -5688,9 +5688,9 @@ function _loadScript(src) {
 }
 // Pré-chargement des modules non critiques au premier rendu
 // Chargés en parallèle dès que le script principal s'exécute, disponibles avant les idle tasks
-const _diagReady    = _loadScript('/js/symptom-guide.min.js?v=20261026d');
-const _clinicReady  = _loadScript('/js/clinical-orientation.min.js?v=20261026d');
-const _careReady    = _loadScript('/js/care-facilities.min.js?v=20261026d');
+const _diagReady    = _loadScript('/js/symptom-guide.min.js?v=20261026e');
+const _clinicReady  = _loadScript('/js/clinical-orientation.min.js?v=20261026e');
+const _careReady    = _loadScript('/js/care-facilities.min.js?v=20261026e');
 
 // ── Init ─────────────────────────────────────────────────────
 // Wrapper robuste : fonctionne même si DOMContentLoaded est déjà passé
