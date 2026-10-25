@@ -177,7 +177,7 @@ async function loadStocksJson() {
   }
   _stocksJsonLoading = true;
   try {
-    const r = await fetch('/data/stocks.json?_=' + Date.now());
+    const r = await fetch('/data/stocks.json');
     if (!r.ok) throw new Error('HTTP ' + r.status);
     const json = await r.json();
     _stocksJsonData = (json.regions || []).map(r => ({

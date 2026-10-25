@@ -6,10 +6,10 @@
 // © 2026 Dr. Clément MÉDEAU
 // ============================================================
 
-const CACHE_VERSION = 'biq-v60';
+const CACHE_VERSION = 'biq-v61';
 // Doit suivre le ?v= de index.html : les URLs .min.* sans ?v= sont figées un an par le CDN (immutable),
 // le SW ne doit donc jamais les demander au réseau sans version.
-const ASSET_VERSION = '20261026a';
+const ASSET_VERSION = '20261026b';
 const CACHE_STATIC  = `${CACHE_VERSION}-static`;
 const CACHE_DATA    = `${CACHE_VERSION}-data`;
 
@@ -27,18 +27,15 @@ const STATIC_ASSETS = [
   '/js/triage-engine.min.js',
   '/js/triage-ui.min.js',
   '/js/actions.min.js',
+  '/js/psc-auth.js',
   '/favicon.svg',
   '/manifest.json',
-  '/assets/og-image.png',
   '/assets/icon-192.png',
-  '/assets/icon-512.png',
   '/assets/dr-medeau-64.webp',
   '/assets/dr-medeau.webp',
-  '/assets/dr-medeau.jpg',
   '/assets/inter-variable.woff2',
   '/404.html',
   '/offline.html',
-  '/bilan-epidemique.html',
 ];
 
 // Données épidémiques : mises en cache mais réseau prioritaire

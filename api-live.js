@@ -531,6 +531,7 @@ const BIQ_LIVE = (() => {
         .catch(() => {});
     });
     refreshTimer = setInterval(() => {
+      if (document.hidden) return; // onglet caché : pas de rafraîchissement (données et batterie)
       fetchAll().then(() => {
         navigator.permissions?.query({ name: 'geolocation' })
           .then(p => { if (p.state === 'granted') fetchWithGeolocation(); })

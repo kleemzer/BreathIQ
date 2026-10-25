@@ -187,15 +187,12 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261026a" media="print" data-onload="BIQ_ACT.setMediaAll(this)">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261026a"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261026b" media="print" data-onload="BIQ_ACT.setMediaAll(this)">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261026b"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
   <link rel="dns-prefetch" href="https://tile.openstreetmap.org">
-  <link rel="dns-prefetch" href="https://api.openaq.org">
-  <link rel="dns-prefetch" href="https://data.santepubliquefrance.fr">
-  <link rel="dns-prefetch" href="https://eutils.ncbi.nlm.nih.gov">
   
 </head>
 <body id="mainBody">
@@ -1535,10 +1532,10 @@
         </div>
 
         <div class="decl-actions">
-          <button type="submit" class="decl-submit-btn" id="declSubmitBtn" data-i18n="decl-submit">📤 Déclarer — Anonymement</button>
+          <button type="submit" class="decl-submit-btn" id="declSubmitBtn" data-i18n="decl-submit">📤 Envoyer le signalement (pseudonymisé)</button>
           <span class="decl-privacy-note">
             <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <span data-i18n="decl-privacy-note">Aucune donnée personnelle collectée — uniquement syndrome, effectif, semaine, région approximative</span>
+            <span data-i18n="decl-privacy-note">Aucune donnée sur le patient : uniquement syndrome, effectif, semaine et région</span>
           </span>
         </div>
       </form>
@@ -2266,12 +2263,12 @@
 
 <script src="/js/pages/index-d9872349.js"></script>
 <script src="/js/pages/index-14a1ff48.js"></script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261026a" defer></script>
-<script src="api-live.min.js?v=20261026a" defer></script>
-<script src="script.min.js?v=20261026a" defer></script>
-<script src="js/triage-engine.min.js?v=20261026a" defer></script>
-<script src="js/triage-ui.min.js?v=20261026a" defer></script>
+<script src="js/psc-auth.js?v=20261026b" defer></script>
+<script src="api-live.min.js?v=20261026b" defer></script>
+<script src="script.min.js?v=20261026b" defer></script>
+<script src="js/triage-engine.min.js?v=20261026b" defer></script>
+<script src="js/triage-ui.min.js?v=20261026b" defer></script>
 <script src="/js/pages/index-9192ba93.js"></script>
-<script src="/js/actions.min.js?v=20261026a" defer></script>
+<script src="/js/actions.min.js?v=20261026b" defer></script>
 </body>
 </html>
