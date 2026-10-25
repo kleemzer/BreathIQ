@@ -1,0 +1,596 @@
+{
+  "i18n": [
+    {
+      "key": "decl-submit",
+      "current": "📤 Report — Anonymously",
+      "proposed": "📤 Send report (pseudonymised)",
+      "reason": "Accuracy: the consent text says reports are linked to a pseudonym of the PSC account, so \"Anonymously\" is untrue."
+    },
+    {
+      "key": "decl-privacy-note",
+      "current": "No personal data collected — only syndrome, count, week, approximate region",
+      "proposed": "No patient data collected: only syndrome, count, week and approximate region",
+      "reason": "Accuracy: contradicts decl-consent-text (a pseudonym of the professional is kept). Scope the claim to patient data."
+    },
+    {
+      "key": "ai-message-default",
+      "current": "Select a region to get a personalized analysis.",
+      "proposed": "Select a region to get a personalised analysis.",
+      "reason": "UK spelling (-ise)."
+    },
+    {
+      "key": "prot-ffp3-li2",
+      "current": "High aerosolization risk interventions",
+      "proposed": "Procedures with a high risk of aerosolisation",
+      "reason": "UK spelling (-isation); \"interventions\" is a calque."
+    },
+    {
+      "key": "sym-vomit",
+      "current": "Vomiting or diarrhea",
+      "proposed": "Vomiting or diarrhoea",
+      "reason": "UK spelling; the rest of the site uses \"diarrhoea\"."
+    },
+    {
+      "key": "sym-wet-cough",
+      "current": "Cough with sputum",
+      "proposed": "Cough with phlegm",
+      "reason": "\"Sputum\" is above B1; triage texts use \"phlegm\"."
+    },
+    {
+      "key": "x-forte-fievre-depuis-plus-642c",
+      "current": "High fever for more than 3 days · Cough with sputum · You feel very tired or very unwell · Elderly, pregnant, infant, immunocompromised or diabetic",
+      "proposed": "High fever for more than 3 days · Cough with phlegm · Feeling very tired or very unwell · Older person, pregnancy, baby, weak immune system or diabetes",
+      "reason": "Jargon (sputum, immunocompromised) above B1; noun list did not match the \"you\" subject."
+    },
+    {
+      "key": "x-assez-malade-a799",
+      "current": "Quite ill",
+      "proposed": "Moderately ill",
+      "reason": "In UK English \"quite ill\" can mean \"slightly ill\"; ambiguous for a triage tier."
+    },
+    {
+      "key": "x-vous-etes-confus-vous-feae",
+      "current": "You are confused, you no longer recognise people",
+      "proposed": "You are confused or no longer recognise people",
+      "reason": "Comma splice; smoother."
+    },
+    {
+      "key": "x-ne-vous-deplacez-pas-a229",
+      "current": "· Do not travel alone",
+      "proposed": "· Do not go there alone",
+      "reason": "\"Travel\" suggests a trip; the French means do not make your own way there alone."
+    },
+    {
+      "key": "x-si-possible-appelez-avant-fb7f",
+      "current": "If possible, call before travelling",
+      "proposed": "If possible, phone before you go",
+      "reason": "\"Before travelling\" is a calque of \"avant de vous déplacer\"."
+    },
+    {
+      "key": "x-partager-a-un-proche-913b",
+      "current": "Share with a relative",
+      "proposed": "Share with someone close to you",
+      "reason": "\"Proche\" is wider than \"relative\" (friends, partner)."
+    },
+    {
+      "key": "x-il-ne-constitue-pas-1843",
+      "current": "— it is not a medical diagnosis and does not predict your individual risk. If symptoms persist, consult a healthcare professional.",
+      "proposed": "— it is not a medical diagnosis and does not predict your own risk. If symptoms do not go away, see a doctor or nurse.",
+      "reason": "\"Consult a healthcare professional\" and \"persist\" are above B1."
+    },
+    {
+      "key": "x-ces-alertes-concernent-des-4b3d",
+      "current": "These alerts concern people who have travelled to specific epidemic areas.",
+      "proposed": "These alerts apply to people who have travelled to certain outbreak areas.",
+      "reason": "\"Concern\" is a calque; \"specific epidemic areas\" is unnatural."
+    },
+    {
+      "key": "x-continuez-vers-le-questionnaire-6617",
+      "current": "Continue to the symptom questionnaire if you have any doubts.",
+      "proposed": "If you are unsure, continue to the symptom questions.",
+      "reason": "\"If you have any doubts\" is a calque; plainer."
+    },
+    {
+      "key": "x-pas-d-essoufflement-en-6930",
+      "current": "Not breathlessness on walking — at rest",
+      "proposed": "At rest, not just out of breath when walking",
+      "reason": "Ungrammatical fragment."
+    },
+    {
+      "key": "x-ne-sait-plus-ou-0f68",
+      "current": "Does not know where they are, answers incoherently",
+      "proposed": "Does not know where they are, or gives answers that make no sense",
+      "reason": "\"Incoherently\" above B1; matches triage wording."
+    },
+    {
+      "key": "x-signe-de-manque-d-72e9",
+      "current": "Sign of lack of oxygen",
+      "proposed": "A sign of low oxygen",
+      "reason": "Missing article; \"lack of oxygen\" is a calque."
+    },
+    {
+      "key": "x-impossible-de-toucher-le-2de1",
+      "current": "Unable to touch the chin to the chest",
+      "proposed": "Cannot bend the head to touch the chin to the chest",
+      "reason": "Original reads as if touching the chin with a hand."
+    },
+    {
+      "key": "x-douleurs-ventre-diarrhee-df6c",
+      "current": "Stomach pain / diarrhoea",
+      "proposed": "Belly pain / diarrhoea",
+      "reason": "Terminology: triage uses \"belly\"; \"stomach\" is anatomically narrower."
+    },
+    {
+      "key": "x-senior-65-ans-5312",
+      "current": "Senior ≥ 65 years",
+      "proposed": "65 or older",
+      "reason": "\"Senior\" is US-flavoured; triage uses \"65 years or older\"."
+    },
+    {
+      "key": "x-depuis-quand-db96",
+      "current": "📅 Since when?",
+      "proposed": "📅 How long have you had it?",
+      "reason": "\"Since when?\" is a calque of \"Depuis quand ?\"."
+    },
+    {
+      "key": "x-qui-est-concerne-cfdd",
+      "current": "👤 Who is affected?",
+      "proposed": "👤 Who is ill?",
+      "reason": "\"Who is affected?\" is vague; plainer."
+    },
+    {
+      "key": "x-moins-de-24h-55ba",
+      "current": "Less than 24h",
+      "proposed": "Less than 24 hours",
+      "reason": "Write units out on the patient side; \"24h\" also lacks a space."
+    },
+    {
+      "key": "x-aggravation-rapide-en-moins-efd6",
+      "current": "Rapid worsening in under 48h",
+      "proposed": "Getting worse quickly, in under 48 hours",
+      "reason": "Plainer; units written out."
+    },
+    {
+      "key": "x-choisissez-celui-qui-vous-d214",
+      "current": "Choose the one that bothers you most. The others will be offered next.",
+      "proposed": "Choose the one that bothers you most. You can add others in the next step.",
+      "reason": "\"Will be offered next\" is a calque."
+    },
+    {
+      "key": "x-spo2-saturometre-7995",
+      "current": "💧 SpO2 (pulse oximeter)",
+      "proposed": "💧 Oxygen level (pulse oximeter)",
+      "reason": "\"SpO2\" is jargon on the patient form."
+    },
+    {
+      "key": "x-signes-vitaux-amp-contexte-3f46",
+      "current": "Vital signs & living context",
+      "proposed": "Body measurements & your situation",
+      "reason": "\"Vital signs & living context\" is jargon or a calque."
+    },
+    {
+      "key": "x-contexte-de-vie-amp-29c7",
+      "current": "✈️ Living context & exposures",
+      "proposed": "✈️ Your situation & exposures",
+      "reason": "\"Living context\" is a calque of \"contexte de vie\"."
+    },
+    {
+      "key": "x-eau-non-traitee-puits-42c9",
+      "current": "Recently drank untreated water / well / river water",
+      "proposed": "Recently drank untreated water (well, river)",
+      "reason": "Slash list reads badly."
+    },
+    {
+      "key": "x-systeme-immunitaire-affaibli-cancer-b98e",
+      "current": "Weakened immune system (cancer, HIV, corticosteroids)",
+      "proposed": "Weakened immune system (cancer, HIV, steroid treatment)",
+      "reason": "\"Corticosteroids\" above B1; triage uses \"steroids\"."
+    },
+    {
+      "key": "symptom-checker-intro",
+      "current": "Check what you feel to identify the risk and know what to do",
+      "proposed": "Tick what you feel. We will tell you how urgent it is and what to do.",
+      "reason": "\"Identify the risk\" sounds like a diagnosis; plainer, B1."
+    },
+    {
+      "key": "travel-prep-return",
+      "current": "After you return, any fever within 3 months needs a prompt medical visit — mention your trip.",
+      "proposed": "After you return, if you get a fever within 3 months, see a doctor quickly and mention your trip.",
+      "reason": "\"Needs a prompt medical visit\" is unnatural."
+    },
+    {
+      "key": "pathogens-patient-sub",
+      "current": "Click on a disease to see its symptoms and when to isolate",
+      "proposed": "Tap a disease to see its symptoms and when to stay away from others",
+      "reason": "\"Click on\" excludes mobile; \"isolate\" is clinical."
+    },
+    {
+      "key": "care-no-results",
+      "current": "No healthcare facilities found within 10 km.",
+      "proposed": "No doctors or hospitals found within 10 km.",
+      "reason": "\"Healthcare facilities\" is bureaucratic."
+    },
+    {
+      "key": "geo-modal-refuse",
+      "current": "✕ Refuse",
+      "proposed": "✕ No thanks",
+      "reason": "\"Refuse\" is abrupt; standard UI wording."
+    },
+    {
+      "key": "geo-modal-accept",
+      "current": "✓ Accept",
+      "proposed": "✓ Allow",
+      "reason": "Standard wording for a location permission."
+    },
+    {
+      "key": "ob-patient-title",
+      "current": "I am a patient / citizen",
+      "proposed": "I am a member of the public",
+      "reason": "\"Patient / citizen\" is a calque of \"patient / citoyen\"."
+    },
+    {
+      "key": "ob-expert-cta",
+      "current": "Healthcare access →",
+      "proposed": "Professional area →",
+      "reason": "\"Healthcare access\" is unclear; align with \"Clinician area\"."
+    },
+    {
+      "key": "expert-toggle-label",
+      "current": "Health professional? Go to the professional space",
+      "proposed": "Health professional? Go to the professional area",
+      "reason": "\"Space\" is a calque of \"espace\"; the site also uses \"Clinician area\"."
+    },
+    {
+      "key": "x-mon-parent-age-est-efca",
+      "current": "Is my elderly parent in an exposed context?",
+      "proposed": "Is it a risky time for my elderly parent?",
+      "reason": "\"In an exposed context\" is a calque."
+    },
+    {
+      "key": "x-les-personnes-de-65-12bb",
+      "current": "People aged 65+ and immunocompromised people are more susceptible to respiratory infections. Today's score takes this context into account.",
+      "proposed": "People aged 65 and over and people with a weak immune system catch chest infections more easily. Today's score takes this into account.",
+      "reason": "Jargon (immunocompromised, susceptible); B1."
+    },
+    {
+      "key": "x-des-reperes-fondes-sur-634c",
+      "current": "Guidance based on today's data. For information only, without alarmism.",
+      "proposed": "Guidance based on today's data. For information only, no scaremongering.",
+      "reason": "\"Without alarmism\" is a calque."
+    },
+    {
+      "key": "x-des-informations-generales-adaptees-7881",
+      "current": "General information adapted to today's context. No diagnosis, no alarmism.",
+      "proposed": "General information for today's situation. No diagnosis, no scaremongering.",
+      "reason": "\"Alarmism\" is a calque."
+    },
+    {
+      "key": "x-cree-par-un-medecin-658b",
+      "current": "🩺 Built by a physician",
+      "proposed": "🩺 Created by a doctor",
+      "reason": "\"Physician\" is US register; UK patients say doctor."
+    },
+    {
+      "key": "author-role",
+      "current": "Medical Doctor · La Rochelle, France",
+      "proposed": "General practitioner · La Rochelle, France",
+      "reason": "Inconsistent: \"Medical Doctor\", \"Doctor of Medicine\", \"General practitioner\" all used for the author."
+    },
+    {
+      "key": "x-docteur-en-medecine-la-bb7f",
+      "current": "Doctor of Medicine · La Rochelle, France",
+      "proposed": "General practitioner · La Rochelle, France",
+      "reason": "Same inconsistency as author-role."
+    },
+    {
+      "key": "meta-og-description",
+      "current": "Epidemiological and air-quality monitoring tool — WHO, ECDC and Santé publique France data updated daily, source delay shown. Created by Dr Clément MÉDEAU, general practitioner. Free, no sign-up.",
+      "proposed": "Epidemiological and air-quality monitoring tool — WHO, ECDC and Santé publique France data updated daily, source delay shown. Created by Dr Clément Médeau, general practitioner. Free, no sign-up.",
+      "reason": "Surname in capitals (\"MÉDEAU\") is a French convention; elsewhere written \"Médeau\"."
+    },
+    {
+      "key": "x-medecin-generaliste-installe-a-f415",
+      "current": "A general practitioner based in La Rochelle, I created BreathIQ out of a public-health conviction: too many patients consult too late — or too early — for lack of a clear reference point between their symptoms and global epidemic alerts. BreathIQ is my answer: free, sourced, ad-free.",
+      "proposed": "I am a GP based in La Rochelle. I created BreathIQ because of a belief in public health: too many patients see a doctor too late, or too early, because nothing clearly links their symptoms to global epidemic alerts. BreathIQ is my answer: free, sourced and ad-free.",
+      "reason": "Dangling modifier; \"consult\" and \"for lack of a clear reference point\" are calques."
+    },
+    {
+      "key": "epi-decl-local",
+      "current": "Local declarations (this week)",
+      "proposed": "Local reports (this week)",
+      "reason": "Terminology: \"declarations\" is a calque, and the same panel elsewhere says \"Local reports\"."
+    },
+    {
+      "key": "epi-decl-none",
+      "current": "No declarations this week",
+      "proposed": "No reports this week",
+      "reason": "Same terminology fix."
+    },
+    {
+      "key": "decl-confirm-new",
+      "current": "+ New declaration",
+      "proposed": "+ New report",
+      "reason": "Same terminology fix."
+    },
+    {
+      "key": "mydata-decl-label",
+      "current": "Syndromic declarations",
+      "proposed": "Case reports",
+      "reason": "Same terminology fix."
+    }
+  ],
+  "triage": [
+    {
+      "node": "ALL patient result nodes (U00, R*_6H/24H/48H/S, RH_ISOL suffix, R_NRS_2H…)",
+      "audience": "patient",
+      "field": "aide",
+      "current": "To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from fragile people: babies, pregnant women, older people, people with weak defences.",
+      "proposed": "To protect others: wear a mask near other people. Open a window for 10 minutes, several times a day. Wash your hands often. Stay away from people at higher risk: babies, pregnant women, older people and people with a weak immune system.",
+      "reason": "\"Fragile people\" and \"weak defences\" are calques of \"personnes fragiles\" and \"défenses affaiblies\". \"Air the room\" is fine in UK English but less plain. This shared string appears in every result node."
+    },
+    {
+      "node": "ALL *_S patient nodes (RF_S, RG_S, RR_S, RD_S, RO_S, RN_S, RV_S)",
+      "audience": "patient",
+      "field": "texte",
+      "current": "… You can stay at home and keep watch. …",
+      "proposed": "… You can stay at home and watch how things go. …",
+      "reason": "\"Keep watch\" sounds like guard duty; this is the shared self-care sentence."
+    },
+    {
+      "node": "ALL soignant *_S nodes",
+      "audience": "soignant",
+      "field": "texte",
+      "current": "… Re-consult if worsening or no improvement.",
+      "proposed": "… Seek medical review if worsening or no improvement.",
+      "reason": "\"Re-consult\" is a calque of \"reconsulter\"."
+    },
+    {
+      "node": "U_RF, U_RG, U_RR, U_RD, U_RC, U_RU, U_RO, U_RN, U_RS, U_RV, U_RH, U_RI, U_RM",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Hard breathing. Confusion. Red or purple spots that do not fade under a glass. Stiff neck. Fits (jerking of the body). Fainting. Purple blotchy skin, or grey colour. No urine for 12 hours. Heavy bleeding. Chest pain. A child who is hard to wake. On dark skin, check inside the lips, the palms and the eye whites.",
+      "proposed": "Struggling to breathe. Confusion. Red or purple spots that do not fade under a glass. Stiff neck. Fits (jerking of the body). Fainting. Blotchy purple skin, or a grey colour. No urine for 12 hours. Heavy bleeding. Chest pain. A child who is hard to wake. On dark skin, check inside the lips, the palms and the eye whites.",
+      "reason": "\"Hard breathing\" is unnatural; the NHS says \"struggling to breathe\". Leave \"Fainting\" for \"Malaise\" as it is (deliberate, matches \"syncope\")."
+    },
+    {
+      "node": "U_PALU_G",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Is there any of these signs? Confusion. Repeated vomiting. Dark urine. Yellow skin or eye whites. Hard breathing. Fainting.",
+      "proposed": "Is there any of these signs? Confusion. Repeated vomiting. Dark urine. Yellow skin or eye whites. Struggling to breathe. Fainting.",
+      "reason": "Same \"hard breathing\" fix."
+    },
+    {
+      "node": "U_NRS_G",
+      "audience": "patient",
+      "field": "texte",
+      "current": "In this baby, is there any of these signs? Hard breathing. Hard to wake, or not reacting. Grey or blotchy skin. Fits. Spots that do not fade under a glass. Or you cannot get quickly to the emergency department.",
+      "proposed": "In this baby, is there any of these signs? Struggling to breathe. Hard to wake, or not reacting. Grey or blotchy skin. Fits. Spots that do not fade under a glass. Or you cannot get quickly to the emergency department.",
+      "reason": "Same \"hard breathing\" fix."
+    },
+    {
+      "node": "R_NRS_2H",
+      "audience": "patient",
+      "field": "signes_reconsultation[0]",
+      "current": "Hard breathing.",
+      "proposed": "Struggling to breathe.",
+      "reason": "Same \"hard breathing\" fix."
+    },
+    {
+      "node": "U03",
+      "audience": "patient",
+      "field": "texte",
+      "current": "For a child under 2 years. Does the child stop breathing for more than 10 seconds? Or make a small moan each time they breathe out?",
+      "proposed": "For a child under 2: does the child stop breathing for more than 10 seconds? Or make a grunting noise each time they breathe out?",
+      "reason": "\"Small moan\" does not describe expiratory grunting; parents recognise \"grunting\" (NHS wording)."
+    },
+    {
+      "node": "U03",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Moan: a small crying sound as the air goes out.",
+      "proposed": "Grunting: a short noise from the throat each time the child breathes out.",
+      "reason": "Matches the fix above; a \"crying sound\" could be mistaken for normal crying."
+    },
+    {
+      "node": "U02",
+      "audience": "patient",
+      "field": "texte",
+      "current": "What is the baby's temperature? Use a thermometer (in the bottom or on the forehead).",
+      "proposed": "What is the baby's temperature? Use a thermometer (in the bottom, or on the forehead).",
+      "reason": "Small punctuation fix for readability."
+    },
+    {
+      "node": "U13",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Does the skin have purple patches shaped like a net? Is the skin grey or very pale? Or are the hands and feet cold and grey?",
+      "proposed": "Does the skin have a purple, net-like (lacy) pattern? Is the skin grey or very pale? Or are the hands and feet cold and grey?",
+      "reason": "\"Patches shaped like a net\" is unclear; \"lacy/net-like\" is the usual lay description of mottling."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[1]",
+      "current": "Cancer or blood cancer being treated now, no Cancer treatment (drip or tablets) in the last 6 weeks",
+      "proposed": "Cancer or blood cancer being treated now (but no drip or tablet treatment in the last 6 weeks)",
+      "reason": "Repeated phrase with a stray capital \"Cancer\" reads like a copy-paste error."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[4]",
+      "current": "Taking cortisone (steroids) every day for several weeks",
+      "proposed": "Taking steroid tablets (such as prednisolone) every day for several weeks",
+      "reason": "\"Cortisone\" is a French usage; UK patients know \"steroids\" or \"prednisolone\". Still means systemic steroids."
+    },
+    {
+      "node": "POP01",
+      "audience": "patient",
+      "field": "choix[10]",
+      "current": "Diabetes with great thirst, passing lots of urine, vomiting, or high sugar or ketones on the meter",
+      "proposed": "Diabetes, and very thirsty, passing lots of urine, vomiting, or high sugar or ketones on the meter",
+      "reason": "\"Great thirst\" is not natural English."
+    },
+    {
+      "node": "T00",
+      "audience": "patient",
+      "field": "choix[3]",
+      "current": "Tummy, vomiting, diarrhoea",
+      "proposed": "Belly pain, vomiting, diarrhoea",
+      "reason": "Terminology: \"tummy\" here, \"belly\" in all other nodes."
+    },
+    {
+      "node": "D01",
+      "audience": "patient",
+      "field": "choix[2]",
+      "current": "Vomiting everything they drink for more than 6 hours (4 hours under 2)",
+      "proposed": "Vomiting everything they drink for more than 6 hours (more than 4 hours in a child under 2)",
+      "reason": "The \"(4 hours under 2)\" shorthand is hard to read at B1."
+    },
+    {
+      "node": "O02",
+      "audience": "patient",
+      "field": "choix[0]",
+      "current": "Around the eye, with worse vision, the eye not moving, or pain when moving the eye",
+      "proposed": "Around the eye, with worse vision, the eye unable to move normally, or pain when moving the eye",
+      "reason": "\"The eye not moving\" reads as total paralysis; ophthalmoplegia can be partial."
+    },
+    {
+      "node": "M06",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Since the bite: fever, face that cannot move on one side, or joint pain?",
+      "proposed": "Since the bite: fever, one side of the face drooping or unable to move, or joint pain?",
+      "reason": "\"Face that cannot move on one side\" is unnatural."
+    },
+    {
+      "node": "RM_S",
+      "audience": "patient",
+      "field": "signes_reconsultation[1]",
+      "current": "Fever, face that cannot move on one side, joint pain.",
+      "proposed": "Fever, one side of the face drooping, joint pain.",
+      "reason": "Same fix as M06."
+    },
+    {
+      "node": "V03",
+      "audience": "patient",
+      "field": "texte",
+      "current": "In the 21 days before falling ill, did any of these happen? Stay where an outbreak of fever with bleeding is declared. Caring for a sick person. Taking part in a funeral with washing of the body. Contact with bats, rodents or monkeys.",
+      "proposed": "In the 21 days before falling ill, did any of these happen? Staying in an area with a declared outbreak of fever with bleeding. Caring for a sick person. Going to a funeral where the body was washed. Contact with bats, rodents or monkeys.",
+      "reason": "\"Stay where an outbreak ... is declared\" and \"taking part in a funeral with washing of the body\" are calques."
+    },
+    {
+      "node": "RV_S_PALU",
+      "audience": "patient",
+      "field": "texte",
+      "current": "No symptoms after a country with malaria. Watch yourself for 3 months. If fever, shivering, tiredness or headache appear, see a doctor the same day. Say clearly where you travelled.",
+      "proposed": "No symptoms after a trip to a country with malaria. Watch for symptoms for 3 months. If fever, shivering, tiredness or headache appear, see a doctor the same day. Say clearly where you travelled.",
+      "reason": "\"After a country with malaria\" is ungrammatical; \"Watch yourself\" is odd."
+    },
+    {
+      "node": "RV_S",
+      "audience": "patient",
+      "field": "texte",
+      "current": "No symptoms after the trip. Watch the temperature for 3 months, because of malaria. If fever appears, see a doctor and mention the trip. You can stay at home and keep watch. Rest and drink often. Take the temperature morning and evening. See a doctor if things get worse or do not improve.",
+      "proposed": "No symptoms after the trip. Watch for fever for 3 months, because of malaria. If fever appears, see a doctor and mention the trip. You can stay at home and watch how things go. Rest and drink often. Take the temperature morning and evening. See a doctor if things get worse or do not improve.",
+      "reason": "\"Watch the temperature\" is unnatural. Also applies the shared \"keep watch\" fix."
+    },
+    {
+      "node": "RC_24H_ERUPT",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Rash with fever. Avoid all contact with pregnant women, babies and people with weak defences. Call the doctor's office before you go. See a doctor within 24 hours. In the evening or at the weekend, contact {GARDE}. If in doubt, call {URGENCE}.",
+      "proposed": "Rash with fever. Avoid all contact with pregnant women, babies and people with a weak immune system. Phone the doctor's surgery before you go. See a doctor within 24 hours. In the evening or at the weekend, contact {GARDE}. If in doubt, call {URGENCE}.",
+      "reason": "\"Doctor's office\" is US English; UK is \"surgery\". Uses \"weak immune system\" for consistency."
+    },
+    {
+      "node": "RI_6H_TPE",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Go as soon as possible to the emergency department or a sexual health centre. A treatment to prevent infection may be offered. It works better if started early. Use a condom until you get medical advice.",
+      "proposed": "Go as soon as possible to the emergency department or a sexual health clinic. A treatment to prevent infection may be offered. It works better if started early. Use a condom until you get medical advice.",
+      "reason": "UK term is \"sexual health clinic\" (NHS); the soignant text already says clinic."
+    },
+    {
+      "node": "RI_48H",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Problem with the genitals. See a doctor or a sexual health centre. Use a condom until you get medical advice. Book an appointment with a doctor within 2 days.",
+      "proposed": "Problem with the genitals. See a doctor or a sexual health clinic. Use a condom until you get medical advice. Book an appointment with a doctor within 2 days.",
+      "reason": "UK term is \"sexual health clinic\" (NHS); the soignant text already says clinic."
+    },
+    {
+      "node": "RI_48H_DEP",
+      "audience": "patient",
+      "field": "texte",
+      "current": "A screening test is advised. See a doctor or a sexual health centre. Book an appointment with a doctor within 2 days.",
+      "proposed": "A screening test is advised. See a doctor or a sexual health clinic. Book an appointment with a doctor within 2 days.",
+      "reason": "UK term is \"sexual health clinic\" (NHS); the soignant text already says clinic."
+    },
+    {
+      "node": "RI_24H",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Pus coming from the penis. See a doctor or a sexual health centre. No sex until you get medical advice. See a doctor within 24 hours. In the evening or at the weekend, contact {GARDE}. If in doubt, call {URGENCE}.",
+      "proposed": "Pus coming from the penis. See a doctor or a sexual health clinic. No sex until you get medical advice. See a doctor within 24 hours. In the evening or at the weekend, contact {GARDE}. If in doubt, call {URGENCE}.",
+      "reason": "UK term is \"sexual health clinic\" (NHS); the soignant text already says clinic."
+    },
+    {
+      "node": "RH_ISOL",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Stay alone in one room. Do not touch anyone. If possible, do not share linen or toilets. To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from fragile people: babies, pregnant women, older people, people with weak defences.",
+      "proposed": "Stay alone in one room. Do not touch anyone. If possible, do not share towels, bedding or a toilet. To protect others: wear a mask near other people. Air the room for 10 minutes, several times a day. Wash your hands often. Stay away from people at higher risk: babies, pregnant women, older people and people with a weak immune system.",
+      "reason": "\"Linen\" is a calque of \"linge\"; also applies the shared aide fix."
+    },
+    {
+      "node": "RH_S",
+      "audience": "patient",
+      "field": "texte",
+      "current": "No symptoms for now. Take your temperature morning and evening. Continue until 21 days after the last contact. If a fever appears, call {URGENCE} without travelling.",
+      "proposed": "No symptoms for now. Take your temperature morning and evening. Continue until 21 days after the last contact. If a fever appears, call {URGENCE}. Do not go anywhere yourself.",
+      "reason": "\"Without travelling\" is ambiguous; the intent is no self-presentation."
+    },
+    {
+      "node": "RM_6H_RAGE",
+      "audience": "patient",
+      "field": "texte",
+      "current": "Possible risk of rabies (a serious disease passed on by animals). Go today to the emergency department or a rabies treatment centre. See a doctor within 6 hours. Go to a doctor or the emergency department. You can also contact {GARDE}. If no doctor is available, call {URGENCE}.",
+      "proposed": "Possible risk of rabies (a serious disease passed on by animals). Go today, within 6 hours, to the emergency department or a rabies treatment centre. You can also contact {GARDE}. If no doctor is available, call {URGENCE}.",
+      "reason": "The generic 6-hour block repeats \"Go to a doctor or the emergency department\" just after the specific advice, which is confusing. Merged without changing the timing. If the generic block is added by code, fix it at template level."
+    },
+    {
+      "node": "U_GRO01",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Fever of 38 °C or more without these signs: go to the maternity emergency unit within 6 hours.",
+      "proposed": "Fever of 38 °C or more without these signs: go to the maternity unit within 6 hours.",
+      "reason": "UK patients know the \"maternity unit\" (or \"maternity triage\"); \"maternity emergency unit\" is a calque."
+    },
+    {
+      "node": "I03",
+      "audience": "patient",
+      "field": "aide",
+      "current": "Urethra: the small opening at the tip of the penis, where urine comes out.",
+      "proposed": "Pus: thick yellow or white fluid.",
+      "reason": "This aide defines \"urethra\", but no answer uses that word; define \"pus\" instead (same definition as M04)."
+    },
+    {
+      "node": "U00",
+      "audience": "soignant",
+      "field": "texte",
+      "current": "Red flag: life-threatening emergency. Call {URGENCE} immediately (FR: 15/112). No self-transport.",
+      "proposed": "Red flag: life-threatening emergency. Call {URGENCE} immediately (FR: 15/112). Do not self-transport.",
+      "reason": "Verbless \"No self-transport\" is unclear."
+    },
+    {
+      "node": "RH_ISOL",
+      "audience": "soignant",
+      "field": "texte",
+      "current": "Suspected symptomatic VHF. Call {URGENCE}, no self-presentation (neither practice nor ED). Report exposure.",
+      "proposed": "Suspected symptomatic VHF. Call {URGENCE}. The patient must not self-present (neither to a practice nor to the ED). Report exposure.",
+      "reason": "Smoother; same meaning."
+    }
+  ]
+}

@@ -3928,7 +3928,7 @@ function renderPathogens() {
         </div>` : ''}
         <div class="pcp-footer">
           <span class="pcp-mask">${maskSimple}</span>
-          <button class="pcp-cta" onclick="document.getElementById('symptomChecker')?.scrollIntoView({behavior:'smooth',block:'start'})">${ctaLabel}</button>
+          <button class="pcp-cta" data-onclick="BIQ_ACT.scrollToId('symptomChecker')">${ctaLabel}</button>
         </div>
       </article>`;
     }
@@ -4766,7 +4766,7 @@ function wizSelectMain(main) {
   if (grid) {
     const items = WIZ.ASSOC_SYMPTOMS[main] || WIZ.ASSOC_SYMPTOMS.other;
     grid.innerHTML = items.map(s => `
-      <label class="symptom-check" onclick="toggleSymptom(this)">
+      <label class="symptom-check" data-onclick="toggleSymptom(this)">
         <input type="checkbox" value="${s.v}">
         <span class="sym-icon">${s.icon}</span>
         <span>${s.label}</span>
@@ -5282,10 +5282,10 @@ function renderDiagnosticResult(result, state) {
     ${!isHighUrgency ? phoneBlock : ''}
 
     <div class="diag-result-actions">
-      <button class="result-action-btn result-action-secondary" onclick="resetChecker()">
+      <button class="result-action-btn result-action-secondary" data-onclick="resetChecker()">
         ${fr ? '↺ Recommencer' : '↺ Reset'}
       </button>
-      <button class="result-action-btn result-action-secondary" onclick="wizShare()">
+      <button class="result-action-btn result-action-secondary" data-onclick="wizShare()">
         ${fr ? '📤 Partager ce résultat' : '📤 Share result'}
       </button>
     </div>
@@ -6206,7 +6206,7 @@ function renderSurveillanceModule(activePathogens) {
     const levelColors = { normal: '#10B981', jaune: '#F59E0B', orange: '#F97316', rouge: '#EF4444' };
     const col = levelColors[p.alertLevel] || '#10B981';
     const active = p.id === _activeSurveillancePathogen ? 'surv-tab-active' : '';
-    return `<button class="surv-tab ${active}" role="tab" aria-selected="${p.id === _activeSurveillancePathogen}" onclick="selectSurveillancePathogen('${p.id}')" data-pathogen="${p.id}">
+    return `<button class="surv-tab ${active}" role="tab" aria-selected="${p.id === _activeSurveillancePathogen}" data-onclick="selectSurveillancePathogen('${p.id}')" data-pathogen="${p.id}">
       <span class="surv-tab-dot" style="background:${col}"></span>
       <span class="surv-tab-name">${p.nameFR}</span>
       ${p.zscore != null ? `<span class="surv-tab-z" style="color:${col}">z${p.zscore >= 0 ? '+' : ''}${p.zscore}σ</span>` : ''}
@@ -6548,7 +6548,7 @@ function initDeclarationGate() {
       // Profession hors liste : le serveur refuserait de toute façon ; on l'explique plutôt que d'afficher le formulaire
       form.classList.add('hidden');
       gate.innerHTML = `<p>${fr ? 'Votre profession d\'exercice ne fait pas partie de celles autorisées à signaler pendant la phase pilote (médecins, sages-femmes, pharmaciens, infirmiers, masseurs-kinésithérapeutes).' : 'Your profession is not among those allowed to report during the pilot (physicians, midwives, pharmacists, nurses, physiotherapists).'}</p>
-        <button type="button" class="decl-psc-logout" onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button>`;
+        <button type="button" class="decl-psc-logout" data-onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button>`;
       return;
     }
     form.classList.remove('hidden');
@@ -6564,7 +6564,7 @@ function initDeclarationGate() {
       ? (fr ? 'suspicion clinique de cas' : 'clinical case suspicion')
       : (fr ? 'signal de terrain (situation inhabituelle observée)' : 'field signal (unusual situation observed)');
     gate.innerHTML = `<div class="decl-psc-session">✅ <span>${fr ? 'Authentifié via Pro Santé Connect' : 'Authenticated via Pro Santé Connect'} — <strong>${escapeHTML(who)}</strong> · ${catText}</span>
-      <button type="button" class="decl-psc-logout" onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button></div>`;
+      <button type="button" class="decl-psc-logout" data-onclick="BIQ_PSC.logout();initDeclarationGate()">${fr ? 'Se déconnecter' : 'Sign out'}</button></div>`;
     return;
   }
 
@@ -6573,8 +6573,8 @@ function initDeclarationGate() {
   gate.innerHTML = `
     <h4>🔐 ${fr ? 'Déclaration réservée aux professionnels de santé' : 'Reporting restricted to healthcare professionals'}</h4>
     <p>${fr ? 'Pour éviter toute fausse déclaration, l\'envoi exige une authentification Pro Santé Connect (carte CPS / e-CPS). Votre identité n\'est pas conservée : seul un pseudonyme sert à limiter les abus.' : 'To prevent false reports, submission requires Pro Santé Connect authentication (CPS / e-CPS card). Your identity is not stored: only a pseudonym is used to limit abuse.'}</p>
-    <button type="button" class="decl-psc-btn" ${enabled ? 'onclick="BIQ_PSC.redirectToLogin(\'/?psc=success#declaration\')"' : 'disabled'}>
-      <img src="https://esante.gouv.fr/sites/default/files/media_entity/articles/psc-logo.png" alt="" width="22" height="22" onerror="this.style.display='none'">
+    <button type="button" class="decl-psc-btn" ${enabled ? 'data-onclick="BIQ_PSC.redirectToLogin(\'/?psc=success#declaration\')"' : 'disabled'}>
+      <img src="https://esante.gouv.fr/sites/default/files/media_entity/articles/psc-logo.png" alt="" width="22" height="22" data-onerror="BIQ_ACT.hide(this)">
       ${fr ? 'Se connecter avec Pro Santé Connect' : 'Sign in with Pro Santé Connect'}
     </button>
     ${enabled ? '' : `<p><em>${fr ? 'Raccordement Pro Santé Connect en cours auprès de l\'ANS — la déclaration sera ouverte dès son activation.' : 'Pro Santé Connect onboarding with the French e-health agency is in progress — reporting will open once activated.'}</em></p>`}`;
@@ -6848,7 +6848,8 @@ function renderClusterAlertBanner() {
     ROUGE:  { bg: '#fff1f2', border: '#dc2626', text: '#991b1b', icon: '🔴' },
   };
 
-  const rows = clusters.map(c => {
+  window._arsClusters = clusters;
+  const rows = clusters.map((c, ci) => {
     const col = COLS[c.level] || COLS.JAUNE;
     const arsName = c.ars?.name || `Région ${c.region_code}`;
     const doTag   = c.isMaladieDO ? `<span class="cluster-do-tag">⚡ DO obligatoire</span>` : '';
@@ -6864,7 +6865,7 @@ function renderClusterAlertBanner() {
       </div>
       <div class="cluster-row-actions">
         <button class="btn-cluster-alert" style="border-color:${col.border};color:${col.text}"
-          onclick='openARSAlert(${JSON.stringify(c)})'>
+          data-onclick="openARSAlertAt(${ci})">
           📧 Alerter ${c.ars ? c.ars.name : 'les autorités'}
         </button>
         ${c.isMaladieDO ? `<a class="btn-cluster-do" href="https://signalement.sante.fr" target="_blank" rel="noopener">🔗 e-DO officiel</a>` : ''}
@@ -6883,6 +6884,8 @@ function renderClusterAlertBanner() {
 }
 
 // ── Modal alerte ARS ───────────────────────────────────────────────────────────
+function openARSAlertAt(i) { const c = (window._arsClusters || [])[i]; if (c) openARSAlert(c); }
+
 function openARSAlert(cluster) {
   const ars      = cluster.ars || { name: 'Autorités sanitaires', portal: 'https://signalement.sante.fr', email: null };
   const pathStr  = cluster.pathologies?.length ? cluster.pathologies.join(', ') : cluster.syndrome;
@@ -6939,7 +6942,7 @@ function openARSAlert(cluster) {
   el.setAttribute('aria-modal', 'true');
   el.setAttribute('aria-labelledby', 'arsModalTitle');
   el.innerHTML = `<div class="auth-alert-box ars-alert-box">
-    <button class="auth-alert-close" onclick="document.getElementById('arsAlertModal').remove()" aria-label="Fermer">✕</button>
+    <button class="auth-alert-close" data-onclick="BIQ_ACT.removeById('arsAlertModal')" aria-label="Fermer">✕</button>
     <h3 class="auth-alert-title" id="arsModalTitle">📧 Alerte — ${ars.name}</h3>
     <p class="auth-alert-sub">Signal <strong>${cluster.level}</strong> · ${cluster.syndrome} · ${cluster.week} · ≈${cluster.totalEstimate} cas estimés</p>
     ${cluster.isMaladieDO ? `<div class="ars-do-banner">⚡ Maladie à Déclaration Obligatoire — La déclaration officielle via <a href="https://signalement.sante.fr" target="_blank" rel="noopener">e-DO</a> est requise par la loi (CSP Art. L3113-1).</div>` : ''}
@@ -6949,7 +6952,7 @@ function openARSAlert(cluster) {
     </div>
     <textarea class="auth-alert-text" id="arsAlertTextarea" readonly rows="14">${body}</textarea>
     <div class="auth-alert-actions">
-      <button class="btn-copy-auth" onclick="copyARSAlert()">📋 Copier le rapport</button>
+      <button class="btn-copy-auth" data-onclick="copyARSAlert()">📋 Copier le rapport</button>
       <a class="btn-email-auth" href="${mailto}" target="_blank" rel="noopener">📨 Ouvrir dans ma messagerie</a>
       <a class="btn-portal-auth" href="${ars.portal}" target="_blank" rel="noopener">🔗 Site ARS</a>
       <a class="btn-portal-auth" href="https://signalement.sante.fr" target="_blank" rel="noopener">📋 e-DO officiel</a>
@@ -7041,7 +7044,7 @@ function renderEpiSignalWidget(signal) {
     </div>
     ${showAlert ? `<div class="epi-signal-cta">
       <span style="font-size:.78rem;color:${col.text}">Signal ${signal.level} — transmission aux autorités recommandée</span>
-      <button class="btn-alert-auth" onclick="openAuthorityAlert('${signal.pathologyId}','${signal.level}',${signal.zscore},${signal.weeklyCount},${signal.baseline})">
+      <button class="btn-alert-auth" data-onclick="openAuthorityAlert('${signal.pathologyId}','${signal.level}',${signal.zscore},${signal.weeklyCount},${signal.baseline})">
         📧 Alerter les autorités sanitaires
       </button>
     </div>` : ''}
@@ -7076,12 +7079,12 @@ function openAuthorityAlert(pathologyId, level, zscore, count, baseline) {
   el.id = 'authAlertModal';
   el.className = 'auth-alert-overlay';
   el.innerHTML = `<div class="auth-alert-box" role="dialog" aria-modal="true" aria-labelledby="authAlertTitle">
-    <button class="auth-alert-close" onclick="document.getElementById('authAlertModal').remove()" aria-label="Fermer">✕</button>
+    <button class="auth-alert-close" data-onclick="BIQ_ACT.removeById('authAlertModal')" aria-label="Fermer">✕</button>
     <h3 class="auth-alert-title" id="authAlertTitle">📧 ${auth.name}</h3>
     <p class="auth-alert-sub">Signal <strong>${level}</strong> · ${path} · ${week}</p>
     <textarea class="auth-alert-text" id="authAlertTextarea" readonly rows="11">${body}</textarea>
     <div class="auth-alert-actions">
-      <button class="btn-copy-auth" onclick="copyAuthAlert()">📋 Copier</button>
+      <button class="btn-copy-auth" data-onclick="copyAuthAlert()">📋 Copier</button>
       ${auth.email ? `<a class="btn-email-auth" href="mailto:${auth.email}?subject=${encodeURIComponent(`Signal ${level} ${path} — BreathIQ`)}&body=${encodeURIComponent(body)}" target="_blank">📨 Email</a>` : ''}
       <a class="btn-portal-auth" href="${auth.declUrl}" target="_blank" rel="noopener">🔗 Portail officiel</a>
     </div>
@@ -7783,7 +7786,7 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
     const strip = document.getElementById('riskPheicStrip');
     if (strip && currentMode === 'expert') { // mode patient : déjà signalé par le bandeau du haut
       const see = { fr:'Voir la fiche →', en:'See factsheet →', es:'Ver ficha →', pt:'Ver ficha →', ar:'انظر الملف ←', zh:'查看详情 →', hi:'विवरण देखें →', sw:'Tazama faili →', ru:'Подробнее →' }[lang] || '→';
-      strip.innerHTML = `🚨 <strong>PHEIC OMS</strong> — ${active.disease} · ${L(active.subtitle)} · <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" style="color:#FCA5A5">${see}</a>`;
+      strip.innerHTML = `🚨 <strong>PHEIC OMS</strong> — ${active.disease} · ${L(active.subtitle)} · <a href="#epidemioAlert" data-onclick="return navTo(event,'#epidemioAlert')" style="color:#FCA5A5">${see}</a>`;
       strip.removeAttribute('hidden');
     }
 
@@ -7808,8 +7811,8 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
             </div>
           </div>
           <div class="epi-card-btns">
-            <button class="epi-btn epi-btn-yes" onclick="document.getElementById('epiResult_${idx}').removeAttribute('hidden')" aria-label="${lang==='fr'?'Oui':'Yes'}">${lang === 'fr' ? 'Oui' : 'Yes'}</button>
-            <button class="epi-btn epi-btn-no" onclick="document.getElementById('epiResult_${idx}').setAttribute('hidden','')" aria-label="${lang==='fr'?'Non':'No'}">${lang === 'fr' ? 'Non' : 'No'}</button>
+            <button class="epi-btn epi-btn-yes" data-onclick="BIQ_ACT.showById('epiResult_${idx}')" aria-label="${lang==='fr'?'Oui':'Yes'}">${lang === 'fr' ? 'Oui' : 'Yes'}</button>
+            <button class="epi-btn epi-btn-no" data-onclick="BIQ_ACT.hideById('epiResult_${idx}')" aria-label="${lang==='fr'?'Non':'No'}">${lang === 'fr' ? 'Non' : 'No'}</button>
           </div>
           <div class="epi-alert-result" id="epiResult_${idx}" hidden>
             <div class="epi-result-box epi-result-${colorClass}">
@@ -8003,8 +8006,8 @@ function promptPwaNotification() {
     <p id="pwaNotifTitle" style="font-size:14px;font-weight:600;color:#f1f5f9;margin:0">🔔 Recevoir votre score chaque matin ?</p>
     <p style="font-size:12px;color:#94a3b8;margin:0">Pas de spam. Une notification par jour. Désactivable à tout moment.</p>
     <div style="display:flex;gap:8px">
-      <button onclick="acceptPwaNotif()" style="flex:1;padding:9px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">Oui, chaque matin</button>
-      <button onclick="declinePwaNotif()" style="padding:9px 14px;background:transparent;color:#64748b;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;cursor:pointer">Non merci</button>
+      <button data-onclick="acceptPwaNotif()" style="flex:1;padding:9px;background:#2563eb;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:600;cursor:pointer">Oui, chaque matin</button>
+      <button data-onclick="declinePwaNotif()" style="padding:9px 14px;background:transparent;color:#64748b;border:1px solid rgba(255,255,255,.1);border-radius:8px;font-size:13px;cursor:pointer">Non merci</button>
     </div>`;
   document.body.appendChild(el);
 }
@@ -8104,8 +8107,8 @@ function renderMyDataSection() {
           <p>${fr ? 'entrée(s) cette session' : 'entry/entries'}</p>
         </div>
         <div class="mydata-card-actions">
-          <button class="mydata-btn mydata-btn-export" onclick="exportMyDeclarations()">${t('mydata-export')}</button>
-          <button class="mydata-btn mydata-btn-danger" onclick="clearMyDeclarations()">${t('mydata-clear-decl')}</button>
+          <button class="mydata-btn mydata-btn-export" data-onclick="exportMyDeclarations()">${t('mydata-export')}</button>
+          <button class="mydata-btn mydata-btn-danger" data-onclick="clearMyDeclarations()">${t('mydata-clear-decl')}</button>
         </div>
       </div>
 
@@ -8117,7 +8120,7 @@ function renderMyDataSection() {
           <p>${fr ? 'entrée(s) en cache' : 'cached entry/entries'}</p>
         </div>
         <div class="mydata-card-actions">
-          <button class="mydata-btn mydata-btn-danger" onclick="clearAllCache()">${t('mydata-clear-cache')}</button>
+          <button class="mydata-btn mydata-btn-danger" data-onclick="clearAllCache()">${t('mydata-clear-cache')}</button>
         </div>
       </div>
 
@@ -8137,8 +8140,8 @@ function renderMyDataSection() {
           <span class="mydata-count mydata-consent-status ${s.consent === 'accepted' ? 'status-ok' : s.consent === 'declined' ? 'status-warn' : 'status-none'}">${s.consent}</span>
         </div>
         <div class="mydata-card-actions">
-          ${s.consent !== 'accepted' ? `<button class="mydata-btn mydata-btn-primary" onclick="acceptConsent();renderMyDataSection()">${t('consent-accept')}</button>` : ''}
-          ${s.consent === 'accepted' ? `<button class="mydata-btn mydata-btn-danger" onclick="declineConsent();renderMyDataSection()">${fr ? 'Retirer le consentement' : 'Withdraw consent'}</button>` : ''}
+          ${s.consent !== 'accepted' ? `<button class="mydata-btn mydata-btn-primary" data-onclick="acceptConsent();renderMyDataSection()">${t('consent-accept')}</button>` : ''}
+          ${s.consent === 'accepted' ? `<button class="mydata-btn mydata-btn-danger" data-onclick="declineConsent();renderMyDataSection()">${fr ? 'Retirer le consentement' : 'Withdraw consent'}</button>` : ''}
         </div>
       </div>
     </div>
@@ -8149,7 +8152,7 @@ function renderMyDataSection() {
     </div>
 
     <div class="mydata-reset-zone">
-      <button class="mydata-btn mydata-btn-reset" onclick="resetAllSettings()">${t('mydata-clear-all')}</button>
+      <button class="mydata-btn mydata-btn-reset" data-onclick="resetAllSettings()">${t('mydata-clear-all')}</button>
     </div>
   `;
 }
@@ -8218,9 +8221,9 @@ function wizShowContextualEpiAlert(type) {
     if (grid) grid.insertAdjacentElement('afterend', inline);
   }
   if (type === 'ebola') {
-    inline.innerHTML = `<div class="wiz-epi-inline-red">🚨 <strong>Voyage zone Ebola détecté</strong> — Si vous avez de la fièvre : <a href="tel:15"><strong>appelez le 15 maintenant</strong></a> en mentionnant votre voyage. Ne venez pas seul(e) aux urgences. <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">En savoir plus →</a></div>`;
+    inline.innerHTML = `<div class="wiz-epi-inline-red">🚨 <strong>Voyage zone Ebola détecté</strong> — Si vous avez de la fièvre : <a href="tel:15"><strong>appelez le 15 maintenant</strong></a> en mentionnant votre voyage. Ne venez pas seul(e) aux urgences. <a href="#epidemioAlert" data-onclick="return navTo(event,'#epidemioAlert')">En savoir plus →</a></div>`;
   } else {
-    inline.innerHTML = `<div class="wiz-epi-inline-orange">⚠️ <strong>MV Hondius / Patagonie détecté</strong> — Si vous avez de la fièvre ou des douleurs musculaires intenses : consultez un médecin aujourd'hui en mentionnant votre voyage. <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">En savoir plus →</a></div>`;
+    inline.innerHTML = `<div class="wiz-epi-inline-orange">⚠️ <strong>MV Hondius / Patagonie détecté</strong> — Si vous avez de la fièvre ou des douleurs musculaires intenses : consultez un médecin aujourd'hui en mentionnant votre voyage. <a href="#epidemioAlert" data-onclick="return navTo(event,'#epidemioAlert')">En savoir plus →</a></div>`;
   }
   inline.hidden = false;
 }
@@ -8262,8 +8265,8 @@ function showPwaInstallBanner() {
       <strong>Installer BreathIQ</strong>
       <p>Accès en 1 seconde depuis votre écran d'accueil — même sans connexion</p>
       <div class="pwa-prompt-btns">
-        <button class="pwa-btn-install" onclick="pwaDoInstall()">Installer</button>
-        <button class="pwa-btn-dismiss" onclick="pwaDismiss()">Plus tard</button>
+        <button class="pwa-btn-install" data-onclick="pwaDoInstall()">Installer</button>
+        <button class="pwa-btn-dismiss" data-onclick="pwaDismiss()">Plus tard</button>
       </div>
     </div>`;
   document.body.appendChild(banner);

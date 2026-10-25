@@ -103,7 +103,7 @@
         <div class="tri-nav">
           <button type="button" class="tri-btn tri-btn-ghost" id="triBack">${esc(UI[L].back)}</button>
           <button type="button" class="tri-btn tri-btn-ghost" id="triRestart">${esc(UI[L].restart)}</button>
-          <a class="tri-btn tri-btn-ghost" href="#careFinder" onclick="return navTo(event,'#careFinder')"><span aria-hidden="true">📍</span> ${esc(UI[L].findCare)}</a>
+          <a class="tri-btn tri-btn-ghost" href="#careFinder" data-onclick="return navTo(event,'#careFinder')"><span aria-hidden="true">📍</span> ${esc(UI[L].findCare)}</a>
         </div></div>`;
       bind();
       el.querySelector('.tri-level')?.focus?.();

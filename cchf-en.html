@@ -43,11 +43,8 @@
     }
   }
   </script>
-  <link rel="stylesheet" href="style.min.css?v=20261025j">
-  <script>
-  // Mesure d'audience uniquement si le visiteur l'a acceptée sur l'accueil (biq-consent = accepted) — RGPD
-  try { if (localStorage.getItem('biq-consent') === 'accepted') { var u = document.createElement('script'); u.defer = true; u.src = 'https://cloud.umami.is/script.js'; u.setAttribute('data-website-id', '6ddfd578-3f85-41a4-a987-8768ada1d2aa'); document.head.appendChild(u); } } catch (e) {}
-  </script>
+  <link rel="stylesheet" href="style.min.css?v=20261026a">
+  <script src="/js/pages/cchf-en-39f3e066.js"></script>
   <style>
     .ebola-hero {
       background: linear-gradient(135deg, #7c2d12 0%, #9a3412 50%, #3b0c02 100%);
@@ -158,10 +155,10 @@
 </div>
 
 <div class="audience-tabs" role="tablist" aria-label="Select audience">
-  <button class="audience-tab active-patient" onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
+  <button class="audience-tab active-patient" data-onclick="switchAudience('patient')" id="tab-patient" role="tab" aria-selected="true" aria-controls="section-patient">
     👤 I am a patient / traveller
   </button>
-  <button class="audience-tab" onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
+  <button class="audience-tab" data-onclick="switchAudience('hcw')" id="tab-hcw" role="tab" aria-selected="false" aria-controls="section-hcw">
     🩺 I am a healthcare worker
   </button>
 </div>
@@ -285,7 +282,7 @@
       <h2>❓ Frequently asked questions</h2>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" data-onclick="toggleFaq(this)">
           Can I catch CCHF hiking in Spain? <span class="faq-arrow">▼</span>
         </button>
         <div class="faq-a">
@@ -294,7 +291,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" data-onclick="toggleFaq(this)">
           Does CCHF spread from person to person? <span class="faq-arrow">▼</span>
         </button>
         <div class="faq-a">
@@ -303,7 +300,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" data-onclick="toggleFaq(this)">
           What should I do if a tick bit me in a risk area? <span class="faq-arrow">▼</span>
         </button>
         <div class="faq-a">
@@ -317,7 +314,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" onclick="toggleFaq(this)">
+        <button class="faq-q" data-onclick="toggleFaq(this)">
           Is there a vaccine against CCHF? <span class="faq-arrow">▼</span>
         </button>
         <div class="faq-a">
@@ -515,36 +512,7 @@
   <p style="margin-top:0.5rem;">Public information tool · Not a medical device (EU 2017/745) · © 2026 Dr Clément MÉDEAU</p>
 </footer>
 
-<script>
-  function switchAudience(audience) {
-    const patSection = document.getElementById('section-patient');
-    const hcwSection = document.getElementById('section-hcw');
-    const tabPat = document.getElementById('tab-patient');
-    const tabHcw = document.getElementById('tab-hcw');
-    if (audience === 'patient') {
-      patSection.style.display = '';
-      hcwSection.style.display = 'none';
-      tabPat.classList.add('active-patient');
-      tabPat.classList.remove('active-hcw');
-      tabHcw.className = 'audience-tab';
-      tabPat.setAttribute('aria-selected', 'true');
-      tabHcw.setAttribute('aria-selected', 'false');
-    } else {
-      hcwSection.style.display = '';
-      patSection.style.display = 'none';
-      tabHcw.classList.add('active-hcw');
-      tabHcw.classList.remove('active-patient');
-      tabPat.className = 'audience-tab';
-      tabHcw.setAttribute('aria-selected', 'true');
-      tabPat.setAttribute('aria-selected', 'false');
-    }
-  }
-  function toggleFaq(btn) {
-    const answer = btn.nextElementSibling;
-    const isOpen = answer.classList.contains('open');
-    answer.classList.toggle('open', !isOpen);
-    btn.classList.toggle('open', !isOpen);
-  }
-</script>
+<script src="/js/pages/cchf-en-476e97eb.js"></script>
+<script src="/js/actions.min.js?v=20261026a" defer></script>
 </body>
 </html>

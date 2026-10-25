@@ -893,18 +893,18 @@ function renderPathoRow(p) {
   const actionsHtml = [
     pageUrl
       ? `<a href="${pageUrl}" class="biq-row-action-btn btn-primary" target="_blank" rel="noopener">📄 Page clinique</a>`
-      : `<button class="biq-row-action-btn btn-primary" onclick="BIQ_PRO.showDetail('${p.id}');event.stopPropagation()">📋 Fiche détaillée</button>`,
+      : `<button class="biq-row-action-btn btn-primary" data-onclick="BIQ_PRO.showDetail('${p.id}');event.stopPropagation()">📋 Fiche détaillée</button>`,
     p.declarationObligatoire
       ? `<a href="https://signalement.sante.gouv.fr" class="biq-row-action-btn btn-do" target="_blank" rel="noopener noreferrer">📢 Déclarer (MDO)</a>`
       : '',
-    `<button class="biq-row-action-btn" onclick="BIQ_PRO.switchTab('biqTabContacts');event.stopPropagation()">📞 Contacts ARS</button>`,
+    `<button class="biq-row-action-btn" data-onclick="BIQ_PRO.switchTab('biqTabContacts');event.stopPropagation()">📞 Contacts ARS</button>`,
   ].filter(Boolean).join('');
 
   return `
     <div class="biq-patho-row" data-danger="${p.dangerLevel}" data-do="${p.declarationObligatoire}" data-tx="${txType}" data-id="${p.id}" id="biqRow-${p.id}">
-      <div class="biq-row-head" onclick="BIQ_PRO.toggleRow('${p.id}')" role="button" tabindex="0"
+      <div class="biq-row-head" data-onclick="BIQ_PRO.toggleRow('${p.id}')" role="button" tabindex="0"
            aria-expanded="false" aria-controls="biqRowBody-${p.id}"
-           onkeydown="if(event.key==='Enter'||event.key===' '){BIQ_PRO.toggleRow('${p.id}');event.preventDefault()}">
+           data-onkeydown="BIQ_ACT.activate(event, 'BIQ_PRO.toggleRow', '${p.id}')">
         <div class="biq-row-risk-bar" style="background:${dangerColor}" aria-hidden="true"></div>
         <span class="biq-row-icon" aria-hidden="true">${p.icon}</span>
         <div class="biq-row-info">
@@ -957,15 +957,15 @@ function renderPathogenList(container) {
       <input class="biq-search-input" id="biqSearchInput" type="search"
              placeholder="Rechercher un pathogène, symptôme, région…"
              aria-label="Rechercher dans la liste des pathogènes"
-             oninput="BIQ_PRO.searchPathogens(this.value)">
+             data-oninput="BIQ_PRO.searchPathogens(this.value)">
     </div>
     <div class="biq-pro-filters" role="group" aria-label="Filtrer les pathogènes">
-      <button class="biq-filter-btn active" data-filter="all" onclick="BIQ_PRO.applyFilter(this,'all')">Tous (${sorted.length})</button>
-      <button class="biq-filter-btn" data-filter="AIRBORNE" onclick="BIQ_PRO.applyFilter(this,'AIRBORNE')">💨 Airborne</button>
-      <button class="biq-filter-btn" data-filter="CONTACT" onclick="BIQ_PRO.applyFilter(this,'CONTACT')">🤝 Contact</button>
-      <button class="biq-filter-btn" data-filter="VECTORIEL" onclick="BIQ_PRO.applyFilter(this,'VECTORIEL')">🦟 Vectoriel</button>
-      <button class="biq-filter-btn" data-filter="DO" onclick="BIQ_PRO.applyFilter(this,'DO')">📋 MDO</button>
-      <button class="biq-filter-btn" data-filter="ROUGE" onclick="BIQ_PRO.applyFilter(this,'ROUGE')">🔴 Urgence</button>
+      <button class="biq-filter-btn active" data-filter="all" data-onclick="BIQ_PRO.applyFilter(this,'all')">Tous (${sorted.length})</button>
+      <button class="biq-filter-btn" data-filter="AIRBORNE" data-onclick="BIQ_PRO.applyFilter(this,'AIRBORNE')">💨 Airborne</button>
+      <button class="biq-filter-btn" data-filter="CONTACT" data-onclick="BIQ_PRO.applyFilter(this,'CONTACT')">🤝 Contact</button>
+      <button class="biq-filter-btn" data-filter="VECTORIEL" data-onclick="BIQ_PRO.applyFilter(this,'VECTORIEL')">🦟 Vectoriel</button>
+      <button class="biq-filter-btn" data-filter="DO" data-onclick="BIQ_PRO.applyFilter(this,'DO')">📋 MDO</button>
+      <button class="biq-filter-btn" data-filter="ROUGE" data-onclick="BIQ_PRO.applyFilter(this,'ROUGE')">🔴 Urgence</button>
     </div>
     <div class="biq-patho-list" id="biqPathoList">
       ${sorted.map(p => renderPathoRow(p)).join('')}
@@ -1032,7 +1032,7 @@ function showDetail(id) {
   try { history.pushState({biqPathogen:id}, '', location.pathname + '#pathogen-' + id); } catch(e) {}
 
   container.innerHTML = `
-    <button class="biq-back-btn" onclick="BIQ_PRO.showList()" aria-label="Retour à la liste des pathogènes">← Retour à la liste</button>
+    <button class="biq-back-btn" data-onclick="BIQ_PRO.showList()" aria-label="Retour à la liste des pathogènes">← Retour à la liste</button>
 
     <div class="biq-detail-header biq-danger-bg-${p.dangerLevel.toLowerCase()}">
       <div class="biq-detail-icon" aria-hidden="true">${p.icon}</div>
@@ -1177,7 +1177,7 @@ function renderContacts(container) {
       <h3 class="biq-contacts-h3" style="margin-top:1.5rem">🏥 ARS — Agences régionales de santé</h3>
       <div class="biq-ars-select-row">
         <label for="biqArsSelect" class="biq-ars-label">Région :</label>
-        <select id="biqArsSelect" class="biq-ars-select" onchange="BIQ_PRO.showArs(this.value)">
+        <select id="biqArsSelect" class="biq-ars-select" data-onchange="BIQ_PRO.showArs(this.value)">
           <option value="">— Choisir une région —</option>${opts}
         </select>
       </div>

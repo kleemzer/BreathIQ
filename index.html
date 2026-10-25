@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261025j" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261025j"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261026a" media="print" data-onload="BIQ_ACT.setMediaAll(this)">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261026a"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -208,9 +208,9 @@
       <strong id="consentBannerTitle"><span data-i18n="x-confidentialite-cc14">🔒 Confidentialité —</span> <span data-i18n="x-aucune-donnee-personnelle-collectee-9f92" style="font-weight:400;font-size:.85em">Aucune donnée personnelle collectée. Données publiques OMS/ECDC uniquement.</span></strong>
     </div>
     <div class="consent-banner-actions">
-      <button class="consent-btn-decline" onclick="declineConsent()" data-i18n="consent-decline">Continuer sans accepter</button>
+      <button class="consent-btn-decline" data-onclick="declineConsent()" data-i18n="consent-decline">Continuer sans accepter</button>
       <a href="privacy.html" class="consent-link" data-i18n="consent-more">Politique de confidentialité</a>
-      <button class="consent-btn-accept" onclick="acceptConsent()" data-i18n="consent-accept">✓ Accepter</button>
+      <button class="consent-btn-accept" data-onclick="acceptConsent()" data-i18n="consent-accept">✓ Accepter</button>
     </div>
   </div>
 </div>
@@ -218,7 +218,7 @@
 <!-- ===== NAVIGATION ===== -->
 <nav class="biq-nav" id="mainNav" role="navigation" aria-label="Navigation principale">
   <div class="nav-inner">
-    <a class="nav-brand" href="#patientHero" aria-label="BreathIQ — Accueil" onclick="return navTo(event,'#patientHero')">
+    <a class="nav-brand" href="#patientHero" aria-label="BreathIQ — Accueil" data-onclick="return navTo(event,'#patientHero')">
       <span class="brand-icon" aria-hidden="true">
         <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 28 28" fill="none">
           <circle cx="14" cy="14" r="13" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.4"/>
@@ -231,20 +231,20 @@
 
     <ul class="nav-links" role="list" id="mainNavLinks">
       <!-- Mode patient : une entrée par intention (vues de la page) -->
-      <li class="patient-only"><a href="#symptomChecker" data-nav-view="accueil" onclick="applyView('accueil');return navTo(event,'#symptomChecker')" data-i18n="nav-symptoms">Que faire ?</a></li>
-      <li class="patient-only"><a href="#situation" data-nav-view="situation" onclick="return navTo(event,'#situation')" data-i18n="nav-situation">Situation en France</a></li>
-      <li class="patient-only"><a href="#voyager" data-nav-view="voyager" onclick="return navTo(event,'#voyager')" data-i18n="nav-travel">Voyager</a></li>
-      <li class="patient-only"><a href="#maladies" data-nav-view="maladies" onclick="return navTo(event,'#maladies')" data-i18n="nav-pathogens">Maladies</a></li>
-      <li class="patient-only"><a href="#apropos" data-nav-view="apropos" onclick="return navTo(event,'#apropos')" data-i18n="nav-about">À propos</a></li>
+      <li class="patient-only"><a href="#symptomChecker" data-nav-view="accueil" data-onclick="applyView('accueil');return navTo(event,'#symptomChecker')" data-i18n="nav-symptoms">Que faire ?</a></li>
+      <li class="patient-only"><a href="#situation" data-nav-view="situation" data-onclick="return navTo(event,'#situation')" data-i18n="nav-situation">Situation en France</a></li>
+      <li class="patient-only"><a href="#voyager" data-nav-view="voyager" data-onclick="return navTo(event,'#voyager')" data-i18n="nav-travel">Voyager</a></li>
+      <li class="patient-only"><a href="#maladies" data-nav-view="maladies" data-onclick="return navTo(event,'#maladies')" data-i18n="nav-pathogens">Maladies</a></li>
+      <li class="patient-only"><a href="#apropos" data-nav-view="apropos" data-onclick="return navTo(event,'#apropos')" data-i18n="nav-about">À propos</a></li>
       <!-- Mode soignant -->
-      <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
-      <li class="expert-only"><a href="#declPscGate" onclick="return navTo(event,'#declPscGate')" data-i18n="nav-declare">Déclarer un cas</a></li>
-      <li class="expert-only"><a href="#syndromic" onclick="return navTo(event,'#syndromic')" data-i18n="nav-syndromic">Surveillance</a></li>
-      <li class="expert-only"><a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" data-i18n="nav-pro-pathogens">Référentiel</a></li>
-      <li class="expert-only"><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
-      <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
+      <li class="expert-only"><a href="#score" data-onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
+      <li class="expert-only"><a href="#declPscGate" data-onclick="return navTo(event,'#declPscGate')" data-i18n="nav-declare">Déclarer un cas</a></li>
+      <li class="expert-only"><a href="#syndromic" data-onclick="return navTo(event,'#syndromic')" data-i18n="nav-syndromic">Surveillance</a></li>
+      <li class="expert-only"><a href="#proPathogens" data-onclick="return navTo(event,'#proPathogens')" data-i18n="nav-pro-pathogens">Référentiel</a></li>
+      <li class="expert-only"><a href="#map" data-onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
+      <li class="expert-only"><a href="#protection" data-onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li class="nav-more-item">
-        <button data-i18n="x-plus-6cea" class="nav-more-btn" onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
+        <button data-i18n="x-plus-6cea" class="nav-more-btn" data-onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
         <ul class="nav-more-dropdown" role="menu">
           <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
           <li><a data-i18n="x-bilan-mensuel-aabb" href="bilan-epidemique.html">Dernier bilan</a></li>
@@ -253,8 +253,8 @@
         </ul>
       </li>
       <li class="nav-mobile-tools" aria-label="Affichage">
-        <button type="button" class="nav-tool-btn" onclick="cycleFontSize()" data-i18n="nav-tool-font">Aa · Taille du texte</button>
-        <button type="button" class="nav-tool-btn" onclick="document.getElementById('themeToggle')?.click()" data-i18n="nav-tool-theme">☀️ / 🌙 Thème</button>
+        <button type="button" class="nav-tool-btn" data-onclick="cycleFontSize()" data-i18n="nav-tool-font">Aa · Taille du texte</button>
+        <button type="button" class="nav-tool-btn" data-onclick="BIQ_ACT.clickById('themeToggle')" data-i18n="nav-tool-theme">☀️ / 🌙 Thème</button>
       </li>
     </ul>
 
@@ -262,15 +262,15 @@
       <span class="live-badge live-off" id="liveBadge" role="status" title="Données publiques OMS · ECDC · SPF · Open-Meteo — mises à jour quotidiennement." aria-label="Statut des données">
         <span class="live-dot"></span><span class="live-label" id="liveLabelText" translate="no">DONNÉES PUBLIQUES</span>
       </span>
-      <button class="mode-toggle-btn" id="modeToggleBtn" onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé"><span aria-hidden="true">👨‍⚕️</span><span data-i18n="x-espace-soignant-8155" class="mode-btn-text"> Espace Soignant</span></button>
-      <select class="lang-select" id="langSelect" aria-label="Changer de langue" onchange="setLang(this.value)">
+      <button class="mode-toggle-btn" id="modeToggleBtn" data-onclick="toggleMode()" aria-label="Accès espace professionnel de santé" title="Accès réservé aux professionnels de santé"><span aria-hidden="true">👨‍⚕️</span><span data-i18n="x-espace-soignant-8155" class="mode-btn-text"> Espace Soignant</span></button>
+      <select class="lang-select" id="langSelect" aria-label="Changer de langue" data-onchange="setLang(this.value)">
         <option value="fr">🇫🇷 Français</option>
         <option value="en">🇬🇧 English</option>
         <!-- es, pt, ar, zh, hi, sw, ru : ~110 clés sur 170 manquantes (scripts/check-i18n.mjs) — retirées
              du sélecteur tant qu'elles ne sont pas complètes (traductions conservées dans I18N). -->
       </select>
-      <button class="font-size-btn" id="fontSizeBtn" onclick="cycleFontSize()" aria-label="Taille du texte" title="Agrandir / réduire le texte" style="font-weight:700">A</button>
-      <button class="nav-toggle" id="navToggleBtn" onclick="toggleMobileNav()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavLinks">
+      <button class="font-size-btn" id="fontSizeBtn" data-onclick="cycleFontSize()" aria-label="Taille du texte" title="Agrandir / réduire le texte" style="font-weight:700">A</button>
+      <button class="nav-toggle" id="navToggleBtn" data-onclick="toggleMobileNav()" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mainNavLinks">
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <button class="theme-toggle" id="themeToggle" aria-label="Mode sombre/clair">
@@ -315,8 +315,8 @@
     </div>
     <div class="epidemic-alert-actions">
       <a data-i18n="x-guide-clinique-complet-7633" href="ebola.html" class="epidemic-link expert-only" style="display:none">Guide clinique complet →</a>
-      <button data-i18n="x-details-ba92" class="epidemic-toggle" onclick="toggleEpidemicBanner()" aria-label="Voir les détails de l'alerte">Détails ▾</button>
-      <button class="epidemic-close" onclick="closePheicBanner()" aria-label="Fermer l'alerte">✕</button>
+      <button data-i18n="x-details-ba92" class="epidemic-toggle" data-onclick="toggleEpidemicBanner()" aria-label="Voir les détails de l'alerte">Détails ▾</button>
+      <button class="epidemic-close" data-onclick="closePheicBanner()" aria-label="Fermer l'alerte">✕</button>
     </div>
   </div>
 </div>
@@ -333,11 +333,11 @@
       <h1 data-i18n="x-quels-virus-circulent-en-be32" class="gp-hero-title" id="patient-hero-title">Quels virus circulent en France en ce moment ?</h1>
       <p class="gp-hero-subtitle"><span data-i18n="x-breathiq-surveille-chaque-jour-1771">BreathIQ surveille chaque jour les épidémies, les alertes OMS et les virus respiratoires saisonniers à partir des données officielles (OMS · ECDC · SPF).</span></p>
       <!-- CTA principal — l'action la plus utile : que faire de mes symptômes -->
-      <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="hero-symptom-cta">
+      <a href="#symptomChecker" data-onclick="return navTo(event,'#symptomChecker')" class="hero-symptom-cta">
         <span data-i18n="x-j-ai-des-symptomes-e5be">J'ai des symptômes : que faire ?</span> <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
       <!-- CTA secondaire — situation épidémique -->
-      <a href="#situation" onclick="return navTo(event,'#situation')" class="hero-secondary-cta">
+      <a href="#situation" data-onclick="return navTo(event,'#situation')" class="hero-secondary-cta">
         <span data-i18n="x-voir-les-alertes-epidemiques-b615">Voir la situation épidémique</span>
       </a>
       <!-- Fraîcheur des données -->
@@ -355,23 +355,23 @@
 
     <!-- Quatre parcours — épidémio en premier -->
     <div class="hero-paths" role="navigation" aria-label="Que souhaitez-vous faire ?">
-      <a href="#situation" onclick="return navTo(event,'#situation')" class="path-card path-score">
+      <a href="#situation" data-onclick="return navTo(event,'#situation')" class="path-card path-score">
         <span class="path-icon" aria-hidden="true">🇫🇷</span>
         <span data-i18n="path-situation-title" class="path-title">Situation en France</span>
         <span data-i18n="path-situation-sub" class="path-sub">Virus qui circulent, indice du jour</span>
       </a>
-      <a href="#voyager" onclick="return navTo(event,'#voyager')" class="path-card path-epi">
+      <a href="#voyager" data-onclick="return navTo(event,'#voyager')" class="path-card path-epi">
         <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
         <span class="path-icon" aria-hidden="true">✈️</span>
         <span data-i18n="path-travel-title" class="path-title">Je voyage</span>
         <span data-i18n="path-travel-sub" class="path-sub">Alertes de l'OMS, carte des foyers</span>
       </a>
-      <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="path-card path-symptoms">
+      <a href="#careFinder" data-onclick="return navTo(event,'#careFinder')" class="path-card path-symptoms">
         <span class="path-icon" aria-hidden="true">📍</span>
         <span data-i18n="path-care-title" class="path-title">Trouver un soignant</span>
         <span data-i18n="path-care-sub" class="path-sub">Médecin, pharmacie, urgences près de moi</span>
       </a>
-      <button class="path-card path-pro" onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
+      <button class="path-card path-pro" data-onclick="toggleMode()" aria-label="Mode soignant — outils cliniques et déclaration">
         <span class="path-icon" aria-hidden="true">🩺</span>
         <span data-i18n="x-espace-soignant-8efa" class="path-title">Espace soignant</span>
         <span data-i18n="x-outils-cliniques-declaration-1fde" class="path-sub">Outils cliniques · Déclaration</span>
@@ -399,7 +399,7 @@
       </span>
       <span class="gp-trust-item">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M6 20v-2a6 6 0 0 1 12 0v2"/></svg>
-        <a translate="no" href="#about" onclick="return navTo(event,'#about')" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)">Dr. Clément MÉDEAU · Médecin</a>
+        <a translate="no" href="#about" data-onclick="return navTo(event,'#about')" style="color:inherit;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.2)">Dr. Clément MÉDEAU · Médecin</a>
       </span>
     </div>
   </div>
@@ -429,11 +429,11 @@
           </p>
           <!-- Recherche ville pour AQI précis par commune -->
           <div class="gp-city-search" id="gpCitySearch" role="search" aria-label="Affiner par ville">
-            <button class="gp-geo-btn" id="gpGeoBtn" onclick="activateGeolocationAqi()" title="Utiliser ma position GPS" aria-label="Utiliser ma position">📍</button>
+            <button class="gp-geo-btn" id="gpGeoBtn" data-onclick="activateGeolocationAqi()" title="Utiliser ma position GPS" aria-label="Utiliser ma position">📍</button>
             <input type="text" id="gpCityInput" class="gp-city-input" placeholder="Votre ville…" maxlength="60"
               aria-label="Ville pour l'AQI local" autocomplete="address-level2"
-              onkeydown="if(event.key==='Enter'){event.preventDefault();searchCityAqi()}">
-            <button class="gp-city-btn" id="gpCityBtn" onclick="searchCityAqi()" aria-label="Rechercher">→</button>
+              data-onkeydown="BIQ_ACT.onEnter(event, 'searchCityAqi')">
+            <button class="gp-city-btn" id="gpCityBtn" data-onclick="searchCityAqi()" aria-label="Rechercher">→</button>
           </div>
           <div id="gpCityHint" class="gp-city-hint" aria-live="polite"></div>
           <p class="gp-score-advice" id="gpScoreAdvice" translate="no">Contexte respiratoire modéré. Pas de précaution particulière pour la majorité. Si vous êtes asthmatique ou fragile, limitez l'exposition prolongée.</p>
@@ -464,16 +464,16 @@
       <p class="gp-score-basis" id="gpScoreBasis" translate="no"></p>
       <!-- CTA contextuel dynamique selon le niveau de risque -->
       <div id="gpScoreCta" style="margin:.75rem 0;text-align:center;display:none">
-        <a id="gpScoreCtaBtn" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;padding:.65rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background .2s">
+        <a id="gpScoreCtaBtn" href="#symptomChecker" data-onclick="return navTo(event,'#symptomChecker')" style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;padding:.65rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background .2s">
           <span id="gpScoreCtaIcon">💡</span><span id="gpScoreCtaText" translate="no">Voir les conseils du jour</span>
         </a>
       </div>
       <div class="gp-score-actions">
-        <a href="#score" onclick="return navTo(event,'#score')" class="gp-btn-primary expert-only" aria-label="Voir le score détaillé et les composantes">
+        <a href="#score" data-onclick="return navTo(event,'#score')" class="gp-btn-primary expert-only" aria-label="Voir le score détaillé et les composantes">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           <span data-i18n="x-voir-le-score-complet-28fa">Voir le score complet</span>
         </a>
-        <button class="gp-btn-ghost" id="gpShareBtn" onclick="shareScore()" aria-label="Partager ce score à un proche">
+        <button class="gp-btn-ghost" id="gpShareBtn" data-onclick="shareScore()" aria-label="Partager ce score à un proche">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
           <span data-i18n="x-partager-a-un-proche-913b">Partager à un proche</span>
         </button>
@@ -506,7 +506,7 @@
       <div class="virus-card virus-card-skeleton"><div class="risk-skeleton risk-skeleton-title" style="width:95px;height:1em"></div><div class="risk-skeleton risk-skeleton-desc" style="width:75px;height:.8em;margin-top:.4rem"></div></div>
     </div>
     <div class="virus-saison-cta">
-      <a data-i18n="x-voir-tous-les-pathogenes-9fe3" href="#pathogens" onclick="return navTo(event,'#pathogens')">Voir tous les pathogènes →</a>
+      <a data-i18n="x-voir-tous-les-pathogenes-9fe3" href="#pathogens" data-onclick="return navTo(event,'#pathogens')">Voir tous les pathogènes →</a>
     </div>
     <p class="virus-saison-source" id="virusSaisonSource" translate="no">Données SPF · ECDC — chargement…</p>
     <div class="arbo-bulletin" id="arboBulletin" translate="no" hidden></div>
@@ -538,7 +538,7 @@
     <div id="epidemioAlertCards"></div>
     <div class="epi-cta-continue">
       <p data-i18n="x-aucune-de-ces-situations-ebf4">Aucune de ces situations ne vous concerne ?</p>
-      <a data-i18n="x-continuer-vers-le-questionnaire-9959" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
+      <a data-i18n="x-continuer-vers-le-questionnaire-9959" href="#symptomChecker" data-onclick="return navTo(event,'#symptomChecker')" class="epi-btn-continue">⬇️ Continuer vers le questionnaire de symptômes</a>
     </div>
   </div>
 </section>
@@ -622,25 +622,25 @@
     <h2 data-i18n="x-verifiable-en-10-secondes-3c42" class="gp-section-title" style="text-align:center;max-width:520px;margin-inline:auto;margin-bottom:1.5rem">Vérifiable en 10 secondes, chaque jour</h2>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(260px,100%),1fr));gap:1rem">
 
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s"  >
         <div style="font-size:1.6rem;margin-bottom:.5rem">🎒</div>
         <strong data-i18n="x-mon-enfant-peut-il-e95b" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon enfant peut-il aller à l'école ?</strong>
         <p data-i18n="x-consultez-l-indice-respiratoire-f5ad" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Consultez l'indice respiratoire et le niveau de circulation virale. Score Bon ou Excellent — aucun signal environnemental défavorable.</p>
       </div>
 
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s"  >
         <div style="font-size:1.6rem;margin-bottom:.5rem">🏃</div>
         <strong data-i18n="x-sport-en-exterieur-l-50fb" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Sport en extérieur — l'air est-il sain ?</strong>
         <p data-i18n="x-l-indice-aqi-qualite-158b" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">L'indice AQI (qualité de l'air) est mis à jour toutes les heures. En cas d'indice Modéré ou plus, les heures matinales sont généralement préférables.</p>
       </div>
 
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s"  >
         <div style="font-size:1.6rem;margin-bottom:.5rem">🧓</div>
         <strong data-i18n="x-mon-parent-age-est-efca" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Mon parent âgé est-il dans un contexte exposé ?</strong>
         <p data-i18n="x-les-personnes-de-65-12bb" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">Les personnes de 65+ ans et immunodéprimées sont plus sensibles aux infections respiratoires. Le score du jour intègre ce contexte.</p>
       </div>
 
-      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s" onmouseover="this.style.borderColor='rgba(59,130,246,.35)'" onmouseout="this.style.borderColor='rgba(59,130,246,.15)'">
+      <div style="background:rgba(255,255,255,.05);border:1px solid rgba(59,130,246,.15);border-radius:1rem;padding:1.25rem 1.4rem;transition:border-color .2s"  >
         <div style="font-size:1.6rem;margin-bottom:.5rem">✈️</div>
         <strong data-i18n="x-alerte-sanitaire-dans-ma-9f64" style="font-size:.95rem;color:#e8f0f7;display:block;margin-bottom:.4rem">Alerte sanitaire dans ma destination de voyage ?</strong>
         <p data-i18n="x-la-carte-mondiale-et-7ccf" style="font-size:.82rem;color:#94a3b8;line-height:1.6;margin:0">La carte mondiale et les alertes OMS (PHEIC) sont mises à jour quotidiennement — une lecture utile avant chaque départ international.</p>
@@ -663,11 +663,11 @@
     </p>
 
     <div class="hero-actions">
-      <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="btn btn-primary">
+      <a href="#syndromic" data-onclick="return navTo(event,'#syndromic')" class="btn btn-primary">
         <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         <span data-i18n="x-declarer-des-cas-b143">Déclarer des cas</span>
       </a>
-      <a href="#score" onclick="return navTo(event,'#score')" class="btn btn-ghost">
+      <a href="#score" data-onclick="return navTo(event,'#score')" class="btn btn-ghost">
         <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         <span data-i18n="x-indice-de-risque-e79a">Indice de risque</span>
       </a>
@@ -700,15 +700,15 @@
 
     <!-- Soignant quick-nav (visible uniquement en mode expert) -->
     <nav class="soignant-quicknav" aria-label="Navigation rapide soignant">
-      <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="sqn-btn sqn-primary">
+      <a href="#syndromic" data-onclick="return navTo(event,'#syndromic')" class="sqn-btn sqn-primary">
         <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         <span data-i18n="x-declarer-des-cas-b143">Déclarer des cas</span>
       </a>
-      <a href="#map" onclick="return navTo(event,'#map')" class="sqn-btn">
+      <a href="#map" data-onclick="return navTo(event,'#map')" class="sqn-btn">
         <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
         <span data-i18n="x-carte-a2ce">Carte</span>
       </a>
-      <a href="#score" onclick="return navTo(event,'#score')" class="sqn-btn">
+      <a href="#score" data-onclick="return navTo(event,'#score')" class="sqn-btn">
         <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         <span data-i18n="x-indice-c1be">Indice</span>
       </a>
@@ -716,7 +716,7 @@
         <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
         <span data-i18n="x-masques-ffp2-3858">Masques FFP2</span>
       </a>
-      <a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" class="sqn-btn sqn-pathogens">
+      <a href="#proPathogens" data-onclick="return navTo(event,'#proPathogens')" class="sqn-btn sqn-pathogens">
         <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
         <span data-i18n="x-pathogenes-6350">Pathogènes</span>
       </a>
@@ -850,7 +850,7 @@
     <!-- Pont vers le vérificateur de symptômes -->
     <div class="triage-to-checker">
       <span data-i18n="x-vous-n-etes-pas-2c63">Vous n'êtes pas sûr de votre situation ?</span>
-      <a data-i18n="x-analysez-vos-symptomes-en-a414" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="triage-checker-link">Analysez vos symptômes en détail →</a>
+      <a data-i18n="x-analysez-vos-symptomes-en-a414" href="#symptomChecker" data-onclick="return navTo(event,'#symptomChecker')" class="triage-checker-link">Analysez vos symptômes en détail →</a>
     </div>
   </div>
 </section>
@@ -905,49 +905,49 @@
         <h3 data-i18n="x-avez-vous-l-un-7bad" class="wiz-question" id="wiz-alarm-question">Avez-vous l'un de ces signes d'urgence en ce moment ?</h3>
         <p data-i18n="x-si-oui-cochez-et-62b5" class="wiz-hint">Si oui, cochez et nous vous orientons immédiatement.</p>
         <div class="alarm-grid wiz-alarm-grid" role="group" aria-labelledby="wiz-alarm-question">
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="dyspnea_rest">
             <span class="alarm-icon">😮‍💨</span>
             <span class="alarm-text"><strong data-i18n="x-difficultes-a-respirer-au-3ee5">Difficultés à respirer au repos</strong><br><small data-i18n="x-pas-d-essoufflement-en-6930">Pas d'essoufflement en marchant — au repos</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="confusion">
             <span class="alarm-icon">🌀</span>
             <span class="alarm-text"><strong data-i18n="x-confusion-ou-desorientation-0047">Confusion ou désorientation</strong><br><small data-i18n="x-ne-sait-plus-ou-0f68">Ne sait plus où il est, répond à côté</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="purpura">
             <span class="alarm-icon">🟣</span>
             <span class="alarm-text"><strong data-i18n="x-taches-rouges-violettes-qui-4ac0">Taches rouges / violettes qui ne s'effacent pas</strong><br><small data-i18n="x-petits-points-petechies-ou-1769">Petits points (pétéchies) ou grandes taches (purpura) — appuyez un verre dessus : elles restent visibles</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="bleeding">
             <span class="alarm-icon">🩸</span>
             <span class="alarm-text"><strong data-i18n="x-saignements-inexpliques-1d07">Saignements inexpliqués</strong><br><small data-i18n="x-nez-gencives-sang-dans-daa2">Nez, gencives, sang dans selles/urines</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="cyanosis">
             <span class="alarm-icon">🫦</span>
             <span class="alarm-text"><strong data-i18n="x-levres-ou-ongles-bleutes-19b3">Lèvres ou ongles bleutés</strong><br><small data-i18n="x-signe-de-manque-d-72e9">Signe de manque d'oxygène</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="seizures">
             <span class="alarm-icon">⚡</span>
             <span class="alarm-text"><strong data-i18n="x-convulsions-perte-de-connaissance-20c2">Convulsions / perte de connaissance</strong><br><small data-i18n="x-mouvements-incontroles-du-corps-d876">Mouvements incontrôlés du corps</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="neck_stiffness_alarm">
             <span class="alarm-icon">🔒</span>
             <span class="alarm-text"><strong data-i18n="x-nuque-raide-fievre-maux-549b">Nuque raide + fièvre + maux de tête violents</strong><br><small data-i18n="x-impossible-de-toucher-le-2de1">Impossible de toucher le menton à la poitrine</small></span>
           </label>
-          <label class="alarm-sign-check wiz-alarm" onclick="wizAlarmChecked(this)">
+          <label class="alarm-sign-check wiz-alarm" data-onclick="wizAlarmChecked(this)">
             <input type="checkbox" value="infant_fever_alarm">
             <span class="alarm-icon">👶</span>
             <span class="alarm-text"><strong data-i18n="x-nourrisson-lt-3-mois-d974">Nourrisson &lt; 3 mois avec fièvre ≥ 38°C</strong><br><small data-i18n="x-tout-nourrisson-de-moins-ca05">Tout nourrisson de moins de 3 mois avec température ≥ 38°C doit aller aux urgences sans délai (HAS/SFMU)</small></span>
           </label>
         </div>
         <div class="wiz-nav">
-          <button data-i18n="x-aucun-de-ces-signes-2607" class="wiz-btn-secondary" onclick="wizNext(0)" id="wiz-no-alarm-btn">
+          <button data-i18n="x-aucun-de-ces-signes-2607" class="wiz-btn-secondary" data-onclick="wizNext(0)" id="wiz-no-alarm-btn">
             Aucun de ces signes — Continuer →
           </button>
         </div>
@@ -959,30 +959,30 @@
         <h3 class="wiz-question"><span data-i18n="x-quel-est-votre-symptome-4dca">Quel est votre symptôme</span> <strong data-i18n="x-principal-e7d7">principal</strong> ?</h3>
         <p data-i18n="x-choisissez-celui-qui-vous-d214" class="wiz-hint">Choisissez celui qui vous gêne le plus. Les autres seront proposés ensuite.</p>
         <div class="wiz-main-symptom-grid">
-          <button class="wiz-main-btn" onclick="wizSelectMain('fever')" data-main="fever" aria-label="Mon symptôme principal : fièvre ou frissons">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('fever')" data-main="fever" aria-label="Mon symptôme principal : fièvre ou frissons">
             <span class="wiz-main-icon" aria-hidden="true">🌡️</span><span data-i18n="x-fievre-frissons-b9fc" class="wiz-main-label">Fièvre / frissons</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('cough')" data-main="cough" aria-label="Mon symptôme principal : toux ou essoufflement">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('cough')" data-main="cough" aria-label="Mon symptôme principal : toux ou essoufflement">
             <span class="wiz-main-icon" aria-hidden="true">🫁</span><span data-i18n="x-toux-essoufflement-8888" class="wiz-main-label">Toux / essoufflement</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('headache')" data-main="headache" aria-label="Mon symptôme principal : maux de tête">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('headache')" data-main="headache" aria-label="Mon symptôme principal : maux de tête">
             <span class="wiz-main-icon" aria-hidden="true">🤕</span><span data-i18n="x-maux-de-tete-05ff" class="wiz-main-label">Maux de tête</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('rash')" data-main="rash" aria-label="Mon symptôme principal : boutons ou éruption cutanée">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('rash')" data-main="rash" aria-label="Mon symptôme principal : boutons ou éruption cutanée">
             <span class="wiz-main-icon" aria-hidden="true">🔴</span><span data-i18n="x-boutons-eruption-cutanee-5bdb" class="wiz-main-label">Boutons / éruption cutanée</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('digestive')" data-main="digestive" aria-label="Mon symptôme principal : douleurs ventre ou diarrhée">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('digestive')" data-main="digestive" aria-label="Mon symptôme principal : douleurs ventre ou diarrhée">
             <span class="wiz-main-icon" aria-hidden="true">🤢</span><span data-i18n="x-douleurs-ventre-diarrhee-df6c" class="wiz-main-label">Douleurs ventre / diarrhée</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('pain')" data-main="pain" aria-label="Mon symptôme principal : douleurs musculaires ou articulaires">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('pain')" data-main="pain" aria-label="Mon symptôme principal : douleurs musculaires ou articulaires">
             <span class="wiz-main-icon" aria-hidden="true">💪</span><span data-i18n="x-douleurs-musculaires-articulaires-3a1f" class="wiz-main-label">Douleurs musculaires / articulaires</span>
           </button>
-          <button class="wiz-main-btn" onclick="wizSelectMain('other')" data-main="other" aria-label="Mon symptôme principal : autre symptôme non listé">
+          <button class="wiz-main-btn" data-onclick="wizSelectMain('other')" data-main="other" aria-label="Mon symptôme principal : autre symptôme non listé">
             <span class="wiz-main-icon" aria-hidden="true">🔍</span><span data-i18n="x-autre-symptome-8a0c" class="wiz-main-label">Autre symptôme</span>
           </button>
         </div>
         <div class="wiz-nav">
-          <button data-i18n="x-retour-e637" class="wiz-btn-back" onclick="wizBack(1)">← Retour</button>
+          <button data-i18n="x-retour-e637" class="wiz-btn-back" data-onclick="wizBack(1)">← Retour</button>
         </div>
       </div>
 
@@ -997,28 +997,28 @@
           <div class="wiz-ctx-group">
             <span data-i18n="x-depuis-quand-db96" class="wiz-ctx-label">📅 Depuis quand ?</span>
             <div class="ctx-pills-row">
-              <button data-i18n="x-moins-de-24h-55ba" class="ctx-pill selected" data-group="onset" data-value="sudden" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : moins de 24 heures" aria-pressed="true">Moins de 24h</button>
-              <button data-i18n="x-1-3-jours-e199" class="ctx-pill" data-group="onset" data-value="days_1_3" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 1 à 3 jours" aria-pressed="false">1–3 jours</button>
-              <button data-i18n="x-4-7-jours-3c7b" class="ctx-pill" data-group="onset" data-value="days_4_7" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 4 à 7 jours" aria-pressed="false">4–7 jours</button>
-              <button data-i18n="x-plus-de-3-semaines-ce47" class="ctx-pill" data-group="onset" data-value="weeks" onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : plus de 3 semaines" aria-pressed="false">Plus de 3 semaines</button>
+              <button data-i18n="x-moins-de-24h-55ba" class="ctx-pill selected" data-group="onset" data-value="sudden" data-onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : moins de 24 heures" aria-pressed="true">Moins de 24h</button>
+              <button data-i18n="x-1-3-jours-e199" class="ctx-pill" data-group="onset" data-value="days_1_3" data-onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 1 à 3 jours" aria-pressed="false">1–3 jours</button>
+              <button data-i18n="x-4-7-jours-3c7b" class="ctx-pill" data-group="onset" data-value="days_4_7" data-onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : 4 à 7 jours" aria-pressed="false">4–7 jours</button>
+              <button data-i18n="x-plus-de-3-semaines-ce47" class="ctx-pill" data-group="onset" data-value="weeks" data-onclick="toggleContextPill(this,'onset')" aria-label="Durée des symptômes : plus de 3 semaines" aria-pressed="false">Plus de 3 semaines</button>
             </div>
           </div>
           <div class="wiz-ctx-group">
             <span data-i18n="x-temperature-b0e7" class="wiz-ctx-label">🌡️ Température ?</span>
             <div class="ctx-pills-row">
-              <button data-i18n="x-pas-de-fievre-db03" class="ctx-pill selected" data-group="fever" data-value="no_fever" onclick="toggleContextPill(this,'fever')" aria-label="Température : pas de fièvre" aria-pressed="true">Pas de fièvre</button>
-              <button class="ctx-pill" data-group="fever" data-value="fever_low" onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre modérée 37,5 à 38,5 degrés" aria-pressed="false">37,5–38,5°C</button>
-              <button class="ctx-pill" data-group="fever" data-value="fever_high" onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre élevée 38,5 à 39,5 degrés" aria-pressed="false">38,5–39,5°C</button>
-              <button class="ctx-pill ctx-pill-alert" data-group="fever" data-value="fever_very_high" onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre très élevée 39,5 degrés ou plus — alerte" aria-pressed="false">≥ 39,5°C</button>
+              <button data-i18n="x-pas-de-fievre-db03" class="ctx-pill selected" data-group="fever" data-value="no_fever" data-onclick="toggleContextPill(this,'fever')" aria-label="Température : pas de fièvre" aria-pressed="true">Pas de fièvre</button>
+              <button class="ctx-pill" data-group="fever" data-value="fever_low" data-onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre modérée 37,5 à 38,5 degrés" aria-pressed="false">37,5–38,5°C</button>
+              <button class="ctx-pill" data-group="fever" data-value="fever_high" data-onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre élevée 38,5 à 39,5 degrés" aria-pressed="false">38,5–39,5°C</button>
+              <button class="ctx-pill ctx-pill-alert" data-group="fever" data-value="fever_very_high" data-onclick="toggleContextPill(this,'fever')" aria-label="Température : fièvre très élevée 39,5 degrés ou plus — alerte" aria-pressed="false">≥ 39,5°C</button>
             </div>
           </div>
           <div class="wiz-ctx-group">
             <span data-i18n="x-qui-est-concerne-cfdd" class="wiz-ctx-label">👤 Qui est concerné ?</span>
             <div class="ctx-pills-row">
-              <button data-i18n="x-nourrisson-lt-2-ans-27de" class="ctx-pill" data-group="age" data-value="infant" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de moins de 2 ans" aria-pressed="false">Moins de 2 ans</button>
-              <button data-i18n="x-enfant-2-15-ans-e003" class="ctx-pill" data-group="age" data-value="child" onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de 2 ans à 15 ans" aria-pressed="false">2 à 15 ans</button>
-              <button data-i18n="x-adulte-04e6" class="ctx-pill selected" data-group="age" data-value="adult" onclick="toggleContextPill(this,'age')" aria-label="Profil : adulte" aria-pressed="true">Adulte</button>
-              <button data-i18n="x-senior-65-ans-5312" class="ctx-pill" data-group="age" data-value="senior" onclick="toggleContextPill(this,'age')" aria-label="Profil : senior 65 ans ou plus" aria-pressed="false">Senior ≥ 65 ans</button>
+              <button data-i18n="x-nourrisson-lt-2-ans-27de" class="ctx-pill" data-group="age" data-value="infant" data-onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de moins de 2 ans" aria-pressed="false">Moins de 2 ans</button>
+              <button data-i18n="x-enfant-2-15-ans-e003" class="ctx-pill" data-group="age" data-value="child" data-onclick="toggleContextPill(this,'age')" aria-label="Profil : enfant de 2 ans à 15 ans" aria-pressed="false">2 à 15 ans</button>
+              <button data-i18n="x-adulte-04e6" class="ctx-pill selected" data-group="age" data-value="adult" data-onclick="toggleContextPill(this,'age')" aria-label="Profil : adulte" aria-pressed="true">Adulte</button>
+              <button data-i18n="x-senior-65-ans-5312" class="ctx-pill" data-group="age" data-value="senior" data-onclick="toggleContextPill(this,'age')" aria-label="Profil : senior 65 ans ou plus" aria-pressed="false">Senior ≥ 65 ans</button>
             </div>
           </div>
         </div>
@@ -1027,8 +1027,8 @@
         <div class="wiz-assoc-grid" id="wizAssocGrid"></div>
 
         <div class="wiz-nav">
-          <button data-i18n="x-retour-e637" class="wiz-btn-back" onclick="wizBack(2)">← Retour</button>
-          <button data-i18n="x-etape-suivante-3faf" class="wiz-btn-next" onclick="wizNext(2)">Étape suivante →</button>
+          <button data-i18n="x-retour-e637" class="wiz-btn-back" data-onclick="wizBack(2)">← Retour</button>
+          <button data-i18n="x-etape-suivante-3faf" class="wiz-btn-next" data-onclick="wizNext(2)">Étape suivante →</button>
         </div>
       </div>
 
@@ -1045,19 +1045,19 @@
             <div class="wiz-vital-card">
               <div data-i18n="x-spo2-saturometre-7995" class="wiz-vital-label">💧 SpO2 (saturomètre)</div>
               <div class="wiz-vital-options">
-                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="unknown" checked onchange="wizUpdateVital('spo2',this.value)"> <span data-i18n="x-je-n-ai-pas-f74e">Je n'ai pas d'oxymètre</span></label>
-                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="normal" onchange="wizUpdateVital('spo2',this.value)"> ≥ 96% <span data-i18n="x-normal-960b" class="vital-badge vital-ok">Normal</span></label>
-                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="low" onchange="wizUpdateVital('spo2',this.value)"> 94–95% <span data-i18n="x-bas-e92c" class="vital-badge vital-warn">Bas</span></label>
-                <label class="wiz-vital-opt alert-opt"><input type="radio" name="spo2" value="critical" onchange="wizUpdateVital('spo2',this.value)"> &lt; 94% <span data-i18n="x-critique-0085" class="vital-badge vital-crit">Critique</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="unknown" checked data-onchange="wizUpdateVital('spo2',this.value)"> <span data-i18n="x-je-n-ai-pas-f74e">Je n'ai pas d'oxymètre</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="normal" data-onchange="wizUpdateVital('spo2',this.value)"> ≥ 96% <span data-i18n="x-normal-960b" class="vital-badge vital-ok">Normal</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="spo2" value="low" data-onchange="wizUpdateVital('spo2',this.value)"> 94–95% <span data-i18n="x-bas-e92c" class="vital-badge vital-warn">Bas</span></label>
+                <label class="wiz-vital-opt alert-opt"><input type="radio" name="spo2" value="critical" data-onchange="wizUpdateVital('spo2',this.value)"> &lt; 94% <span data-i18n="x-critique-0085" class="vital-badge vital-crit">Critique</span></label>
               </div>
             </div>
             <div class="wiz-vital-card">
               <div data-i18n="x-frequence-cardiaque-91ac" class="wiz-vital-label">❤️ Fréquence cardiaque</div>
               <div class="wiz-vital-options">
-                <label class="wiz-vital-opt"><input type="radio" name="hr" value="unknown" checked onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-je-ne-sais-pas-e1e7">Je ne sais pas</span></label>
-                <label class="wiz-vital-opt"><input type="radio" name="hr" value="normal" onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-100-bpm-b690">&lt; 100 bpm</span> <span data-i18n="x-normal-960b" class="vital-badge vital-ok">Normal</span></label>
-                <label class="wiz-vital-opt"><input type="radio" name="hr" value="high" onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-100-130-bpm-1c0e">100–130 bpm</span> <span data-i18n="x-elevee-92e2" class="vital-badge vital-warn">Élevée</span></label>
-                <label class="wiz-vital-opt alert-opt"><input type="radio" name="hr" value="very_high" onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-130-bpm-10b7">&gt; 130 bpm</span> <span data-i18n="x-tres-elevee-c778" class="vital-badge vital-crit">Très élevée</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="unknown" checked data-onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-je-ne-sais-pas-e1e7">Je ne sais pas</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="normal" data-onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-100-bpm-b690">&lt; 100 bpm</span> <span data-i18n="x-normal-960b" class="vital-badge vital-ok">Normal</span></label>
+                <label class="wiz-vital-opt"><input type="radio" name="hr" value="high" data-onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-100-130-bpm-1c0e">100–130 bpm</span> <span data-i18n="x-elevee-92e2" class="vital-badge vital-warn">Élevée</span></label>
+                <label class="wiz-vital-opt alert-opt"><input type="radio" name="hr" value="very_high" data-onchange="wizUpdateVital('hr',this.value)"> <span data-i18n="x-130-bpm-10b7">&gt; 130 bpm</span> <span data-i18n="x-tres-elevee-c778" class="vital-badge vital-crit">Très élevée</span></label>
               </div>
             </div>
           </div>
@@ -1067,66 +1067,66 @@
         <div class="wiz-epid-block">
           <div data-i18n="x-contexte-de-vie-amp-29c7" class="wiz-vitals-title">✈️ Contexte de vie &amp; expositions</div>
           <div class="wiz-epid-grid" id="wizEpidGrid">
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="travel_tropical"><span class="sym-icon">✈️</span><span data-i18n="x-voyage-tropical-recent-lt-b01a">Voyage tropical récent (&lt; 21 jours)</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="travel_africa_high_risk"><span class="sym-icon">🌍</span><span><span data-i18n="x-voyage-afrique-centrale-est-2c82">Voyage Afrique centrale/Est (RDC, Ouganda, Rwanda) &lt; 21j</span> <span data-i18n="x-ebola-pheic-eabc" class="ctx-alert-badge">⚠️ Alerte OMS en cours</span></span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check wiz-check-alert" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="mv_hondius"><span class="sym-icon">🐭</span><span><span data-i18n="x-voyage-patagonie-amerique-du-5b18">Voyage Patagonie / Amérique du Sud rurale &lt; 6 sem.</span> <span data-i18n="x-hantavirus-7ddd" class="ctx-alert-badge ctx-alert-orange">⚠️ Hantavirus</span></span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="travel_balkans"><span class="sym-icon">🌍</span><span data-i18n="x-voyage-balkans-turquie-espagne-286b">Voyage Balkans / Turquie / Espagne rurale</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="travel_asia"><span class="sym-icon">🌏</span><span data-i18n="x-voyage-asie-du-sud-2c70">Voyage Asie du Sud-Est / Moyen-Orient</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="contaminated_water"><span class="sym-icon">🚰</span><span data-i18n="x-eau-non-traitee-puits-42c9">Eau non traitée / puits / rivière bue récemment</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="freshwater_exposure"><span class="sym-icon">🏊</span><span data-i18n="x-baignade-en-eau-douce-3465">Baignade en eau douce (lac, rivière) en Afrique</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="contact_case"><span class="sym-icon">👥</span><span data-i18n="x-personne-proche-avec-les-6a80">Personne proche avec les mêmes symptômes</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="unvaccinated"><span class="sym-icon">💉</span><span data-i18n="x-non-vaccine-ou-vaccins-bbb3">Non vacciné ou vaccins non à jour</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="poultry_contact"><span class="sym-icon">🐦</span><span data-i18n="x-contact-volailles-malades-marche-3d3a">Contact volailles malades / marché animaux vivants</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="tick_bite"><span class="sym-icon">🕷️</span><span data-i18n="x-morsure-de-tique-recente-1d9a">Morsure de tique récente</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="water_exposure"><span class="sym-icon">💧</span><span data-i18n="x-sejour-hotel-croisiere-thermes-8bf9">Séjour hôtel, croisière, thermes, spa dans les 10 derniers jours (Légionellose)</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="immunocompromised"><span class="sym-icon">🛡️</span><span data-i18n="x-systeme-immunitaire-affaibli-cancer-b98e">Système immunitaire affaibli (cancer, VIH, corticoïdes)</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="pregnant"><span class="sym-icon">🤰</span><span data-i18n="x-grossesse-722a">Grossesse</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="exposure_msm"><span class="sym-icon">👥</span><span data-i18n="x-contact-avec-personne-ayant-1168">Contact avec personne ayant des lésions cutanées / Mpox confirmé (clade Ib : transmission familiale possible)</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="rapid_deterioration"><span class="sym-icon">📉</span><span data-i18n="x-aggravation-rapide-en-moins-efd6">Aggravation rapide en moins de 48h</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="hypotension"><span class="sym-icon">⬇️</span><span data-i18n="x-tension-tres-basse-etourdissements-168f">Tension très basse / étourdissements debout</span>
             </label>
-            <label class="symptom-check ctx-check wiz-epid-check" onclick="toggleSymptom(this)">
+            <label class="symptom-check ctx-check wiz-epid-check" data-onclick="toggleSymptom(this)">
               <input type="checkbox" value="tachycardia"><span class="sym-icon">💗</span><span data-i18n="x-c-ur-qui-bat-d6cb">Cœur qui bat très vite (même au repos)</span>
             </label>
           </div>
         </div>
 
         <div class="wiz-nav">
-          <button data-i18n="x-retour-e637" class="wiz-btn-back" onclick="wizBack(3)">← Retour</button>
-          <button data-i18n="x-analyser-mes-symptomes-6943" class="wiz-btn-primary" onclick="wizAnalyze()">
+          <button data-i18n="x-retour-e637" class="wiz-btn-back" data-onclick="wizBack(3)">← Retour</button>
+          <button data-i18n="x-analyser-mes-symptomes-6943" class="wiz-btn-primary" data-onclick="wizAnalyze()">
             🔬 Analyser mes symptômes →
           </button>
         </div>
@@ -1137,7 +1137,7 @@
 
       <!-- CTA vers care finder — visible après analyse -->
       <div class="checker-after-cta">
-        <a data-i18n="x-trouver-un-medecin-ou-131b" href="#careFinder" onclick="return navTo(event,'#careFinder')" class="checker-find-care-btn">
+        <a data-i18n="x-trouver-un-medecin-ou-131b" href="#careFinder" data-onclick="return navTo(event,'#careFinder')" class="checker-find-care-btn">
           📍 Trouver un médecin ou un centre de santé près de moi →
         </a>
       </div>
@@ -1315,9 +1315,9 @@
         <h2 id="syndromic-title" data-i18n="syn-title">Surveillance syndromique — Détection précoce</h2>
         <p data-i18n="x-suivi-en-temps-reel-7d2f" class="section-subtitle">Suivi quotidien des épidémies actives · Seuils statistiques internes (Z-score) · Données SPF, OMS, ECDC</p>
       </div>
-      <button onclick="shareBreathIQ()" id="shareColleagueBtn" aria-label="Partager à un collègue"
+      <button data-onclick="shareBreathIQ()" id="shareColleagueBtn" aria-label="Partager à un collègue"
         style="display:flex;align-items:center;gap:.45rem;padding:.5rem 1rem;font-size:.8rem;font-weight:700;color:#fff;background:rgba(42,127,212,.25);border:1px solid rgba(42,127,212,.45);border-radius:999px;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:background .15s"
-        onmouseover="this.style.background='rgba(42,127,212,.4)'" onmouseout="this.style.background='rgba(42,127,212,.25)'">
+         >
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
         <span data-i18n="x-partager-a-un-collegue-0b67">Partager à un collègue</span>
       </button>
@@ -1383,7 +1383,7 @@
       <!-- Porte Pro Santé Connect : le formulaire n'est affiché qu'avec une session PSC valide ;
            le serveur (/api/declare) revérifie le jeton auprès de l'ANS à chaque envoi. -->
       <div id="declPscGate" class="decl-psc-gate" role="region" aria-live="polite"></div>
-      <form class="decl-form hidden" id="declForm" onsubmit="submitDeclaration(event)" autocomplete="off" novalidate>
+      <form class="decl-form hidden" id="declForm" data-onsubmit="submitDeclaration(event)" autocomplete="off" novalidate>
 
         <!-- Pathologie suspecte — champ principal -->
         <div class="decl-field decl-field-pathologie">
@@ -1560,7 +1560,7 @@
         <!-- Widget signal épidémique injecté ici après déclaration -->
         <div id="epiSignalResult" class="epi-signal-result-wrap"></div>
 
-        <button class="decl-confirm-btn" onclick="resetDeclForm()" data-i18n="decl-confirm-new">+ Nouvelle déclaration</button>
+        <button class="decl-confirm-btn" data-onclick="resetDeclForm()" data-i18n="decl-confirm-new">+ Nouvelle déclaration</button>
       </div>
     </div>
   </div>
@@ -1651,7 +1651,7 @@
 
     <div class="pathogens-search">
       <label for="pathogensSearch" class="pathogens-search-label" data-i18n="pathogens-search-label">Rechercher une maladie</label>
-      <input id="pathogensSearch" type="search" autocomplete="off" data-i18n-placeholder="pathogens-search-ph" placeholder="Ex. grippe, dengue, rougeole…" oninput="searchPathogensList(this.value)" aria-describedby="pathogensSearchStatus">
+      <input id="pathogensSearch" type="search" autocomplete="off" data-i18n-placeholder="pathogens-search-ph" placeholder="Ex. grippe, dengue, rougeole…" data-oninput="searchPathogensList(this.value)" aria-describedby="pathogensSearchStatus">
       <span id="pathogensSearchStatus" class="sr-only" role="status"></span>
     </div>
     <div class="pathogens-filters" role="group" aria-label="Filtres pathogènes">
@@ -1690,7 +1690,7 @@
       <p class="care-permission-msg" data-i18n="care-permission">
         Pour trouver les soins les plus proches, nous avons besoin d'accéder temporairement à votre position. Elle reste sur votre appareil et n'est jamais transmise à nos serveurs.
       </p>
-      <button class="care-finder-btn" id="findCareBtn" onclick="findNearbyCare()" data-i18n="care-btn">
+      <button class="care-finder-btn" id="findCareBtn" data-onclick="findNearbyCare()" data-i18n="care-btn">
         📍 Trouver un médecin proche de moi
       </button>
 
@@ -1708,9 +1708,9 @@
             aria-label="Ville ou code postal"
             inputmode="search"
             autocomplete="address-level2"
-            onkeydown="if(event.key==='Enter') searchCareByCity()"
+            data-onkeydown="BIQ_ACT.onEnter(event, 'searchCareByCity')"
           >
-          <button id="careCityBtn" class="care-city-btn" onclick="searchCareByCity()" aria-label="Lancer la recherche">
+          <button id="careCityBtn" class="care-city-btn" data-onclick="searchCareByCity()" aria-label="Lancer la recherche">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             <span data-i18n="x-rechercher-3a8a">Rechercher</span>
           </button>
@@ -1738,15 +1738,15 @@
     <!-- Onglets -->
     <div class="biq-tabs" role="tablist" aria-label="Sections espace soignant">
       <button data-i18n="x-pathogenes-ce82" id="biqTabPathogens" class="biq-tab biq-tab-active" role="tab" aria-selected="true"
-              aria-controls="biqTabPathogensPanel" onclick="BIQ_PRO.switchTab('biqTabPathogens')">
+              aria-controls="biqTabPathogensPanel" data-onclick="BIQ_PRO.switchTab('biqTabPathogens')">
         🦠 Pathogènes
       </button>
       <button data-i18n="x-epi-niveau-4-ebola-4e32" id="biqTabEpi4" class="biq-tab" role="tab" aria-selected="false"
-              aria-controls="biqTabEpi4Panel" onclick="BIQ_PRO.switchTab('biqTabEpi4')">
+              aria-controls="biqTabEpi4Panel" data-onclick="BIQ_PRO.switchTab('biqTabEpi4')">
         🛡️ Fièvres hémorragiques / Ebola
       </button>
       <button data-i18n="x-contacts-urgence-fc54" id="biqTabContacts" class="biq-tab" role="tab" aria-selected="false"
-              aria-controls="biqTabContactsPanel" onclick="BIQ_PRO.switchTab('biqTabContacts')">
+              aria-controls="biqTabContactsPanel" data-onclick="BIQ_PRO.switchTab('biqTabContacts')">
         📞 DO et contacts
       </button>
     </div>
@@ -1815,7 +1815,7 @@
 
 <!-- ===== TOGGLE MODE EXPERT ===== -->
 <div class="expert-toggle-section patient-only" id="expertToggle" data-view="accueil">
-  <button class="expert-toggle-btn" onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">Vous êtes soignant ? Accéder à l'espace soignant</button>
+  <button class="expert-toggle-btn" data-onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">Vous êtes soignant ? Accéder à l'espace soignant</button>
   <p class="expert-toggle-note" data-i18n="expert-toggle-note">Référentiel clinique, surveillance, déclaration de cas (Pro Santé Connect)</p>
 </div>
 
@@ -2082,37 +2082,37 @@
 <!-- Mobile bottom nav -->
 <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
   <!-- Mode patient : Symptômes en premier -->
-  <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="mbn-item patient-only">
+  <a href="#symptomChecker" data-onclick="return navTo(event,'#symptomChecker')" class="mbn-item patient-only">
     <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
     <span data-i18n="x-symptomes-2796">Symptômes</span>
   </a>
   <!-- Mode expert : Score en premier -->
-  <a href="#score" onclick="return navTo(event,'#score')" class="mbn-item expert-only">
+  <a href="#score" data-onclick="return navTo(event,'#score')" class="mbn-item expert-only">
     <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span data-i18n="x-score-5dd1">Score</span>
   </a>
-  <a href="#situation" onclick="return navTo(event,'#situation')" class="mbn-item patient-only">
+  <a href="#situation" data-onclick="return navTo(event,'#situation')" class="mbn-item patient-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
     <span data-i18n="mbn-situation">Situation</span>
   </a>
-  <a href="#voyager" onclick="return navTo(event,'#voyager')" class="mbn-item patient-only">
+  <a href="#voyager" data-onclick="return navTo(event,'#voyager')" class="mbn-item patient-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
     <span data-i18n="mbn-travel">Voyager</span>
   </a>
-  <a href="#map" onclick="return navTo(event,'#map')" class="mbn-item expert-only">
+  <a href="#map" data-onclick="return navTo(event,'#map')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
     <span data-i18n="mbn-map">Carte</span>
   </a>
-  <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="mbn-item expert-only">
+  <a href="#pathogens" data-onclick="return navTo(event,'#pathogens')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
     <span data-i18n="mbn-pathogens">Virus</span>
   </a>
   <!-- Mode patient : trouver un soignant ; mode soignant : guide de protection (section réservée) -->
-  <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="mbn-item patient-only">
+  <a href="#careFinder" data-onclick="return navTo(event,'#careFinder')" class="mbn-item patient-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
     <span data-i18n="mbn-care">Soignants</span>
   </a>
-  <a href="#protection" onclick="return navTo(event,'#protection')" class="mbn-item expert-only">
+  <a href="#protection" data-onclick="return navTo(event,'#protection')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
     <span data-i18n="mbn-protection">FFP2</span>
   </a>
@@ -2132,8 +2132,8 @@
       <li>🗑️ <span data-i18n="geo-modal-g3">Effacée dès la fermeture de la page</span></li>
     </ul>
     <div class="geo-modal-actions">
-      <button class="geo-btn-refuse" id="geoRefuseBtn" onclick="closeGeoModal(false)" data-i18n="geo-modal-refuse">✕ Refuser</button>
-      <button class="geo-btn-accept" id="geoAcceptBtn" onclick="closeGeoModal(true)" data-i18n="geo-modal-accept">✓ Accepter</button>
+      <button class="geo-btn-refuse" id="geoRefuseBtn" data-onclick="closeGeoModal(false)" data-i18n="geo-modal-refuse">✕ Refuser</button>
+      <button class="geo-btn-accept" id="geoAcceptBtn" data-onclick="closeGeoModal(true)" data-i18n="geo-modal-accept">✓ Accepter</button>
     </div>
   </div>
 </div>
@@ -2151,7 +2151,7 @@
       <!-- Pays auto-détecté -->
       <div class="pro-country-row">
         <span id="proCountryFlag" class="pro-country-flag"></span>
-        <select id="proCountrySelect" class="pro-country-select" onchange="_onCountryChange()">
+        <select id="proCountrySelect" class="pro-country-select" data-onchange="_onCountryChange()">
           <option data-i18n="x-france-a58b" value="FR">🇫🇷 France</option>
           <option data-i18n="x-belgique-5383" value="BE">🇧🇪 Belgique</option>
           <option data-i18n="x-suisse-8ed2" value="CH">🇨🇭 Suisse</option>
@@ -2172,29 +2172,29 @@
 
       <!-- Spécialité — cartes 1 clic -->
       <div class="pro-specialty-grid">
-        <button class="pro-spec-card" data-spec="medecin" onclick="selectSpecialty(this)"><span class="spec-icon">🩺</span><span data-i18n="x-medecin-9dac">Médecin</span></button>
-        <button class="pro-spec-card" data-spec="infirmier" onclick="selectSpecialty(this)"><span class="spec-icon">💉</span><span data-i18n="x-infirmier-e-e7e7">Infirmier·e</span></button>
-        <button class="pro-spec-card" data-spec="pharmacien" onclick="selectSpecialty(this)"><span class="spec-icon">💊</span><span data-i18n="x-pharmacien-ne-cee2">Pharmacien·ne</span></button>
-        <button class="pro-spec-card" data-spec="epidemiologiste" onclick="selectSpecialty(this)"><span class="spec-icon">🔬</span><span data-i18n="x-epidemiologiste-d185">Épidémiologiste</span></button>
-        <button class="pro-spec-card" data-spec="autre-soignant" onclick="selectSpecialty(this)"><span class="spec-icon">🏥</span><span data-i18n="x-autre-soignant-c099">Autre soignant</span></button>
-        <button class="pro-spec-card" data-spec="etudiant" onclick="selectSpecialty(this)"><span class="spec-icon">🎓</span><span data-i18n="x-etudiant-sante-db82">Étudiant santé</span></button>
+        <button class="pro-spec-card" data-spec="medecin" data-onclick="selectSpecialty(this)"><span class="spec-icon">🩺</span><span data-i18n="x-medecin-9dac">Médecin</span></button>
+        <button class="pro-spec-card" data-spec="infirmier" data-onclick="selectSpecialty(this)"><span class="spec-icon">💉</span><span data-i18n="x-infirmier-e-e7e7">Infirmier·e</span></button>
+        <button class="pro-spec-card" data-spec="pharmacien" data-onclick="selectSpecialty(this)"><span class="spec-icon">💊</span><span data-i18n="x-pharmacien-ne-cee2">Pharmacien·ne</span></button>
+        <button class="pro-spec-card" data-spec="epidemiologiste" data-onclick="selectSpecialty(this)"><span class="spec-icon">🔬</span><span data-i18n="x-epidemiologiste-d185">Épidémiologiste</span></button>
+        <button class="pro-spec-card" data-spec="autre-soignant" data-onclick="selectSpecialty(this)"><span class="spec-icon">🏥</span><span data-i18n="x-autre-soignant-c099">Autre soignant</span></button>
+        <button class="pro-spec-card" data-spec="etudiant" data-onclick="selectSpecialty(this)"><span class="spec-icon">🎓</span><span data-i18n="x-etudiant-sante-db82">Étudiant santé</span></button>
       </div>
 
       <!-- Identifiant professionnel — adapté au pays -->
       <div id="proRppsGroup" class="pro-rpps-group" hidden>
         <input id="proRppsInput" class="pro-rpps-input" type="text" inputmode="numeric"
                placeholder="N° RPPS (11 chiffres) — optionnel"
-               oninput="this.value=this.value.replace(/\D/g,'').slice(0,11)">
+               data-oninput="BIQ_ACT.digitsOnly(this, 11)">
         <p class="pro-rpps-hint" id="proRppsHint" translate="no">Identifiant national · non obligatoire · jamais transmis</p>
       </div>
 
       <label class="pro-declaration-checkbox" style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:var(--text-secondary);margin-top:.75rem;cursor:pointer">
-        <input type="checkbox" id="proDeclarationChk" onchange="_onProDeclarationChange()" style="margin-top:.15rem;flex-shrink:0;accent-color:var(--c-teal)">
+        <input type="checkbox" id="proDeclarationChk" data-onchange="_onProDeclarationChange()" style="margin-top:.15rem;flex-shrink:0;accent-color:var(--c-teal)">
         <span data-i18n="x-je-declare-exercer-ou-048f">Je déclare exercer ou me former dans le domaine de la santé. J'ai compris que les informations cliniques de cet espace sont destinées aux professionnels et ne remplacent pas un protocole institutionnel validé.</span>
       </label>
       <div class="soignant-modal-actions" style="margin-top:.75rem">
-        <button data-i18n="x-annuler-d12c" class="soignant-btn-cancel" onclick="closeSoignantModal()">Annuler</button>
-        <button class="soignant-btn-validate" id="proStep2Btn" translate="no" onclick="saveProProfile()" disabled>Accéder →</button>
+        <button data-i18n="x-annuler-d12c" class="soignant-btn-cancel" data-onclick="closeSoignantModal()">Annuler</button>
+        <button class="soignant-btn-validate" id="proStep2Btn" translate="no" data-onclick="saveProProfile()" disabled>Accéder →</button>
       </div>
     </div>
 
@@ -2202,7 +2202,7 @@
 </div>
 
 <!-- ===== BOUTON RETOUR EN HAUT ===== -->
-<button id="scrollTopBtn" class="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut de page" data-i18n-aria="scroll-top-aria" title="Retour en haut">
+<button id="scrollTopBtn" class="scroll-top-btn" data-onclick="BIQ_ACT.scrollTop()" aria-label="Retour en haut de page" data-i18n-aria="scroll-top-aria" title="Retour en haut">
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
     <polyline points="18 15 12 9 6 15"/>
   </svg>
@@ -2226,7 +2226,7 @@
     <p class="onboarding-subtitle" data-i18n="ob-subtitle">Outil d'information épidémique mondiale — gratuit, sans inscription, sans publicité.</p>
 
     <div class="onboarding-modes">
-      <button class="onboarding-mode-card onboarding-mode-patient" onclick="closeOnboarding('patient')" data-i18n-aria="ob-patient-aria">
+      <button class="onboarding-mode-card onboarding-mode-patient" data-onclick="closeOnboarding('patient')" data-i18n-aria="ob-patient-aria">
         <span class="om-icon">👤</span>
         <span class="om-title" data-i18n="ob-patient-title">Je suis patient / citoyen</span>
         <p data-i18n="x-dehors-aujourd-hui-c-885e" class="om-tagline">Dehors aujourd'hui, c'est comment ?</p>
@@ -2239,7 +2239,7 @@
         <span class="om-cta" data-i18n="ob-patient-cta">Commencer →</span>
       </button>
 
-      <button class="onboarding-mode-card onboarding-mode-expert" onclick="closeOnboarding('expert')" data-i18n-aria="ob-expert-aria">
+      <button class="onboarding-mode-card onboarding-mode-expert" data-onclick="closeOnboarding('expert')" data-i18n-aria="ob-expert-aria">
         <span class="om-icon">🩺</span>
         <span class="om-title" data-i18n="ob-expert-title">Je suis soignant / expert</span>
         <p data-i18n="x-donnees-epidemio-brutes-sans-a2a3" class="om-tagline">Données épidémio brutes, sans filtre</p>
@@ -2254,7 +2254,7 @@
     </div>
 
     <p class="onboarding-disclaimer" data-i18n="ob-disclaimer">Outil de vulgarisation scientifique bénévole — <strong>non dispositif médical</strong> (Règl. UE 2017/745) · <a href="privacy.html" tabindex="0">Confidentialité</a></p>
-    <button class="onboarding-skip" onclick="closeOnboarding(null)" data-i18n="ob-skip">Continuer sans choisir</button>
+    <button class="onboarding-skip" data-onclick="closeOnboarding(null)" data-i18n="ob-skip">Continuer sans choisir</button>
   </div>
 </div>
 
@@ -2262,100 +2262,16 @@
 <!-- Leaflet chargé dynamiquement via initMapWhenReady() — ne bloque pas le rendu initial -->
 <!-- API live santé publique -->
 <!-- Chargement lazy BIQ_PRO — uniquement quand section visible -->
-<script>
-(function(){
-  function loadBiqPro(){
-    if(window.BIQ_PRO){BIQ_PRO.init();return;}
-    var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261025j';
-    s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
-    document.head.appendChild(s);
-  }
-  // Observer la section pour chargement auto au scroll
-  if('IntersectionObserver' in window){
-    var obs=new IntersectionObserver(function(entries){
-      if(entries[0].isIntersecting){obs.disconnect();loadBiqPro();}
-    },{threshold:0.1});
-    var section=document.getElementById('proPathogens');
-    if(section)obs.observe(section);
-  } else {
-    // Fallback : chargement immédiat si pas d'IntersectionObserver
-    loadBiqPro();
-  }
-  // Exposer pour appel depuis onglets
-  window._loadBiqPro=loadBiqPro;
-})();
-</script>
+<script src="/js/pages/index-9be23aa3.js"></script>
 
-<script>
-// ── Écran épidémio pré-wizard ──────────────────────────────
-function showEpiAlert(type) {
-  const el = document.getElementById('epiResult' + type.charAt(0).toUpperCase() + type.slice(1));
-  if (el) { el.hidden = false; el.scrollIntoView({behavior:'smooth', block:'nearest'}); }
-}
-function hideEpiAlert(type) {
-  const el = document.getElementById('epiResult' + type.charAt(0).toUpperCase() + type.slice(1));
-  if (el) el.hidden = true;
-}
-
-// ── Overlay score non-respiratoire si PHEIC Ebola actif ───
-// Appelé par loadPheicAlert() uniquement quand une alerte sourcée est active (plus de note codée en dur)
-window.syncPheicScoreOverlay = function(lang, alert) {
-  const scoreCard = document.getElementById('dailyScore');
-  if (!scoreCard) return;
-  const existing = scoreCard.querySelector('.ebola-pheic-overlay');
-  if (!alert) { existing?.remove(); return; }
-  const fr = lang === 'fr';
-  const name = alert.shortName ? (alert.shortName[lang] || alert.shortName.fr) : alert.disease;
-  const html = fr
-    ? `<strong>⚠️ Note — alerte internationale active : ${name}</strong><p>Le score affiché concerne la qualité de l'air et les virus respiratoires ; cette alerte n'y est pas intégrée. Consultez la section « Alertes épidémiques » pour savoir si vous êtes concerné(e).</p><a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">Suis-je concerné(e) ? →</a>`
-    : `<strong>⚠️ Note — active international alert: ${name}</strong><p>The score shown covers air quality and respiratory viruses; this alert is not part of it. See the "Epidemic alerts" section to find out whether it concerns you.</p><a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')">Does it concern me? →</a>`;
-  if (existing) { existing.innerHTML = html; return; }
-  const overlay = document.createElement('div');
-  overlay.className = 'ebola-pheic-overlay';
-  overlay.setAttribute('role', 'note');
-  overlay.innerHTML = html;
-  scoreCard.insertAdjacentElement('afterbegin', overlay);
-};
-</script>
-<script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261025j" defer></script>
-<script src="api-live.min.js?v=20261025j" defer></script>
-<script src="script.min.js?v=20261025j" defer></script>
-<script src="js/triage-engine.min.js?v=20261025j" defer></script>
-<script src="js/triage-ui.min.js?v=20261025j" defer></script>
-<script>
-// Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
-(function(){
-  const RTL = ['ar','he','fa','ur'];
-  function applyLang(l){
-    if(!l) return;
-    document.documentElement.lang = l;
-    document.documentElement.dir = RTL.includes(l) ? 'rtl' : 'ltr';
-  }
-  // Appliquer au chargement
-  applyLang(localStorage.getItem('biq-lang') || 'fr');
-  // Patcher setLang pour mettre à jour en temps réel
-  const _orig = window.setLang;
-  window.setLang = function(l){ applyLang(l); if(_orig) _orig(l); };
-  // Observer le select au cas où setLang n'est pas encore défini
-  document.getElementById('langSelect')?.addEventListener('change', function(){ applyLang(this.value); });
-})();
-
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => {
-        reg.addEventListener('updatefound', () => {
-          const n = document.createElement('div');
-          n.style.cssText='position:fixed;bottom:1rem;left:50%;transform:translateX(-50%);background:#16a34a;color:#fff;padding:.6rem 1.2rem;border-radius:.5rem;font-size:.85rem;z-index:9999;box-shadow:0 2px 8px rgba(0,0,0,.2)';
-          n.textContent='✅ Site disponible hors-ligne';
-          document.body.appendChild(n);
-          setTimeout(() => n.remove(), 4000);
-        });
-      });
-  });
-}
-</script>
+<script src="/js/pages/index-d9872349.js"></script>
+<script src="/js/pages/index-14a1ff48.js"></script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
+<script src="js/psc-auth.js?v=20261026a" defer></script>
+<script src="api-live.min.js?v=20261026a" defer></script>
+<script src="script.min.js?v=20261026a" defer></script>
+<script src="js/triage-engine.min.js?v=20261026a" defer></script>
+<script src="js/triage-ui.min.js?v=20261026a" defer></script>
+<script src="/js/pages/index-9192ba93.js"></script>
+<script src="/js/actions.min.js?v=20261026a" defer></script>
 </body>
 </html>
