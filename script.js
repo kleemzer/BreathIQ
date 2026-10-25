@@ -24,6 +24,8 @@ var I18N = {
   fr: {
     'nav-symptoms': 'Que faire ?',
     'nav-situation': 'Situation en France',
+    'pathogens-search-label': 'Rechercher une maladie',
+    'pathogens-search-ph': 'Ex. grippe, dengue, rougeole…',
     'nav-declare': 'Déclarer un cas',
     'nav-travel': 'Voyager',
     'nav-pro-pathogens': 'Référentiel',
@@ -1478,6 +1480,8 @@ var I18N = {
     'checker-btn-text': 'Analyse my symptoms →',
     'nav-symptoms': 'Symptoms',
     'nav-situation': 'Situation in France',
+    'pathogens-search-label': 'Search for a disease',
+    'pathogens-search-ph': 'E.g. flu, dengue, measles…',
     'nav-declare': 'Report a case',
     'nav-travel': 'Travel',
     'nav-pro-pathogens': 'Reference',
@@ -3816,16 +3820,30 @@ function makeRefLink(ref) {
     : e;
 }
 
+var pathogenQuery = '';
+function searchPathogensList(value) {
+  pathogenQuery = value || '';
+  renderPathogens();
+  const n = document.getElementById('pathogensGrid')?.children.length || 0;
+  const status = document.getElementById('pathogensSearchStatus');
+  if (status) status.textContent = currentLang === 'en' ? `${n} result${n > 1 ? 's' : ''}` : `${n} résultat${n > 1 ? 's' : ''}`;
+}
+
 function renderPathogens() {
   const grid = document.getElementById('pathogensGrid');
   if (!grid) return;
 
-  const filtered = currentFilter === 'all'
+  // Recherche libre (nom, agent, description), insensible aux accents et à la casse
+  const norm = v => String(v || '').normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+  const q = norm(pathogenQuery).trim();
+  const filtered = (currentFilter === 'all'
     ? OUTBREAK_DATA
-    : OUTBREAK_DATA.filter(ob => ob.category === currentFilter);
+    : OUTBREAK_DATA.filter(ob => ob.category === currentFilter))
+    .filter(ob => !q || norm([ob.nameFR, ob.nameEN, ob.pathogen, ob.id, ob.descFR, ob.descEN].join(' ')).includes(q));
 
   const renderSignature = [
     currentFilter,
+    q,
     currentLang,
     currentMode,
     outbreakDataVersion,
@@ -4156,6 +4174,7 @@ function applyView(view, opts = {}) {
   document.querySelectorAll('[data-nav-view]').forEach(a => {
     if (a.dataset.navView === view && patient) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
   });
+  if (patient && view === 'maladies') setTimeout(() => window.triggerPathogensLoad?.(), 0);
   if (patient && view === 'voyager') {
     setTimeout(() => {
       if (typeof worldMap !== 'undefined' && worldMap) worldMap.invalidateSize(true);
@@ -5694,6 +5713,8 @@ domReady(() => {
     await loadPathogensData();
     renderPathogens();
   }
+  window.triggerPathogensLoad = triggerPathogensLoad; // appelé à l'ouverture de la vue « Maladies »
+  if (currentView === 'maladies') triggerPathogensLoad();
   const pathSection = document.getElementById('pathogensGrid') || document.getElementById('pathogens');
   if (pathSection && 'IntersectionObserver' in window) {
     const obs = new IntersectionObserver(entries => {

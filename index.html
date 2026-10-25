@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261025g" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261025g"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261025i" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261025i"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -1639,6 +1639,11 @@
       </p>
     </div>
 
+    <div class="pathogens-search">
+      <label for="pathogensSearch" class="pathogens-search-label" data-i18n="pathogens-search-label">Rechercher une maladie</label>
+      <input id="pathogensSearch" type="search" autocomplete="off" data-i18n-placeholder="pathogens-search-ph" placeholder="Ex. grippe, dengue, rougeole…" oninput="searchPathogensList(this.value)" aria-describedby="pathogensSearchStatus">
+      <span id="pathogensSearchStatus" class="sr-only" role="status"></span>
+    </div>
     <div class="pathogens-filters" role="group" aria-label="Filtres pathogènes">
       <button class="filter-btn active" data-filter="all" data-i18n="filter-all">Toutes</button>
       <button class="filter-btn" data-filter="pandemic" data-i18n="filter-pandemic">🌍 Mondial</button>
@@ -2254,7 +2259,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261025g';
+    s.src='/pro/pathogens.js?v=20261025i';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2306,11 +2311,11 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261025g" defer></script>
-<script src="api-live.min.js?v=20261025g" defer></script>
-<script src="script.min.js?v=20261025g" defer></script>
-<script src="js/triage-engine.min.js?v=20261025g" defer></script>
-<script src="js/triage-ui.min.js?v=20261025g" defer></script>
+<script src="js/psc-auth.js?v=20261025i" defer></script>
+<script src="api-live.min.js?v=20261025i" defer></script>
+<script src="script.min.js?v=20261025i" defer></script>
+<script src="js/triage-engine.min.js?v=20261025i" defer></script>
+<script src="js/triage-ui.min.js?v=20261025i" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
