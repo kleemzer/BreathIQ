@@ -1073,8 +1073,9 @@
       "lat": 1.65,
       "lon": 30.25,
       "activeRegions": [
-        "🚨 RD Congo — 8 728 cas confirmés, 4 205 décès au 6 oct. 2026 (OMS DON619) · épicentre Ituri",
-        "⚠️ Kenya — 1 cas importé confirmé le 5 oct. 2026 (OMS DON619)",
+        "🚨 RD Congo — 9 704 cas confirmés, 4 687 décès au 20 oct. 2026 (OMS DON622) · épicentre Ituri",
+        "⚠️ Kenya — 9 cas dont 1 décès au 20 oct. 2026 (OMS DON622)",
+        "⚠️ Nigeria — 1 cas importé confirmé le 20 oct. 2026 (OMS DON622)",
         "⚠️ Ouganda — inclus dans la PHEIC (OMS DON602)",
         "🇫🇷 France — 1 cas importé confirmé le 24/06/2026 (OMS DON612)"
       ],
@@ -1329,8 +1330,8 @@
         "Varkey JB et al. N Engl J Med 2015 — Persistence of Ebola virus in ocular fluid during recovery",
         "WHO 2021 — Interim advice on sexual and reproductive health for Ebola survivors (semen persistence 9 months)"
       ],
-      "descFR": "🚨 Cas importé en France le 24/06/2026 (OMS DON612) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en établissement de santé de référence — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active — 8 728 cas confirmés et 4 205 décès au 6 oct. 2026, cas importé au Kenya le 5 oct. (OMS DON619). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
-      "descEN": "🚨 Imported case in France on 24/06/2026 (WHO DON612) · WHO PHEIC active since 17/05/2026. Imported isolated case in a designated referral hospital — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak — 8,728 confirmed cases and 4,205 deaths as of 6 Oct 2026, imported case in Kenya on 5 Oct (WHO DON619). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
+      "descFR": "🚨 Cas importé en France le 24/06/2026 (OMS DON612) · PHEIC OMS active depuis 17/05/2026. Cas importé isolé en établissement de santé de référence — ZÉRO transmission communautaire en France. Souche Bundibugyo (BDBV) : AUCUN vaccin homologué (rVSV-ZEBOV non efficace contre BDBV), AUCUN traitement antiviral spécifique. Persistance virale post-guérison : sperme jusqu'à 9 mois (Varkey, NEJM 2015), liquide oculaire documenté. RDC : épidémie active — 9 704 cas confirmés et 4 687 décès au 20 oct. 2026 ; 9 cas au Kenya, 1 cas importé au Nigeria (OMS DON622). Risque pour la population française générale : EXTRÊMEMENT FAIBLE — transmission uniquement par contact direct avec sang/fluides d'un malade symptomatique. Pas de transmission aérienne.",
+      "descEN": "🚨 Imported case in France on 24/06/2026 (WHO DON612) · WHO PHEIC active since 17/05/2026. Imported isolated case in a designated referral hospital — ZERO community transmission in France. Bundibugyo strain (BDBV): NO licensed vaccine (rVSV-ZEBOV ineffective against BDBV), NO specific antiviral treatment. Post-recovery viral persistence: semen up to 9 months (Varkey, NEJM 2015), ocular fluid documented. DRC: active outbreak — 9,704 confirmed cases and 4,687 deaths as of 20 Oct 2026; 9 cases in Kenya, 1 imported case in Nigeria (WHO DON622). Risk for the general French population: EXTREMELY LOW — transmission only through direct contact with blood/fluids of a symptomatic patient. No airborne transmission.",
       "descPatientFR": "🟥 Ebola est une maladie très grave mais qui ne se transmet PAS dans l'air. On l'attrape uniquement en touchant le sang ou les liquides corporels d'une personne malade. Si vous n'avez pas voyagé en Afrique centrale/Est récemment et n'avez pas eu de contact avec un malade, votre risque est extrêmement faible — même avec l'alerte en France. Si vous avez de la fièvre ET avez voyagé dans ces pays dans les 21 derniers jours : appelez le 15 avant d'aller aux urgences.",
       "descPatientEN": "🟥 Ebola is very serious but NOT spread through the air. You can only catch it by touching the blood or body fluids of a sick person. If you have not traveled to Central/East Africa recently and have not had contact with a sick person, your risk is extremely low — even with the alert in France. If you have fever AND traveled to these countries in the last 21 days: call 15 before going to the emergency room.",
       "descPatientES": "🟥 El Ébola es muy grave pero NO se transmite por el aire. Solo se contagia por contacto con sangre o fluidos de una persona enferma. Si no viajó a África central/oriental recientemente, su riesgo es extremadamente bajo. Si tiene fiebre Y viajó a esos países en los últimos 21 días: llame al 15 antes de ir a urgencias.",
@@ -1340,8 +1341,8 @@
           "lat": 1.65,
           "lon": 29.3,
           "country": "RDC (Ituri)",
-          "note": "Épicentre — OMS DON619",
-          "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON619"
+          "note": "Épicentre — OMS DON622",
+          "source": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON622"
         }
       ],
       "verifiedAt": "2026-10-07"
