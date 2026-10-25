@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261025c" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261025c"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261025e" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261025e"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -230,18 +230,25 @@
     </a>
 
     <ul class="nav-links" role="list" id="mainNavLinks">
-      <li class="patient-only"><a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" data-i18n="nav-symptoms">Que faire ?</a></li>
+      <!-- Mode patient : une entrée par intention (vues de la page) -->
+      <li class="patient-only"><a href="#symptomChecker" data-nav-view="accueil" onclick="applyView('accueil');return navTo(event,'#symptomChecker')" data-i18n="nav-symptoms">Que faire ?</a></li>
+      <li class="patient-only"><a href="#situation" data-nav-view="situation" onclick="return navTo(event,'#situation')" data-i18n="nav-situation">Situation en France</a></li>
+      <li class="patient-only"><a href="#voyager" data-nav-view="voyager" onclick="return navTo(event,'#voyager')" data-i18n="nav-travel">Voyager</a></li>
+      <li class="patient-only"><a href="#maladies" data-nav-view="maladies" onclick="return navTo(event,'#maladies')" data-i18n="nav-pathogens">Maladies</a></li>
+      <li class="patient-only"><a href="#apropos" data-nav-view="apropos" onclick="return navTo(event,'#apropos')" data-i18n="nav-about">À propos</a></li>
+      <!-- Mode soignant -->
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
-      <li><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
-      <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
-      <li><a data-i18n="x-bilan-mensuel-aabb" href="bilan-epidemique.html">Dernier bilan</a></li>
+      <li class="expert-only"><a href="#syndromic" onclick="return navTo(event,'#syndromic')" data-i18n="nav-syndromic">Surveillance</a></li>
+      <li class="expert-only"><a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" data-i18n="nav-pro-pathogens">Référentiel</a></li>
+      <li class="expert-only"><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
+      <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
       <li class="nav-more-item">
         <button data-i18n="x-plus-6cea" class="nav-more-btn" onclick="toggleNavMore(event)" aria-haspopup="true" aria-expanded="false">Plus ▾</button>
         <ul class="nav-more-dropdown" role="menu">
-          <li><a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="expert-only" data-i18n="nav-syndromic">Surveillance</a></li>
-          <li><a href="#pathogens" onclick="return navTo(event,'#pathogens')" data-i18n="nav-pathogens">Maladies</a></li>
-          <li class="expert-only"><a href="#protection" onclick="return navTo(event,'#protection')" data-i18n="nav-protection">Protection</a></li>
-          <li><a href="about.html" data-i18n="nav-about">À propos</a></li>
+          <li><a href="stocks.html" data-i18n="nav-stocks">Masques FFP2</a></li>
+          <li><a data-i18n="x-bilan-mensuel-aabb" href="bilan-epidemique.html">Dernier bilan</a></li>
+          <li><a href="methodologie.html" data-i18n="nav-method">Méthodologie</a></li>
+          <li class="expert-only"><a href="about.html" data-i18n="nav-about">À propos</a></li>
         </ul>
       </li>
       <li class="nav-mobile-tools" aria-label="Affichage">
@@ -316,7 +323,7 @@
 <!-- ===== CREATOR TRUST BANNER (tous modes) ===== -->
 
 <!-- ===== PATIENT HERO (Mode Simple — défaut) ===== -->
-<section class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
+<section data-view="accueil" class="patient-hero-section patient-only" id="patientHero" aria-labelledby="patient-hero-title">
   <div class="patient-hero-inner">
 
     <!-- H1 — positionnement épidémiologique -->
@@ -329,7 +336,7 @@
         <span data-i18n="x-j-ai-des-symptomes-e5be">J'ai des symptômes : que faire ?</span> <span class="hero-cta-arrow" aria-hidden="true">→</span>
       </a>
       <!-- CTA secondaire — situation épidémique -->
-      <a href="#virusSaison" onclick="return navTo(event,'#virusSaison')" class="hero-secondary-cta">
+      <a href="#situation" onclick="return navTo(event,'#situation')" class="hero-secondary-cta">
         <span data-i18n="x-voir-les-alertes-epidemiques-b615">Voir la situation épidémique</span>
       </a>
       <!-- Fraîcheur des données -->
@@ -347,16 +354,16 @@
 
     <!-- Quatre parcours — épidémio en premier -->
     <div class="hero-paths" role="navigation" aria-label="Que souhaitez-vous faire ?">
-      <a href="#epidemioAlert" onclick="return navTo(event,'#epidemioAlert')" class="path-card path-epi">
-        <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
-        <span class="path-icon">🦠</span>
-        <span data-i18n="x-alertes-epidemiques-3a8f" class="path-title">Alertes épidémiques</span>
-        <span data-i18n="x-oms-ecdc-foyers-actifs-5a76" class="path-sub">OMS · ECDC · Foyers actifs</span>
+      <a href="#situation" onclick="return navTo(event,'#situation')" class="path-card path-score">
+        <span class="path-icon" aria-hidden="true">🇫🇷</span>
+        <span data-i18n="path-situation-title" class="path-title">Situation en France</span>
+        <span data-i18n="path-situation-sub" class="path-sub">Virus qui circulent, indice du jour</span>
       </a>
-      <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="path-card path-score">
-        <span class="path-icon">🔬</span>
-        <span data-i18n="x-virus-en-circulation-c09c" class="path-title">Virus en circulation</span>
-        <span data-i18n="x-grippe-covid-rsv-26-91a7" class="path-sub">Grippe · COVID · RSV · tous les pathogènes suivis</span>
+      <a href="#voyager" onclick="return navTo(event,'#voyager')" class="path-card path-epi">
+        <span class="path-urgency-dot" id="heroUrgencyDot" hidden></span>
+        <span class="path-icon" aria-hidden="true">✈️</span>
+        <span data-i18n="path-travel-title" class="path-title">Je voyage</span>
+        <span data-i18n="path-travel-sub" class="path-sub">Alertes de l'OMS, carte des foyers</span>
       </a>
       <a href="#careFinder" onclick="return navTo(event,'#careFinder')" class="path-card path-symptoms">
         <span class="path-icon" aria-hidden="true">📍</span>
@@ -374,7 +381,7 @@
 </section>
 
 <!-- ===== TRUST BAR (Mode Patient) ===== -->
-<div class="gp-trust-bar patient-only" role="complementary" aria-label="Garanties BreathIQ">
+<div class="gp-trust-bar patient-only" data-view="apropos" role="complementary" aria-label="Garanties BreathIQ">
   <div class="container">
     <div class="gp-trust-items">
       <span class="gp-trust-item">
@@ -398,7 +405,7 @@
 </div>
 
 <!-- ===== SCORE DU JOUR (Mode Patient) ===== -->
-<section class="gp-score-section patient-only" id="dailyScore" aria-labelledby="dailyScoreTitle">
+<section data-view="situation" class="gp-score-section patient-only" id="dailyScore" aria-labelledby="dailyScoreTitle">
   <div class="container" style="max-width:720px">
     <div class="gp-score-card" id="gpScoreCard">
       <div data-i18n="x-indice-respiratoire-du-jour-1362" class="gp-score-label">📊 Indice respiratoire du jour</div>
@@ -487,7 +494,7 @@
 </section>
 
 <!-- ===== VIRUS SAISONNIERS (Mode Patient) ===== -->
-<section class="virus-saison-section patient-only" id="virusSaison" aria-labelledby="virusSaisonTitle">
+<section data-view="accueil situation" class="virus-saison-section patient-only" id="virusSaison" aria-labelledby="virusSaisonTitle">
   <div class="container">
     <h2 data-i18n="x-virus-en-circulation-en-9770" id="virusSaisonTitle">Virus en circulation en France</h2>
     <div class="virus-saison-grid" id="virusSaisonGrid">
@@ -506,7 +513,7 @@
 </section>
 
 <!-- ===== ALERTES ÉPIDÉMIQUES (Mode Patient) — ancre principale ===== -->
-<section class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
+<section data-view="voyager" class="epidemio-alert-section patient-only" id="epidemioAlert" aria-labelledby="epidemioAlertTitle" style="padding:1.5rem 0">
   <div class="container">
     <div class="epidemio-alert-header">
       <h2 data-i18n="x-alertes-epidemiques-en-cours-5487" id="epidemioAlertTitle">Alertes épidémiques en cours</h2>
@@ -840,7 +847,7 @@
 <!-- ===== VÉRIFICATEUR DE SYMPTÔMES (Mode Patient) ===== -->
 
 
-<section class="symptom-checker-section" id="symptomChecker" aria-labelledby="checker-title">
+<section data-view="accueil" class="symptom-checker-section" id="symptomChecker" aria-labelledby="checker-title">
   <div class="container">
     <div class="section-header" style="text-align:center">
       <h2 id="checker-title" data-i18n="symptom-checker-title">Ai-je des symptômes qui doivent m'alerter ?</h2>
@@ -1549,7 +1556,7 @@
 </section>
 
 <!-- ===== MAP SECTION ===== -->
-<section class="map-section" id="map" aria-labelledby="map-title">
+<section data-view="voyager" class="map-section" id="map" aria-labelledby="map-title">
   <div class="container">
     <div class="section-header">
       <h2 id="map-title" data-i18n="map-title">Carte mondiale des stocks &amp; foyers</h2>
@@ -1613,7 +1620,7 @@
 </section>
 
 <!-- ===== PATHOGENS SECTION ===== -->
-<section class="pathogens-section" id="pathogens" aria-labelledby="pathogens-title">
+<section data-view="maladies" class="pathogens-section" id="pathogens" aria-labelledby="pathogens-title">
   <div class="container">
     <!-- Header Mode Patient -->
     <div class="section-header patient-only">
@@ -1657,7 +1664,7 @@
 </section>
 
 <!-- ===== CARE FINDER (Mode Patient) ===== -->
-<section class="care-finder-section patient-only" id="careFinder" aria-labelledby="care-finder-title">
+<section data-view="accueil" class="care-finder-section patient-only" id="careFinder" aria-labelledby="care-finder-title">
   <div class="container">
     <div class="section-header" style="text-align:center">
       <h2 id="care-finder-title" data-i18n="care-title">Trouver un médecin près de chez moi</h2>
@@ -1791,7 +1798,7 @@
 </section>
 
 <!-- ===== TOGGLE MODE EXPERT ===== -->
-<div class="expert-toggle-section patient-only" id="expertToggle">
+<div class="expert-toggle-section patient-only" id="expertToggle" data-view="accueil">
   <button class="expert-toggle-btn" onclick="toggleMode()" aria-expanded="false" data-i18n="expert-toggle-label">
     ⚙️ Afficher les données techniques (Mode Expert)
   </button>
@@ -1941,7 +1948,7 @@
 </section>
 
 <!-- ===== ABOUT / TRUST SECTION ===== -->
-<section class="about-section" id="about" aria-labelledby="about-title">
+<section data-view="apropos" class="about-section" id="about" aria-labelledby="about-title">
   <div class="container">
     <details class="collapsible-section" open>
       <summary class="collapsible-summary">
@@ -2070,11 +2077,19 @@
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span data-i18n="x-score-5dd1">Score</span>
   </a>
-  <a href="#map" onclick="return navTo(event,'#map')" class="mbn-item">
+  <a href="#situation" onclick="return navTo(event,'#situation')" class="mbn-item patient-only">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+    <span data-i18n="mbn-situation">Situation</span>
+  </a>
+  <a href="#voyager" onclick="return navTo(event,'#voyager')" class="mbn-item patient-only">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
+    <span data-i18n="mbn-travel">Voyager</span>
+  </a>
+  <a href="#map" onclick="return navTo(event,'#map')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
     <span data-i18n="mbn-map">Carte</span>
   </a>
-  <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="mbn-item">
+  <a href="#pathogens" onclick="return navTo(event,'#pathogens')" class="mbn-item expert-only">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
     <span data-i18n="mbn-pathogens">Virus</span>
   </a>
@@ -2238,7 +2253,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261025c';
+    s.src='/pro/pathogens.js?v=20261025e';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2290,11 +2305,11 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261025c" defer></script>
-<script src="api-live.min.js?v=20261025c" defer></script>
-<script src="script.min.js?v=20261025c" defer></script>
-<script src="js/triage-engine.min.js?v=20261025c" defer></script>
-<script src="js/triage-ui.min.js?v=20261025c" defer></script>
+<script src="js/psc-auth.js?v=20261025e" defer></script>
+<script src="api-live.min.js?v=20261025e" defer></script>
+<script src="script.min.js?v=20261025e" defer></script>
+<script src="js/triage-engine.min.js?v=20261025e" defer></script>
+<script src="js/triage-ui.min.js?v=20261025e" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){

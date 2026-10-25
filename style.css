@@ -4852,4 +4852,4 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 @media (max-width: 480px) { .tri-card { padding: var(--s3); } .tri-question { font-size: var(--fs-3); } .tri-nav .tri-btn { flex: 1 1 100%; } }
 
 /* Sections retirées de l'accueil (étape 1 du nettoyage) : jamais affichées, quel que soit le mode */
-section[hidden], [data-retire] { display: none !important; }
+section[hidden], [data-retire], [data-view][hidden] { display: none !important; }

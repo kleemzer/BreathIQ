@@ -23,6 +23,10 @@ var WHO_THRESHOLDS_2021 = {
 var I18N = {
   fr: {
     'nav-symptoms': 'Que faire ?',
+    'nav-situation': 'Situation en France',
+    'nav-travel': 'Voyager',
+    'nav-pro-pathogens': 'Référentiel',
+    'nav-method': 'Méthodologie',
     'nav-score': 'Mon Score',
     'nav-map': 'Carte',
     'nav-stocks': 'Masques FFP2',
@@ -663,6 +667,12 @@ var I18N = {
     'mbn-pathogens': 'Virus',
     'mbn-protection': 'FFP2',
     'mbn-care': 'Soignants',
+    'path-situation-title': 'Situation en France',
+    'path-situation-sub': 'Virus qui circulent, indice du jour',
+    'path-travel-title': 'Je voyage',
+    'path-travel-sub': 'Alertes de l\'OMS, carte des foyers',
+    'mbn-situation': 'Situation',
+    'mbn-travel': 'Voyager',
     'path-care-title': 'Trouver un soignant',
     'path-care-sub': 'Médecin, pharmacie, urgences près de moi',
     'mode-toggle-patient': '👤 Mode Patient',
@@ -1451,6 +1461,12 @@ var I18N = {
     'mbn-pathogens': 'Viruses',
     'mbn-protection': 'FFP2',
     'mbn-care': 'Find care',
+    'path-situation-title': 'Situation in France',
+    'path-situation-sub': 'Circulating viruses, today\'s index',
+    'path-travel-title': 'I am travelling',
+    'path-travel-sub': 'WHO alerts, outbreak map',
+    'mbn-situation': 'Situation',
+    'mbn-travel': 'Travel',
     'path-care-title': 'Find care',
     'path-care-sub': 'Doctor, pharmacy, emergency department near me',
     'mode-toggle-patient': '👤 Patient Mode',
@@ -1460,6 +1476,10 @@ var I18N = {
     'symptom-checker-intro': 'Check what you feel to identify the risk and know what to do',
     'checker-btn-text': 'Analyse my symptoms →',
     'nav-symptoms': 'Symptoms',
+    'nav-situation': 'Situation in France',
+    'nav-travel': 'Travel',
+    'nav-pro-pathogens': 'Reference',
+    'nav-method': 'Methodology',
     'action-guide-title': 'I have symptoms — what should I do?',
     'action-guide-subtitle': 'Assess your situation and act at the right level of urgency',
     'expert-toggle-label': '⚙️ Show technical data (Expert Mode)',
@@ -4107,8 +4127,60 @@ function bindEvents() {
 // explicite (jamais de bascule silencieuse). La carte et « À propos » sont visibles dans les deux modes.
 var EXPERT_SECTIONS = new Set(['#score', '#protection', '#syndromic', '#liveSources']);
 
+// ── Vues du mode patient : pages courtes, une par intention, dans le même document ──
+// accueil · situation (France) · voyager (alertes internationales, carte) · maladies · apropos.
+// Adresses partageables : #situation, #voyager, #maladies, #apropos. Le mode soignant affiche tout.
+var VIEWS = ['accueil', 'situation', 'voyager', 'maladies', 'apropos'];
+var currentView = 'accueil';
+
+function viewOf(href) {
+  const id = String(href || '').replace(/^#/, '');
+  if (VIEWS.includes(id)) return id;
+  const el = id && document.getElementById(id);
+  const host = el && el.closest('[data-view]');
+  if (!host) return null;
+  const views = host.dataset.view.split(/\s+/);
+  return views.includes(currentView) ? currentView : views[0];
+}
+
+function applyView(view, opts = {}) {
+  if (!VIEWS.includes(view)) view = 'accueil';
+  currentView = view;
+  const patient = currentMode === 'patient';
+  document.body.dataset.currentView = patient ? view : '';
+  document.querySelectorAll('[data-view]').forEach(el => {
+    el.hidden = patient && !el.dataset.view.split(/\s+/).includes(view);
+  });
+  document.querySelectorAll('[data-nav-view]').forEach(a => {
+    if (a.dataset.navView === view && patient) a.setAttribute('aria-current', 'page'); else a.removeAttribute('aria-current');
+  });
+  if (patient && view === 'voyager') {
+    setTimeout(() => {
+      if (typeof worldMap !== 'undefined' && worldMap) worldMap.invalidateSize(true);
+      else if (typeof initMapWhenReady === 'function') initMapWhenReady();
+    }, 60);
+  }
+  if (opts.scrollTop) window.scrollTo({ top: 0, behavior: 'instant' in window ? 'instant' : 'auto' });
+}
+
+window.addEventListener('hashchange', () => {
+  const v = viewOf(location.hash);
+  if (v && v !== currentView) applyView(v, { scrollTop: VIEWS.includes(location.hash.slice(1)) });
+});
+document.addEventListener('DOMContentLoaded', () => applyView(viewOf(location.hash) || 'accueil'));
+
 function navTo(e, href) {
   if (e) e.preventDefault();
+  // Vue entière (#voyager…) ou section appartenant à une autre vue : on change de vue d'abord
+  if (currentMode === 'patient') {
+    const v = viewOf(href);
+    if (v && VIEWS.includes(String(href).replace(/^#/, ''))) {
+      applyView(v, { scrollTop: true });
+      try { history.pushState(null, '', href); } catch { /* adresse inchangée */ }
+      return false;
+    }
+    if (v && v !== currentView) applyView(v);
+  }
   if (EXPERT_SECTIONS.has(href) && currentMode === 'patient') {
     const msg = currentLang === 'en'
       ? 'This section is for health professionals. Switch to the professional space?'
@@ -4167,6 +4239,7 @@ function initMode() {
 }
 
 function toggleMode() {
+  setTimeout(() => applyView(currentView), 0); // vues : seulement en mode patient
   setTimeout(() => window.BIQ_TRIAGE_UI?.render(), 0); // questionnaire : textes selon langue et mode
   if (currentMode === 'patient') {
     // Si profil déjà enregistré → accès direct sans re-saisie
