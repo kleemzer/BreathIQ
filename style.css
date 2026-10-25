@@ -61,9 +61,9 @@
   --fs-6: 2.25rem;
   /* Palette BreathIQ */
   --c-navy:        #1A3C5E;
-  --c-blue:        #2A7FD4;
+  --c-blue:        #1D6FC0; /* #2A7FD4 → #1D6FC0 : ≈ 5:1 sur blanc (WCAG AA) */
   --c-blue-light:  #4A9FE8;
-  --c-teal:        #0E8C7A;
+  --c-teal:        #0A7165; /* ratio 5.0:1 sur blanc, aussi sans attribut data-theme */
   --c-teal-light:  #1AADA0;
   --c-amber:       #D97706;
   --c-red:         #C0392B;
@@ -131,7 +131,10 @@
   --bg-section-alt:#162030;
   --text-primary:  #E8F0F7;
   --text-secondary:#A0B4C8;
-  --text-muted:    #667A8E;
+  --text-muted:    #8FA3B7; /* #667A8E → #8FA3B7 : ≥ 4,5:1 sur --bg-card-2 */
+  --c-red:         #F87171;
+  --c-blue:        #60A5FA;
+  --c-teal:        #2DD4BF;
   --border:        rgba(255,255,255,.08);
   --border-strong: rgba(255,255,255,.15);
   --shadow-md:     0 4px 16px rgba(0,0,0,.30);
@@ -4853,3 +4856,14 @@ body:not(.expert-mode) .biq-row-head { grid-template-columns: 5px 1.3rem 1fr aut
 
 /* Sections retirées de l'accueil (étape 1 du nettoyage) : jamais affichées, quel que soit le mode */
 section[hidden], [data-retire], [data-view][hidden] { display: none !important; }
+
+/* ── Accessibilité (audit WCAG 2.2) ────────────────────────────── */
+/* Focus toujours visible au clavier, y compris là où « outline: none » était posé */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: 3px solid var(--c-blue) !important;
+  outline-offset: 2px !important;
+}
+/* Cibles tactiles d'au moins 44 × 44 px */
+.font-size-btn, .theme-toggle, .mode-toggle-btn, .nav-toggle, .lang-select, .epidemic-close, .epidemic-toggle, .auth-alert-close {
+  min-width: 44px; min-height: 44px;
+}

@@ -29,6 +29,33 @@ const has = s => t => s.includes(t);
 check('expr &&/||/!', evalCondition('a && (b || !c)', has(['a'])) === true && evalCondition('a && b', has(['a'])) === false);
 check('texte libre → null', evalCondition("Toujours, après le filtre d'urgence", has([])) === null);
 
+// ── Regroupement des signes d'urgence : strictement équivalent aux réponses une par une ──
+{
+  const toRun = s => { const r = eng.batchAt(s); return r; };
+  const s0 = eng.start(); eng.answer(s0, 1); // « moins de 3 mois ? » → Non
+  let groups = 0;
+  for (let guard = 0; guard < 20; guard++) {
+    const run = toRun(s0);
+    if (!run) { const n = eng.current(s0); if (n.type !== 'question' || !n.id.startsWith('U')) break; eng.answer(s0, eng.visibleChoices(n, s0.tokens).findIndex(c => c.vers !== 'U00')); continue; }
+    groups++;
+    // « Aucun » ≡ Non à chaque question
+    const a = eng.start(), b = eng.start();
+    for (const h of s0.history) { const n = eng.nodes.get(h.node); const i = n.choix.findIndex(c => c.libelle === h.labels[0]); eng.answer(a, i); eng.answer(b, i); }
+    eng.answerBatch(a, run, null);
+    for (const id of run) eng.answer(b, eng.batchable(eng.nodes.get(id)).no);
+    check(`groupe ${run.join('+')} : « Aucun » ≡ Non à chaque question`, a.current === b.current);
+    // Chaque signe coché ≡ Oui à cette question → U00
+    for (const id of run) {
+      const c = eng.start();
+      for (const h of s0.history) { const n = eng.nodes.get(h.node); eng.answer(c, n.choix.findIndex(x => x.libelle === h.labels[0])); }
+      eng.answerBatch(c, run, id);
+      check(`groupe ${run.join('+')} : ${id} coché → urgence`, c.result && c.result.node === 'U00');
+    }
+    eng.answerBatch(s0, run, null);
+  }
+  check('au moins 3 groupes de signes d\'urgence', groups >= 3, `${groups} groupe(s)`);
+}
+
 // ── Vignettes ──
 let replayed = 0, fng = 0, same = 0;
 for (const v of vignettes) {

@@ -24,6 +24,7 @@ var I18N = {
   fr: {
     'nav-symptoms': 'Que faire ?',
     'nav-situation': 'Situation en France',
+    'nav-declare': 'Déclarer un cas',
     'nav-travel': 'Voyager',
     'nav-pro-pathogens': 'Référentiel',
     'nav-method': 'Méthodologie',
@@ -597,7 +598,7 @@ var I18N = {
     'formula-label': 'Formule :',
     'ai-badge': 'Intelligence BreathIQ',
     'ai-message-default': 'Sélectionnez une région pour obtenir une analyse personnalisée.',
-    'map-title': 'Carte mondiale des stocks & foyers',
+    'map-title': 'Carte des foyers épidémiques',
     'map-subtitle': 'Stocks FFP2/N95/KN95 et foyers pathogènes actifs nécessitant une protection respiratoire.',
     'layer-stocks': 'Stocks masques',
     'layer-outbreaks': 'Foyers pathogènes',
@@ -1391,7 +1392,7 @@ var I18N = {
     'formula-label': 'Formula:',
     'ai-badge': 'BreathIQ Intelligence',
     'ai-message-default': 'Select a region to get a personalized analysis.',
-    'map-title': 'Global stocks & outbreak map',
+    'map-title': 'Outbreak map',
     'map-subtitle': 'FFP2/N95/KN95 stocks and active pathogen outbreaks requiring respiratory protection.',
     'layer-stocks': 'Mask stocks',
     'layer-outbreaks': 'Pathogen outbreaks',
@@ -1477,6 +1478,7 @@ var I18N = {
     'checker-btn-text': 'Analyse my symptoms →',
     'nav-symptoms': 'Symptoms',
     'nav-situation': 'Situation in France',
+    'nav-declare': 'Report a case',
     'nav-travel': 'Travel',
     'nav-pro-pathogens': 'Reference',
     'nav-method': 'Methodology',
@@ -4125,7 +4127,7 @@ function bindEvents() {
 // Définie ici (hors DOMContentLoaded) pour être disponible immédiatement
 // Sections réservées au mode soignant : y accéder depuis le mode patient demande une confirmation
 // explicite (jamais de bascule silencieuse). La carte et « À propos » sont visibles dans les deux modes.
-var EXPERT_SECTIONS = new Set(['#score', '#protection', '#syndromic', '#liveSources']);
+var EXPERT_SECTIONS = new Set(['#score', '#protection', '#syndromic', '#liveSources', '#declPscGate']);
 
 // ── Vues du mode patient : pages courtes, une par intention, dans le même document ──
 // accueil · situation (France) · voyager (alertes internationales, carte) · maladies · apropos.
@@ -7735,6 +7737,7 @@ async function loadPheicAlert({ force = false, retry = false } = {}) {
     if (gpLink && active.pathogen_id) {
       gpLink.href = `${active.pathogen_id.toLowerCase()}.html`;
       gpLink.textContent = lang === 'fr' ? 'En savoir plus →' : 'Learn more →';
+      gpLink.setAttribute('aria-label', lang === 'fr' ? `En savoir plus sur l'alerte ${L(active.shortName) || active.disease}` : `Learn more about the ${L(active.shortName) || active.disease} alert`);
     }
     const gpDis = document.getElementById('epidemicExpertDisease');
     if (gpDis) gpDis.textContent = `${active.disease} — ${L(active.levelLabel)}`;
@@ -8252,3 +8255,51 @@ const _origActivateExpert = typeof activateExpertMode === 'function' ? activateE
 document.addEventListener('biq:expertActivated', () => {
   if (history.replaceState) history.replaceState(null, '', '#pro');
 });
+
+// ── Accessibilité des fenêtres modales (WCAG 2.1.2 / 2.4.3) ──────────────────
+// Pour geoModal, soignantModal et onboardingModal : focus placé dans la fenêtre à l'ouverture,
+// Tab / Maj+Tab bouclent à l'intérieur, Échap ferme, le focus revient à l'élément d'origine.
+(function initModalA11y() {
+  const MODALS = {
+    geoModal: () => closeGeoModal(false),
+    soignantModal: () => closeSoignantModal(),
+    onboardingModal: () => closeOnboarding(),
+  };
+  const FOCUSABLE = 'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])';
+  const openers = new Map();
+  const isOpen = m => !m.hidden && !m.hasAttribute('hidden');
+  const focusables = m => [...m.querySelectorAll(FOCUSABLE)].filter(el => el.offsetParent !== null);
+
+  function onOpen(m) {
+    if (!openers.has(m.id)) openers.set(m.id, document.activeElement);
+    if (!m.getAttribute('role')) m.setAttribute('role', 'dialog');
+    m.setAttribute('aria-modal', 'true');
+    if (!m.contains(document.activeElement)) setTimeout(() => (focusables(m)[0] || m).focus?.(), 0);
+  }
+  function onClose(m) {
+    const back = openers.get(m.id);
+    openers.delete(m.id);
+    if (back && document.contains(back)) back.focus?.();
+  }
+  function setup() {
+    for (const id of Object.keys(MODALS)) {
+      const m = document.getElementById(id);
+      if (!m) continue;
+      new MutationObserver(() => (isOpen(m) ? onOpen(m) : onClose(m))).observe(m, { attributes: true, attributeFilter: ['hidden'] });
+    }
+    document.addEventListener('keydown', e => {
+      const id = Object.keys(MODALS).find(k => { const m = document.getElementById(k); return m && isOpen(m); });
+      if (!id) return;
+      const m = document.getElementById(id);
+      if (e.key === 'Escape') { e.preventDefault(); MODALS[id](); return; }
+      if (e.key !== 'Tab') return;
+      const f = focusables(m);
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      else if (!m.contains(document.activeElement)) { e.preventDefault(); first.focus(); }
+    });
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', setup); else setup();
+})();

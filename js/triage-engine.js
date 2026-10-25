@@ -141,7 +141,50 @@
       return s;
     }
 
-    return { nodes, levels: LV, start, current, answer, back, visibleChoices, finalLevel, resolve, evalCondition };
+    // ── Regroupement des signes d'urgence (affichage seulement, logique inchangée) ──
+    // Une question est « regroupable » si : réponses positives (Oui / Je ne sais pas) → U00, toutes les
+    // autres → un même nœud suivant, aucune réponse ne pose de token, pas de condition d'activation.
+    // Cocher un signe = répondre Oui à cette question ; « Aucun » = répondre Non à chacune, dans l'ordre.
+    function batchable(node) {
+      if (!node || node.type !== 'question' || node.condition_activation || (node.selection || 'unique') !== 'unique') return null;
+      const ch = node.choix || [];
+      if (ch.some(c => c.pose)) return null;
+      const urgent = ch.filter(c => c.vers === 'U00');
+      const rest = ch.filter(c => c.vers !== 'U00');
+      if (!urgent.length || !rest.length || new Set(rest.map(c => c.vers)).size !== 1) return null;
+      const yes = ch.findIndex(c => c.vers === 'U00' && /^oui\b/i.test(c.libelle));
+      const no = ch.findIndex(c => c.vers !== 'U00');
+      return yes >= 0 ? { yes, no, next: rest[0].vers } : null;
+    }
+    // Série de questions regroupables consécutives à partir du nœud courant (au moins 2, sinon null)
+    function batchAt(s) {
+      const run = [];
+      let id = s.current;
+      while (true) {
+        const n = nodes.get(id), b = batchable(n);
+        if (!b) break;
+        run.push(n.id);
+        id = b.next;
+      }
+      return run.length >= 2 ? run : null;
+    }
+    // positive : identifiant du premier signe coché (ou true pour « je ne sais pas ») ; sinon tout à Non
+    function answerBatch(s, run, positive) {
+      if (positive) {
+        const id = typeof positive === 'string' ? positive : run[0];
+        while (s.current !== id) answer(s, batchable(nodes.get(s.current)).no);
+        return answer(s, batchable(nodes.get(id)).yes);
+      }
+      for (const id of run) { if (s.current !== id) break; answer(s, batchable(nodes.get(id)).no); }
+      return s;
+    }
+    function backBatch(s, run) {
+      // Revenir avant toute la série d'un coup
+      while (s.history.length && run.includes(s.history[s.history.length - 1].node)) back(s);
+      return s;
+    }
+
+    return { nodes, levels: LV, start, current, answer, back, visibleChoices, finalLevel, resolve, evalCondition, batchAt, answerBatch, backBatch, batchable };
   }
 
   return { createEngine, evalCondition, GROUPES };

@@ -187,8 +187,8 @@
   </style>
   <!-- Leaflet : chargé dynamiquement à la demande via initMapWhenReady() -->
   <!-- BreathIQ styles complets — chargés en async pour ne pas bloquer le rendu -->
-  <link rel="stylesheet" href="style.min.css?v=20261025e" media="print" onload="this.media='all'">
-  <noscript><link rel="stylesheet" href="style.min.css?v=20261025e"></noscript>
+  <link rel="stylesheet" href="style.min.css?v=20261025g" media="print" onload="this.media='all'">
+  <noscript><link rel="stylesheet" href="style.min.css?v=20261025g"></noscript>
   <!-- Umami Analytics — chargé uniquement après consentement (voir acceptConsent() dans script.js) -->
   <!-- Preconnect : limité aux 3 origines critiques (tiles, CDN Leaflet, analytics) -->
   <!-- DNS-prefetch pour les API non critiques au premier rendu -->
@@ -202,7 +202,7 @@
 <a href="#patientHero" class="skip-link" data-i18n="skip-link">Aller au contenu principal</a>
 
 <!-- ===== BANDEAU CONSENTEMENT RGPD ===== -->
-<div id="consentBanner" class="consent-banner" role="dialog" aria-labelledby="consentBannerTitle" aria-live="polite" hidden>
+<div id="consentBanner" class="consent-banner" role="region" aria-labelledby="consentBannerTitle" hidden>
   <div class="consent-banner-inner">
     <div class="consent-banner-text">
       <strong id="consentBannerTitle"><span data-i18n="x-confidentialite-cc14">🔒 Confidentialité —</span> <span data-i18n="x-aucune-donnee-personnelle-collectee-9f92" style="font-weight:400;font-size:.85em">Aucune donnée personnelle collectée. Données publiques OMS/ECDC uniquement.</span></strong>
@@ -220,7 +220,7 @@
   <div class="nav-inner">
     <a class="nav-brand" href="#patientHero" aria-label="BreathIQ — Accueil" onclick="return navTo(event,'#patientHero')">
       <span class="brand-icon" aria-hidden="true">
-        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+        <svg aria-hidden="true" focusable="false" width="28" height="28" viewBox="0 0 28 28" fill="none">
           <circle cx="14" cy="14" r="13" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.4"/>
           <circle cx="14" cy="14" r="9" stroke="var(--c-teal)" stroke-width="1.5" opacity="0.6"/>
           <circle cx="14" cy="14" r="5" fill="var(--c-teal)" opacity="0.9"/>
@@ -238,6 +238,7 @@
       <li class="patient-only"><a href="#apropos" data-nav-view="apropos" onclick="return navTo(event,'#apropos')" data-i18n="nav-about">À propos</a></li>
       <!-- Mode soignant -->
       <li class="expert-only"><a href="#score" onclick="return navTo(event,'#score')" data-i18n="nav-score">Mon Score</a></li>
+      <li class="expert-only"><a href="#declPscGate" onclick="return navTo(event,'#declPscGate')" data-i18n="nav-declare">Déclarer un cas</a></li>
       <li class="expert-only"><a href="#syndromic" onclick="return navTo(event,'#syndromic')" data-i18n="nav-syndromic">Surveillance</a></li>
       <li class="expert-only"><a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" data-i18n="nav-pro-pathogens">Référentiel</a></li>
       <li class="expert-only"><a href="#map" onclick="return navTo(event,'#map')" data-i18n="nav-map">Carte</a></li>
@@ -273,7 +274,7 @@
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <button class="theme-toggle" id="themeToggle" aria-label="Mode sombre/clair">
-        <svg id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <svg aria-hidden="true" focusable="false" id="themeIcon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
           <circle cx="12" cy="12" r="5"/>
           <line x1="12" y1="1" x2="12" y2="3"/>
           <line x1="12" y1="21" x2="12" y2="23"/>
@@ -463,12 +464,12 @@
       <p class="gp-score-basis" id="gpScoreBasis" translate="no"></p>
       <!-- CTA contextuel dynamique selon le niveau de risque -->
       <div id="gpScoreCta" style="margin:.75rem 0;text-align:center;display:none">
-        <a id="gpScoreCtaBtn" href="#dailyActions" onclick="return navTo(event,'#dailyActions')" style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;padding:.65rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background .2s">
+        <a id="gpScoreCtaBtn" href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" style="display:inline-flex;align-items:center;gap:.5rem;background:#2563eb;color:#fff;font-weight:700;font-size:.9rem;padding:.65rem 1.4rem;border-radius:2rem;text-decoration:none;transition:background .2s">
           <span id="gpScoreCtaIcon">💡</span><span id="gpScoreCtaText" translate="no">Voir les conseils du jour</span>
         </a>
       </div>
       <div class="gp-score-actions">
-        <a href="#score" onclick="return navTo(event,'#score')" class="gp-btn-primary" aria-label="Voir le score détaillé et les composantes">
+        <a href="#score" onclick="return navTo(event,'#score')" class="gp-btn-primary expert-only" aria-label="Voir le score détaillé et les composantes">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
           <span data-i18n="x-voir-le-score-complet-28fa">Voir le score complet</span>
         </a>
@@ -653,11 +654,11 @@
 
     <div class="hero-actions">
       <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         <span data-i18n="x-declarer-des-cas-b143">Déclarer des cas</span>
       </a>
       <a href="#score" onclick="return navTo(event,'#score')" class="btn btn-ghost">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         <span data-i18n="x-indice-de-risque-e79a">Indice de risque</span>
       </a>
     </div>
@@ -690,23 +691,23 @@
     <!-- Soignant quick-nav (visible uniquement en mode expert) -->
     <nav class="soignant-quicknav" aria-label="Navigation rapide soignant">
       <a href="#syndromic" onclick="return navTo(event,'#syndromic')" class="sqn-btn sqn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
         <span data-i18n="x-declarer-des-cas-b143">Déclarer des cas</span>
       </a>
       <a href="#map" onclick="return navTo(event,'#map')" class="sqn-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/></svg>
         <span data-i18n="x-carte-a2ce">Carte</span>
       </a>
       <a href="#score" onclick="return navTo(event,'#score')" class="sqn-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
         <span data-i18n="x-indice-c1be">Indice</span>
       </a>
       <a href="stocks.html" class="sqn-btn">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
         <span data-i18n="x-masques-ffp2-3858">Masques FFP2</span>
       </a>
       <a href="#proPathogens" onclick="return navTo(event,'#proPathogens')" class="sqn-btn sqn-pathogens">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M12 1v4M12 19v4M4.22 4.22l2.83 2.83M16.95 16.95l2.83 2.83M1 12h4M19 12h4M4.22 19.78l2.83-2.83M16.95 7.05l2.83-2.83"/></svg>
         <span data-i18n="x-pathogenes-6350">Pathogènes</span>
       </a>
     </nav>
@@ -719,7 +720,7 @@
       <div class="ring ring-2"></div>
       <div class="ring ring-1"></div>
       <div class="ring-core">
-        <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <svg aria-hidden="true" focusable="false" width="36" height="36" viewBox="0 0 36 36" fill="none">
           <path d="M18 8 C18 8, 24 14, 18 20 C12 26, 18 28, 18 28 C18 28, 24 26, 30 20 C36 14, 30 8, 24 8 C21 8, 18 8, 18 8 Z" fill="var(--c-teal)" opacity="0.9"/>
           <path d="M18 8 C18 8, 12 14, 18 20 C24 26, 18 28, 18 28 C18 28, 12 26, 6 20 C0 14, 6 8, 12 8 C15 8, 18 8, 18 8 Z" fill="var(--c-blue)" opacity="0.8"/>
         </svg>
@@ -867,7 +868,7 @@
     <p class="wizard-privacy-note">🔒 <strong data-i18n="x-aucune-donnee-n-est-fb95">Aucune donnée n'est enregistrée.</strong> <span data-i18n="x-vos-reponses-restent-sur-4087">Vos réponses restent sur votre appareil — rien n'est transmis, ni vendu, ni partagé.</span></p>
 
     <!-- Questionnaire de triage (arbre docs/triage, moteur js/triage-engine.js) -->
-    <div id="triageApp" class="triage-app" aria-live="polite"></div>
+    <div id="triageApp" class="triage-app"></div>
 
     <!-- Ancien questionnaire en 4 étapes : conservé masqué le temps de la validation du nouvel arbre -->
     <div class="symptom-wizard" id="symptomWizard" hidden>
@@ -1143,7 +1144,7 @@
         Un score 0–100 qui résume la qualité de l'air, la circulation virale, les pollens et la météo autour de vous.
       </p>
       <div class="score-data-notice" role="note">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
         <span>
           ⚡ <strong data-i18n="x-score-estimatif-non-valide-0a4c">Score ESTIMATIF — non validé cliniquement.</strong>
           <span data-i18n="x-aqi-donnees-reelles-open-f994">AQI : données réelles Open-Meteo (★★★★★) · Circulation virale : extrapolation nationale SPF, délai ~7 jours (★★★☆☆) · Pollen/météo : modèle saisonnier (★★☆☆☆).</span>
@@ -1237,7 +1238,7 @@
       </div>
 
       <!-- AI insight card -->
-      <div class="ai-insight-card" id="aiInsight" aria-live="polite">
+      <div class="ai-insight-card" id="aiInsight">
         <div class="ai-header">
           <span class="ai-badge" data-i18n="ai-badge">Intelligence BreathIQ</span>
           <span class="ai-dot" aria-hidden="true"></span>
@@ -1499,7 +1500,7 @@
 
         <!-- Avertissement secret professionnel -->
         <div class="decl-secpro-warning">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
           <span data-i18n="x-secret-professionnel-ne-saisir-54ec">Secret professionnel : ne saisir aucune information permettant d'identifier un patient (nom, DDN, n° sécu). Seules des données agrégées sont traitées, conformément au CSP Art. L1110-4.</span>
         </div>
 
@@ -1526,7 +1527,7 @@
         <div class="decl-actions">
           <button type="submit" class="decl-submit-btn" id="declSubmitBtn" data-i18n="decl-submit">📤 Déclarer — Anonymement</button>
           <span class="decl-privacy-note">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <svg aria-hidden="true" focusable="false" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
             <span data-i18n="decl-privacy-note">Aucune donnée personnelle collectée — uniquement syndrome, effectif, semaine, région approximative</span>
           </span>
         </div>
@@ -1559,7 +1560,7 @@
 <section data-view="voyager" class="map-section" id="map" aria-labelledby="map-title">
   <div class="container">
     <div class="section-header">
-      <h2 id="map-title" data-i18n="map-title">Carte mondiale des stocks &amp; foyers</h2>
+      <h2 id="map-title" data-i18n="map-title">Carte des foyers épidémiques</h2>
       <p class="section-subtitle" data-i18n="map-subtitle">
         Stocks FFP2/N95/KN95 et foyers pathogènes actifs nécessitant une protection respiratoire.
       </p>
@@ -1576,15 +1577,15 @@
     <div class="map-controls">
       <div class="map-layer-toggles" role="group" aria-label="Couches cartographiques">
         <button class="layer-btn" id="btnLayerStocks" hidden data-layer="stocks" data-i18n="layer-stocks">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/></svg>
           Stocks masques
         </button>
         <button class="layer-btn active" id="btnLayerOutbreaks" data-layer="outbreaks" data-i18n="layer-outbreaks">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
           Foyers pathogènes
         </button>
         <button class="layer-btn" id="btnLayerBoth" hidden data-layer="both" data-i18n="layer-both">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
+          <svg aria-hidden="true" focusable="false" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 3l7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="M13 13l6 6"/></svg>
           Vue combinée
         </button>
       </div>
@@ -1652,10 +1653,10 @@
 
     <div id="spfLiveSummary" class="spf-live-summary" hidden></div>
 
-    <div class="pathogens-grid" id="pathogensGrid" aria-live="polite"></div>
+    <div class="pathogens-grid" id="pathogensGrid"></div>
 
     <div class="pathogens-note">
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+      <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
       <span data-i18n="pathogens-note">
         Données épidémiologiques issues de l'OMS, CDC, ECDC et littérature scientifique. Outil d'information — non dispositif médical.
       </span>
@@ -1706,7 +1707,7 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         <span data-i18n="care-privacy">Votre position reste sur votre appareil — jamais transmise à nos serveurs.</span>
       </p>
-      <div id="careResults" class="care-results" role="region" aria-live="polite"></div>
+      <div id="careResults" class="care-results" role="region"></div>
     </div>
   </div>
 </section>
@@ -2069,12 +2070,12 @@
 <nav class="mobile-bottom-nav" aria-label="Navigation mobile">
   <!-- Mode patient : Symptômes en premier -->
   <a href="#symptomChecker" onclick="return navTo(event,'#symptomChecker')" class="mbn-item patient-only">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
+    <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2z"/><path d="M12 8v4l3 3"/></svg>
     <span data-i18n="x-symptomes-2796">Symptômes</span>
   </a>
   <!-- Mode expert : Score en premier -->
   <a href="#score" onclick="return navTo(event,'#score')" class="mbn-item expert-only">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <svg aria-hidden="true" focusable="false" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
     <span data-i18n="x-score-5dd1">Score</span>
   </a>
   <a href="#situation" onclick="return navTo(event,'#situation')" class="mbn-item patient-only">
@@ -2200,7 +2201,7 @@
 <div id="onboardingModal" class="onboarding-overlay" role="dialog" aria-modal="true" aria-labelledby="onboardingTitle" hidden>
   <div class="onboarding-box">
     <div class="onboarding-logo" aria-hidden="true">
-      <svg width="48" height="48" viewBox="0 0 32 32" fill="none">
+      <svg aria-hidden="true" focusable="false" width="48" height="48" viewBox="0 0 32 32" fill="none">
         <rect width="32" height="32" rx="8" fill="#1A3C5E"/>
         <circle cx="16" cy="16" r="12" fill="none" stroke="#2A7FD4" stroke-width="1.2" opacity="0.4"/>
         <circle cx="16" cy="16" r="8" fill="none" stroke="#0E8C7A" stroke-width="1.2" opacity="0.7"/>
@@ -2253,7 +2254,7 @@
   function loadBiqPro(){
     if(window.BIQ_PRO){BIQ_PRO.init();return;}
     var s=document.createElement('script');
-    s.src='/pro/pathogens.js?v=20261025e';
+    s.src='/pro/pathogens.js?v=20261025g';
     s.onload=function(){if(window.BIQ_PRO)BIQ_PRO.init();};
     document.head.appendChild(s);
   }
@@ -2305,11 +2306,11 @@ window.syncPheicScoreOverlay = function(lang, alert) {
 };
 </script>
 <script>window.__PSC_CLIENT_ID__ = '';</script><!-- client_id bac à sable fourni par l'ANS (valeur publique) — vide tant que le raccordement n'est pas actif, voir docs/psc-raccordement.md -->
-<script src="js/psc-auth.js?v=20261025e" defer></script>
-<script src="api-live.min.js?v=20261025e" defer></script>
-<script src="script.min.js?v=20261025e" defer></script>
-<script src="js/triage-engine.min.js?v=20261025e" defer></script>
-<script src="js/triage-ui.min.js?v=20261025e" defer></script>
+<script src="js/psc-auth.js?v=20261025g" defer></script>
+<script src="api-live.min.js?v=20261025g" defer></script>
+<script src="script.min.js?v=20261025g" defer></script>
+<script src="js/triage-engine.min.js?v=20261025g" defer></script>
+<script src="js/triage-ui.min.js?v=20261025g" defer></script>
 <script>
 // Synchronise l'attribut lang du document avec la langue choisie (accessibilité lecteurs d'écran)
 (function(){
