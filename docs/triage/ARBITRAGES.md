@@ -31,3 +31,18 @@ Proposés à partir des sources ci-dessous. **À confirmer par le médecin valid
 ### Précision du 25/10 (après re-test)
 - **Confusion isolée (U08) → urgence_vitale, maintenu.** Une confusion aiguë est un drapeau rouge à elle seule (méningite, encéphalite, sepsis, hypoxie), avec ou sans autre critère qSOFA. La règle « 1 critère qSOFA → consultation_urgente » ne s'applique donc qu'à la fréquence respiratoire et à la tension. Choix plus prudent que la lettre du §4.
 - **Grossesse (§1) :** l'escalade vers le 15 en cas de frissons intenses, fièvre ≥ 39 °C, contractions, perte de liquide, saignement, malaise ou diminution des mouvements fœtaux est portée par U_GRO01 (Oui ou Je ne sais pas → U00). Une vignette dédiée est à ajouter au prochain passage.
+
+## 5. Branche « frissons / état général altéré » (S) : doublons du filtre d'urgence retirés (25/10)
+- **Constat :** S01 (FR ≥ 22/min), S03A (volet tension) et S03B (PAS ≤ 100 mmHg) redemandaient ce que U06 et U12 ont déjà recueilli avec les mêmes seuils qSOFA. U06 : ≥ 30/min → U00, 22 à 29/min → `sig_fr_22_29`. U12 : < 90 mmHg ou « Je ne sais pas » → U00, 90 à 100 mmHg → `sig_pas_100`. Aucun seuil propre à la branche (qSOFA = même 22/min et même 100 mmHg) : ce sont de vrais doublons.
+- **Décision :**
+  - U06 « Je ne sais pas / pas compté » pose maintenant `sig_fr_inconnue`.
+  - U_RS « Non, aucun » est routé selon le jeton : `sig_fr_22_29` → S02B ; `sig_fr_inconnue` → S01, question conservée car seule source d'information sur la FR ; sinon → S02A.
+  - S02B « Non » : `sig_pas_100` → U00 (2 critères qSOFA), sinon → RS_6H.
+  - S02A « Oui » ou « Je ne sais pas » : même règle.
+  - S02A « Non » : `sig_pas_100` ou `sig_frissons` (posé par T00) → RS_6H ; sinon → S03A.
+  - S03A ne porte plus que le volet clinique : frissons intenses, pâleur ou teint gris, extrémités froides.
+  - S03B est supprimé.
+- **Sensibilité :** aucune perte. Chaque combinaison (FR, PAS) mène au même niveau qu'avant, ou à un niveau plus élevé.
+  - Changement assumé : des frissons déclarés à T00, sans autre critère, mènent désormais à RS_6H (< 6 h) au lieu de passer par S05, où RS_24H restait possible. C'est cohérent avec F03 (frissons intenses → RF_6H), car des frissons intenses font suspecter une bactériémie.
+- **Limite :** S02 (somnolence, lenteur) recoupe en partie U04 et U08, mais avec un seuil plus large (GCS < 15). Elle est conservée.
+- **Contrôles :** 90/90 vignettes, 0 faux négatif grave. F-check : 0 erreur. Le contrôle des libellés en double tolère désormais des libellés identiques s'ils portent des conditions mutuellement exclusives, et cette exclusivité est vérifiée sur toutes les combinaisons de jetons.

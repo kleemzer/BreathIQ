@@ -162,14 +162,14 @@
       "id": "U06",
       "type": "question",
       "texte": "Fréquence respiratoire au repos (compter les mouvements de la poitrine pendant 1 minute) ?",
-      "aide": "Seuils : moins de 2 mois ≥ 60/min ; 2 à 12 mois ≥ 50/min ; 1 à 5 ans ≥ 40/min (OMS, PCIME) ; 5 à 12 ans ≥ 30/min (à valider) ; adulte ≥ 30/min (à valider). « Je ne sais pas » ne rassure pas : les autres questions continuent. Adulte 22 à 29/min : plancher consultation_urgente (MOD16), cohérent avec S01.",
+      "aide": "Seuils : moins de 2 mois ≥ 60/min ; 2 à 12 mois ≥ 50/min ; 1 à 5 ans ≥ 40/min (OMS, PCIME) ; 5 à 12 ans ≥ 30/min (à valider) ; adulte ≥ 25/min = critère haut risque NICE NG253 et 3 points NEWS2. Adulte 21 à 24/min = risque modéré NICE NG253 (2 points NEWS2) : plancher consultation_urgente (MOD16). « Je ne sais pas » ne rassure pas : les autres questions continuent ; la gêne visible est évaluée en U05.",
       "choix": [
         {
-          "libelle": "Au-dessus du seuil pour l'âge (adulte : 30/min ou plus)",
+          "libelle": "Au-dessus du seuil pour l'âge (adulte : 25/min ou plus)",
           "vers": "U00"
         },
         {
-          "libelle": "Adulte : 22 à 29/min",
+          "libelle": "Adulte : 21 à 24/min",
           "vers": "U07",
           "pose": "sig_fr_22_29"
         },
@@ -179,21 +179,22 @@
         },
         {
           "libelle": "Je ne sais pas / pas compté",
-          "vers": "U07"
+          "vers": "U07",
+          "pose": "sig_fr_inconnue"
         }
       ],
       "condition_activation": null,
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "OMS, Prise en charge intégrée des maladies de l'enfant (PCIME) pour < 5 ans ; autres seuils à valider",
+      "source": "OMS, PCIME (< 5 ans) ; adulte : NICE NG253 (2025, MAJ 23/09/2026), tableau 1 ; RCP NEWS2 (2017), chart 1 ; 5-12 ans à valider",
       "a_valider_clinicien": true
     },
     {
       "id": "U07",
       "type": "question",
       "texte": "Saturation en oxygène (SpO2) mesurée au repos avec un saturomètre ?",
-      "aide": "Seuil général < 94 %. Seuil < 92 % en cas de BPCO connue : seuil à valider par un clinicien.",
+      "aide": "Seuil général < 94 % (NEWS2 : ≤ 91 % = 3 points, 92-93 % = 2 points ; l'arbre oriente en urgence dès 92-93 %, plus prudent que NEWS2). BPCO connue (insuffisance respiratoire hypercapnique) : cible 88-92 % (NICE NG253 1.10.1 ; NEWS2 échelle 2). Enfant < 5 ans : ≤ 95 % = critère de risque intermédiaire NICE NG143 (à valider pour un plancher dédié).",
       "choix": [
         {
           "libelle": "94 % ou plus",
@@ -220,7 +221,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "RCP NEWS2 (2017), chart 1 ; NICE NG253 rec. 1.10.1 ; NICE NG143 (feu tricolore)",
       "a_valider_clinicien": true
     },
     {
@@ -331,18 +332,18 @@
       "id": "U12",
       "type": "question",
       "texte": "Y a-t-il un malaise ou des étourdissements empêchant de tenir debout, ou quelle est la tension mesurée (chiffre du haut) ?",
-      "aide": "PAS 90 à 100 mmHg seule = un critère qSOFA → consultation_urgente (MOD20) ; associée à FR ≥ 22/min → urgence_vitale (MOD21).",
+      "aide": "PAS ≤ 90 mmHg = critère haut risque NICE NG253 (3 points NEWS2) → urgence_vitale. PAS 91 à 100 mmHg = risque modéré NICE NG253 (2 points NEWS2 ; critère qSOFA PAS ≤ 100) → consultation_urgente (MOD20) ; associée à FR ≥ 21/min → urgence_vitale (MOD21).",
       "choix": [
         {
           "libelle": "Malaise ou ne tient pas debout",
           "vers": "U00"
         },
         {
-          "libelle": "Tension inférieure à 90 mmHg",
+          "libelle": "Tension de 90 mmHg ou moins",
           "vers": "U00"
         },
         {
-          "libelle": "Tension de 90 à 100 mmHg, sans malaise",
+          "libelle": "Tension de 91 à 100 mmHg, sans malaise",
           "vers": "U13",
           "pose": "sig_pas_100"
         },
@@ -359,7 +360,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
+      "source": "Singer M et al., JAMA 2016 (qSOFA) ; NICE NG253 (2025, MAJ 23/09/2026), tableau 1 ; RCP NEWS2 (2017), chart 1",
       "a_valider_clinicien": true
     },
     {
@@ -392,7 +393,7 @@
       "id": "U14",
       "type": "question",
       "texte": "La personne n'a-t-elle pas uriné depuis plus de 12 heures (plus de 6 heures, couches sèches, chez le bébé de moins de 6 mois) ?",
-      "aide": "Seuil de 6 h sous 6 mois : à valider (6 à 8 h proposés par le relecteur).",
+      "aide": "Adulte : pas d'urine depuis plus de 12 h = critère de risque modéré NICE NG253 (> 18 h = haut risque) ; l'arbre oriente en urgence dès 12 h (plus prudent). Bébé < 6 mois : « diurèse diminuée » = critère de risque intermédiaire NICE NG143, sans durée chiffrée ; la durée de 6 h est un choix de prudence BreathIQ, sans source chiffrée.",
       "choix": [
         {
           "libelle": "Oui",
@@ -411,7 +412,7 @@
       "niveau_orientation": null,
       "delai_action": null,
       "signes_reconsultation": [],
-      "source": "à valider",
+      "source": "NICE NG253 tableau 1 (adulte) ; NICE NG143 feu tricolore (diurèse diminuée) ; 6 h : choix BreathIQ sans source chiffrée",
       "a_valider_clinicien": true
     },
     {
@@ -2576,7 +2577,18 @@
         },
         {
           "libelle": "Non, aucun",
-          "vers": "S01"
+          "vers": "S02B",
+          "condition_activation": "sig_fr_22_29"
+        },
+        {
+          "libelle": "Non, aucun",
+          "vers": "S01",
+          "condition_activation": "sig_fr_inconnue && !sig_fr_22_29"
+        },
+        {
+          "libelle": "Non, aucun",
+          "vers": "S02A",
+          "condition_activation": "!sig_fr_inconnue && !sig_fr_22_29"
         },
         {
           "libelle": "Je ne sais pas",
@@ -2624,16 +2636,36 @@
       "choix": [
         {
           "libelle": "Oui",
-          "vers": "S03B",
-          "pose": "sig_conf"
+          "vers": "U00",
+          "pose": "sig_conf",
+          "condition_activation": "sig_pas_100"
+        },
+        {
+          "libelle": "Oui",
+          "vers": "RS_6H",
+          "pose": "sig_conf",
+          "condition_activation": "!sig_pas_100"
         },
         {
           "libelle": "Non",
-          "vers": "S03A"
+          "vers": "RS_6H",
+          "pose": "sig_alteration",
+          "condition_activation": "sig_pas_100 || sig_frissons"
+        },
+        {
+          "libelle": "Non",
+          "vers": "S03A",
+          "condition_activation": "!sig_pas_100 && !sig_frissons"
         },
         {
           "libelle": "Je ne sais pas",
-          "vers": "S03B"
+          "vers": "U00",
+          "condition_activation": "sig_pas_100"
+        },
+        {
+          "libelle": "Je ne sais pas",
+          "vers": "RS_6H",
+          "condition_activation": "!sig_pas_100"
         }
       ],
       "condition_activation": null,
@@ -2655,7 +2687,13 @@
         },
         {
           "libelle": "Non",
-          "vers": "S03B"
+          "vers": "U00",
+          "condition_activation": "sig_pas_100"
+        },
+        {
+          "libelle": "Non",
+          "vers": "RS_6H",
+          "condition_activation": "!sig_pas_100"
         },
         {
           "libelle": "Je ne sais pas",
@@ -2672,52 +2710,22 @@
     {
       "id": "S03A",
       "type": "question",
-      "texte": "Tension mesurée (chiffre du haut) de 100 mmHg ou moins, OU frissons intenses, peau pâle ou grisâtre, extrémités froides ?",
-      "aide": "Critère qSOFA : pression systolique ≤ 100 mmHg (seuil adulte). qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
+      "texte": "Y a-t-il des frissons intenses, une peau pâle ou grisâtre, ou des mains et pieds froids ?",
+      "aide": "La tension a déjà été demandée au filtre d'urgence (U12 : PAS < 90 → U00 ; 90 à 100 → sig_pas_100, routé avant S03A). Ne reste ici que le versant clinique de l'hypoperfusion.",
       "choix": [
         {
-          "libelle": "Oui, au moins un des deux",
+          "libelle": "Oui",
           "vers": "RS_6H",
           "pose": "sig_frissons"
         },
         {
-          "libelle": "Non aux deux (tension > 100 mmHg)",
-          "vers": "S05"
-        },
-        {
-          "libelle": "Pas de tensiomètre, et aucun de ces signes",
+          "libelle": "Non",
           "vers": "S05"
         },
         {
           "libelle": "Je ne sais pas",
           "vers": "RS_6H",
           "pose": "sig_alteration"
-        }
-      ],
-      "condition_activation": null,
-      "niveau_orientation": null,
-      "delai_action": null,
-      "signes_reconsultation": [],
-      "source": "Singer M et al., JAMA 2016;315(8):801-810 (Sepsis-3, qSOFA)",
-      "a_valider_clinicien": true
-    },
-    {
-      "id": "S03B",
-      "type": "question",
-      "texte": "Tension mesurée : chiffre du haut ?",
-      "aide": "Un critère qSOFA est déjà présent. qSOFA (adulte) : au moins 2 critères sur 3 (FR ≥ 22/min, confusion, PAS ≤ 100 mmHg) → urgence_vitale ; un seul critère → consultation_urgente. Note soignant : outil pronostique, non de dépistage.",
-      "choix": [
-        {
-          "libelle": "Plus de 100 mmHg",
-          "vers": "RS_6H"
-        },
-        {
-          "libelle": "100 mmHg ou moins",
-          "vers": "U00"
-        },
-        {
-          "libelle": "Je ne sais pas / pas de tensiomètre",
-          "vers": "RS_6H"
         }
       ],
       "condition_activation": null,

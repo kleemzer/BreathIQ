@@ -375,6 +375,8 @@
         "choix": [
           "Oui, au moins un",
           "Non, aucun",
+          "Non, aucun",
+          "Non, aucun",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
@@ -384,6 +386,8 @@
         "aide": "Struggling to breathe. Confusion. Red or purple spots that do not fade under a glass. Stiff neck. Fits (jerking of the body). Fainting. Blotchy purple skin, or a grey colour. No urine for 12 hours. Heavy bleeding. Chest pain. A child who is hard to wake. On dark skin, check inside the lips, the palms and the eye whites.",
         "choix": [
           "Yes, at least one",
+          "No, none",
+          "No, none",
           "No, none",
           "I don't know"
         ],
@@ -397,6 +401,8 @@
         "choix": [
           "Oui (≥ 1)",
           "Non, aucun",
+          "Non, aucun",
+          "Non, aucun",
           "Inconnu"
         ],
         "signes_reconsultation": []
@@ -406,6 +412,8 @@
         "aide": "Respiratory distress, confusion, non-blanching purpura, neck stiffness, seizures, syncope, mottling or grey colour, anuria > 12 h, major bleeding, chest pain, child difficult to rouse. Darker skin tones: examine labial mucosa, palms, conjunctivae.",
         "choix": [
           "Yes (≥ 1)",
+          "No, none",
+          "No, none",
           "No, none",
           "Unknown"
         ],
@@ -873,10 +881,10 @@
     "patient": {
       "fr": {
         "texte": "Combien de fois la personne respire-t-elle en 1 minute, au repos ?",
-        "aide": "Comptez les mouvements de la poitrine pendant 1 minute. C'est trop rapide si : bébé de moins de 2 mois, 60 ou plus. Bébé de 2 à 12 mois, 50 ou plus. Enfant de 1 à 5 ans, 40 ou plus. Enfant de plus de 5 ans ou adulte, 30 ou plus.",
+        "aide": "Comptez les mouvements de la poitrine pendant 1 minute (une inspiration et une expiration comptent pour 1). C'est trop rapide si : bébé de moins de 2 mois, 60 ou plus. Bébé de 2 à 12 mois, 50 ou plus. Enfant de 1 à 5 ans, 40 ou plus. Enfant de plus de 5 ans, 30 ou plus. Adulte, 25 ou plus. Vous n'arrivez pas à compter ? Répondez « Je ne sais pas ».",
         "choix": [
-          "Trop rapide pour son âge (adulte : 30 ou plus)",
-          "Adulte : de 22 à 29",
+          "Trop rapide pour son âge (adulte : 25 ou plus)",
+          "Adulte : de 21 à 24",
           "Pas trop rapide",
           "Je ne sais pas / je n'ai pas compté"
         ],
@@ -884,10 +892,10 @@
       },
       "en": {
         "texte": "How many times does the person breathe in 1 minute, at rest?",
-        "aide": "Count chest movements for 1 minute. It is too fast if: baby under 2 months, 60 or more. Baby 2 to 12 months, 50 or more. Child 1 to 5 years, 40 or more. Child over 5 or adult, 30 or more.",
+        "aide": "Count chest movements for 1 minute (one breath in and out counts as 1). It is too fast if: baby under 2 months, 60 or more. Baby 2 to 12 months, 50 or more. Child 1 to 5 years, 40 or more. Child over 5, 30 or more. Adult, 25 or more. Cannot count? Answer \"I don't know\".",
         "choix": [
-          "Too fast for their age (adult: 30 or more)",
-          "Adult: 22 to 29",
+          "Too fast for their age (adult: 25 or more)",
+          "Adult: 21 to 24",
           "Not too fast",
           "I don't know / I did not count"
         ],
@@ -897,10 +905,10 @@
     "soignant": {
       "fr": {
         "texte": "Fréquence respiratoire de repos (comptée sur 1 min) ?",
-        "aide": "Tachypnée si : < 2 mois ≥ 60/min ; 2-12 mois ≥ 50/min ; 1-5 ans ≥ 40/min (OMS, PCIME) ; 5-12 ans ≥ 30/min (à valider) ; adulte ≥ 30/min (à valider). Adulte 22-29/min : plancher consultation_urgente (MOD16), cohérent avec S01. « Inconnu » n'est pas rassurant.",
+        "aide": "Tachypnée si : < 2 mois ≥ 60/min ; 2-12 mois ≥ 50/min ; 1-5 ans ≥ 40/min (OMS, PCIME) ; 5-12 ans ≥ 30/min (à valider) ; adulte ≥ 25/min (NICE NG253 haut risque ; NEWS2 3 points). Adulte 21-24/min (NICE NG253 risque modéré ; NEWS2 2 points) : plancher consultation_urgente (MOD16). « Inconnu » n'est pas rassurant.",
         "choix": [
-          "Au-dessus du seuil pour l'âge (adulte ≥ 30/min)",
-          "Adulte 22-29/min",
+          "Au-dessus du seuil pour l'âge (adulte ≥ 25/min)",
+          "Adulte 21-24/min",
           "En dessous du seuil",
           "Non comptée"
         ],
@@ -908,10 +916,10 @@
       },
       "en": {
         "texte": "Resting respiratory rate (counted over 1 min)?",
-        "aide": "Tachypnoea if: < 2 months ≥ 60/min; 2-12 months ≥ 50/min; 1-5 years ≥ 40/min (WHO, IMCI); 5-12 years ≥ 30/min (to be validated); adult ≥ 30/min (to be validated). Adult 22-29/min: floor consultation_urgente (MOD16), consistent with S01. \"Unknown\" is not reassuring.",
+        "aide": "Tachypnoea if: < 2 months ≥ 60/min; 2-12 months ≥ 50/min; 1-5 years ≥ 40/min (WHO, IMCI); 5-12 years ≥ 30/min (to be validated); adult ≥ 25/min (NICE NG253 high risk; NEWS2 3 points). Adult 21-24/min (NICE NG253 moderate risk; NEWS2 2 points): floor consultation_urgente (MOD16). \"Unknown\" is not reassuring.",
         "choix": [
-          "Above age threshold (adult ≥ 30/min)",
-          "Adult 22-29/min",
+          "Above age threshold (adult ≥ 25/min)",
+          "Adult 21-24/min",
           "Below threshold",
           "Not counted"
         ],
@@ -1164,8 +1172,8 @@
         "aide": "Tension : lisez le premier chiffre (le plus haut). Sans appareil, répondez pour le malaise.",
         "choix": [
           "Malaise, ou ne tient pas debout",
-          "Tension sous 90 mmHg",
-          "Tension de 90 à 100 mmHg, sans malaise",
+          "Tension de 90 mmHg ou moins",
+          "Tension de 91 à 100 mmHg, sans malaise",
           "Non, rien de cela",
           "Je ne sais pas"
         ],
@@ -1176,8 +1184,8 @@
         "aide": "Blood pressure: read the first (top) number. Without a device, answer about fainting.",
         "choix": [
           "Fainting, or cannot stand",
-          "Blood pressure below 90 mmHg",
-          "Blood pressure 90 to 100 mmHg, no fainting",
+          "Blood pressure 90 mmHg or less",
+          "Blood pressure 91 to 100 mmHg, no fainting",
           "No, none of these",
           "I don't know"
         ],
@@ -1187,11 +1195,11 @@
     "soignant": {
       "fr": {
         "texte": "Malaise / impossibilité de tenir debout, ou PAS mesurée ?",
-        "aide": "PAS 90-100 mmHg isolée = 1 critère qSOFA → consultation_urgente (MOD20) ; avec FR ≥ 22/min → urgence_vitale (MOD21). qSOFA : outil pronostique, pas de dépistage (Singer, JAMA 2016).",
+        "aide": "PAS ≤ 90 mmHg : haut risque (NICE NG253 ; NEWS2 3 points). PAS 91-100 mmHg isolée : risque modéré (NICE NG253 ; NEWS2 2 points ; critère qSOFA) → consultation_urgente (MOD20) ; avec FR ≥ 21/min → urgence_vitale (MOD21).",
         "choix": [
           "Malaise / station debout impossible",
-          "PAS < 90 mmHg",
-          "PAS 90-100 mmHg sans malaise",
+          "PAS ≤ 90 mmHg",
+          "PAS 91-100 mmHg sans malaise",
           "Aucun",
           "Inconnu"
         ],
@@ -1199,11 +1207,11 @@
       },
       "en": {
         "texte": "Syncope / unable to stand, or measured SBP?",
-        "aide": "Isolated SBP 90-100 mmHg = 1 qSOFA criterion → consultation_urgente (MOD20); with RR ≥ 22/min → urgence_vitale (MOD21). qSOFA is prognostic, not a screening tool (Singer, JAMA 2016).",
+        "aide": "SBP ≤ 90 mmHg: high risk (NICE NG253; NEWS2 3 points). Isolated SBP 91-100 mmHg: moderate risk (NICE NG253; NEWS2 2 points; qSOFA criterion) → consultation_urgente (MOD20); with RR ≥ 21/min → urgence_vitale (MOD21).",
         "choix": [
           "Syncope / unable to stand",
-          "SBP < 90 mmHg",
-          "SBP 90-100 mmHg without syncope",
+          "SBP ≤ 90 mmHg",
+          "SBP 91-100 mmHg without syncope",
           "None",
           "Unknown"
         ],
@@ -1283,7 +1291,7 @@
     "soignant": {
       "fr": {
         "texte": "Anurie > 12 h (> 6 h, couches sèches, si < 6 mois) ?",
-        "aide": "Seuil 6 h sous 6 mois à valider (6-8 h proposés).",
+        "aide": "Adulte : anurie > 12 h = risque modéré NICE NG253 (> 18 h haut risque). < 6 mois : diurèse diminuée = risque intermédiaire NICE NG143 ; durée de 6 h = choix de prudence, sans source chiffrée.",
         "choix": [
           "Oui",
           "Non",
@@ -1293,7 +1301,7 @@
       },
       "en": {
         "texte": "Anuria > 12 h (> 6 h, dry nappies, if < 6 months)?",
-        "aide": "6 h threshold under 6 months to be validated (6-8 h suggested).",
+        "aide": "Adult: no urine > 12 h = moderate risk NICE NG253 (> 18 h high risk). < 6 months: reduced urine output = amber NICE NG143; 6 h duration is a precautionary choice, no numeric source.",
         "choix": [
           "Yes",
           "No",
@@ -5246,7 +5254,10 @@
         "aide": "",
         "choix": [
           "Oui",
+          "Oui",
           "Non",
+          "Non",
+          "Je ne sais pas",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
@@ -5256,7 +5267,10 @@
         "aide": "",
         "choix": [
           "Yes",
+          "Yes",
           "No",
+          "No",
+          "I don't know",
           "I don't know"
         ],
         "signes_reconsultation": []
@@ -5268,7 +5282,10 @@
         "aide": "Critère qSOFA : altération de la conscience (GCS < 15).",
         "choix": [
           "Oui",
+          "Oui",
           "Non",
+          "Non",
+          "Inconnu",
           "Inconnu"
         ],
         "signes_reconsultation": []
@@ -5278,7 +5295,10 @@
         "aide": "qSOFA criterion: altered mentation (GCS < 15).",
         "choix": [
           "Yes",
+          "Yes",
           "No",
+          "No",
+          "Unknown",
           "Unknown"
         ],
         "signes_reconsultation": []
@@ -5293,6 +5313,7 @@
         "choix": [
           "Oui",
           "Non",
+          "Non",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
@@ -5302,6 +5323,7 @@
         "aide": "",
         "choix": [
           "Yes",
+          "No",
           "No",
           "I don't know"
         ],
@@ -5315,6 +5337,7 @@
         "choix": [
           "Oui",
           "Non",
+          "Non",
           "Inconnu"
         ],
         "signes_reconsultation": []
@@ -5325,6 +5348,7 @@
         "choix": [
           "Yes",
           "No",
+          "No",
           "Unknown"
         ],
         "signes_reconsultation": []
@@ -5334,23 +5358,21 @@
   "S03A": {
     "patient": {
       "fr": {
-        "texte": "Avec un appareil : la tension (premier chiffre) est-elle de 100 mmHg ou moins ? Sinon : gros frissons, peau pâle ou grise, mains et pieds froids ?",
-        "aide": "Le premier chiffre est le plus haut.",
+        "texte": "Gros frissons, peau pâle ou grise, ou mains et pieds froids ?",
+        "aide": "",
         "choix": [
-          "Oui, au moins un des deux",
-          "Non aux deux (tension au-dessus de 100)",
-          "Pas d'appareil, et aucun de ces signes",
+          "Oui",
+          "Non",
           "Je ne sais pas"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "If you have a device: is the first blood pressure number 100 mmHg or less? Otherwise: hard shivering, pale or grey skin, cold hands and feet?",
-        "aide": "The first number is the higher one.",
+        "texte": "Hard shivering, pale or grey skin, or cold hands and feet?",
+        "aide": "",
         "choix": [
-          "Yes, at least one of the two",
-          "No to both (pressure above 100)",
-          "No device, and none of these signs",
+          "Yes",
+          "No",
           "I don't know"
         ],
         "signes_reconsultation": []
@@ -5358,70 +5380,22 @@
     },
     "soignant": {
       "fr": {
-        "texte": "PAS ≤ 100 mmHg, OU frissons intenses, pâleur/teint grisâtre, extrémités froides ?",
-        "aide": "Critère qSOFA : PAS ≤ 100 mmHg (seuil adulte).",
+        "texte": "Frissons intenses, pâleur/teint grisâtre, extrémités froides ?",
+        "aide": "PAS déjà recueillie au filtre d'urgence (U12).",
         "choix": [
-          "Oui (au moins un)",
-          "Non (PAS > 100 mmHg)",
-          "Pas de tensiomètre, aucun signe clinique",
+          "Oui",
+          "Non",
           "Inconnu"
         ],
         "signes_reconsultation": []
       },
       "en": {
-        "texte": "SBP ≤ 100 mmHg, OR rigors, pallor/grey complexion, cold extremities?",
-        "aide": "qSOFA criterion: SBP ≤ 100 mmHg (adult threshold).",
+        "texte": "Rigors, pallor/grey complexion, cold extremities?",
+        "aide": "SBP already collected in the emergency filter (U12).",
         "choix": [
-          "Yes (at least one)",
-          "No (SBP > 100 mmHg)",
-          "No BP cuff, no clinical sign",
+          "Yes",
+          "No",
           "Unknown"
-        ],
-        "signes_reconsultation": []
-      }
-    }
-  },
-  "S03B": {
-    "patient": {
-      "fr": {
-        "texte": "Si vous avez un appareil : quel est le premier chiffre de la tension ?",
-        "aide": "Le premier chiffre est le plus haut.",
-        "choix": [
-          "Plus de 100 mmHg",
-          "100 mmHg ou moins",
-          "Je ne sais pas / pas d'appareil"
-        ],
-        "signes_reconsultation": []
-      },
-      "en": {
-        "texte": "If you have a device: what is the first blood pressure number?",
-        "aide": "The first number is the higher one.",
-        "choix": [
-          "Above 100 mmHg",
-          "100 mmHg or less",
-          "I don't know / no device"
-        ],
-        "signes_reconsultation": []
-      }
-    },
-    "soignant": {
-      "fr": {
-        "texte": "PAS mesurée ?",
-        "aide": "Un critère qSOFA déjà présent.",
-        "choix": [
-          "> 100 mmHg",
-          "≤ 100 mmHg",
-          "Non mesurée"
-        ],
-        "signes_reconsultation": []
-      },
-      "en": {
-        "texte": "Measured SBP?",
-        "aide": "One qSOFA criterion already present.",
-        "choix": [
-          "> 100 mmHg",
-          "≤ 100 mmHg",
-          "Not measured"
         ],
         "signes_reconsultation": []
       }

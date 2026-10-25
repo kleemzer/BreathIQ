@@ -32,7 +32,7 @@ Aucune impasse, aucune boucle, au plus 7 questions avant un résultat (hors urge
 - **qSOFA :** 2 critères sur 3 → 15 ; 1 critère → moins de 6 h, sauf la confusion, qui reste un motif d'appel au 15.
 
 ## Avant toute mise en ligne
-1. **Validation par le médecin validateur** des arbitrages et des seuils sans source (FR adulte ≥ 30 et 22–29/min, PA 90–100 mmHg, SpO2 92–95 %, couches sèches > 6 h).
+1. **Validation par le médecin validateur** des arbitrages et des seuils. Sourcés le 2026-10-25 (docs/expertise/1-seuils-triage.md) : FR adulte ≥ 25 et 21–24/min, PAS ≤ 90 et 91–100 mmHg (NICE NG253, NEWS2), SpO2 < 94 % (NEWS2). Restent sans source chiffrée : durée de 6 h des couches sèches (NICE NG143 ne donne pas de durée), FR ≥ 30/min de 5 à 12 ans, plancher SpO2 94–95 % chez l'enfant de moins de 5 ans (NICE NG143 : risque intermédiaire, non appliqué).
 2. **Sources :** la plupart des règles restent « à valider (non vérifié) » ; aucune n'a été inventée. Textes à consulter directement : CNGOF/HAS pour la fièvre pendant la grossesse, NICE NG143 (page officielle inaccessible au robot), PCIME OMS.
 3. **Dispositif médical (F) :** 7 éléments qualifiants. En cas de qualification, probablement classe IIb, voire III. C'est une interprétation à faire valider par un avocat ou un organisme notifié.
 4. **Écarts restants non graves :** 2 sous-triages (V11 toux de 10 jours, V31 sinusite) et 8 sur-triages. Le token `sig_pied` (pied diabétique) n'est posé par aucune question.

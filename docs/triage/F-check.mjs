@@ -5,8 +5,10 @@
 import { readFileSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createRequire } from 'node:module';
 
 const here = dirname(fileURLToPath(import.meta.url));
+const { evalCondition } = createRequire(import.meta.url)('../../js/triage-engine.js');
 const arbre = JSON.parse(readFileSync(process.argv[2] || join(here, 'arbre-fusion.json'), 'utf8'));
 const textes = JSON.parse(readFileSync(process.argv[3] || join(here, 'D-textes.json'), 'utf8'));
 
@@ -51,7 +53,20 @@ for (const n of arbre.noeuds) {
   if (n.type === 'question') {
     if (!libs.length) err('A11Y-CHOIX', `${n.id} : question sans choix`);
     libs.forEach((l, i) => { if (!l.trim()) err('A11Y-LIBELLE', `${n.id} choix ${i} : libellé vide (lecteur d'écran)`); });
-    if (new Set(libs).size !== libs.length) err('A11Y-LIBELLE', `${n.id} : libellés en double`);
+    // Libellés identiques tolérés seulement entre choix à conditions d'activation mutuellement
+    // exclusives (une seule variante affichée) : vérifié sur toutes les combinaisons de tokens.
+    for (const l of new Set(libs)) {
+      const same = n.choix.filter((c) => (c.libelle || '') === l);
+      if (same.length < 2) continue;
+      const conds = same.map((c) => c.condition_activation);
+      const toks = [...new Set(conds.join(' ').match(/[A-Za-z_][A-Za-z0-9_]*/g) || [])];
+      let ok = conds.every(Boolean) && toks.length <= 12;
+      for (let m = 0; ok && m < 2 ** toks.length; m++) {
+        const set = new Set(toks.filter((_, i) => m & (1 << i)));
+        if (conds.filter((e) => evalCondition(e, (t) => set.has(t)) === true).length > 1) ok = false;
+      }
+      if (!ok) err('A11Y-LIBELLE', `${n.id} : libellés en double (« ${l} »)`);
+    }
     if (CHIFFRE.test(`${n.texte} ${libs.join(' ')}`) && !libs.some((l) => NSP.test(l)))
       err('A11Y-NSP', `${n.id} : question chiffrée sans « Je ne sais pas » — ${n.texte.slice(0, 70)}`);
     else if (!libs.some((l) => NSP.test(l) || /non concerné/i.test(l)))
