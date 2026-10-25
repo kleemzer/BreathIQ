@@ -681,7 +681,7 @@
     "patient": {
       "fr": {
         "texte": "Quelle est la température du bébé ? Utilisez un thermomètre (dans les fesses ou sur le front).",
-        "aide": "Bébé de moins de 3 mois à 38 °C ou plus : il doit être vu vite. Un bébé trop froid (moins de 36 °C) est aussi un signe d'alerte.",
+        "aide": "Moins de 3 mois et 38 °C ou plus : le bébé doit être vu vite. Un bébé trop froid (moins de 36 °C) est aussi un signe d'alerte.",
         "choix": [
           "38 °C ou plus",
           "Moins de 36 °C",
@@ -1260,7 +1260,7 @@
   "U14": {
     "patient": {
       "fr": {
-        "texte": "La personne n'a-t-elle pas fait pipi depuis plus de 12 heures ?",
+        "texte": "Cela fait-il plus de 12 heures que la personne n'a pas fait pipi ?",
         "aide": "Pour un bébé de moins de 6 mois : couches sèches depuis plus de 6 heures.",
         "choix": [
           "Oui",
@@ -1460,23 +1460,23 @@
         "aide": "Cochez tout ce qui correspond.",
         "choix": [
           "Traitement contre le cancer (perfusions ou comprimés) dans les 6 dernières semaines",
-          "Cancer ou cancer du sang soigné en ce moment, sans traitement par perfusion ces 6 dernières semaines",
+          "Cancer (ou cancer du sang) soigné en ce moment, sans perfusion ces 6 dernières semaines",
           "Infection par le VIH",
           "Greffe d'un organe ou de moelle osseuse",
           "Cortisone prise chaque jour depuis plusieurs semaines",
-          "Traitement qui baisse les défenses du corps (pour une maladie des articulations, de l'intestin, de la peau ou des nerfs)",
+          "Traitement qui baisse les défenses (maladie des articulations, de l'intestin, de la peau ou des nerfs)",
           "Rate enlevée ou qui ne marche pas (par exemple drépanocytose, une maladie du sang)",
           "Grossesse en cours ou possible",
           "Accouchement, fausse couche ou avortement il y a moins de 6 semaines",
           "Diabète",
-          "Diabète avec grande soif, beaucoup de pipi, vomissements, ou sucre ou cétones élevés à l'appareil",
+          "Diabète avec grande soif, beaucoup de pipi, vomissements, ou sucre ou acétone élevés à l'appareil",
           "Cœur qui pompe mal (insuffisance cardiaque)",
           "Maladie grave des poumons (oxygène à la maison, BPCO)",
           "Reins qui fonctionnent mal (dont dialyse)",
           "Maladie grave du foie (par exemple cirrhose)",
           "65 ans ou plus : chute, ou ne se débrouille plus seul depuis le début",
           "Contact proche, ces 14 derniers jours, avec une personne qui a une infection grave des méninges (enveloppes du cerveau)",
-          "Ces 6 dernières semaines : contact avec des rongeurs ou leurs crottes (cave, grange, chalet fermé), ou croisière avec une alerte santé",
+          "Ces 6 dernières semaines : contact avec des rongeurs ou leurs crottes, ou croisière avec une alerte santé",
           "Aucune de ces situations",
           "Je ne sais pas"
         ],
@@ -1624,12 +1624,12 @@
           "Toux, nez, gorge, ou gêne pour respirer (avec ou sans fièvre)",
           "Ventre, vomissements, diarrhée",
           "Peau : rougeur, boutons, taches",
-          "Brûlures en faisant pipi, envie d'uriner souvent",
+          "Brûlures en faisant pipi, envie de faire pipi souvent",
           "Gorge, oreille, sinus, œil",
           "Mal de tête",
           "Frissons, état général très mauvais",
           "Retour de voyage",
-          "Contact avec un malade d'une maladie avec fièvre et saignements (comme Ebola), ou séjour où une telle épidémie est annoncée",
+          "Contact avec un malade d'une fièvre avec saignements (comme Ebola), ou séjour dans une zone touchée",
           "Problème aux organes sexuels, ou rapport sexuel à risque",
           "Morsure, griffure, ou piqûre de tique",
           "Je ne sais pas"
@@ -1906,7 +1906,7 @@
           "Personne confuse ou anormalement endormie.",
           "Taches rouges ou violettes qui ne s'effacent pas sous un verre appuyé dessus. Sur peau foncée, regardez paumes et intérieur des lèvres.",
           "Malaise, ou peau marbrée de violet, comme un filet.",
-          "Pas d'urine depuis plus de 12 heures.",
+          "Pas de pipi depuis plus de 12 heures.",
           "Fièvre depuis plus de 3 jours, ou fièvre qui revient après un mieux."
         ],
         "rappel": "BreathIQ donne une orientation. Ce n'est pas un diagnostic. Cela ne remplace pas l'avis d'un médecin."
@@ -3015,7 +3015,7 @@
         "choix": [
           "Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures, ou refuse de boire. ET il est très endormi, ou a les yeux creusés.",
           "Enfant de moins de 2 ans : couches sèches depuis plus de 6 heures, ou refuse de boire. Mais il n'est pas endormi et n'a pas les yeux creusés.",
-          "Vomit tout ce qu'il boit depuis plus de 6 heures (4 heures avant 2 ans)",
+          "Vomit tout ce qu'il boit depuis plus de 6 heures (4 heures pour un enfant de moins de 2 ans)",
           "Aucun de ces cas",
           "Je ne sais pas"
         ],
@@ -4413,7 +4413,7 @@
         "texte": "Y a-t-il une bosse rouge derrière l'oreille ou autour de l'œil ?",
         "aide": "",
         "choix": [
-          "Autour de l'œil, avec la vue qui baisse, l'œil qui ne bouge plus, ou mal en bougeant l'œil",
+          "Autour de l'œil, avec la vue qui baisse, l'œil bloqué, ou mal quand l'œil bouge",
           "Derrière l'oreille ou autour de l'œil, sans ces signes",
           "Non",
           "Je ne sais pas"
@@ -5334,7 +5334,7 @@
   "S03A": {
     "patient": {
       "fr": {
-        "texte": "Si vous avez un appareil : le premier chiffre de la tension est-il de 100 mmHg ou moins ? Sinon : gros frissons, peau pâle ou grise, mains et pieds froids ?",
+        "texte": "Avec un appareil : la tension (premier chiffre) est-elle de 100 mmHg ou moins ? Sinon : gros frissons, peau pâle ou grise, mains et pieds froids ?",
         "aide": "Le premier chiffre est le plus haut.",
         "choix": [
           "Oui, au moins un des deux",
@@ -6094,7 +6094,7 @@
   "RV_S": {
     "patient": {
       "fr": {
-        "texte": "Pas de symptôme au retour. Surveillez la température pendant 3 mois, à cause du paludisme. En cas de fièvre, voyez un médecin et parlez du voyage. Vous pouvez rester à la maison et surveiller. Reposez-vous et buvez souvent. Prenez la température le matin et le soir. Voyez un médecin si cela s'aggrave ou ne s'améliore pas.",
+        "texte": "Pas de symptôme au retour. Surveillez la température pendant 3 mois, à cause du paludisme. En cas de fièvre, voyez un médecin et parlez du voyage. Vous pouvez rester à la maison et surveiller. Prenez la température le matin et le soir. Voyez un médecin si cela s'aggrave ou ne s'améliore pas.",
         "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
         "choix": [],
         "signes_reconsultation": [
@@ -6156,7 +6156,7 @@
   "H01": {
     "patient": {
       "fr": {
-        "texte": "Dans les 21 derniers jours : contact avec une personne malade ou morte d'une fièvre avec saignements ? Ou avec son sang ou ses liquides ? Ou séjour où une telle épidémie est annoncée ?",
+        "texte": "Ces 21 derniers jours : contact avec un malade, ou un mort, d'une fièvre avec saignements ? Ou avec son sang ou ses liquides ? Ou séjour où une telle épidémie est annoncée ?",
         "aide": "Fièvre avec saignements : par exemple Ebola. Les sites officiels de santé listent les zones touchées (OMS, ministère).",
         "choix": [
           "Oui",
@@ -6445,7 +6445,7 @@
     "patient": {
       "fr": {
         "texte": "Y a-t-il un problème aux organes sexuels ?",
-        "aide": "Urètre : petit trou au bout du pénis, par où sort l'urine.",
+        "aide": "Par exemple : pus, écoulement, brûlures, plaie ou boutons.",
         "choix": [
           "Pus qui sort du bout du pénis",
           "Oui, autre : écoulement du vagin, brûlures, plaie ou boutons",
@@ -6972,7 +6972,7 @@
   "M06": {
     "patient": {
       "fr": {
-        "texte": "Depuis la piqûre : fièvre, visage qui ne bouge plus d'un côté, ou douleurs aux articulations ?",
+        "texte": "Depuis la piqûre : fièvre, moitié du visage qui ne bouge plus, ou mal aux articulations ?",
         "aide": "Articulations : genoux, coudes, poignets, chevilles…",
         "choix": [
           "Oui",
@@ -7080,7 +7080,7 @@
   "RM_6H_RAGE": {
     "patient": {
       "fr": {
-        "texte": "Risque possible de rage (maladie grave transmise par les animaux). Allez aujourd'hui aux urgences ou dans un centre antirabique (centre spécialisé dans la rage). Voyez un médecin dans les 6 heures. Allez chez un médecin ou aux urgences. Vous pouvez aussi contacter {GARDE}. Si aucun médecin n'est disponible, appelez le {URGENCE}.",
+        "texte": "Risque possible de rage (maladie grave transmise par les animaux). Allez dans les 6 heures aux urgences ou dans un centre antirabique (centre spécialisé contre la rage). Vous pouvez aussi contacter {GARDE}. Si aucun médecin n'est disponible, appelez le {URGENCE}.",
         "aide": "Pour protéger vos proches : portez un masque près des autres. Aérez la pièce 10 minutes, plusieurs fois par jour. Lavez-vous souvent les mains. Restez loin des personnes fragiles : bébés, femmes enceintes, personnes âgées, personnes aux défenses faibles.",
         "choix": [],
         "signes_reconsultation": [
