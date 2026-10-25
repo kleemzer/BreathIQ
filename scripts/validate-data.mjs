@@ -87,4 +87,18 @@ for (const file of readdirSync(dataDir).filter(name => name.endsWith('.json'))) 
   checked += 1;
 }
 
+// Alerte PHEIC en retard sur l'OMS : le collecteur (who-alerts.json) a-t-il un DON plus récent sur la
+// même maladie que celui cité par pheic-alerts.json ? (avertissement : la mise à jour reste manuelle et relue)
+{
+  const pheic = readJson(join(dataDir, 'pheic-alerts.json'));
+  const who = readJson(join(dataDir, 'who-alerts.json'));
+  const donNum = id => Number(String(id || '').match(/DON(\d+)/)?.[1] || 0);
+  for (const alert of (pheic.alerts || []).filter(a => a.active)) {
+    const cited = donNum(alert.sourceUrl);
+    const word = String(alert.disease || '').split(/[\s—-]+/)[0].toLowerCase();
+    const newer = (who.alerts || []).filter(w => donNum(w.donId) > cited && String(w.title || '').toLowerCase().includes(word));
+    if (newer.length) console.warn(`⚠️  pheic-alerts.json: ${alert.id} cite DON${cited}, mais l'OMS a publié ${newer.map(w => w.donId).join(', ')} — chiffres à mettre à jour (relecture humaine)`);
+  }
+}
+
 console.log(`Validated ${checked} JSON data file(s).`);
