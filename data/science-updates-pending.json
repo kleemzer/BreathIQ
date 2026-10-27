@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-26T12:44:41.002Z",
+  "generatedAt": "2026-10-27T11:58:17.480Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 6,
+    "totalUpdates": 5,
     "warnings": 0,
-    "newLiterature": 6,
+    "newLiterature": 5,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,27 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-26",
-      "humanValidationRequired": true
-    },
-    {
-      "type": "new_literature",
-      "pathogenId": "DENGUE",
-      "pathogenName": "Dengue (arbovirose)",
-      "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour DENGUE",
-      "articles": [
-        {
-          "pmid": "42277731",
-          "title": "Outbreak investigation of reemerging chikungunya virus in Malaysia in 2019-2020.",
-          "authors": "Lim YZ, Teoh BT, Khor CS",
-          "year": "2026",
-          "journal": "BMC Infect Dis",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/42277731/"
-        }
-      ],
-      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-26",
+      "detectedAt": "2026-10-27",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +47,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-26",
+      "detectedAt": "2026-10-27",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +67,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-26",
+      "detectedAt": "2026-10-27",
       "humanValidationRequired": true
     },
     {
@@ -107,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-26",
+      "detectedAt": "2026-10-27",
       "humanValidationRequired": true
     },
     {
@@ -135,7 +115,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-26",
+      "detectedAt": "2026-10-27",
       "humanValidationRequired": true
     }
   ]
