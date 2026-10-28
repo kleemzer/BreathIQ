@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-27T11:58:17.480Z",
+  "generatedAt": "2026-10-28T12:36:31.179Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 5,
+    "totalUpdates": 6,
     "warnings": 0,
-    "newLiterature": 5,
+    "newLiterature": 6,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-27",
+      "detectedAt": "2026-10-28",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-27",
+      "detectedAt": "2026-10-28",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "MARBURG",
+      "pathogenName": "Virus Marburg",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MARBURG",
+      "articles": [
+        {
+          "pmid": "41225006",
+          "title": "Potent neutralization of Marburg virus by a vaccine-elicited antibody.",
+          "authors": "Addetia A, Perruzza L, Sprouse K",
+          "year": "2026",
+          "journal": "Nature",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41225006/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-10-28",
       "humanValidationRequired": true
     },
     {
@@ -67,7 +87,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-27",
+      "detectedAt": "2026-10-28",
       "humanValidationRequired": true
     },
     {
@@ -87,7 +107,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-27",
+      "detectedAt": "2026-10-28",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +135,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-27",
+      "detectedAt": "2026-10-28",
       "humanValidationRequired": true
     }
   ]
