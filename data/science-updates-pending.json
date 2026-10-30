@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-10-29T12:46:34.885Z",
+  "generatedAt": "2026-10-30T12:38:19.747Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 5,
+    "totalUpdates": 6,
     "warnings": 0,
-    "newLiterature": 5,
+    "newLiterature": 6,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-29",
+      "detectedAt": "2026-10-30",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,27 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-29",
+      "detectedAt": "2026-10-30",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "YELLOW_FEVER",
+      "pathogenName": "Fièvre jaune",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour YELLOW_FEVER",
+      "articles": [
+        {
+          "pmid": "41991420",
+          "title": "Yellow fever vaccine.",
+          "authors": "Everson KA, Decker CF",
+          "year": "2026",
+          "journal": "Dis Mon",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41991420/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-10-30",
       "humanValidationRequired": true
     },
     {
@@ -55,7 +75,7 @@
       "pathogenId": "MERS",
       "pathogenName": "MERS-CoV",
       "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
+      "message": "2 article(s) PubMed récent(s) détecté(s) pour MERS",
       "articles": [
         {
           "pmid": "42097153",
@@ -64,10 +84,18 @@
           "year": "2026",
           "journal": "Lancet Respir Med",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42097153/"
+        },
+        {
+          "pmid": "41756957",
+          "title": "Linking biochemical and cellular efficacy of MERS coronavirus main protease inhibitors.",
+          "authors": "La VNT, Lahav N, Goldsmith M",
+          "year": "2026",
+          "journal": "bioRxiv",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/41756957/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-29",
+      "detectedAt": "2026-10-30",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +103,7 @@
       "pathogenId": "CCHF",
       "pathogenName": "Fièvre hémorragique Criméo-Congo (FHCC)",
       "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour CCHF",
+      "message": "2 article(s) PubMed récent(s) détecté(s) pour CCHF",
       "articles": [
         {
           "pmid": "42028727",
@@ -84,10 +112,18 @@
           "year": "2026",
           "journal": "J Med Virol",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42028727/"
+        },
+        {
+          "pmid": "40891514",
+          "title": "Crimean-Congo Hemorrhagic Fever Accompanied by Acalculous Cholecystitis and Pancytopenia: A Rare Case.",
+          "authors": "Koyun D, Er G",
+          "year": "2026",
+          "journal": "Turk J Haematol",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/40891514/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-29",
+      "detectedAt": "2026-10-30",
       "humanValidationRequired": true
     },
     {
@@ -115,7 +151,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-10-29",
+      "detectedAt": "2026-10-30",
       "humanValidationRequired": true
     }
   ]
