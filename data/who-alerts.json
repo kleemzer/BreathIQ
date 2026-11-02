@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-11-01T13:55:11.882Z",
-  "fetchDate": "2026-11-01",
+  "generatedAt": "2026-11-02T16:41:13.858Z",
+  "fetchDate": "2026-11-02",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Shamonda virus in human - France",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON623",
+      "donId": "2026-DON623",
+      "pubDate": "2026-11",
+      "riskLevel": "low",
+      "source": "WHO OData API"
+    },
     {
       "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo, Kenya and Nigeria",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON622",
@@ -154,14 +162,6 @@
       "donId": "2026-DON604",
       "pubDate": "2026-05",
       "riskLevel": "high",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Ebola disease caused by Bundibugyo virus – Democratic Republic of the Congo",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON603",
-      "donId": "2026-DON603",
-      "pubDate": "2026-05",
-      "riskLevel": "critical",
       "source": "WHO OData API"
     }
   ]
