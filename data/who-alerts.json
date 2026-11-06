@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-11-05T15:02:09.362Z",
-  "fetchDate": "2026-11-05",
+  "generatedAt": "2026-11-06T14:42:03.870Z",
+  "fetchDate": "2026-11-06",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Yellow fever - WHO African Region",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON624",
+      "donId": "2026-DON624",
+      "pubDate": "2026-11",
+      "riskLevel": "high",
+      "source": "WHO OData API"
+    },
     {
       "title": "Shamonda virus in human - France",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON623",
@@ -154,14 +162,6 @@
       "donId": "2026-DON605",
       "pubDate": "2026-05",
       "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Hantavirus outbreak linked to cruise ship travel, Multi-locations",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON604",
-      "donId": "2026-DON604",
-      "pubDate": "2026-05",
-      "riskLevel": "high",
       "source": "WHO OData API"
     }
   ]
