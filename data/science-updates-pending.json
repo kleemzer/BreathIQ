@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-11-05T14:28:47.177Z",
+  "generatedAt": "2026-11-06T14:05:29.672Z",
   "agentVersion": "1.0.0",
   "note": "STAGING — validation humaine requise avant intégration dans pathogens.json",
   "disclaimer": "Ces données sont issues de sources publiques (PubMed, OMS, ECDC). Elles ne constituent pas un avis médical et doivent être validées par un professionnel de santé avant publication.",
   "summary": {
-    "totalUpdates": 6,
+    "totalUpdates": 8,
     "warnings": 0,
-    "newLiterature": 6,
+    "newLiterature": 8,
     "whoAlerts": 0
   },
   "updates": [
@@ -27,7 +27,7 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-11-05",
+      "detectedAt": "2026-11-06",
       "humanValidationRequired": true
     },
     {
@@ -47,7 +47,47 @@
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-11-05",
+      "detectedAt": "2026-11-06",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "NIPAH",
+      "pathogenName": "Virus Nipah",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour NIPAH",
+      "articles": [
+        {
+          "pmid": "34033338",
+          "title": "Nipah Virus.",
+          "authors": "Rathish B, Nguyen AD",
+          "year": "2026",
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/34033338/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-11-06",
+      "humanValidationRequired": true
+    },
+    {
+      "type": "new_literature",
+      "pathogenId": "PERTUSSIS",
+      "pathogenName": "Coqueluche",
+      "severity": "info",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour PERTUSSIS",
+      "articles": [
+        {
+          "pmid": "30085550",
+          "title": "Pertussis.",
+          "authors": "Vijayan V, Daley SF",
+          "year": "2026",
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/30085550/"
+        }
+      ],
+      "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
+      "detectedAt": "2026-11-06",
       "humanValidationRequired": true
     },
     {
@@ -55,7 +95,7 @@
       "pathogenId": "YELLOW_FEVER",
       "pathogenName": "Fièvre jaune",
       "severity": "info",
-      "message": "1 article(s) PubMed récent(s) détecté(s) pour YELLOW_FEVER",
+      "message": "2 article(s) PubMed récent(s) détecté(s) pour YELLOW_FEVER",
       "articles": [
         {
           "pmid": "41991420",
@@ -64,10 +104,18 @@
           "year": "2026",
           "journal": "Dis Mon",
           "url": "https://pubmed.ncbi.nlm.nih.gov/41991420/"
+        },
+        {
+          "pmid": "28613699",
+          "title": "Zika Virus.",
+          "authors": "Wolford RW, Jenks JD, Schaefer TJ",
+          "year": "2026",
+          "journal": "",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/28613699/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-11-05",
+      "detectedAt": "2026-11-06",
       "humanValidationRequired": true
     },
     {
@@ -75,7 +123,7 @@
       "pathogenId": "MERS",
       "pathogenName": "MERS-CoV",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour MERS",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour MERS",
       "articles": [
         {
           "pmid": "42097153",
@@ -84,18 +132,10 @@
           "year": "2026",
           "journal": "Lancet Respir Med",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42097153/"
-        },
-        {
-          "pmid": "41756957",
-          "title": "Linking biochemical and cellular efficacy of MERS coronavirus main protease inhibitors.",
-          "authors": "La VNT, Lahav N, Goldsmith M",
-          "year": "2026",
-          "journal": "bioRxiv",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41756957/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-11-05",
+      "detectedAt": "2026-11-06",
       "humanValidationRequired": true
     },
     {
@@ -103,7 +143,7 @@
       "pathogenId": "CCHF",
       "pathogenName": "Fièvre hémorragique Criméo-Congo (FHCC)",
       "severity": "info",
-      "message": "2 article(s) PubMed récent(s) détecté(s) pour CCHF",
+      "message": "1 article(s) PubMed récent(s) détecté(s) pour CCHF",
       "articles": [
         {
           "pmid": "42028727",
@@ -112,18 +152,10 @@
           "year": "2026",
           "journal": "J Med Virol",
           "url": "https://pubmed.ncbi.nlm.nih.gov/42028727/"
-        },
-        {
-          "pmid": "40891514",
-          "title": "Crimean-Congo Hemorrhagic Fever Accompanied by Acalculous Cholecystitis and Pancytopenia: A Rare Case.",
-          "authors": "Koyun D, Er G",
-          "year": "2026",
-          "journal": "Turk J Haematol",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/40891514/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-11-05",
+      "detectedAt": "2026-11-06",
       "humanValidationRequired": true
     },
     {
@@ -142,16 +174,16 @@
           "url": "https://pubmed.ncbi.nlm.nih.gov/42009020/"
         },
         {
-          "pmid": "41489657",
-          "title": "Leptospira and Leptospirosis: A Review of Species Classifications, Genomes, Morphological Structures, Antimicrobial Resistances, Transmissions, and Clinical Manifestations.",
-          "authors": "Bilung LM, Tahar AS, Pui CF",
+          "pmid": "42156054",
+          "title": "[Leptospirosis (Weil's Disease)].",
+          "authors": "Tokashiki T",
           "year": "2026",
-          "journal": "Curr Microbiol",
-          "url": "https://pubmed.ncbi.nlm.nih.gov/41489657/"
+          "journal": "Brain Nerve",
+          "url": "https://pubmed.ncbi.nlm.nih.gov/42156054/"
         }
       ],
       "suggestedAction": "Vérifier si CFR/R0/protectionRequired nécessite mise à jour",
-      "detectedAt": "2026-11-05",
+      "detectedAt": "2026-11-06",
       "humanValidationRequired": true
     }
   ]
