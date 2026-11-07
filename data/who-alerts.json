@@ -1,9 +1,17 @@
 {
-  "generatedAt": "2026-11-06T14:42:03.870Z",
-  "fetchDate": "2026-11-06",
+  "generatedAt": "2026-11-07T13:39:17.327Z",
+  "fetchDate": "2026-11-07",
   "alertCount": 20,
   "source": "WHO OData API",
   "alerts": [
+    {
+      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo, Kenya and Nigeria",
+      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON625",
+      "donId": "2026-DON625",
+      "pubDate": "2026-11",
+      "riskLevel": "critical",
+      "source": "WHO OData API"
+    },
     {
       "title": "Yellow fever - WHO African Region",
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON624",
@@ -153,14 +161,6 @@
       "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON606",
       "donId": "2026-DON606",
       "pubDate": "2026-06",
-      "riskLevel": "critical",
-      "source": "WHO OData API"
-    },
-    {
-      "title": "Ebola disease caused by Bundibugyo virus, Democratic Republic of the Congo & Uganda",
-      "url": "https://www.who.int/emergencies/disease-outbreak-news/item/2026-DON605",
-      "donId": "2026-DON605",
-      "pubDate": "2026-05",
       "riskLevel": "critical",
       "source": "WHO OData API"
     }
