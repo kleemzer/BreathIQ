@@ -1,5 +1,12 @@
 [
   {
+    "timestamp": "2026-11-12T14:59:27.903Z",
+    "updatesFound": 8,
+    "pubmedQueriesRun": 14,
+    "whoAlertsFound": 0,
+    "ecdcAlertsFound": 0
+  },
+  {
     "timestamp": "2026-11-11T13:58:32.388Z",
     "updatesFound": 8,
     "pubmedQueriesRun": 14,
@@ -617,13 +624,6 @@
   },
   {
     "timestamp": "2026-08-15T09:42:53.885Z",
-    "updatesFound": 5,
-    "pubmedQueriesRun": 14,
-    "whoAlertsFound": 0,
-    "ecdcAlertsFound": 0
-  },
-  {
-    "timestamp": "2026-08-15T09:32:39.285Z",
     "updatesFound": 5,
     "pubmedQueriesRun": 14,
     "whoAlertsFound": 0,
